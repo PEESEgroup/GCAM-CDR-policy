@@ -1,0 +1,263 @@
+import numpy as np
+import plotting
+import data_manipulation
+import constants as c
+import pandas as pd
+
+
+def standard_plots(nonBaselineScenario, RCP):
+    # Plotting animal products
+    released_CO2_price = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_prices.csv")
+    pyrolysis_CO2_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_prices.csv")
+    products = ["CO2"]
+    released_CO2_price = released_CO2_price[released_CO2_price[['product']].isin(products).any(axis=1)]
+    pyrolysis_CO2_price = pyrolysis_CO2_price[pyrolysis_CO2_price[['product']].isin(products).any(axis=1)]
+    perc_diff_CO2_price = data_manipulation.percent_difference(released_CO2_price, pyrolysis_CO2_price, ["SSP", "product", "GCAM"])
+    plotting.plot_world(perc_diff_CO2_price, products, ["SSP1", "SSP2"], "year", "product", c.GCAMConstants.future_x)
+
+    released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/supply_of_all_markets.csv")
+    pyrolysis_supply = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")
+    products = ["Beef", "Pork", "Dairy", "Poultry"]
+    released_supply = released_supply[released_supply[['product']].isin(products).any(axis=1)]
+    pyrolysis_supply = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)]
+    perc_diff = data_manipulation.percent_difference(released_supply, pyrolysis_supply, ["SSP", "product", "GCAM"])
+    plotting.plot_world(perc_diff, products, ["SSP2"], "product", "product", [2050])
+
+    # plotting CO2 concentrations
+    co2_conc_released = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_concentrations.csv")
+    co2_conc_pyrolysis = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_concentrations.csv")
+    flat_diff_CO2 = data_manipulation.flat_difference(co2_conc_released, co2_conc_pyrolysis, ["SSP"])
+    flat_diff_CO2["GCAM"] = "All"
+    plotting.plot_line(flat_diff_CO2, ["PPM"], c.GCAMConstants.SSPs, "SSP", "Units", "Version")
+
+    # livestock systems
+    feed_released = pd.read_csv("data/gcam_out/released/" + RCP + "/feed_consumption_by_meat_and_dairy_tech.csv")
+    feed_pyrolysis = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/feed_consumption_by_meat_and_dairy_tech.csv")
+    columns = ['sector', 'subsector', 'SSP']
+    feed_released = data_manipulation.group(feed_released, columns)
+    feed_pyrolysis = data_manipulation.group(feed_pyrolysis, columns)
+    flat_diff_feed = data_manipulation.flat_difference(feed_released, feed_pyrolysis, ["SSP", "sector", "subsector"])
+    plotting.plot_line(flat_diff_feed, ['Beef', 'Dairy', 'Poultry', 'Pork'], c.GCAMConstants.SSPs, "SSP", "sector",
+                       "subsector")
+    # perc_diff_feed = data_manipulation.percent_difference(feed_released, feed_pyrolysis, ["SSP", "sector", "subsector"])
+    # plotting.plot_line(perc_diff_feed, ['Beef', 'Dairy', 'Poultry', 'Pork'], c.GCAMConstants.SSPs, "SSP", "sector",
+    #                    "subsector")
+
+    # refined liquids production
+    ref_released = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
+    ref_pyrolysis = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech.csv")
+    products = ["sugar cane ethanol", "manure fuel", "corn ethanol",
+                "cellulosic ethanol", "biodiesel", "FT biofuels", "BTL with hydrogen"]
+    flat_diff_biofuel = data_manipulation.flat_difference(ref_released, ref_pyrolysis, ["SSP", "technology", "GCAM"])
+    plotting.plot_line(flat_diff_biofuel, products, c.GCAMConstants.SSPs, "product", "technology", "Units")
+    per_diff_biofuel = data_manipulation.change_between_years(flat_diff_biofuel)
+    # plotting.plot_world(per_diff_biofuel, products, ["SSP2"], "year", "technology",
+    #                     ["2020-2025", "2025-2030", "2030-2035", "2035-2040", "2040-2045", "2045-2050", "2050-2055",
+    #                      "2055-2060", "2060-2065", "2065-2070", "2070-2075", "2075-2080", "2080-2085", "2085-2090",
+    #                      "2090-2095", "2095-2100"])
+    flat_diff_manure_fuel = data_manipulation.change_between_years(ref_pyrolysis)
+    # plotting.plot_world(flat_diff_manure_fuel, ["manure fuel"], ["SSP2"], "year", "technology",
+    #                     ["2020-2025", "2025-2030", "2030-2035", "2035-2040", "2040-2045", "2045-2050", "2050-2055",
+    #                      "2055-2060", "2060-2065", "2065-2070", "2070-2075", "2075-2080", "2080-2085", "2085-2090",
+    #                      "2090-2095", "2095-2100"])
+    released_cost = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_costs_by_tech.csv")
+    released_prod = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
+    released_new = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech_new.csv")
+    pyrolysis_cost = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_costs_by_tech.csv")
+    pyrolysis_prod = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech.csv")
+    pyrolysis_new = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech_new.csv")
+    flat_diff_cost = data_manipulation.flat_difference(released_cost, pyrolysis_cost, ["SSP", "technology", "GCAM"])
+    flat_diff_prod = data_manipulation.flat_difference(released_prod, pyrolysis_prod, ["SSP", "technology", "GCAM"])
+    flat_diff_new = data_manipulation.flat_difference(released_new, pyrolysis_new, ["SSP", "technology", "GCAM"])
+    products = ["cellulosic ethanol", "biodiesel", "FT biofuels", "BTL with hydrogen", "sugar cane ethanol",
+                "corn ethanol"]
+    #plotting.plot_world(flat_diff_cost, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+    #plotting.plot_world(flat_diff_prod, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+    #plotting.plot_world(flat_diff_new, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+
+    # comparison of decrease in newly installed production of biofuels compared to the supply of manure fuel
+    released_new = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech_new.csv")
+    released_prod = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
+    pyrolysis_new = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech_new.csv")
+    pyrolysis_prod = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech.csv")
+    flat_diff_new = data_manipulation.flat_difference(released_new, pyrolysis_new, ["SSP", "technology", "GCAM"])
+    flat_diff_prod = data_manipulation.flat_difference(released_prod, pyrolysis_prod, ["SSP", "technology", "GCAM"])
+    flat_diff_new = data_manipulation.group(flat_diff_new, ["SSP", "GCAM", "subsector"])
+    flat_diff_prod = data_manipulation.group(flat_diff_prod, ["SSP", "GCAM", "subsector"])
+    released_biofuels = data_manipulation.group(released_prod, ["SSP", "GCAM", "subsector"])
+    pyrolysis_biofuels = data_manipulation.group(pyrolysis_prod, ["SSP", "GCAM", "subsector"])
+    perc_diff_biofuels = data_manipulation.percent_difference(released_biofuels, pyrolysis_biofuels,
+                                                              ["SSP", "subsector", "GCAM"])
+    products = ["biomass liquids"]
+    plotting.plot_world(flat_diff_new, products, ["SSP2"], "year", "subsector", c.GCAMConstants.plotting_x)
+    products = ["manure fuel"]
+    print("newly installed capacity")
+    plotting.plot_world(pyrolysis_new, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+
+    def label_ssp(row):
+        if row['subsector'] == "biomass liquids":
+            return "biofuels"
+        elif row['technology'] == "manure fuel":
+            return "biofuels"
+        return row['technology']
+
+    products = ["biofuels"]
+    flat_diff_new['technology'] = flat_diff_new.apply(lambda row: label_ssp(row), axis=1)
+    flat_diff_prod['technology'] = flat_diff_prod.apply(lambda row: label_ssp(row), axis=1)
+    flat_diff_installed = data_manipulation.flat_summation(pyrolysis_new, flat_diff_new, ["SSP", "technology", "GCAM"])
+    flat_diff_supply = data_manipulation.flat_summation(pyrolysis_prod, flat_diff_prod, ["SSP", "technology", "GCAM"])
+    print("difference in newly installed biofuel capacity")
+    plotting.plot_world(flat_diff_installed, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+    print("difference in biofuel supply")
+    plotting.plot_world(flat_diff_supply, products, ["SSP2"], "year", "technology",
+                        c.GCAMConstants.plotting_x)
+
+    # Plotting Fertilizer and refined liquids prices
+    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+    pyrolysis_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
+    products = ["N fertilizer", "refined liquids enduse"]
+    released_price = released_price[released_price[['product']].isin(products).any(axis=1)]
+    pyrolysis_price = pyrolysis_price[pyrolysis_price[['product']].isin(products).any(axis=1)]
+    perc_diff_f_price = data_manipulation.percent_difference(released_price, pyrolysis_price,
+                                                             ["SSP", "product", "GCAM"])
+    print("price")
+    plotting.plot_world(perc_diff_f_price, products, ["SSP2"], "year", "product", c.GCAMConstants.plotting_x)
+
+    released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/supply_of_all_markets.csv")
+    pyrolysis_supply = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")
+    products = ["N fertilizer"] #, "refined liquids enduse"
+    released_supply = released_supply[released_supply[['product']].isin(products).any(axis=1)]
+    pyrolysis_supply = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)]
+    perc_diff_f_supply = data_manipulation.percent_difference(released_supply, pyrolysis_supply,
+                                                              ["SSP", "product", "GCAM"])
+    print("supply")
+    plotting.plot_world(perc_diff_f_supply, products, ["SSP2"], "year", "product", c.GCAMConstants.plotting_x)
+
+    # regional change in N fertilizer production technologies
+    technologies = ["biochar_sup", "gas", "hydrogen"]
+    released_f = pd.read_csv("data/gcam_out/released/" + RCP + "/fertilizer_production_by_tech.csv")
+    pyrolysis_f = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/fertilizer_production_by_tech.csv")
+    released_prod = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
+    pyrolysis_prod = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech.csv")
+    released_prod = data_manipulation.group(released_prod, ["SSP", "GCAM", "technology"])
+    pyrolysis_prod = data_manipulation.group(pyrolysis_prod, ["SSP", "GCAM", "technology"])
+    flat_diff_prod = data_manipulation.flat_difference(released_prod, pyrolysis_prod, ["SSP", "technology", "GCAM"])
+    perc_diff_prod = data_manipulation.percent_difference(released_prod, pyrolysis_prod, ["SSP", "technology", "GCAM"])
+    released_f = data_manipulation.group(released_f, ["SSP", "GCAM", "technology"])
+    pyrolysis_f = data_manipulation.group(pyrolysis_f, ["SSP", "GCAM", "technology"])
+    flat_diff_f = data_manipulation.flat_difference(released_f, pyrolysis_f, ["SSP", "GCAM", "technology"])
+    perc_diff_f = data_manipulation.percent_difference(released_f, pyrolysis_f, ["SSP", "GCAM", "technology"])
+    plotting.plot_world(flat_diff_f, technologies, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+    plotting.plot_world(perc_diff_f, technologies, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+    plotting.plot_world(pyrolysis_f, ["biochar_sup"], ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+
+    # plotting the years in which the maximum disruptions occur (both flat and percentage) for all N fertilizer and biofuel technologies
+    technologies = ["coal", "gas", "hydrogen"]
+    products = ["sugar cane ethanol", "corn ethanol", "cellulosic ethanol", "biodiesel", "FT biofuels",
+                "BTL with hydrogen"]
+    years_flat_f = data_manipulation.years_to_maximum_disruption(flat_diff_f, released_f, ["SSP2"], technologies,
+                                                                 "technology")
+    years_perc_f = data_manipulation.years_to_maximum_disruption(perc_diff_f, released_f, ["SSP2"], technologies,
+                                                                 "technology")
+    years_flat_prod = data_manipulation.years_to_maximum_disruption(flat_diff_prod, released_prod, ["SSP2"], products,
+                                                                    "technology")
+    years_perc_prod = data_manipulation.years_to_maximum_disruption(perc_diff_prod, released_prod, ["SSP2"], products,
+                                                                    "technology")
+    plotting.plot_disruption_by_years(years_flat_f, technologies, "technology", ["SSP2"], "lower right")
+    plotting.plot_disruption_by_years(years_perc_f, technologies, "technology", ["SSP2"], "lower right")
+    plotting.plot_disruption_by_years(years_flat_prod, products, "technology", ["SSP2"], "lower left")
+    plotting.plot_disruption_by_years(years_perc_prod, products, "technology", ["SSP2"], "upper left")
+    # cutting off upper bounds because they are sad
+    for i in c.GCAMConstants.plotting_x:
+        perc_diff_prod.loc[perc_diff_prod[str(i)] > 100, str(i)] = np.nan
+    years_perc_prod = data_manipulation.years_to_maximum_disruption(perc_diff_prod, released_prod, ["SSP2"], products,
+                                                                    "technology")
+    plotting.plot_disruption_by_years(years_perc_prod, products, "technology", ["SSP2"], "upper left")
+
+    # regional land use change
+    landleafs = ["biomass", "crops", "forest (managed)", "forest (unmanaged)", "grass", "otherarable",
+                 "pasture (grazed)", "pasture (other)", "shrubs"]
+    released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/aggregated_land_allocation.csv")
+    pyrolysis_land = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/aggregated_land_allocation.csv")
+    perc_diff_land = data_manipulation.percent_difference(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
+    # plotting.plot_world(perc_diff_land, landleafs, ["SSP2"], "year", "LandLeaf", [2020, 2035, 2050, 2075, 2100])
+    landleafs = ["biomass", "crops"]
+    plotting.plot_world(perc_diff_land, landleafs, ["SSP2"], "year", "LandLeaf", c.GCAMConstants.plotting_x)
+    perc_diff_land_2 = data_manipulation.change_between_years(perc_diff_land)
+    # plotting.plot_world(perc_diff_land_2, ["biomass"], ["SSP2"], "year", "LandLeaf",
+    #                     ["2020-2025", "2025-2030", "2030-2035", "2035-2040", "2040-2045", "2045-2050", "2050-2055",
+    #                      "2055-2060", "2060-2065", "2065-2070", "2070-2075", "2075-2080", "2080-2085", "2085-2090",
+    #                      "2090-2095", "2095-2100"])
+    # plotting.plot_world(perc_diff_land_2, ["crops"], ["SSP2"], "year", "LandLeaf",
+    #                     ["2020-2025", "2025-2030", "2030-2035", "2035-2040", "2040-2045", "2045-2050", "2050-2055",
+    #                      "2055-2060", "2060-2065", "2065-2070", "2070-2075", "2075-2080", "2080-2085", "2085-2090",
+    #                      "2090-2095", "2095-2100"])
+
+    # plotting correlation between land use change and fertilizer price change
+    perc_diff_crops = perc_diff_land[perc_diff_land["LandLeaf"].isin(["crops"])]
+    perc_diff_f_price = perc_diff_f_price[perc_diff_f_price["product"].isin(["N fertilizer"])]
+    perc_diff_f_supply = perc_diff_f_supply[perc_diff_f_supply["product"].isin(["N fertilizer"])]
+    correlation_f_price = pd.merge(perc_diff_crops, perc_diff_f_price, how="left", on=["GCAM", "SSP"],
+                                   suffixes=("_left", "_right"))
+    correlation_f_supply = pd.merge(perc_diff_crops, perc_diff_f_supply, how="left", on=["GCAM", "SSP"],
+                                    suffixes=("_left", "_right"))
+    years = c.GCAMConstants.plotting_x
+    plotting.plot_correlation(correlation_f_price, years, ["SSP2"],
+                              "% change in crop land use", "% change in fertilizer price", "lower left")
+    plotting.plot_correlation(correlation_f_supply, years, ["SSP2"],
+                              "% change in crop land use", "% change in fertilizer supply", "upper left")
+    correlation_f = pd.merge(perc_diff_f_price, perc_diff_f_supply, how="left", on=["GCAM", "SSP"],
+                             suffixes=("_left", "_right"))
+    plotting.plot_correlation(correlation_f, years, ["SSP2"],
+                              "% change in fertilizer price", "% change in fertilizer supply", "upper left")
+    perc_diff_biomass = perc_diff_land[perc_diff_land["LandLeaf"].isin(["biomass"])]
+    correlation_biomass_price = pd.merge(perc_diff_biomass, perc_diff_f_price, how="left", on=["GCAM", "SSP"],
+                                         suffixes=("_left", "_right"))
+    correlation_biomass_supply = pd.merge(perc_diff_biomass, perc_diff_f_supply, how="left", on=["GCAM", "SSP"],
+                                          suffixes=("_left", "_right"))
+    plotting.plot_correlation(correlation_biomass_price, years, ["SSP2"],
+                              "% change in biomass land use", "% change in fertilizer price", "upper left")
+    plotting.plot_correlation(correlation_biomass_supply, years, ["SSP2"],
+                              "% change in biomass land use", "% change in fertilizer supply", "upper left")
+    perc_diff_prod_biofuel = perc_diff_biofuels[perc_diff_biofuels["subsector"].isin(["biomass liquids"])]
+    correlation_biomass_biofuel = pd.merge(perc_diff_prod_biofuel, perc_diff_biomass, how="left", on=["GCAM", "SSP"],
+                                           suffixes=("_left", "_right"))
+    correlation_biofuel_fertilizer = pd.merge(perc_diff_prod_biofuel, perc_diff_f_supply, how="left",
+                                              on=["GCAM", "SSP"], suffixes=("_left", "_right"))
+    years = [2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
+    plotting.plot_correlation(correlation_biomass_biofuel, years, ["SSP2"],
+                              "% change in biofuel supply", "% change in biomass land use", "upper left")
+    plotting.plot_correlation(correlation_biofuel_fertilizer, years, ["SSP2"],
+                              "% change in biofuel supply", "% change in fertilizer supply", "upper left")
+
+    # agricultural commodity price changes
+    crops = ["Corn", "FiberCrop", "FodderGrass", "FodderHerb", "Forest", "Fruits", "Legumes", "MiscCrop", "NutSeeds",
+             "OilCrop", "OtherGrain", "Pasture", "Rice", "RootTuber", "Soybean", "SugarCrop",
+             "Vegetables", "Wheat", "biomass"]
+    released_ag_prices = pd.read_csv("data/gcam_out/released/" + RCP + "/ag_commodity_prices.csv")
+    pyrolysis_ag_prices = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/ag_commodity_prices.csv")
+    perc_diff_ag_prices = data_manipulation.percent_difference(released_ag_prices, pyrolysis_ag_prices,
+                                                               ["SSP", "sector", "GCAM"])
+    #plotting.plot_world(perc_diff_ag_prices, crops, ["SSP2"], "year", "sector", [2020, 2035, 2050, 2075, 2100])
+    biomass_price = perc_diff_ag_prices[perc_diff_ag_prices["sector"].isin(["biomass"])]
+    correlation_biomass_price_supply = pd.merge(biomass_price, perc_diff_biomass, "left", on=["GCAM", "SSP"],
+                                                suffixes=("_left", "_right"))
+    plotting.plot_correlation(correlation_biomass_price_supply, c.GCAMConstants.plotting_x, ["SSP2"], "% change in biomass price", "% change in biomass supply", "upper left")
+
+    # correlograms
+    products = ["manure fuel feedstock", "beef manure", "dairy manure", "pork manure", "poultry manure", "goat manure"]
+    price_price = pd.read_csv("data/gcam_out/price/" + RCP + "/prices_of_all_markets.csv")
+    pyrolysis_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
+    price_price = price_price[price_price[['product']].isin(products).any(axis=1)]
+    pyrolysis_price = pyrolysis_price[pyrolysis_price[['product']].isin(products).any(axis=1)]
+    price_price = data_manipulation.percentage_change_between_years(price_price)
+    pyrolysis_price = data_manipulation.percentage_change_between_years(pyrolysis_price)
+    cols = ["2020-2025", "2025-2030", "2030-2035", "2035-2040", "2040-2045", "2045-2050", "2050-2055", "2055-2060",
+            "2060-2065", "2065-2070", "2070-2075", "2075-2080", "2080-2085", "2085-2090", "2090-2095", "2095-2100"]
+    # cols = ["2040-2045", "2045-2050", "2050-2055", "2055-2060",
+    #         "2060-2065", "2065-2070", "2070-2075", "2075-2080", "2080-2085", "2085-2090", "2090-2095", "2095-2100"]
+    plotting.plot_correlogram(pyrolysis_price, c.GCAMConstants.SSPs, cols, [2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100])
+
+
+if __name__ == '__main__':
+    standard_plots("pyrolysis", "4p5")
