@@ -71,9 +71,12 @@ def standard_plots(nonBaselineScenario, RCP):
     flat_diff_new = data_manipulation.flat_difference(released_new, pyrolysis_new, ["SSP", "technology", "GCAM"])
     products = ["cellulosic ethanol", "biodiesel", "FT biofuels", "BTL with hydrogen", "sugar cane ethanol",
                 "corn ethanol"]
-    #plotting.plot_world(flat_diff_cost, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
-    #plotting.plot_world(flat_diff_prod, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
-    #plotting.plot_world(flat_diff_new, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+    print("flat diff cost")
+    plotting.plot_world(flat_diff_cost, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+    print("flat diff production")
+    plotting.plot_world(flat_diff_prod, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+    print("flat diff new capacity")
+    plotting.plot_world(flat_diff_new, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
 
     # comparison of decrease in newly installed production of biofuels compared to the supply of manure fuel
     released_new = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech_new.csv")
