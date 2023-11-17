@@ -693,7 +693,10 @@ def plot_correlation(dataframe, years, SSP, xlabel, ylabel, label_location):
     colors, num_colors = get_colors(len(years))
     dataframe = dataframe[(dataframe['SSP'].isin(SSP))]
     df_global = dataframe[dataframe['GCAM'] == "Global"]
-    df_regional = dataframe.drop(dataframe[dataframe['GCAM'] == "Global"].index)
+    if not df_global.empty:
+        df_regional = dataframe.drop(dataframe[dataframe['GCAM'] == "Global"].index)
+    else:
+        df_regional = dataframe
 
     x = []
     y = []
