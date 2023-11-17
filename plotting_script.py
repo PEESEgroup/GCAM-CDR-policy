@@ -262,5 +262,145 @@ def standard_plots(nonBaselineScenario, RCP):
     plotting.plot_correlogram(pyrolysis_price, c.GCAMConstants.SSPs, cols, [2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100])
 
 
+def prices(nonBaselineScenario, RCP, SSP):
+    # carbon prices
+    released_CO2_price = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_prices.csv")
+    pyrolysis_CO2_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_prices.csv")
+    products = ["CO2"]
+    released_CO2_price = released_CO2_price[released_CO2_price[['product']].isin(products).any(axis=1)]
+    pyrolysis_CO2_price = pyrolysis_CO2_price[pyrolysis_CO2_price[['product']].isin(products).any(axis=1)]
+    perc_diff_CO2_price = data_manipulation.flat_difference(released_CO2_price, pyrolysis_CO2_price, ["SSP", "product", "GCAM"])
+    print("change in world carbon prices")
+    plotting.plot_world(perc_diff_CO2_price, products, ["SSP1", "SSP2"], "year", "product", c.GCAMConstants.future_x)
+
+    # refined liquids prices
+    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+    pyrolysis_price = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
+    products = ["refined liquids enduse"]
+    released_refliquids_price = released_price[released_price[['product']].isin(products).any(axis=1)]
+    pyrolysis_ref_liquids_price = pyrolysis_price[pyrolysis_price[['product']].isin(products).any(axis=1)]
+    perc_diff_f_price = data_manipulation.percent_difference(released_refliquids_price, pyrolysis_ref_liquids_price,
+                                                             ["SSP", "product", "GCAM"])
+    print("change in refined liquids price")
+    plotting.plot_world(perc_diff_f_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
+
+    # food prices
+    released_food_price = pd.read_csv("data/gcam_out/released/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+    pyrolysis_food_price = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+    products = ["regional beef", "regional corn", "regional dairy", "regional fibercrop", "regional forest", "regional fruits", "regional iron and steel", "regional legumes", "regional misccrop", "regional nuts_seeds", "regional oilcrop", "regional oilpalm", "regional othergrain", "regional pork", "regional poultry", "regional rice", "regional root_tuber", "regional sheepgoat", "regional soybean", "regional sugarcrop", "regional vegetables", "regional beef"]
+    for i in products:
+        r_f = released_food_price[released_food_price[['sector']].isin([i]).any(axis=1)]
+        p_f = pyrolysis_food_price[pyrolysis_food_price[['sector']].isin([i]).any(axis=1)]
+        perc_diff_food_price = data_manipulation.percent_difference(r_f, p_f,
+                                                                 ["SSP", "sector", "GCAM"])
+        print("change in", str(i), "price")
+        plotting.plot_world(perc_diff_food_price, products, SSP, "year", "sector", c.GCAMConstants.plotting_x)
+
+    # fertilizer prices
+    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+    pyrolysis_price = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
+    products = ["N fertilizer"]
+    released_price = released_price[released_price[['product']].isin(products).any(axis=1)]
+    pyrolysis_price = pyrolysis_price[pyrolysis_price[['product']].isin(products).any(axis=1)]
+    perc_diff_f_price = data_manipulation.percent_difference(released_price, pyrolysis_price,
+                                                             ["SSP", "product", "GCAM"])
+    print("change in fertilizer price")
+    plotting.plot_world(perc_diff_f_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
+
+    # refined liquids prices
+    "refined liquids enduse"
+    products = ["refined liquids enduse"]
+    released_price = released_price[released_price[['product']].isin(products).any(axis=1)]
+    pyrolysis_price = pyrolysis_price[pyrolysis_price[['product']].isin(products).any(axis=1)]
+    perc_diff_f_price = data_manipulation.percent_difference(released_price, pyrolysis_price,
+                                                             ["SSP", "product", "GCAM"])
+    print("change in refined liquids price")
+    plotting.plot_world(perc_diff_f_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
+
+    # correlation between food and energy prices
+    released_food_price = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+    pyrolysis_food_price = pd.read_csv(
+        "data/gcam_out/" + str(
+            nonBaselineScenario) + "/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+    perc_diff_food = data_manipulation.percent_difference(released_food_price, pyrolysis_food_price, ["SSP", "sector", "GCAM"])
+    perc_diff_ref_liquids = data_manipulation.percent_difference(released_refliquids_price, pyrolysis_ref_liquids_price,
+                                                                 ["SSP", "product", "GCAM"])
+    correlation_food_energy_released = pd.merge(released_food_price, released_refliquids_price, how="left",
+                                                on=["GCAM", "SSP"],
+                                                suffixes=("_left", "_right"))
+    correlation_food_energy_pyrolysis = pd.merge(pyrolysis_food_price, pyrolysis_ref_liquids_price, how="left",
+                                                 on=["GCAM", "SSP"],
+                                                 suffixes=("_left", "_right"))
+    correlation_food_energy_diff = pd.merge(perc_diff_food, perc_diff_ref_liquids, how="left",
+                                            on=["GCAM", "SSP"],
+                                            suffixes=("_left", "_right"))
+
+    years = c.GCAMConstants.plotting_x
+    print("correlation in released food and energy price")
+    plotting.plot_correlation(correlation_food_energy_released, years, SSP,
+                              "released food price", "released refined liquids price", "lower left")
+    print("correlation in pyrolysis food and energy price")
+    plotting.plot_correlation(correlation_food_energy_pyrolysis, years, ["SSP2"],
+                              "pyrolysis food price", "pyrolysis refined liquids price", "upper left")
+    print("correlation in change in food and energy price")
+    plotting.plot_correlation(correlation_food_energy_diff, years, ["SSP2"],
+                              "% change in food price", "% change in refined liquids price", "upper left")
+
+    # correlation between ag input and energy prices
+    released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/aggregated_land_allocation.csv")
+    pyrolysis_land = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/aggregated_land_allocation.csv")
+    perc_diff_land = data_manipulation.percent_difference(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
+    perc_diff_ref_liquids = data_manipulation.percent_difference(released_refliquids_price, pyrolysis_ref_liquids_price,
+                                                                 ["SSP", "product", "GCAM"])
+    perc_diff_crops = perc_diff_land[perc_diff_land["LandLeaf"].isin(["crops"])]
+    print("correlation in released ag input and energy price")
+    correlation_food_energy_released = pd.merge(released_land, released_refliquids_price, how="left",
+                                                on=["GCAM", "SSP"],
+                                                suffixes=("_left", "_right"))
+    print("correlation in pyrolysis ag input and energy price")
+    correlation_food_energy_pyrolysis = pd.merge(pyrolysis_land, pyrolysis_ref_liquids_price, how="left",
+                                                 on=["GCAM", "SSP"],
+                                                 suffixes=("_left", "_right"))
+    print("correlation in change in ag input and energy price")
+    correlation_food_energy_diff = pd.merge(perc_diff_crops, perc_diff_ref_liquids, how="left",
+                                            on=["GCAM", "SSP"],
+                                            suffixes=("_left", "_right"))
+
+    years = c.GCAMConstants.plotting_x
+    plotting.plot_correlation(correlation_food_energy_released, years, SSP,
+                              "released ag commodity price", "released refined liquids price", "lower left")
+    plotting.plot_correlation(correlation_food_energy_pyrolysis, years, ["SSP2"],
+                              "pyrolysis ag commodity price", "pyrolysis refined liquids price", "upper left")
+    plotting.plot_correlation(correlation_food_energy_diff, years, ["SSP2"],
+                              "% change in ag commodity price", "% change in refined liquids price", "upper left")
+
+    # correlation between ag input and output prices
+    correlation_ag_food_released = pd.merge(released_food_price, released_land, how="left",
+                                                on=["GCAM", "SSP"],
+                                                suffixes=("_left", "_right"))
+    correlation_ag_food_pyrolysis = pd.merge(pyrolysis_food_price, pyrolysis_land, how="left",
+                                                 on=["GCAM", "SSP"],
+                                                 suffixes=("_left", "_right"))
+    correlation_ag_food_diff = pd.merge(perc_diff_food, perc_diff_land, how="left",
+                                            on=["GCAM", "SSP"],
+                                            suffixes=("_left", "_right"))
+    print("correlation in released food and ag input price")
+    plotting.plot_correlation(correlation_ag_food_released, years, SSP,
+                              "released food price", "released ag input price", "lower left")
+    print("correlation in pyrolysis food and ag input price")
+    plotting.plot_correlation(correlation_ag_food_pyrolysis, years, ["SSP2"],
+                              "pyrolysis food price", "pyrolysis ag input price", "upper left")
+    print("correlation in difference in food and ag input price")
+    plotting.plot_correlation(correlation_ag_food_diff, years, ["SSP2"],
+                              "% change in food price", "% change in ag input price", "upper left")
+
+
 if __name__ == '__main__':
-    standard_plots("pyrolysis", "4p5")
+    # standard_plots("pyrolysis", "4p5")
+    for i in c.GCAMConstants.SSPs:
+        prices("pyrolysis", "4p5", [i])
