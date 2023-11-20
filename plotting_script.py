@@ -355,12 +355,12 @@ def prices(nonBaselineScenario, RCP, SSP):
                                                     suffixes=("_left", "_right"))
 
             years = c.GCAMConstants.plotting_x
-            # print("correlation in released", products, "price and energy price")
-            # plotting.plot_correlation(correlation_food_energy_released, years, SSP,
-            #                           "released " + str(products) + " price", "released " + energy + " price", "lower left")
-            # print("correlation in pyrolysis", products, "price and energy price")
-            # plotting.plot_correlation(correlation_food_energy_pyrolysis, years, SSP,
-            #                           "pyrolysis " + str(products) + " price", "pyrolysis " + energy + " price", "upper left")
+            print("correlation in released", products, "price and energy price")
+            plotting.plot_correlation(correlation_food_energy_released, years, SSP,
+                                      "released " + str(products) + " price", "released " + energy + " price", "lower left")
+            print("correlation in pyrolysis", products, "price and energy price")
+            plotting.plot_correlation(correlation_food_energy_pyrolysis, years, SSP,
+                                      "pyrolysis " + str(products) + " price", "pyrolysis " + energy + " price", "upper left")
             print("correlation in change in", products, "price and " + energy + " price")
             plotting.plot_correlation(correlation_food_energy_diff, years, SSP,
                                       "% change in " + str(products) + " price", "% change in " + energy + " price", "upper left")
@@ -437,5 +437,5 @@ def carbon_prices(nonBaselineScenario, RCP, SSP):
 if __name__ == '__main__':
     # standard_plots("pyrolysis", "4p5")
     for i in ["SSP1", "SSP2"]:
-        prices("pyrolysis", "4p5", [i])
+        #prices("pyrolysis", "4p5", [i])
         carbon_prices("pyrolysis", "4p5", [i])
