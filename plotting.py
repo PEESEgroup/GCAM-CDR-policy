@@ -4,7 +4,9 @@ import pandas as pd
 import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from pylab import *
+from sklearn.metrics import r2_score
 import matplotlib.patches as mpatches
+import statsmodels.formula.api as smf
 
 
 def world_data(data):
@@ -704,19 +706,50 @@ def plot_correlation(dataframe, years, SSP, xlabel, ylabel, label_location):
     # get set of x and y data
     counter = 0
     for i in years:
+        #add x and y values to the overall line
         x.extend(df_regional[str(i) + "_left"].tolist())
         y.extend(df_regional[str(i) + "_right"].tolist())
+
+        #build the ols model
+        df = pd.DataFrame(columns=['y', 'x'])
+        df['x'] = df_regional[str(i) + "_left"].tolist()
+        df['y'] = df_regional[str(i) + "_right"].tolist()
+        weights = np.polyfit(x, y, 1) # degree 1
+        model = np.poly1d(weights)
+        epsilon = model[0]
+        beta = model[1]
+        results = smf.ols(formula='y ~ model(x)', data=df).fit() # borrow some R syntax here lol
+        # print(results.summary())
+
+        #scatter points on the graph
         plt.scatter(df_regional[str(i) + "_left"].tolist(), df_regional[str(i) + "_right"].tolist(),
                     color=colors[counter])
-        plt.plot(np.unique(df_regional[str(i) + "_left"].tolist()),
-                 np.poly1d(
-                     np.polyfit(df_regional[str(i) + "_left"].tolist(), df_regional[str(i) + "_right"].tolist(), 1))(
-                     np.unique(df_regional[str(i) + "_left"].tolist())),
-                 color=colors[counter], label=str(i))
+
+        x_min = min(df_regional[str(i) + "_left"].tolist())
+        x_max = max(df_regional[str(i) + "_left"].tolist())
+        x_vals = np.linspace(x_min, x_max, 500)
+        y_vals = x_vals*beta + epsilon
+
+        plt.plot(x_vals, y_vals, label=str(i) + " | R2 {:.4f}".format(results.rsquared) + " | p-value {:.4f}".format(results.pvalues["model(x)"]), color=colors[counter])
         counter = counter + 1
 
-    # plot data and best fit line
-    plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, 1))(np.unique(x)), color="red", label="overall")
+    # plot all data and best fit line for the overall fit
+    # build the ols model
+    df = pd.DataFrame(columns=['y', 'x'])
+    df['x'] = x
+    df['y'] = y
+    weights = np.polyfit(x, y, 1)  # degree 1
+    model = np.poly1d(weights)
+    epsilon = model[0]
+    beta = model[1]
+    results = smf.ols(formula='y ~ model(x)', data=df).fit()  # borrow some R syntax here lol
+    # print(results.summary())
+
+    x_vals = np.linspace(min(x), max(x), 500)
+    y_vals = x_vals * beta + epsilon
+
+    plt.plot(x_vals, y_vals, label="overall" + " | R2 {:.4f}".format(results.rsquared) + " | p-value {:.4f}".format(
+        results.pvalues["model(x)"]), color="red")
 
     plt.ylabel(ylabel)
     plt.xlabel(xlabel)

@@ -263,41 +263,41 @@ def standard_plots(nonBaselineScenario, RCP):
 
 
 def prices(nonBaselineScenario, RCP, SSP):
-    # carbon prices
-    released_CO2_price = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_prices.csv")
-    pyrolysis_CO2_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_prices.csv")
-    products = ["CO2"]
-    released_CO2_price = released_CO2_price[released_CO2_price[['product']].isin(products).any(axis=1)]
-    pyrolysis_CO2_price = pyrolysis_CO2_price[pyrolysis_CO2_price[['product']].isin(products).any(axis=1)]
-    perc_diff_CO2_price = data_manipulation.flat_difference(released_CO2_price, pyrolysis_CO2_price, ["SSP", "product", "GCAM"])
-    print("change in world carbon prices")
-    plotting.plot_world(perc_diff_CO2_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
-
-    # refined liquids prices
-    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
-    pyrolysis_price = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
-    products = ["refined liquids enduse"]
-    released_refliquids_price = released_price[released_price[['product']].isin(products).any(axis=1)]
-    pyrolysis_ref_liquids_price = pyrolysis_price[pyrolysis_price[['product']].isin(products).any(axis=1)]
-    perc_diff_f_price = data_manipulation.percent_difference(released_refliquids_price, pyrolysis_ref_liquids_price,
-                                                             ["SSP", "product", "GCAM"])
-    print("change in refined liquids price")
-    plotting.plot_world(perc_diff_f_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
-
-    # food prices
-    released_food_price = pd.read_csv("data/gcam_out/released/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
-    pyrolysis_food_price = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
-    products = ["regional beef", "regional corn", "regional dairy", "regional fibercrop", "regional forest", "regional fruits", "regional iron and steel", "regional legumes", "regional misccrop", "regional nuts_seeds", "regional oilcrop", "regional oilpalm", "regional othergrain", "regional pork", "regional poultry", "regional rice", "regional root_tuber", "regional sheepgoat", "regional soybean", "regional sugarcrop", "regional vegetables", "regional wheat"]
-    for j in products:
-        r_f = released_food_price[released_food_price[['sector']].isin([j]).any(axis=1)]
-        p_f = pyrolysis_food_price[pyrolysis_food_price[['sector']].isin([j]).any(axis=1)]
-        perc_diff_food_price = data_manipulation.percent_difference(r_f, p_f,
-                                                                 ["SSP", "sector", "GCAM"])
-        print("change in", str(j), "price")
-        plotting.plot_world(perc_diff_food_price, [j], SSP, "year", "sector", c.GCAMConstants.plotting_x)
-
+    # # carbon prices
+    # released_CO2_price = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_prices.csv")
+    # pyrolysis_CO2_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_prices.csv")
+    # products = ["CO2"]
+    # released_CO2_price = released_CO2_price[released_CO2_price[['product']].isin(products).any(axis=1)]
+    # pyrolysis_CO2_price = pyrolysis_CO2_price[pyrolysis_CO2_price[['product']].isin(products).any(axis=1)]
+    # perc_diff_CO2_price = data_manipulation.flat_difference(released_CO2_price, pyrolysis_CO2_price, ["SSP", "product", "GCAM"])
+    # print("change in world carbon prices")
+    # plotting.plot_world(perc_diff_CO2_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
+    #
+    # # refined liquids prices
+    # released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+    # pyrolysis_price = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
+    # products = ["refined liquids enduse"]
+    # released_refliquids_price = released_price[released_price[['product']].isin(products).any(axis=1)]
+    # pyrolysis_ref_liquids_price = pyrolysis_price[pyrolysis_price[['product']].isin(products).any(axis=1)]
+    # perc_diff_f_price = data_manipulation.percent_difference(released_refliquids_price, pyrolysis_ref_liquids_price,
+    #                                                          ["SSP", "product", "GCAM"])
+    # print("change in refined liquids price")
+    # plotting.plot_world(perc_diff_f_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
+    #
+    # # food prices
+    # released_food_price = pd.read_csv("data/gcam_out/released/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+    # pyrolysis_food_price = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+    # products = ["regional beef", "regional corn", "regional dairy", "regional fibercrop", "regional forest", "regional fruits", "regional iron and steel", "regional legumes", "regional misccrop", "regional nuts_seeds", "regional oilcrop", "regional oilpalm", "regional othergrain", "regional pork", "regional poultry", "regional rice", "regional root_tuber", "regional sheepgoat", "regional soybean", "regional sugarcrop", "regional vegetables", "regional wheat"]
+    # for j in products:
+    #     r_f = released_food_price[released_food_price[['sector']].isin([j]).any(axis=1)]
+    #     p_f = pyrolysis_food_price[pyrolysis_food_price[['sector']].isin([j]).any(axis=1)]
+    #     perc_diff_food_price = data_manipulation.percent_difference(r_f, p_f,
+    #                                                              ["SSP", "sector", "GCAM"])
+    #     print("change in", str(j), "price")
+    #     plotting.plot_world(perc_diff_food_price, [j], SSP, "year", "sector", c.GCAMConstants.plotting_x)
+    #
     # fertilizer prices
     released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
     pyrolysis_price = pd.read_csv(
@@ -308,7 +308,7 @@ def prices(nonBaselineScenario, RCP, SSP):
     perc_diff_f_price = data_manipulation.percent_difference(released_f_price, pyrolysis_f_price,
                                                              ["SSP", "product", "GCAM"])
     print("change in fertilizer price")
-    plotting.plot_world(perc_diff_f_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
+    # plotting.plot_world(perc_diff_f_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
 
     # refined liquids prices
     "refined liquids enduse"
@@ -320,7 +320,7 @@ def prices(nonBaselineScenario, RCP, SSP):
     perc_diff_refliq_price = data_manipulation.percent_difference(released_refliq_price, pyrolysis_refliq_price,
                                                              ["SSP", "product", "GCAM"])
     print("change in refined liquids price")
-    plotting.plot_world(perc_diff_refliq_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
+    # plotting.plot_world(perc_diff_refliq_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x)
 
     # correlation between food and energy prices
     released_foo_price = pd.read_csv(
@@ -383,6 +383,11 @@ def prices(nonBaselineScenario, RCP, SSP):
         plotting.plot_correlation(correlation_ag_food_diff, years, SSP,
                                   "% change in food price", "% change in " + str(land) + " use", "upper left")
 
+
+def carbon_prices():
+    #TODO: correlation between carbon tax and reduction in regional animal product prices and regional staple prices
+    #TODO print out R2 values and statistical significance in all correlation plots
+    pass
 
 if __name__ == '__main__':
     # standard_plots("pyrolysis", "4p5")
