@@ -163,9 +163,9 @@ def label_market_as_product(row):
     :param row: a row in the dataframe
     :return: the key market, or a default value if it is not a key market
     """
-    for j in c.GCAMConstants.products:
+    for j in c.GCAMConstants.GCAM_region:
         if j in row['market']:
-            return j
+            return row['market'].replace(j, '')
     return c.GCAMConstants.missing
 
 

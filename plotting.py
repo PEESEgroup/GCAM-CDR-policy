@@ -714,7 +714,7 @@ def plot_correlation(dataframe, years, SSP, xlabel, ylabel, label_location):
         df = pd.DataFrame(columns=['y', 'x'])
         df['x'] = df_regional[str(i) + "_left"].tolist()
         df['y'] = df_regional[str(i) + "_right"].tolist()
-        weights = np.polyfit(x, y, 1) # degree 1
+        weights = np.polyfit(df_regional[str(i) + "_left"].tolist(), df_regional[str(i) + "_right"].tolist(), 1) # degree 1
         model = np.poly1d(weights)
         epsilon = model[0]
         beta = model[1]
