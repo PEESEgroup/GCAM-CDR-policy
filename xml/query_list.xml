@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?><queries>
 <aQuery>
     <region name="Global"/>
+    <marketQuery title="prices of all markets">
+        <axis1 name="market">market</axis1>
+        <axis2 name="Year">market</axis2>
+        <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true()]/price/node()</xPath>
+        <comments/>
+    </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Global"/>
+    <marketQuery title="supply of all markets">
+        <axis1 name="market">market</axis1>
+        <axis2 name="Year">market</axis2>
+        <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true()]/supply/node()</xPath>
+        <comments/>
+    </marketQuery>
+</aQuery>
+    <aQuery>
+        <region name="Global"/>
+        <supplyDemandQuery title="feed consumption by meat and dairy tech">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">demand-physical[@vintage]</axis2>
+                    <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and
+               (@name='Beef' or @name='SheepGoat' or @name='Pork' or @name='Dairy' or @name='Poultry' )]/
+               *[@type='subsector']/*[@type='technology']/
+               *[@type='input' and not(@name='renewable') and not(contains(@name,'water_td'))]/
+               demand-physical/node()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+    </aQuery>
+    <aQuery>
+        <region name="Global"/>
+        <query title="land allocation by crop">
+            <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
+            <axis2 name="Year">land-allocation[@year]</axis2>
+            <xPath buildList="true" dataName="LandLeaf" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//land-allocation/text()</xPath>
+            <comments/>
+        </query>
+    </aQuery>
+    <aQuery>
+        <region name="Global"/>
+         <emissionsQueryBuilder title="CO2 emissions by tech (excluding resource production)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//
+            CO2/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+    </aQuery>
+<aQuery>
+    <region name="Global"/>
     <supplyDemandQuery title="refined liquids costs by tech">
         <axis1 name="technology">technology</axis1>
         <axis2 name="Year">cost</axis2>
