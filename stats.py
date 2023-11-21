@@ -2,7 +2,7 @@ import pandas as pd
 from pylab import *
 import statsmodels.formula.api as smf
 import statsmodels.tsa.ardl as tsa
-
+import statsmodels.api as sm
 import constants
 import plotting as plotting
 from statsmodels.tsa.stattools import adfuller, kpss
@@ -10,7 +10,7 @@ import warnings
 from statsmodels.datasets import danish_data
 
 
-def plot_eq4_correlation(x_dataframe, y_dataframe, years, SSP, xlabel, ylabel, label_location):
+def plot_eq4_correlation(x_dataframe, y_dataframe, SSP):
     """
     Plots the correlation between two varaibles
     :param dataframe: merged dataframe containing data from two GCAM products
@@ -21,22 +21,19 @@ def plot_eq4_correlation(x_dataframe, y_dataframe, years, SSP, xlabel, ylabel, l
     :param ylabel: the y label for the plot
     :return: N/A
     """
-    data = danish_data.load_pandas().data
-    lrm = data.lrm
-    exog = data[["lry", "ibo", "ide"]]
-
     x = x_dataframe[(x_dataframe['SSP'].isin(SSP))]
     y = y_dataframe[(y_dataframe['SSP'].isin(SSP))]
 
     x = x.transpose()  # transpose dataframe
     x.columns = x.loc['GCAM']  # rename columns
     x = x[:21]  # trim other label information from dataframe
-    x.index = pd.to_datetime(x.index)
 
     y = y.transpose()  # transpose dataframe
     y.columns = y.loc['GCAM']  # rename columns
     y = y[:21]  # trim other label information from dataframe
-    y.index = pd.to_datetime(y.index)
+
+    data=pd.DataFrame()
+    region_data = pd.DataFrame()
 
     for region in constants.GCAMConstants.GCAM_region:
         y_price = y.loc[:, region]
@@ -48,61 +45,22 @@ def plot_eq4_correlation(x_dataframe, y_dataframe, years, SSP, xlabel, ylabel, l
         p2_p2 = x_price - x_lagged
         p2_p1 = x_lagged-y_lagged
 
-        #build model as a type of linear mixed effects model
+        region_data["p1p1"] = pd.to_numeric(p1_p1)
+        region_data["p2p2"] = pd.to_numeric(p2_p2)
+        region_data["p2p1"] = pd.to_numeric(p2_p1)
+        region_data["year"] = pd.to_numeric(x_price.index)
+        region_data["GCAM"] = region
+
+        data = data.dropna()
+        # build model as a type of linear mixed effects model
         # eq4 as from Baffes, J. and Ajwad, M.I., 2001. Identifying price linkages: a review of the literature and an application to the world market of cotton. Applied Economics, 33(15), pp.1927-1941.
         # (p1_t-p1_t-1) = u + (1-B3)(p2_t-1-p1_t-1) + B1(p2_t-p2_t-1) + ut
-        # index variables on j for location
+        md = smf.ols("p1p1 ~ p2p2 + p2p1", region_data)
+        mdf = md.fit()
+        print(mdf.summary())
 
-        md = tsa.UECM(lags = 1)
+        #TODO combine model parameters and summaries and compare to paper
 
-        # get p1_t-p1_t-1
-
-
-
-        df = pd.DataFrame(columns=['y', 'x'])
-        df['x'] = df_regional[str(i) + "_left"].tolist()
-        df['y'] = df_regional[str(i) + "_right"].tolist()
-        weights = np.polyfit(df_regional[str(i) + "_left"].tolist(), df_regional[str(i) + "_right"].tolist(), 1) # degree 1
-        model = np.poly1d(weights)
-        epsilon = model[0]
-        beta = model[1]
-        results = smf.ols(formula='y ~ model(x)', data=df).fit() # borrow some R syntax here lol
-        # print(results.summary())
-
-        #scatter points on the graph
-        plt.scatter(df_regional[str(i) + "_left"].tolist(), df_regional[str(i) + "_right"].tolist(),
-                    color=colors[counter])
-
-        x_min = min(df_regional[str(i) + "_left"].tolist())
-        x_max = max(df_regional[str(i) + "_left"].tolist())
-        x_vals = np.linspace(x_min, x_max, 500)
-        y_vals = x_vals*beta + epsilon
-
-        plt.plot(x_vals, y_vals, label=str(i) + " | R2 {:.4f}".format(results.rsquared) + " | p-value {:.4f}".format(results.pvalues["model(x)"]), color=colors[counter])
-        counter = counter + 1
-
-    # plot all data and best fit line for the overall fit
-    # build the ols model
-    df = pd.DataFrame(columns=['y', 'x'])
-    df['x'] = x
-    df['y'] = y
-    weights = np.polyfit(x, y, 1)  # degree 1
-    model = np.poly1d(weights)
-    epsilon = model[0]
-    beta = model[1]
-    results = smf.ols(formula='y ~ model(x)', data=df).fit()  # borrow some R syntax here lol
-    # print(results.summary())
-
-    x_vals = np.linspace(min(x), max(x), 500)
-    y_vals = x_vals * beta + epsilon
-
-    plt.plot(x_vals, y_vals, label="overall" + " | R2 {:.4f}".format(results.rsquared) + " | p-value {:.4f}".format(
-        results.pvalues["model(x)"]), color="red")
-
-    plt.ylabel(ylabel)
-    plt.xlabel(xlabel)
-    plt.legend(loc=label_location)
-    plt.show()
 
 def plot_correlation(dataframe, years, SSP, xlabel, ylabel, label_location):
     """

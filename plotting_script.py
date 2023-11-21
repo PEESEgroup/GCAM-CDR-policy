@@ -481,25 +481,11 @@ def price_correlation(nonBaselineScenario, RCP, SSP):
             print("pyrolysis", energy, "price")
             stats.stationarity_test(pyrolysis_refliq_price)
 
-            stats.plot_eq4_correlation(released_refliq_price, released_food_price, c.GCAMConstants.plotting_x, SSP,
-                                       "released " + str(products) + " price", "released " + energy + " price",
-                                       "lower left")
+            print("released", products, "price as dependent on", energy, "price")
+            stats.plot_eq4_correlation(released_refliq_price, released_food_price, SSP)
 
-            correlation_food_energy_released = pd.merge(released_food_price, released_refliq_price, how="left",
-                                                        on=["GCAM", "SSP"],
-                                                        suffixes=("_left", "_right"))
-            correlation_food_energy_pyrolysis = pd.merge(pyrolysis_food_price, pyrolysis_refliq_price, how="left",
-                                                         on=["GCAM", "SSP"],
-                                                         suffixes=("_left", "_right"))
-
-            years = c.GCAMConstants.plotting_x
-            print("correlation in released", products, "price and energy price")
-            stats.plot_eq4_correlation(correlation_food_energy_released, years, SSP,
-                                      "released " + str(products) + " price", "released " + energy + " price", "lower left")
-            print("correlation in pyrolysis", products, "price and energy price")
-            stats.plot_eq4_correlation(correlation_food_energy_pyrolysis, years, SSP,
-                                      "pyrolysis " + str(products) + " price", "pyrolysis " + energy + " price", "upper left")
-
+            print("pyrolysis", products, "price as dependent on", energy, "price")
+            stats.plot_eq4_correlation(pyrolysis_refliq_price, pyrolysis_food_price,SSP)
 
 
 if __name__ == '__main__':
