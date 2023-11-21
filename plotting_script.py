@@ -415,9 +415,13 @@ def carbon_prices(nonBaselineScenario, RCP, SSP):
         perc_diff_food = data_manipulation.percent_difference(released_food_price, pyrolysis_food_price, ["SSP", "sector", "GCAM"])
 
         #test for stationarity
+        print("released food price")
         stats.stationarity_test(released_food_price)
+        print("pyrolysis food price")
         stats.stationarity_test(pyrolysis_food_price)
+        print("released CO2 price")
         stats.stationarity_test(released_CO2_price)
+        print("pyrolysis CO2 price")
         stats.stationarity_test(pyrolysis_CO2_price)
 
         correlation_food_energy_released = pd.merge(released_food_price, released_CO2_price, how="left",
@@ -441,9 +445,65 @@ def carbon_prices(nonBaselineScenario, RCP, SSP):
         stats.plot_correlation(correlation_food_energy_diff, years, SSP,
                                   "% change in " + str(products) + " price", "change in CO2 price", "upper left")
 
+def price_correlation(nonBaselineScenario, RCP, SSP):
+    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+    pyrolysis_price = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
+
+    # correlation between food and energy prices
+    released_foo_price = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+    pyrolysis_foo_price = pd.read_csv(
+        "data/gcam_out/" + str(
+            nonBaselineScenario) + "/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+
+    for products in ["regional beef" , "regional dairy", "regional wheat"]:
+        for energy in ["refined liquids enduse", "crude oil", "electricity", "natural gas"]:
+            #get right energy source
+            released_refliq_price = released_price[released_price[['product']].isin([energy]).any(axis=1)]
+            pyrolysis_refliq_price = pyrolysis_price[pyrolysis_price[['product']].isin([energy]).any(axis=1)]
+            released_refliq_price = released_refliq_price[released_refliq_price[['SSP']].isin(SSP).any(axis=1)]
+            pyrolysis_refliq_price = pyrolysis_refliq_price[pyrolysis_refliq_price[['SSP']].isin(SSP).any(axis=1)]
+
+            # get right food sources
+            released_food_price = released_foo_price[released_foo_price[['sector']].isin([products]).any(axis=1)]
+            pyrolysis_food_price = pyrolysis_foo_price[pyrolysis_foo_price[['sector']].isin([products]).any(axis=1)]
+            released_food_price = released_food_price[released_food_price[['SSP']].isin(SSP).any(axis=1)]
+            pyrolysis_food_price = pyrolysis_food_price[pyrolysis_food_price[['SSP']].isin(SSP).any(axis=1)]
+
+            # test for stationarity
+            print("released", products, "price")
+            stats.stationarity_test(released_food_price)
+            print("pyrolysis", products, "price")
+            stats.stationarity_test(pyrolysis_food_price)
+            print("released", energy, "price")
+            stats.stationarity_test(released_refliq_price)
+            print("pyrolysis", energy, "price")
+            stats.stationarity_test(pyrolysis_refliq_price)
+
+            stats.plot_eq4_correlation(released_refliq_price, released_food_price, c.GCAMConstants.plotting_x, SSP,
+                                       "released " + str(products) + " price", "released " + energy + " price",
+                                       "lower left")
+
+            correlation_food_energy_released = pd.merge(released_food_price, released_refliq_price, how="left",
+                                                        on=["GCAM", "SSP"],
+                                                        suffixes=("_left", "_right"))
+            correlation_food_energy_pyrolysis = pd.merge(pyrolysis_food_price, pyrolysis_refliq_price, how="left",
+                                                         on=["GCAM", "SSP"],
+                                                         suffixes=("_left", "_right"))
+
+            years = c.GCAMConstants.plotting_x
+            print("correlation in released", products, "price and energy price")
+            stats.plot_eq4_correlation(correlation_food_energy_released, years, SSP,
+                                      "released " + str(products) + " price", "released " + energy + " price", "lower left")
+            print("correlation in pyrolysis", products, "price and energy price")
+            stats.plot_eq4_correlation(correlation_food_energy_pyrolysis, years, SSP,
+                                      "pyrolysis " + str(products) + " price", "pyrolysis " + energy + " price", "upper left")
+
+
 
 if __name__ == '__main__':
     # standard_plots("pyrolysis", "4p5")
     for i in ["SSP1", "SSP2"]:
-        prices("pyrolysis", "4p5", [i])
-        # carbon_prices("pyrolysis", "4p5", [i])
+        #prices("pyrolysis", "4p5", [i])
+        price_correlation("pyrolysis", "4p5", [i])
