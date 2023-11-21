@@ -165,7 +165,7 @@ def plot_correlogram(dataframe, SSP, columns, years):
 
 
 def adf_test(timeseries):
-    print("Results of Dickey-Fuller Test:")
+    #print("Results of Dickey-Fuller Test:")
     dftest = adfuller(timeseries, autolag="AIC")
     dfoutput = pd.Series(
         dftest[0:4],
@@ -178,18 +178,20 @@ def adf_test(timeseries):
     )
     for key, value in dftest[4].items():
         dfoutput["Critical Value (%s)" % key] = value
-    print(dfoutput)
+    #print(dfoutput)
+    return dftest
 
 
 def kpss_test(timeseries):
-    print("Results of KPSS Test:")
+    #print("Results of KPSS Test:")
     kpsstest = kpss(timeseries, regression="c", nlags="auto")
     kpss_output = pd.Series(
         kpsstest[0:3], index=["Test Statistic", "p-value", "Lags Used"]
     )
     for key, value in kpsstest[3].items():
         kpss_output["Critical Value (%s)" % key] = value
-    print(kpss_output)
+    #print(kpss_output)
+    return kpsstest
 
 
 def stationarity_test(dataframe):
@@ -202,10 +204,46 @@ def stationarity_test(dataframe):
 
     #convert row indices to datetime
 
-    series_index = ["ADF Test Statistic", "ADF p-value", "KDSS Test Statistic", "KDSS p-value"]
+    series_index = ["ADF Test Statistic", "ADF p-value", "KDSS Test Statistic", "KDSS p-value", "Case"]
+    stationarity = pd.DataFrame()
     #run stationarity tests on time series for all regions
     for series_name, series in df.items():
-        print(series_name)
-        print(series)
+        #do time series tests
+        adf = adf_test(series)
+        kpss =kpss_test(series)
+        s = [adf[0], adf[1], kpss[0], kpss[1]]
 
+        #check for cases
+        #adf: when test statisitic is lower than critical value, reject null hypothesis and series is stationary
+        #kpss: when test statistic is less than cricial value, fail to reject null hypothesis and series is stationary
+        adf_crit = dict((k, v) for k, v in adf[4].items() if v <= adf[0]) #add any critical values to dictionary that a lower than test statistic
+        kpss_crit = dict((k, v) for k, v in kpss[3].items() if v >= kpss[0]) #add any critical values to dictionary that a greater than test statistic
+        adf_stationary= False
+        kpss_stationary = False
+        if adf[1] < 0.05 and len(adf_crit) == 0:
+            adf_stationary = True
+        if kpss[1] < 0.05 and len(kpss_crit) == 0:
+            kpss_stationary = True
+
+        if adf_stationary and kpss_stationary:
+            s.append("Stationary")
+        elif not adf_stationary and not kpss_stationary:
+            s.append("Non-Stationary")
+        elif not adf_stationary and kpss_stationary:
+            s.append("Trend Stationry")
+        else:
+            s.append("Difference Stationry")
+
+        stationarity[series_name] = pd.Series(s, index=series_index)
+
+    #print out findings of stationarity tests
+    stationarity = stationarity.transpose()
+    if stationarity.Case.str.contains("Non-Stationary").sum() > 24:
+        print("Likely Non-Stationary")
+    elif stationarity.Case.str.contains("Stationary").sum() > 24:
+        print("Likely Stationary")
+    else:
+        print("No meaningful conclusion")
+
+    # print(stationarity)
 

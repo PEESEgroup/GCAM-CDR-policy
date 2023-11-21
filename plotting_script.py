@@ -413,6 +413,13 @@ def carbon_prices(nonBaselineScenario, RCP, SSP):
         released_food_price = released_food_price[released_food_price[['SSP']].isin(SSP).any(axis=1)]
         pyrolysis_food_price = pyrolysis_food_price[pyrolysis_food_price[['SSP']].isin(SSP).any(axis=1)]
         perc_diff_food = data_manipulation.percent_difference(released_food_price, pyrolysis_food_price, ["SSP", "sector", "GCAM"])
+
+        #test for stationarity
+        stats.stationarity_test(released_food_price)
+        stats.stationarity_test(pyrolysis_food_price)
+        stats.stationarity_test(released_CO2_price)
+        stats.stationarity_test(pyrolysis_CO2_price)
+
         correlation_food_energy_released = pd.merge(released_food_price, released_CO2_price, how="left",
                                                     on=["GCAM", "SSP"],
                                                     suffixes=("_left", "_right"))
