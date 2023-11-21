@@ -24,6 +24,7 @@ def plot_eq4_correlation(x_dataframe, y_dataframe, SSP):
     x = x_dataframe[(x_dataframe['SSP'].isin(SSP))]
     y = y_dataframe[(y_dataframe['SSP'].isin(SSP))]
 
+    #TODO limit sample size to 2025-2050 or 2025-2100
     x = x.transpose()  # transpose dataframe
     x.columns = x.loc['GCAM']  # rename columns
     x = x[:21]  # trim other label information from dataframe
@@ -34,6 +35,7 @@ def plot_eq4_correlation(x_dataframe, y_dataframe, SSP):
 
     data=pd.DataFrame()
     region_data = pd.DataFrame()
+    results = pd.DataFrame()
 
     for region in constants.GCAMConstants.GCAM_region:
         y_price = y.loc[:, region]
@@ -57,9 +59,13 @@ def plot_eq4_correlation(x_dataframe, y_dataframe, SSP):
         # (p1_t-p1_t-1) = u + (1-B3)(p2_t-1-p1_t-1) + B1(p2_t-p2_t-1) + ut
         md = smf.ols("p1p1 ~ p2p2 + p2p1", region_data)
         mdf = md.fit()
-        print(mdf.summary())
+        # print(mdf.summary())
 
-        #TODO combine model parameters and summaries and compare to paper
+        #test whether 1-B3 (coefficient of p2p1) is meaningfully different than 0 using p-values
+        res = pd.Series([mdf.params["p2p1"], mdf.pvalues["p2p1"], region], index=["coef", "pvalue", "GCAM"])
+        results = pd.concat([results, pd.DataFrame(res).transpose()])
+
+    return results
 
 
 def plot_correlation(dataframe, years, SSP, xlabel, ylabel, label_location):
@@ -248,15 +254,14 @@ def kpss_test(timeseries):
 
 
 def stationarity_test(dataframe):
+    #TODO restrict time periods to 2025-2050 or 2100
     #convert the dataframe to have time as an index and region as the columns
     df = dataframe.transpose() # transpose dataframe
     df.columns=df.loc['GCAM'] # rename columns
     df = df[:21] #trim other label information from dataframe
     df.index = pd.to_datetime(df.index)
-    #TODO keep only years 2025-2050???
 
     #convert row indices to datetime
-
     series_index = ["ADF Test Statistic", "ADF p-value", "KDSS Test Statistic", "KDSS p-value", "Case"]
     stationarity = pd.DataFrame()
     #run stationarity tests on time series for all regions
@@ -300,3 +305,38 @@ def stationarity_test(dataframe):
 
     # print(stationarity)
 
+def plot_price_coefficients(pyrolysis_res, released_res, title):
+    #merge dataframe for comparisons
+    res = pd.merge(released_res, pyrolysis_res, on="GCAM", how='left', suffixes=("_left", "_right"))
+    conditions = [((res['pvalue_left'] < 0.05) & (res['pvalue_right'] < 0.05)),
+                  ((res['pvalue_left'] >= 0.05) & (res['pvalue_right'] < 0.05)),
+                  ((res['pvalue_left'] < 0.05) & (res['pvalue_right'] >= 0.05)),
+                  ((res['pvalue_left'] >= 0.05) & (res['pvalue_right'] >= 0.05))]
+    res['cat'] = np.select(conditions,
+                           ["both significant", "pyrolysis significant", "released significant", "neither significant"])
+    groups = res.groupby('cat')
+
+    fig, ax = plt.subplots()
+
+    # plot data by category and color
+    for name, group in groups:
+        if pd.unique(group["cat"] == "both significant"):
+            color = '#fde725'
+        elif pd.unique(group["cat"] == "pyrolysis significant"):
+            color = '#35b779'
+        elif pd.unique(group["cat"] == "released significant"):
+            color = '#31688e'
+        elif pd.unique(group["cat"] == "neither significant"):
+            color = '#440154'
+        ax.scatter(group["coef_left"], group["coef_right"], c=color, label=name)
+
+    #TODO report person correlation coefficient
+
+    #show plot
+    ax.legend()
+    ax.axline((0,0), slope=1, color='red')
+    ax.set_aspect('equal')
+    ax.set_xlabel("released coefficient")
+    ax.set_ylabel("pyrolysis coefficient")
+    ax.set_title(title)
+    plt.show()

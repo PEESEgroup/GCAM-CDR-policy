@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import plotting
 import data_manipulation
@@ -482,14 +483,16 @@ def price_correlation(nonBaselineScenario, RCP, SSP):
             stats.stationarity_test(pyrolysis_refliq_price)
 
             print("released", products, "price as dependent on", energy, "price")
-            stats.plot_eq4_correlation(released_refliq_price, released_food_price, SSP)
+            released_res = stats.plot_eq4_correlation(released_refliq_price, released_food_price, SSP)
 
             print("pyrolysis", products, "price as dependent on", energy, "price")
-            stats.plot_eq4_correlation(pyrolysis_refliq_price, pyrolysis_food_price,SSP)
+            pyrolysis_res = stats.plot_eq4_correlation(pyrolysis_refliq_price, pyrolysis_food_price,SSP)
+            stats.plot_price_coefficients(pyrolysis_res, released_res, "price coefficients for " + products + " and " + energy)
 
 
 if __name__ == '__main__':
     # standard_plots("pyrolysis", "4p5")
     for i in ["SSP1", "SSP2"]:
         #prices("pyrolysis", "4p5", [i])
+        print(i)
         price_correlation("pyrolysis", "4p5", [i])
