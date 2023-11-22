@@ -1,5 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import scipy.stats
+
 import plotting
 import data_manipulation
 import constants as c
@@ -447,9 +449,51 @@ def carbon_prices(nonBaselineScenario, RCP, SSP):
                                   "% change in " + str(products) + " price", "change in CO2 price", "upper left")
 
 def price_correlation(nonBaselineScenario, RCP, SSP):
-    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+    released_CO2_price = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_prices.csv") #prices_of_all_markets
+    pyrolysis_CO2_price = pd.read_csv(
+        "pyrolysis_CO2_price/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_prices.csv") # prices_of_all_markets
+
+    # correlation between food and energy prices
+    released_foo_price = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+    pyrolysis_foo_price = pd.read_csv(
+        "data/gcam_out/" + str(
+            nonBaselineScenario) + "/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+    products = ["CO2"]
+    released_CO2_price = released_CO2_price[released_CO2_price[['product']].isin(products).any(axis=1)]
+    pyrolysis_CO2_price = pyrolysis_CO2_price[pyrolysis_CO2_price[['product']].isin(products).any(axis=1)]
+    released_CO2_price = released_CO2_price[released_CO2_price[['SSP']].isin(SSP).any(axis=1)]
+    pyrolysis_CO2_price = pyrolysis_CO2_price[pyrolysis_CO2_price[['SSP']].isin(SSP).any(axis=1)]
+
+    for products in ["regional beef" , "regional dairy", "regional wheat"]:
+        # get right food sources
+        released_food_price = released_foo_price[released_foo_price[['sector']].isin([products]).any(axis=1)]
+        pyrolysis_food_price = pyrolysis_foo_price[pyrolysis_foo_price[['sector']].isin([products]).any(axis=1)]
+        released_food_price = released_food_price[released_food_price[['SSP']].isin(SSP).any(axis=1)]
+        pyrolysis_food_price = pyrolysis_food_price[pyrolysis_food_price[['SSP']].isin(SSP).any(axis=1)]
+
+        # test for stationarity
+        print("released", products, "price")
+        stats.stationarity_test(released_food_price, 2050)
+        print("pyrolysis", products, "price")
+        stats.stationarity_test(pyrolysis_food_price, 2050)
+        print("released CO2 price")
+        stats.stationarity_test(released_CO2_price, 2050)
+        print("pyrolysis CO2 price")
+        stats.stationarity_test(pyrolysis_CO2_price, 2050)
+
+        print("released", products, "price as dependent on CO2 price")
+        released_res = stats.plot_eq4_correlation(released_CO2_price, released_food_price, SSP, 2050)
+
+        print("pyrolysis", products, "price as dependent on CO2 price")
+        pyrolysis_res = stats.plot_eq4_correlation(pyrolysis_CO2_price, pyrolysis_food_price,SSP, 2050)
+        stats.plot_price_coefficients(pyrolysis_res, released_res, "price coefficients for " + products + " and carbon price in " + SSP[0])
+
+
+def carbon_price_correlation(nonBaselineScenario, RCP, SSP):
+    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv") #prices_of_all_markets
     pyrolysis_price = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv") # prices_of_all_markets
 
     # correlation between food and energy prices
     released_foo_price = pd.read_csv(
@@ -487,12 +531,11 @@ def price_correlation(nonBaselineScenario, RCP, SSP):
 
             print("pyrolysis", products, "price as dependent on", energy, "price")
             pyrolysis_res = stats.plot_eq4_correlation(pyrolysis_refliq_price, pyrolysis_food_price,SSP, 2050)
-            stats.plot_price_coefficients(pyrolysis_res, released_res, "price coefficients for " + products + " and " + energy)
-
+            stats.plot_price_coefficients(pyrolysis_res, released_res, "price coefficients for " + products + " and " + energy + " in " + SSP[0])
 
 if __name__ == '__main__':
     # standard_plots("pyrolysis", "4p5")
     for i in ["SSP1", "SSP2"]:
         #prices("pyrolysis", "4p5", [i])
         print(i)
-        price_correlation("pyrolysis", "4p5", [i])
+        carbon_price_correlation("pyrolysis", "4p5", [i])

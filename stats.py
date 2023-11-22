@@ -1,15 +1,14 @@
 import pandas as pd
 from pylab import *
 import statsmodels.formula.api as smf
-import statsmodels.tsa.ardl as tsa
-import statsmodels.api as sm
 import constants
 import plotting as plotting
 from statsmodels.tsa.stattools import adfuller, kpss
+from scipy.stats import bootstrap, ttest_rel, pearsonr
 import warnings
-from statsmodels.datasets import danish_data
 
 
+#TODO update docs
 def plot_eq4_correlation(x_dataframe, y_dataframe, SSP, year):
     """
     Plots the correlation between two varaibles
@@ -41,15 +40,18 @@ def plot_eq4_correlation(x_dataframe, y_dataframe, SSP, year):
     results = pd.DataFrame()
 
     for region in constants.GCAMConstants.GCAM_region:
+        #get regional price information
         y_price = y.loc[:, region]
         x_price = x.loc[:, region]
 
+        # compute input variables
         y_lagged = y_price.shift(1)
         x_lagged = x_price.shift(1)
         p1_p1 = y_price - y_lagged
         p2_p2 = x_price - x_lagged
         p2_p1 = x_lagged-y_lagged
 
+        # build dataframe out of data
         region_data["p1p1"] = pd.to_numeric(p1_p1)
         region_data["p2p2"] = pd.to_numeric(p2_p2)
         region_data["p2p1"] = pd.to_numeric(p2_p1)
@@ -323,8 +325,18 @@ def plot_price_coefficients(pyrolysis_res, released_res, title):
 
     fig, ax = plt.subplots()
 
-    #TODO maybe take difference and plot
-    #TODO include SSP in title
+    # calculate statistics for labels
+    boot_data = (res["coef_right"], res["coef_left"]) # pyrolysis minus released coefficients
+    # print(boot_data)
+    boot = bootstrap(boot_data, statistic=wrapped_ttest_rel, paired=True, random_state=42, vectorized=False, confidence_level=0.95)
+    # print(boot)
+    pearson = pearsonr(res["coef_right"], res["coef_left"])[0]
+
+    #if the confidence interval includes 0,
+    if boot.confidence_interval[0] < 0 < boot.confidence_interval[1]:
+        CI_include_zero = ""
+    else:
+        CI_include_zero = "not "
 
     # plot data by category and color
     for name, group in groups:
@@ -338,13 +350,14 @@ def plot_price_coefficients(pyrolysis_res, released_res, title):
             color = '#440154'
         ax.scatter(group["coef_left"], group["coef_right"], c=color, label=name)
 
-    #TODO report person correlation coefficient
-
     #show plot
+    ax.axline((0,0), slope=1, color='red', label="Pearson R: " + "{:.4f}".format(pearson) + " \nCI does " + CI_include_zero + "include zero")
     ax.legend()
-    ax.axline((0,0), slope=1, color='red')
     ax.set_aspect('equal')
     ax.set_xlabel("released coefficient")
     ax.set_ylabel("pyrolysis coefficient")
     ax.set_title(title)
     plt.show()
+
+def wrapped_ttest_rel(a, b):
+    return ttest_rel(a,b)[0]
