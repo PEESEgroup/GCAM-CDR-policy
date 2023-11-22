@@ -10,7 +10,7 @@ import warnings
 from statsmodels.datasets import danish_data
 
 
-def plot_eq4_correlation(x_dataframe, y_dataframe, SSP):
+def plot_eq4_correlation(x_dataframe, y_dataframe, SSP, year):
     """
     Plots the correlation between two varaibles
     :param dataframe: merged dataframe containing data from two GCAM products
@@ -21,17 +21,20 @@ def plot_eq4_correlation(x_dataframe, y_dataframe, SSP):
     :param ylabel: the y label for the plot
     :return: N/A
     """
+    # process data
     x = x_dataframe[(x_dataframe['SSP'].isin(SSP))]
     y = y_dataframe[(y_dataframe['SSP'].isin(SSP))]
-
-    #TODO limit sample size to 2025-2050 or 2025-2100
     x = x.transpose()  # transpose dataframe
-    x.columns = x.loc['GCAM']  # rename columns
-    x = x[:21]  # trim other label information from dataframe
-
     y = y.transpose()  # transpose dataframe
+    x.columns = x.loc['GCAM']  # rename columns
     y.columns = y.loc['GCAM']  # rename columns
-    y = y[:21]  # trim other label information from dataframe
+
+    if year == 2050:
+        x = x[4:11] #trim other label information from dataframe
+        y = y[4:11]  # trim other label information from dataframe
+    else:
+        x = x[4:21]  # trim other label information from dataframe
+        y = y[4:21]  # trim other label information from dataframe
 
     data=pd.DataFrame()
     region_data = pd.DataFrame()
@@ -253,12 +256,14 @@ def kpss_test(timeseries):
     return kpsstest
 
 
-def stationarity_test(dataframe):
-    #TODO restrict time periods to 2025-2050 or 2100
+def stationarity_test(dataframe, year):
     #convert the dataframe to have time as an index and region as the columns
     df = dataframe.transpose() # transpose dataframe
     df.columns=df.loc['GCAM'] # rename columns
-    df = df[:21] #trim other label information from dataframe
+    if year == 2050:
+        df = df[4:11] #trim other label information from dataframe
+    else:
+        df = df[4:21]  # trim other label information from dataframe
     df.index = pd.to_datetime(df.index)
 
     #convert row indices to datetime
@@ -317,6 +322,9 @@ def plot_price_coefficients(pyrolysis_res, released_res, title):
     groups = res.groupby('cat')
 
     fig, ax = plt.subplots()
+
+    #TODO maybe take difference and plot
+    #TODO include SSP in title
 
     # plot data by category and color
     for name, group in groups:

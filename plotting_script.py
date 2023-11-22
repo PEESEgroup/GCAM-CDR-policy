@@ -474,19 +474,19 @@ def price_correlation(nonBaselineScenario, RCP, SSP):
 
             # test for stationarity
             print("released", products, "price")
-            stats.stationarity_test(released_food_price)
+            stats.stationarity_test(released_food_price, 2050)
             print("pyrolysis", products, "price")
-            stats.stationarity_test(pyrolysis_food_price)
+            stats.stationarity_test(pyrolysis_food_price, 2050)
             print("released", energy, "price")
-            stats.stationarity_test(released_refliq_price)
+            stats.stationarity_test(released_refliq_price, 2050)
             print("pyrolysis", energy, "price")
-            stats.stationarity_test(pyrolysis_refliq_price)
+            stats.stationarity_test(pyrolysis_refliq_price, 2050)
 
             print("released", products, "price as dependent on", energy, "price")
-            released_res = stats.plot_eq4_correlation(released_refliq_price, released_food_price, SSP)
+            released_res = stats.plot_eq4_correlation(released_refliq_price, released_food_price, SSP, 2050)
 
             print("pyrolysis", products, "price as dependent on", energy, "price")
-            pyrolysis_res = stats.plot_eq4_correlation(pyrolysis_refliq_price, pyrolysis_food_price,SSP)
+            pyrolysis_res = stats.plot_eq4_correlation(pyrolysis_refliq_price, pyrolysis_food_price,SSP, 2050)
             stats.plot_price_coefficients(pyrolysis_res, released_res, "price coefficients for " + products + " and " + energy)
 
 
