@@ -4,21 +4,17 @@ import statsmodels.formula.api as smf
 import constants
 import plotting as plotting
 from statsmodels.tsa.stattools import adfuller, kpss
-from scipy.stats import bootstrap, ttest_rel, pearsonr
 import warnings
 
 
-#TODO update docs
-def plot_eq4_correlation(x_dataframe, y_dataframe, SSP, year):
+def calc_price_linkage(x_dataframe, y_dataframe, SSP, year):
     """
-    Plots the correlation between two varaibles
-    :param dataframe: merged dataframe containing data from two GCAM products
-    :param years: the years of which the correlation is analyzes
-    :param SSP: the SSPs for which this correlation is analyzed
-    :param legend_location: the location of hte legend for the plot
-    :param xlabel: the x label for the plot
-    :param ylabel: the y label for the plot
-    :return: N/A
+    Calculates the price linkage between the x and y data
+    :param x_dataframe: the independent variable
+    :param y_dataframe: the dependent variable
+    :param SSP: the SSP pathway
+    :param year: the termination year of the sample
+    :return: results object parameters and p-values on a regional basis
     """
     # process data
     x = x_dataframe[(x_dataframe['SSP'].isin(SSP))]
@@ -150,6 +146,13 @@ def plot_correlation(dataframe, years, SSP, xlabel, ylabel, label_location):
 
 
 def label_autocorr(row, lag, col):
+    """
+    Used to calculate autocorrelation
+    :param row: the row of data
+    :param lag: the lag of the data
+    :param col: the column of values to be extracted
+    :return:
+    """
     row = row[col]
     return row.autocorr(lag=lag)
 
@@ -227,6 +230,11 @@ def plot_correlogram(dataframe, SSP, columns, years):
 
 
 def adf_test(timeseries):
+    """
+    calculates the ADF test on a timeseries
+    :param timeseries: data used for the adf test
+    :return: results of the adf test
+    """
     #print("Results of Dickey-Fuller Test:")
     dftest = adfuller(timeseries, autolag="AIC")
     dfoutput = pd.Series(
@@ -245,6 +253,11 @@ def adf_test(timeseries):
 
 
 def kpss_test(timeseries):
+    """
+    KPSS test for stationarity
+    :param timeseries: the time series being tested
+    :return: the results of the kpss test
+    """
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         #print("Results of KPSS Test:")
@@ -259,6 +272,12 @@ def kpss_test(timeseries):
 
 
 def stationarity_test(dataframe, year):
+    """
+    Tests for stationarity in a dataset constrained by various years
+    :param dataframe: the data being processed
+    :param year: the final year of the time series
+    :return: N/A
+    """
     #convert the dataframe to have time as an index and region as the columns
     df = dataframe.transpose() # transpose dataframe
     df.columns=df.loc['GCAM'] # rename columns
@@ -312,52 +331,3 @@ def stationarity_test(dataframe, year):
 
     # print(stationarity)
 
-def plot_price_coefficients(pyrolysis_res, released_res, title):
-    #merge dataframe for comparisons
-    res = pd.merge(released_res, pyrolysis_res, on="GCAM", how='left', suffixes=("_left", "_right"))
-    conditions = [((res['pvalue_left'] < 0.05) & (res['pvalue_right'] < 0.05)),
-                  ((res['pvalue_left'] >= 0.05) & (res['pvalue_right'] < 0.05)),
-                  ((res['pvalue_left'] < 0.05) & (res['pvalue_right'] >= 0.05)),
-                  ((res['pvalue_left'] >= 0.05) & (res['pvalue_right'] >= 0.05))]
-    res['cat'] = np.select(conditions,
-                           ["both significant", "pyrolysis significant", "released significant", "neither significant"])
-    groups = res.groupby('cat')
-
-    fig, ax = plt.subplots()
-
-    # calculate statistics for labels
-    boot_data = (res["coef_right"], res["coef_left"]) # pyrolysis minus released coefficients
-    # print(boot_data)
-    boot = bootstrap(boot_data, statistic=wrapped_ttest_rel, paired=True, random_state=42, vectorized=False, confidence_level=0.95)
-    # print(boot)
-    pearson = pearsonr(res["coef_right"], res["coef_left"])[0]
-
-    #if the confidence interval includes 0,
-    if boot.confidence_interval[0] < 0 < boot.confidence_interval[1]:
-        CI_include_zero = ""
-    else:
-        CI_include_zero = "not "
-
-    # plot data by category and color
-    for name, group in groups:
-        if pd.unique(group["cat"] == "both significant"):
-            color = '#fde725'
-        elif pd.unique(group["cat"] == "pyrolysis significant"):
-            color = '#35b779'
-        elif pd.unique(group["cat"] == "released significant"):
-            color = '#31688e'
-        elif pd.unique(group["cat"] == "neither significant"):
-            color = '#440154'
-        ax.scatter(group["coef_left"], group["coef_right"], c=color, label=name)
-
-    #show plot
-    ax.axline((0,0), slope=1, color='red', label="Pearson R: " + "{:.4f}".format(pearson) + " \nCI does " + CI_include_zero + "include zero")
-    ax.legend()
-    ax.set_aspect('equal')
-    ax.set_xlabel("released coefficient")
-    ax.set_ylabel("pyrolysis coefficient")
-    ax.set_title(title)
-    plt.show()
-
-def wrapped_ttest_rel(a, b):
-    return ttest_rel(a,b)[0]
