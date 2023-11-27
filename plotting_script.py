@@ -573,20 +573,64 @@ def price_correlation(nonBaselineScenario, RCP, SSP):
 
 
 def carbon_sequestration(nonBaselineScenario, RCP, SSP):
-    pass
-    #TODO: carbon sequestration by manure, SSP, and RCP
     # plotting CO2 concentrations
     co2_seq_released = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
     co2_seq_pyrolysis = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    co2_seq_released['GCAM'] = 'All' # avoids an issue later in plotting for global SSP being dropped
+    co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
     products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar"]
     biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
     plotting.plot_line(biochar_pyrolysis, products, SSP, "SSP", "sector", "Version")
 
-    flat_diff_CO2 = data_manipulation.flat_difference(co2_seq_released, co2_seq_pyrolysis, ["SSP"])
-    flat_diff_CO2["GCAM"] = "Global"
+    # combine similar sectors
+    co2_seq_released['sector'] = co2_seq_released.apply(lambda row: label_sequestration_sectors(row), axis=1)
+    co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: label_sequestration_sectors(row), axis=1)
 
-    #TODO: changes to carbon sequestration mix
+    # merge sectors in the CO2 sequestered data
+    co2_seq_released = data_manipulation.group(co2_seq_released, ["sector", "SSP"])
+    co2_seq_pyrolysis = data_manipulation.group(co2_seq_pyrolysis, ["sector", "SSP"])
+
+    # plot difference
+    flat_diff_CO2 = data_manipulation.flat_difference(co2_seq_released, co2_seq_pyrolysis, ["sector", "SSP"])
+    plotting.plot_line(flat_diff_CO2, flat_diff_CO2["sector"].unique(), SSP, "SSP", "sector", "Version")
+
+    #TODO plot difference as stacked 100% line chart for each SSP
+
+
+def label_sequestration_sectors(row):
+    """
+    returns the aggregated sector to better show plots
+    :param row: row of a pandas dataframe
+    :return: aggregated sector or original one
+    """
+    if row['sector'] in ["H2 central production", "H2 wholesale dispensing"]:
+        return "hydrogen"
+    elif row['sector'] in ["backup_electricity", "district heat", "refining"]:
+        return "other energy sector"
+    elif row['sector'] in ["chemical energy use", "chemical feedstocks", "N fertilizer", "alumina", "cement", "iron and steel", "other industrial energy use", "other industrial feedstocks", "process heat cement"]:
+        return "industrial energy use"
+    elif row['sector'] in ["comm cooling", "comm heating", "comm others"]:
+        return "commercial energy use"
+    elif row['sector'] in ["elec_biomass (IGCC CCS)", "elec_biomass (IGCC)", "elec_biomass (conv CCS)", "elec_biomass (conv)"]:
+        return "electricity - biomass"
+    elif row['sector'] in ["elec_coal (IGCC CCS)", "elec_coal (IGCC)", "elec_coal (conv pul CCS)", "elec_coal (conv pul)"]:
+        return "electricity - coal"
+    elif row['sector'] in ["elec_gas (CC CCS)", "elec_gas (CC)", "elec_gas (steam/CT)"]:
+        return "electricity - gas"
+    elif row['sector'] in ["elec_refined liquids (CC CCS)", "elec_refined liquids (CC)", "elec_refined liquids (steam/CT)"]:
+        return "electricity - refined liquids"
+    elif row['sector'] in ["gas pipeline", "gas processing"]:
+        return "gas processing"
+    elif row['sector'] in ["resid cooling", "resid heating", "resid others"]:
+        return "commercial energy use"
+    elif row['sector'] in ["trn_aviation_intl", "trn_freigh", "trn_freight_road", "trn_pass", "trn_pass_road", "trn_pass_road_LDV", "trn_pass_road_LDV_4W", "trn_shipping_intl", "trn_freight"]:
+        return "transportation"
+    elif row['sector'] in ['regional biomass', 'regional biomassOil', "regional corn for ethanol", "regional sugar for ethanol"]:
+        return "other biomass for refining"
+    else:
+        return row['sector']
+
 
 
 if __name__ == '__main__':

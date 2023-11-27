@@ -496,7 +496,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter):
     elif nrow * ncol == 6:
         fig.legend(handles, labels, bbox_to_anchor=(0.15, 0.54), facecolor='white', framealpha=1)
     else:
-        fig.legend(handles, labels, bbox_to_anchor=(0.6, 0.6), facecolor='white', framealpha=1)
+        fig.legend(handles, labels, bbox_to_anchor=(0.5, 1), facecolor='white', framealpha=1)
 
     # remove unnecessary axes
     for i in range(nrow * ncol - counter):
