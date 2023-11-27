@@ -255,7 +255,7 @@ def get_df_to_plot(dataframe, ncol, nrow, fig, axs, cmap, normalizer, counter, c
     :param subplot_title: the title for the subplot
     :return: unit label for the subplot
     """
-    filter_data = dataframe[(dataframe[column].isin([products])) & (dataframe['SSP'].isin([SSPs]))]
+    filter_data = dataframe[(dataframe[column].str.contains("|".join(products))) & (dataframe['SSP'].str.contains("|".join(SSPs)))]
     # if there is no data in the filter data, delete all following axis
     if filter_data.empty:
         if ncol == 1:
@@ -336,7 +336,7 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     :return: a set of figure objects
     """
     # at this stage, if this df is empty, then we know that there is no material to plot
-    df = dataframe[(dataframe['SSP'].isin(SSP)) & (dataframe[product_column].isin(products))]
+    df = dataframe[(dataframe[product_column].str.contains("|".join(products))) & (dataframe['SSP'].str.contains("|".join(SSP)))]
 
     # remove the global entry for regional plotting
     df = df.drop(df[df['GCAM'] == "Global"].index)
@@ -653,7 +653,7 @@ def plot_disruption_by_years(dataframe, products, product_column, SSP, legend_lo
     """
     colors, divisions = get_colors(2)
 
-    dataframe = dataframe[(dataframe['SSP'].isin(SSP))]
+    dataframe = dataframe[dataframe['SSP'].str.contains("|".join(SSP))]
     df_global = dataframe[dataframe['GCAM'] == "Global"]
     df_regional = dataframe.drop(dataframe[dataframe['GCAM'] == "Global"].index)
     df_regional["supply_at_year"] = df_regional["supply_at_year"] + abs(df_regional["supply_at_year"].min())
@@ -661,7 +661,7 @@ def plot_disruption_by_years(dataframe, products, product_column, SSP, legend_lo
 
     for i in range(len(products)):
         df_regional["year"] = df_regional["year"].astype(int)
-        df_one_product = df_regional[(df_regional[product_column].isin([products[i]]))]
+        df_one_product = df_regional[df_regional[product_column].str.contains("|".join(products[i]))]
         units = df_regional['Units'].unique().tolist()
 
         if df_one_product.empty:
