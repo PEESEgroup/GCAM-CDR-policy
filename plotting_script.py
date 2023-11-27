@@ -572,9 +572,28 @@ def price_correlation(nonBaselineScenario, RCP, SSP):
                                              "price coefficients for " + products + " and " + energy + " in " + SSP[0])
 
 
+def carbon_sequestration(nonBaselineScenario, RCP, SSP):
+    pass
+    #TODO: carbon sequestration by manure, SSP, and RCP
+    # plotting CO2 concentrations
+    co2_seq_released = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    co2_seq_pyrolysis = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar"]
+    biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
+    plotting.plot_line(biochar_pyrolysis, products, SSP, "SSP", "sector", "Version")
+
+    flat_diff_CO2 = data_manipulation.flat_difference(co2_seq_released, co2_seq_pyrolysis, ["SSP"])
+    flat_diff_CO2["GCAM"] = "Global"
+
+    #TODO: changes to carbon sequestration mix
+
+
 if __name__ == '__main__':
     # standard_plots("pyrolysis", "4p5")
     for i in ["SSP1", "SSP2"]:
         # prices("pyrolysis", "4p5", [i])
         print(i)
-        carbon_price_correlation("pyrolysis", "4p5", [i])
+        #carbon_price_correlation("pyrolysis", "4p5", [i])
+
+    carbon_sequestration("pyrolysis", "4p5", c.GCAMConstants.SSPs)

@@ -406,6 +406,7 @@ def plot_line(dataframe, products, SSPS, groupby, column, differentiator):
     :param differentiator: a secondary column by which the products may further be differentiated
     :return: N/A
     """
+    #TODO switch to regex
     if groupby == "SSP":
         plot_line_by_SSP(dataframe, products, column, SSPS, differentiator)
     elif groupby == "product":
