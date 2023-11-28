@@ -751,6 +751,9 @@ def plot_stacked_bar(df, years, SSP, column):
         nrow, ncol = get_subplot_dimensions(SSP)
         fig, axs = plt.subplots(nrow, ncol, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
         counter = 0
+        colors, num_colors = get_colors(4)
+        category_colors = {}
+        color_counter = 0
 
         for i in SSP:
             #get only data for this SSP
@@ -781,14 +784,20 @@ def plot_stacked_bar(df, years, SSP, column):
 
             #keep only info for the particular set of plotting years
             plot_df = plot_df[[str(j) for j in years if str(j) in plot_df.columns]]
+            plot_df = plot_df.transpose()
 
-            # reshape data to make sns happy
-            plot_df = plot_df.stack()
-            plot_df = plot_df.reset_index()
-            plot_df = plot_df.rename(columns={"level_1": "years", 0: "values"})
             # if there is no data, don't plot it
             if not plot_df.empty:
-                sns.histplot(plot_df, x="years", hue=column, weights='values', multiple="stack", ax = axs[int(counter / ncol), int(counter % ncol)]).set_title(i)
+                # add key sectors with colors to dict
+                for k in range(len(key_sectors)):
+                    if not k in category_colors:
+                        category_colors[k] = colors[color_counter]
+                        color_counter = color_counter + 1
+
+                #TODO get colors from dict and add to color entry in plot below
+
+                plot_df.plot(kind="bar", stacked=True, color=[colors[k] for k in range(len(plot_df.index))], ax=axs[int(counter / ncol), int(counter % ncol)])
+                axs[int(counter / ncol), int(counter % ncol)].set_title(i)
 
             counter = counter + 1
 
