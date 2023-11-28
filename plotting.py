@@ -4,6 +4,8 @@ import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from pylab import *
 from scipy.stats import bootstrap, ttest_rel, pearsonr
+import seaborn as sns
+import data_manipulation
 
 
 def world_data(data):
@@ -734,5 +736,74 @@ def plot_price_coefficients(pyrolysis_res, released_res, title):
     plt.show()
 
 def wrapped_ttest_rel(a, b):
+    """
+    get statistic value from a ttest_rel
+    :param a: first data set
+    :param b: second data set
+    :return: test statistic
+    """
     return ttest_rel(a,b)[0]
 
+
+def plot_stacked_bar(df, years, SSP, column):
+    try:
+        #get subplot information
+        nrow, ncol = get_subplot_dimensions(SSP)
+        fig, axs = plt.subplots(nrow, ncol, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
+        counter = 0
+
+        for i in SSP:
+            #get only data for this SSP
+            plot_df = df[df[['SSP']].isin([i]).any(axis=1)]
+
+            #make the dataframe index the sector
+            plot_df = plot_df.set_index(column)
+
+            # move all sectors that don't have a change of at least 5% of the total in any year to "other" sector
+            key_sectors = []
+            for k in years:
+                s = plot_df[str(k)]
+                s = s.where(abs(s) > sum(abs(s))/20).dropna()
+                if not s.empty:
+                    key_sectors.extend(s.index.values.tolist())
+
+            # reset the index
+            plot_df = plot_df.reset_index()
+
+            # get unique key sectors
+            key_sectors = list(set(key_sectors))
+            plot_df[column] = plot_df.apply(lambda row: label_other(row, column, key_sectors), axis=1)
+            #merge other sectors into other category
+            plot_df = data_manipulation.group(plot_df, column)
+
+            #make the dataframe index the sector
+            plot_df = plot_df.set_index(column)
+
+            #keep only info for the particular set of plotting years
+            plot_df = plot_df[[str(j) for j in years if str(j) in plot_df.columns]]
+
+            # reshape data to make sns happy
+            plot_df = plot_df.stack()
+            plot_df = plot_df.reset_index()
+            plot_df = plot_df.rename(columns={"level_1": "years", 0: "values"})
+            # if there is no data, don't plot it
+            if not plot_df.empty:
+                sns.histplot(plot_df, x="years", hue='sector', weights='values', multiple="stack", ax = axs[int(counter / ncol), int(counter % ncol)]).set_title(i)
+
+            counter = counter + 1
+
+        plt.show()
+
+    except ValueError as e:
+        print(e)
+
+def label_other(row, column, products):
+    """
+    identifies the year of maximum disruption
+    :param row: a pd Series from a dataframe
+    :return: the index of the maximum disruption value
+    """
+    if row[column] in products:
+        return row[column]
+    else:
+        return "other"

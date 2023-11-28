@@ -585,17 +585,30 @@ def carbon_sequestration(nonBaselineScenario, RCP, SSP):
 
     # combine similar sectors
     co2_seq_released['sector'] = co2_seq_released.apply(lambda row: label_sequestration_sectors(row), axis=1)
-    co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: label_sequestration_sectors(row), axis=1)
+    co2_seq_released['sector'] = co2_seq_pyrolysis.apply(lambda row: label_sequestration_sectors(row), axis=1)
 
     # merge sectors in the CO2 sequestered data
-    co2_seq_released = data_manipulation.group(co2_seq_released, ["sector", "SSP"])
-    co2_seq_pyrolysis = data_manipulation.group(co2_seq_pyrolysis, ["sector", "SSP"])
+    co2_seq_released_comb = data_manipulation.group(co2_seq_released, ["sector", "SSP"])
+    co2_seq_pyrolysis_comb = data_manipulation.group(co2_seq_released, ["sector", "SSP"])
 
     # plot difference
-    flat_diff_CO2 = data_manipulation.flat_difference(co2_seq_released, co2_seq_pyrolysis, ["sector", "SSP"])
+    flat_diff_CO2 = data_manipulation.flat_difference(co2_seq_released_comb, co2_seq_pyrolysis_comb, ["sector", "SSP"])
     plotting.plot_line(flat_diff_CO2, flat_diff_CO2["sector"].unique(), SSP, "SSP", "sector", "Version")
 
     #TODO plot difference as stacked 100% line chart for each SSP
+    co2_seq_released = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    co2_seq_pyrolysis = pd.read_csv(
+        "data/gcam_out/" + str(
+            nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    co2_seq_released['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+    co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+
+    for i in ["sector", "subsector", "technology"]:
+        co2_seq_released_stacked = data_manipulation.group(co2_seq_released, [i, "SSP"])
+        co2_seq_pyrolysis_stacked = data_manipulation.group(co2_seq_pyrolysis, [i, "SSP"])
+        flat_diff_CO2_stacked = data_manipulation.flat_difference(co2_seq_released_stacked, co2_seq_pyrolysis_stacked, ["sector", "SSP"])
+        plotting.plot_stacked_bar(flat_diff_CO2_stacked, c.GCAMConstants.plotting_x, c.GCAMConstants.SSPs, 'sector')
 
 
 def label_sequestration_sectors(row):
