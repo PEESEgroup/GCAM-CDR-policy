@@ -788,10 +788,12 @@ def plot_stacked_bar(df, years, SSP, column):
             plot_df = plot_df.rename(columns={"level_1": "years", 0: "values"})
             # if there is no data, don't plot it
             if not plot_df.empty:
-                sns.histplot(plot_df, x="years", hue='sector', weights='values', multiple="stack", ax = axs[int(counter / ncol), int(counter % ncol)]).set_title(i)
+                sns.histplot(plot_df, x="years", hue=column, weights='values', multiple="stack", ax = axs[int(counter / ncol), int(counter % ncol)]).set_title(i)
 
             counter = counter + 1
 
+        # delete empty axes
+        fig.delaxes(axs[int(5 / ncol), int(5 % ncol)])
         plt.show()
 
     except ValueError as e:

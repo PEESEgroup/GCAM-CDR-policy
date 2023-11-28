@@ -607,8 +607,8 @@ def carbon_sequestration(nonBaselineScenario, RCP, SSP):
     for i in ["sector", "subsector", "technology"]:
         co2_seq_released_stacked = data_manipulation.group(co2_seq_released, [i, "SSP"])
         co2_seq_pyrolysis_stacked = data_manipulation.group(co2_seq_pyrolysis, [i, "SSP"])
-        flat_diff_CO2_stacked = data_manipulation.flat_difference(co2_seq_released_stacked, co2_seq_pyrolysis_stacked, ["sector", "SSP"])
-        plotting.plot_stacked_bar(flat_diff_CO2_stacked, c.GCAMConstants.plotting_x, c.GCAMConstants.SSPs, 'sector')
+        flat_diff_CO2_stacked = data_manipulation.flat_difference(co2_seq_released_stacked, co2_seq_pyrolysis_stacked, [i, "SSP"])
+        plotting.plot_stacked_bar(flat_diff_CO2_stacked, c.GCAMConstants.plotting_x, c.GCAMConstants.SSPs, i)
 
 
 def label_sequestration_sectors(row):
