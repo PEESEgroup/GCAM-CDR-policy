@@ -752,7 +752,7 @@ def plot_stacked_bar(df, years, SSP, column):
         fig, axs = plt.subplots(nrow, ncol, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
         counter = 0
         colors, num_colors = get_colors(4)
-        category_colors = {}
+        category_colors = {'other': colors[19]}
         color_counter = 0
 
         for i in SSP:
@@ -789,14 +789,17 @@ def plot_stacked_bar(df, years, SSP, column):
             # if there is no data, don't plot it
             if not plot_df.empty:
                 # add key sectors with colors to dict
-                for k in range(len(key_sectors)):
-                    if not k in category_colors:
+                for k in key_sectors:
+                    if k not in category_colors:
                         category_colors[k] = colors[color_counter]
                         color_counter = color_counter + 1
 
-                #TODO get colors from dict and add to color entry in plot below
+                #TODO: why heights of different graphs not adding up in SSP4, move legend to bottom right graph
+                c = []
+                for k in plot_df.columns:
+                    c.append(category_colors[k])
 
-                plot_df.plot(kind="bar", stacked=True, color=[colors[k] for k in range(len(plot_df.index))], ax=axs[int(counter / ncol), int(counter % ncol)])
+                plot_df.plot(kind="bar", stacked=True, color=c, ax=axs[int(counter / ncol), int(counter % ncol)])
                 axs[int(counter / ncol), int(counter % ncol)].set_title(i)
 
             counter = counter + 1
