@@ -4,8 +4,8 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names
     #  are the ones you want to process data for
-    version = [["pyrolysis", "4p5"], ["released", "4p5"]]
-    GCAMDB_filenames = ["data/gcam_out/pyrolysis/4p5/ref.csv", "data/gcam_out/released/4p5/ref.csv"]
+    version = [["pyrolysis", "4p5"], ["released", "4p5"], ["pyrolysis", "6p0"], ["released", "6p0"]]
+    GCAMDB_filenames = ["data/gcam_out/pyrolysis/4p5/ref.csv", "data/gcam_out/released/4p5/ref.csv", "data/gcam_out/pyrolysis/6p0/ref.csv", "data/gcam_out/released/6p0/ref.csv"]
 
     # TODO: ensure this list of products contains all products that we are interested in.
     #  More can be added to the list, but must reference the product name in GCAM
