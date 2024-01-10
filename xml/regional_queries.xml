@@ -133,6 +133,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="USA"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Africa_Eastern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -268,6 +388,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Africa_Northern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -403,6 +643,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Africa_Southern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -538,6 +898,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Africa_Western"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -673,6 +1153,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Australia_NZ"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -808,6 +1408,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Brazil"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -943,6 +1663,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Brazil"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Canada"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1078,6 +1918,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Central America and Caribbean"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1213,6 +2173,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Central Asia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1348,6 +2428,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="China"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1483,6 +2683,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="China"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="EU-12"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1618,6 +2938,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="EU-15"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1753,6 +3193,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="EU-15"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Europe_Eastern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1888,6 +3448,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Europe_Non_EU"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2023,6 +3703,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="European Free Trade Association"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2158,6 +3958,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="India"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2293,6 +4213,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="India"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Indonesia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2428,6 +4468,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Japan"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2563,6 +4723,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Japan"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Mexico"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2698,6 +4978,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Middle East"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2833,6 +5233,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Middle East"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Pakistan"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2968,6 +5488,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Russia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3103,6 +5743,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Russia"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="South Africa"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3238,6 +5998,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="South America_Northern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3373,6 +6253,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="South America_Southern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3508,6 +6508,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="South Asia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3643,6 +6763,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Asia"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="South Korea"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3778,6 +7018,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Southeast Asia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3913,6 +7273,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Taiwan"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -4048,6 +7528,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Argentina"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -4183,6 +7783,126 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Argentina"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery><aQuery>
     <region name="Colombia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -4318,4 +8038,124 @@
         <xPath buildList="true" dataName="input" group="false" sumAll="false">*[@type='sector' and contains(@name, 'regional')]/cost[@unit='1975$/kg' or @unit='1975$/m3']/text()</xPath>
         <comments/>
     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <marketQuery title="CO2 prices">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <costCurveQuery title="policy cost by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Year">DataPoint</axis2>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <costCurveQuery title="undiscounted policy cost">
+            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
+            <axis2 name="region">UndiscountedCost</axis2>
+            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <costCurveQuery title="discounted policy cost">
+            <axis1 name="DiscountedCost">DiscountedCost</axis1>
+            <axis2 name="region">DiscountedCost</axis2>
+            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <costCurveQuery title="regional CO2 MAC curves by period">
+            <axis1 name="region">Curve</axis1>
+            <axis2 name="Tax">DataPoint</axis2>
+            <chartLabelColumn>CostCurves</chartLabelColumn>
+            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
+            <comments/>
+        </costCurveQuery>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+         <supplyDemandQuery title="food demand per capita">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">demand-percap[@year]</axis2>
+            <xPath buildList="true" dataName="demand per cap" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/demand-percap/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <supplyDemandQuery title="food demand prices">
+            <axis1 name="input">input[@name]</axis1>
+            <axis2 name="Year">price-paid[@vintage]</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">gcam-consumer[@name='FoodDemand']//*[@type='input']/price-paid/node()</xPath>
+            <comments/>
+        </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <gdpQueryBuilder title="GDP per capita PPP by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">nationalAccount[@year]</axis2>
+            <xPath buildList="true" dataName="gdp-per-capita-ppp" group="false" sumAll="false">nationalAccount/account[@name = 'gdp-per-capita-ppp']/node()</xPath>
+            <comments/>
+        </gdpQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <emissionsQueryBuilder title="CO2 emissions by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//*[((@name='CO2' or @name = 'CO2_FUG'))]/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <emissionsQueryBuilder title="CO2 emissions by sector (excluding resource production)">
+            <axis1 name="sector">sector</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <emissionsQueryBuilder title="CO2 emissions by resource production ">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'resource']//*[@type = 'GHG' and (@name = "CO2" or @name = "CO2_FUG")]/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+        <emissionsQueryBuilder title="nonCO2 emissions by region">
+            <axis1 name="GHG">GHG</axis1>
+            <axis2 name="Year">emissions</axis2>
+            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
+        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+            <labelRewriteList append-values="false">
+                <level name="GHG">
+                    <rewrite from="CO2_FUG" to="CO2"/>
+                </level>
+            </labelRewriteList>
+            <comments/>
+        </emissionsQueryBuilder>
 </aQuery>
