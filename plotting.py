@@ -1,4 +1,5 @@
 import geopandas as gpd
+import matplotlib.pyplot as plt
 import pandas as pd
 import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
@@ -821,3 +822,32 @@ def label_other(row, column, products):
         return row[column]
     else:
         return "other"
+
+
+def plot_regional_vertical(dataframe, year, SSPs, y_label, title):
+    """
+    Plots regional data in a categorical scatterplot
+    :param dataframe: data being plotted
+    :param year: evaluation year
+    :param SSPs: SSPs being evaluated
+    :param y_label: ylabel for graph
+    :param title: title of graph
+    :return: N/A
+    """
+    #get colors
+    colors, divisions = get_colors(1)
+
+    # plot for each SSP
+    for i in SSPs:
+        df = dataframe[dataframe['SSP'].str.contains(i)]
+        plt.scatter(x=df["GCAM"], y=df[str(year)], color=colors[int(i[3])], label=str(i))
+
+    # plot baseline
+    plt.scatter(x=df["GCAM"], y=df["2010"], color="black", label="2010 baseline")
+
+    # finalize plot
+    plt.ylabel(y_label)
+    plt.xlabel("Region")
+    plt.title(title)
+    plt.legend()
+    plt.show()
