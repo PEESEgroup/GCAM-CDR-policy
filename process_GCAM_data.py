@@ -128,6 +128,8 @@ def process_file(value, fname):
         value['input'] = c.GCAMConstants.missing
     if "LandLeaf" not in value.columns:
         value['LandLeaf'] = c.GCAMConstants.missing
+    if "GHG" not in value.columns:
+        value['GHG'] = "missing"
 
     # reorder columns
     return value[c.GCAMConstants.column_order]

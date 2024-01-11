@@ -268,69 +268,80 @@ def climate(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
-    # Changes in CO2 concentrations
-    co2_conc_released = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_concentrations.csv")
-    co2_conc_pyrolysis = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_concentrations.csv")
-    flat_diff_CO2 = data_manipulation.flat_difference(co2_conc_released, co2_conc_pyrolysis, ["SSP"])
-    flat_diff_CO2["GCAM"] = "All"
-    plotting.plot_line(flat_diff_CO2, ["PPM"], c.GCAMConstants.SSPs, "SSP", "Units", "Version")
-
-    # Changes in carbon prices
-    released_CO2_price = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_prices.csv")
-    pyrolysis_CO2_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_prices.csv")
-    products = ["CO2"]
-    released_CO2_price = released_CO2_price[released_CO2_price[['product']].isin(products).any(axis=1)]
-    pyrolysis_CO2_price = pyrolysis_CO2_price[pyrolysis_CO2_price[['product']].isin(products).any(axis=1)]
-    perc_diff_CO2_price = data_manipulation.percent_difference(released_CO2_price, pyrolysis_CO2_price,
-                                                               ["SSP", "product", "GCAM"])
-    plotting.plot_world(perc_diff_CO2_price, products, ["SSP1", "SSP2"], "year", "product", c.GCAMConstants.future_x)
-
-    # plotting CO2 sequestering
-    co2_seq_released = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
-    co2_seq_pyrolysis = pd.read_csv(
-        "data/gcam_out/" + str(
-            nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
-    co2_seq_released['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-    co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-    products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar"]
-    biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
-    plotting.plot_line(biochar_pyrolysis, products, SSP, "SSP", "sector", "Version")
-
-    # combine similar sectors
-    co2_seq_released['sector'] = co2_seq_released.apply(lambda row: label_sequestration_sectors(row), axis=1)
-    co2_seq_released['sector'] = co2_seq_pyrolysis.apply(lambda row: label_sequestration_sectors(row), axis=1)
-
-    # merge sectors in the CO2 sequestered data
-    co2_seq_released_comb = data_manipulation.group(co2_seq_released, ["sector", "SSP"])
-    co2_seq_pyrolysis_comb = data_manipulation.group(co2_seq_released, ["sector", "SSP"])
-
-    # plot difference
-    flat_diff_CO2 = data_manipulation.flat_difference(co2_seq_released_comb, co2_seq_pyrolysis_comb,
-                                                      ["sector", "SSP"])
-    plotting.plot_line(flat_diff_CO2, flat_diff_CO2["sector"].unique(), SSP, "SSP", "sector", "Version")
-
-    # Contribution to cumulative emissions reduction
-    co2_seq_released = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
-    co2_seq_pyrolysis = pd.read_csv(
-        "data/gcam_out/" + str(
-            nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
-    co2_seq_released['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-    co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-
-    for i in ["sector", "subsector", "technology"]:
-        co2_seq_released_stacked = data_manipulation.group(co2_seq_released, [i, "SSP"])
-        co2_seq_pyrolysis_stacked = data_manipulation.group(co2_seq_pyrolysis, [i, "SSP"])
-        flat_diff_CO2_stacked = data_manipulation.flat_difference(co2_seq_released_stacked,
-                                                                  co2_seq_pyrolysis_stacked, [i, "SSP"])
-        plotting.plot_stacked_bar(flat_diff_CO2_stacked, c.GCAMConstants.plotting_x, c.GCAMConstants.SSPs, i, 5)
+    # # Changes in CO2 concentrations
+    # co2_conc_released = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_concentrations.csv")
+    # co2_conc_pyrolysis = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_concentrations.csv")
+    # flat_diff_CO2 = data_manipulation.flat_difference(co2_conc_released, co2_conc_pyrolysis, ["SSP"])
+    # flat_diff_CO2["GCAM"] = "All"
+    # plotting.plot_line(flat_diff_CO2, ["PPM"], c.GCAMConstants.SSPs, "SSP", "Units", "Version")
+    #
+    # # Changes in carbon prices
+    # released_CO2_price = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_prices.csv")
+    # pyrolysis_CO2_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_prices.csv")
+    # products = ["CO2"]
+    # released_CO2_price = released_CO2_price[released_CO2_price[['product']].isin(products).any(axis=1)]
+    # pyrolysis_CO2_price = pyrolysis_CO2_price[pyrolysis_CO2_price[['product']].isin(products).any(axis=1)]
+    # perc_diff_CO2_price = data_manipulation.percent_difference(released_CO2_price, pyrolysis_CO2_price,
+    #                                                            ["SSP", "product", "GCAM"])
+    # plotting.plot_world(perc_diff_CO2_price, products, ["SSP1", "SSP2"], "year", "product", c.GCAMConstants.future_x)
+    #
+    # # plotting CO2 sequestering
+    # co2_seq_released = pd.read_csv(
+    #     "data/gcam_out/released/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    # co2_seq_pyrolysis = pd.read_csv(
+    #     "data/gcam_out/" + str(
+    #         nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    # co2_seq_released['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+    # co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+    # products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar"]
+    # biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
+    # plotting.plot_line(biochar_pyrolysis, products, SSP, "SSP", "sector", "Version")
+    #
+    # # combine similar sectors
+    # co2_seq_released['sector'] = co2_seq_released.apply(lambda row: label_sequestration_sectors(row), axis=1)
+    # co2_seq_released['sector'] = co2_seq_pyrolysis.apply(lambda row: label_sequestration_sectors(row), axis=1)
+    #
+    # # merge sectors in the CO2 sequestered data
+    # co2_seq_released_comb = data_manipulation.group(co2_seq_released, ["sector", "SSP"])
+    # co2_seq_pyrolysis_comb = data_manipulation.group(co2_seq_released, ["sector", "SSP"])
+    #
+    # # plot difference
+    # flat_diff_CO2 = data_manipulation.flat_difference(co2_seq_released_comb, co2_seq_pyrolysis_comb,
+    #                                                   ["sector", "SSP"])
+    # plotting.plot_line(flat_diff_CO2, flat_diff_CO2["sector"].unique(), SSP, "SSP", "sector", "Version")
+    #
+    # # Contribution to cumulative emissions reduction
+    # co2_seq_released = pd.read_csv(
+    #     "data/gcam_out/released/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    # co2_seq_pyrolysis = pd.read_csv(
+    #     "data/gcam_out/" + str(
+    #         nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    # co2_seq_released['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+    # co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+    #
+    # for i in ["sector", "subsector", "technology"]:
+    #     co2_seq_released_stacked = data_manipulation.group(co2_seq_released, [i, "SSP"])
+    #     co2_seq_pyrolysis_stacked = data_manipulation.group(co2_seq_pyrolysis, [i, "SSP"])
+    #     flat_diff_CO2_stacked = data_manipulation.flat_difference(co2_seq_released_stacked,
+    #                                                               co2_seq_pyrolysis_stacked, [i, "SSP"])
+    #     plotting.plot_stacked_bar(flat_diff_CO2_stacked, c.GCAMConstants.plotting_x, c.GCAMConstants.SSPs, i, 5)
 
     # Annual carbon emissions – CO2 emissions by region, sector, resource production
-    # TODO
+    co2_emi_released = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_emissions_by_region.csv")
+    co2_emi_pyrolysis = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_region.csv")
+    flat_diff_CO2 = data_manipulation.flat_difference(co2_emi_released, co2_emi_pyrolysis, ["SSP", "GCAM"])
+    flat_diff_CO2["GCAM"] = "All"
+    plotting.plot_line(flat_diff_CO2, ["MTC"], c.GCAMConstants.SSPs, "SSP", "Units", "Version")
+
     # Changes to CH4 and N2O emissions – nonCO2 emissions by region
-    # TODO
+    nonco2_emi_released = pd.read_csv("data/gcam_out/released/" + RCP + "/nonCO2_emissions_by_region.csv")
+    nonco2_emi_pyrolysis = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/nonCO2_emissions_by_region.csv")
+    flat_diff_nonCO2 = data_manipulation.flat_difference(nonco2_emi_released, nonco2_emi_pyrolysis, ["SSP", "GCAM", "GHG"])
+    flat_diff_nonCO2["GCAM"] = "All"
+    plotting.plot_line(flat_diff_nonCO2, ["N2O_AGR", "CH4_AGR", "NMVOC_AGR", "NOx_AGR", "NH3_AGR"], c.GCAMConstants.SSPs, "SSP", "GHG", "Version")
 
 
 def land(nonBaselineScenario, RCP, SSP):
@@ -452,6 +463,6 @@ if __name__ == '__main__':
     for j in ["4p5", "6p0"]:
         #food("pyrolysis", j, c.GCAMConstants.SSPs)
         #energy("pyrolysis", j, c.GCAMConstants.SSPs)
-        #climate("pyrolysis", j, c.GCAMConstants.SSPs)
-        land("pyrolysis", j, c.GCAMConstants.SSPs)
+        climate("pyrolysis", j, c.GCAMConstants.SSPs)
+        # land("pyrolysis", j, c.GCAMConstants.SSPs)
         #fertilizer("pyrolysis", j, c.GCAMConstants.SSPs)
