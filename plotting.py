@@ -746,13 +746,22 @@ def wrapped_ttest_rel(a, b):
     return ttest_rel(a,b)[0]
 
 
-def plot_stacked_bar(df, years, SSP, column):
+def plot_stacked_bar_year(df, years, SSP, column, top_n):
+    """
+    Plots a stacked bar graph
+    :param df: dataframe
+    :param years: years to be plotted in
+    :param SSP: list of SSPs to be plotted
+    :param column: column in the df to be plotted
+    :param top_n: percentage of total by which categories are cutoff into "other" category
+    :return: N/A
+    """
     try:
         #get subplot information
         nrow, ncol = get_subplot_dimensions(SSP)
         fig, axs = plt.subplots(nrow, ncol, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
         counter = 0
-        colors, num_colors = get_colors(4)
+        colors, num_colors = get_colors(2)
         category_colors = {'other': colors[19]}
         color_counter = 0
 
@@ -767,7 +776,7 @@ def plot_stacked_bar(df, years, SSP, column):
             key_sectors = []
             for k in years:
                 s = plot_df[str(k)]
-                s = s.where(abs(s) > sum(abs(s))/20).dropna()
+                s = s.where(abs(s) > sum(abs(s))*top_n/100).dropna()
                 if not s.empty:
                     key_sectors.extend(s.index.values.tolist())
 
@@ -811,6 +820,76 @@ def plot_stacked_bar(df, years, SSP, column):
 
     except ValueError as e:
         print(e)
+
+
+def plot_stacked_bar_SSP(df, year, SSP, column, top_n, RCP):
+    """
+    Plots a stacked bar graph
+    :param df: dataframe
+    :param year: year to be plotted
+    :param SSP: list of SSPs to be plotted
+    :param column: column in the df to be plotted
+    :param top_n: percentage of total by which categories are cutoff into "other" category
+    :param RCP: RCP pathway number
+    :return: N/A
+    """
+    try:
+        #get subplot information
+        nrow, ncol = get_subplot_dimensions([year])
+        fig, axs = plt.subplots(nrow, ncol, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
+        counter = 0
+        colors, num_colors = get_colors(2)
+        category_colors = {'other': colors[19]}
+        color_counter = 0
+
+        key_sectors = []
+        for i in SSP:
+            #get only data for this SSP
+            plot_df = df[df[['SSP']].isin([i]).any(axis=1)]
+
+            #make the dataframe index the sector
+            plot_df = plot_df.set_index(column)
+
+            # move all sectors that don't have a change of at least 5% of the total in any year to "other" sector
+            s = plot_df[str(year)]
+            s = s.where(abs(s) > sum(abs(s))*top_n/100).dropna()
+            if not s.empty:
+                key_sectors.extend(s.index.values.tolist())
+
+        # get unique key sectors
+        key_sectors = list(set(key_sectors))
+        df[column] = df.apply(lambda row: label_other(row, column, key_sectors), axis=1)
+        #merge other sectors into other category
+        plot_df = data_manipulation.group(df, [column, "SSP"])
+
+        #make the dataframe index the sector
+        plot_df = plot_df.set_index(column)
+
+        #keep only info for the particular set of plotting year and SSPs
+        plot_df = plot_df[[str(year), "SSP"]]
+        plot_df['index'] = plot_df.index
+        plot_df = plot_df.pivot(index='SSP', columns='index', values=str(year))
+
+        # if there is no data, don't plot it
+        if not plot_df.empty:
+            # add key sectors with colors to dict
+            for k in key_sectors:
+                if k not in category_colors:
+                    category_colors[k] = colors[color_counter]
+                    color_counter = color_counter + 1
+            c = []
+            for k in plot_df.columns:
+                c.append(category_colors[k])
+
+            plot_df.plot(kind="bar", stacked=True, color=c, ax=axs)
+            axs.set_title(str(year) + " RCP " + RCP)
+            axs.set_ylabel(df["Units"][1])
+
+        plt.show()
+
+    except ValueError as e:
+        print(e)
+
 
 def label_other(row, column, products):
     """

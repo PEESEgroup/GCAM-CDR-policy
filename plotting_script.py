@@ -259,9 +259,6 @@ def energy(nonBaselineScenario, RCP, SSP):
     plotting.plot_world(flat_diff_supply, products, ["SSP2"], "year", "technology",
                         c.GCAMConstants.plotting_x)
 
-    # Changes in price of biofuels
-    # TODO??
-
 
 def climate(nonBaselineScenario, RCP, SSP):
     """
@@ -328,11 +325,11 @@ def climate(nonBaselineScenario, RCP, SSP):
         co2_seq_pyrolysis_stacked = data_manipulation.group(co2_seq_pyrolysis, [i, "SSP"])
         flat_diff_CO2_stacked = data_manipulation.flat_difference(co2_seq_released_stacked,
                                                                   co2_seq_pyrolysis_stacked, [i, "SSP"])
-        plotting.plot_stacked_bar(flat_diff_CO2_stacked, c.GCAMConstants.plotting_x, c.GCAMConstants.SSPs, i)
+        plotting.plot_stacked_bar(flat_diff_CO2_stacked, c.GCAMConstants.plotting_x, c.GCAMConstants.SSPs, i, 5)
 
     # Annual carbon emissions – CO2 emissions by region, sector, resource production
     # TODO
-    # Changes to CH4 and N2O emissions1 – nonCO2 emissions by region
+    # Changes to CH4 and N2O emissions – nonCO2 emissions by region
     # TODO
 
 
@@ -351,11 +348,10 @@ def land(nonBaselineScenario, RCP, SSP):
     pyrolysis_land = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/aggregated_land_allocation.csv")
     perc_diff_land = data_manipulation.percent_difference(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
-    plotting.plot_world(perc_diff_land, landleafs, ["SSP2"], "year", "LandLeaf", [2020, 2035, 2050, 2075, 2100])
-    landleafs = ["biomass", "crops"]
-    plotting.plot_world(perc_diff_land, landleafs, ["SSP2"], "year", "LandLeaf", c.GCAMConstants.plotting_x)
+    # plotting.plot_world(perc_diff_land, landleafs, ["SSP2"], "year", "LandLeaf", c.GCAMConstants.plotting_x)
 
-    # TODO: same data as ahove but as stacked bar chart
+    flat_diff_land = data_manipulation.flat_difference(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
+    plotting.plot_stacked_bar_SSP(flat_diff_land, 2050, SSP, "LandLeaf", 1, RCP)
 
 
 def fertilizer(nonBaselineScenario, RCP, SSP):
@@ -454,8 +450,8 @@ def label_sequestration_sectors(row):
 
 if __name__ == '__main__':
     for j in ["4p5", "6p0"]:
-        food("pyrolysis", j, c.GCAMConstants.SSPs)
-        energy("pyrolysis", j, c.GCAMConstants.SSPs)
-        climate("pyrolysis", j, c.GCAMConstants.SSPs)
+        #food("pyrolysis", j, c.GCAMConstants.SSPs)
+        #energy("pyrolysis", j, c.GCAMConstants.SSPs)
+        #climate("pyrolysis", j, c.GCAMConstants.SSPs)
         land("pyrolysis", j, c.GCAMConstants.SSPs)
-        fertilizer("pyrolysis", j, c.GCAMConstants.SSPs)
+        #fertilizer("pyrolysis", j, c.GCAMConstants.SSPs)
