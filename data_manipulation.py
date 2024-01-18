@@ -5,7 +5,7 @@ import pandas as pd
 
 def flat_difference(old, new, columns):
     """
-    Calculates the flat difference between two dataframes
+    Calculates the flat difference between two dataframes (new - old)
     :param old: the old dataframe
     :param new: the new dataframe
     :param columns: the list of columns that will uniquely identify each product
