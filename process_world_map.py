@@ -34,79 +34,80 @@ def label_region(row):
     :param row: row in a dataframe
     :return: the GCAM regions, or if it is missing
     """
-    if row['NAME_EN'] in ["Burundi", "Comoros", "Djibouti", "Eritrea", "Ethiopia", "Kenya", "Madagascar", "Mauritius",
+    row_name = 'CNTRY_NAME'
+    if row[row_name] in ["Burundi", "Comoros", "Djibouti", "Eritrea", "Ethiopia", "Kenya", "Madagascar", "Mauritius",
                           "Reunion", "Rwanda", "South Sudan", "Sudan", "Somalia", "Uganda", "Somaliland"]:
         return "Africa_Eastern"
-    if row['NAME_EN'] in ["Algeria", "Egypt", "W. Sahara", "Libya", "Morocco", "Tunisia"]:
+    if row[row_name] in ["Algeria", "Egypt", "Western Sahara", "Libya", "Morocco", "Tunisia"]:
         return "Africa_Northern"
-    if row['NAME_EN'] in ["Angola", "Botswana", "Lesotho", "Mozambique", "Malawi", "Namibia", "Swaziland", "Tanzania",
+    if row[row_name] in ["Angola", "Botswana", "Lesotho", "Mozambique", "Malawi", "Namibia", "Swaziland", "Tanzania",
                           "Zambia", "Zimbabwe", "eSwatini"]:
         return "Africa_Southern"
-    if row['NAME_EN'] in ["Benin", "Burkina Faso", "Central African Republic", "Ivory Coast", "Cameroon",
-                          "Democratic Republic of the Congo", "Republic of the Congo", "Cape Verde", "Gabon", "Ghana",
+    if row[row_name] in ["Benin", "Burkina Faso", "Central African Republic", "Cote d'Ivoire", "Cameroon",
+                          "Congo, DRC", "Congo", "Cape Verde", "Gabon", "Ghana",
                           "Guinea", "The Gambia", "Guinea-Bissau", "Eq. Guinea", "Liberia", "Mali", "Mauritania",
                           "Niger", "Nigeria", "Senegal", "Sierra Leone", "Sao Tome and Principe", "Chad", "Togo",
                           "Equatorial Guinea"]:
         return "Africa_Western"
-    if row['NAME_EN'] in ['Argentina']:
+    if row[row_name] in ['Argentina']:
         return "Argentina"
-    if row['NAME_EN'] in ["Australia", 'New Zealand']:
+    if row[row_name] in ["Australia", 'New Zealand']:
         return "Australia_NZ"
-    if row['NAME_EN'] in ["Brazil"]:
+    if row[row_name] in ["Brazil"]:
         return "Brazil"
-    if row['NAME_EN'] in ["Canada"]:
+    if row[row_name] in ["Canada"]:
         return "Canada"
-    if row['NAME_EN'] in ["Aruba", "Anguilla", "Netherlands Antilles", "Antigua & Barbuda", "Bahamas", "Belize",
+    if row[row_name] in ["Aruba", "Anguilla", "Netherlands Antilles", "Antigua & Barbuda", "Bahamas", "Belize",
                           "Bermuda", "Barbados", "Costa Rica", "Cuba", "Cayman Islands", "Dominica",
                           "Dominican Republic", "Guadeloupe", "Grenada", "Guatemala", "Honduras", "Haiti", "Jamaica",
                           "Saint Kitts and Nevis", "Saint Lucia", "Montserrat", "Martinique", "Nicaragua", "Panama",
                           "El Salvador", "Trinidad and Tobago", "Saint Vincent and the Grenadines"]:
         return "Central America and Caribbean"
-    if row['NAME_EN'] in ["Armenia", "Azerbaijan", "Georgia", "Kazakhstan", "Kyrgyzstan", "Mongolia", "Tajikistan",
+    if row[row_name] in ["Armenia", "Azerbaijan", "Georgia", "Kazakhstan", "Kyrgyzstan", "Mongolia", "Tajikistan",
                           "Turkmenistan", "Uzbekistan"]:
         return "Central Asia"
-    if row['NAME_EN'] in ["People's Republic of China"]:
+    if row[row_name] in ["China"]:
         return "China"
-    if row['NAME_EN'] in ["Colombia"]:
+    if row[row_name] in ["Colombia"]:
         return "Colombia"
-    if row['NAME_EN'] in ["Bulgaria", "Cyprus", "Czech Republic", "Estonia", "Hungary", "Lithuania", "Latvia", "Malta",
+    if row[row_name] in ["Bulgaria", "Cyprus", "Czech Republic", "Estonia", "Hungary", "Lithuania", "Latvia", "Malta",
                           "Poland", "Romania", "Slovakia", "Slovenia", "N. Cyprus"]:
         return "EU-12"
-    if row['NAME_EN'] in ["Andorra", "Austria", "Belgium", "Denmark", "Finland", "France", "Germany", "Greece",
+    if row[row_name] in ["Andorra", "Austria", "Belgium", "Denmark", "Finland", "France", "Germany", "Greece",
                           "Greenland", "Ireland", "Italy", "Luxembourg", "Monaco", "Netherlands", "Portugal", "Sweden",
                           "Spain", "United Kingdom"]:
         return "EU-15"
-    if row['NAME_EN'] in ["Belarus", "Moldova", "Ukraine"]:
+    if row[row_name] in ["Belarus", "Moldova", "Ukraine"]:
         return "Europe_Eastern"
-    if row['NAME_EN'] in ["Iceland", "Norway", "Switzerland"]:
+    if row[row_name] in ["Iceland", "Norway", "Switzerland"]:
         return "European Free Trade Association"
-    if row['NAME_EN'] in ["Albania", "Bosnia and Herzegovina", "Croatia", "Republic of Macedonia", "Montenegro",
+    if row[row_name] in ["Albania", "Bosnia & Herzegovina", "Croatia", "Macedonia", "Montenegro",
                           "Serbia", "Turkey", "North Macedonia", "Kosovo"]:
         return "Europe_Non_EU"
-    if row['NAME_EN'] in ["India"]:
+    if row[row_name] in ["India"]:
         return "India"
-    if row['NAME_EN'] in ["Indonesia"]:
+    if row[row_name] in ["Indonesia"]:
         return "Indonesia"
-    if row['NAME_EN'] in ["Japan"]:
+    if row[row_name] in ["Japan"]:
         return "Japan"
-    if row['NAME_EN'] in ["Mexico"]:
+    if row[row_name] in ["Mexico"]:
         return "Mexico"
-    if row['NAME_EN'] in ["United Arab Emirates", "Bahrain", "Iran", "Iraq", "Israel", "Jordan", "Kuwait", "Lebanon",
+    if row[row_name] in ["United Arab Emirates", "Bahrain", "Iran", "Iraq", "Israel", "Jordan", "Kuwait", "Lebanon",
                           "Oman", "Palestine", "Qatar", "Saudi Arabia", "Syria", "Yemen"]:
         return "Middle East"
-    if row['NAME_EN'] in ["Pakistan"]:
+    if row[row_name] in ["Pakistan"]:
         return "Pakistan"
-    if row['NAME_EN'] in ["Russia"]:
+    if row[row_name] in ["Russia"]:
         return "Russia"
-    if row['NAME_EN'] in ["South Africa"]:
+    if row[row_name] in ["South Africa"]:
         return "South Africa"
-    if row['NAME_EN'] in ["French Guiana", "Guyana", "Suriname", "Venezuela"]:
+    if row[row_name] in ["French Guiana", "Guyana", "Suriname", "Venezuela"]:
         return "South America_Northern"
-    if row['NAME_EN'] in ["Bolivia", "Chile", "Ecuador", "Peru", "Paraguay", "Uruguay"]:
+    if row[row_name] in ["Bolivia", "Chile", "Ecuador", "Peru", "Paraguay", "Uruguay"]:
         return "South America_Southern"
-    if row['NAME_EN'] in ["Afghanistan", "Bangladesh", "Bhutan", "Sri Lanka", "Maldives", "Nepal"]:
+    if row[row_name] in ["Afghanistan", "Bangladesh", "Bhutan", "Sri Lanka", "Maldives", "Nepal"]:
         return "South Asia"
-    if row['NAME_EN'] in ["American Samoa", "Brunei", "Cocos (Keeling) Islands", "Cook Islands",
+    if row[row_name] in ["American Samoa", "Brunei", "Cocos (Keeling) Islands", "Cook Islands",
                           "Christmas Island", "Fiji", "Federated States of Micronesia", "Guam", "Cambodia", "Kiribati",
                           "Laos", "Marshall Islands", "Myanmar", "Northern Mariana Islands",
                           "Malaysia", "Mayotte", "New Caledonia", "Norfolk Island", "Niue", "Nauru",
@@ -115,11 +116,11 @@ def label_region(row):
                           "Solomon Is.", "Seychelles", "Thailand", "Tokelau", "Timor-Leste", "Tonga", "Tuvalu",
                           "Vietnam", "Vanuatu", "Samoa", "East Timor"]:
         return "Southeast Asia"
-    if row['NAME_EN'] in ["South Korea"]:
+    if row[row_name] in ["South Korea"]:
         return "South Korea"
-    if row['NAME_EN'] in ["Taiwan"]:
+    if row[row_name] in ["Taiwan"]:
         return "Taiwan"
-    if row['NAME_EN'] in ['United States of America', "Puerto Rico"]:
+    if row[row_name] in ['United States', "Puerto Rico"]:
         return "USA"
     return c.GCAMConstants.missing
 

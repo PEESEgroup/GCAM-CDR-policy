@@ -402,7 +402,7 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow):
         fig.colorbar(im, ax=axs[nrow - 1, :], shrink=0.6, orientation="horizontal", label=lab)
 
     # change figure size and dpi
-    fig.set_dpi(100)
+    fig.set_dpi(300)
     if nrow * ncol == 6:
         fig.set_size_inches(12, 4)
     elif nrow * ncol == 8:

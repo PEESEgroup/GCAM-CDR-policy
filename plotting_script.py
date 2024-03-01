@@ -15,16 +15,19 @@ def food(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     #changes to animal livestock production
-    released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/supply_of_all_markets.csv")
-    pyrolysis_supply = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")
-    products = ["Beef", "Pork", "Dairy", "Poultry", "SheepGoat"]
-    released_supply = released_supply[released_supply[['product']].isin(products).any(axis=1)]
-    pyrolysis_supply = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)]
-    perc_diff = data_manipulation.percent_difference(released_supply, pyrolysis_supply, ["SSP", "product", "GCAM"])
-    for i in SSP:
-        plotting.plot_world(perc_diff, products, [i], "product", "product", [2050], "Percent difference in size of livestock markets in 2050")
-    # livestock systems
+    # released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/supply_of_all_markets.csv")
+    # pyrolysis_supply = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")
+    # products = ["Beef", "Pork", "Dairy", "Poultry", "SheepGoat"]
+    # released_supply = released_supply[released_supply[['product']].isin(products).any(axis=1)]
+    # pyrolysis_supply = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)]
+    # perc_diff = data_manipulation.percent_difference(released_supply, pyrolysis_supply, ["SSP", "product", "GCAM"])
+    # for i in SSP:
+    #     plotting.plot_world(perc_diff, products, [i], "product", "product", [2050],
+    #     "Percent difference in size of livestock markets in 2050")
+
+    """unused figure for analysis::
+    changes in livestock systems as indicated by feed supplies - not used in analysis
     feed_released = pd.read_csv("data/gcam_out/released/" + RCP + "/feed_consumption_by_meat_and_dairy_tech.csv")
     feed_pyrolysis = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/feed_consumption_by_meat_and_dairy_tech.csv")
@@ -32,12 +35,13 @@ def food(nonBaselineScenario, RCP, SSP):
     feed_released = data_manipulation.group(feed_released, columns)
     feed_pyrolysis = data_manipulation.group(feed_pyrolysis, columns)
     flat_diff_feed = data_manipulation.flat_difference(feed_released, feed_pyrolysis, ["SSP", "sector", "subsector"])
-    plotting.plot_line(flat_diff_feed, ['Beef', 'Dairy', 'Poultry', 'Pork'], c.GCAMConstants.SSPs, "SSP", "sector",
-                       "subsector")
+    plotting.plot_line(flat_diff_feed, ['Beef', 'Dairy', 'Poultry', 'Pork', 'SheepGoat'], c.GCAMConstants.SSPs, "SSP", "sector",
+                       "subsector", title="Change in livestock feed supply")
+    """
 
     # Changes to crop production
     # Changes to agricultural commodity prices
-    crops = ["Corn", "FiberCrop", "FodderGrass", "FodderHerb", "Forest", "Fruits", "Legumes", "MiscCrop", "NutSeeds",
+    crops = ["Corn", "FiberCrop", "FodderGrass", "FodderHerb", "Forest", "Fruits", "Legumes", "MiscCrop", "NutsSeeds",
              "OilCrop", "OtherGrain", "Pasture", "Rice", "RootTuber", "Soybean", "SugarCrop",
              "Vegetables", "Wheat", "biomass"]
     released_ag_prices = pd.read_csv("data/gcam_out/released/" + RCP + "/ag_commodity_prices.csv")
@@ -45,7 +49,8 @@ def food(nonBaselineScenario, RCP, SSP):
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/ag_commodity_prices.csv")
     perc_diff_ag_prices = data_manipulation.percent_difference(released_ag_prices, pyrolysis_ag_prices,
                                                                ["SSP", "sector", "GCAM"])
-    plotting.plot_world(perc_diff_ag_prices, crops, ["SSP2"], "year", "sector", [2020, 2035, 2050, 2075, 2100])
+    plotting.plot_world(perc_diff_ag_prices, crops, ["SSP2"], "product", "sector", [2050],
+                        "percentage change to agricultural commodity prices in 2050")
 
     # Changes to food prices
     released_price = pd.read_csv(
