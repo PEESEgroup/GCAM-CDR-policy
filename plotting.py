@@ -258,7 +258,8 @@ def get_df_to_plot(dataframe, ncol, nrow, fig, axs, cmap, normalizer, counter, c
     :param subplot_title: the title for the subplot
     :return: unit label for the subplot
     """
-    filter_data = dataframe[(dataframe[column].str.contains("|".join(products))) & (dataframe['SSP'].str.contains("|".join(SSPs)))]
+    filter_data = dataframe[dataframe[column].str.contains("|".join(products))]
+    filter_data = filter_data[filter_data[['SSP']].isin([SSPs]).any(axis=1)]
     # if there is no data in the filter data, delete all following axis
     if filter_data.empty:
         if ncol == 1:
