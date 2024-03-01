@@ -1,11 +1,9 @@
 import geopandas as gpd
-import matplotlib.pyplot as plt
 import pandas as pd
 import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from pylab import *
 from scipy.stats import bootstrap, ttest_rel, pearsonr
-import seaborn as sns
 import data_manipulation
 
 
@@ -52,7 +50,7 @@ def get_subplot_dimensions(list_products):
         raise ValueError("too many products. Can only plot 20 products at a time")
 
 
-def plot_world(dataframe, products, SSPS, groupby, column, years):
+def plot_world(dataframe, products, SSPS, groupby, column, years, title):
     """
     control function for plotting any plot that is placed on a world map
     :param years: the years for which the plot is to be evaluated
@@ -61,31 +59,34 @@ def plot_world(dataframe, products, SSPS, groupby, column, years):
     :param SSPS: the list of SSPs by which the data is to be plotted
     :param groupby: how the data should be grouped. Accepted values include "SSP", "Products
     :param column: the column on which the data should be filtered by product
+    :param title: the title of the plot
     :return: shows the relevant plot
     """
     if groupby == "SSP":
-        plot_world_by_SSP(dataframe, products, column, years, SSPS)
+        plot_world_by_SSP(dataframe, products, column, years, SSPS, title)
     elif groupby == "product":
-        plot_world_by_products(dataframe, products, column, years, SSPS)
+        plot_world_by_products(dataframe, products, column, years, SSPS, title)
     elif groupby == "year":
-        plot_world_by_years(dataframe, products, column, years, SSPS)
+        plot_world_by_years(dataframe, products, column, years, SSPS, title)
     else:
         raise ValueError("only 'SSP', 'products', and 'years' are considered valid groupings at this time")
 
 
-def plot_world_by_SSP(dataframe, products, column, year, SSP):
+def plot_world_by_SSP(dataframe, products, column, year, SSP, title):
     """
     For a given product, plot its values in all SSPs for a given year
     :param dataframe: the dataframe containing the data to be plotted
     :param products: the product being plotted
     :param column: the column in the dataframe containing the product
     :param year: the year being chosen
+    :param title: the title for the plot
     :param SSP: the set of shared socioeconomic pathways being used as evaluation
     """
     for j in year:
         for i in products:
             try:
                 counter = 0
+                units = "N/A"
                 # get plot information
                 axs, cmap, fig, im, ncol, normalizer, nrow = create_subplots(
                     dataframe=dataframe,
@@ -93,9 +94,8 @@ def plot_world_by_SSP(dataframe, products, column, year, SSP):
                     products=[i],
                     year=[j],
                     SSP=SSP,
-                    product_column=column)
-                # create label for the graph - assumes all values have the same units
-                units = dataframe.iat[0, 31]
+                    product_column=column,
+                    title=title)
 
                 for k in SSP:
                     subplot_title = str(k)
@@ -123,7 +123,7 @@ def plot_world_by_SSP(dataframe, products, column, year, SSP):
                 print(e)
 
 
-def plot_world_by_products(dataframe, products, column, year, SSP):
+def plot_world_by_products(dataframe, products, column, year, SSP, title):
     """
     For each SSP, plots all relevant products
     :param SSP: the SSP scenario for the plot
@@ -131,12 +131,14 @@ def plot_world_by_products(dataframe, products, column, year, SSP):
     :param dataframe: dataframe containing the data to be plotted
     :param products: the data to be plotted
     :param column: the column for which the data is to be filtered
+    :param title: the title for the plot
     :return: shows the relevant plot
     """
     for j in year:
         for k in SSP:
             try:
                 counter = 0
+                units = "N/A"
                 # get plot information
                 axs, cmap, fig, im, ncol, normalizer, nrow = create_subplots(
                     dataframe=dataframe,
@@ -144,7 +146,8 @@ def plot_world_by_products(dataframe, products, column, year, SSP):
                     products=products,
                     year=[j],
                     SSP=[k],
-                    product_column=column)
+                    product_column=column,
+                    title=title)
 
                 # iterate through all subplots
                 for i in products:
@@ -189,7 +192,7 @@ def axs_params(ax, plot_title):
     ax.spines['left'].set_visible(False)
 
 
-def plot_world_by_years(dataframe, products, column, year, SSP):
+def plot_world_by_years(dataframe, products, column, year, SSP, title):
     """
     For each SSP, plots all relevant products
     :param SSP: the SSP scenario for the plot
@@ -197,12 +200,14 @@ def plot_world_by_years(dataframe, products, column, year, SSP):
     :param dataframe: dataframe containing the data to be plotted
     :param products: the data to be plotted
     :param column: the column for which the data is to be filtered
+    :param title: the title for the plot
     :return: shows the relevant plot
     """
     for k in SSP:
         for i in products:
             try:
                 counter = 0
+                units = "N/A"
                 # get plot information
                 axs, cmap, fig, im, ncol, normalizer, nrow = create_subplots(
                     dataframe=dataframe,
@@ -210,7 +215,8 @@ def plot_world_by_years(dataframe, products, column, year, SSP):
                     products=[i],
                     year=year,
                     SSP=[k],
-                    product_column=column)
+                    product_column=column,
+                    title=title)
 
                 # iterate through all subplots
                 for j in year:
@@ -258,7 +264,7 @@ def get_df_to_plot(dataframe, ncol, nrow, fig, axs, cmap, normalizer, counter, c
     :param subplot_title: the title for the subplot
     :return: unit label for the subplot
     """
-    filter_data = dataframe[dataframe[column].str.contains("|".join(products))]
+    filter_data = dataframe[dataframe[[column]].isin([products]).any(axis=1)]
     filter_data = filter_data[filter_data[['SSP']].isin([SSPs]).any(axis=1)]
     # if there is no data in the filter data, delete all following axis
     if filter_data.empty:
@@ -328,7 +334,7 @@ def plot_world_on_axs(map_plot, axs, cmap, counter, plot_title, plotting_column,
         axs_params(axs[int(counter / ncol), int(counter % ncol)], plot_title)
 
 
-def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_column):
+def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_column, title):
     """
     Creates the boilerplate subplots and colorbars
     :param inner_loop_set: the list of products being iterated over for the different subplots
@@ -337,21 +343,28 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     :param dataframe: the dataframe being evaluated
     :param products: the list of products being evaluated
     :param year: the year in which the data is plotted
+    :param title: the title of the plot
     :return: a set of figure objects
     """
     # at this stage, if this df is empty, then we know that there is no material to plot
-    df = dataframe[(dataframe[product_column].str.contains("|".join(products))) & (dataframe['SSP'].str.contains("|".join(SSP)))]
+    df = dataframe[
+        (dataframe[product_column].str.contains("|".join(products))) & (dataframe['SSP'].str.contains("|".join(SSP)))]
 
     # remove the global entry for regional plotting
     df = df.drop(df[df['GCAM'] == "Global"].index)
 
+    # residual data cleaning
     if df.empty:
         raise ValueError("These products" + str(products) + "do not exist in this dataframe")
+    df.replace([np.inf, -np.inf], np.nan, inplace=True)
 
+    # get subplot size
     nrow, ncol = get_subplot_dimensions(inner_loop_set)
+
+    # make plots and color scheme
     fig, axs = plt.subplots(nrow, ncol, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
     cmap = plt.colormaps.get_cmap('viridis')
-    df.replace([np.inf, -np.inf], np.nan, inplace=True)
+    fig.suptitle(title)
     normalizer = Normalize(min(df[str(i)].min() for i in year), max(df[str(i)].max() for i in year))
     im = cm.ScalarMappable(norm=normalizer, cmap=cmap)
     return axs, cmap, fig, im, ncol, normalizer, nrow
@@ -373,7 +386,7 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow):
         fig.delaxes(axs[int((datalength + i) / ncol), int((datalength + i) % ncol)])
     if nrow * ncol > datalength:
         axins1 = inset_axes(
-            axs[int((datalength) / ncol), int((datalength) % ncol)],
+            axs[int(datalength / ncol), int(datalength % ncol)],
             width="100%",  # width: 50% of parent_bbox width
             height="10%",  # height: 5%
             loc="center",
@@ -399,7 +412,7 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow):
     plt.show()
 
 
-def plot_line(dataframe, products, SSPS, groupby, column, differentiator):
+def plot_line(dataframe, products, SSPS, groupby, column, differentiator, title):
     """
     Control function for plotting line graphs
     :param dataframe: the line graph being plotted
@@ -408,17 +421,28 @@ def plot_line(dataframe, products, SSPS, groupby, column, differentiator):
     :param groupby: how the subplots should be grouped
     :param column: the column on which the products differentiate
     :param differentiator: a secondary column by which the products may further be differentiated
+    :param title: the title of the plot
     :return: N/A
     """
     if groupby == "SSP":
-        plot_line_by_SSP(dataframe, products, column, SSPS, differentiator)
+        plot_line_by_SSP(dataframe, products, column, SSPS, differentiator, title)
     elif groupby == "product":
-        plot_line_by_product(dataframe, products, column, SSPS, differentiator)
+        plot_line_by_product(dataframe, products, column, SSPS, differentiator, title)
     else:
         raise ValueError("only 'SSP', 'product', and 'year' are considered valid groupings at this time")
 
 
-def plot_line_by_SSP(dataframe, products, column, SSP, differentiator):
+def plot_line_by_SSP(dataframe, products, column, SSP, differentiator, title):
+    """
+    plots a line graph with different subplot for each SSP
+    :param dataframe: the dataframe with data to be plotted
+    :param products: the list of products to be plotted
+    :param column: the column i nthe dataframe in which the products can be found
+    :param SSP: the SSP scenario
+    :param differentiator: the column containing unique model names
+    :param title: the title of hte plot
+    :return: N/A
+    """
     try:
         # get plot information
         axs, cmap, fig, im, ncol, normalizer, nrow = create_subplots(
@@ -427,7 +451,8 @@ def plot_line_by_SSP(dataframe, products, column, SSP, differentiator):
             products=products,
             year=c.GCAMConstants.plotting_x,
             SSP=SSP,
-            product_column=column)
+            product_column=column,
+            title=title)
 
         # find the number of model versions
         # get color scheme based on number of model versions
@@ -455,7 +480,8 @@ def plot_line_by_SSP(dataframe, products, column, SSP, differentiator):
 
                         # get line of data to plot and plot it
                         df = y[y[differentiator] == j]
-                        y_to_plot = df.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(c.GCAMConstants.plotting_x)]  # only take the x values
+                        y_to_plot = df.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
+                            c.GCAMConstants.plotting_x)]  # only take the x values
                         plot_line_on_axs(
                             x=c.GCAMConstants.plotting_x,
                             y=y_to_plot,
@@ -469,6 +495,7 @@ def plot_line_by_SSP(dataframe, products, column, SSP, differentiator):
                     # get units
                     units = y['Units'].unique()[0]
                     color_counter = color_counter + 1
+
             l, h = finalize_line_subplot(axs, units, str(i), ncol, nrow, counter)
 
             counter = counter + 1
@@ -515,7 +542,7 @@ def plot_line_on_axs(x, y, lab, color, axs, nrow, ncol, counter):
     :param x: x values for the plot
     :param y: y values for the plot
     :param lab: label for the line
-    :param color: the line color
+    :param color: the color of the line
     :param axs: the axis being plotted on
     :param nrow: the number of rows of axes
     :param ncol: the number of columns of axes
@@ -565,7 +592,7 @@ def finalize_line_subplot(axs, ylabel, title, ncol, nrow, counter):
     return labels, handles
 
 
-def plot_line_by_product(dataframe, products, column, SSP, differentiator):
+def plot_line_by_product(dataframe, products, column, SSP, differentiator, title):
     """
     Plots a line grouped by product
     :param dataframe: the data being plotted
@@ -573,6 +600,7 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator):
     :param column: the column by which the products can be differentiated
     :param SSP: the SSPs being plotted
     :param differentiator: a secondary column to differentiate the products
+    :param title: the title of the plot
     :return: N/A
     """
     # get plot information
@@ -582,7 +610,8 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator):
         products=SSP,
         year=c.GCAMConstants.plotting_x,
         SSP=SSP,
-        product_column='SSP')
+        product_column='SSP',
+        title=title)
 
     # find the number of model versions
     # get color scheme based on number of model versions
@@ -611,7 +640,8 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator):
 
                         # get line of data to plot and plot it
                         df = y[y[differentiator] == j]
-                        y_to_plot = df.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years+len(c.GCAMConstants.plotting_x)]  # only take the x values
+                        y_to_plot = df.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
+                            c.GCAMConstants.plotting_x)]  # only take the x values
                         plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, lab, color, axs, nrow, ncol, counter)
 
                     # get units
@@ -690,7 +720,7 @@ def plot_price_coefficients(pyrolysis_res, released_res, title):
     :param title: title of the plot
     :return: N/A
     """
-    #merge dataframe for comparisons
+    # merge dataframe for comparisons
     res = pd.merge(released_res, pyrolysis_res, on="GCAM", how='left', suffixes=("_left", "_right"))
     conditions = [((res['pvalue_left'] < 0.05) & (res['pvalue_right'] < 0.05)),
                   ((res['pvalue_left'] >= 0.05) & (res['pvalue_right'] < 0.05)),
@@ -703,13 +733,14 @@ def plot_price_coefficients(pyrolysis_res, released_res, title):
     fig, ax = plt.subplots()
 
     # calculate statistics for labels
-    boot_data = (res["coef_right"], res["coef_left"]) # pyrolysis minus released coefficients
+    boot_data = (res["coef_right"], res["coef_left"])  # pyrolysis minus released coefficients
     # print(boot_data)
-    boot = bootstrap(boot_data, statistic=wrapped_ttest_rel, paired=True, random_state=42, vectorized=False, confidence_level=0.95)
+    boot = bootstrap(boot_data, statistic=wrapped_ttest_rel, paired=True, random_state=42, vectorized=False,
+                     confidence_level=0.95)
     # print(boot)
     pearson = pearsonr(res["coef_right"], res["coef_left"])[0]
 
-    #if the confidence interval includes 0,
+    # if the confidence interval includes 0,
     if boot.confidence_interval[0] < 0 < boot.confidence_interval[1]:
         CI_include_zero = ""
     else:
@@ -727,14 +758,16 @@ def plot_price_coefficients(pyrolysis_res, released_res, title):
             color = '#440154'
         ax.scatter(group["coef_left"], group["coef_right"], c=color, label=name)
 
-    #show plot
-    ax.axline((0,0), slope=1, color='red', label="Pearson R: " + "{:.4f}".format(pearson) + " \nCI does " + CI_include_zero + "include zero")
+    # show plot
+    ax.axline((0, 0), slope=1, color='red',
+              label="Pearson R: " + "{:.4f}".format(pearson) + " \nCI does " + CI_include_zero + "include zero")
     ax.legend()
     ax.set_aspect('equal')
     ax.set_xlabel("released coefficient")
     ax.set_ylabel("pyrolysis coefficient")
     ax.set_title(title)
     plt.show()
+
 
 def wrapped_ttest_rel(a, b):
     """
@@ -743,7 +776,7 @@ def wrapped_ttest_rel(a, b):
     :param b: second data set
     :return: test statistic
     """
-    return ttest_rel(a,b)[0]
+    return ttest_rel(a, b)[0]
 
 
 def plot_stacked_bar_year(df, years, SSP, column, top_n):
@@ -757,7 +790,7 @@ def plot_stacked_bar_year(df, years, SSP, column, top_n):
     :return: N/A
     """
     try:
-        #get subplot information
+        # get subplot information
         nrow, ncol = get_subplot_dimensions(SSP)
         fig, axs = plt.subplots(nrow, ncol, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
         counter = 0
@@ -766,17 +799,17 @@ def plot_stacked_bar_year(df, years, SSP, column, top_n):
         color_counter = 0
 
         for i in SSP:
-            #get only data for this SSP
+            # get only data for this SSP
             plot_df = df[df[['SSP']].isin([i]).any(axis=1)]
 
-            #make the dataframe index the sector
+            # make the dataframe index the sector
             plot_df = plot_df.set_index(column)
 
             # move all sectors that don't have a change of at least 5% of the total in any year to "other" sector
             key_sectors = []
             for k in years:
                 s = plot_df[str(k)]
-                s = s.where(abs(s) > sum(abs(s))*top_n/100).dropna()
+                s = s.where(abs(s) > sum(abs(s)) * top_n / 100).dropna()
                 if not s.empty:
                     key_sectors.extend(s.index.values.tolist())
 
@@ -786,13 +819,13 @@ def plot_stacked_bar_year(df, years, SSP, column, top_n):
             # get unique key sectors
             key_sectors = list(set(key_sectors))
             plot_df[column] = plot_df.apply(lambda row: label_other(row, column, key_sectors), axis=1)
-            #merge other sectors into other category
+            # merge other sectors into other category
             plot_df = data_manipulation.group(plot_df, column)
 
-            #make the dataframe index the sector
+            # make the dataframe index the sector
             plot_df = plot_df.set_index(column)
 
-            #keep only info for the particular set of plotting years
+            # keep only info for the particular set of plotting years
             plot_df = plot_df[[str(j) for j in years if str(j) in plot_df.columns]]
             plot_df = plot_df.transpose()
 
@@ -804,7 +837,7 @@ def plot_stacked_bar_year(df, years, SSP, column, top_n):
                         category_colors[k] = colors[color_counter]
                         color_counter = color_counter + 1
 
-                #TODO: why heights of different graphs not adding up in SSP4, move legend to bottom right graph
+                # TODO: why heights of different graphs not adding up in SSP4, move legend to bottom right graph
                 c = []
                 for k in plot_df.columns:
                     c.append(category_colors[k])
@@ -834,38 +867,37 @@ def plot_stacked_bar_SSP(df, year, SSP, column, top_n, RCP):
     :return: N/A
     """
     try:
-        #get subplot information
+        # get subplot information
         nrow, ncol = get_subplot_dimensions([year])
         fig, axs = plt.subplots(nrow, ncol, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
-        counter = 0
         colors, num_colors = get_colors(2)
         category_colors = {'other': colors[19]}
         color_counter = 0
 
         key_sectors = []
         for i in SSP:
-            #get only data for this SSP
+            # get only data for this SSP
             plot_df = df[df[['SSP']].isin([i]).any(axis=1)]
 
-            #make the dataframe index the sector
+            # make the dataframe index the sector
             plot_df = plot_df.set_index(column)
 
             # move all sectors that don't have a change of at least 5% of the total in any year to "other" sector
             s = plot_df[str(year)]
-            s = s.where(abs(s) > sum(abs(s))*top_n/100).dropna()
+            s = s.where(abs(s) > sum(abs(s)) * top_n / 100).dropna()
             if not s.empty:
                 key_sectors.extend(s.index.values.tolist())
 
         # get unique key sectors
         key_sectors = list(set(key_sectors))
         df[column] = df.apply(lambda row: label_other(row, column, key_sectors), axis=1)
-        #merge other sectors into other category
+        # merge other sectors into other category
         plot_df = data_manipulation.group(df, [column, "SSP"])
 
-        #make the dataframe index the sector
+        # make the dataframe index the sector
         plot_df = plot_df.set_index(column)
 
-        #keep only info for the particular set of plotting year and SSPs
+        # keep only info for the particular set of plotting year and SSPs
         plot_df = plot_df[[str(year), "SSP"]]
         plot_df['index'] = plot_df.index
         plot_df = plot_df.pivot(index='SSP', columns='index', values=str(year))
@@ -895,6 +927,8 @@ def label_other(row, column, products):
     """
     identifies the year of maximum disruption
     :param row: a pd Series from a dataframe
+    :param column: the column of the pd series being searched
+    :param products: the list of products being analyzed
     :return: the index of the maximum disruption value
     """
     if row[column] in products:
@@ -913,7 +947,7 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title):
     :param title: title of graph
     :return: N/A
     """
-    #get colors
+    # get colors
     colors, divisions = get_colors(1)
 
     # plot for each SSP

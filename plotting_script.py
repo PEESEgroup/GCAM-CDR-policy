@@ -18,12 +18,12 @@ def food(nonBaselineScenario, RCP, SSP):
     released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/supply_of_all_markets.csv")
     pyrolysis_supply = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")
-    products = ["Beef", "Pork", "Dairy", "Poultry"] #TODO add sheep goat
+    products = ["Beef", "Pork", "Dairy", "Poultry", "SheepGoat"]
     released_supply = released_supply[released_supply[['product']].isin(products).any(axis=1)]
     pyrolysis_supply = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)]
     perc_diff = data_manipulation.percent_difference(released_supply, pyrolysis_supply, ["SSP", "product", "GCAM"])
     for i in SSP:
-        plotting.plot_world(perc_diff, products, [i], "product", "product", [2050])
+        plotting.plot_world(perc_diff, products, [i], "product", "product", [2050], "Percent difference in size of livestock markets in 2050")
     # livestock systems
     feed_released = pd.read_csv("data/gcam_out/released/" + RCP + "/feed_consumption_by_meat_and_dairy_tech.csv")
     feed_pyrolysis = pd.read_csv(
