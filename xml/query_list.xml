@@ -232,7 +232,7 @@
             <comments/>
         </costCurveQuery>
 </aQuery>
-<aQuery>
+    <aQuery>
     <region name="USA"/>
     <supplyDemandQuery title="refined liquids costs by tech">
         <axis1 name="technology">technology</axis1>
@@ -487,6 +487,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "USA"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "USA"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Africa_Eastern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -742,6 +762,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Africa_Eastern"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Africa_Eastern"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Africa_Northern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -997,6 +1037,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Africa_Northern"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Africa_Northern"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Africa_Southern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1252,6 +1312,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Africa_Southern"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Africa_Southern"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Africa_Western"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1507,6 +1587,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Africa_Western"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Africa_Western"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Australia_NZ"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -1762,6 +1862,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Australia_NZ"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Australia_NZ"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Brazil"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2017,6 +2137,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Brazil"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Brazil"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Canada"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2272,6 +2412,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Canada"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Canada"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Central America and Caribbean"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2527,6 +2687,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Central America and Caribbean"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Central America and Caribbean"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Central Asia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -2782,6 +2962,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Central Asia"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Central Asia"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="China"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3037,6 +3237,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "China"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "China"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="EU-12"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3292,6 +3512,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "EU-12"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "EU-12"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="EU-15"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3547,6 +3787,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "EU-15"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "EU-15"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Europe_Eastern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -3802,6 +4062,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Europe_Eastern"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Europe_Eastern"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Europe_Non_EU"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -4057,6 +4337,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Europe_Non_EU"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Europe_Non_EU"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="European Free Trade Association"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -4312,6 +4612,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "European Free Trade Association"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "European Free Trade Association"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="India"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -4567,6 +4887,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "India"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "India"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Indonesia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -4822,6 +5162,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Indonesia"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Indonesia"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Japan"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -5077,6 +5437,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Japan"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Japan"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Mexico"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -5332,6 +5712,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Mexico"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Mexico"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Middle East"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -5587,6 +5987,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Middle East"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Middle East"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Pakistan"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -5842,6 +6262,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Pakistan"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Pakistan"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Russia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -6097,6 +6537,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Russia"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Russia"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="South Africa"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -6352,6 +6812,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "South Africa"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "South Africa"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="South America_Northern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -6607,6 +7087,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "South America_Northern"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "South America_Northern"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="South America_Southern"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -6862,6 +7362,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "South America_Southern"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "South America_Southern"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="South Asia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -7117,6 +7637,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "South Asia"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "South Asia"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="South Korea"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -7372,6 +7912,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "South Korea"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "South Korea"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Southeast Asia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -7627,6 +8187,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Southeast Asia"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Southeast Asia"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Taiwan"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -7882,6 +8462,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Taiwan"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Taiwan"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Argentina"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -8137,6 +8737,26 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Argentina"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Argentina"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery><aQuery>
     <region name="Colombia"/>
     <supplyDemandQuery title="refined liquids costs by tech">
@@ -8392,5 +9012,25 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name = "Colombia"/>
+        <demographicsQuery title="population by region">
+            <axis1 name="region">region</axis1>
+            <axis2 name="Year">populationMiniCAM</axis2>
+            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+            <comments/>
+        </demographicsQuery>
+</aQuery>
+<aQuery>
+    <region name = "Colombia"/>
+        <supplyDemandQuery title="food consumption by type (specific)">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">physical-output[@vintage]</axis2>
+                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+            *[@type='subsector']//*[@type='technology']/
+            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+                <comments/>
+        </supplyDemandQuery>
 </aQuery>
 </queries>

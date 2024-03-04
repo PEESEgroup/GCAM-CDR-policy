@@ -4,15 +4,16 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names
     #  are the ones you want to process data for
-    version = [["pyrolysis", "4p5"], ["released", "4p5"], ["pyrolysis", "6p0"], ["released", "6p0"]]
-    GCAMDB_filenames = ["data/gcam_out/pyrolysis/4p5/ref.csv", "data/gcam_out/released/4p5/ref.csv", "data/gcam_out/pyrolysis/6p0/ref.csv", "data/gcam_out/released/6p0/ref.csv"]
+    version = [["pyrolysis", "4p5"], ["released", "4p5"]] #TODO: updated data is grabbed for 4p5 only
+    GCAMDB_filenames = ["data/gcam_out/pyrolysis/4p5/ref.csv", "data/gcam_out/released/4p5/ref.csv"]
 
     # TODO: ensure this list of products contains all products that we are interested in.
     #  More can be added to the list, but must reference the product name in GCAM
-    products = ["beef manure", "dairy manure", "poultry manure", "pork manure", "goat manure", "manure fuel feedstock", "manure fuel",
-                "beef_biochar", "dairy_biochar", "poultry_biochar", "pork_biochar", "goat_biochar", "Beef", "Dairy", "Pork", "Poultry", "SheepGoat"
-                "regional beef", "regional dairy", "regional pork", "regional poultry", "regional sheepgoat", "N fertilizer", "refined liquids enduse", "CO2_LUC", "CO2_NearTerm", "CO2",
-                "crude oil", "electricity", "natural gas"]
+    products = ["beef manure", "dairy manure", "poultry manure", "pork manure", "goat manure", "manure fuel feedstock",
+                "manure fuel", "beef_biochar", "dairy_biochar", "poultry_biochar", "pork_biochar", "goat_biochar",
+                "Beef", "Dairy", "Pork", "Poultry", "SheepGoat", "regional beef", "regional dairy", "regional pork",
+                "regional poultry", "regional sheepgoat", "N fertilizer", "refined liquids enduse", "CO2_LUC",
+                "CO2_NearTerm", "CO2", "crude oil", "electricity", "natural gas"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>
