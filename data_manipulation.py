@@ -67,7 +67,7 @@ def group(df, columns):
     :param columns: the list of columns used to form a group
     :return: a dataframe with grouped entries
     """
-    unit = df['Units'][0]
+    unit = df['Units'].unique()[0]
     df = df.groupby(columns).sum()
     df = df.reset_index()
     df['Units'] = unit

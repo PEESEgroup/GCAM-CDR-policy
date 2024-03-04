@@ -669,9 +669,15 @@ def get_colors(num_versions):
     elif num_versions == 2:
         cmap = matplotlib.colormaps.get_cmap('tab20')
         num_sub_colors = 2
-    else:
+    elif num_versions == 4:
         cmap = matplotlib.colormaps.get_cmap('tab20b')
         num_sub_colors = 4
+    else:
+        return ["#1F78C8", "#ff0000", "#33a02c", "#6A33C2", "#ff7f00", "#565656",
+                "#FFD700", "#a6cee3", "#FB6496", "#b2df8a", "#CAB2D6", "#FDBF6F",
+                "#999999", "#EEE685", "#C8308C", "#FF83FA", "#C814FA", "#0000FF",
+                "#36648B", "#00E2E5", "#00FF00", "#778B00", "#BEBE00", "#8B3B00",
+                "#A52A3C"], 25
     return [matplotlib.colors.rgb2hex(c) for c in cmap.colors], num_sub_colors
 
 
@@ -938,36 +944,36 @@ def label_other(row, column, products):
         return "other"
 
 
-def plot_regional_vertical(dataframe, year, SSPs, y_label, title):
+def plot_regional_vertical(dataframe, year, SSPs, y_label, title, column):
     """
     Plots regional data in a categorical scatterplot
     :param dataframe: data being plotted
-    :param year: evaluation year
+    :param year: evaluation column
     :param SSPs: SSPs being evaluated
     :param y_label: ylabel for graph
     :param title: title of graph
+    :param column: column used to identify unique categories
     :return: N/A
     """
     # get colors
-    colors, divisions = get_colors(1)
+    colors, divisions = get_colors(len(dataframe[column].unique()))
 
     # plot for each SSP
     for i in SSPs:
-        df = dataframe[dataframe['SSP'].str.contains(i)]
+        dataframe = dataframe[dataframe['SSP'].str.contains(i)]
+        for idx, item in enumerate(dataframe[column].unique()):
+            df = dataframe.loc[dataframe[column] == str(item)]
+            # scatter points
+            plt.scatter(x=df["GCAM"], y=df[str(year)], color=colors[idx], label=str(item))
 
-        # scatter points
-        plt.scatter(x=df["GCAM"], y=df[str(year)], color=colors[int(i[3])], label=str(i))
+            # plot averages
+            # plt.axhline(y=df[str(year)].mean(), color=colors[idx], linestyle='dashed', label=str(item) + " average")
 
-        #plot averages
-        plt.axhline(y=df[str(year)].mean(), color=colors[int(i[3])], linestyle='dashed', label=str(i) + " average")
-
-    # plot baseline
-    plt.scatter(x=df["GCAM"], y=df["2010"], color="black", label="2010 baseline")
-    plt.axhline(y=df["2010"].mean(), color="black", linestyle='dashed', label=str(i) + " average")
-
-    # finalize plot
-    plt.ylabel(y_label)
-    plt.xlabel("Region")
-    plt.title(title)
-    plt.legend()
-    plt.show()
+        # finalize plot
+        plt.ylabel(y_label)
+        plt.xlabel("Region")
+        plt.xticks(rotation=60, ha='right')
+        plt.title(title)
+        plt.legend(bbox_to_anchor=(1,1))
+        plt.subplots_adjust(bottom=0.4, right = .7)
+        plt.show()
