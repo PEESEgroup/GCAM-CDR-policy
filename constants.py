@@ -17,8 +17,8 @@ class GCAMConstants:
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>
     XML_DB_loc = "../gcam-sandbox/output/database_basexdb-"
-    unprocessed_map_loc = "data/maps/WB_countries_Admin0_10m/WB_countries_Admin0_10m.shp"
-    processed_map_loc = "data/maps/world_map.shp"
+    unprocessed_map_loc = "data/maps/world_countries_2020.shp"
+    processed_map_loc = "data/maps/simplified_world_map.shp"
 
     combines_csv_fnames = ["refined liquids costs by tech", "refined liquids production by tech (new)", "refined liquids production by tech"]
 
@@ -36,7 +36,7 @@ class GCAMConstants:
                     "2060", "2065", "2070", "2075", "2080", "2085", "2090", "2095", "2100", 'SSP', 'Version',
                     "GCAM", "sector", "subsector", "technology", "output", "concentration", "input", "product",
                     "LandLeaf", "GHG", "Units"]
-    world_columns = ['Shape_Leng', "Shape_Area", 'geometry', 'GCAM']
+    world_columns = ['OBJECTID', 'geometry', 'GCAM']
     x = [1990, 2005, 2010, 2015, 2020, 2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
     plotting_x = [2025, 2030, 2035, 2040, 2045, 2050]
     future_x = [2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
