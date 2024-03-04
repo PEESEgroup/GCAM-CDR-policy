@@ -17,7 +17,6 @@ class GCAMConstants:
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>
     XML_DB_loc = "../gcam-sandbox/output/database_basexdb-"
-    unprocessed_map_loc = "data/maps/world_countries_2020.shp"
     processed_map_loc = "data/maps/simplified_world_map.shp"
 
     combines_csv_fnames = ["refined liquids costs by tech", "refined liquids production by tech (new)", "refined liquids production by tech"]
