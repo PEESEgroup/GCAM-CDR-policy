@@ -124,14 +124,17 @@ def food(nonBaselineScenario, RCP, SSP):
     pyrolysis_per_capita_kcal = pyrolysis_per_capita_kcal[pyrolysis_per_capita_kcal[['GCAM']].isin(regions).any(axis=1)]
     flat_diff_cap_kcal = flat_diff_cap_kcal[flat_diff_cap_kcal[['GCAM']].isin(regions).any(axis=1)]
 
-    # plot data
-    plotting.plot_regional_vertical(released_per_capita_kcal, 2050, SSP, "1000 kcal/person/day", "Released " + str(RCP))
-    plotting.plot_regional_vertical(pyrolysis_per_capita_kcal, 2050, SSP, "1000 kcal/person/day",
-                                    "Pyrolysis " + str(RCP))
-    plotting.plot_regional_vertical(flat_diff_cap_kcal, 2050, SSP, "change in food demand in kcal/person/day",
-                                    "change in food demand in SSP: " + str(SSP) + " and RCP: " + str(RCP))
+    # TODO: get population data
+    # TODO: convert Pcal to kcal/capita/day
+    # TODO: verify food consumption values through comparison to food demand figures
 
-    # Staple expenditure as percentage of average income5 – food demand prices and GDP per capita PPP by region
+    #TODO: get list of relevant food products
+
+    # plot data
+    plotting.plot_regional_vertical(flat_diff_cap_kcal, 2050, SSP, "change in food demand in kcal/person/day",
+                                    "change in food demand in SSP: " + str(SSP) + " and RCP: " + str(RCP))  # TODO: include scatter and averages for each product we are interested in; include overall averages too???
+
+    # Staple expenditure as percentage of average income – food demand prices and GDP per capita PPP by region
     #get data
     released_staple_expenditure = pd.read_csv(
         "data/gcam_out/released/" + RCP + "/food_demand_prices.csv")
