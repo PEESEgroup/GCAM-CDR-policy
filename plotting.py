@@ -1,4 +1,5 @@
 import geopandas as gpd
+import matplotlib.pyplot as plt
 import pandas as pd
 import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
@@ -953,10 +954,16 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title):
     # plot for each SSP
     for i in SSPs:
         df = dataframe[dataframe['SSP'].str.contains(i)]
+
+        # scatter points
         plt.scatter(x=df["GCAM"], y=df[str(year)], color=colors[int(i[3])], label=str(i))
+
+        #plot averages
+        plt.axhline(y=df[str(year)].mean(), color=colors[int(i[3])], linestyle='dashed', label=str(i) + " average")
 
     # plot baseline
     plt.scatter(x=df["GCAM"], y=df["2010"], color="black", label="2010 baseline")
+    plt.axhline(y=df["2010"].mean(), color="black", linestyle='dashed', label=str(i) + " average")
 
     # finalize plot
     plt.ylabel(y_label)
