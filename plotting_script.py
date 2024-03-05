@@ -105,62 +105,62 @@ def food(nonBaselineScenario, RCP, SSP):
     #         plotting.plot_price_coefficients(pyrolysis_res, released_res,
     #                                          "price coefficients for " + products + " and " + energy + " in " + SSP[0])
 
-    # regional averaged per capita food available for consumption – food demand per capita
-    # get data
-    released_per_capita_kcal = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_demand_per_capita.csv")
-    pyrolysis_per_capita_kcal = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_demand_per_capita.csv")
-    released_per_capita_kcal = released_per_capita_kcal[released_per_capita_kcal[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_per_capita_kcal = pyrolysis_per_capita_kcal[pyrolysis_per_capita_kcal[['SSP']].isin(SSP).any(axis=1)]
-    released_per_capita_kcal.reset_index(drop=True)
-    pyrolysis_per_capita_kcal.reset_index(drop=True)
-
-    # cumulative diet change analysis
-    regions = c.GCAMConstants.GCAM_region
-    flat_diff_cap_kcal = data_manipulation.flat_difference(released_per_capita_kcal, pyrolysis_per_capita_kcal, ["SSP", "GCAM", "input"])
-    flat_diff_cap_kcal = flat_diff_cap_kcal.dropna(axis = 0)
-    flat_diff_cap_kcal = flat_diff_cap_kcal[flat_diff_cap_kcal[['GCAM']].isin(regions).any(axis=1)]
-    plotting.plot_regional_vertical(flat_diff_cap_kcal, 2050, SSP, "change in food demand (kcal/person/day)",
-                                    "change in food demand in " + str(SSP[0]) + " and RCP: " + str(RCP), column="input")
-
-    # regional averaged food consumption by food type
-    # convert Pcal to kcal/capita/day
-    # get population data
-    released_pop = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/population_by_region.csv")
-    pyrolysis_pop = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/population_by_region.csv")
-    released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_pop = pyrolysis_pop[pyrolysis_pop[['SSP']].isin(SSP).any(axis=1)]
-
-    # get Pcal data
-    released_Pcal = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
-    pyrolysis_Pcal = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_consumption_by_type_specific.csv")
-    released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
-    released_Pcal = data_manipulation.group(released_Pcal, ["GCAM", "SSP", "technology"])
-    pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["GCAM", "SSP", "technology"])
-
-    released_pcal_pop = pd.merge(released_Pcal, released_pop, how="inner", on=["SSP", "GCAM"], suffixes=("_pcal", "_pop"))
-    pyrolysis_pcal_pop = pd.merge(pyrolysis_Pcal, pyrolysis_pop, how="inner", on=["SSP", "GCAM"], suffixes=("_pcal", "_pop"))
-
-    # calculate pcal per capita in 2050
-    released_pcal_pop["pcal_capita_2050"] = released_pcal_pop["2050_pcal"]/(1000*released_pcal_pop["2050_pop"])*1000000000000/365/2  #* peta to kilo/365/conversion factor of 2 randomly
-    pyrolysis_pcal_pop["pcal_capita_2050"] = pyrolysis_pcal_pop["2050_pcal"] / (1000*pyrolysis_pcal_pop["2050_pop"])*1000000000000/365/2
-    released_pcal_pop["Units"] = "kcal/capita/day"
-    pyrolysis_pcal_pop["Units"] = "kcal/capita/day"
-
-    merged_pcal = released_pcal_pop.merge(pyrolysis_pcal_pop, how="inner", on=["SSP", "GCAM", "technology_pcal"], suffixes=("_left", "_right"))
-    merged_pcal["pcal_capita_2050"] = merged_pcal["pcal_capita_2050" + "_right"] - merged_pcal["pcal_capita_2050" + "_left"]
-
-    #take the userful columns
-    foodstuffs = []
-
-    plotting.plot_regional_vertical(merged_pcal, "pcal_capita_2050", SSP, "change in food demand in kcal/person/day",
-                                    "change in food demand in " + str(SSP[0]) + " and RCP " + str(RCP), column="technology_pcal")
+    # # regional averaged per capita food available for consumption – food demand per capita
+    # # get data
+    # released_per_capita_kcal = pd.read_csv(
+    #     "data/gcam_out/released/" + RCP + "/food_demand_per_capita.csv")
+    # pyrolysis_per_capita_kcal = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_demand_per_capita.csv")
+    # released_per_capita_kcal = released_per_capita_kcal[released_per_capita_kcal[['SSP']].isin(SSP).any(axis=1)]
+    # pyrolysis_per_capita_kcal = pyrolysis_per_capita_kcal[pyrolysis_per_capita_kcal[['SSP']].isin(SSP).any(axis=1)]
+    # released_per_capita_kcal.reset_index(drop=True)
+    # pyrolysis_per_capita_kcal.reset_index(drop=True)
+    #
+    # # cumulative diet change analysis
+    # regions = c.GCAMConstants.GCAM_region
+    # flat_diff_cap_kcal = data_manipulation.flat_difference(released_per_capita_kcal, pyrolysis_per_capita_kcal, ["SSP", "GCAM", "input"])
+    # flat_diff_cap_kcal = flat_diff_cap_kcal.dropna(axis = 0)
+    # flat_diff_cap_kcal = flat_diff_cap_kcal[flat_diff_cap_kcal[['GCAM']].isin(regions).any(axis=1)]
+    # plotting.plot_regional_vertical(flat_diff_cap_kcal, 2050, SSP, "change in food demand (kcal/person/day)",
+    #                                 "change in food demand in " + str(SSP[0]) + " and RCP: " + str(RCP), column="input")
+    #
+    # # regional averaged food consumption by food type
+    # # convert Pcal to kcal/capita/day
+    # # get population data
+    # released_pop = pd.read_csv(
+    #     "data/gcam_out/released/" + RCP + "/population_by_region.csv")
+    # pyrolysis_pop = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/population_by_region.csv")
+    # released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
+    # pyrolysis_pop = pyrolysis_pop[pyrolysis_pop[['SSP']].isin(SSP).any(axis=1)]
+    #
+    # # get Pcal data
+    # released_Pcal = pd.read_csv(
+    #     "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
+    # pyrolysis_Pcal = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_consumption_by_type_specific.csv")
+    # released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
+    # pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
+    # released_Pcal = data_manipulation.group(released_Pcal, ["GCAM", "SSP", "technology"])
+    # pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["GCAM", "SSP", "technology"])
+    #
+    # released_pcal_pop = pd.merge(released_Pcal, released_pop, how="inner", on=["SSP", "GCAM"], suffixes=("_pcal", "_pop"))
+    # pyrolysis_pcal_pop = pd.merge(pyrolysis_Pcal, pyrolysis_pop, how="inner", on=["SSP", "GCAM"], suffixes=("_pcal", "_pop"))
+    #
+    # # calculate pcal per capita in 2050
+    # released_pcal_pop["pcal_capita_2050"] = released_pcal_pop["2050_pcal"]/(1000*released_pcal_pop["2050_pop"])*1000000000000/365/2  #* peta to kilo/365/conversion factor of 2 randomly
+    # pyrolysis_pcal_pop["pcal_capita_2050"] = pyrolysis_pcal_pop["2050_pcal"] / (1000*pyrolysis_pcal_pop["2050_pop"])*1000000000000/365/2
+    # released_pcal_pop["Units"] = "kcal/capita/day"
+    # pyrolysis_pcal_pop["Units"] = "kcal/capita/day"
+    #
+    # merged_pcal = released_pcal_pop.merge(pyrolysis_pcal_pop, how="inner", on=["SSP", "GCAM", "technology_pcal"], suffixes=("_left", "_right"))
+    # merged_pcal["pcal_capita_2050"] = merged_pcal["pcal_capita_2050" + "_right"] - merged_pcal["pcal_capita_2050" + "_left"]
+    #
+    # #take the userful columns
+    # foodstuffs = []
+    #
+    # plotting.plot_regional_vertical(merged_pcal, "pcal_capita_2050", SSP, "change in food demand in kcal/person/day",
+    #                                 "change in food demand in " + str(SSP[0]) + " and RCP " + str(RCP), column="technology_pcal")
 
     """
     # verify food consumption values through comparison to food demand figures - yields a factor of 2 for kcal calcs
@@ -182,67 +182,13 @@ def food(nonBaselineScenario, RCP, SSP):
         "data/gcam_out/released/" + RCP + "/food_demand_prices.csv")
     pyrolysis_staple_expenditure = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_demand_prices.csv")
-    released_income = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/GDP_per_capita_PPP_by_region.csv")
-    pyrolysis_income = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/GDP_per_capita_PPP_by_region.csv")
-
-    # only select staples
-    staples = ["FoodDemand_Staples"]
-    released_staple_expenditure = released_staple_expenditure[
-        released_staple_expenditure[['input']].isin(staples).any(axis=1)]
-    pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
-        pyrolysis_staple_expenditure[['input']].isin(staples).any(axis=1)]
-
-    # calculate portion of income spent on food staples
-    released_food_portion_income = pd.merge(released_income, released_staple_expenditure, on=["GCAM", "SSP"], how="left", suffixes=("_income", "_expenditure"))
-    pyrolysis_food_portion_income = pd.merge(pyrolysis_income, pyrolysis_staple_expenditure, on=["GCAM", "SSP"],
-                                            how="left", suffixes=("_income", "_expenditure"))
-
-    released_food_portion_income["2050a"] = 100 * (
-                released_food_portion_income["2050_expenditure"] / released_food_portion_income["2050_income"])
-    pyrolysis_food_portion_income["2050a"] = 100 * (
-            pyrolysis_food_portion_income["2050_expenditure"] / pyrolysis_food_portion_income["2050_income"])
-    released_food_portion_income["2010"] = 100 * (
-                released_food_portion_income["2010_expenditure"] / released_food_portion_income["2010_income"])
-    pyrolysis_food_portion_income["2010"] = 100 * (
-                pyrolysis_food_portion_income["2010_expenditure"] / pyrolysis_food_portion_income["2010_income"])
+    released_staple_expenditure = released_staple_expenditure[released_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
+    pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[pyrolysis_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
+    diff_food_staple_income = data_manipulation.flat_difference(released_staple_expenditure, pyrolysis_staple_expenditure, ["SSP", "GCAM", "input"])
 
     # plot results
-    plotting.plot_regional_vertical(released_food_portion_income, "2050a", SSP, "staple expenditure as percentage of income",
-                                    "Released " + str(RCP))
-    plotting.plot_regional_vertical(pyrolysis_food_portion_income, "2050a", SSP, "staple expenditure as percentage of income",
-                                    "Pyrolysis " + str(RCP))
-
-    # food prices - percentage change over 2010
-    # get data
-    released_staple_expenditure = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_demand_prices.csv")
-    pyrolysis_staple_expenditure = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_demand_prices.csv")
-
-    # select on data for food staples
-    staples = ["FoodDemand_Staples"]
-    released_staple_expenditure = released_staple_expenditure[
-        released_staple_expenditure[['input']].isin(staples).any(axis=1)]
-    pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
-        pyrolysis_staple_expenditure[['input']].isin(staples).any(axis=1)]
-
-    # calculate percentage changes in food prices
-    released_staple_expenditure["2050a"] = 100 * (
-                released_staple_expenditure["2050"] - released_staple_expenditure["2010"]) / \
-                                           released_staple_expenditure["2010"]
-    pyrolysis_staple_expenditure["2050a"] = 100 * (
-            pyrolysis_staple_expenditure["2050"] - pyrolysis_staple_expenditure["2010"]) / \
-                                            pyrolysis_staple_expenditure["2010"]
-    released_staple_expenditure["2010"] = 0
-    pyrolysis_staple_expenditure["2010"] = 0
-
-    #plot results
-    plotting.plot_regional_vertical(released_staple_expenditure, "2050a", SSP, "percent change in food prices compared to 2010",
-                                    "Released " + str(RCP))
-    plotting.plot_regional_vertical(pyrolysis_staple_expenditure, "2050a", SSP, "percent change in food prices compared to 2010",
-                                    "Pyrolysis " + str(RCP))
+    plotting.plot_regional_vertical(diff_food_staple_income, "2050", SSP, "change in food expenditure ($/Mcal/day)",
+                                    "food expenditure in 2050 in " + str(SSP[0]) + " and RCP " + str(RCP), column="input")
 
 
 def energy(nonBaselineScenario, RCP, SSP):
