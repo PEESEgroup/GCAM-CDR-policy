@@ -519,7 +519,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter):
     :return: N/A
     """
     if nrow * ncol == 1:
-        fig.legend(handles, labels, bbox_to_anchor=(0.3, 0.7), facecolor='white', framealpha=1)
+        fig.legend(handles, labels, bbox_to_anchor=(1, 1), facecolor='white', framealpha=1)
     elif nrow * ncol == 4:
         fig.legend(handles, labels, bbox_to_anchor=(0.6, 0.6), facecolor='white', framealpha=1)
     elif nrow * ncol == 6 and counter == 5:
@@ -608,10 +608,10 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
     axs, cmap, fig, im, ncol, normalizer, nrow = create_subplots(
         dataframe=dataframe,
         inner_loop_set=SSP,
-        products=SSP,
+        products=products,
         year=c.GCAMConstants.plotting_x,
         SSP=SSP,
-        product_column='SSP',
+        product_column=column,
         title=title)
 
     # find the number of model versions

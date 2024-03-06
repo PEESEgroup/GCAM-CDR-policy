@@ -185,3 +185,19 @@ def percentage_change_between_years(dataframe):
         if i != 1990 and i != 2005:
             dataframe[str(i-5) +"-" + str(i)] = 100*(dataframe[str(i)] - dataframe[str(i-5)])/(dataframe[str(i-5)])
     return dataframe
+
+def label_fuel_tech(row, column, products):
+    """
+    identifies the year of maximum disruption
+    :param row: a pd Series from a dataframe
+    :param column: the column of the pd series being searched
+    :param products: the list of suffixes to remove
+    :return: the relabeled technology
+    """
+    for i in products:
+        if i in row[column]:
+            to_return = row[column].rstrip(i)
+            if to_return == "cellulosic ethano":  # dunno why rstrip removes an extra character for cellulosic ethanol
+                return "cellulosic ethanol"
+            return to_return
+    return row[column]
