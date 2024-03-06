@@ -1,4 +1,3 @@
-import numpy as np
 import plotting
 import data_manipulation
 import constants as c
@@ -214,132 +213,116 @@ def energy(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # Changes in energy mix
-    # # refined liquids production
-    # ref_released = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
-    # ref_pyrolysis = pd.read_csv(
-    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech.csv")
-    # # relabel CCS technologies
-    # ref_released['technology'] = ref_released.apply(
-    #     lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
-    # ref_pyrolysis['technology'] = ref_pyrolysis.apply(
-    #     lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
-    #
-    # # group technologies
-    # ref_released = data_manipulation.group(ref_released, ["SSP", "GCAM", "technology"])
-    # ref_pyrolysis = data_manipulation.group(ref_pyrolysis, ["SSP", "GCAM", "technology"])
-    #
-    # # add manure fuel row to the released version so that the flat diff can be analyzed
-    # man_fuel = ref_pyrolysis.loc[ref_pyrolysis["technology"] == "manure fuel"]
-    # for i in c.GCAMConstants.plotting_x:
-    #     man_fuel.loc[:, str(i)] = 0
-    # ref_released = pd.concat([ref_released, man_fuel])
-    #
-    # # select global region
-    # ref_released_global = ref_released[ref_released[['GCAM']].isin(["Global"]).any(axis=1)]
-    # ref_pyrolysis_global = ref_pyrolysis[ref_pyrolysis[['GCAM']].isin(["Global"]).any(axis=1)]
-    # ref_released = ref_released[~ref_released[['GCAM']].isin(["Global"]).any(axis=1)]
-    # ref_pyrolysis = ref_pyrolysis[~ref_pyrolysis[['GCAM']].isin(["Global"]).any(axis=1)]
-    #
-    # # plot products
-    # products = ref_pyrolysis["technology"].unique().tolist()
-    # products = [products[i] for i in
-    #             [0, 1, 9, 3, 5, 4, 6, 8, 2, 7]]  # put manure fuel at the end so colors stay the same, reorder by type
-    # flat_diff_biofuel_global = data_manipulation.flat_difference(ref_released_global, ref_pyrolysis_global,
-    #                                                              ["SSP", "technology", "GCAM"])
-    # flat_diff_biofuel = data_manipulation.flat_difference(ref_released, ref_pyrolysis, ["SSP", "technology", "GCAM"])
-    # perc_diff_biofuel_global = data_manipulation.percent_difference(ref_released_global, ref_pyrolysis_global,
-    #                                                                 ["SSP", "technology", "GCAM"])
-    # perc_diff_biofuel = data_manipulation.percent_difference(ref_released, ref_pyrolysis, ["SSP", "technology", "GCAM"])
-    # plotting.plot_line(flat_diff_biofuel_global, products, SSP, "product", "technology", "Units",
-    #                    "change in supply of refined liquids")
-    # plotting.plot_world(flat_diff_biofuel, products, ["SSP2"], "product", "technology", ["2050"],
-    #                     "spatial distribution of change in supply of refined liquids")
-    # products.remove("manure fuel")  # can't have a percent difference with baseline of 0 EJ
-    # plotting.plot_line(perc_diff_biofuel_global, products, SSP, "product", "technology", "Units",
-    #                    "change in supply of refined liquids")
-    # plotting.plot_world(perc_diff_biofuel, products, ["SSP2"], "product", "technology", ["2050"],
-    #                     "spatial distribution of change in supply of refined liquids")
+    # refined liquids production
+    ref_released = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
+    ref_pyrolysis = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech.csv")
+    # relabel CCS technologies
+    ref_released['technology'] = ref_released.apply(
+        lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
+    ref_pyrolysis['technology'] = ref_pyrolysis.apply(
+        lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
+
+    # group technologies
+    ref_released = data_manipulation.group(ref_released, ["SSP", "GCAM", "technology"])
+    ref_pyrolysis = data_manipulation.group(ref_pyrolysis, ["SSP", "GCAM", "technology"])
+
+    # add manure fuel row to the released version so that the flat diff can be analyzed
+    man_fuel = ref_pyrolysis.loc[ref_pyrolysis["technology"] == "manure fuel"]
+    for i in c.GCAMConstants.plotting_x:
+        man_fuel.loc[:, str(i)] = 0
+    ref_released = pd.concat([ref_released, man_fuel])
+
+    # select global region
+    ref_released_global = ref_released[ref_released[['GCAM']].isin(["Global"]).any(axis=1)]
+    ref_pyrolysis_global = ref_pyrolysis[ref_pyrolysis[['GCAM']].isin(["Global"]).any(axis=1)]
+    ref_released = ref_released[~ref_released[['GCAM']].isin(["Global"]).any(axis=1)]
+    ref_pyrolysis = ref_pyrolysis[~ref_pyrolysis[['GCAM']].isin(["Global"]).any(axis=1)]
+
+    # plot products
+    products = ref_pyrolysis["technology"].unique().tolist()
+    products = [products[i] for i in
+                [0, 1, 9, 3, 5, 4, 6, 8, 2, 7]]  # put manure fuel at the end so colors stay the same, reorder by type
+    flat_diff_biofuel_global = data_manipulation.flat_difference(ref_released_global, ref_pyrolysis_global,
+                                                                 ["SSP", "technology", "GCAM"])
+    flat_diff_biofuel = data_manipulation.flat_difference(ref_released, ref_pyrolysis, ["SSP", "technology", "GCAM"])
+    perc_diff_biofuel_global = data_manipulation.percent_difference(ref_released_global, ref_pyrolysis_global,
+                                                                    ["SSP", "technology", "GCAM"])
+    perc_diff_biofuel = data_manipulation.percent_difference(ref_released, ref_pyrolysis, ["SSP", "technology", "GCAM"])
+    plotting.plot_line(flat_diff_biofuel_global, products, SSP, "product", "technology", "Units",
+                       "change in supply of refined liquids")
+    plotting.plot_world(flat_diff_biofuel, products, ["SSP2"], "product", "technology", ["2050"],
+                        "spatial distribution of change in supply of refined liquids")
+    products.remove("manure fuel")  # can't have a percent difference with baseline of 0 EJ
+    plotting.plot_line(perc_diff_biofuel_global, products, SSP, "product", "technology", "Units",
+                       "change in supply of refined liquids")
+    plotting.plot_world(perc_diff_biofuel, products, ["SSP2"], "product", "technology", ["2050"],
+                        "spatial distribution of change in supply of refined liquids")
 
     # change in cost of production of regined liquids
-    # released_cost = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_costs_by_tech.csv")
-    # pyrolysis_cost = pd.read_csv(
-    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_costs_by_tech.csv")
-    # released_cost['technology'] = released_cost.apply(
-    #     lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
-    # pyrolysis_cost['technology'] = pyrolysis_cost.apply(
-    #     lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
-    #
-    # # group technologies
-    # released_cost = data_manipulation.group(released_cost, ["SSP", "GCAM", "technology"])
-    # pyrolysis_cost = data_manipulation.group(pyrolysis_cost, ["SSP", "GCAM", "technology"])
-    #
-    # # plotting
-    # flat_diff_cost = data_manipulation.flat_difference(released_cost, pyrolysis_cost, ["SSP", "technology", "GCAM"])
-    # flat_diff_cost = flat_diff_cost[~flat_diff_cost[['GCAM']].isin(["Global"]).any(axis=1)] # remove global region
-    # products = flat_diff_cost["technology"].unique().tolist()
-    # plotting.plot_world(flat_diff_cost, products, SSP, "product", "technology", ["2050"], "change in cost of production of refined liquids")
-    # perc_diff_cost = data_manipulation.percent_difference(released_cost, pyrolysis_cost, ["SSP", "technology", "GCAM"])
-    # perc_diff_cost = perc_diff_cost[~perc_diff_cost[['GCAM']].isin(["Global"]).any(axis=1)] # remove global region
-    # products = perc_diff_cost["technology"].unique().tolist()
-    # plotting.plot_world(perc_diff_cost, products, SSP, "product", "technology", ["2050"], "change in cost of production of refined liquids")
+    released_cost = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_costs_by_tech.csv")
+    pyrolysis_cost = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_costs_by_tech.csv")
+    released_cost['technology'] = released_cost.apply(
+        lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
+    pyrolysis_cost['technology'] = pyrolysis_cost.apply(
+        lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
 
-    released_prod = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
+    # group technologies
+    released_cost = data_manipulation.group(released_cost, ["SSP", "GCAM", "technology"])
+    pyrolysis_cost = data_manipulation.group(pyrolysis_cost, ["SSP", "GCAM", "technology"])
 
-    pyrolysis_prod = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech.csv")
+    # plotting
+    flat_diff_cost = data_manipulation.flat_difference(released_cost, pyrolysis_cost, ["SSP", "technology", "GCAM"])
+    flat_diff_cost = flat_diff_cost[~flat_diff_cost[['GCAM']].isin(["Global"]).any(axis=1)] # remove global region
+    products = flat_diff_cost["technology"].unique().tolist()
+    plotting.plot_world(flat_diff_cost, products, SSP, "product", "technology", ["2050"], "change in cost of production of refined liquids")
+    perc_diff_cost = data_manipulation.percent_difference(released_cost, pyrolysis_cost, ["SSP", "technology", "GCAM"])
+    perc_diff_cost = perc_diff_cost[~perc_diff_cost[['GCAM']].isin(["Global"]).any(axis=1)] # remove global region
+    products = perc_diff_cost["technology"].unique().tolist()
+    plotting.plot_world(perc_diff_cost, products, SSP, "product", "technology", ["2050"], "change in cost of production of refined liquids")
 
+    # changes in newly installed refining capacity
     released_new = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech_new.csv")
     pyrolysis_new = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech_new.csv")
-    flat_diff_prod = data_manipulation.flat_difference(released_prod, pyrolysis_prod, ["SSP", "technology", "GCAM"])
+    # relabel CCS technologies
+    released_new['technology'] = released_new.apply(
+        lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
+    pyrolysis_new['technology'] = pyrolysis_new.apply(
+        lambda row: data_manipulation.label_fuel_tech(row, "technology", [" CCS level 1", " CCS level 2"]), axis=1)
+
+    # group technologies
+    released_new = data_manipulation.group(released_new, ["SSP", "GCAM", "technology"])
+    pyrolysis_new = data_manipulation.group(pyrolysis_new, ["SSP", "GCAM", "technology"])
+
+    # remove global entry
+    released_new = released_new[~released_new[['GCAM']].isin(["Global"]).any(axis=1)]
+    pyrolysis_new = pyrolysis_new[~pyrolysis_new[['GCAM']].isin(["Global"]).any(axis=1)]
+
+    # add baseline for manure fuel production to released model
+    man_fuel = pyrolysis_new.loc[pyrolysis_new["technology"] == "manure fuel"]
+    for i in c.GCAMConstants.plotting_x:
+        man_fuel.loc[:, str(i)] = 0
+    released_new = pd.concat([released_new, man_fuel])
+
     flat_diff_new = data_manipulation.flat_difference(released_new, pyrolysis_new, ["SSP", "technology", "GCAM"])
-    # print("flat diff cost")
-    # plotting.plot_world(flat_diff_cost, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
-    # print("flat diff production")
-    # plotting.plot_world(flat_diff_prod, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
-    # print("flat diff new capacity")
-    # plotting.plot_world(flat_diff_new, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
-    #
-    # # comparison of decrease in newly installed production of biofuels compared to the supply of manure fuel
-    released_new = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech_new.csv")
-    released_prod = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
-    pyrolysis_new = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech_new.csv")
-    pyrolysis_prod = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/refined_liquids_production_by_tech.csv")
-    flat_diff_new = data_manipulation.flat_difference(released_new, pyrolysis_new, ["SSP", "technology", "GCAM"])
-    flat_diff_prod = data_manipulation.flat_difference(released_prod, pyrolysis_prod, ["SSP", "technology", "GCAM"])
-    flat_diff_new = data_manipulation.group(flat_diff_new, ["SSP", "GCAM", "subsector"])
-    flat_diff_prod = data_manipulation.group(flat_diff_prod, ["SSP", "GCAM", "subsector"])
-    released_biofuels = data_manipulation.group(released_prod, ["SSP", "GCAM", "subsector"])
-    pyrolysis_biofuels = data_manipulation.group(pyrolysis_prod, ["SSP", "GCAM", "subsector"])
-    perc_diff_biofuels = data_manipulation.percent_difference(released_biofuels, pyrolysis_biofuels,
-                                                              ["SSP", "subsector", "GCAM"])
+    products = flat_diff_new["technology"].unique().tolist()
 
-    # products = ["biomass liquids"]
-    # plotting.plot_world(flat_diff_new, products, ["SSP2"], "year", "subsector", c.GCAMConstants.plotting_x)
-    # products = ["manure fuel"]
-    # print("newly installed capacity")
-    # plotting.plot_world(pyrolysis_new, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
+    plotting.plot_world(flat_diff_new, products, ["SSP2"], "product", "technology", ["2050"], "spatial distribution in changes to newly installed capacity")
 
-    def label_ssp(row):
-        if row['subsector'] == "biomass liquids":
-            return "biofuels"
-        elif row['technology'] == "manure fuel":
-            return "biofuels"
-        return row['technology']
+    # Changes in price of biofuels
+    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+    pyrolysis_price = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
+    products = ["refined liquids enduse"]
+    released_price = released_price[released_price[['product']].isin(products).any(axis=1)]
+    pyrolysis_price = pyrolysis_price[pyrolysis_price[['product']].isin(products).any(axis=1)]
+    flat_diff_price = data_manipulation.flat_difference(pyrolysis_price, released_price, ["SSP", "GCAM", "product"])
+    perc_diff_price = data_manipulation.percent_difference(pyrolysis_price, released_price, ["SSP", "GCAM", "product"])
 
-    # Changes in supplies of renewable biofuels
-    products = ["biofuels"]
-    flat_diff_new['technology'] = flat_diff_new.apply(lambda row: label_ssp(row), axis=1)
-    flat_diff_prod['technology'] = flat_diff_prod.apply(lambda row: label_ssp(row), axis=1)
-    flat_diff_installed = data_manipulation.flat_summation(pyrolysis_new, flat_diff_new, ["SSP", "technology", "GCAM"])
-    flat_diff_supply = data_manipulation.flat_summation(pyrolysis_prod, flat_diff_prod, ["SSP", "technology", "GCAM"])
-    print("difference in newly installed biofuel capacity")
-    plotting.plot_world(flat_diff_installed, products, ["SSP2"], "year", "technology", c.GCAMConstants.plotting_x)
-    print("difference in biofuel supply")
-    plotting.plot_world(flat_diff_supply, products, ["SSP2"], "year", "technology",
-                        c.GCAMConstants.plotting_x)
+    plotting.plot_world(flat_diff_price, products, ["SSP2"], "product", "product", ["2050"], "spatial distribution in change in price of refined liquids")
+    plotting.plot_world(perc_diff_price, products, ["SSP2"], "product", "product", ["2050"], "spatial distribution in percentage change in price of refined liquids")
 
 
 def climate(nonBaselineScenario, RCP, SSP):
