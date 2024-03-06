@@ -70,7 +70,7 @@ def plot_world(dataframe, products, SSPS, groupby, column, years, title):
     elif groupby == "year":
         plot_world_by_years(dataframe, products, column, years, SSPS, title)
     else:
-        raise ValueError("only 'SSP', 'products', and 'years' are considered valid groupings at this time")
+        raise ValueError("only 'SSP', 'product', and 'year' are considered valid groupings at this time")
 
 
 def plot_world_by_SSP(dataframe, products, column, year, SSP, title):
