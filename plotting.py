@@ -351,13 +351,10 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     df = dataframe[
         (dataframe[product_column].str.contains("|".join(products))) & (dataframe['SSP'].str.contains("|".join(SSP)))]
 
-    # remove the global entry for regional plotting
-    df = df.drop(df[df['GCAM'] == "Global"].index)
-
     # residual data cleaning
     if df.empty:
         raise ValueError("These products" + str(products) + "do not exist in this dataframe")
-    df.replace([np.inf, -np.inf], np.nan, inplace=True)
+    df = df.replace([np.inf, -np.inf], np.nan)
 
     # get subplot size
     nrow, ncol = get_subplot_dimensions(inner_loop_set)
@@ -519,21 +516,25 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter):
     :return: N/A
     """
     if nrow * ncol == 1:
-        fig.legend(handles, labels, bbox_to_anchor=(1, 1), facecolor='white', framealpha=1)
+        fig.legend(handles, labels, bbox_to_anchor=(1, .895), facecolor='white', framealpha=1)
+        plt.subplots_adjust(bottom=0.4, right=.7)
     elif nrow * ncol == 4:
         fig.legend(handles, labels, bbox_to_anchor=(0.6, 0.6), facecolor='white', framealpha=1)
+        plt.tight_layout()
     elif nrow * ncol == 6 and counter == 5:
         fig.legend(handles, labels, bbox_to_anchor=(0.9, 0.4), facecolor='white', framealpha=1)
+        plt.tight_layout()
     elif nrow * ncol == 6:
         fig.legend(handles, labels, bbox_to_anchor=(0.15, 0.54), facecolor='white', framealpha=1)
+        plt.tight_layout()
     else:
         fig.legend(handles, labels, bbox_to_anchor=(0.5, 1), facecolor='white', framealpha=1)
+        plt.tight_layout()
 
     # remove unnecessary axes
     for i in range(nrow * ncol - counter):
         fig.delaxes(axs[int((counter + i) / ncol), int((counter + i) % ncol)])
 
-    plt.tight_layout()
     plt.show()
 
 
@@ -974,6 +975,6 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title, column):
         plt.xlabel("Region")
         plt.xticks(rotation=60, ha='right')
         plt.title(title)
-        plt.legend(bbox_to_anchor=(1,1))
-        plt.subplots_adjust(bottom=0.4, right = .7)
+        plt.legend(bbox_to_anchor=(1, 1))
+        plt.subplots_adjust(bottom=0.4, right=.7)
         plt.show()
