@@ -624,27 +624,16 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
         for k in SSP:
             color_counter = 0
             for i in products:
-                sub_color = 0
                 y = dataframe[(dataframe[column] == i) & (dataframe['SSP'] == k)]
 
                 if not y.empty:
                     # plot all versions in y
-                    for j in y[differentiator].unique():
-                        # get y label
-                        if len(versions) > 1:
-                            lab = str(i) + str(j)
-                        else:
-                            lab = str(i)
+                    color = colors[color_counter]
 
-                        # get color
-                        color = colors[color_counter * num_colors + sub_color]
-                        sub_color = sub_color + 1
-
-                        # get line of data to plot and plot it
-                        df = y[y[differentiator] == j]
-                        y_to_plot = df.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
-                            c.GCAMConstants.plotting_x)]  # only take the x values
-                        plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, lab, color, axs, nrow, ncol, counter)
+                    # get line of data to plot and plot it
+                    y_to_plot = y.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
+                        c.GCAMConstants.plotting_x)]  # only take the x values
+                    plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, str(i), color, axs, nrow, ncol, counter)
 
                     # get units
                     units = y['Units'].unique()[0]
@@ -845,18 +834,25 @@ def plot_stacked_bar_year(df, years, SSP, column, top_n):
                         category_colors[k] = colors[color_counter]
                         color_counter = color_counter + 1
 
-                # TODO: why heights of different graphs not adding up in SSP4, move legend to bottom right graph
                 c = []
                 for k in plot_df.columns:
                     c.append(category_colors[k])
 
-                plot_df.plot(kind="bar", stacked=True, color=c, ax=axs[int(counter / ncol), int(counter % ncol)])
-                axs[int(counter / ncol), int(counter % ncol)].set_title(i)
+                if len(SSP) == 1:
+                    plot_df.plot(kind="bar", stacked=True, color=c, ax=axs, ylabel="MTC")
+                    axs.set_title(i)
+                else:
+                    plot_df.plot(kind="bar", stacked=True, color=c, ax=axs[int(counter / ncol), int(counter % ncol)])
+                    axs[int(counter / ncol), int(counter % ncol)].set_title(i)
 
             counter = counter + 1
 
         # delete empty axes
-        fig.delaxes(axs[int(5 / ncol), int(5 % ncol)])
+        if len(SSP) == 5:
+            fig.delaxes(axs[int(5 / ncol), int(5 % ncol)])
+        elif len(SSP) == 1:
+            plt.legend(bbox_to_anchor=(1, 1))
+            plt.subplots_adjust(bottom=0.4, right=.7)
         plt.show()
 
     except ValueError as e:

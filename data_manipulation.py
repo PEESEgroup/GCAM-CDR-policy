@@ -186,6 +186,7 @@ def percentage_change_between_years(dataframe):
             dataframe[str(i-5) +"-" + str(i)] = 100*(dataframe[str(i)] - dataframe[str(i-5)])/(dataframe[str(i-5)])
     return dataframe
 
+
 def label_fuel_tech(row, column, products):
     """
     identifies the year of maximum disruption
@@ -201,3 +202,44 @@ def label_fuel_tech(row, column, products):
                 return "cellulosic ethanol"
             return to_return
     return row[column]
+
+
+def label_sequestration_sectors(row):
+    """
+    returns the aggregated sector to better show plots
+    :param row: row of a pandas dataframe
+    :return: aggregated sector or original one
+    """
+    if row['sector'] in ["H2 central production", "H2 wholesale dispensing"]:
+        return "hydrogen"
+    elif row['sector'] in ["backup_electricity", "district heat", "refining"]:
+        return "other energy sector"
+    elif row['sector'] in ["chemical energy use", "chemical feedstocks", "N fertilizer", "alumina", "cement",
+                           "iron and steel", "other industrial energy use", "other industrial feedstocks",
+                           "process heat cement"]:
+        return "industrial energy use"
+    elif row['sector'] in ["comm cooling", "comm heating", "comm others"]:
+        return "commercial energy use"
+    elif row['sector'] in ["elec_biomass (IGCC CCS)", "elec_biomass (IGCC)", "elec_biomass (conv CCS)",
+                           "elec_biomass (conv)"]:
+        return "electricity - biomass"
+    elif row['sector'] in ["elec_coal (IGCC CCS)", "elec_coal (IGCC)", "elec_coal (conv pul CCS)",
+                           "elec_coal (conv pul)"]:
+        return "electricity - coal"
+    elif row['sector'] in ["elec_gas (CC CCS)", "elec_gas (CC)", "elec_gas (steam/CT)"]:
+        return "electricity - gas"
+    elif row['sector'] in ["elec_refined liquids (CC CCS)", "elec_refined liquids (CC)",
+                           "elec_refined liquids (steam/CT)"]:
+        return "electricity - refined liquids"
+    elif row['sector'] in ["gas pipeline", "gas processing"]:
+        return "gas processing"
+    elif row['sector'] in ["resid cooling", "resid heating", "resid others"]:
+        return "commercial energy use"
+    elif row['sector'] in ["trn_aviation_intl", "trn_freigh", "trn_freight_road", "trn_pass", "trn_pass_road",
+                           "trn_pass_road_LDV", "trn_pass_road_LDV_4W", "trn_shipping_intl", "trn_freight"]:
+        return "transportation"
+    elif row['sector'] in ['regional biomass', 'regional biomassOil', "regional corn for ethanol",
+                           "regional sugar for ethanol"]:
+        return "other biomass for refining"
+    else:
+        return row['sector']
