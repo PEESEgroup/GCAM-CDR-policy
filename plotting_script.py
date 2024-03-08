@@ -390,16 +390,14 @@ def land(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # regional land use change
-    landleafs = ["biomass", "crops", "forest (managed)", "forest (unmanaged)", "grass", "otherarable",
-                 "pasture (grazed)", "pasture (other)", "shrubs"]
     released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/aggregated_land_allocation.csv")
     pyrolysis_land = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/aggregated_land_allocation.csv")
-    perc_diff_land = data_manipulation.percent_difference(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
-    # plotting.plot_world(perc_diff_land, landleafs, ["SSP2"], "year", "LandLeaf", c.GCAMConstants.plotting_x)
-
     flat_diff_land = data_manipulation.flat_difference(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
-    plotting.plot_stacked_bar_SSP(flat_diff_land, 2050, SSP, "LandLeaf", 1, RCP)
+    perc_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
+
+    plotting.plot_stacked_bar_product(flat_diff_land, "2050", SSP, "LandLeaf", "land use change by region")
+    plotting.plot_stacked_bar_product(perc_diff_land, "2050", SSP, "LandLeaf", "land use change by region")
 
 
 def fertilizer(nonBaselineScenario, RCP, SSP):
@@ -459,6 +457,6 @@ if __name__ == '__main__':
     for j in ["4p5"]:
         # food("pyrolysis", j, ["SSP2"])
         # energy("pyrolysis", j, ["SSP2"])
-        climate("pyrolysis", j, ["SSP2"])
-        # land("pyrolysis", j, c.GCAMConstants.SSPs)
+        # climate("pyrolysis", j, ["SSP2"])
+        land("pyrolysis", j, ["SSP2"])
         # fertilizer("pyrolysis", j, c.GCAMConstants.SSPs)
