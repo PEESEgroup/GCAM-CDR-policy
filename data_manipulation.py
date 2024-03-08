@@ -77,16 +77,19 @@ def percent_of_total(old, new, columns):
             merged_filter = merged[(merged['SSP'].isin([j])) & (merged['GCAM'].isin([k]))]  # filter by region
             for i in c.GCAMConstants.x:
                 sum_col = merged_filter[str(i) + "_left"].sum()
-                merged_filter[str(i)] = 100 * (merged_filter[str(i) + "_right"] - merged_filter[str(i) + "_left"]) / sum_col
+                merged_filter = merged_filter.assign(e=100 * (merged_filter[str(i) + "_right"] - merged_filter[str(i) + "_left"]) / sum_col)
+                merged_filter[str(i)] = merged_filter["e"]
                 merged_filter = merged_filter.drop([str(i) + "_left"], axis=1)
+                merged_filter = merged_filter.drop([str(i) + "_right"], axis=1)
 
+            merged_filter.drop(["e"], axis=1)
             df = pd.concat([df, merged_filter])
 
     # update columns
     df = df.drop(['Units_left'], axis=1)
     df = df.drop(['Units_right'], axis=1)
     df['Units'] = '%'
-    df['Version'] = "% diff between " + str(df['Version_right'][0]) + " and " + str(df['Version_left'][0])
+    df['Version'] = "% diff of the total"
 
     # replace columns
     df.columns = df.columns.str.replace("_left", '')
