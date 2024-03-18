@@ -497,17 +497,16 @@ def figure2(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # plotting CO2 sequestering
-    co2_seq_released = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
     co2_seq_pyrolysis = pd.read_csv(
         "data/gcam_out/" + str(
             nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
-    co2_seq_released['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
     co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-    products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar"]
+    co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "sector"), axis=1)
+    co2_seq_pyrolysis['Units'] = "Mt C"
+    products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"]
     biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
-    plotting.plot_line(biochar_pyrolysis, products, SSP, "product", "sector", "Version",
-                       title="CO2 sequestration from biochar")
+    plotting.plot_line_product_CI(biochar_pyrolysis, products, "sector", "SSP2", "Version",
+                                  title="CO2 sequestration from biochar")
 
 
 def figure3(nonBaselineScenario, RCP, SSP):
@@ -532,7 +531,8 @@ def figure3(nonBaselineScenario, RCP, SSP):
     plotting.plot_world(biochar_price, products, SSP, "product", "product", ["2050"],
                         "spatial distribution of manure prices")
 
-    #TODO: carbon prices
+    # TODO: carbon prices
+
 
 def figure4(nonBaselineScenario, RCP, SSP):
     """
@@ -619,7 +619,8 @@ def figure5(nonBaselineScenario, RCP, SSP):
     released_staple_expenditure = pd.read_csv(
         "data/gcam_out/released/" + RCP + "/food_demand_prices.csv")
     pyrolysis_staple_expenditure = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_demand_prices.csv")  # TODO: currency conversion
+        "data/gcam_out/" + str(
+            nonBaselineScenario) + "/" + RCP + "/food_demand_prices.csv")  # TODO: currency conversion
     released_staple_expenditure = released_staple_expenditure[
         released_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
@@ -725,11 +726,11 @@ def figure7(nonBaselineScenario, RCP, SSP):
 
 if __name__ == '__main__':
     figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    figure3("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    figure4("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    figure5("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    figure6("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    figure7("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure3("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure4("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure5("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure6("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure7("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     for j in ["4p5"]:
         # food("pyrolysis", j, ["SSP2"])
         # energy("pyrolysis", j, ["SSP2"])

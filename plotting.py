@@ -1,5 +1,6 @@
 import geopandas as gpd
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import pandas as pd
 import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
@@ -518,6 +519,9 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter):
     if nrow * ncol == 1:
         fig.legend(handles, labels, bbox_to_anchor=(1, .895), facecolor='white', framealpha=1)
         plt.subplots_adjust(bottom=0.4, right=.7)
+    elif nrow * ncol == 2:
+        fig.legend(handles, labels, bbox_to_anchor=(1, .895), facecolor='white', framealpha=1)
+        plt.subplots_adjust(bottom=0.4, right=.7)
     elif nrow * ncol == 4:
         fig.legend(handles, labels, bbox_to_anchor=(0.6, 0.6), facecolor='white', framealpha=1)
         plt.tight_layout()
@@ -574,20 +578,20 @@ def finalize_line_subplot(axs, ylabel, title, ncol, nrow, counter):
     if ncol == 1:
         if nrow == 1:
             axs.set_ylabel(ylabel)
-            axs.set_xlabel("Years")
+            axs.set_xlabel("Year")
             axs.set_title(title)
             handles, labels = axs.get_legend_handles_labels()
             labels, handles = zip(*sorted(zip(labels, handles), key=lambda t: t[0]))
         else:
             axs[int(counter / ncol)].set_ylabel(ylabel)
-            axs[int(counter / ncol)].set_xlabel("Years")
+            axs[int(counter / ncol)].set_xlabel("Year")
             axs[int(counter / ncol)].set_title(title)
             handles, labels = axs[0].get_legend_handles_labels()
             labels, handles = zip(*sorted(zip(labels, handles), key=lambda t: t[0]))
     else:
         axs[int(counter / ncol), int(counter % ncol)].set_ylabel(ylabel)
         axs[int(counter / ncol), int(counter % ncol)].set_title(title)
-        axs[int(counter / ncol), int(counter % ncol)].set_xlabel("Years")
+        axs[int(counter / ncol), int(counter % ncol)].set_xlabel("Year")
         handles, labels = axs[0, 0].get_legend_handles_labels()
         labels, handles = zip(*sorted(zip(labels, handles), key=lambda t: t[0]))
 
@@ -943,3 +947,66 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title, column):
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
         plt.show()
+
+
+def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiator, title):
+    """
+    Plots a line grouped by product
+    :param dataframe: the data being plotted
+    :param products: the list of products in the data being plotted
+    :param column: the column by which the products can be differentiated
+    :param SSP_baseline: the SSPs being plotted
+    :param differentiator: a secondary column to differentiate the products
+    :param title: the title of the plot
+    :return: N/A
+    """
+    # get plot information
+    # get subplot size
+    nrow, ncol = get_subplot_dimensions(["plot", "CI"])
+
+    # make plots and color scheme
+    fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2}, width_ratios=[12, 1])
+
+    # find the number of model versions
+    # get color scheme based on number of model versions
+    versions = dataframe[differentiator].unique()
+    colors, num_colors = get_colors(len(versions))
+    h = 0
+    l = 0
+    try:
+        color_counter = 0
+        for i in products:
+            y = dataframe[(dataframe[column] == i) & (dataframe['SSP'] == SSP_baseline)]
+
+            if not y.empty:
+                # plot all versions in y
+                color = colors[color_counter]
+
+                # get line of data to plot and plot it
+                y_to_plot = y.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
+                    c.GCAMConstants.plotting_x)]  # only take the x values
+                plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, str(i), color, axs, nrow, ncol, 0)
+                color_counter = color_counter + 1
+
+                # get min and max data across SSPs
+                CI_df = dataframe[(dataframe[column] == i)]
+                min_seq = CI_df["2050"].min()
+                max_seq = CI_df["2050"].max()
+
+                # plot the min and max data
+                plt.vlines(x=0.05*color_counter, ymin=min_seq, ymax=max_seq, colors=color, linewidth=3)
+
+        # get units
+        units = dataframe['Units'].unique()[0]
+        l, h = finalize_line_subplot(axs, units, str(SSP_baseline), ncol, nrow, 0)
+
+        # finalzie plotting formatting
+        axs[1].tick_params(left=False, right=False, labelleft=False, labelbottom=False, bottom=False)
+        axs[1].spines['top'].set_visible(False)
+        axs[1].spines['right'].set_visible(False)
+        axs[1].spines['bottom'].set_visible(False)
+        axs[1].spines['left'].set_visible(False)
+        finalize_line_plot(fig, h, l, axs, nrow, ncol, 2)
+
+    except ValueError as e:
+        print(e)

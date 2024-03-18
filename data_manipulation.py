@@ -77,7 +77,8 @@ def percent_of_total(old, new, columns):
             merged_filter = merged[(merged['SSP'].isin([j])) & (merged['GCAM'].isin([k]))]  # filter by region
             for i in c.GCAMConstants.x:
                 sum_col = merged_filter[str(i) + "_left"].sum()
-                merged_filter = merged_filter.assign(e=100 * (merged_filter[str(i) + "_right"] - merged_filter[str(i) + "_left"]) / sum_col)
+                merged_filter = merged_filter.assign(
+                    e=100 * (merged_filter[str(i) + "_right"] - merged_filter[str(i) + "_left"]) / sum_col)
                 merged_filter[str(i)] = merged_filter["e"]
                 merged_filter = merged_filter.drop([str(i) + "_left"], axis=1)
                 merged_filter = merged_filter.drop([str(i) + "_right"], axis=1)
@@ -96,6 +97,7 @@ def percent_of_total(old, new, columns):
     df = df[c.GCAMConstants.column_order]
 
     return df
+
 
 def group(df, columns):
     """
@@ -189,7 +191,8 @@ def years_to_maximum_disruption(difference_dataframe, supply_dataframe, SSP, pro
     :return: the dataframe containing this additional information
     """
     # at this stage, if this df is empty, then we know that there is no material to plot
-    df = difference_dataframe[(difference_dataframe['SSP'].isin(SSP)) & (difference_dataframe[product_column].isin(products))]
+    df = difference_dataframe[
+        (difference_dataframe['SSP'].isin(SSP)) & (difference_dataframe[product_column].isin(products))]
     df2 = supply_dataframe[(supply_dataframe['SSP'].isin(SSP)) & (supply_dataframe[product_column].isin(products))]
     df = pd.merge(df, df2, on=["SSP", "GCAM", "technology"], how="left", suffixes=("", "_right"))
 
@@ -208,7 +211,7 @@ def change_between_years(dataframe):
     """
     for i in c.GCAMConstants.x:
         if i != 1990 and i != 2005:
-            dataframe[str(i-5) +"-" + str(i)] = (dataframe[str(i)] - dataframe[str(i-5)])
+            dataframe[str(i - 5) + "-" + str(i)] = (dataframe[str(i)] - dataframe[str(i - 5)])
     return dataframe
 
 
@@ -220,7 +223,8 @@ def percentage_change_between_years(dataframe):
     """
     for i in c.GCAMConstants.x:
         if i != 1990 and i != 2005:
-            dataframe[str(i-5) +"-" + str(i)] = 100*(dataframe[str(i)] - dataframe[str(i-5)])/(dataframe[str(i-5)])
+            dataframe[str(i - 5) + "-" + str(i)] = 100 * (dataframe[str(i)] - dataframe[str(i - 5)]) / (
+            dataframe[str(i - 5)])
     return dataframe
 
 
@@ -280,3 +284,14 @@ def label_sequestration_sectors(row):
         return "other biomass for refining"
     else:
         return row['sector']
+
+
+def remove__(row, column):
+    """
+    relabels similar technologies to enable grouping
+    :param row: a pd Series from a dataframe
+    :param column: the column of the pd series being searched
+    :return: the relabeled technology
+    """
+    to_return = row[column].replace("_", " ")
+    return to_return
