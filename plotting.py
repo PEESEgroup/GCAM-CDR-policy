@@ -949,6 +949,47 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title, column):
         plt.show()
 
 
+def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, supply):
+    """
+    Plots regional data in a categorical scatterplot
+    :param prices: price data being plotted
+    :param year: evaluation column
+    :param SSPs: SSPs being evaluated
+    :param y_label: ylabel for graph
+    :param title: title of graph
+    :param column: column used to identify unique categories
+    :param supply: supply data being plotted for weighted averages
+    :return: N/A
+    """
+    # get colors
+    colors, divisions = get_colors(1)
+
+    # plot for each SSP
+    for i in SSPs:
+        dataframe = prices[prices['SSP'].str.contains(i)]
+        supply = supply[supply['SSP'].str.contains(i)]
+        for idx, item in enumerate(dataframe[column].unique()):
+            df_price = dataframe.loc[dataframe[column] == str(item)]
+            df_supply = supply.loc[supply[column] == str(item)]
+            # scatter points
+            plt.scatter(x=df_price["GCAM"], y=df_price[str(year)], color=colors[idx], label=str(item))
+
+            # averages
+            weighted_avg = pd.merge(df_price, df_supply, on=["GCAM"])
+            weighted_avg[str(year)] = weighted_avg[str(year)+"_x"] * weighted_avg[str(year)+"_y"]
+            plt.axhline(y=weighted_avg[str(year)].sum()/weighted_avg[str(year)+"_y"].sum(), color=colors[idx], linestyle='dashed')
+            print("avg price:", str(item), weighted_avg[str(year)].sum()/weighted_avg[str(year)+"_y"].sum())
+
+        # finalize plot
+        plt.ylabel(y_label)
+        plt.xlabel("Region")
+        plt.xticks(rotation=60, ha='right')
+        plt.title(title)
+        plt.legend(bbox_to_anchor=(1, 1))
+        plt.subplots_adjust(bottom=0.4, right=.7)
+        plt.show()
+
+
 def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiator, title):
     """
     Plots a line grouped by product

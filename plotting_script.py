@@ -507,6 +507,9 @@ def figure2(nonBaselineScenario, RCP, SSP):
     biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
     plotting.plot_line_product_CI(biochar_pyrolysis, products, "sector", "SSP2", "Version",
                                   title="CO2 sequestration from biochar")
+    # print values of Mt C sequestered
+    biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
+    print(biochar_group.loc[:,["2050", "SSP"]])
 
 
 def figure3(nonBaselineScenario, RCP, SSP):
@@ -520,18 +523,36 @@ def figure3(nonBaselineScenario, RCP, SSP):
     # spatial distribution of biochar/manure prices
     biochar_price = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/prices_of_all_markets.csv")
-    products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar"]
+    biochar_price['product'] = biochar_price.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
+    biochar_supply = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")
+    biochar_supply['product'] = biochar_supply.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
+    products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"]
     biochar_price.loc[
-        (biochar_price["product"] == "pork_biochar") & (biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan
+        (biochar_price["product"] == "pork biochar") & (biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan # manually removing outliers
     biochar_price.loc[
-        (biochar_price["product"] == "pork manure") & (biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan
-    plotting.plot_world(biochar_price, products, SSP, "product", "product", ["2050"],
-                        "spatial distribution of biochar prices")
-    products = ["beef manure", "dairy manure", "pork manure", "poultry manure", "goat manure"]
-    plotting.plot_world(biochar_price, products, SSP, "product", "product", ["2050"],
-                        "spatial distribution of manure prices")
+        (biochar_price["product"] == "pork manure") & (biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
+    biochar_price["2050_conv"] = biochar_price["2050"] * 5.92 * 1000  # Jan 1975 to Jan 2024 https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=197501&year2=202401 * kg to ton
+    biochar_supply["2050_conv"] = biochar_supply["2050"]
+    biochar_price = biochar_price[biochar_price[['product']].isin(products).any(axis=1)]
+    biochar_supply = biochar_supply[biochar_supply[['product']].isin(products).any(axis=1)]
 
-    # TODO: carbon prices
+    biochar_supply['GCAM'] = biochar_supply.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    biochar_price['GCAM'] = biochar_price.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    plotting.plot_regional_vertical_avg(biochar_price, "2050_conv", SSP, "2024 US$/ton", "price of products", "product", biochar_supply)
+
+    # print out differences in carbon prices
+    c_pyro_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_prices.csv")
+    c_rel_price = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_prices.csv")
+    c_pyro_price = c_pyro_price.drop_duplicates()
+    c_rel_price = c_rel_price.drop_duplicates()
+    product = ["CO2"]
+    c_rel_price = c_rel_price[c_rel_price[['product']].isin(product).any(axis=1)]
+    c_pyro_price = c_pyro_price[c_pyro_price[['product']].isin(product).any(axis=1)]
+    flat_diff_c_price = data_manipulation.flat_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
+    flat_diff_c_price["2050_conv"] = flat_diff_c_price["2050"] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
+    unique_c_price = flat_diff_c_price[["2050_conv", "SSP"]].drop_duplicates()
+    print(unique_c_price)
 
 
 def figure4(nonBaselineScenario, RCP, SSP):
@@ -725,8 +746,8 @@ def figure7(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    # figure3("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    figure3("pyrolysis", "4p5", ["SSP2"])
     # figure4("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     # figure5("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     # figure6("pyrolysis", "4p5", c.GCAMConstants.SSPs)

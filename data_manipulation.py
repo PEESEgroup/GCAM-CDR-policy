@@ -224,7 +224,7 @@ def percentage_change_between_years(dataframe):
     for i in c.GCAMConstants.x:
         if i != 1990 and i != 2005:
             dataframe[str(i - 5) + "-" + str(i)] = 100 * (dataframe[str(i)] - dataframe[str(i - 5)]) / (
-            dataframe[str(i - 5)])
+                dataframe[str(i - 5)])
     return dataframe
 
 
@@ -295,3 +295,46 @@ def remove__(row, column):
     """
     to_return = row[column].replace("_", " ")
     return to_return
+
+
+def relabel_region(row):
+    """
+    lambda function to relabel GCAM regions for greater accessibility
+    :param row: row of data
+    :return: updated name of GCAM region
+    """
+    GCAM_region = row["GCAM"]
+    matches = ["Argentina", "Brazil", "Canada", "Central America and Caribbean", "Central Asia", "China",
+               "Colombia", "European Free Trade Association", "India", "Indonesia", "Mexico",
+               "Japan", "Middle East", "Pakistan", "Russia", "South Africa", "South Asia",
+               "Southeast Asia", "South Korea", "Taiwan", "USA"]
+    if any(x in GCAM_region for x in matches):
+        return GCAM_region
+    elif GCAM_region == "Middle East":
+        return "Middle East"
+    elif GCAM_region == "Indonesia":
+        return "Indonesia"
+    elif "Africa_Eastern" == GCAM_region:
+        return "Eastern Africa"
+    elif "Africa_Northern" == GCAM_region:
+        return "Northern Africa"
+    elif "Africa_Southern" == GCAM_region:
+        return "Southern Africa"
+    elif "Africa_Western" == GCAM_region:
+        return "Western Africa"
+    elif "Australia_NZ" == GCAM_region:
+        return "Australia, New Zealand"
+    elif "EU-12" == GCAM_region:
+        return "Northeastern EU"
+    elif "EU-15" == GCAM_region:
+        return "Western EU"
+    elif "Europe_Eastern" == GCAM_region:
+        return "Eastern Europe"
+    elif "Europe_Non_EU" == GCAM_region:
+        return "Other Europe"
+    elif "South America_Northern" == GCAM_region:
+        return "Northern South America"
+    elif "South America_Southern" == GCAM_region:
+        return "Southern South America"
+    else:
+        return "error"
