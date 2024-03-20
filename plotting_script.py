@@ -509,7 +509,7 @@ def figure2(nonBaselineScenario, RCP, SSP):
                                   title="CO2 sequestration from biochar")
     # print values of Mt C sequestered
     biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
-    print(biochar_group.loc[:,["2050", "SSP"]])
+    print(biochar_group.loc[:, ["2050", "SSP"]])
 
 
 def figure3(nonBaselineScenario, RCP, SSP):
@@ -529,17 +529,21 @@ def figure3(nonBaselineScenario, RCP, SSP):
     biochar_supply['product'] = biochar_supply.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
     products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"]
     biochar_price.loc[
-        (biochar_price["product"] == "pork biochar") & (biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan # manually removing outliers
+        (biochar_price["product"] == "pork biochar") & (
+                    biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
     biochar_price.loc[
-        (biochar_price["product"] == "pork manure") & (biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
-    biochar_price["2050_conv"] = biochar_price["2050"] * 5.92 * 1000  # Jan 1975 to Jan 2024 https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=197501&year2=202401 * kg to ton
+        (biochar_price["product"] == "pork manure") & (
+                    biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
+    biochar_price["2050_conv"] = biochar_price[
+                                     "2050"] * 5.92 * 1000  # Jan 1975 to Jan 2024 https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=197501&year2=202401 * kg to ton
     biochar_supply["2050_conv"] = biochar_supply["2050"]
     biochar_price = biochar_price[biochar_price[['product']].isin(products).any(axis=1)]
     biochar_supply = biochar_supply[biochar_supply[['product']].isin(products).any(axis=1)]
 
     biochar_supply['GCAM'] = biochar_supply.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     biochar_price['GCAM'] = biochar_price.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    plotting.plot_regional_vertical_avg(biochar_price, "2050_conv", SSP, "2024 US$/ton", "price of products", "product", biochar_supply)
+    plotting.plot_regional_vertical_avg(biochar_price, "2050_conv", SSP, "2024 US$/ton", "price of products", "product",
+                                        biochar_supply)
 
     # print out differences in carbon prices
     c_pyro_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/CO2_prices.csv")
@@ -550,7 +554,8 @@ def figure3(nonBaselineScenario, RCP, SSP):
     c_rel_price = c_rel_price[c_rel_price[['product']].isin(product).any(axis=1)]
     c_pyro_price = c_pyro_price[c_pyro_price[['product']].isin(product).any(axis=1)]
     flat_diff_c_price = data_manipulation.flat_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
-    flat_diff_c_price["2050_conv"] = flat_diff_c_price["2050"] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
+    flat_diff_c_price["2050_conv"] = flat_diff_c_price[
+                                         "2050"] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
     unique_c_price = flat_diff_c_price[["2050_conv", "SSP"]].drop_duplicates()
     print(unique_c_price)
 
@@ -584,6 +589,98 @@ def figure5(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
+    # # regional averaged food consumption by food type
+    # # convert Pcal to kcal/capita/day
+    # # get population data
+    # released_pop = pd.read_csv(
+    #     "data/gcam_out/released/" + RCP + "/population_by_region.csv")
+    # pyrolysis_pop = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/population_by_region.csv")
+    # released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
+    # pyrolysis_pop = pyrolysis_pop[pyrolysis_pop[['SSP']].isin(SSP).any(axis=1)]
+    # released_Pcal = pd.read_csv(
+    #     "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
+    # pyrolysis_Pcal = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_consumption_by_type_specific.csv")
+    # released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
+    # pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
+    #
+    # released_Pcal['GCAM'] = released_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    # released_pop['GCAM'] = released_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    # pyrolysis_Pcal['GCAM'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    # pyrolysis_pop['GCAM'] = pyrolysis_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    # released_Pcal['technology']= released_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+    # pyrolysis_Pcal['technology']= pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+    #
+    # #drop MiscCrop and FiberCrop because those products don't have meaningful calories and clutter the graph
+    # released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Fiber Crops"].index)
+    # released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Other Crops"].index)
+    # pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Fiber Crops"].index)
+    # pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Other Crops"].index)
+    #
+    # released_Pcal = data_manipulation.group(released_Pcal, ["GCAM", "SSP", "technology"])
+    # pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["GCAM", "SSP", "technology"])
+    #
+    # released_pcal_pop = pd.merge(released_Pcal, released_pop, how="inner", on=["SSP", "GCAM"],
+    #                              suffixes=("_pcal", "_pop"))
+    # pyrolysis_pcal_pop = pd.merge(pyrolysis_Pcal, pyrolysis_pop, how="inner", on=["SSP", "GCAM"],
+    #                               suffixes=("_pcal", "_pop"))
+    #
+    # # calculate pcal per capita in 2050
+    # released_pcal_pop["pcal_capita_2050"] = released_pcal_pop["2050_pcal"] / (1000 * released_pcal_pop[
+    #     "2050_pop"]) * 1000000000000 / 365 / 2  # * peta to kilo/365/conversion factor of 2 randomly
+    # pyrolysis_pcal_pop["pcal_capita_2050"] = pyrolysis_pcal_pop["2050_pcal"] / (
+    #         1000 * pyrolysis_pcal_pop["2050_pop"]) * 1000000000000 / 365 / 2
+    # released_pcal_pop["Units"] = "kcal/capita/day"
+    # pyrolysis_pcal_pop["Units"] = "kcal/capita/day"
+    #
+    # merged_pcal = released_pcal_pop.merge(pyrolysis_pcal_pop, how="inner", on=["SSP", "GCAM", "technology_pcal"],
+    #                                       suffixes=("_left", "_right"))
+    # merged_pcal["pcal_capita_2050"] = merged_pcal["pcal_capita_2050" + "_right"] - merged_pcal[
+    #     "pcal_capita_2050" + "_left"]
+    #
+    # # extract population and identifying information in 2050 for weighted average calculations
+    # merged_pop= pd.DataFrame()
+    # merged_pop["pcal_capita_2050"] = merged_pcal["2050_pop_right"]
+    # merged_pop["GCAM"] = merged_pcal["GCAM"]
+    # merged_pop["SSP"] = merged_pcal["SSP"]
+    # merged_pop["technology_pcal"] = merged_pcal["technology_pcal"]
+    #
+    # plotting.plot_regional_vertical_avg(merged_pcal, "pcal_capita_2050", SSP, "change in food demand (kcal/person/day)",
+    #                                 title="change in food demand in " + str(SSP[0]) + " and RCP " + str(RCP),
+    #                                 column="technology_pcal", supply = merged_pop)
+
+    # Staple expenditure as percentage of average income – food demand prices and GDP per capita PPP by region
+    # get data
+    released_staple_expenditure = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/food_demand_prices.csv")
+    pyrolysis_staple_expenditure = pd.read_csv(
+        "data/gcam_out/" + str(
+            nonBaselineScenario) + "/" + RCP + "/food_demand_prices.csv")
+    released_staple_expenditure = released_staple_expenditure[
+        released_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
+    pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
+        pyrolysis_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
+    diff_food_staple_income = data_manipulation.flat_difference(pyrolysis_staple_expenditure,
+                                                                released_staple_expenditure, ["SSP", "GCAM", "input"])
+
+    diff_food_staple_income['GCAM'] = diff_food_staple_income.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    diff_food_staple_income['input'] = diff_food_staple_income.apply(lambda row: data_manipulation.relabel_food_demand(row),
+                                                                    axis=1)
+    diff_food_staple_income[
+        "2050_conv"] = diff_food_staple_income["2050"] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
+
+    # add an empty row at the top of the dataframe
+    new_row = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
+    new_row["2050_conv"] = 0
+    new_row["GCAM"] = " "
+    diff_food_staple_income = pd.concat([new_row, diff_food_staple_income, new_row])
+
+    # plot results
+    plotting.plot_regional_rose(diff_food_staple_income, "2050_conv", SSP, "decrease in food expenditure ($/Mcal/day)",
+                                    "food expenditure in 2050 in " + str(SSP[0]) + " and RCP " + str(RCP),
+                                    column="input")
+
     # changes to animal livestock production
     released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/supply_of_all_markets.csv")
     pyrolysis_supply = pd.read_csv(
@@ -595,64 +692,6 @@ def figure5(nonBaselineScenario, RCP, SSP):
     for i in SSP:
         plotting.plot_world(perc_diff, products, [i], "product", "product", [2050],
                             "Percent difference in size of livestock markets in 2050")
-    # regional averaged food consumption by food type
-    # convert Pcal to kcal/capita/day
-    # get population data
-    released_pop = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/population_by_region.csv")
-    pyrolysis_pop = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/population_by_region.csv")
-    released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_pop = pyrolysis_pop[pyrolysis_pop[['SSP']].isin(SSP).any(axis=1)]
-    released_Pcal = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
-    pyrolysis_Pcal = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_consumption_by_type_specific.csv")
-    released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
-    released_Pcal = data_manipulation.group(released_Pcal, ["GCAM", "SSP", "technology"])
-    pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["GCAM", "SSP", "technology"])
-
-    released_pcal_pop = pd.merge(released_Pcal, released_pop, how="inner", on=["SSP", "GCAM"],
-                                 suffixes=("_pcal", "_pop"))
-    pyrolysis_pcal_pop = pd.merge(pyrolysis_Pcal, pyrolysis_pop, how="inner", on=["SSP", "GCAM"],
-                                  suffixes=("_pcal", "_pop"))
-
-    # calculate pcal per capita in 2050
-    released_pcal_pop["pcal_capita_2050"] = released_pcal_pop["2050_pcal"] / (1000 * released_pcal_pop[
-        "2050_pop"]) * 1000000000000 / 365 / 2  # * peta to kilo/365/conversion factor of 2 randomly
-    pyrolysis_pcal_pop["pcal_capita_2050"] = pyrolysis_pcal_pop["2050_pcal"] / (
-            1000 * pyrolysis_pcal_pop["2050_pop"]) * 1000000000000 / 365 / 2
-    released_pcal_pop["Units"] = "kcal/capita/day"
-    pyrolysis_pcal_pop["Units"] = "kcal/capita/day"
-
-    merged_pcal = released_pcal_pop.merge(pyrolysis_pcal_pop, how="inner", on=["SSP", "GCAM", "technology_pcal"],
-                                          suffixes=("_left", "_right"))
-    merged_pcal["pcal_capita_2050"] = merged_pcal["pcal_capita_2050" + "_right"] - merged_pcal[
-        "pcal_capita_2050" + "_left"]
-
-    plotting.plot_regional_vertical(merged_pcal, "pcal_capita_2050", SSP, "change in food demand (kcal/person/day)",
-                                    "change in food demand in " + str(SSP[0]) + " and RCP " + str(RCP),
-                                    column="technology_pcal")
-
-    # Staple expenditure as percentage of average income – food demand prices and GDP per capita PPP by region
-    # get data
-    released_staple_expenditure = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_demand_prices.csv")
-    pyrolysis_staple_expenditure = pd.read_csv(
-        "data/gcam_out/" + str(
-            nonBaselineScenario) + "/" + RCP + "/food_demand_prices.csv")  # TODO: currency conversion
-    released_staple_expenditure = released_staple_expenditure[
-        released_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
-        pyrolysis_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
-    diff_food_staple_income = data_manipulation.flat_difference(released_staple_expenditure,
-                                                                pyrolysis_staple_expenditure, ["SSP", "GCAM", "input"])
-
-    # plot results
-    plotting.plot_regional_vertical(diff_food_staple_income, "2050", SSP, "change in food expenditure ($/Mcal/day)",
-                                    "food expenditure in 2050 in " + str(SSP[0]) + " and RCP " + str(RCP),
-                                    column="input")
 
 
 def figure6(nonBaselineScenario, RCP, SSP):
@@ -748,8 +787,8 @@ def figure7(nonBaselineScenario, RCP, SSP):
 if __name__ == '__main__':
     # figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     # figure3("pyrolysis", "4p5", ["SSP2"])
-    figure4("pyrolysis", "4p5", ["SSP2"])
-    # figure5("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure4("pyrolysis", "4p5", ["SSP2"])
+    figure5("pyrolysis", "4p5", ["SSP2"])
     # figure6("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     # figure7("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     for j in ["4p5"]:

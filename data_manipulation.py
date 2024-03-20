@@ -376,3 +376,48 @@ def relabel_land_use(row):
         return "other arable land"
     else:
         return luc
+
+
+def relabel_food(row):
+    """
+    lambda function to relabel GCAM food categories for greater accessibility. From: A_demand_technology.csv
+    :param row: row of data
+    :return: updated name of GCAM region
+    """
+    food = row["technology"]
+    matches = ["Corn", "Rice", "Wheat"]
+    if any(x in food for x in matches):
+        return food
+    elif food == "Fruits" or food == "Vegetables":
+        return "Fruits and Vegetables"
+    elif food == "Legumes" or food == "NutsSeeds":
+        return "Plant Protein"
+    elif food == "Soybean" or food == "OilCrop" or food == "OilPalm":
+        return "Plant Oils"
+    elif "FiberCrop" == food:
+        return "Fiber Crops"
+    elif "MiscCrop" == food:
+        return "Other Crops"
+    elif "OtherGrain" == food:
+        return "Other Grains"
+    elif "RootTuber" == food:
+        return "Roots and Tubers"
+    elif "Beef" == food or "Dairy" == food or "Pork" == food or "Poultry" == food or "SheepGoat" == food or "OtherMeat_Fish" == food:
+        return "Animal Protein"
+    else:
+        return food
+
+
+def relabel_food_demand(row):
+    """
+    lambda function to relabel GCAM food demand categories for greater accessibility.
+    :param row: row of data
+    :return: updated name of GCAM region
+    """
+    food = row["input"]  # Products in staples vs. non staples in A_demand_subsector.csv
+    if food == "FoodDemand_NonStaples":
+        return "Non-Staples"
+    elif food == "FoodDemand_Staples":
+        return "Staples"
+    else:
+        return "error"

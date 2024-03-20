@@ -1,6 +1,8 @@
 import geopandas as gpd
+import itertools
+
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
+from matplotlib.collections import PatchCollection
 import pandas as pd
 import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
@@ -1052,3 +1054,81 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
 
     except ValueError as e:
         print(e)
+
+
+def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
+    """
+    Plots regional data in a categorical scatterplot
+    :param dataframe: data being plotted
+    :param year: evaluation column
+    :param SSPs: SSPs being evaluated
+    :param y_label: ylabel for graph
+    :param title: title of graph
+    :param column: column used to identify unique categories
+    :return: N/A
+    """
+    # plot for each SSP
+    for i in SSPs:
+        dataframe = dataframe[dataframe['SSP'].str.contains(i)]
+        for idx, item in enumerate(dataframe[column].unique()):
+            df = dataframe.loc[dataframe[column] == str(item)]
+
+            # set figure size
+            fig = plt.figure()
+            ax = plt.subplot(111, polar=True)
+            ax.set_rlabel_position(0)
+            ax.spines["polar"].set_color('#c2c2c2')
+            ax.set_title(str(item))
+            #TODO add ylabel
+            plt.subplots_adjust(bottom=0.2, top = 0.8)
+            plt.xticks([])
+            cmap = plt.colormaps.get_cmap('cool')
+            fig.suptitle(title)
+            normalizer = Normalize(df[year].min(), df[year].max())
+            im = cm.ScalarMappable(norm=normalizer, cmap=cmap)
+
+            # Compute the angle each bar is centered on:
+            heights = df[year]
+            width = 2 * np.pi / len(df.index)
+            indexes = list(range(1, len(df.index) + 1))
+            angles = [element * width for element in indexes]
+
+            # Draw bars
+            ax.bar(
+                x=angles,
+                height=heights,
+                width=width,
+                linewidth=.5,
+                edgecolor="white",
+                color = im.to_rgba(heights))
+
+            # little space between the bar and the label
+            labelPadding = df[year].max()/10
+
+            # Add labels
+            for angle, height, label in zip(angles, heights, df["GCAM"]):
+
+                # Labels are rotated. Rotation must be specified in degrees :(
+                rotation = np.rad2deg(angle)
+
+                # Flip some labels upside down
+                alignment = ""
+                if angle >= np.pi / 2 and angle < 3 * np.pi / 2:
+                    alignment = "right"
+                    rotation = rotation + 180
+                else:
+                    alignment = "left"
+
+                # Finally add the labels
+                ax.text(
+                    x=angle,
+                    y=height + labelPadding,
+                    s=label,
+                    ha=alignment,
+                    va='center',
+                    rotation=rotation,
+                    rotation_mode="anchor",
+                    backgroundcolor="white",
+                    zorder=ax.spines.get_zorder() + 0.1) #TODO adjust zorder
+
+            plt.show()
