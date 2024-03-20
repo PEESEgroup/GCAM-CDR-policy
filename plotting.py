@@ -894,6 +894,7 @@ def plot_stacked_bar_product(df, year, SSP, column, title):
         axs.set_ylabel(df["Units"].unique()[0])
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
+        plt.xticks(rotation=60, ha='right')
         plt.show()
 
     except ValueError as e:

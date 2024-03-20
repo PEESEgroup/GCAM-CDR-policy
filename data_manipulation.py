@@ -73,7 +73,7 @@ def percent_of_total(old, new, columns):
     df = pd.DataFrame()
 
     for j in c.GCAMConstants.SSPs:
-        for k in c.GCAMConstants.GCAM_region:
+        for k in merged["GCAM"].unique().tolist():
             merged_filter = merged[(merged['SSP'].isin([j])) & (merged['GCAM'].isin([k]))]  # filter by region
             for i in c.GCAMConstants.x:
                 sum_col = merged_filter[str(i) + "_left"].sum()
@@ -82,6 +82,10 @@ def percent_of_total(old, new, columns):
                 merged_filter[str(i)] = merged_filter["e"]
                 merged_filter = merged_filter.drop([str(i) + "_left"], axis=1)
                 merged_filter = merged_filter.drop([str(i) + "_right"], axis=1)
+
+                if k == "Global" and str(i) == "2050":
+                    print("total is", sum_col, "thousand sq km in", j)
+                    merged_filter["GCAM"] = "Global (net)"
 
             merged_filter.drop(["e"], axis=1)
             df = pd.concat([df, merged_filter])
@@ -307,13 +311,15 @@ def relabel_region(row):
     matches = ["Argentina", "Brazil", "Canada", "Central America and Caribbean", "Central Asia", "China",
                "Colombia", "European Free Trade Association", "India", "Indonesia", "Mexico",
                "Japan", "Middle East", "Pakistan", "Russia", "South Africa", "South Asia",
-               "Southeast Asia", "South Korea", "Taiwan", "USA"]
+               "Southeast Asia", "South Korea", "Taiwan", "USA", "Global"]
     if any(x in GCAM_region for x in matches):
         return GCAM_region
     elif GCAM_region == "Middle East":
         return "Middle East"
     elif GCAM_region == "Indonesia":
         return "Indonesia"
+    elif GCAM_region == "Global":
+        return "Global"
     elif "Africa_Eastern" == GCAM_region:
         return "Eastern Africa"
     elif "Africa_Northern" == GCAM_region:
@@ -336,5 +342,37 @@ def relabel_region(row):
         return "Northern South America"
     elif "South America_Southern" == GCAM_region:
         return "Southern South America"
+    elif "Global (net)" == GCAM_region:
+        return "Global (net)"
     else:
         return "error"
+
+
+def relabel_land_use(row):
+    """
+    lambda function to relabel GCAM LandLeaf for greater accessibility. From: https://jgcri.github.io/gcam-doc/land.html
+    :param row: row of data
+    :return: updated name of GCAM region
+    """
+    luc = row["LandLeaf"]
+    matches = ["crops"]
+    if any(x in luc for x in matches):
+        return luc
+    elif luc == "biomass":
+        return "biomass for energy"
+    elif luc == "grass":
+        return "grass land"
+    elif luc == "shrub":
+        return "shrub land"
+    elif "forest (managed)" == luc:
+        return "commercial forest"
+    elif "forest (unmanaged)" == luc:
+        return "forest"
+    elif "pasture (grazed)" == luc:
+        return "intensively-grazed pasture"
+    elif "pasture (other)" == luc:
+        return "other pasture"
+    elif "otherarable" == luc:
+        return "other arable land"
+    else:
+        return luc
