@@ -35,7 +35,7 @@ def get_subplot_dimensions(list_products):
     elif len(list_products) == 2:
         return 2, 1
     elif len(list_products) == 3:
-        return 3, 1
+        return 2, 2
     elif len(list_products) == 4:
         return 2, 2
     elif len(list_products) == 5 or len(list_products) == 6:

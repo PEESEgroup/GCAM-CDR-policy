@@ -432,6 +432,8 @@ def relabel_fertilizer_product(row):
     input = row["subsector"]
     if input == "beef_biochar" or input == "dairy_biochar" or input == "goat_biochar" or input == "pork_biochar" or input == "poultry_biochar":
         return "biochar"
+    elif input == "gas" or input == "refined liquids" or input == "coal":
+        return "fossil fuels"
     else:
         return input
 
