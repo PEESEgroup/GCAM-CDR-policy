@@ -421,3 +421,17 @@ def relabel_food_demand(row):
         return "Staples"
     else:
         return "error"
+
+
+def relabel_fertilizer_product(row):
+    """
+    lambda function to relabel GCAM food demand categories for greater accessibility.
+    :param row: row of data
+    :return: updated name of GCAM region
+    """
+    input = row["subsector"]
+    if input == "beef_biochar" or input == "dairy_biochar" or input == "goat_biochar" or input == "pork_biochar" or input == "poultry_biochar":
+        return "biochar"
+    else:
+        return input
+

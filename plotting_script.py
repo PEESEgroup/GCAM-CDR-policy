@@ -702,12 +702,15 @@ def figure6(nonBaselineScenario, RCP, SSP):
     # process data - percent change
     released_f = data_manipulation.group(released_f, ["SSP", "GCAM", "subsector"])
     pyrolysis_f = data_manipulation.group(pyrolysis_f, ["SSP", "GCAM", "subsector"])
-    perc_diff_f = data_manipulation.percent_difference(released_f, pyrolysis_f, ["SSP", "GCAM", "subsector"])
-    plotting.plot_world(perc_diff_f, released_f["subsector"].unique().tolist(), ["SSP2"], "product", "subsector",
-                        ["2050"], "spatial change in N fertilizer production techniques")
-    # absolute change
+
+    # relabel and regroup rows
+    released_f['subsector'] = released_f.apply(lambda row: data_manipulation.relabel_fertilizer_product(row), axis=1)
+    pyrolysis_f['subsector'] = pyrolysis_f.apply(lambda row: data_manipulation.relabel_fertilizer_product(row), axis=1)
+    released_f = data_manipulation.group(released_f, ["GCAM", "SSP", "subsector"])
+    pyrolysis_f = data_manipulation.group(pyrolysis_f, ["GCAM", "SSP", "subsector"])
+
     # add biochar row to the released version so that the flat diff can be analyzed
-    biochar = pyrolysis_f.loc[pyrolysis_f["technology"] == "biochar_sup"]
+    biochar = pyrolysis_f.loc[pyrolysis_f["subsector"] == "biochar"]
     for i in c.GCAMConstants.plotting_x:
         biochar.loc[:, str(i)] = 0
     ref_released = pd.concat([released_f, biochar])
@@ -739,30 +742,12 @@ def figure6(nonBaselineScenario, RCP, SSP):
     ref_released = pd.concat([ref_released, man_fuel])
 
     # select global region
-    ref_released_global = ref_released[ref_released[['GCAM']].isin(["Global"]).any(axis=1)]
-    ref_pyrolysis_global = ref_pyrolysis[ref_pyrolysis[['GCAM']].isin(["Global"]).any(axis=1)]
     ref_released = ref_released[~ref_released[['GCAM']].isin(["Global"]).any(axis=1)]
     ref_pyrolysis = ref_pyrolysis[~ref_pyrolysis[['GCAM']].isin(["Global"]).any(axis=1)]
 
     # plot products
-    products = ref_pyrolysis["technology"].unique().tolist()
-    products = [products[i] for i in
-                [0, 1, 9, 3, 5, 4, 6, 8, 2, 7]]  # put manure fuel at the end so colors stay the same, reorder by type
-    flat_diff_biofuel_global = data_manipulation.flat_difference(ref_released_global, ref_pyrolysis_global,
-                                                                 ["SSP", "technology", "GCAM"])
     flat_diff_biofuel = data_manipulation.flat_difference(ref_released, ref_pyrolysis, ["SSP", "technology", "GCAM"])
-    perc_diff_biofuel_global = data_manipulation.percent_difference(ref_released_global, ref_pyrolysis_global,
-                                                                    ["SSP", "technology", "GCAM"])
-    perc_diff_biofuel = data_manipulation.percent_difference(ref_released, ref_pyrolysis, ["SSP", "technology", "GCAM"])
-    plotting.plot_line(flat_diff_biofuel_global, products, SSP, "product", "technology", "Units",
-                       "change in supply of refined liquids")
-    plotting.plot_world(flat_diff_biofuel, products, ["SSP2"], "product", "technology", ["2050"],
-                        "spatial distribution of change in supply of refined liquids")
-    products.remove("manure fuel")  # can't have a percent difference with baseline of 0 EJ
-    plotting.plot_line(perc_diff_biofuel_global, products, SSP, "product", "technology", "Units",
-                       "change in supply of refined liquids")
-    plotting.plot_world(perc_diff_biofuel, products, ["SSP2"], "product", "technology", ["2050"],
-                        "spatial distribution of change in supply of refined liquids")
+    plotting.plot_stacked_bar_year(flat_diff_biofuel, ["2050"], SSP, "technology", .01)
 
 
 def figure7(nonBaselineScenario, RCP, SSP):
@@ -780,8 +765,8 @@ if __name__ == '__main__':
     # figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     # figure3("pyrolysis", "4p5", ["SSP2"])
     # figure4("pyrolysis", "4p5", ["SSP2"])
-    figure5("pyrolysis", "4p5", ["SSP2"])
-    # figure6("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure5("pyrolysis", "4p5", ["SSP2"])
+    figure6("pyrolysis", "4p5", ["SSP2"])
     # figure7("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     for j in ["4p5"]:
         # food("pyrolysis", j, ["SSP2"])
