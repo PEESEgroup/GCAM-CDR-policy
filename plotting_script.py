@@ -661,7 +661,7 @@ def figure5(nonBaselineScenario, RCP, SSP):
         released_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
         pyrolysis_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
-    diff_food_staple_income = data_manipulation.flat_difference(pyrolysis_staple_expenditure,
+    diff_food_staple_income = data_manipulation.percent_difference(pyrolysis_staple_expenditure,
                                                                 released_staple_expenditure, ["SSP", "GCAM", "input"])
 
     diff_food_staple_income['GCAM'] = diff_food_staple_income.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
@@ -671,27 +671,19 @@ def figure5(nonBaselineScenario, RCP, SSP):
         "2050_conv"] = diff_food_staple_income["2050"] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
 
     # add an empty row at the top of the dataframe
-    new_row = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
-    new_row["2050_conv"] = 0
-    new_row["GCAM"] = " "
-    diff_food_staple_income = pd.concat([new_row, diff_food_staple_income, new_row])
+    new_row1 = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
+    new_row2 = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
+    new_row1["2050_conv"] = 0
+    new_row1["GCAM"] = " "
+    new_row2["2050_conv"] = 0
+    new_row2["GCAM"] = " "
+    new_row2["input"] = "Staples"
+    diff_food_staple_income = pd.concat([new_row1, new_row2, diff_food_staple_income, new_row2, new_row1])
 
     # plot results
-    plotting.plot_regional_rose(diff_food_staple_income, "2050_conv", SSP, "decrease in food expenditure ($/Mcal/day)",
+    plotting.plot_regional_rose(diff_food_staple_income, "2050_conv", SSP, "decrease in food expenditure (%)",
                                     "food expenditure in 2050 in " + str(SSP[0]) + " and RCP " + str(RCP),
                                     column="input")
-
-    # changes to animal livestock production
-    released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/supply_of_all_markets.csv")
-    pyrolysis_supply = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")
-    products = ["Beef", "Pork", "Dairy", "Poultry", "SheepGoat"]
-    released_supply = released_supply[released_supply[['product']].isin(products).any(axis=1)]
-    pyrolysis_supply = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)]
-    perc_diff = data_manipulation.percent_difference(released_supply, pyrolysis_supply, ["SSP", "product", "GCAM"])
-    for i in SSP:
-        plotting.plot_world(perc_diff, products, [i], "product", "product", [2050],
-                            "Percent difference in size of livestock markets in 2050")
 
 
 def figure6(nonBaselineScenario, RCP, SSP):

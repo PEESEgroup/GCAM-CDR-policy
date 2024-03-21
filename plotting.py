@@ -1080,8 +1080,8 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
             ax.spines["polar"].set_color('#ffffff')
             ax.set_title(str(item))
             ax.grid(color="#d5d5d5", linestyle="dashed")
-            ax.text(np.radians(0), dataframe[year].max(), y_label,
-                    rotation=0, ha='center', va='center') #TODO: fix raxis between plots
+            ax.text(np.radians(5), df[year].max(), y_label,
+                    rotation=0, ha='center', va='center')
             plt.subplots_adjust(bottom=0.2, top = 0.8)
             plt.xticks([])
             cmap = plt.colormaps.get_cmap('cool')
@@ -1105,7 +1105,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                 color = im.to_rgba(heights))
 
             # little space between the bar and the label
-            labelPadding = df[year].max()/20
+            labelPadding = df[year].max()/25
 
             # Add labels
             for angle, height, label in zip(angles, heights, df["GCAM"]):
@@ -1131,6 +1131,8 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                     rotation=rotation,
                     rotation_mode="anchor",
                     backgroundcolor="white",
-                    zorder=.2) #TODO adjust zorder
+                    zorder=.2,
+                    fontsize="small",
+                    )
 
             plt.show()
