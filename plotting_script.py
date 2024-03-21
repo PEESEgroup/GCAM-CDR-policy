@@ -589,66 +589,66 @@ def figure5(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
-    # # regional averaged food consumption by food type
-    # # convert Pcal to kcal/capita/day
-    # # get population data
-    # released_pop = pd.read_csv(
-    #     "data/gcam_out/released/" + RCP + "/population_by_region.csv")
-    # pyrolysis_pop = pd.read_csv(
-    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/population_by_region.csv")
-    # released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
-    # pyrolysis_pop = pyrolysis_pop[pyrolysis_pop[['SSP']].isin(SSP).any(axis=1)]
-    # released_Pcal = pd.read_csv(
-    #     "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
-    # pyrolysis_Pcal = pd.read_csv(
-    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_consumption_by_type_specific.csv")
-    # released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
-    # pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
-    #
-    # released_Pcal['GCAM'] = released_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    # released_pop['GCAM'] = released_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    # pyrolysis_Pcal['GCAM'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    # pyrolysis_pop['GCAM'] = pyrolysis_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    # released_Pcal['technology']= released_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
-    # pyrolysis_Pcal['technology']= pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
-    #
-    # #drop MiscCrop and FiberCrop because those products don't have meaningful calories and clutter the graph
-    # released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Fiber Crops"].index)
-    # released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Other Crops"].index)
-    # pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Fiber Crops"].index)
-    # pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Other Crops"].index)
-    #
-    # released_Pcal = data_manipulation.group(released_Pcal, ["GCAM", "SSP", "technology"])
-    # pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["GCAM", "SSP", "technology"])
-    #
-    # released_pcal_pop = pd.merge(released_Pcal, released_pop, how="inner", on=["SSP", "GCAM"],
-    #                              suffixes=("_pcal", "_pop"))
-    # pyrolysis_pcal_pop = pd.merge(pyrolysis_Pcal, pyrolysis_pop, how="inner", on=["SSP", "GCAM"],
-    #                               suffixes=("_pcal", "_pop"))
-    #
-    # # calculate pcal per capita in 2050
-    # released_pcal_pop["pcal_capita_2050"] = released_pcal_pop["2050_pcal"] / (1000 * released_pcal_pop[
-    #     "2050_pop"]) * 1000000000000 / 365 / 2  # * peta to kilo/365/conversion factor of 2 randomly
-    # pyrolysis_pcal_pop["pcal_capita_2050"] = pyrolysis_pcal_pop["2050_pcal"] / (
-    #         1000 * pyrolysis_pcal_pop["2050_pop"]) * 1000000000000 / 365 / 2
-    # released_pcal_pop["Units"] = "kcal/capita/day"
-    # pyrolysis_pcal_pop["Units"] = "kcal/capita/day"
-    #
-    # merged_pcal = released_pcal_pop.merge(pyrolysis_pcal_pop, how="inner", on=["SSP", "GCAM", "technology_pcal"],
-    #                                       suffixes=("_left", "_right"))
-    # merged_pcal["pcal_capita_2050"] = merged_pcal["pcal_capita_2050" + "_right"] - merged_pcal[
-    #     "pcal_capita_2050" + "_left"]
-    #
-    # # extract population and identifying information in 2050 for weighted average calculations
-    # merged_pop= pd.DataFrame()
-    # merged_pop["pcal_capita_2050"] = merged_pcal["2050_pop_right"]
-    # merged_pop["GCAM"] = merged_pcal["GCAM"]
-    # merged_pop["SSP"] = merged_pcal["SSP"]
-    # merged_pop["technology_pcal"] = merged_pcal["technology_pcal"]
-    #
-    # plotting.plot_regional_vertical_avg(merged_pcal, "pcal_capita_2050", SSP, "change in food demand (kcal/person/day)",
-    #                                 title="change in food demand in " + str(SSP[0]) + " and RCP " + str(RCP),
-    #                                 column="technology_pcal", supply = merged_pop)
+    # regional averaged food consumption by food type
+    # convert Pcal to kcal/capita/day
+    # get population data
+    released_pop = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/population_by_region.csv")
+    pyrolysis_pop = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/population_by_region.csv")
+    released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
+    pyrolysis_pop = pyrolysis_pop[pyrolysis_pop[['SSP']].isin(SSP).any(axis=1)]
+    released_Pcal = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
+    pyrolysis_Pcal = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_consumption_by_type_specific.csv")
+    released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
+    pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
+
+    released_Pcal['GCAM'] = released_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    released_pop['GCAM'] = released_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    pyrolysis_Pcal['GCAM'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    pyrolysis_pop['GCAM'] = pyrolysis_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    released_Pcal['technology']= released_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+    pyrolysis_Pcal['technology']= pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+
+    #drop MiscCrop and FiberCrop because those products don't have meaningful calories and clutter the graph
+    released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Fiber Crops"].index)
+    released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Other Crops"].index)
+    pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Fiber Crops"].index)
+    pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Other Crops"].index)
+
+    released_Pcal = data_manipulation.group(released_Pcal, ["GCAM", "SSP", "technology"])
+    pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["GCAM", "SSP", "technology"])
+
+    released_pcal_pop = pd.merge(released_Pcal, released_pop, how="inner", on=["SSP", "GCAM"],
+                                 suffixes=("_pcal", "_pop"))
+    pyrolysis_pcal_pop = pd.merge(pyrolysis_Pcal, pyrolysis_pop, how="inner", on=["SSP", "GCAM"],
+                                  suffixes=("_pcal", "_pop"))
+
+    # calculate pcal per capita in 2050
+    released_pcal_pop["pcal_capita_2050"] = released_pcal_pop["2050_pcal"] / (1000 * released_pcal_pop[
+        "2050_pop"]) * 1000000000000 / 365 / 2  # * peta to kilo/365/conversion factor of 2 randomly
+    pyrolysis_pcal_pop["pcal_capita_2050"] = pyrolysis_pcal_pop["2050_pcal"] / (
+            1000 * pyrolysis_pcal_pop["2050_pop"]) * 1000000000000 / 365 / 2
+    released_pcal_pop["Units"] = "kcal/capita/day"
+    pyrolysis_pcal_pop["Units"] = "kcal/capita/day"
+
+    merged_pcal = released_pcal_pop.merge(pyrolysis_pcal_pop, how="inner", on=["SSP", "GCAM", "technology_pcal"],
+                                          suffixes=("_left", "_right"))
+    merged_pcal["pcal_capita_2050"] = merged_pcal["pcal_capita_2050" + "_right"] - merged_pcal[
+        "pcal_capita_2050" + "_left"]
+
+    # extract population and identifying information in 2050 for weighted average calculations
+    merged_pop= pd.DataFrame()
+    merged_pop["pcal_capita_2050"] = merged_pcal["2050_pop_right"]
+    merged_pop["GCAM"] = merged_pcal["GCAM"]
+    merged_pop["SSP"] = merged_pcal["SSP"]
+    merged_pop["technology_pcal"] = merged_pcal["technology_pcal"]
+
+    plotting.plot_regional_vertical_avg(merged_pcal, "pcal_capita_2050", SSP, "change in food demand (kcal/person/day)",
+                                    title="change in food demand in " + str(SSP[0]) + " and RCP " + str(RCP),
+                                    column="technology_pcal", supply = merged_pop)
 
     # Staple expenditure as percentage of average income – food demand prices and GDP per capita PPP by region
     # get data
