@@ -530,10 +530,10 @@ def figure3(nonBaselineScenario, RCP, SSP):
     products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"]
     biochar_price.loc[
         (biochar_price["product"] == "pork biochar") & (
-                    biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
+                biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
     biochar_price.loc[
         (biochar_price["product"] == "pork manure") & (
-                    biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
+                biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
     biochar_price["2050_conv"] = biochar_price[
                                      "2050"] * 5.92 * 1000  # Jan 1975 to Jan 2024 https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=197501&year2=202401 * kg to ton
     biochar_supply["2050_conv"] = biochar_supply["2050"]
@@ -609,10 +609,10 @@ def figure5(nonBaselineScenario, RCP, SSP):
     released_pop['GCAM'] = released_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     pyrolysis_Pcal['GCAM'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     pyrolysis_pop['GCAM'] = pyrolysis_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    released_Pcal['technology']= released_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
-    pyrolysis_Pcal['technology']= pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+    released_Pcal['technology'] = released_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+    pyrolysis_Pcal['technology'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
 
-    #drop MiscCrop and FiberCrop because those products don't have meaningful calories and clutter the graph
+    # drop MiscCrop and FiberCrop because those products don't have meaningful calories and clutter the graph
     released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Fiber Crops"].index)
     released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Other Crops"].index)
     pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Fiber Crops"].index)
@@ -640,15 +640,15 @@ def figure5(nonBaselineScenario, RCP, SSP):
         "pcal_capita_2050" + "_left"]
 
     # extract population and identifying information in 2050 for weighted average calculations
-    merged_pop= pd.DataFrame()
+    merged_pop = pd.DataFrame()
     merged_pop["pcal_capita_2050"] = merged_pcal["2050_pop_right"]
     merged_pop["GCAM"] = merged_pcal["GCAM"]
     merged_pop["SSP"] = merged_pcal["SSP"]
     merged_pop["technology_pcal"] = merged_pcal["technology_pcal"]
 
     plotting.plot_regional_vertical_avg(merged_pcal, "pcal_capita_2050", SSP, "change in food demand (kcal/person/day)",
-                                    title="change in food demand in " + str(SSP[0]) + " and RCP " + str(RCP),
-                                    column="technology_pcal", supply = merged_pop)
+                                        title="change in food demand in " + str(SSP[0]) + " and RCP " + str(RCP),
+                                        column="technology_pcal", supply=merged_pop)
 
     # Staple expenditure as percentage of average income – food demand prices and GDP per capita PPP by region
     # get data
@@ -662,13 +662,17 @@ def figure5(nonBaselineScenario, RCP, SSP):
     pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
         pyrolysis_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
     diff_food_staple_income = data_manipulation.percent_difference(pyrolysis_staple_expenditure,
-                                                                released_staple_expenditure, ["SSP", "GCAM", "input"])
+                                                                   released_staple_expenditure,
+                                                                   ["SSP", "GCAM", "input"])
 
-    diff_food_staple_income['GCAM'] = diff_food_staple_income.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    diff_food_staple_income['input'] = diff_food_staple_income.apply(lambda row: data_manipulation.relabel_food_demand(row),
+    diff_food_staple_income['GCAM'] = diff_food_staple_income.apply(lambda row: data_manipulation.relabel_region(row),
                                                                     axis=1)
+    diff_food_staple_income['input'] = diff_food_staple_income.apply(
+        lambda row: data_manipulation.relabel_food_demand(row),
+        axis=1)
     diff_food_staple_income[
-        "2050_conv"] = diff_food_staple_income["2050"] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
+        "2050_conv"] = diff_food_staple_income[
+                           "2050"] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
 
     # add an empty row at the top of the dataframe
     new_row1 = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
@@ -682,8 +686,8 @@ def figure5(nonBaselineScenario, RCP, SSP):
 
     # plot results
     plotting.plot_regional_rose(diff_food_staple_income, "2050_conv", SSP, "decrease in food expenditure (%)",
-                                    "food expenditure in 2050 in " + str(SSP[0]) + " and RCP " + str(RCP),
-                                    column="input")
+                                "food expenditure in 2050 in " + str(SSP[0]) + " and RCP " + str(RCP),
+                                column="input")
 
 
 def figure6(nonBaselineScenario, RCP, SSP):
@@ -758,7 +762,53 @@ def figure7(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
-    pass
+    for i in RCP:
+        # global supply of biochar and manure fuel feedstock
+        biochar_supply = pd.read_csv(
+            "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(i) + "/supply_of_all_markets.csv")
+        products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar",
+                    "manure fuel feedstock"]
+        biochar_supply['product'] = biochar_supply.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
+        biochar_supply = data_manipulation.group(biochar_supply, ["SSP", "product"])
+        biochar_supply = biochar_supply[biochar_supply[['product']].isin(products).any(axis=1)]
+        plotting.sensitivity(biochar_supply, SSP, "SSP2", "2050", "product")
+
+
+        # global net land use
+        released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/aggregated_land_allocation.csv")
+        pyrolysis_land = pd.read_csv(
+            "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/aggregated_land_allocation.csv")
+        released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
+        pyrolysis_land = pyrolysis_land[pyrolysis_land[['SSP']].isin(SSP).any(axis=1)]
+        perc_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land,
+                                                            ["SSP", "LandLeaf", "GCAM"])
+
+        perc_diff_land = perc_diff_land[perc_diff_land[['GCAM']].isin(["Global (net)"]).any(axis=1)]
+        perc_diff_land["LandLeaf"] = perc_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row),
+                                                          axis=1)
+
+        # global food demand
+        released_Pcal = pd.read_csv(
+            "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
+        pyrolysis_Pcal = pd.read_csv(
+            "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_consumption_by_type_specific.csv")
+        released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
+        pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
+
+        released_Pcal['GCAM'] = released_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+        pyrolysis_Pcal['GCAM'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+        released_Pcal['technology'] = released_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+        pyrolysis_Pcal['technology'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+
+        # drop MiscCrop and FiberCrop because those products don't have meaningful calories and clutter the graph
+        released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Fiber Crops"].index)
+        released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Other Crops"].index)
+        pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Fiber Crops"].index)
+        pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Other Crops"].index)
+
+        released_Pcal = data_manipulation.group(released_Pcal, ["SSP", "technology"])
+        pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["SSP", "technology"])
+        diff_Pcal = data_manipulation.flat_difference(pyrolysis_Pcal, released_Pcal, ["SSP", "technology", "GCAM"])
 
 
 if __name__ == '__main__':
@@ -766,8 +816,8 @@ if __name__ == '__main__':
     # figure3("pyrolysis", "4p5", ["SSP2"])
     # figure4("pyrolysis", "4p5", ["SSP2"])
     # figure5("pyrolysis", "4p5", ["SSP2"])
-    figure6("pyrolysis", "4p5", ["SSP2"])
-    # figure7("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure6("pyrolysis", "4p5", ["SSP2"])
+    figure7("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
     for j in ["4p5"]:
         # food("pyrolysis", j, ["SSP2"])
         # energy("pyrolysis", j, ["SSP2"])

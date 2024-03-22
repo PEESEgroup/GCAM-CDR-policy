@@ -2,6 +2,7 @@ import geopandas as gpd
 import itertools
 
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.collections import PatchCollection
 import pandas as pd
 import constants as c
@@ -1219,3 +1220,70 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                     )
 
             plt.show()
+
+
+def sensitivity(dataframe, SSPs, base_SSP, year, column):
+    fig, ax = plt.subplots()
+
+    # get base values on a per product basis
+    base_vals = dataframe[dataframe[['SSP']].isin([base_SSP]).any(axis=1)]
+
+    # get low and high values
+    low_vals = dataframe.loc[dataframe.groupby(column)[year].idxmin()]
+    high_vals = dataframe.loc[dataframe.groupby(column)[year].idxmax()]
+    vals = pd.merge(low_vals, high_vals, on=["product"], suffixes=("_low", "_high"))
+    vals = pd.merge(vals, base_vals, on=["product"], suffixes=("", "_base"))
+    bars = pd.DataFrame()
+
+    # normalize to percentages
+    bars["length"] = 100*(vals[year+"_high"] - vals[year+"_low"])/vals[year]
+    bars["low"] = 100*vals[year+"_low"]/vals[year]
+    bars["low_SSP"] = vals["SSP_low"]
+    bars["high_SSP"] = vals["SSP_high"]
+    bars["base"] = 100*vals[year]/vals[year]
+    bars["high"] = 100 * vals[year+"_high"] / vals[year]
+    bars["product"] = vals["product"]
+    bars["Units"] = vals["Units"]
+    bars["base_unscaled"] = vals[year]
+
+    ys = range(len(bars))[::-1]  # top to bottom
+
+    #TODO reorder plots based on length of low bar
+
+    # Plot the bars, one by one
+    for y, low, value, base, low_SSP, high_SSP in zip(ys, bars["low"], bars["length"], bars["base"], bars["low_SSP"], bars["high_SSP"]):
+        # The width of the 'low' and 'high' pieces
+        low_width = base - low
+        high_width = low + value - base
+
+        # Each bar is a "broken" horizontal bar chart
+        plt.broken_barh(
+            [(low, low_width), (base, high_width)],
+            (y - 0.4, 0.8),
+            #TODO get a nice color scheme (cmaps???)
+            facecolors=['red', 'green'],  # Try different colors if you like
+            edgecolors=['black', 'black'],
+            linewidth=1,
+        )
+
+        # Display the SSP as text next to the low and high bars
+        x = base - low_width - value/20
+        plt.text(x, y, str(low_SSP), va='center', ha='right')
+        x = base + high_width + value/20
+        plt.text(x, y, str(high_SSP), va='center', ha='left')
+
+    # Draw a vertical line down the middle
+    plt.axvline(100, color='black')
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+
+    # Make the y-axis display the variables
+    print("base values", bars.loc[:, ["product", "base_unscaled", "Units"]])
+    plt.yticks(ys, bars["product"])
+
+    # Set the portion of the x- and y-axes to show
+    plt.xlim(bars["low"].min() - bars["length"].max()/5, bars["high"].max() + bars["length"].max()/5)
+    plt.ylim(-1, len(bars["product"]))
+    plt.xlabel("% change from value in " + str(base_SSP))
+    plt.subplots_adjust(left=.3, right=.9)
+    plt.show()
