@@ -1,8 +1,5 @@
 import geopandas as gpd
-import itertools
-
-import matplotlib.pyplot as plt
-import numpy as np
+import matplotlib.patches as patches
 from matplotlib.collections import PatchCollection
 import pandas as pd
 import constants as c
@@ -981,9 +978,10 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
 
             # averages
             weighted_avg = pd.merge(df_price, df_supply, on=["GCAM"])
-            weighted_avg[str(year)] = weighted_avg[str(year)+"_x"] * weighted_avg[str(year)+"_y"]
-            plt.axhline(y=weighted_avg[str(year)].sum()/weighted_avg[str(year)+"_y"].sum(), color=colors[idx], linestyle='dashed')
-            print("avg price:", str(item), weighted_avg[str(year)].sum()/weighted_avg[str(year)+"_y"].sum())
+            weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
+            plt.axhline(y=weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum(), color=colors[idx],
+                        linestyle='dashed')
+            print("avg price:", str(item), weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum())
 
         # finalize plot
         plt.ylabel(y_label)
@@ -1040,7 +1038,7 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
                 max_seq = CI_df["2050"].max()
 
                 # plot the min and max data
-                plt.vlines(x=0.05*color_counter, ymin=min_seq, ymax=max_seq, colors=color, linewidth=3)
+                plt.vlines(x=0.05 * color_counter, ymin=min_seq, ymax=max_seq, colors=color, linewidth=3)
 
         # get units
         units = dataframe['Units'].unique()[0]
@@ -1084,7 +1082,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
             ax.grid(color="#d5d5d5", linestyle="dashed")
             ax.text(np.radians(5), df[year].max(), y_label,
                     rotation=0, ha='center', va='center')
-            plt.subplots_adjust(bottom=0.2, top = 0.8)
+            plt.subplots_adjust(bottom=0.2, top=0.8)
             plt.xticks([])
             cmap = plt.colormaps.get_cmap('cool')
             fig.suptitle(title)
@@ -1104,10 +1102,10 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                 width=width,
                 linewidth=.5,
                 edgecolor="white",
-                color = im.to_rgba(heights))
+                color=im.to_rgba(heights))
 
             # little space between the bar and the label
-            labelPadding = df[year].max()/25
+            labelPadding = df[year].max() / 25
 
             # Add labels
             for angle, height, label in zip(angles, heights, df["GCAM"]):
@@ -1135,7 +1133,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                     backgroundcolor="white",
                     zorder=.2,
                     fontsize="small",
-                    )
+                )
 
             plt.show()
 
@@ -1166,7 +1164,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
             ax.grid(color="#d5d5d5", linestyle="dashed")
             ax.text(np.radians(5), df[year].max(), y_label,
                     rotation=0, ha='center', va='center')
-            plt.subplots_adjust(bottom=0.2, top = 0.8)
+            plt.subplots_adjust(bottom=0.2, top=0.8)
             plt.xticks([])
             cmap = plt.colormaps.get_cmap('cool')
             fig.suptitle(title)
@@ -1186,10 +1184,10 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                 width=width,
                 linewidth=.5,
                 edgecolor="white",
-                color = im.to_rgba(heights))
+                color=im.to_rgba(heights))
 
             # little space between the bar and the label
-            labelPadding = df[year].max()/25
+            labelPadding = df[year].max() / 25
 
             # Add labels
             for angle, height, label in zip(angles, heights, df["GCAM"]):
@@ -1217,12 +1215,21 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                     backgroundcolor="white",
                     zorder=.2,
                     fontsize="small",
-                    )
+                )
 
             plt.show()
 
 
-def sensitivity(dataframe, SSPs, base_SSP, year, column):
+def sensitivity(dataframe, RCP, base_SSP, year, column):
+    """
+    Plots a tornado plot for sensitivity analyses
+    :param dataframe: dataframe to be plotted
+    :param RCP: RCP pathway for baseline
+    :param base_SSP: baseline SSP
+    :param year: year for evaluation
+    :param column: column containing differentiation
+    :return: N/A
+    """
     fig, ax = plt.subplots()
 
     # get base values on a per product basis
@@ -1236,40 +1243,53 @@ def sensitivity(dataframe, SSPs, base_SSP, year, column):
     bars = pd.DataFrame()
 
     # normalize to percentages
-    bars["length"] = 100*(vals[year+"_high"] - vals[year+"_low"])/vals[year]
-    bars["low"] = 100*vals[year+"_low"]/vals[year]
+    bars["length"] = 100 * (vals[year + "_high"] - vals[year + "_low"]) / vals[year]
+    bars["low"] = 100 * vals[year + "_low"] / vals[year]
     bars["low_SSP"] = vals["SSP_low"]
     bars["high_SSP"] = vals["SSP_high"]
-    bars["base"] = 100*vals[year]/vals[year]
-    bars["high"] = 100 * vals[year+"_high"] / vals[year]
+    bars["base"] = 100 * vals[year] / vals[year]
+    bars["high"] = 100 * vals[year + "_high"] / vals[year]
     bars["product"] = vals["product"]
     bars["Units"] = vals["Units"]
     bars["base_unscaled"] = vals[year]
 
+    # sort dataframe
+    bars = bars.sort_values(by="low", ascending=True)
     ys = range(len(bars))[::-1]  # top to bottom
 
-    #TODO reorder plots based on length of low bar
+    # get colormap and normalize it
+    cmap = plt.colormaps.get_cmap('PiYG')
+    min_low = 100 - bars["low"].min()
+    max_high = bars["high"].max() - 100
+    normalizer = Normalize(-max(min_low, max_high), max(min_low, max_high))
 
     # Plot the bars, one by one
-    for y, low, value, base, low_SSP, high_SSP in zip(ys, bars["low"], bars["length"], bars["base"], bars["low_SSP"], bars["high_SSP"]):
+    for y, low, value, base, low_SSP, high_SSP in zip(ys, bars["low"], bars["length"], bars["base"], bars["low_SSP"],
+                                                      bars["high_SSP"]):
         # The width of the 'low' and 'high' pieces
         low_width = base - low
         high_width = low + value - base
 
-        # Each bar is a "broken" horizontal bar chart
-        plt.broken_barh(
-            [(low, low_width), (base, high_width)],
-            (y - 0.4, 0.8),
-            #TODO get a nice color scheme (cmaps???)
-            facecolors=['red', 'green'],  # Try different colors if you like
-            edgecolors=['black', 'black'],
-            linewidth=1,
-        )
+        # plot full colorbar so that the center of the colorbar is on the vertical line, then crop by data values
+        ymin = y - 0.4
+        ymax = y + 0.4
+        im = gradient_image(ax, direction=1,
+                            extent=(base - max(min_low, max_high), base + max(min_low, max_high), ymin, ymax),
+                            cmap=cmap,
+                            cmap_range=(normalizer(-max(min_low, max_high)), normalizer(max(min_low, max_high))))
+        # crop image by patch
+        patch = patches.Rectangle((low, y - 0.4), width=value, height=ymax - ymin, transform=ax.transData)
+        im.set_clip_path(patch)
+
+        # add patch for border
+        edge_patch = [patches.Rectangle((low, ymin), width=value, height=ymax - ymin)]
+        pc = PatchCollection(edge_patch, edgecolor="#aaaaaa", facecolors="none")
+        ax.add_collection(pc)
 
         # Display the SSP as text next to the low and high bars
-        x = base - low_width - value/20
+        x = base - low_width - value / 20
         plt.text(x, y, str(low_SSP), va='center', ha='right')
-        x = base + high_width + value/20
+        x = base + high_width + value / 20
         plt.text(x, y, str(high_SSP), va='center', ha='left')
 
     # Draw a vertical line down the middle
@@ -1282,8 +1302,38 @@ def sensitivity(dataframe, SSPs, base_SSP, year, column):
     plt.yticks(ys, bars["product"])
 
     # Set the portion of the x- and y-axes to show
-    plt.xlim(bars["low"].min() - bars["length"].max()/5, bars["high"].max() + bars["length"].max()/5)
+    plt.xlim(bars["low"].min() - bars["length"].max() / 5, bars["high"].max() + bars["length"].max() / 5)
     plt.ylim(-1, len(bars["product"]))
-    plt.xlabel("% change from value in " + str(base_SSP))
-    plt.subplots_adjust(left=.3, right=.9)
+    plt.xlabel("% change from value in " + str(base_SSP) + " in RCP " + str(RCP))
+    plt.subplots_adjust(left=.3, right=.9, bottom=.4)
     plt.show()
+
+
+def gradient_image(ax, direction=0.3, cmap_range=(0, 1), **kwargs):
+    """
+    Draw a gradient image based on a colormap.
+    From: https://matplotlib.org/stable/gallery/lines_bars_and_markers/gradient_bar.html
+
+    Parameters
+    ----------
+    ax : Axes
+        The axes to draw on.
+    direction : float
+        The direction of the gradient. This is a number in
+        range 0 (=vertical) to 1 (=horizontal).
+    cmap_range : float, float
+        The fraction (cmin, cmax) of the colormap that should be
+        used for the gradient, where the complete colormap is (0, 1).
+    **kwargs
+        Other parameters are passed on to `.Axes.imshow()`.
+        In particular, *cmap*, *extent*, and *transform* may be useful.
+    """
+    phi = direction * np.pi / 2
+    v = np.array([np.cos(phi), np.sin(phi)])
+    X = np.array([[v @ [1, 0], v @ [1, 1]],
+                  [v @ [0, 0], v @ [0, 1]]])
+    a, b = cmap_range
+    X = a + (b - a) / X.max() * X
+    im = ax.imshow(X, interpolation='bicubic', clim=(0, 1),
+                   aspect='auto', **kwargs)
+    return im
