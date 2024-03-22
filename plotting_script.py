@@ -764,34 +764,56 @@ def figure7(nonBaselineScenario, RCP, SSP):
     """
     for i in RCP:
         # global supply of biochar and manure fuel feedstock
-        biochar_supply = pd.read_csv(
-            "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(i) + "/supply_of_all_markets.csv")
-        products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar",
-                    "manure fuel feedstock"]
-        biochar_supply['product'] = biochar_supply.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
-        biochar_supply = data_manipulation.group(biochar_supply, ["SSP", "product"])
-        biochar_supply = biochar_supply[biochar_supply[['product']].isin(products).any(axis=1)]
-        plotting.sensitivity(biochar_supply, SSP, "SSP2", "2050", "product")
+        for k in [["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"],["manure fuel feedstock"]]:
+            biochar_supply = pd.read_csv(
+                "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(i) + "/supply_of_all_markets.csv")
+            biochar_supply['product'] = biochar_supply.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
+            biochar_supply = biochar_supply[biochar_supply[['product']].isin(k).any(axis=1)]
+            biochar_supply = data_manipulation.group(biochar_supply, ["SSP", "product"])
 
+            baseline_data = biochar_supply.copy(deep=True)
+            baseline_data = baseline_data[baseline_data[['SSP']].isin(["SSP1"]).any(axis=1)]
+            baseline_data["LandLeaf"] = baseline_data.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
+            baseline_data["SSP"] = "released"
+            for j in c.GCAMConstants.x:
+                baseline_data[str(j)] = 0
+            biochar_supply = pd.concat([biochar_supply, baseline_data])
+            plotting.sensitivity(biochar_supply, i, "released", "2050", "product")
 
         # global net land use
-        released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/aggregated_land_allocation.csv")
+        released_land = pd.read_csv("data/gcam_out/released/" + str(i) + "/aggregated_land_allocation.csv")
         pyrolysis_land = pd.read_csv(
-            "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/aggregated_land_allocation.csv")
+            "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(i) + "/aggregated_land_allocation.csv")
         released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
         pyrolysis_land = pyrolysis_land[pyrolysis_land[['SSP']].isin(SSP).any(axis=1)]
-        perc_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land,
-                                                            ["SSP", "LandLeaf", "GCAM"])
+        released_land = released_land[released_land[['GCAM']].isin(["Global"]).any(axis=1)]
+        pyrolysis_land = pyrolysis_land[pyrolysis_land[['GCAM']].isin(["Global"]).any(axis=1)]
 
-        perc_diff_land = perc_diff_land[perc_diff_land[['GCAM']].isin(["Global (net)"]).any(axis=1)]
-        perc_diff_land["LandLeaf"] = perc_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row),
+        flat_diff_land = data_manipulation.flat_difference(released_land, pyrolysis_land,
+                                                           ["SSP", "LandLeaf", "GCAM"])
+        flat_diff_land["LandLeaf"] = flat_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row),
                                                           axis=1)
+
+        # add data for a baseline scenario with no land use change
+        baseline_data = released_land.copy(deep=True)
+        baseline_data = baseline_data[baseline_data[['SSP']].isin(["SSP1"]).any(axis=1)]
+        baseline_data["LandLeaf"] = baseline_data.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
+        baseline_data["SSP"] = "released"
+        for j in c.GCAMConstants.x:
+            baseline_data[str(j)] = 0
+
+        # drop tundra, urban, rock and desert because there is no variation
+        flat_diff_land = pd.concat([flat_diff_land, baseline_data])
+        flat_diff_land = flat_diff_land.drop(flat_diff_land[flat_diff_land["LandLeaf"] == "tundra"].index)
+        flat_diff_land = flat_diff_land.drop(flat_diff_land[flat_diff_land["LandLeaf"] == "urban"].index)
+        flat_diff_land = flat_diff_land.drop(flat_diff_land[flat_diff_land["LandLeaf"] == "rock and desert"].index)
+        plotting.sensitivity(flat_diff_land, i, "released", "2050", "LandLeaf")
 
         # global food demand
         released_Pcal = pd.read_csv(
-            "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
+            "data/gcam_out/released/" + str(i) + "/food_consumption_by_type_specific.csv")
         pyrolysis_Pcal = pd.read_csv(
-            "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/food_consumption_by_type_specific.csv")
+            "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(i) + "/food_consumption_by_type_specific.csv")
         released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
         pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
 
@@ -805,10 +827,19 @@ def figure7(nonBaselineScenario, RCP, SSP):
         released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Other Crops"].index)
         pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Fiber Crops"].index)
         pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Other Crops"].index)
-
         released_Pcal = data_manipulation.group(released_Pcal, ["SSP", "technology"])
         pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["SSP", "technology"])
-        diff_Pcal = data_manipulation.flat_difference(pyrolysis_Pcal, released_Pcal, ["SSP", "technology", "GCAM"])
+        diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal, ["SSP", "technology", "GCAM"])
+
+        # add data for a baseline scenario with no land use change
+        baseline_data = diff_Pcal.copy(deep=True)
+        baseline_data = baseline_data[baseline_data[['SSP']].isin(["SSP1"]).any(axis=1)]
+        baseline_data["technology"] = baseline_data.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+        baseline_data["SSP"] = "released"
+        for j in c.GCAMConstants.x:
+            baseline_data[str(j)] = 0
+        diff_Pcal = pd.concat([diff_Pcal, baseline_data])
+        plotting.sensitivity(diff_Pcal, i, "released", "2050", "technology")
 
 
 if __name__ == '__main__':

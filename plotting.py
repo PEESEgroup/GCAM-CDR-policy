@@ -1220,7 +1220,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
             plt.show()
 
 
-def sensitivity(dataframe, RCP, base_SSP, year, column):
+def sensitivity(dataframe, RCP, base_SSP, year, column, percentages=False):
     """
     Plots a tornado plot for sensitivity analyses
     :param dataframe: dataframe to be plotted
@@ -1234,24 +1234,43 @@ def sensitivity(dataframe, RCP, base_SSP, year, column):
 
     # get base values on a per product basis
     base_vals = dataframe[dataframe[['SSP']].isin([base_SSP]).any(axis=1)]
+    print("base values", base_vals.loc[:, [column, year, "Units"]])
+
+    if not percentages:
+        dataframe = dataframe[~dataframe[['SSP']].isin([base_SSP]).any(axis=1)]
 
     # get low and high values
     low_vals = dataframe.loc[dataframe.groupby(column)[year].idxmin()]
     high_vals = dataframe.loc[dataframe.groupby(column)[year].idxmax()]
-    vals = pd.merge(low_vals, high_vals, on=["product"], suffixes=("_low", "_high"))
-    vals = pd.merge(vals, base_vals, on=["product"], suffixes=("", "_base"))
+    vals = pd.merge(low_vals, high_vals, on=[column], suffixes=("_low", "_high"))
+    vals = pd.merge(vals, base_vals, on=[column], suffixes=("", "_base"))
     bars = pd.DataFrame()
 
     # normalize to percentages
-    bars["length"] = 100 * (vals[year + "_high"] - vals[year + "_low"]) / vals[year]
-    bars["low"] = 100 * vals[year + "_low"] / vals[year]
-    bars["low_SSP"] = vals["SSP_low"]
-    bars["high_SSP"] = vals["SSP_high"]
-    bars["base"] = 100 * vals[year] / vals[year]
-    bars["high"] = 100 * vals[year + "_high"] / vals[year]
-    bars["product"] = vals["product"]
-    bars["Units"] = vals["Units"]
-    bars["base_unscaled"] = vals[year]
+    if percentages:
+        bars["length"] = 100 * (vals[year + "_high"] - vals[year + "_low"]) / vals[year]
+        bars["low"] = 100 * vals[year + "_low"] / vals[year]
+        bars["low_SSP"] = vals["SSP_low"]
+        bars["high_SSP"] = vals["SSP_high"]
+        bars["base"] = 100 * vals[year] / vals[year]
+        bars["high"] = 100 * vals[year + "_high"] / vals[year]
+        bars[column] = vals[column]
+        bars["Units"] = "%"
+        bars["base_unscaled"] = vals[year]
+        bars = bars.dropna()
+        baseline_value = 100
+    else:
+        bars["length"] = (vals[year + "_high"] - vals[year + "_low"])
+        bars["low"] = vals[year + "_low"]
+        bars["low_SSP"] = vals["SSP_low"]
+        bars["high_SSP"] = vals["SSP_high"]
+        bars["base"] = vals[year]
+        bars["high"] = vals[year + "_high"]
+        bars[column] = vals[column]
+        bars["Units"] = vals["Units"]
+        bars["base_unscaled"] = vals[year]
+        bars = bars.dropna()
+        baseline_value = 0
 
     # sort dataframe
     bars = bars.sort_values(by="low", ascending=True)
@@ -1259,8 +1278,8 @@ def sensitivity(dataframe, RCP, base_SSP, year, column):
 
     # get colormap and normalize it
     cmap = plt.colormaps.get_cmap('PiYG')
-    min_low = 100 - bars["low"].min()
-    max_high = bars["high"].max() - 100
+    min_low = baseline_value - bars["low"].min()
+    max_high = bars["high"].max() - baseline_value
     normalizer = Normalize(-max(min_low, max_high), max(min_low, max_high))
 
     # Plot the bars, one by one
@@ -1274,7 +1293,9 @@ def sensitivity(dataframe, RCP, base_SSP, year, column):
         ymin = y - 0.4
         ymax = y + 0.4
         im = gradient_image(ax, direction=1,
-                            extent=(base - max(min_low, max_high), base + max(min_low, max_high), ymin, ymax),
+                            extent=(
+                            baseline_value - max(min_low, max_high), baseline_value + max(min_low, max_high), ymin,
+                            ymax),
                             cmap=cmap,
                             cmap_range=(normalizer(-max(min_low, max_high)), normalizer(max(min_low, max_high))))
         # crop image by patch
@@ -1287,25 +1308,32 @@ def sensitivity(dataframe, RCP, base_SSP, year, column):
         ax.add_collection(pc)
 
         # Display the SSP as text next to the low and high bars
-        x = base - low_width - value / 20
+        x = base - low_width - bars["length"].max() / 40
+        if low > baseline_value:
+            x = base - bars["length"].max() / 40
         plt.text(x, y, str(low_SSP), va='center', ha='right')
-        x = base + high_width + value / 20
+        x = base + high_width + bars["length"].max() / 40
+        if low + value < baseline_value:
+            x = base + bars["length"].max() / 40
         plt.text(x, y, str(high_SSP), va='center', ha='left')
 
     # Draw a vertical line down the middle
-    plt.axvline(100, color='black')
+    plt.axvline(baseline_value, color='black')
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
 
     # Make the y-axis display the variables
-    print("base values", bars.loc[:, ["product", "base_unscaled", "Units"]])
-    plt.yticks(ys, bars["product"])
+    plt.yticks(ys, bars[column])
 
     # Set the portion of the x- and y-axes to show
     plt.xlim(bars["low"].min() - bars["length"].max() / 5, bars["high"].max() + bars["length"].max() / 5)
-    plt.ylim(-1, len(bars["product"]))
-    plt.xlabel("% change from value in " + str(base_SSP) + " in RCP " + str(RCP))
-    plt.subplots_adjust(left=.3, right=.9, bottom=.4)
+    plt.ylim(-1, len(bars[column]))
+    if percentages:
+        plt.xlabel("change from " + str(base_SSP) + " in RCP " + str(RCP) + " (" + str(bars["Units"].unique()[0]) + ")")
+    else:
+        plt.xlabel("change from released model in RCP " + str(RCP) + " (" + str(bars["Units"].unique()[0]) + ")")
+
+    plt.subplots_adjust(left=.33, right=.98, bottom=.4)
     plt.show()
 
 
