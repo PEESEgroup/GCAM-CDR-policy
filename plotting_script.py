@@ -558,6 +558,11 @@ def figure3(nonBaselineScenario, RCP, SSP):
                                          "2050"] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
     unique_c_price = flat_diff_c_price[["2050_conv", "SSP"]].drop_duplicates()
     print(unique_c_price)
+    perc_diff_c_price = data_manipulation.percent_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
+    perc_diff_c_price["2050_conv"] = perc_diff_c_price[
+                                         "2050"] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
+    unique_c_price = perc_diff_c_price[["2050_conv", "SSP"]].drop_duplicates()
+    print(unique_c_price)
 
 
 def figure4(nonBaselineScenario, RCP, SSP):
@@ -842,13 +847,65 @@ def figure7(nonBaselineScenario, RCP, SSP):
         plotting.sensitivity(diff_Pcal, i, "released", "2050", "technology")
 
 
+def cue_figure(nonBaselineScenario, RCP, SSP):
+    """
+    Returns plots for potential figure in the CUE conference paper
+    :param nonBaselineScenario: the scenario to be compared to the released scenario
+    :param RCP: the RCP pathways being considered
+    :param SSP: the SSP pathways being considered
+    :return: N/A
+    """
+    for i in RCP:
+        # Changes in energy mix
+        # refined liquids production
+        ref_released = pd.read_csv("data/gcam_out/released/" + str(i) + "/refined_liquids_production_by_tech.csv")
+        ref_pyrolysis = pd.read_csv(
+            "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(i) + "/refined_liquids_production_by_tech.csv")
+
+        # add manure fuel row to the released version so that the flat diff can be analyzed
+        man_fuel = ref_pyrolysis.loc[ref_pyrolysis["technology"] == "manure fuel"]
+        for j in c.GCAMConstants.plotting_x:
+            man_fuel.loc[:, str(j)] = 0
+        ref_released = pd.concat([ref_released, man_fuel])
+
+        # select global region
+        ref_released = ref_released[ref_released[['GCAM']].isin(["Global"]).any(axis=1)]
+        ref_pyrolysis = ref_pyrolysis[ref_pyrolysis[['GCAM']].isin(["Global"]).any(axis=1)]
+
+        # add baseline data
+        flat_diff_biofuel = data_manipulation.flat_difference(ref_released, ref_pyrolysis, ["SSP", "technology", "GCAM"])
+        perc_diff_biofuel = data_manipulation.percent_difference(ref_released, ref_pyrolysis,
+                                                              ["SSP", "technology", "GCAM"])
+
+        baseline_data = flat_diff_biofuel.copy(deep=True)
+        baseline_data = baseline_data[baseline_data[['SSP']].isin(["SSP1"]).any(axis=1)]
+        baseline_data["technology"] = baseline_data.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+        baseline_data["SSP"] = "released"
+        for j in c.GCAMConstants.x:
+            baseline_data[str(j)] = 0
+        flat_diff_biofuel = pd.concat([flat_diff_biofuel, baseline_data])
+
+        baseline_data = perc_diff_biofuel.copy(deep=True)
+        baseline_data = baseline_data[baseline_data[['SSP']].isin(["SSP1"]).any(axis=1)]
+        baseline_data["technology"] = baseline_data.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+        baseline_data["SSP"] = "released"
+        for j in c.GCAMConstants.x:
+            baseline_data[str(j)] = 0
+        perc_diff_biofuel = pd.concat([perc_diff_biofuel, baseline_data])
+
+        # plot products
+        plotting.sensitivity(flat_diff_biofuel, str(i), "released", "2050", "technology")
+        plotting.sensitivity(perc_diff_biofuel, str(i), "released", "2050", "technology")
+
+
 if __name__ == '__main__':
     # figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    # figure3("pyrolysis", "4p5", ["SSP2"])
+    figure3("pyrolysis", "4p5", ["SSP2"])
     # figure4("pyrolysis", "4p5", ["SSP2"])
     # figure5("pyrolysis", "4p5", ["SSP2"])
     # figure6("pyrolysis", "4p5", ["SSP2"])
-    figure7("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
+    # figure7("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
+    cue_figure("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
     for j in ["4p5"]:
         # food("pyrolysis", j, ["SSP2"])
         # energy("pyrolysis", j, ["SSP2"])
