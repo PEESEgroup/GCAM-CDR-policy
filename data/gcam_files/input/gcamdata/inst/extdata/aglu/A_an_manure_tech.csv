@@ -1,0 +1,38 @@
+# File: A_an_manure_tech.csv
+# Title: Primary energy handling default coefficients
+# Units: Unitless
+#Source: Fine et al 2015. Food losses and waste in the french oilcrops sector. OCL.22.A302.10.1051/ocl/2015012
+# Column types: cccc
+# ----------
+supplysector,subsector,technology,minicam.energy.input
+Beef,Mixed,FodderHerb_Residue,Beef
+Beef,Mixed,Pasture_FodderGrass,Beef
+Beef,Mixed,FeedCrops,Beef
+Beef,Mixed,Scavenging_Other,Beef
+Dairy,Mixed,FodderHerb_Residue,Dairy
+Dairy,Mixed,Pasture_FodderGrass,Dairy
+Dairy,Mixed,FeedCrops,Dairy
+Dairy,Mixed,Scavenging_Other,Dairy
+Pork,Mixed,FodderHerb_Residue,Pork
+Pork,Mixed,Pasture_FodderGrass,Pork
+Pork,Mixed,FeedCrops,Pork
+Pork,Mixed,Scavenging_Other,Pork
+Poultry,Mixed,FodderHerb_Residue,Poultry
+Poultry,Mixed,Pasture_FodderGrass,Poultry
+Poultry,Mixed,FeedCrops,Poultry
+Poultry,Mixed,Scavenging_Other,Poultry
+SheepGoat,Mixed,FodderHerb_Residue,SheepGoat
+SheepGoat,Mixed,Pasture_FodderGrass,SheepGoat
+SheepGoat,Mixed,FeedCrops,SheepGoat
+SheepGoat,Mixed,Scavenging_Other,SheepGoat
+Beef,Pastoral,FeedCrops,Beef
+Beef,Pastoral,FodderHerb_Residue,Beef
+Beef,Pastoral,Pasture_FodderGrass,Beef
+Beef,Pastoral,Scavenging_Other,Beef
+Dairy,Pastoral,FeedCrops,Dairy
+Dairy,Pastoral,FodderHerb_Residue,Dairy
+Dairy,Pastoral,Pasture_FodderGrass,Dairy
+Dairy,Pastoral,Scavenging_Other,Dairy
+SheepGoat,Pastoral,FeedCrops,SheepGoat
+SheepGoat,Pastoral,Pasture_FodderGrass,SheepGoat
+SheepGoat,Pastoral,Scavenging_Other,SheepGoat

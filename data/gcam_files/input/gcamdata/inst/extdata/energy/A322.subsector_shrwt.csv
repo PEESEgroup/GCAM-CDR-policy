@@ -1,0 +1,17 @@
+# File: A322.subsector_shrwt.csv
+# Title: Fertilizer default subsector shareweights
+# Units: Unitless
+# Column types: cccci 
+# ----------
+supplysector,subsector,year.fillout,year,share.weight
+N fertilizer,coal,start-year,,1
+N fertilizer,gas,start-year,,1
+N fertilizer,refined liquids,start-year,,1
+N fertilizer,refined liquids,2035,,0
+N fertilizer,hydrogen,start-year,,0
+N fertilizer,hydrogen,2050,,1
+N fertilizer,poultry_biochar,initial-future-year,,1
+N fertilizer,pork_biochar,initial-future-year,,1
+N fertilizer,beef_biochar,initial-future-year,,1
+N fertilizer,dairy_biochar,initial-future-year,,1
+N fertilizer,goat_biochar,initial-future-year,,1
