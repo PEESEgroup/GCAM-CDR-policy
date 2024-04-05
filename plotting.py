@@ -1006,10 +1006,10 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
     """
     # get plot information
     # get subplot size
-    nrow, ncol = get_subplot_dimensions(["plot", "CI"])
+    nrow, ncol = get_subplot_dimensions(["plot"])
 
     # make plots and color scheme
-    fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2}, width_ratios=[12, 1])
+    fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2})
 
     # find the number of model versions
     # get color scheme based on number of model versions
@@ -1034,22 +1034,16 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
 
                 # get min and max data across SSPs
                 CI_df = dataframe[(dataframe[column] == i)]
-                min_seq = CI_df["2050"].min()
-                max_seq = CI_df["2050"].max()
+                min_seq = [CI_df[str(i)].min() for i in c.GCAMConstants.plotting_x]
+                max_seq = [CI_df[str(i)].max() for i in c.GCAMConstants.plotting_x]
 
                 # plot the min and max data
-                plt.vlines(x=0.05 * color_counter, ymin=min_seq, ymax=max_seq, colors=color, linewidth=3)
+                axs.fill_between(c.GCAMConstants.plotting_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
 
         # get units
         units = dataframe['Units'].unique()[0]
         l, h = finalize_line_subplot(axs, units, str(SSP_baseline), ncol, nrow, 0)
 
-        # finalzie plotting formatting
-        axs[1].tick_params(left=False, right=False, labelleft=False, labelbottom=False, bottom=False)
-        axs[1].spines['top'].set_visible(False)
-        axs[1].spines['right'].set_visible(False)
-        axs[1].spines['bottom'].set_visible(False)
-        axs[1].spines['left'].set_visible(False)
         finalize_line_plot(fig, h, l, axs, nrow, ncol, 2)
 
     except ValueError as e:
@@ -1365,3 +1359,50 @@ def gradient_image(ax, direction=0.3, cmap_range=(0, 1), **kwargs):
     im = ax.imshow(X, interpolation='bicubic', clim=(0, 1),
                    aspect='auto', **kwargs)
     return im
+
+def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
+    """
+    Plots regional data in a stacked bar histogram
+    :param prices: price data being plotted
+    :param year: evaluation column
+    :param SSPs: SSPs being evaluated
+    :param y_label: ylabel for graph
+    :param title: title of graph
+    :param column: column used to identify unique categories
+    :param supply: supply data being plotted for weighted averages
+    :return: N/A
+    """
+    # get colors
+    colors, divisions = get_colors(1)
+
+    # plot for each SSP
+    for i in SSPs:
+        dataframe = prices[prices['SSP'].str.contains(i)]
+        supply = supply[supply['SSP'].str.contains(i)]
+        df = dataframe.loc[:, [str(year), column]]
+        products = df[column].unique().tolist()
+        df = df.pivot(columns=column, values=str(year))
+
+        # plot histogram
+        bins = [50 * i for i in range(1 + int(dataframe[year].max() / 50))]
+        plt.hist([df[i] for i in products], bins, stacked=True, label=df.columns, histtype='bar',
+                 color=[colors[i] for i in range(len(products))])
+
+        # calculate averages
+        for idx, item in enumerate(dataframe[column].unique()):
+            df_price = dataframe.loc[dataframe[column] == str(item)]
+            df_supply = supply.loc[supply[column] == str(item)]
+            weighted_avg = pd.merge(df_price, df_supply, on=["GCAM"])
+            weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
+
+            print("avg price:", str(item), weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum())
+
+        # finalize plot
+        plt.ylabel("number of regions")
+        plt.xlabel(y_label)
+        plt.xticks(rotation=60, ha='right')
+        plt.title(title)
+        plt.legend(bbox_to_anchor=(1, 1))
+        plt.subplots_adjust(bottom=0.4, right=.7)
+        plt.show()
+

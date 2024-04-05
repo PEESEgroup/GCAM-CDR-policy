@@ -505,6 +505,10 @@ def figure2(nonBaselineScenario, RCP, SSP):
     co2_seq_pyrolysis['Units'] = "Mt C"
     products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"]
     biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
+
+    # set 2025 outlier to nan
+    biochar_pyrolysis.loc[biochar_pyrolysis['2025'] < -400, '2025'] = np.nan
+
     plotting.plot_line_product_CI(biochar_pyrolysis, products, "sector", "SSP2", "Version",
                                   title="CO2 sequestration from biochar")
     # print values of Mt C sequestered
@@ -528,21 +532,16 @@ def figure3(nonBaselineScenario, RCP, SSP):
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")
     biochar_supply['product'] = biochar_supply.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
     products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"]
-    biochar_price.loc[
-        (biochar_price["product"] == "pork biochar") & (
-                biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
-    biochar_price.loc[
-        (biochar_price["product"] == "pork manure") & (
-                biochar_price["GCAM"] == "Pakistan"), "2050"] = np.nan  # manually removing outliers
     biochar_price["2050_conv"] = biochar_price[
                                      "2050"] * 5.92 * 1000  # Jan 1975 to Jan 2024 https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=197501&year2=202401 * kg to ton
+    biochar_price.loc[biochar_price["2050_conv"] > 2000, "2050_conv"] = np.nan  # manually removing outliers
     biochar_supply["2050_conv"] = biochar_supply["2050"]
     biochar_price = biochar_price[biochar_price[['product']].isin(products).any(axis=1)]
     biochar_supply = biochar_supply[biochar_supply[['product']].isin(products).any(axis=1)]
 
     biochar_supply['GCAM'] = biochar_supply.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     biochar_price['GCAM'] = biochar_price.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    plotting.plot_regional_vertical_avg(biochar_price, "2050_conv", SSP, "2024 US$/ton", "price of products", "product",
+    plotting.plot_regional_hist_avg(biochar_price, "2050_conv", SSP, "2024 US$/ton", "price of products", "product",
                                         biochar_supply)
 
     # print out differences in carbon prices
@@ -900,13 +899,13 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 if __name__ == '__main__':
     # figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    #figure3("pyrolysis", "4p5", ["SSP2"])
+    figure3("pyrolysis", "4p5", ["SSP2"])
     # for i in ["SSP1", "SSP2", "SSP4", "SSP5"]:
     #     figure4("pyrolysis", "4p5", [i])
     # figure5("pyrolysis", "4p5", ["SSP2"])
     # figure6("pyrolysis", "4p5", ["SSP2"])
     # figure7("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
-    cue_figure("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
+    # cue_figure("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
     for j in ["4p5"]:
         # food("pyrolysis", j, ["SSP2"])
         # energy("pyrolysis", j, ["SSP2"])
