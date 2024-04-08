@@ -660,6 +660,7 @@ def get_colors(num_versions):
     if num_versions == 1:
         cmap = matplotlib.colormaps.get_cmap('tab10')
         num_sub_colors = 1
+        return ["#BFBE43", "#74A751", "#698FC6", "#DD9452", "#C16861", "#A577A8", "#72B1B4", "#DCC060", "#AD9077", "#9299A9"], num_sub_colors
     elif num_versions == 2:
         cmap = matplotlib.colormaps.get_cmap('tab20')
         num_sub_colors = 2
@@ -878,7 +879,7 @@ def plot_stacked_bar_product(df, year, SSP, column, title):
         # get subplot information
         nrow, ncol = get_subplot_dimensions([year])
         fig, axs = plt.subplots(nrow, ncol, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
-        colors, num_colors = get_colors(25)
+        colors, num_colors = get_colors(1)
 
         # format table
         plot_df = df[df[['SSP']].isin(SSP).any(axis=1)]

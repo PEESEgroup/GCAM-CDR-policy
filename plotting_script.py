@@ -899,17 +899,8 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 if __name__ == '__main__':
     figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    # figure3("pyrolysis", "4p5", ["SSP2"])
-    # for i in ["SSP1", "SSP2", "SSP4", "SSP5"]:
-    #     figure4("pyrolysis", "4p5", [i])
-    # figure5("pyrolysis", "4p5", ["SSP2"])
-    # figure6("pyrolysis", "4p5", ["SSP2"])
-    # figure7("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
-    # cue_figure("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
-    for j in ["4p5"]:
-        # food("pyrolysis", j, ["SSP2"])
-        # energy("pyrolysis", j, ["SSP2"])
-        # climate("pyrolysis", j, ["SSP2"])
-        # land("pyrolysis", j, ["SSP2"])
-        # fertilizer("pyrolysis", j, ["SSP2"])
-        pass
+    figure3("pyrolysis", "4p5", ["SSP2"])
+    figure4("pyrolysis", "4p5", ["SSP2"])
+    figure5("pyrolysis", "4p5", ["SSP2"])
+    figure6("pyrolysis", "4p5", ["SSP2"])
+    figure7("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
