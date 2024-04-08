@@ -898,8 +898,8 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    # figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    figure3("pyrolysis", "4p5", ["SSP2"])
+    figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure3("pyrolysis", "4p5", ["SSP2"])
     # for i in ["SSP1", "SSP2", "SSP4", "SSP5"]:
     #     figure4("pyrolysis", "4p5", [i])
     # figure5("pyrolysis", "4p5", ["SSP2"])

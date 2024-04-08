@@ -1006,17 +1006,15 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
     """
     # get plot information
     # get subplot size
-    nrow, ncol = get_subplot_dimensions(["plot"])
+    nrow, ncol = get_subplot_dimensions(["plot", "sidebar"])
 
     # make plots and color scheme
-    fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2})
+    fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2}, width_ratios=[12, 1])
 
     # find the number of model versions
     # get color scheme based on number of model versions
     versions = dataframe[differentiator].unique()
     colors, num_colors = get_colors(len(versions))
-    h = 0
-    l = 0
     try:
         color_counter = 0
         for i in products:
@@ -1030,7 +1028,6 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
                 y_to_plot = y.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
                     c.GCAMConstants.plotting_x)]  # only take the x values
                 plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, str(i), color, axs, nrow, ncol, 0)
-                color_counter = color_counter + 1
 
                 # get min and max data across SSPs
                 CI_df = dataframe[(dataframe[column] == i)]
@@ -1038,98 +1035,27 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
                 max_seq = [CI_df[str(i)].max() for i in c.GCAMConstants.plotting_x]
 
                 # plot the min and max data
-                axs.fill_between(c.GCAMConstants.plotting_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
+                axs[0].fill_between(c.GCAMConstants.plotting_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
+
+                # add rectangles on right plot
+                rect = patches.Rectangle((color_counter*0.2, CI_df["2050"].min()),
+                                         0.15, CI_df["2050"].max()-CI_df["2050"].min(), facecolor=color)
+
+                # Add the patch to the Axes
+                axs[1].add_patch(rect)
+
+                color_counter = color_counter + 1
 
         # get units
         units = dataframe['Units'].unique()[0]
         l, h = finalize_line_subplot(axs, units, str(SSP_baseline), ncol, nrow, 0)
 
+        axs[1].axis('off')
+
         finalize_line_plot(fig, h, l, axs, nrow, ncol, 2)
 
     except ValueError as e:
         print(e)
-
-
-def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
-    """
-    Plots regional data in a categorical scatterplot
-    :param dataframe: data being plotted
-    :param year: evaluation column
-    :param SSPs: SSPs being evaluated
-    :param y_label: ylabel for graph
-    :param title: title of graph
-    :param column: column used to identify unique categories
-    :return: N/A
-    """
-    # plot for each SSP
-    for i in SSPs:
-        dataframe = dataframe[dataframe['SSP'].str.contains(i)]
-        for idx, item in enumerate(dataframe[column].unique()):
-            df = dataframe.loc[dataframe[column] == str(item)]
-
-            # set figure size
-            fig = plt.figure()
-            ax = plt.subplot(111, polar=True)
-            ax.set_rlabel_position(0)
-            ax.spines["polar"].set_color('#ffffff')
-            ax.set_title(str(item))
-            ax.grid(color="#d5d5d5", linestyle="dashed")
-            ax.text(np.radians(5), df[year].max(), y_label,
-                    rotation=0, ha='center', va='center')
-            plt.subplots_adjust(bottom=0.2, top=0.8)
-            plt.xticks([])
-            cmap = plt.colormaps.get_cmap('cool')
-            fig.suptitle(title)
-            normalizer = Normalize(dataframe[year].min(), dataframe[year].max())
-            im = cm.ScalarMappable(norm=normalizer, cmap=cmap)
-
-            # Compute the angle each bar is centered on:
-            heights = df[year]
-            width = 2 * np.pi / len(df.index)
-            indexes = list(range(1, len(df.index) + 1))
-            angles = [element * width for element in indexes]
-
-            # Draw bars
-            ax.bar(
-                x=angles,
-                height=heights,
-                width=width,
-                linewidth=.5,
-                edgecolor="white",
-                color=im.to_rgba(heights))
-
-            # little space between the bar and the label
-            labelPadding = df[year].max() / 25
-
-            # Add labels
-            for angle, height, label in zip(angles, heights, df["GCAM"]):
-
-                # Labels are rotated. Rotation must be specified in degrees :(
-                rotation = np.rad2deg(angle)
-
-                # Flip some labels upside down
-                alignment = ""
-                if angle >= np.pi / 2 and angle < 3 * np.pi / 2:
-                    alignment = "right"
-                    rotation = rotation + 180
-                else:
-                    alignment = "left"
-
-                # Finally add the labels
-                ax.text(
-                    x=angle,
-                    y=height + labelPadding,
-                    s=label,
-                    ha=alignment,
-                    va='center',
-                    rotation=rotation,
-                    rotation_mode="anchor",
-                    backgroundcolor="white",
-                    zorder=.2,
-                    fontsize="small",
-                )
-
-            plt.show()
 
 
 def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
@@ -1359,6 +1285,7 @@ def gradient_image(ax, direction=0.3, cmap_range=(0, 1), **kwargs):
     im = ax.imshow(X, interpolation='bicubic', clim=(0, 1),
                    aspect='auto', **kwargs)
     return im
+
 
 def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
     """
