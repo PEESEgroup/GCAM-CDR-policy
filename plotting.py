@@ -885,8 +885,13 @@ def plot_stacked_bar_product(df, year, SSP, column, title):
         plot_df = df[df[['SSP']].isin(SSP).any(axis=1)]
         plot_df = plot_df.loc[:, [year, 'SSP', 'GCAM', column]]
         plot_df = plot_df.pivot(index='GCAM', columns=column, values=year)
-        plot_df = plot_df.dropna(axis=1)
+        plot_df = plot_df.drop(["rock and desert", "tundra", "urban"], axis=1)  # in SSP2 RCP4.5 2050, shrubs in India has .nan, so cannot drop by na
         plot_df = plot_df.loc[:, (plot_df != 0).any(axis=0)]
+
+        # add a column to df for sorting, then remove it
+        plot_df["sum"] = plot_df.abs().sum(axis=1)
+        plot_df = plot_df.sort_values(by="sum", ascending=False)
+        plot_df = plot_df.drop(['sum'], axis = 1)
 
         # plot stacked bar chart
         plot_df.plot(kind="bar", stacked=True, color=colors, ax=axs)

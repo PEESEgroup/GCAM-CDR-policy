@@ -578,11 +578,18 @@ def figure4(nonBaselineScenario, RCP, SSP):
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/aggregated_land_allocation.csv")
     released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_land = pyrolysis_land[pyrolysis_land[['SSP']].isin(SSP).any(axis=1)]
-    perc_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
+    flat_diff_land = data_manipulation.flat_difference(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
 
-    perc_diff_land['GCAM'] = perc_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    perc_diff_land["LandLeaf"] = perc_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
-    plotting.plot_stacked_bar_product(perc_diff_land, "2050", SSP, "LandLeaf", "land use change by region")
+    flat_diff_land['GCAM'] = flat_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    flat_diff_land["LandLeaf"] = flat_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
+    plotting.plot_stacked_bar_product(flat_diff_land, "2050", SSP, "LandLeaf", "land use change by region")
+
+    flat_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
+
+    flat_diff_land['GCAM'] = flat_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    flat_diff_land["LandLeaf"] = flat_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
+    plotting.plot_stacked_bar_product(flat_diff_land, "2050", SSP, "LandLeaf", "land use change by region")
+
 
 
 def figure5(nonBaselineScenario, RCP, SSP):
@@ -898,8 +905,8 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
-    figure3("pyrolysis", "4p5", ["SSP2"])
+    # figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
+    # figure3("pyrolysis", "4p5", ["SSP2"])
     figure4("pyrolysis", "4p5", ["SSP2"])
     figure5("pyrolysis", "4p5", ["SSP2"])
     figure6("pyrolysis", "4p5", ["SSP2"])

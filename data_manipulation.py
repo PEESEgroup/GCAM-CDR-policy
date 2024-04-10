@@ -355,14 +355,13 @@ def relabel_land_use(row):
     :return: updated name of GCAM region
     """
     luc = row["LandLeaf"]
-    matches = ["crops"]
-    if any(x in luc for x in matches):
-        return luc
+    if luc == "crops":
+        return "crops"
     elif luc == "biomass":
         return "biomass for energy"
     elif luc == "grass":
         return "grass land"
-    elif luc == "shrub":
+    elif luc == "shrubs":
         return "shrub land"
     elif "forest (managed)" == luc:
         return "commercial forest"
