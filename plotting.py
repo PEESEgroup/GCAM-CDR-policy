@@ -1123,7 +1123,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
 
                 # Flip some labels upside down
                 alignment = ""
-                if angle >= np.pi / 2 and angle < 3 * np.pi / 2:
+                if np.pi / 2 <= angle < 3 * np.pi / 2:
                     alignment = "right"
                     rotation = rotation + 180
                 else:
@@ -1132,15 +1132,16 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                 # Finally add the labels
                 ax.text(
                     x=angle,
-                    y=height + labelPadding,
+                    y=height + labelPadding if height + labelPadding > labelPadding * 6 else labelPadding * 6,
                     s=label,
                     ha=alignment,
                     va='center',
                     rotation=rotation,
                     rotation_mode="anchor",
-                    backgroundcolor="white",
                     zorder=.2,
-                    fontsize="small",
+                    fontfamily= "Arial",
+                    fontstretch= "extra-condensed",
+                    fontsize= "x-large"
                 )
 
             plt.show()

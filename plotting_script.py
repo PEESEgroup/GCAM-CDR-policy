@@ -685,6 +685,8 @@ def figure5(nonBaselineScenario, RCP, SSP):
         "2050_conv"] = diff_food_staple_income[
                            "2050"] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
 
+    diff_food_staple_income = diff_food_staple_income.sort_values(by="2050_conv", ascending=False)
+
     # add an empty row at the top of the dataframe
     new_row1 = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
     new_row2 = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
@@ -907,7 +909,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 if __name__ == '__main__':
     # figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     # figure3("pyrolysis", "4p5", ["SSP2"])
-    figure4("pyrolysis", "4p5", ["SSP2"])
+    # figure4("pyrolysis", "4p5", ["SSP2"])
     figure5("pyrolysis", "4p5", ["SSP2"])
     figure6("pyrolysis", "4p5", ["SSP2"])
     figure7("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
