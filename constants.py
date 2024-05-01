@@ -41,3 +41,25 @@ class GCAMConstants:
     plotting_x = [2025, 2030, 2035, 2040, 2045, 2050]
     future_x = [2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
     skip_years = 5
+
+    # constants to evaluate IO coefficients
+    animal_manure_ratio = dict()
+    animal_manure_ratio["beef"] = 1/2.589
+    animal_manure_ratio["dairy"] = 1/0.878
+    animal_manure_ratio["pork"] = 1/0.304
+    animal_manure_ratio["poultry"] = 1/1.381
+    animal_manure_ratio["goat"] = 1/3.101
+
+    manure_biochar_ratio = dict()
+    manure_biochar_ratio["beef"] = 2.1815
+    manure_biochar_ratio["dairy"] = 2.1052
+    manure_biochar_ratio["pork"] = 2.136
+    manure_biochar_ratio["poultry"] = 2.1276
+    manure_biochar_ratio["goat"] = 2.055
+
+    manure_biooil_ratio = dict()
+    manure_biooil_ratio["beef"] = 3.143
+    manure_biooil_ratio["dairy"] = 2.857
+    manure_biooil_ratio["pork"] = 2.857
+    manure_biooil_ratio["poultry"] = 3.846
+    manure_biooil_ratio["goat"] = 2.857
