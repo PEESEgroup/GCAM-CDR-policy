@@ -63,3 +63,17 @@ class GCAMConstants:
     manure_biooil_ratio["pork"] = 2.857
     manure_biooil_ratio["poultry"] = 3.846
     manure_biooil_ratio["goat"] = 2.857
+
+    biochar_fert_ratio = dict()
+    biochar_fert_ratio["beef"] = 1/90.9
+    biochar_fert_ratio["dairy"] = 1/54.34
+    biochar_fert_ratio["pork"] = 1/44.05
+    biochar_fert_ratio["poultry"] = 1/51.54
+    biochar_fert_ratio["goat"] = 1/2.857
+
+    biochar_C_ratio = dict() #TODO: fix
+    biochar_C_ratio["beef"] = -0.927
+    biochar_C_ratio["dairy"] = -0.583
+    biochar_C_ratio["pork"] = -0.632
+    biochar_C_ratio["poultry"] = -1.073
+    biochar_C_ratio["goat"] = -1.376
