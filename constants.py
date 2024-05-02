@@ -68,12 +68,12 @@ class GCAMConstants:
     biochar_fert_ratio["beef"] = 1/90.9
     biochar_fert_ratio["dairy"] = 1/54.34
     biochar_fert_ratio["pork"] = 1/44.05
-    biochar_fert_ratio["poultry"] = 1/51.54
-    biochar_fert_ratio["goat"] = 1/2.857
+    biochar_fert_ratio["poultry"] = 1/12.98
+    biochar_fert_ratio["goat"] = 1/51.54
 
-    biochar_C_ratio = dict() #TODO: fix
-    biochar_C_ratio["beef"] = -0.927
-    biochar_C_ratio["dairy"] = -0.583
-    biochar_C_ratio["pork"] = -0.632
-    biochar_C_ratio["poultry"] = -1.073
-    biochar_C_ratio["goat"] = -1.376
+    manure_C_ratio = dict() #TODO: add sceanrio name to these coefficients
+    manure_C_ratio["beef"] = -0.927
+    manure_C_ratio["dairy"] = -0.583
+    manure_C_ratio["pork"] = -0.632
+    manure_C_ratio["poultry"] = -1.073
+    manure_C_ratio["goat"] = -1.376

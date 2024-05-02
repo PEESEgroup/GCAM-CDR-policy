@@ -1,6 +1,5 @@
 import constants as c
 import pandas as pd
-import os
 
 
 def IO_check(comb, coefficients, assert_str):
@@ -11,8 +10,8 @@ def IO_check(comb, coefficients, assert_str):
         comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
         for i in c.GCAMConstants.plotting_x:
             try:  # if mean coefficient isn't within 5% of target
-                assert coefficients[str(j)] * .95 < comb_SSP["check_" + str(i)].mean() < \
-                       coefficients[str(j)] * 1.05
+                assert abs(coefficients[str(j)]) * .95 < abs(comb_SSP["check_" + str(i)].mean()) < \
+                       abs(coefficients[str(j)]) * 1.05
             except AssertionError:  # print out that the scenario is no good
                 print(assert_str, "fails for product", str(j), "in year", str(i), "in", str(k),
                       "with mean", str(comb_SSP["check_" + str(i)].mean()))
@@ -21,6 +20,8 @@ def IO_check(comb, coefficients, assert_str):
 if __name__ == '__main__':
     nonBaselineScenario = "pyrolysis"
     RCP = "4p5"
+
+    #TODO: develop mask for year and scenario
 
     # check IO coefficients
     supply = pd.read_csv("../data/gcam_out/" + str(
@@ -41,15 +42,16 @@ if __name__ == '__main__':
         nonBaselineScenario) + "/" + RCP + "/fertilizer_production_by_tech.csv")
     fert_tech = fert_tech[fert_tech['subsector'].str.contains("|".join(products))]
 
-    # join dataframes
-
     for j in ["beef", "dairy", "goat", "pork", "poultry"]:
         # carbon yields from biochar
-        products = [str(j) + "_biochar"]
-        co2 = co2_emissions[co2_emissions['subsector'].str.contains("|".join(products))]
-        biochar = supply[supply['product'].str.contains("|".join(products))]
-        comb = pd.merge(co2, biochar, how="inner", on=['GCAM', 'SSP'])
-        IO_check(comb, c.GCAMConstants.biochar_C_ratio, "assert C and biochar")
+        products = [str(j) + " manure"]
+        co2 = co2_emissions[co2_emissions['sector'].str.contains("|".join([str(j) + "_biochar"]))]
+        manure = supply[supply['product'].str.contains("|".join(products))]
+        # get global manure supply
+        manure = manure.groupby(['SSP']).sum()
+        manure['GCAM'] = 'Global'
+        comb = pd.merge(co2, manure, how="inner", on=['GCAM', 'SSP'])
+        IO_check(comb, c.GCAMConstants.manure_C_ratio, "assert C and manure")
 
         # N fertilizer yields from biochar
         products = [str(j) + "_biochar"]
