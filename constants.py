@@ -44,36 +44,36 @@ class GCAMConstants:
 
     # constants to evaluate IO coefficients
     animal_manure_ratio = dict()
-    animal_manure_ratio["beef"] = 1/2.589
-    animal_manure_ratio["dairy"] = 1/0.878
-    animal_manure_ratio["pork"] = 1/0.304
-    animal_manure_ratio["poultry"] = 1/1.381
-    animal_manure_ratio["goat"] = 1/3.101
+    animal_manure_ratio["pyrolysis", "beef"] = 1/2.589
+    animal_manure_ratio["pyrolysis", "dairy"] = 1/0.878
+    animal_manure_ratio["pyrolysis", "pork"] = 1/0.304
+    animal_manure_ratio["pyrolysis", "poultry"] = 1/1.381
+    animal_manure_ratio["pyrolysis", "goat"] = 1/3.101
 
     manure_biochar_ratio = dict()
-    manure_biochar_ratio["beef"] = 2.1815
-    manure_biochar_ratio["dairy"] = 2.1052
-    manure_biochar_ratio["pork"] = 2.136
-    manure_biochar_ratio["poultry"] = 2.1276
-    manure_biochar_ratio["goat"] = 2.055
+    manure_biochar_ratio["pyrolysis", "beef"] = 2.1815
+    manure_biochar_ratio["pyrolysis", "dairy"] = 2.1052
+    manure_biochar_ratio["pyrolysis", "pork"] = 2.136
+    manure_biochar_ratio["pyrolysis", "poultry"] = 2.1276
+    manure_biochar_ratio["pyrolysis", "goat"] = 2.055
 
     manure_biooil_ratio = dict()
-    manure_biooil_ratio["beef"] = 3.143
-    manure_biooil_ratio["dairy"] = 2.857
-    manure_biooil_ratio["pork"] = 2.857
-    manure_biooil_ratio["poultry"] = 3.846
-    manure_biooil_ratio["goat"] = 2.857
+    manure_biooil_ratio["pyrolysis", "beef"] = 3.143
+    manure_biooil_ratio["pyrolysis", "dairy"] = 2.857
+    manure_biooil_ratio["pyrolysis", "pork"] = 2.857
+    manure_biooil_ratio["pyrolysis", "poultry"] = 3.846
+    manure_biooil_ratio["pyrolysis", "goat"] = 2.857
 
     biochar_fert_ratio = dict()
-    biochar_fert_ratio["beef"] = 1/90.9
-    biochar_fert_ratio["dairy"] = 1/54.34
-    biochar_fert_ratio["pork"] = 1/44.05
-    biochar_fert_ratio["poultry"] = 1/12.98
-    biochar_fert_ratio["goat"] = 1/51.54
+    biochar_fert_ratio["pyrolysis", "beef"] = 1/90.9
+    biochar_fert_ratio["pyrolysis", "dairy"] = 1/54.34
+    biochar_fert_ratio["pyrolysis", "pork"] = 1/44.05
+    biochar_fert_ratio["pyrolysis", "poultry"] = 1/12.98
+    biochar_fert_ratio["pyrolysis", "goat"] = 1/51.54
 
-    manure_C_ratio = dict() #TODO: add sceanrio name to these coefficients
-    manure_C_ratio["beef"] = -0.927
-    manure_C_ratio["dairy"] = -0.583
-    manure_C_ratio["pork"] = -0.632
-    manure_C_ratio["poultry"] = -1.073
-    manure_C_ratio["goat"] = -1.376
+    manure_C_ratio = dict()
+    manure_C_ratio["pyrolysis", "beef"] = -0.927
+    manure_C_ratio["pyrolysis", "dairy"] = -0.583
+    manure_C_ratio["pyrolysis", "pork"] = -0.632
+    manure_C_ratio["pyrolysis", "poultry"] = -1.073
+    manure_C_ratio["pyrolysis", "goat"] = -1.376
