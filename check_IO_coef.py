@@ -1,5 +1,6 @@
 import constants as c
 import pandas as pd
+import os
 
 
 def IO_check(comb, coefficients, assert_str, nonBaselineScenario):
@@ -18,13 +19,13 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario):
 
 
 if __name__ == '__main__':
-    nonBaselineScenario = "pyrolysis"
-    RCP = "4p5"
+    nonBaselineScenario = "pyrolysis-nofert"
+    RCP = "6p0"
 
     #TODO: develop mask for year and scenario
 
     # check IO coefficients
-    supply = pd.read_csv("../data/gcam_out/" + str(
+    supply = pd.read_csv("data/gcam_out/" + str(
         nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")  # current wd is /xml for some reason
 
     # get relevant products
@@ -33,12 +34,12 @@ if __name__ == '__main__':
     supply = supply[supply['product'].str.contains("|".join(products))]
 
     # get carbon capture figures by technology
-    co2_emissions = pd.read_csv("../data/gcam_out/"+ str(
+    co2_emissions = pd.read_csv("data/gcam_out/"+ str(
         nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
     co2_emissions = co2_emissions[co2_emissions['sector'].str.contains("|".join(products))]
 
     #get fertilizer figures by tech
-    fert_tech = pd.read_csv("../data/gcam_out/" + str(
+    fert_tech = pd.read_csv("data/gcam_out/" + str(
         nonBaselineScenario) + "/" + RCP + "/fertilizer_production_by_tech.csv")
     fert_tech = fert_tech[fert_tech['subsector'].str.contains("|".join(products))]
 

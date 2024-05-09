@@ -42,6 +42,11 @@ class GCAMConstants:
     animal_manure_ratio["pyrolysis", "pork"] = 1/0.304
     animal_manure_ratio["pyrolysis", "poultry"] = 1/1.381
     animal_manure_ratio["pyrolysis", "goat"] = 1/3.101
+    animal_manure_ratio["pyrolysis-nofert", "beef"] = 1/2.589
+    animal_manure_ratio["pyrolysis-nofert", "dairy"] = 1/0.018
+    animal_manure_ratio["pyrolysis-nofert", "pork"] = 1/0.304
+    animal_manure_ratio["pyrolysis-nofert", "poultry"] = 1/1.381
+    animal_manure_ratio["pyrolysis-nofert", "goat"] = 1/3.101
 
     manure_biochar_ratio = dict()
     manure_biochar_ratio["pyrolysis", "beef"] = 2.1815
@@ -51,11 +56,11 @@ class GCAMConstants:
     manure_biochar_ratio["pyrolysis", "goat"] = 2.055
 
     manure_biooil_ratio = dict()
-    manure_biooil_ratio["pyrolysis", "beef"] = 3.143
-    manure_biooil_ratio["pyrolysis", "dairy"] = 2.857
-    manure_biooil_ratio["pyrolysis", "pork"] = 2.857
-    manure_biooil_ratio["pyrolysis", "poultry"] = 3.846
-    manure_biooil_ratio["pyrolysis", "goat"] = 2.857
+    manure_biooil_ratio["pyrolysis-nofert", "beef"] = 3.143
+    manure_biooil_ratio["pyrolysis-nofert", "dairy"] = 2.857
+    manure_biooil_ratio["pyrolysis-nofert", "pork"] = 2.857
+    manure_biooil_ratio["pyrolysis-nofert", "poultry"] = 3.846
+    manure_biooil_ratio["pyrolysis-nofert", "goat"] = 2.857
 
     biochar_fert_ratio = dict()
     biochar_fert_ratio["pyrolysis", "beef"] = 1/90.9
@@ -70,3 +75,8 @@ class GCAMConstants:
     manure_C_ratio["pyrolysis", "pork"] = -0.632
     manure_C_ratio["pyrolysis", "poultry"] = -1.073
     manure_C_ratio["pyrolysis", "goat"] = -1.376
+    manure_C_ratio["pyrolysis-nofert", "beef"] = -0.273
+    manure_C_ratio["pyrolysis-nofert", "dairy"] = -0.273
+    manure_C_ratio["pyrolysis-nofert", "pork"] = -0.581
+    manure_C_ratio["pyrolysis-nofert", "poultry"] = -.304
+    manure_C_ratio["pyrolysis-nofert", "goat"] = -0.273
