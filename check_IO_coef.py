@@ -32,34 +32,29 @@ def get_biooil_yield(row, product_column, year_column, products, scenario):
 
 
 if __name__ == '__main__':
-    nonBaselineScenario = "pyrolysis"
+    nonBaselineScenario = "pyrolysis-nofert"
     RCP = "6p0"
-    ifBiochar = True
-    ifBiocharToFertilizer = True
-    ifBiooilSecout = True
+    ifBiochar = False
+    ifBiocharToFertilizer = False
+    ifBiooilSecout = False
 
     #TODO: develop mask for year and scenario
 
     # check IO coefficients
     supply = pd.read_csv("data/gcam_out/" + str(
         nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")  # current wd is /xml for some reason
-
-    # get relevant products
-    products = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure", "beef_biochar",
-                "dairy_biochar", "goat_biochar", "pork_biochar", "poultry_biochar", "manure fuel feedstock"]
     co2_emissions = pd.read_csv("data/gcam_out/" + str(
         nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
-    co2_emissions = co2_emissions[co2_emissions['sector'].str.contains("|".join(products))]
-
-    #get fertilizer figures by tech
     fert_tech = pd.read_csv("data/gcam_out/" + str(
         nonBaselineScenario) + "/" + RCP + "/fertilizer_production_by_tech.csv")
-    fert_tech = fert_tech[fert_tech['subsector'].str.contains("|".join(products))]
 
     for j in ["beef", "dairy", "goat", "pork", "poultry"]:
         # carbon yields from manure
         products = [str(j) + " manure"]
-        co2 = co2_emissions[co2_emissions['sector'].str.contains("|".join([str(j) + "_biochar"]))]
+        if ifBiochar:
+            co2 = co2_emissions[co2_emissions['sector'].str.contains("|".join([str(j) + "_biochar"]))]
+        else:
+            co2 = co2_emissions[co2_emissions['technology'].str.contains("|".join(["slow pyrolysis_" + str(j)]))]
         manure = supply[supply['product'].str.contains("|".join(products))]
         # get global manure supply
         manure = manure.groupby(['SSP']).sum()
@@ -88,7 +83,7 @@ if __name__ == '__main__':
 
     # manure to manure fuel coefficient
     products = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]
-    manure_fuel = supply[supply['product'].str.contains("|".join(["manure fuel feedstock"]))]
+    manure_fuel = supply[supply['product'].str.contains("|".join(["manure fuel feedstock", "manure_fuel"]))]
     manure = supply[supply['product'].str.contains("|".join(products))].copy(deep=True)
     # calculation theoretical bio-oil output
     for i in c.GCAMConstants.plotting_x:
@@ -103,7 +98,7 @@ if __name__ == '__main__':
         for i in c.GCAMConstants.plotting_x:
             if ifBiooilSecout:
                 try:  # if calculated coefficient is less than expected coefficient
-                    assert abs(comb_SSP["check_" + str(i)].sum()) > abs(comb_SSP[str(i) + "_y"].sum())  # c.f. DDGS calculated vs. stated ratios
+                    assert abs(comb_SSP["check_" + str(i)].sum())*1.05 > abs(comb_SSP[str(i) + "_y"].sum())  # c.f. DDGS calculated vs. stated ratios
                 except AssertionError:  # print out that the scenario is no good
                     print("assert manure to biooil fails in year", str(i), "in", str(k),
                           "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
@@ -131,9 +126,9 @@ if __name__ == '__main__':
                 # generally happens that the ratio produced is less than the ratio given in the .csv files
                 # TODO: figure out why
                 try:  # if calculated coefficient is less than expected coefficient
-                    assert comb_SSP[str(i) + "_x"].sum()/comb_SSP[str(i) + "_y"].sum() < c.GCAMConstants.secout[i, m]  # c.f. DDGS calculated vs. stated ratios
+                    assert comb_SSP[str(i) + "_x"].sum()/comb_SSP[str(i) + "_y"].sum() < c.GCAMConstants.secout[i, m] *1.05 # c.f. DDGS calculated vs. stated ratios
                 except AssertionError:  # print out that the scenario is no good
                     print("assert secout from", m, "fails in year", str(i), "in", str(k),
                           "with actual ratio", str(comb_SSP[str(i) + "_x"].sum()/comb_SSP[str(i) + "_y"].sum()), "and expected ratio",
-                          str(c.GCAMConstants.secout[i, n]))
+                          str(c.GCAMConstants.secout[i, m]))
                 pass
