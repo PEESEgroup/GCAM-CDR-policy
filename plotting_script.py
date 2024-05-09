@@ -910,7 +910,6 @@ if __name__ == '__main__':
     # figure2("pyrolysis", "4p5", c.GCAMConstants.SSPs)
     # figure3("pyrolysis", "4p5", ["SSP2"])
     # figure4("pyrolysis", "4p5", ["SSP2"])
-    figure5("pyrolysis", "4p5", ["SSP2"])
+    #figure5("pyrolysis", "4p5", ["SSP2"])
     figure6("pyrolysis", "4p5", ["SSP2"])
-    figure7("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)
-    #TODO: add checks to verify coefficients
+    # figure7("pyrolysis", ["4p5", "6p0"], c.GCAMConstants.SSPs)

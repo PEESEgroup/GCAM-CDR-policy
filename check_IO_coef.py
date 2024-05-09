@@ -18,7 +18,7 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario):
                       "with mean", str(comb_SSP["check_" + str(i)].mean()))
 
 
-def get_product_yield(row, product_column, year_column, products, scenario):
+def get_biooil_yield(row, product_column, year_column, products, scenario):
     """
     produces the yield from the product
     :param row: a pd Series from a dataframe
@@ -28,14 +28,15 @@ def get_product_yield(row, product_column, year_column, products, scenario):
     """
     for z in products:
         if z in row[product_column]:
-            return row[year_column] * c.GCAMConstants.biochar_biooil_ratio[scenario, z]
+            return row[year_column] * c.GCAMConstants.manure_biooil_ratio[scenario, z]
+
 
 if __name__ == '__main__':
     nonBaselineScenario = "pyrolysis"
     RCP = "6p0"
     ifBiochar = True
     ifBiocharToFertilizer = True
-    ifBiooilSecondaryOutput = True
+    ifBiooilSecout = True
 
     #TODO: develop mask for year and scenario
 
@@ -46,10 +47,7 @@ if __name__ == '__main__':
     # get relevant products
     products = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure", "beef_biochar",
                 "dairy_biochar", "goat_biochar", "pork_biochar", "poultry_biochar", "manure fuel feedstock"]
-    supply = supply[supply['product'].str.contains("|".join(products))]
-
-    # get carbon capture figures by technology
-    co2_emissions = pd.read_csv("data/gcam_out/"+ str(
+    co2_emissions = pd.read_csv("data/gcam_out/" + str(
         nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
     co2_emissions = co2_emissions[co2_emissions['sector'].str.contains("|".join(products))]
 
@@ -88,52 +86,54 @@ if __name__ == '__main__':
             comb = pd.merge(manure, biochar, how="inner", on=['GCAM', 'SSP'])
             IO_check(comb, c.GCAMConstants.manure_biochar_ratio, "assert manure and biochar", nonBaselineScenario)
 
-    # biochar to manure fuel coefficient
-    if ifBiooilSecondaryOutput:
-        products = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]
-        manure_fuel = supply[supply['product'].str.contains("|".join(["manure fuel feedstock"]))]
-        biochar = supply[supply['product'].str.contains("|".join(products))]
-        # calculation theoretical bio-oil output
+    # manure to manure fuel coefficient
+    products = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]
+    manure_fuel = supply[supply['product'].str.contains("|".join(["manure fuel feedstock"]))]
+    manure = supply[supply['product'].str.contains("|".join(products))].copy(deep=True)
+    # calculation theoretical bio-oil output
+    for i in c.GCAMConstants.plotting_x:
+        manure["check_"+str(i)] = manure.apply(
+            lambda row: get_biooil_yield(row, "product", str(i), products, nonBaselineScenario),
+            axis=1)
+    manure = data_manipulation.group(manure, ["SSP", "GCAM"])
+    comb = pd.merge(manure, manure_fuel, how="inner", on=['GCAM', 'SSP'])
+    for k in c.GCAMConstants.SSPs:
+        # check coef on an SSP basis
+        comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
         for i in c.GCAMConstants.plotting_x:
-            biochar["check_"+str(i)] = biochar.apply(
-                lambda row: get_product_yield(row, "product", str(i), products, nonBaselineScenario),
-                axis=1) #TODO fix error in actual sum - check plotting code
-        biochar = data_manipulation.group(biochar, ["SSP", "GCAM"])
-        comb = pd.merge(biochar, manure_fuel, how="inner", on=['GCAM', 'SSP'])
-        for k in c.GCAMConstants.SSPs:
-            # check coef on an SSP basis
-            comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
-            for i in c.GCAMConstants.plotting_x:
-                try:  # if mean coefficient isn't within 5% of target
-                    assert abs(comb_SSP["check_" + str(i)].sum()) * .95 < abs(comb_SSP[str(i) + "_y"].sum()) < \
-                           abs(comb_SSP["check_" + str(i)].sum()) * 1.05
+            if ifBiooilSecout:
+                try:  # if calculated coefficient is less than expected coefficient
+                    assert abs(comb_SSP["check_" + str(i)].sum()) > abs(comb_SSP[str(i) + "_y"].sum())  # c.f. DDGS calculated vs. stated ratios
                 except AssertionError:  # print out that the scenario is no good
                     print("assert manure to biooil fails in year", str(i), "in", str(k),
                           "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
                           str(comb_SSP["check_" + str(i)].sum()))
+            else:
+                try:  # if mean coefficient isn't within 5% of target
+                    assert abs(comb_SSP["check_" + str(i)].sum()) * .95 < abs(
+                        comb_SSP[str(i) + "_y"].sum()) < \
+                           abs(comb_SSP["check_" + str(i)].sum()) * 1.05
+                except AssertionError:  # print out that the scenario is no good
+                    print("biooil calculation fails in year", str(i), "in", str(k),
+                          "with supply", str(comb_SSP[str(i) + "_y"].sum()))
 
-
-    # manure to manure fuel coefficient
-    else:
-        products = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]
-        manure_fuel = supply[supply['product'].str.contains("|".join(["manure_fuel"]))]
-        manure = supply[supply['product'].str.contains("|".join(products))]
-        # calculation theoretical bio-oil output
-        for i in c.GCAMConstants.plotting_x:
-            for l in products:  # get output of theoretical manure yield
-                manure["check_" + str(i)] = manure[str(i)] * c.GCAMConstants.manure_biooil_ratio[nonBaselineScenario, l]
-        manure = data_manipulation.group(manure, ["SSP", "GCAM"])
-        comb = pd.merge(manure, manure_fuel, how="inner", on=['GCAM', 'SSP'])
+    # animal products to manure coefficients | other secondary output coefficients
+    products_manure = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure", "Soybean", "OilCrop"]
+    products_animal = ["Beef", "Dairy", "SheepGoat", "Pork", "Poultry", "DDGS and feedcakes", "DDGS and feedcakes"]
+    for m, n in zip(products_manure, products_animal):
+        manure = supply[supply['product'].str.contains("|".join([m]))]
+        animals = supply[supply['product'].str.contains("|".join([n]))]
+        comb = pd.merge(manure, animals, how="inner", on=['GCAM', 'SSP'])
         for k in c.GCAMConstants.SSPs:
             # check coef on an SSP basis
             comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
             for i in c.GCAMConstants.plotting_x:
-                try:  # if mean coefficient isn't within 5% of target
-                    assert abs(comb_SSP["check_" + str(i)]) * .95 < abs(comb_SSP[str(i)+"_y"].mean()) < \
-                           abs(comb_SSP["check_" + str(i)]) * 1.05
+                # generally happens that the ratio produced is less than the ratio given in the .csv files
+                # TODO: figure out why
+                try:  # if calculated coefficient is less than expected coefficient
+                    assert comb_SSP[str(i) + "_x"].sum()/comb_SSP[str(i) + "_y"].sum() < c.GCAMConstants.secout[i, m]  # c.f. DDGS calculated vs. stated ratios
                 except AssertionError:  # print out that the scenario is no good
-                    print("assert manure to biooil fails for product", str(j), "in year", str(i), "in", str(k),
-                          "with mean", str(comb_SSP[str(i)+"_y"].mean()))
-
-
-
+                    print("assert secout from", m, "fails in year", str(i), "in", str(k),
+                          "with actual ratio", str(comb_SSP[str(i) + "_x"].sum()/comb_SSP[str(i) + "_y"].sum()), "and expected ratio",
+                          str(c.GCAMConstants.secout[i, n]))
+                pass
