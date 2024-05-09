@@ -105,7 +105,7 @@ def percent_of_total(old, new, columns):
 
 def group(df, columns):
     """
-    Groups a dataframe with may subproducts into a single line
+    Groups a dataframe with many subproducts into a single line via summation
     :param df: the dataframe being grouped
     :param columns: the list of columns used to form a group
     :return: a dataframe with grouped entries
