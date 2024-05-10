@@ -1,7 +1,10 @@
+import numpy as np
 import pandas as pd
 import csv
 import constants as c
 from itertools import islice
+import check_IO_coef
+import os
 
 
 def split_file(fname):
@@ -37,7 +40,7 @@ def split_file(fname):
                 line_chunk = list(islice(f, next_title - i))
 
             # get title and column information from the .csv file
-            if len(line_chunk) < 2: # sometimes the model has an oopsie and doesn't have carbon sequestration data
+            if len(line_chunk) < 2:  # sometimes the model has an oopsie and doesn't have carbon sequestration data
                 df = pd.DataFrame(columns=c.GCAMConstants.column_order)
             else:
                 key = line_chunk[0].rstrip()
@@ -171,22 +174,79 @@ def label_market_as_product(row):
     return c.GCAMConstants.missing
 
 
+def masking(dataframe, mask):
+    """
+    masks errors in input data with np.nan
+    :param dataframe: dataframe to be masked
+    :param mask: list of SSP-year pairs with model errors
+    :return: dataframe with relabled rows
+    """
+    for i in mask:
+        year = str(i[1])
+        SSP = str(i[0])
+        dataframe[str(i[1])] = dataframe.apply(lambda row: apply_mask(row, year, SSP), axis=1)
+    return dataframe
+
+
+def apply_mask(row, year, SSP):
+    """
+    For a given row, apply a mask if SSP in row matches SSP with error
+    :param row: a row from a pd dataframe
+    :param year: the year to be masked
+    :param SSP: the SSP to be masked
+    :return: np.nan if the SSP matches, otherwise preserve original value
+    """
+    if row["SSP"] == SSP:
+        return np.nan
+    else:
+        return row[year]
+
+
 def main():
     """
     control block for this file
     :return: nothing, but writes out .csv files to a relative directory
     """
     for i in c.GCAMConstants.GCAMDB_filenames:
-        csvs = split_file(i)
-        for item in csvs.items():
-            df = process_file(item[1], i)
-            dir_path = i.split("/")
-            dir_path[-1] = str(item[0]) + ".csv"
+        csvs = split_file(i)  # split file based on header rows
+
+        # get the mask
+        if i.split("/")[2] == "released":
+            mask = []
+        else:
+            mask = check_IO_coef.getMask(i.split("/")[2], i.split("/")[3])
+
+        # create directories if they don't already exist
+        dir_path = i.split("/")  # fix the filename
+        dir_path[-1] = "original/"
+        original_fname = "/".join(dir_path)
+        if not os.path.exists(original_fname):
+            os.makedirs(original_fname)
+
+        dir_path = i.split("/")  # fix the filename
+        dir_path[-1] = "masked/"
+        masked_fname = "/".join(dir_path)
+        if not os.path.exists(masked_fname):
+            os.makedirs(masked_fname)
+
+        for item in csvs.items():  # for each file
+            df = process_file(item[1], i)  # preprocess the data
+            dir_path = i.split("/")  # fix the filename
+            dir_path[-1] = "original/" + str(item[0]) + ".csv"
             new_fname = "/".join(dir_path)
             new_fname = new_fname.replace(")", "").replace("(", "").replace("\\", "").replace(" ", "_").replace("b/t",
                                                                                                                 "between")
             print(new_fname)
-            df.to_csv(new_fname, index=False)
+            df.to_csv(new_fname, index=False)  # save the original file
+
+            df = masking(df, mask)  # apply the mask to the dataframe
+            dir_path = i.split("/")  # fix the filename
+            dir_path[-1] = "masked/" + str(item[0]) + ".csv"
+            new_fname = "/".join(dir_path)
+            new_fname = new_fname.replace(")", "").replace("(", "").replace("\\", "").replace(" ", "_").replace("b/t",
+                                                                                                              "between")
+            print(new_fname)
+            df.to_csv(new_fname, index=False)  # save the masked file
 
 
 if __name__ == '__main__':
