@@ -13,14 +13,16 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario, products):
     :param products: the product being analyzed
     :return: a mask of years and data inputs
     """
+    to_return = list()
     for i in c.GCAMConstants.plotting_x:
         comb["check_" + str(i)] = comb[str(i) + "_x"] / comb[str(i) + "_y"]
     for k in c.GCAMConstants.SSPs:
         # check coef on an SSP basis
         comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
         if len(comb_SSP) == 0:
-            # TODO: update mask
             print(assert_str, "fails for product", str(products), "in", str(k), "because no data is available")
+            for b in c.GCAMConstants.plotting_x:
+                to_return.extend(tuple([[k, b]]))
         else:
             for i in c.GCAMConstants.plotting_x:
                 try:  # if mean coefficient isn't within 5% of target
@@ -30,7 +32,8 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario, products):
                 except AssertionError:  # print out that the scenario is no good
                     print(assert_str, "fails for product", str(products), "in year", str(i), "in", str(k),
                           "with mean", str(comb_SSP["check_" + str(i)].mean()))
-    # TODO: return mask
+                    to_return.extend(tuple([[k, i]]))
+    return to_return
 
 
 def get_biooil_yield(row, product_column, year_column, products, scenario):
@@ -81,6 +84,7 @@ def getMask(nonBaselineScenario):
     :param nonBaselineScenario: the non-baseline GCAM scenario being analyzed
     :return: the mask (or nothing if it is a released GCAM model) to update the datasets
     """
+    mask = list()
     RCP = "6p0"
     ifBiochar, ifBiocharToFertilizer, ifBiooilSecout = getTestParams(nonBaselineScenario)
 
@@ -107,7 +111,7 @@ def getMask(nonBaselineScenario):
         manure = manure.groupby(['SSP']).sum()
         manure['GCAM'] = 'Global'
         comb = pd.merge(co2, manure, how="inner", on=['GCAM', 'SSP'])
-        IO_check(comb, c.GCAMConstants.manure_C_ratio, "assert C and manure", nonBaselineScenario, str(j))
+        mask.extend(x for x in IO_check(comb, c.GCAMConstants.manure_C_ratio, "assert C and manure", nonBaselineScenario, str(j)) if x not in mask)
 
         # N fertilizer yields from biochar
         if ifBiocharToFertilizer:
@@ -115,8 +119,9 @@ def getMask(nonBaselineScenario):
             fert = fert_tech[fert_tech['subsector'].str.contains("|".join(products))]
             biochar = supply[supply['product'].str.contains("|".join(products))]
             comb = pd.merge(fert, biochar, how="inner", on=['GCAM', 'SSP'])
-            IO_check(comb, c.GCAMConstants.biochar_fert_ratio, "assert fertilizer and biochar", nonBaselineScenario,
-                     str(j))
+            mask.extend(x for x in IO_check(comb, c.GCAMConstants.biochar_fert_ratio, "assert fertilizer and biochar",
+                                            nonBaselineScenario,
+                                            str(j)) if x not in mask)
 
         # manure to biochar coefficient
         # get separate manure and biochar entries
@@ -127,8 +132,9 @@ def getMask(nonBaselineScenario):
             biochar = supply[supply['product'].str.contains("|".join(products))]
             # merge and extract coefficient
             comb = pd.merge(manure, biochar, how="inner", on=['GCAM', 'SSP'])
-            IO_check(comb, c.GCAMConstants.manure_biochar_ratio, "assert manure and biochar", nonBaselineScenario,
-                     str(j))
+            mask.extend(x for x in IO_check(comb, c.GCAMConstants.manure_biochar_ratio, "assert manure and biochar",
+                                            nonBaselineScenario,
+                                            str(j)) if x not in mask)
 
     # manure to manure fuel coefficient
     products = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]
@@ -145,8 +151,8 @@ def getMask(nonBaselineScenario):
         # check coef on an SSP basis
         comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
         if len(comb_SSP) == 0:
-            # TODO: update mask
             print("biooil supply fails for in", str(k), "because no data is available")
+            mask.extend([k, b] for b in c.GCAMConstants.plotting_x if [k, b] not in mask)
         else:
             for i in c.GCAMConstants.plotting_x:
                 if ifBiooilSecout:
@@ -157,6 +163,8 @@ def getMask(nonBaselineScenario):
                         print("assert manure to biooil fails in year", str(i), "in", str(k),
                               "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
                               str(comb_SSP["check_" + str(i)].sum()))
+                        if [[k, i]] not in mask:  # if item isn't in mask list, add it
+                            mask.extend([[k, i]])
                 else:
                     try:  # if mean coefficient isn't within 5% of target
                         assert abs(comb_SSP["check_" + str(i)].sum()) * .95 < abs(
@@ -164,7 +172,10 @@ def getMask(nonBaselineScenario):
                                abs(comb_SSP["check_" + str(i)].sum()) * 1.05
                     except AssertionError:  # print out that the scenario is no good
                         print("biooil calculation fails in year", str(i), "in", str(k),
-                              "with supply", str(comb_SSP[str(i) + "_y"].sum()))
+                              "with actual supply", str(comb_SSP[str(i) + "_y"].sum()), "and estimated supply",
+                              str(comb_SSP["check_" + str(i)].sum()))
+                        if [[k, i]] not in mask:  # if item isn't in mask list, add it
+                            mask.extend([[k, i]])
 
     # animal products to manure coefficients | other secondary output coefficients
     products_manure = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure",
@@ -187,8 +198,8 @@ def getMask(nonBaselineScenario):
             # check coef on an SSP basis
             comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
             if len(comb_SSP) == 0:
-                # TODO: update mask
                 print("secout fails for product", str(m), "in", str(k), "because no data is available")
+                mask.extend([k, b] for b in c.GCAMConstants.plotting_x if [k, b] not in mask)
             else:
                 for i in c.GCAMConstants.plotting_x:
                     # generally happens that the ratio produced is less than the ratio given in the .csv files
@@ -201,17 +212,23 @@ def getMask(nonBaselineScenario):
                             print("assert energy crops to DDGS fails in year", str(i), "in", str(k),
                                   "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
                                   str(comb_SSP["check_" + str(i)].sum()))
+                            if [[k, i]] not in mask:  # if item isn't in mask list, add it
+                                mask.extend([[k, i]])
                     # if calculated coefficient is less than expected coefficient
                     else:
                         try:
-                            assert comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum() < c.GCAMConstants.secout[
-                                i, m] * 1.05
+                            assert comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum() < \
+                                   c.GCAMConstants.secout[
+                                       i, m] * 1.05
                         except AssertionError:  # print out that the scenario is no good
-                            a = comb_SSP[str(i) + "_x"].sum()
-                            b = comb_SSP[str(i) + "_y"].sum()
                             print("assert secout from", m, "fails in year", str(i), "in", str(k),
-                                  "with actual ratio", str(comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum()),
+                                  "with actual ratio",
+                                  str(comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum()),
                                   "and expected ratio", str(c.GCAMConstants.secout[i, m]))
+                            if [[k, i]] not in mask:  # if item isn't in mask list, add it
+                                mask.extend([[k, i]])
+    print(mask)
+    return mask
 
 
 if __name__ == '__main__':
