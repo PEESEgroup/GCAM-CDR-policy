@@ -4,6 +4,14 @@ import data_manipulation
 
 
 def IO_check(comb, coefficients, assert_str, nonBaselineScenario):
+    """
+    Does a check over years and SSPs for
+    :param comb: the dataframe containing data
+    :param coefficients: the constant coefficients being analyzed
+    :param assert_str: the string to be used in the error message
+    :param nonBaselineScenario: the scenario being compared to the baseline scenario
+    :return: a mask of years and data inputs
+    """
     for i in c.GCAMConstants.plotting_x:
         comb["check_" + str(i)] = comb[str(i) + "_x"] / comb[str(i) + "_y"]
     for k in c.GCAMConstants.SSPs:
@@ -16,31 +24,50 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario):
             except AssertionError:  # print out that the scenario is no good
                 print(assert_str, "fails for product", str(j), "in year", str(i), "in", str(k),
                       "with mean", str(comb_SSP["check_" + str(i)].mean()))
+    #TODO: return mask
 
 
 def get_biooil_yield(row, product_column, year_column, products, scenario):
     """
     produces the yield from the product
     :param row: a pd Series from a dataframe
-    :param column: the column of the pd series being searched
+    :param product_column: the column of the pd series containing the product of interest
+    :param year_column: the column of the pd series containing the year of interest
     :param products: the list of suffixes to remove
+    :param scenario: the non-baseline scenario used to lookup the appropriate coefficients
     :return: the relabeled technology
     """
     for z in products:
         if z in row[product_column]:
             return row[year_column] * c.GCAMConstants.manure_biooil_ratio[scenario, z]
 
+def getTestParams(scenarioName):
+    """
+    maps scenarios to types of inputs and outputs
+    :param scenarioName: the non-baseline scenario name
+    :return: a tuple of outputs mapping to the existence of biochar, biochar as fertilizer, and biooil as secondary output
+    """
+    if scenarioName == "released":
+        return None, None, None
+    elif scenarioName == "pyrolysis":
+        return True, True, True
+    elif scenarioName == "pyrolysis":
+        return False, False, False
 
-if __name__ == '__main__':
-    nonBaselineScenario = "pyrolysis-nofert"
+
+def getMask(nonBaselineScenario):
+    """
+    get the mask for the data pre-processing
+    :param nonBaselineScenario: the non-baseline GCAM scenario being analyzed
+    :return: the mask (or nothing if it is a released GCAM model) to update the datasets
+    """
     RCP = "6p0"
-    ifBiochar = False
-    ifBiocharToFertilizer = False
-    ifBiooilSecout = False
+    ifBiochar, ifBiocharToFertilizer, ifBiooilSecout = getTestParams(nonBaselineScenario)
 
-    #TODO: develop mask for year and scenario
+    if ifBiochar is None:
+        return None
 
-    # check IO coefficients
+    # read in data
     supply = pd.read_csv("data/gcam_out/" + str(
         nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")  # current wd is /xml for some reason
     co2_emissions = pd.read_csv("data/gcam_out/" + str(
@@ -132,3 +159,7 @@ if __name__ == '__main__':
                           "with actual ratio", str(comb_SSP[str(i) + "_x"].sum()/comb_SSP[str(i) + "_y"].sum()), "and expected ratio",
                           str(c.GCAMConstants.secout[i, m]))
                 pass
+
+if __name__ == '__main__':
+    nonBaselineScenario = "pyrolysis-nofert"
+    getMask(nonBaselineScenario)
