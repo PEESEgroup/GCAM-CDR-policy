@@ -18,14 +18,18 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario, products):
     for k in c.GCAMConstants.SSPs:
         # check coef on an SSP basis
         comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
-        for i in c.GCAMConstants.plotting_x:
-            try:  # if mean coefficient isn't within 5% of target
-                assert (abs(coefficients[nonBaselineScenario, str(products)]) * .95 <
-                        abs(comb_SSP["check_" + str(i)].mean()) <
-                        abs(coefficients[nonBaselineScenario, str(products)]) * 1.05)
-            except AssertionError:  # print out that the scenario is no good
-                print(assert_str, "fails for product", str(products), "in year", str(i), "in", str(k),
-                      "with mean", str(comb_SSP["check_" + str(i)].mean()))
+        if len(comb_SSP) == 0:
+            # TODO: update mask
+            print(assert_str, "fails for product", str(products), "in", str(k), "because no data is available")
+        else:
+            for i in c.GCAMConstants.plotting_x:
+                try:  # if mean coefficient isn't within 5% of target
+                    assert (abs(coefficients[nonBaselineScenario, str(products)]) * .95 <
+                            abs(comb_SSP["check_" + str(i)].mean()) <
+                            abs(coefficients[nonBaselineScenario, str(products)]) * 1.05)
+                except AssertionError:  # print out that the scenario is no good
+                    print(assert_str, "fails for product", str(products), "in year", str(i), "in", str(k),
+                          "with mean", str(comb_SSP["check_" + str(i)].mean()))
     # TODO: return mask
 
 
@@ -140,23 +144,27 @@ def getMask(nonBaselineScenario):
     for k in c.GCAMConstants.SSPs:
         # check coef on an SSP basis
         comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
-        for i in c.GCAMConstants.plotting_x:
-            if ifBiooilSecout:
-                try:  # if calculated coefficient is less than expected coefficient
-                    assert abs(comb_SSP["check_" + str(i)].sum()) * 1.05 > abs(
-                        comb_SSP[str(i) + "_y"].sum())  # c.f. DDGS calculated vs. stated ratios
-                except AssertionError:  # print out that the scenario is no good
-                    print("assert manure to biooil fails in year", str(i), "in", str(k),
-                          "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
-                          str(comb_SSP["check_" + str(i)].sum()))
-            else:
-                try:  # if mean coefficient isn't within 5% of target
-                    assert abs(comb_SSP["check_" + str(i)].sum()) * .95 < abs(
-                        comb_SSP[str(i) + "_y"].sum()) < \
-                           abs(comb_SSP["check_" + str(i)].sum()) * 1.05
-                except AssertionError:  # print out that the scenario is no good
-                    print("biooil calculation fails in year", str(i), "in", str(k),
-                          "with supply", str(comb_SSP[str(i) + "_y"].sum()))
+        if len(comb_SSP) == 0:
+            # TODO: update mask
+            print("biooil supply fails for in", str(k), "because no data is available")
+        else:
+            for i in c.GCAMConstants.plotting_x:
+                if ifBiooilSecout:
+                    try:  # if calculated coefficient is less than expected coefficient
+                        assert abs(comb_SSP["check_" + str(i)].sum()) * 1.05 > abs(
+                            comb_SSP[str(i) + "_y"].sum())  # c.f. DDGS calculated vs. stated ratios
+                    except AssertionError:  # print out that the scenario is no good
+                        print("assert manure to biooil fails in year", str(i), "in", str(k),
+                              "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
+                              str(comb_SSP["check_" + str(i)].sum()))
+                else:
+                    try:  # if mean coefficient isn't within 5% of target
+                        assert abs(comb_SSP["check_" + str(i)].sum()) * .95 < abs(
+                            comb_SSP[str(i) + "_y"].sum()) < \
+                               abs(comb_SSP["check_" + str(i)].sum()) * 1.05
+                    except AssertionError:  # print out that the scenario is no good
+                        print("biooil calculation fails in year", str(i), "in", str(k),
+                              "with supply", str(comb_SSP[str(i) + "_y"].sum()))
 
     # animal products to manure coefficients | other secondary output coefficients
     products_manure = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure",
@@ -164,7 +172,7 @@ def getMask(nonBaselineScenario):
     products_animal = ["Beef", "Dairy", "SheepGoat", "Pork", "Poultry", "DDGS and feedcakes"]
     for m, n in zip(products_manure, products_animal):
         if isinstance(m, list):
-            manure = supply[supply['product'].str.contains("|".join(m))]
+            manure = supply[supply['product'].str.contains("|".join(m))].copy(deep=True)
             for i in c.GCAMConstants.plotting_x:
                 manure["check_" + str(i)] = manure.apply(
                     lambda row: get_DDGS_yield(row, "product", str(i),
@@ -178,26 +186,32 @@ def getMask(nonBaselineScenario):
         for k in c.GCAMConstants.SSPs:
             # check coef on an SSP basis
             comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
-            for i in c.GCAMConstants.plotting_x:
-                # generally happens that the ratio produced is less than the ratio given in the .csv files
-                # TODO: figure out why
-                if isinstance(m, list):
-                    try:  # if calculated coefficient is less than expected coefficient
-                        assert abs(comb_SSP["check_" + str(i)].sum()) * 1.05 > abs(
-                            comb_SSP[str(i) + "_y"].sum())  # c.f. DDGS calculated vs. stated ratios
-                    except AssertionError:  # print out that the scenario is no good
-                        print("assert energy crops to DDGS fails in year", str(i), "in", str(k),
-                              "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
-                              str(comb_SSP["check_" + str(i)].sum()))
-                # if calculated coefficient is less than expected coefficient
-                else:
-                    try:
-                        assert comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum() < c.GCAMConstants.secout[
-                            i, m] * 1.05
-                    except AssertionError:  # print out that the scenario is no good
-                        print("assert secout from", m, "fails in year", str(i), "in", str(k),
-                              "with actual ratio", str(comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum()),
-                              "and expected ratio", str(c.GCAMConstants.secout[i, m]))
+            if len(comb_SSP) == 0:
+                # TODO: update mask
+                print("secout fails for product", str(m), "in", str(k), "because no data is available")
+            else:
+                for i in c.GCAMConstants.plotting_x:
+                    # generally happens that the ratio produced is less than the ratio given in the .csv files
+                    # TODO: figure out why
+                    if isinstance(m, list):
+                        try:  # if calculated coefficient is less than expected coefficient
+                            assert abs(comb_SSP["check_" + str(i)].sum()) * 1.05 > abs(
+                                comb_SSP[str(i) + "_y"].sum())  # c.f. DDGS calculated vs. stated ratios
+                        except AssertionError:  # print out that the scenario is no good
+                            print("assert energy crops to DDGS fails in year", str(i), "in", str(k),
+                                  "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
+                                  str(comb_SSP["check_" + str(i)].sum()))
+                    # if calculated coefficient is less than expected coefficient
+                    else:
+                        try:
+                            assert comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum() < c.GCAMConstants.secout[
+                                i, m] * 1.05
+                        except AssertionError:  # print out that the scenario is no good
+                            a = comb_SSP[str(i) + "_x"].sum()
+                            b = comb_SSP[str(i) + "_y"].sum()
+                            print("assert secout from", m, "fails in year", str(i), "in", str(k),
+                                  "with actual ratio", str(comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum()),
+                                  "and expected ratio", str(c.GCAMConstants.secout[i, m]))
 
 
 if __name__ == '__main__':
