@@ -93,11 +93,11 @@ def getMask(nonBaselineScenario, RCP):
 
     # read in data
     supply = pd.read_csv("data/gcam_out/" + str(
-        nonBaselineScenario) + "/" + RCP + "/supply_of_all_markets.csv")  # current wd is /xml for some reason
+        nonBaselineScenario) + "/" + RCP + "/original/supply_of_all_markets.csv")  # current wd is /xml for some reason
     co2_emissions = pd.read_csv("data/gcam_out/" + str(
-        nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+        nonBaselineScenario) + "/" + RCP + "/original/CO2_emissions_by_tech_excluding_resource_production.csv")
     fert_tech = pd.read_csv("data/gcam_out/" + str(
-        nonBaselineScenario) + "/" + RCP + "/fertilizer_production_by_tech.csv")
+        nonBaselineScenario) + "/" + RCP + "/original/fertilizer_production_by_tech.csv")
 
     for j in ["beef", "dairy", "goat", "pork", "poultry"]:
         # carbon yields from manure

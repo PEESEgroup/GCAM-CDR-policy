@@ -184,7 +184,7 @@ def masking(dataframe, mask):
     for i in mask:
         year = str(i[1])
         SSP = str(i[0])
-        dataframe[str(i[1])] = dataframe.apply(lambda row: apply_mask(row, year, SSP), axis=1)
+        dataframe.loc[:, str(i[1])] = dataframe.apply(lambda row: apply_mask(row, year, SSP), axis=1)
     return dataframe
 
 
@@ -207,14 +207,8 @@ def main():
     control block for this file
     :return: nothing, but writes out .csv files to a relative directory
     """
-    for i in c.GCAMConstants.GCAMDB_filenames:
+    for i in c.GCAMConstants.GCAMDB_filenames:  # first time through process the original data
         csvs = split_file(i)  # split file based on header rows
-
-        # get the mask
-        if i.split("/")[2] == "released":
-            mask = []
-        else:
-            mask = check_IO_coef.getMask(i.split("/")[2], i.split("/")[3])
 
         # create directories if they don't already exist
         dir_path = i.split("/")  # fix the filename
@@ -222,12 +216,6 @@ def main():
         original_fname = "/".join(dir_path)
         if not os.path.exists(original_fname):
             os.makedirs(original_fname)
-
-        dir_path = i.split("/")  # fix the filename
-        dir_path[-1] = "masked/"
-        masked_fname = "/".join(dir_path)
-        if not os.path.exists(masked_fname):
-            os.makedirs(masked_fname)
 
         for item in csvs.items():  # for each file
             df = process_file(item[1], i)  # preprocess the data
@@ -239,6 +227,24 @@ def main():
             print(new_fname)
             df.to_csv(new_fname, index=False)  # save the original file
 
+    for i in c.GCAMConstants.GCAMDB_filenames:  # second time through process the mask
+        csvs = split_file(i)  # split file based on header rows
+
+        # get the mask
+        if i.split("/")[2] == "released":
+            mask = []
+        else:
+            mask = check_IO_coef.getMask(i.split("/")[2], i.split("/")[3])
+
+        # create directories if they don't already exist
+        dir_path = i.split("/")  # fix the filename
+        dir_path[-1] = "masked/"
+        masked_fname = "/".join(dir_path)
+        if not os.path.exists(masked_fname):
+            os.makedirs(masked_fname)
+
+        for item in csvs.items():  # for each file
+            df = process_file(item[1], i)  # preprocess the data
             df = masking(df, mask)  # apply the mask to the dataframe
             dir_path = i.split("/")  # fix the filename
             dir_path[-1] = "masked/" + str(item[0]) + ".csv"
