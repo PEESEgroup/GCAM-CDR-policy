@@ -17,7 +17,6 @@ class GCAMConstants:
 
     # other relevant constants
     SSPs = ["SSP1", "SSP2", "SSP3", "SSP4", "SSP5"]
-    scenario_names = []
     GCAM_region = ["USA", "Africa_Eastern", "Africa_Northern", "Africa_Southern", "Africa_Western", "Australia_NZ",
                    "Brazil", "Canada", "Central America and Caribbean", "Central Asia", "China", "EU-12", "EU-15",
                    "Europe_Eastern", "Europe_Non_EU", "European Free Trade Association", "India", "Indonesia", "Japan",
@@ -117,15 +116,6 @@ class GCAMConstants:
     secout[2040, "poultry manure"] = 0.508
     secout[2045, "poultry manure"] = 0.734
     secout[2050, "poultry manure"] = 0.927
-    secout[2025, "Soybean"] = 110
-    secout[2030, "Soybean"] = 110
-    secout[2035, "Soybean"] = 110
-    secout[2040, "Soybean"] = 110
-    secout[2045, "Soybean"] = 110
-    secout[2050, "Soybean"] = 110
-    secout[2025, "OilCrop"] = 32
-    secout[2030, "OilCrop"] = 32
-    secout[2035, "OilCrop"] = 32
-    secout[2040, "OilCrop"] = 32
-    secout[2045, "OilCrop"] = 32
-    secout[2050, "OilCrop"] = 32
+    secout["Soybean"] = 110
+    secout["OilCrop"] = 32
+    secout["regional corn for ethanol"] = 30
