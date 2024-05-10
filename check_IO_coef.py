@@ -78,14 +78,14 @@ def getTestParams(scenarioName):
         return False, False, False
 
 
-def getMask(nonBaselineScenario):
+def getMask(nonBaselineScenario, RCP):
     """
     get the mask for the data pre-processing
     :param nonBaselineScenario: the non-baseline GCAM scenario being analyzed
+    :param RCP: the RCP pathway for the non-baseline scenario
     :return: the mask (or nothing if it is a released GCAM model) to update the datasets
     """
     mask = list()
-    RCP = "6p0"
     ifBiochar, ifBiocharToFertilizer, ifBiooilSecout = getTestParams(nonBaselineScenario)
 
     if ifBiochar is None:
@@ -163,7 +163,7 @@ def getMask(nonBaselineScenario):
                         print("assert manure to biooil fails in year", str(i), "in", str(k),
                               "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
                               str(comb_SSP["check_" + str(i)].sum()))
-                        if [[k, i]] not in mask:  # if item isn't in mask list, add it
+                        if [k, i] not in mask:  # if item isn't in mask list, add it
                             mask.extend([[k, i]])
                 else:
                     try:  # if mean coefficient isn't within 5% of target
@@ -174,7 +174,7 @@ def getMask(nonBaselineScenario):
                         print("biooil calculation fails in year", str(i), "in", str(k),
                               "with actual supply", str(comb_SSP[str(i) + "_y"].sum()), "and estimated supply",
                               str(comb_SSP["check_" + str(i)].sum()))
-                        if [[k, i]] not in mask:  # if item isn't in mask list, add it
+                        if [k, i] not in mask:  # if item isn't in mask list, add it
                             mask.extend([[k, i]])
 
     # animal products to manure coefficients | other secondary output coefficients
@@ -212,25 +212,30 @@ def getMask(nonBaselineScenario):
                             print("assert energy crops to DDGS fails in year", str(i), "in", str(k),
                                   "with actual sum", str(comb_SSP[str(i) + "_y"].sum()), "and expected sum",
                                   str(comb_SSP["check_" + str(i)].sum()))
-                            if [[k, i]] not in mask:  # if item isn't in mask list, add it
+                            if [k, i] not in mask:  # if item isn't in mask list, add it
                                 mask.extend([[k, i]])
                     # if calculated coefficient is less than expected coefficient
                     else:
                         try:
-                            assert comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum() < \
-                                   c.GCAMConstants.secout[
-                                       i, m] * 1.05
+                            if m == "dairy manure":
+                                assert comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum() < \
+                                       c.GCAMConstants.secout[i, m, nonBaselineScenario] * 1.05
+                            else:
+                                assert comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum() < \
+                                   c.GCAMConstants.secout[i, m] * 1.05
                         except AssertionError:  # print out that the scenario is no good
                             print("assert secout from", m, "fails in year", str(i), "in", str(k),
                                   "with actual ratio",
                                   str(comb_SSP[str(i) + "_x"].sum() / comb_SSP[str(i) + "_y"].sum()),
                                   "and expected ratio", str(c.GCAMConstants.secout[i, m]))
-                            if [[k, i]] not in mask:  # if item isn't in mask list, add it
+                            if [k, i] not in mask:  # if item isn't in mask list, add it
                                 mask.extend([[k, i]])
     print(mask)
     return mask
 
 
 if __name__ == '__main__':
-    nonBaselineScenario = "pyrolysis-nofert"
-    getMask(nonBaselineScenario)
+    # edit the below line if running the main program
+    nonBaselineScenario = "pyrolysis"
+    RCP = "4p5"
+    getMask(nonBaselineScenario, RCP)
