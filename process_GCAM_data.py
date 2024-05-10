@@ -234,7 +234,7 @@ def main():
         if i.split("/")[2] == "released":
             mask = []
         else:
-            mask = check_IO_coef.getMask(i.split("/")[2], i.split("/")[3])
+            mask = check_IO_coef.getMask(i.split("/")[2], i.split("/")[3], "/".join(i.split("/")[:-1])+"/")
 
         # create directories if they don't already exist
         dir_path = i.split("/")  # fix the filename
