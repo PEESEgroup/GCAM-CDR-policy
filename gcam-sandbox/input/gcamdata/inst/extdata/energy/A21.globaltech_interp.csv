@@ -1,0 +1,13 @@
+# File: A21.globaltech_interp.csv
+# Title: Primary energy handling technology share-weight interpolation
+# Units: Unitless
+# Column types: ccccnnn 
+# ----------
+supplysector,subsector,technology,apply.to,from.year,to.year,to.value,interpolation.function
+regional biomassOil,regional biomassOil,OilCrop,share-weight,final-calibration-year,end-year,,fixed
+regional biomassOil,regional biomassOil,OilPalm,share-weight,final-calibration-year,end-year,,fixed
+manure_fuel,manure_fuel,slow pyrolysis_beef,share-weight,initial-future-year,end-year,,fixed
+manure_fuel,manure_fuel,slow pyrolysis_dairy,share-weight,initial-future-year,end-year,,fixed
+manure_fuel,manure_fuel,slow pyrolysis_goat,share-weight,initial-future-year,end-year,,fixed
+manure_fuel,manure_fuel,slow pyrolysis_pork,share-weight,initial-future-year,end-year,,fixed
+manure_fuel,manure_fuel,slow pyrolysis_poultry,share-weight,initial-future-year,end-year,,fixed

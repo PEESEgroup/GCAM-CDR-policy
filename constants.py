@@ -4,13 +4,13 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
-    version = [["pyrolysis-nofert", "6p0"]] #TODO: updated data is grabbed for 4p5 only
-    GCAMDB_filenames = ["data/gcam_out/pyrolysis/6p0/ref.csv"]
+    version = [["pyrolysis", "6p0"], ["pyrolysis", "4p5"],["released", "2p6"],["released", "6p0"], ["released", "4p5"]] #TODO: updated data is grabbed for 4p5 only
+    GCAMDB_filenames = ["data/gcam_out/pyrolysis/6p0/ref.csv", "data/gcam_out/pyrolysis/4p5/ref.csv", "data/gcam_out/released/2p6/ref.csv","data/gcam_out/released/6p0/ref.csv", "data/gcam_out/released/4p5/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
     #  This location should only need to be set once
-    XML_DB_loc = "../gcam-sandbox/output/database_basexdb-"
+    XML_DB_loc = "gcam-sandbox/output/database_basexdb-"
     processed_map_loc = "data/maps/simplified_world_map.shp"
 
     combines_csv_fnames = ["refined liquids costs by tech", "refined liquids production by tech (new)", "refined liquids production by tech"]

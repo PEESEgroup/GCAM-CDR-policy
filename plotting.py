@@ -1010,6 +1010,9 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
     :param title: the title of the plot
     :return: N/A
     """
+    if dataframe.empty:  # if the datafame is empty, nothing can be plotted
+        print("empty dataframe")
+        return
     # get plot information
     # get subplot size
     nrow, ncol = get_subplot_dimensions(["plot", "sidebar"])

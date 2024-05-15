@@ -15,10 +15,19 @@ The root folder contains the Python scripts used in the study. There are nine Py
 
 - data/: This folder contains four folders
   - data_analysis/ contains the excel file for minor results calculations
-  - gcam_files/ contains the changed GCAM files in the structure of the gcam_core package (see below) in keeping with the liscene terms
-  - gcam_out/ contains the extracted data from the gcam xml db. /released/ contains the results from the released version of the model. /pyrolysis/ contains the results from the pyrolysis versions of the model. The other subfolders contain additional scenarios which are not used as the basis for any publication.
+  - gcam_out/ contains the extracted data from the gcam xml db. 
+    - /released/ contains the results from the released version of the model. 
+    - /pyrolysis/ contains the results from the pyrolysis versions of the model, with pyrolysis with land application modeled as an N fertilizer and bio-oil as a secondary output. 
+    - /pyrolysis-nofert/ models bio-oil as primary output with no application of biochar 
+      - /RCP/ is indicated in the next subfolder level
+        - /masked/ contains the masked data with errors removed in data from 2025-2050
+        - /original/ contains the original data extracted from the GCAM database
+        - ref.csv is the output from the database query
+        - mask_log.txt contains the list of errors found in the model output
   - maps/ contains map shapefiles for plotting
+- gcam-sandbox contains all of the necessary files with modifications to the GCAM model. This is intended to supplement the v7 release, and does not contain all necessary files to run the GCAM model
 - xml/ contains a list of xml queries used to query the GCAM xml db.
+- check_IO_coef.py checks to ensure that primary and secondary output coefficients are valid to check post-hoc for modeling errors, and remove that data from any subsequent analysis
 - constants.py contains a list of constants for use in the project, including the locations for extracting data from the gcam xml db
 - data_manipulation.py contains common data manipulation function for the project
 - plotting.py contains code for plotting the figures
@@ -45,7 +54,7 @@ To run the codes in this repository, the following Python and core package versi
 
 To reproduce the figures, run plotting_script.py. Feel free to use the existing data and methods as examples to draw new figures.
 
-To reproduce the GCAM model results, download the GCAM model (http://jgcri.github.io/gcam-doc/index.html), follow the installation guide, replace the old files with the gcam_files listed (/input/pyrolysis_gompertz.R should do this automatically, but some files may need to already exist), rebuild the project in R to update the GCAM xml files, and let the model solve. Different policy scenarios are available. Then, use process_data.py and the ModelInterface application (needs to be on the path) to extract the data.
+To reproduce the GCAM model results, download the GCAM model (http://jgcri.github.io/gcam-doc/index.html), follow the installation guide, replace the old files with the files found in /gcam-sandbox/, use /gcam-sandbox/input/<scenario>_R_files/<config>.R to update the GCAM input xml files, but some files may need to already exist), rebuild the project in R to update the GCAM xml files, and let the model solve. Different policy scenarios are available. Then, use process_data.py and the ModelInterface application (needs to be on the path) to extract the data from the database.
 
 ## Citation
 

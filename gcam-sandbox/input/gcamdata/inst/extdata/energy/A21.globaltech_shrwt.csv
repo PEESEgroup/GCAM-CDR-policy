@@ -1,0 +1,18 @@
+# File: A21.globaltech_shrwt.csv
+# Title: Primary energy handling default shareweights
+# Units: Unitless
+# Column types: ccciiii
+# ----------
+supplysector,subsector,technology,1971,2015,2020,2100
+regional biomass,regional biomass,regional biomass,1,1,1,1
+regional corn for ethanol,regional corn for ethanol,regional corn for ethanol,1,1,1,1
+regional sugar for ethanol,regional sugar for ethanol,regional sugar for ethanol,1,1,1,1
+regional biomassOil,regional biomassOil,biomassOil,0,0,0,0
+regional biomassOil,regional biomassOil,OilCrop,0,0,0,0
+regional biomassOil,regional biomassOil,OilPalm,0,0,0,0
+regional biomassOil,regional biomassOil,Soybean,0,0,0,0
+manure_fuel,manure_fuel,slow pyrolysis_beef,0,0,1,1
+manure_fuel,manure_fuel,slow pyrolysis_dairy,0,0,1,1
+manure_fuel,manure_fuel,slow pyrolysis_goat,0,0,1,1
+manure_fuel,manure_fuel,slow pyrolysis_pork,0,0,1,1
+manure_fuel,manure_fuel,slow pyrolysis_poultry,0,0,1,1
