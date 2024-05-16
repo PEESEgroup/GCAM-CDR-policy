@@ -15,7 +15,7 @@ def food(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # changes to animal livestock production
-    released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/supply_of_all_markets.csv")
+    released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/original/supply_of_all_markets.csv")
     pyrolysis_supply = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/supply_of_all_markets.csv")
     products = ["Beef", "Pork", "Dairy", "Poultry", "SheepGoat"]
@@ -44,7 +44,7 @@ def food(nonBaselineScenario, RCP, SSP):
     crops = ["Corn", "FiberCrop", "FodderGrass", "FodderHerb", "Forest", "Fruits", "Legumes", "MiscCrop", "NutsSeeds",
              "OilCrop", "OtherGrain", "Pasture", "Rice", "RootTuber", "Soybean", "SugarCrop",
              "Vegetables", "Wheat", "biomass"]
-    released_ag_prices = pd.read_csv("data/gcam_out/released/" + RCP + "/ag_commodity_prices.csv")
+    released_ag_prices = pd.read_csv("data/gcam_out/released/" + RCP + "/original/ag_commodity_prices.csv")
     pyrolysis_ag_prices = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/ag_commodity_prices.csv")
     perc_diff_ag_prices = data_manipulation.percent_difference(released_ag_prices, pyrolysis_ag_prices,
@@ -54,7 +54,7 @@ def food(nonBaselineScenario, RCP, SSP):
 
     # Changes to food prices
     released_foo_price = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+        "data/gcam_out/released/" + RCP + "/original/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
     pyrolysis_foo_price = pd.read_csv(
         "data/gcam_out/" + str(
             nonBaselineScenario) + "/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
@@ -72,7 +72,7 @@ def food(nonBaselineScenario, RCP, SSP):
                      "regional wheat", "regional corn"]:
         for energy in ["crude oil"]:
             # get right energy source
-            released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+            released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/original/prices_of_all_markets.csv")
             pyrolysis_price = pd.read_csv(
                 "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
             released_refliq_price = released_price[released_price[['product']].isin([energy]).any(axis=1)]
@@ -82,7 +82,7 @@ def food(nonBaselineScenario, RCP, SSP):
 
             # get right food sources
             released_foo_price = pd.read_csv(
-                "data/gcam_out/released/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
+                "data/gcam_out/released/" + RCP + "/original/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
             pyrolysis_foo_price = pd.read_csv(
                 "data/gcam_out/" + str(
                     nonBaselineScenario) + "/" + RCP + "/ag_regional_prices_weighted_average_between_domestic_and_imported_prices.csv")
@@ -110,7 +110,7 @@ def food(nonBaselineScenario, RCP, SSP):
     # regional averaged per capita food available for consumption – food demand per capita
     # get data
     released_per_capita_kcal = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_demand_per_capita.csv")
+        "data/gcam_out/released/" + RCP + "/original/food_demand_per_capita.csv")
     pyrolysis_per_capita_kcal = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/food_demand_per_capita.csv")
     released_per_capita_kcal = released_per_capita_kcal[released_per_capita_kcal[['SSP']].isin(SSP).any(axis=1)]
@@ -131,7 +131,7 @@ def food(nonBaselineScenario, RCP, SSP):
     # convert Pcal to kcal/capita/day
     # get population data
     released_pop = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/population_by_region.csv")
+        "data/gcam_out/released/" + RCP + "/original/population_by_region.csv")
     pyrolysis_pop = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/population_by_region.csv")
     released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
@@ -139,7 +139,7 @@ def food(nonBaselineScenario, RCP, SSP):
 
     # get Pcal data
     released_Pcal = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
+        "data/gcam_out/released/" + RCP + "/original/food_consumption_by_type_specific.csv")
     pyrolysis_Pcal = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/food_consumption_by_type_specific.csv")
     released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
@@ -189,7 +189,7 @@ def food(nonBaselineScenario, RCP, SSP):
     # Staple expenditure as percentage of average income – food demand prices and GDP per capita PPP by region
     # get data
     released_staple_expenditure = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_demand_prices.csv")
+        "data/gcam_out/released/" + RCP + "/original/food_demand_prices.csv")
     pyrolysis_staple_expenditure = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/food_demand_prices.csv")
     released_staple_expenditure = released_staple_expenditure[
@@ -215,7 +215,7 @@ def energy(nonBaselineScenario, RCP, SSP):
     """
     # Changes in energy mix
     # refined liquids production
-    ref_released = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
+    ref_released = pd.read_csv("data/gcam_out/released/" + RCP + "/original/refined_liquids_production_by_tech.csv")
     ref_pyrolysis = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/refined_liquids_production_by_tech.csv")
     # relabel CCS technologies
@@ -261,7 +261,7 @@ def energy(nonBaselineScenario, RCP, SSP):
                         "spatial distribution of change in supply of refined liquids")
 
     # change in cost of production of regined liquids
-    released_cost = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_costs_by_tech.csv")
+    released_cost = pd.read_csv("data/gcam_out/released/" + RCP + "/original/refined_liquids_costs_by_tech.csv")
     pyrolysis_cost = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/refined_liquids_costs_by_tech.csv")
     released_cost['technology'] = released_cost.apply(
@@ -286,7 +286,7 @@ def energy(nonBaselineScenario, RCP, SSP):
                         "change in cost of production of refined liquids")
 
     # changes in newly installed refining capacity
-    released_new = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech_new.csv")
+    released_new = pd.read_csv("data/gcam_out/released/" + RCP + "/original/refined_liquids_production_by_tech_new.csv")
     pyrolysis_new = pd.read_csv(
         "data/gcam_out/" + str(
             nonBaselineScenario) + "/" + RCP + "/masked" + "/refined_liquids_production_by_tech_new.csv")
@@ -317,7 +317,7 @@ def energy(nonBaselineScenario, RCP, SSP):
                         "spatial distribution in changes to newly installed capacity")
 
     # Changes in price of biofuels
-    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/original/prices_of_all_markets.csv")
     pyrolysis_price = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
     products = ["refined liquids enduse"]
@@ -342,7 +342,7 @@ def climate(nonBaselineScenario, RCP, SSP):
     """
     # plotting CO2 sequestering
     co2_seq_released = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+        "data/gcam_out/released/" + RCP + "/original/CO2_emissions_by_tech_excluding_resource_production.csv")
     co2_seq_pyrolysis = pd.read_csv(
         "data/gcam_out/" + str(
             nonBaselineScenario) + "/" + RCP + "/CO2_emissions_by_tech_excluding_resource_production.csv")
@@ -370,7 +370,7 @@ def climate(nonBaselineScenario, RCP, SSP):
                        title="change in CO2 sequestration by sector")
 
     # Annual carbon emissions – CO2 emissions by region, sector, resource production
-    co2_emi_released = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_emissions_by_region.csv")
+    co2_emi_released = pd.read_csv("data/gcam_out/released/" + RCP + "/original/CO2_emissions_by_region.csv")
     co2_emi_pyrolysis = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/CO2_emissions_by_region.csv")
     flat_diff_CO2 = data_manipulation.flat_difference(co2_emi_released, co2_emi_pyrolysis, ["SSP", "GCAM"])
@@ -378,7 +378,7 @@ def climate(nonBaselineScenario, RCP, SSP):
                         "Spatial change in carbon emissions in 2050")
 
     # Changes to CH4 and N2O emissions – nonCO2 emissions by region
-    nonco2_emi_released = pd.read_csv("data/gcam_out/released/" + RCP + "/nonCO2_emissions_by_region.csv")
+    nonco2_emi_released = pd.read_csv("data/gcam_out/released/" + RCP + "/original/nonCO2_emissions_by_region.csv")
     nonco2_emi_pyrolysis = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/nonCO2_emissions_by_region.csv")
     flat_diff_nonCO2 = data_manipulation.flat_difference(nonco2_emi_released, nonco2_emi_pyrolysis,
@@ -396,7 +396,7 @@ def land(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # regional land use change
-    released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/aggregated_land_allocation.csv")
+    released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/original/aggregated_land_allocation.csv")
     pyrolysis_land = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/aggregated_land_allocation.csv")
     released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
@@ -417,7 +417,7 @@ def fertilizer(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # Plotting Fertilizer prices
-    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/prices_of_all_markets.csv")
+    released_price = pd.read_csv("data/gcam_out/released/" + RCP + "/original/prices_of_all_markets.csv")
     pyrolysis_price = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
     products = ["N fertilizer"]
@@ -429,7 +429,7 @@ def fertilizer(nonBaselineScenario, RCP, SSP):
                         "percent difference in price of fertilizer")
 
     # supply of fertilizer
-    released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/supply_of_all_markets.csv")
+    released_supply = pd.read_csv("data/gcam_out/released/" + RCP + "/original/supply_of_all_markets.csv")
     pyrolysis_supply = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/supply_of_all_markets.csv")
     products = ["N fertilizer"]
@@ -441,7 +441,7 @@ def fertilizer(nonBaselineScenario, RCP, SSP):
                         "percent difference in supply of fertilizer")
 
     # regional change in N fertilizer production technologies
-    released_f = pd.read_csv("data/gcam_out/released/" + RCP + "/fertilizer_production_by_tech.csv")
+    released_f = pd.read_csv("data/gcam_out/released/" + RCP + "/original/fertilizer_production_by_tech.csv")
     pyrolysis_f = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/fertilizer_production_by_tech.csv")
 
@@ -547,7 +547,7 @@ def figure3(nonBaselineScenario, RCP, SSP):
 
     # print out differences in carbon prices
     c_pyro_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/CO2_prices.csv")
-    c_rel_price = pd.read_csv("data/gcam_out/released/" + RCP + "/CO2_prices.csv")
+    c_rel_price = pd.read_csv("data/gcam_out/released/" + RCP + "/original/CO2_prices.csv")
     c_pyro_price = c_pyro_price.drop_duplicates()
     c_rel_price = c_rel_price.drop_duplicates()
     product = ["CO2"]
@@ -574,7 +574,7 @@ def figure4(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # regional land use change
-    released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/aggregated_land_allocation.csv")
+    released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/original/aggregated_land_allocation.csv")
     pyrolysis_land = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/aggregated_land_allocation.csv")
     released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
@@ -604,13 +604,13 @@ def figure5(nonBaselineScenario, RCP, SSP):
     # convert Pcal to kcal/capita/day
     # get population data
     released_pop = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/population_by_region.csv")
+        "data/gcam_out/released/" + RCP + "/original/population_by_region.csv")
     pyrolysis_pop = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/population_by_region.csv")
     released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_pop = pyrolysis_pop[pyrolysis_pop[['SSP']].isin(SSP).any(axis=1)]
     released_Pcal = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_consumption_by_type_specific.csv")
+        "data/gcam_out/released/" + RCP + "/original/food_consumption_by_type_specific.csv")
     pyrolysis_Pcal = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/food_consumption_by_type_specific.csv")
     released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
@@ -664,10 +664,10 @@ def figure5(nonBaselineScenario, RCP, SSP):
     # Staple expenditure as percentage of average income – food demand prices and GDP per capita PPP by region
     # get data
     released_staple_expenditure = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/food_demand_prices.csv")
+        "data/gcam_out/released/" + RCP + "/original/food_demand_prices.csv")
     pyrolysis_staple_expenditure = pd.read_csv(
         "data/gcam_out/" + str(
-            nonBaselineScenario) + "/" + RCP + "/food_demand_prices.csv")
+            nonBaselineScenario) + "/" + RCP + "/masked/food_demand_prices.csv")
     released_staple_expenditure = released_staple_expenditure[
         released_staple_expenditure[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
@@ -712,7 +712,7 @@ def figure6(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # regional change in N fertilizer production technologies
-    released_f = pd.read_csv("data/gcam_out/released/" + RCP + "/fertilizer_production_by_tech.csv")
+    released_f = pd.read_csv("data/gcam_out/released/" + RCP + "/original/fertilizer_production_by_tech.csv")
     pyrolysis_f = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/fertilizer_production_by_tech.csv")
 
@@ -739,7 +739,7 @@ def figure6(nonBaselineScenario, RCP, SSP):
 
     # Changes in energy mix
     # refined liquids production
-    ref_released = pd.read_csv("data/gcam_out/released/" + RCP + "/refined_liquids_production_by_tech.csv")
+    ref_released = pd.read_csv("data/gcam_out/released/" + RCP + "/original/refined_liquids_production_by_tech.csv")
     ref_pyrolysis = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/refined_liquids_production_by_tech.csv")
     # relabel CCS technologies
@@ -796,7 +796,7 @@ def figure7(nonBaselineScenario, RCP, SSP):
             plotting.sensitivity(biochar_supply, i, "released", "2050", "product")
 
         # global net land use
-        released_land = pd.read_csv("data/gcam_out/released/" + str(i) + "/aggregated_land_allocation.csv")
+        released_land = pd.read_csv("data/gcam_out/released/" + str(i) + "/original/aggregated_land_allocation.csv")
         pyrolysis_land = pd.read_csv(
             "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(i) + "/masked" + "/aggregated_land_allocation.csv")
         released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
@@ -826,7 +826,7 @@ def figure7(nonBaselineScenario, RCP, SSP):
 
         # global food demand
         released_Pcal = pd.read_csv(
-            "data/gcam_out/released/" + str(i) + "/food_consumption_by_type_specific.csv")
+            "data/gcam_out/released/" + str(i) + "/original/food_consumption_by_type_specific.csv")
         pyrolysis_Pcal = pd.read_csv(
             "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
                 i) + "/masked" + "/food_consumption_by_type_specific.csv")
@@ -869,7 +869,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
     for i in RCP:
         # Changes in energy mix
         # refined liquids production
-        ref_released = pd.read_csv("data/gcam_out/released/" + str(i) + "/refined_liquids_production_by_tech.csv")
+        ref_released = pd.read_csv("data/gcam_out/released/" + str(i) + "/original/refined_liquids_production_by_tech.csv")
         ref_pyrolysis = pd.read_csv(
             "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
                 i) + "/masked" + "/refined_liquids_production_by_tech.csv")
