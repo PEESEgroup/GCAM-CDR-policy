@@ -504,13 +504,10 @@ def figure2(nonBaselineScenario, RCP, SSP):
     co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
     co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "sector"), axis=1)
     co2_seq_pyrolysis['Units'] = "Mt C"
-    products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"]
+    products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar", "manure fuel"]
     biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
 
-    # set 2025 outlier to nan
-    biochar_pyrolysis.loc[biochar_pyrolysis['2025'] < -400, '2025'] = np.nan
-
-    plotting.plot_line_product_CI(biochar_pyrolysis, products, "sector", "SSP2", "Version",
+    plotting.plot_line_product_CI(biochar_pyrolysis, products, "sector", SSP, "Version",
                                   title="CO2 sequestration from biochar")
     # print values of Mt C sequestered
     biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
@@ -912,9 +909,10 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    #figure2("pyrolysis-nofert", "6p0", c.GCAMConstants.SSPs)
-    #figure3("pyrolysis-nofert", "6p0", ["SSP1"])
-    figure4("pyrolysis-nofert", "6p0", ["SSP1"])
-    figure5("pyrolysis", "6p0", ["SSP1"])
-    figure6("pyrolysis-nofert", "6p0", ["SSP1"])
-    figure7("pyrolysis-nofert", ["4p5", "6p0"], c.GCAMConstants.SSPs)
+    figure2("pyrolysis-nofert", "6p0", c.GCAMConstants.SSPs)
+    figure3("pyrolysis-nofert", "6p0", ["SSP5"])
+    figure4("pyrolysis-nofert", "6p0", ["SSP5"])
+    figure5("pyrolysis-nofert", "6p0", ["SSP5"])
+    figure6("pyrolysis-nofert", "6p0", ["SSP5"])
+    figure7("pyrolysis-nofert", ["6p0"], c.GCAMConstants.SSPs)
+    cue_figure("pyrolysis-nofert", ["6p0"], c.GCAMConstants.SSPs)
