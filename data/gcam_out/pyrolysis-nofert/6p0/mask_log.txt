@@ -1,0 +1,67 @@
+assert C and manure fails for product beef in year 2025 in SSP1 with mean -0.767524703014809
+assert C and manure fails for product beef in year 2030 in SSP1 with mean -1.2438851746212276
+assert C and manure fails for product beef in year 2035 in SSP1 with mean -0.25700677411020617
+assert C and manure fails for product beef in SSP2 because no data is available
+assert C and manure fails for product beef in SSP3 because no data is available
+assert C and manure fails for product beef in SSP4 because no data is available
+assert C and manure fails for product beef in year 2025 in SSP5 with mean -175.47476767181732
+assert C and manure fails for product beef in year 2030 in SSP5 with mean -0.25932435726468694
+assert C and manure fails for product dairy in year 2025 in SSP1 with mean -0.8429441861411447
+assert C and manure fails for product dairy in year 2030 in SSP1 with mean -20.205047026105895
+assert C and manure fails for product dairy in year 2035 in SSP1 with mean -0.9466414128868766
+assert C and manure fails for product dairy in SSP2 because no data is available
+assert C and manure fails for product dairy in SSP3 because no data is available
+assert C and manure fails for product dairy in SSP4 because no data is available
+assert C and manure fails for product dairy in year 2025 in SSP5 with mean -0.5863026039070767
+assert C and manure fails for product dairy in year 2030 in SSP5 with mean -0.2420982674056191
+assert C and manure fails for product goat in year 2025 in SSP1 with mean -0.25743182736899567
+assert C and manure fails for product goat in year 2030 in SSP1 with mean -0.8951004914308321
+assert C and manure fails for product goat in year 2035 in SSP1 with mean -0.32475599541751543
+assert C and manure fails for product goat in SSP2 because no data is available
+assert C and manure fails for product goat in SSP3 because no data is available
+assert C and manure fails for product goat in SSP4 because no data is available
+assert C and manure fails for product goat in year 2025 in SSP5 with mean -7.2733375981165365
+assert C and manure fails for product goat in year 2030 in SSP5 with mean -1.7517320370712304
+assert C and manure fails for product pork in year 2025 in SSP1 with mean -2.4328436524843746
+assert C and manure fails for product pork in year 2030 in SSP1 with mean -4.587812609455576
+assert C and manure fails for product pork in year 2035 in SSP1 with mean -1.909721439936993
+assert C and manure fails for product pork in SSP2 because no data is available
+assert C and manure fails for product pork in SSP3 because no data is available
+assert C and manure fails for product pork in SSP4 because no data is available
+assert C and manure fails for product pork in year 2025 in SSP5 with mean -705.4064914001333
+assert C and manure fails for product pork in year 2030 in SSP5 with mean -2.7445558072580156
+assert C and manure fails for product poultry in year 2025 in SSP1 with mean -0.8334030849597747
+assert C and manure fails for product poultry in year 2030 in SSP1 with mean -3.2682856159923923
+assert C and manure fails for product poultry in year 2035 in SSP1 with mean -0.660929600998791
+assert C and manure fails for product poultry in SSP2 because no data is available
+assert C and manure fails for product poultry in SSP3 because no data is available
+assert C and manure fails for product poultry in SSP4 because no data is available
+assert C and manure fails for product poultry in year 2025 in SSP5 with mean -0.6954931020148262
+assert C and manure fails for product poultry in year 2030 in SSP5 with mean -0.5779445342519973
+biooil calculation fails in year 2025 in SSP1 with actual supply 0.007678978380000001 and estimated supply 0.00292470788943446
+biooil calculation fails in year 2030 in SSP1 with actual supply 0.09638199880000001 and estimated supply 0.009839144866559
+biooil calculation fails in year 2035 in SSP1 with actual supply 0.041573243800000007 and estimated supply 0.023997853507003
+biooil supply fails for in SSP2 because no data is available
+biooil supply fails for in SSP3 because no data is available
+biooil supply fails for in SSP4 because no data is available
+biooil calculation fails in year 2025 in SSP5 with actual supply 1.8568179535899998 and estimated supply 0.004290506832400227
+biooil calculation fails in year 2030 in SSP5 with actual supply 0.03315648410000001 and estimated supply 0.0127135226967297
+secout fails for product beef manure in SSP2 because no data is available
+secout fails for product beef manure in SSP3 because no data is available
+secout fails for product beef manure in SSP4 because no data is available
+secout fails for product dairy manure in SSP2 because no data is available
+secout fails for product dairy manure in SSP3 because no data is available
+secout fails for product dairy manure in SSP4 because no data is available
+secout fails for product goat manure in SSP2 because no data is available
+secout fails for product goat manure in SSP3 because no data is available
+secout fails for product goat manure in SSP4 because no data is available
+secout fails for product pork manure in SSP2 because no data is available
+secout fails for product pork manure in SSP3 because no data is available
+secout fails for product pork manure in SSP4 because no data is available
+secout fails for product poultry manure in SSP2 because no data is available
+secout fails for product poultry manure in SSP3 because no data is available
+secout fails for product poultry manure in SSP4 because no data is available
+secout fails for product ['Soybean', 'OilCrop', 'regional corn for ethanol'] in SSP2 because no data is available
+secout fails for product ['Soybean', 'OilCrop', 'regional corn for ethanol'] in SSP3 because no data is available
+secout fails for product ['Soybean', 'OilCrop', 'regional corn for ethanol'] in SSP4 because no data is available
+[['SSP1', 2025], ['SSP1', 2030], ['SSP1', 2035], ['SSP2', 2025], ['SSP2', 2030], ['SSP2', 2035], ['SSP2', 2040], ['SSP2', 2045], ['SSP2', 2050], ['SSP3', 2025], ['SSP3', 2030], ['SSP3', 2035], ['SSP3', 2040], ['SSP3', 2045], ['SSP3', 2050], ['SSP4', 2025], ['SSP4', 2030], ['SSP4', 2035], ['SSP4', 2040], ['SSP4', 2045], ['SSP4', 2050], ['SSP5', 2025], ['SSP5', 2030]]

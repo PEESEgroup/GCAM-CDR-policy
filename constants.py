@@ -60,11 +60,11 @@ class GCAMConstants:
     manure_biooil_ratio["pyrolysis", "pork manure"] = 0.00525
     manure_biooil_ratio["pyrolysis", "poultry manure"] = 0.0039
     manure_biooil_ratio["pyrolysis", "goat manure"] = 0.00525
-    manure_biooil_ratio["pyrolysis-nofert", "beef manure"] = 1/0.00124
-    manure_biooil_ratio["pyrolysis-nofert", "dairy manure"] = 1/0.00137
-    manure_biooil_ratio["pyrolysis-nofert", "pork manure"] = 1/0.00137
-    manure_biooil_ratio["pyrolysis-nofert", "poultry manure"] = 1/0.00101
-    manure_biooil_ratio["pyrolysis-nofert", "goat manure"] = 1/0.00137
+    manure_biooil_ratio["pyrolysis-nofert", "beef manure"] = 0.00124
+    manure_biooil_ratio["pyrolysis-nofert", "dairy manure"] = 0.00137
+    manure_biooil_ratio["pyrolysis-nofert", "pork manure"] = 0.00137
+    manure_biooil_ratio["pyrolysis-nofert", "poultry manure"] = 0.00101
+    manure_biooil_ratio["pyrolysis-nofert", "goat manure"] = 0.00137
 
     biochar_fert_ratio = dict()
     biochar_fert_ratio["pyrolysis", "beef"] = 1/90.9
