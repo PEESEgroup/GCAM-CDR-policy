@@ -1,5 +1,3 @@
-# this file has been edited
-
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_aglu_L2252.land_input_5_irr_mgmt
@@ -155,7 +153,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
     # A function to carry LN4 information down to LN5
     convert_LN4_to_LN5 <- function(data, names) {
       data %>%
-        repeat_add_columns(tibble(level = c("lo", "hi", "biochar"))) %>%
+        repeat_add_columns(tibble(level = c("lo", "hi"))) %>%
         mutate(LandNode5 = LandLeaf,
                LandLeaf = paste(LandNode5, level, sep = aglu.MGMT_DELIMITER)) ->
         data_new

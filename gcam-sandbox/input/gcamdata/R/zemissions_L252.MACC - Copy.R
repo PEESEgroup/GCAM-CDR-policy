@@ -1,5 +1,3 @@
-# this file has been edited
-
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_emissions_L252.MACC
@@ -181,7 +179,7 @@ module_emissions_L252.MACC <- function(command, ...) {
       # Add column for market variable
       mutate(market.name = emissions.MAC_MARKET) %>%
       repeat_add_columns(tibble(Irr_Rfd = paste0(aglu.IRR_DELIMITER, c("IRR", "RFD")))) %>%
-      repeat_add_columns(tibble(mgmt = paste0(aglu.MGMT_DELIMITER, c("lo", "hi", "biochar")))) %>%
+      repeat_add_columns(tibble(mgmt = paste0(aglu.MGMT_DELIMITER, c("lo", "hi")))) %>%
       unite(AgProductionTechnology, AgProductionTechnology, Irr_Rfd, mgmt, sep = "") %>%
       # Remove EPA_Region - useful up to now for diagnostic, but not needed for csv->xml conversion
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, Non.CO2,

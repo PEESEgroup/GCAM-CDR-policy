@@ -1,5 +1,3 @@
-# this file has been edited
-
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_aglu_L2042.resbio_input_irr_mgmt
@@ -219,7 +217,7 @@ module_aglu_L2042.resbio_input_irr_mgmt <- function(command, ...) {
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, residue.biomass.production,
              mass.conversion, harvest.index, eros.ctrl, mass.to.energy, water.content) %>%
       repeat_add_columns(tibble(Irr_Rfd = c("IRR", "RFD"))) %>%
-      repeat_add_columns(tibble(level = c("lo", "hi", "biochar"))) %>%
+      repeat_add_columns(tibble(level = c("lo", "hi"))) %>%
       mutate(AgProductionTechnology = paste(paste(AgProductionTechnology, Irr_Rfd, sep = aglu.IRR_DELIMITER),
                                             level, sep = aglu.MGMT_DELIMITER)) %>%
       select(-Irr_Rfd, -level) ->
