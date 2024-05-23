@@ -1,3 +1,5 @@
+# this file has been edited
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_aglu_prune_empty_ag_xml
@@ -131,6 +133,20 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
     LandNode_MaxDepth <- length(LandNode_columns)
 
     # start with some error checking that non-zero land matches non-zero supply
+    print(L2252.LN5_MgdCarbon_crop %>%
+            select(region, LandAllocatorRoot, matches('LandNode'), LandLeaf) %>%
+            repeat_add_columns(tibble(year=MODEL_BASE_YEARS)) %>%
+            # some empty land node/leaves appear because we have read in carbon information
+            # for them but they do not appear in the historical land allocation table (L2252.LN5_MgdAllocation_crop)
+            # so join them here and fill zeros so we can clean them up together with the
+            # rest of the zero land node/leaves
+            left_join(L2252.LN5_MgdAllocation_crop, by=c("region", "LandAllocatorRoot", LandNode_columns, "LandLeaf", "year")) %>%
+            mutate(allocation = if_else(is.na(allocation), 0, allocation)) %>%
+            left_join(L2012.AgProduction_ag_irr_mgmt %>%
+                                       select(region, AgProductionTechnology, year, calOutputValue),
+                                     by=c("region", "LandLeaf" = "AgProductionTechnology", "year")) %>%
+            filter(if_any(everything(), is.na))) # looking for biochar
+
     L2252.LN5_MgdCarbon_crop %>%
       select(region, LandAllocatorRoot, matches('LandNode'), LandLeaf) %>%
       repeat_add_columns(tibble(year=MODEL_BASE_YEARS)) %>%

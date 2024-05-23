@@ -7,4 +7,8 @@ supplysector,subsector,apply.to,from.year,to.year,to.value,interpolation.functio
 regional biomass,regional biomass,share-weight,final-calibration-year,end-year,,linear,0
 regional corn for ethanol,regional corn for ethanol,share-weight,final-calibration-year,end-year,,fixed,0
 regional sugar for ethanol,regional sugar for ethanol,share-weight,final-calibration-year,end-year,,fixed,0
-manure_fuel,manure_fuel,share-weight,initial-future-year,end-year,,fixed,0
+poultry_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0
+pork_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0
+beef_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0
+dairy_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0
+goat_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0

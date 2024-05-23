@@ -257,6 +257,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
 
     # L2252.LN5_MgdCarbon_crop: Carbon content info, managed land in the fifth nest, cropland (no bio)
     # Soil will use default values, but vegetation will be replaced by bottom-up estimates
+    # TODO update for biochar
     L171.ag_EcYield_kgm2_R_C_Y_GLU %>%
       rename(yield = value) %>%
       left_join_error_no_match(GCAMLandLeaf_CdensityLT, by = c("GCAM_subsector" = "LandLeaf")) %>%
@@ -300,6 +301,8 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              LandLeaf = paste(LandNode4, Irr_Rfd, sep = "_")) %>%
       convert_LN4_to_LN5(names = LEVEL2_DATA_NAMES[["LN5_MgdCarbon"]]) ->
       L2252.LN5_MgdCarbon_crop
+
+    print(L2252.LN5_MgdCarbon_crop)
 
     L2012.AgYield_bio_ref %>%
       filter(year == max(MODEL_BASE_YEARS)) %>%

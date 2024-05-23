@@ -1,3 +1,5 @@
+# THIS FILE HAS BEEN EDITED
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_energy_L221.en_supply
@@ -17,7 +19,7 @@
 #' @importFrom assertthat assert_that
 #' @importFrom dplyr anti_join distinct filter full_join if_else group_by inner_join left_join mutate select summarise
 #' @importFrom tidyr gather
-#' @author JDH Nov 2017
+#' @author Nathan Preuss August 2023 & JDH Nov 2017
 module_energy_L221.en_supply <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
@@ -33,6 +35,7 @@ module_energy_L221.en_supply <- function(command, ...) {
              FILE = "energy/A21.globaltech_keyword",
              FILE = "energy/A21.globaltech_secout",
              FILE = "energy/A21.rsrc_info",
+             FILE = "energy/A21.secout_prices",
              "L121.BiomassOilRatios_kgGJ_R_C",
              "L122.in_Mt_R_C_Yh",
              FILE = "aglu/A_an_input_subsector",
@@ -86,6 +89,7 @@ module_energy_L221.en_supply <- function(command, ...) {
     A21.subsector_interp <- get_data(all_data, "energy/A21.subsector_interp", strip_attributes = TRUE)
     A21.globaltech_coef <- get_data(all_data, "energy/A21.globaltech_coef")
     A21.globaltech_cost <- get_data(all_data, "energy/A21.globaltech_cost")
+    A21.secout_prices <- get_data(all_data, "energy/A21.secout_prices")
     A21.globaltech_shrwt <- get_data(all_data, "energy/A21.globaltech_shrwt", strip_attributes = TRUE)
     A21.globaltech_keyword <- get_data(all_data, "energy/A21.globaltech_keyword", strip_attributes = TRUE)
     A21.globaltech_secout <- get_data(all_data, "energy/A21.globaltech_secout", strip_attributes = TRUE)
@@ -239,6 +243,8 @@ module_energy_L221.en_supply <- function(command, ...) {
       select(sector.name = supplysector, subsector.name = subsector, technology, primary.consumption, year) %>%
       filter(year %in% MODEL_YEARS) -> L221.PrimaryConsKeyword_en
 
+    ### BEGIN EDITS
+
     # Secondary feed outputs of biofuel production technologies
     # NOTE: secondary outputs are only written for the regions/technologies where applicable, so the global tech database can not be used
     # to get the appropriate region/tech combinations written out, first repeat by all regions, then subset as appropriate
@@ -259,13 +265,34 @@ module_energy_L221.en_supply <- function(command, ...) {
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       select(region, supplysector, subsector, technology)
 
+    # Code for DDGS regions
     A21.globaltech_secout %>%
       # use inner join in order to drop processing transformations that don't produce animal feed (e.g., sugar cane ethanol, palm oil biodiesel)
       inner_join(L221.biofuel_types_region, by = c("supplysector", "subsector", "technology")) ->
-      L221.globaltech_secout_R
+      L221.globaltech_secout_R_a
 
-    # Store these regions in a separate object
-    L221.globaltech_secout_R %>%
+    # code for pyrolysis and AD regions
+    #get a list of manure regions, supply sectors, subsectors, and technologies
+    L221.manure_region <- A21.globaltech_coef %>%
+      distinct() %>%
+      filter(subsector == "biochar" | subsector == "digestate") %>%
+      repeat_add_columns(GCAM_region_names) %>%
+      select(region, supplysector, subsector, technology) %>%
+      distinct()
+
+    print(A21.globaltech_coef)
+
+    A21.globaltech_secout %>%
+      # use inner join in order to drop processing transformations that don't produce animal feed (e.g., sugar cane ethanol, palm oil biodiesel)
+      inner_join(L221.manure_region, by = c("supplysector", "subsector", "technology")) ->
+      L221.globaltech_secout_R_b
+
+    bind_rows(L221.globaltech_secout_R_a, L221.globaltech_secout_R_b) -> L221.globaltech_secout_R
+
+    print(L221.globaltech_secout_R, n=100)
+
+    # Store DDGS regions in a separate object
+    L221.globaltech_secout_R_a %>%
       distinct(region) -> L221.ddgs_regions
 
     L221.BiomassOilSecOut_kgGJ_R_C <- left_join_error_no_match(L121.BiomassOilRatios_kgGJ_R_C, GCAM_region_names,
@@ -320,6 +347,20 @@ module_energy_L221.en_supply <- function(command, ...) {
       left_join_error_no_match(A_regions %>%
                   select(region, GCAM_region_ID), by = "GCAM_region_ID") -> L221.ag_FeedPrice_R_Yf
 
+    # we need to left join later based on the fractional.secondary.output
+    # due to the different secondary outputs now in existence
+    L221.ag_FeedPrice_R_Yf %>%
+      mutate(secout = "DDGS and feedcakes") -> L221.ag_FeedPrice_R_Yf_a
+
+    # read in our own file for secondary output prices
+    A21.secout_prices %>%
+      left_join_error_no_match(GCAM_region_names, by = c(GCAM_region_ID = "GCAM_region_ID")) %>%
+      select(GCAM_region_ID, feed_price, region, secout) -> L221.ag_FeedPrice_R_Yf_b
+
+    bind_rows(L221.ag_FeedPrice_R_Yf_a, L221.ag_FeedPrice_R_Yf_b) -> L221.ag_FeedPrice_R_Yf
+
+    print(L221.ag_FeedPrice_R_Yf, n=50)
+    print(L221.StubTechFractSecOut_en, n=100)
 
     # Indicate the price points for the DDG/feedcake commodity
     # This is important for ensuring that the secondary output of feedcrops from the bio-refinery feedstock pass-through sectors
@@ -327,32 +368,48 @@ module_energy_L221.en_supply <- function(command, ...) {
     L221.StubTechFractSecOut_en %>%
       select(-output.ratio) %>%
       mutate(P0 = 0) %>%
-      left_join(L221.ag_FeedPrice_R_Yf, by = "region") %>%
+      left_join(L221.ag_FeedPrice_R_Yf, by = c("region" = "region", "fractional.secondary.output" = "secout")) %>%
       mutate(P1 = round(feed_price, digits = energy.DIGITS_COST)) %>%
       gather(key = "variable", value = "price", P0, P1) %>%
       mutate(fraction.produced = as.numeric( sub("P", "", variable ) )) %>%
       select(-variable, -feed_price, -GCAM_region_ID) -> L221.StubTechFractProd_en
 
-      # Calibrate the price (as a fixed price, not a point on a supply curve) in the base year
-      L221.StubTechFractSecOut_en %>%
-        filter(year %in% MODEL_BASE_YEARS) %>%                                 # In the base years the fractional secondary outputs are de-activated in order to calibrate the flows
-        select(-output.ratio) %>%
-        left_join(L221.ag_FeedPrice_R_Yf, by = "region") %>%
-        mutate(calPrice = round(feed_price, digits = energy.DIGITS_COST)) %>%
-        select(LEVEL2_DATA_NAMES[["StubTechFractCalPrice"]]) -> L221.StubTechFractCalPrice_en
+    # Calibrate the price (as a fixed price, not a point on a supply curve) in the base year
+    L221.StubTechFractSecOut_en %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%                                 # In the base years the fractional secondary outputs are de-activated in order to calibrate the flows
+      select(-output.ratio) %>%
+      left_join(L221.ag_FeedPrice_R_Yf, by = c("region" = "region", "fractional.secondary.output" = "secout"))  %>%
+      mutate(calPrice = round(feed_price, digits = energy.DIGITS_COST)) %>%
+      select(LEVEL2_DATA_NAMES[["StubTechFractCalPrice"]]) -> L221.StubTechFractCalPrice_en
 
+    print(L221.StubTechFractCalPrice_en, n=100)
 
-    # Final tables for feedcrop secondary output: the resource
+    # preserve DDGS code
     A21.rsrc_info %>%
-      repeat_add_columns(L221.ddgs_regions) %>%
-      select(region, resource, output.unit = "output-unit", price.unit = "price-unit", market) %>%
-      mutate(market = region) -> L221.Rsrc_en
+        slice(1) %>%
+        repeat_add_columns(L221.ddgs_regions) %>%
+        select(region, resource, output.unit = "output-unit", price.unit = "price-unit", market) %>%
+        mutate(market = region) -> L221.Rsrc_en_DDGS
+
+    #secondary outputs that aren't DDGS
+    A21.rsrc_info %>%
+        slice(-1) %>%
+        repeat_add_columns(A_regions) %>%
+        select(region, resource, output.unit = "output-unit", price.unit = "price-unit", market) %>%
+        mutate(market = region) -> L221.Rsrc_en_other
+
+    print(L221.Rsrc_en_other, n=100)
+
+    bind_rows(L221.Rsrc_en_DDGS, L221.Rsrc_en_other) -> L221.Rsrc_en
 
     # Resource prices are copied from the fractional secondary output calPrice
     L221.StubTechFractCalPrice_en %>%
       select(region, resource = fractional.secondary.output, year, price = calPrice) ->
       L221.RsrcPrice_en
 
+    print(L221.RsrcPrice_en, n=100)
+
+    ### END EDITS
 
     # Calibration and region specific data
 
@@ -419,7 +476,6 @@ module_energy_L221.en_supply <- function(command, ...) {
 
     L221.StubTech_en %>%
       filter(!(region %in% aglu.NO_AGLU_REGIONS & supplysector %in% ag_en)) -> L221.StubTech_en
-
 
     # ===================================================
 
@@ -568,7 +624,7 @@ module_energy_L221.en_supply <- function(command, ...) {
       add_units("fractions") %>%
       add_comments("Secondary outputs are only written out to relevant regions and technologies") %>%
       add_legacy_name("L221.StubTechFractSecOut_en") %>%
-      add_precursors("aglu/A_agRegionalTechnology", "energy/A21.globaltech_secout", "common/GCAM_region_names", "L122.in_Mt_R_C_Yh") ->
+      add_precursors("aglu/A_agRegionalTechnology", "energy/A21.globaltech_secout", "energy/A21.globaltech_coef", "common/GCAM_region_names", "L122.in_Mt_R_C_Yh") ->
       L221.StubTechFractSecOut_en
 
     L221.StubTechFractProd_en %>%
@@ -576,14 +632,14 @@ module_energy_L221.en_supply <- function(command, ...) {
       add_units("1975$, fraction") %>%
       add_comments("Prices, production of feed output from L108.ag_Feed_Mt_R_C_Y and L202.ag_consP_R_C_75USDkg") %>%
       add_legacy_name("L221.StubTechFractProd_en") %>%
-      add_precursors("L108.ag_Feed_Mt_R_C_Y", "L202.ag_consP_R_C_75USDkg", "aglu/A_an_input_subsector") ->
+      add_precursors("L108.ag_Feed_Mt_R_C_Y", "L202.ag_consP_R_C_75USDkg", "energy/A21.secout_prices", "aglu/A_an_input_subsector", "common/GCAM_region_names") ->
       L221.StubTechFractProd_en
 
     L221.StubTechFractCalPrice_en %>%
       add_title("Calibrated prices of secondary outputs of feed from energy technologies (DDGS and feedcakes)") %>%
       add_units("1975$/kg") %>%
       add_comments("Value only relevant for share-weight calculation") %>%
-      add_precursors("L108.ag_Feed_Mt_R_C_Y", "L202.ag_consP_R_C_75USDkg", "aglu/A_an_input_subsector") ->
+      add_precursors("L108.ag_Feed_Mt_R_C_Y", "L202.ag_consP_R_C_75USDkg", "energy/A21.secout_prices", "aglu/A_an_input_subsector", "common/GCAM_region_names") ->
       L221.StubTechFractCalPrice_en
 
     L221.Rsrc_en %>%
@@ -591,7 +647,7 @@ module_energy_L221.en_supply <- function(command, ...) {
       add_units("unitless") %>%
       add_comments("A21.rsrc_info written out to regions with secondary feed output") %>%
       add_legacy_name("L221.Rsrc_en") %>%
-      add_precursors("energy/A21.rsrc_info") ->
+      add_precursors("energy/A21.rsrc_info", "energy/A_regions") ->
       L221.Rsrc_en
 
     L221.RsrcPrice_en %>%

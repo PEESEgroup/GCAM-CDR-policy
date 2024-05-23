@@ -1,3 +1,5 @@
+# this file has been edited
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt
@@ -62,8 +64,8 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       # SET THE SAME YIELD MULTIPLIERS EVERYWHERE, 1 plus or minus an adj fraction.
       mutate(yieldmult_hi = 1 + aglu.MGMT_YIELD_ADJ, yieldmult_lo = 1 - aglu.MGMT_YIELD_ADJ,
              # high and low yields are now calculated as the observed yield times the multipliers
-             EcYield_kgm2_lo = value * yieldmult_lo, EcYield_kgm2_hi = value * yieldmult_hi) %>%
-      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, year, EcYield_kgm2_hi, EcYield_kgm2_lo) %>%
+             EcYield_kgm2_lo = value * yieldmult_lo, EcYield_kgm2_hi = value * yieldmult_hi, EcYield_kgm2_biochar = value) %>% #TODO: update yield increases due to biochar here
+      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, year, EcYield_kgm2_hi, EcYield_kgm2_lo, EcYield_kgm2_biochar) %>%
       gather(level, value, -GCAM_region_ID, -GCAM_commodity, -GCAM_subsector, -GLU, -Irr_Rfd, -year) %>%
       mutate(level = sub("EcYield_kgm2_", "", level)) ->
       L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level
@@ -79,8 +81,8 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
              # Calculate the land shares to allocate to low, and high is the rest (currently the shares are set at 0.5/0.5 to all)
              landshare_lo = (1 - yieldmult_hi) / (yieldmult_lo - yieldmult_hi), landshare_hi = 1 - landshare_lo,
              # low- and high-input land are calculated as the total times the shares
-             LC_bm2_lo = value * landshare_lo, LC_bm2_hi = value * landshare_hi) %>%
-      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, year, LC_bm2_hi, LC_bm2_lo) %>%
+             LC_bm2_lo = value * 0.334, LC_bm2_hi = value * 0.333, LC_bm2_biochar=value*0.333) %>% # TODO: update biochar land shares here (currently 1/3, but this is likely to make errors)
+      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, year, LC_bm2_hi, LC_bm2_lo, LC_bm2_biochar) %>%
       gather(level, value, -GCAM_region_ID, -GCAM_commodity, -GCAM_subsector, -GLU, -Irr_Rfd, -year) %>%
       mutate(level = sub("LC_bm2_", "", level)) ->
       L181.LC_bm2_R_C_Yh_GLU_irr_level

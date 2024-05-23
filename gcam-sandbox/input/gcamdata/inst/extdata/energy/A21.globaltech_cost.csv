@@ -11,8 +11,8 @@ regional biomassOil,regional biomassOil,biomassOil,non-energy,0,0
 regional biomassOil,regional biomassOil,OilCrop,non-energy,0,0
 regional biomassOil,regional biomassOil,OilPalm,non-energy,0,0
 regional biomassOil,regional biomassOil,Soybean,non-energy,0,0
-manure_fuel,manure_fuel,slow pyrolysis_poultry,non-energy,0.0557,0.0557
-manure_fuel,manure_fuel,slow pyrolysis_pork,non-energy,0.0414,0.0414
-manure_fuel,manure_fuel,slow pyrolysis_beef,non-energy,0.0455,0.0455
-manure_fuel,manure_fuel,slow pyrolysis_dairy,non-energy,0.0414,0.0414
-manure_fuel,manure_fuel,slow pyrolysis_goat,non-energy,0.0414,0.0414
+poultry_biochar,biochar,slow pyrolysis,non-energy,0.0308,0.0308
+pork_biochar,biochar,slow pyrolysis,non-energy,0.0310,0.0310
+beef_biochar,biochar,slow pyrolysis,non-energy,0.0316,0.0316
+dairy_biochar,biochar,slow pyrolysis,non-energy,0.0305,0.0305
+goat_biochar,biochar,slow pyrolysis,non-energy,0.0123,0.0123
