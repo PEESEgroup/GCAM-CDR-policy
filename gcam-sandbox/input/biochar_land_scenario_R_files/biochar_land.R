@@ -23,12 +23,12 @@
 
 devtools::load_all()
 
-# supply sector   subsector   technology
-# poultry_biochar biochar     slow pyrolysis
-# dairy_biochar biochar     slow pyrolysis
-# beef_biochar biochar     slow pyrolysis
-# pork_biochar biochar     slow pyrolysis
-# goat_biochar biochar     slow pyrolysis
+# supply sector   subsector       technology
+# biochar         slow pyrolysis  poultry biochar
+# biochar         slow pyrolysis  dairy biochar
+# biochar         slow pyrolysis  beef biochar
+# biochar         slow pyrolysis  pork biochar
+# biochar         slow pyrolysis  goat biochar
 
 # conversions
 # 1e6 tons = 1 Mt
@@ -84,12 +84,13 @@ print(tmp)
 #  poultry value (units): (10000 MJ/ton syngas * 0.18 ton syngas/ton feedstock -939 MJ/ton feedstock) * 1e-12 * 1e6 = 0.000861 EJ natural gas/Mt feedstock (processed at 500 C)
 #  poultry value (units): 15000 MJ/ton bio-oil * 0.26 ton bio-oil/ton feedstock * 1e-12 * 1e6 = 0.0039 EJ manure fuel feedstock/Mt feedstock (processed at 500 C)
 #  poultry value (units): heating requirement of 939 MJ/ton feedstock
+# TODO: redo calculations
 tmp[4] <- "# Column types: ccccnnn"
-tmp[10] <- "poultry_biochar,biochar,slow pyrolysis,manure fuel feedstock,0.0039,0.0039,0.0039"
-tmp[11] <- "beef_biochar,biochar,slow pyrolysis,manure fuel feedstock,0.00477,0.00477,0.00477" # yield of 31.82% [2], but no gas/bio-oil HHV present, so use values from [1]
-tmp[12] <- "pork_biochar,biochar,slow pyrolysis,manure fuel feedstock,0.00525,0.00525,0.00525" # yield of 35% [3], but no bio-oil HHV present
-tmp[13] <- "dairy_biochar,biochar,slow pyrolysis,manure fuel feedstock,0.00525,0.00525,0.00525" #yield of 35% [4], but no gas/bio-oil HHV present, so use values from [1]
-tmp[14] <- "goat_biochar,biochar,slow pyrolysis,manure fuel feedstock,0.00525,0.00525,0.00525" #yield of 35% [3], but no bio-oil HHV present
+tmp[10] <- "biochar,slow pyrolysis,poultry_biochar,manure fuel feedstock,0.0039,0.0039,0.0039"
+tmp[11] <- "biochar,slow pyrolysis,beef_biochar,manure fuel feedstock,0.00477,0.00477,0.00477" # yield of 31.82% [2], but no gas/bio-oil HHV present, so use values from [1]
+tmp[12] <- "biochar,slow pyrolysis,pork_biochar,manure fuel feedstock,0.00525,0.00525,0.00525" # yield of 35% [3], but no bio-oil HHV present
+tmp[13] <- "biochar,slow pyrolysis,dairy_biochar,manure fuel feedstock,0.00525,0.00525,0.00525" #yield of 35% [4], but no gas/bio-oil HHV present, so use values from [1]
+tmp[14] <- "biochar,slow pyrolysis,goat_biochar,manure fuel feedstock,0.00525,0.00525,0.00525" #yield of 35% [3], but no bio-oil HHV present
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -141,11 +142,12 @@ print(tmp)
 #     biochar production: 3 (tons/hr) * 24 (hours/day) * 330 (days/year) [8] * 0.4584 (biochar yield) [3] *1000kg/ton = 10891584 - beef
 #     biochar production: 3 (tons/hr) * 24 (hours/day) * 330 (days/year) [8] * 0.475 (biochar yield) [7] *1000kg/ton = 11286000 - dairy
 #        converted costs: (TPC + OPEX)*1000 (to convert from kEuros to Euros) /0.9233 (to 2000$) * 0.32 (to 1975$) = $4,272,142.60 - to EAUW: $344,276.1
-tmp[14] <- "poultry_biochar,biochar,slow pyrolysis,non-energy,0.0308,0.0308"
-tmp[15] <- "pork_biochar,biochar,slow pyrolysis,non-energy,0.0310,0.0310"
-tmp[16] <- "beef_biochar,biochar,slow pyrolysis,non-energy,0.0316,0.0316"
-tmp[17] <- "dairy_biochar,biochar,slow pyrolysis,non-energy,0.0305,0.0305"
-tmp[18] <- "goat_biochar,biochar,slow pyrolysis,non-energy,0.0123,0.0123"
+# TODO: calculations
+tmp[14] <- "biochar,slow pyrolysis,poultry_biochar,non-energy,0.0308,0.0308"
+tmp[15] <- "biochar,slow pyrolysis,pork_biochar,non-energy,0.0310,0.0310"
+tmp[16] <- "biochar,slow pyrolysis,beef_biochar,non-energy,0.0316,0.0316"
+tmp[17] <- "biochar,slow pyrolysis,dairy_biochar,non-energy,0.0305,0.0305"
+tmp[18] <- "biochar,slow pyrolysis,goat_biochar,non-energy,0.0123,0.0123"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -167,11 +169,12 @@ print(tmp)
 #               source 4: Poddar, S. & Sarat Chandra Babu, J. Modelling and optimization of a pyrolysis plant using swine and goat manure as feedstock. Renewable Energy 175, 253–269 (2021).
 # original value (units): unitless
 #     used value (units): 47% yield implies 2.1276 Mt feedstock / Mt biochar
-tmp[15] <- "poultry_biochar,biochar,slow pyrolysis,poultry manure,2.1276,2.1276,2.1276" #[1]
-tmp[16] <- "pork_biochar,biochar,slow pyrolysis,pork manure,2.136,2.136,2.136" # [4]
-tmp[17] <- "beef_biochar,biochar,slow pyrolysis,beef manure,2.1815,2.1815,2.1815" #[3]
-tmp[18] <- "dairy_biochar,biochar,slow pyrolysis,dairy manure,2.1052,2.1052,2.1052" #[2]
-tmp[19] <- "goat_biochar,biochar,slow pyrolysis,goat manure,2.055,2.055,2.055" #[4]
+# TODO: calculations
+tmp[15] <- "biochar,slow pyrolysis,poultry_biochar,poultry manure,2.1276,2.1276,2.1276" #[1]
+tmp[16] <- "biochar,slow pyrolysis,pork_biochar,pork manure,2.136,2.136,2.136" # [4]
+tmp[17] <- "biochar,slow pyrolysis,beef_biochar,beef manure,2.1815,2.1815,2.1815" #[3]
+tmp[18] <- "biochar,slow pyrolysis,dairy_biochar,dairy manure,2.1052,2.1052,2.1052" #[2]
+tmp[19] <- "biochar,slow pyrolysis,goat_biochar,goat manure,2.055,2.055,2.055" #[4]
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -198,11 +201,11 @@ tmp[13] <- "regional biomassOil,regional biomassOil,Soybean,0,0,0,0"
 #               source 1: A322.globaltech_shrwt
 # original value (units): same assumptions as fertilizer production from hydrogen
 #     used value (units): same assumptions as fertilizer production from hydrogen
-tmp[14] <- "poultry_biochar,biochar,slow pyrolysis,0,0,1,1"
-tmp[15] <- "pork_biochar,biochar,slow pyrolysis,0,0,1,1"
-tmp[16] <- "beef_biochar,biochar,slow pyrolysis,0,0,1,1"
-tmp[17] <- "dairy_biochar,biochar,slow pyrolysis,0,0,1,1"
-tmp[18] <- "goat_biochar,biochar,slow pyrolysis,0,0,1,1"
+tmp[14] <- "biochar,slow pyrolysis,poultry_biochar,0,0,1,1"
+tmp[15] <- "biochar,slow pyrolysis,pork_biochar,0,0,1,1"
+tmp[16] <- "biochar,slow pyrolysis,beef_biochar,0,0,1,1"
+tmp[17] <- "biochar,slow pyrolysis,dairy_biochar,0,0,1,1"
+tmp[18] <- "biochar,slow pyrolysis,goat_biochar,0,0,1,1"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -222,11 +225,11 @@ print(tmp)
 #               source 2: Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
 # original value (units): s-curve following [2]
 #     used value (units): same assumptions as fertilizer production from hydrogen
-tmp[9] <- "poultry_biochar,biochar,slow pyrolysis,share-weight,initial-future-year,end-year,,fixed"
-tmp[10] <- "pork_biochar,biochar,slow pyrolysis,share-weight,initial-future-year,end-year,,fixed"
-tmp[11] <- "beef_biochar,biochar,slow pyrolysis,share-weight,initial-future-year,end-year,,fixed"
-tmp[12] <- "dairy_biochar,biochar,slow pyrolysis,share-weight,initial-future-year,end-year,,fixed"
-tmp[13] <- "goat_biochar,biochar,slow pyrolysis,share-weight,initial-future-year,end-year,,fixed"
+tmp[9]  <- "biochar,slow pyrolysis,poultry_biochar,share-weight,initial-future-year,end-year,,fixed"
+tmp[10] <- "biochar,slow pyrolysis,pork_biochar,share-weight,initial-future-year,end-year,,fixed"
+tmp[11] <- "biochar,slow pyrolysis,beef_biochar,share-weight,initial-future-year,end-year,,fixed"
+tmp[12] <- "biochar,slow pyrolysis,dairy_biochar,share-weight,initial-future-year,end-year,,fixed"
+tmp[13] <- "biochar,slow pyrolysis,goat_biochar,share-weight,initial-future-year,end-year,,fixed"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -244,11 +247,7 @@ print(tmp)
 #               source 1: A322.globaltech_shrwt
 # original value (units): same assumptions as fertilizer production from hydrogen
 #     used value (units): same assumptions as fertilizer production from hydrogen
-tmp[10] <- "poultry_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0" #TODO allowed traded
-tmp[11] <- "pork_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0"
-tmp[12] <- "beef_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0"
-tmp[13] <- "dairy_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0"
-tmp[14] <- "goat_biochar,biochar,share-weight,initial-future-year,end-year,,fixed,0"
+tmp[10] <- "biochar,slow pyrolysis,share-weight,initial-future-year,end-year,,fixed,0"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -266,11 +265,7 @@ print(tmp)
 #               source 1: A322.globaltech_shrwt
 # original value (units): same assumptions as fertilizer production from hydrogen
 #     used value (units): same assumptions as fertilizer production from hydrogen
-tmp[11] <- "poultry_biochar,biochar,initial-future-year,,1,0" #TODO added trading
-tmp[12] <- "pork_biochar,biochar,initial-future-year,,1,0"
-tmp[13] <- "beef_biochar,biochar,initial-future-year,,1,0"
-tmp[14] <- "dairy_biochar,biochar,initial-future-year,,1,0"
-tmp[15] <- "goat_biochar,biochar,initial-future-year,,1,0"
+tmp[11] <- "biochar,slow pyrolysis,initial-future-year,,1,0"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -289,11 +284,7 @@ print(tmp)
 #               source 1: A21.Sector
 # original value (units): Mt, because the primary output of this sector is the biochar which is used as a mass input to fertilizer production, and input from poultry is also in Mt
 #     used value (units): otherwise, use same logit.exponents as the other considered technologies.
-tmp[12] <- "poultry_biochar,Mt,Mt,1975$/kg,-3,0," #primary output is biochar
-tmp[13] <- "pork_biochar,Mt,Mt,1975$/kg,-3,0," #primary output is biochar
-tmp[14] <- "beef_biochar,Mt,Mt,1975$/kg,-3,0," #primary output is biochar
-tmp[15] <- "dairy_biochar,Mt,Mt,1975$/kg,-3,0," #primary output is biochar
-tmp[16] <- "goat_biochar,Mt,Mt,1975$/kg,-3,0," #primary output is biochar
+tmp[12] <- "biochar,Mt,Mt,1975$/kg,-3,0," #primary output is biochar
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -310,11 +301,7 @@ print(tmp)
 #               source 1: A21.subsector_logit
 # original value (units): same values as other supply sectors
 #     used value (units):
-tmp[11] <- "poultry_biochar,biochar,-6,0,"
-tmp[12] <- "pork_biochar,biochar,-6,0,"
-tmp[13] <- "beef_biochar,biochar,-6,0,"
-tmp[14] <- "dairy_biochar,biochar,-6,0,"
-tmp[15] <- "goat_biochar,biochar,-6,0,"
+tmp[11] <- "biochar,slow pyrolysis,-6,0,"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)

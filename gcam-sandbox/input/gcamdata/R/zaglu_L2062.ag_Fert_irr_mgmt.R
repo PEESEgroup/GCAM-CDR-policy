@@ -1,3 +1,5 @@
+# this file has been edited
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_aglu_L2062.ag_Fert_irr_mgmt
@@ -59,7 +61,16 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
 
       # Copy coefficients to all four technologies
       repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
-      repeat_add_columns(tibble(MGMT = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
+      mutate(minicam.energy.input = "N fertilizer") -> L142.ag_Fert_MGMT
+      # Add name of minicam.energy.input
+      # add fertilizer requirement to biochar land use types
+
+    rbind(L142.ag_Fert_MGMT,
+          L142.ag_Fert_MGMT %>%
+            filter(MGMT == "biochar") %>%
+            mutate(minicam.energy.input="biochar", value = 5)) %>%
+      # Add name of additional minicam.energy.input for biochar land use types
 
       # Add sector, subsector, technology names
       mutate(AgSupplySector = GCAM_commodity,
@@ -67,9 +78,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
              AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.IRR_DELIMITER),
                                             MGMT, sep = aglu.MGMT_DELIMITER)) %>%
 
-      # Add name of minicam.energy.input
-      mutate(minicam.energy.input = "N fertilizer") %>%
-      rename(coefficient = value) %>%
+      rename(coefficient = value) %>% #remove inclusion of minicam energy input here because it was added earlier
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, minicam.energy.input, year, coefficient) ->
       L2062.AgCoef_Fert_ag_irr_mgmt
 
