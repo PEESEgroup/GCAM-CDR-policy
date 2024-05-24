@@ -11,8 +11,8 @@ regional biomassOil,regional biomassOil,biomassOil,0,0,0,0
 regional biomassOil,regional biomassOil,OilCrop,0,0,0,0
 regional biomassOil,regional biomassOil,OilPalm,0,0,0,0
 regional biomassOil,regional biomassOil,Soybean,0,0,0,0
-poultry_biochar,biochar,slow pyrolysis,0,0,1,1
-pork_biochar,biochar,slow pyrolysis,0,0,1,1
-beef_biochar,biochar,slow pyrolysis,0,0,1,1
-dairy_biochar,biochar,slow pyrolysis,0,0,1,1
-goat_biochar,biochar,slow pyrolysis,0,0,1,1
+biochar,slow pyrolysis,poultry_biochar,0,0,1,1
+biochar,slow pyrolysis,pork_biochar,0,0,1,1
+biochar,slow pyrolysis,beef_biochar,0,0,1,1
+biochar,slow pyrolysis,dairy_biochar,0,0,1,1
+biochar,slow pyrolysis,goat_biochar,0,0,1,1
