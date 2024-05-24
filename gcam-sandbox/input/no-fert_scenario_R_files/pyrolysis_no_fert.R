@@ -1,7 +1,7 @@
 devtools::load_all()
 
 ### ADDITIONAL FILES DATA + SOURCES
-## A_an_secout (original calculations):
+## A_an_secout
 #               source 1: Bentley, J. A. et al. Economics of Dairy Manure Management in Iowa. Iowa State University Animal Industry Report 13, (2016).
 #               source 2: Malone, G. W. Nutrient Enrichment in integrated Broiler Production Systems. Poultry Science 71, 1117–1122 (1992).
 #               source 3: https://www.fao.org/3/i6421e/i6421e.pdf
