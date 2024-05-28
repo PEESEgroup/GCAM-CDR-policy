@@ -135,7 +135,6 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
 
     # L2012.AgProduction_ag_irr_mgm: Agricultural commodities production by all technologies
     # For agricultural product calibrated output, use the specific management-partitioned data
-    print(L181.ag_Prod_Mt_R_C_Y_GLU_irr_level) # looking to add biochar as management technique to this table
     L181.ag_Prod_Mt_R_C_Y_GLU_irr_level %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       mutate(calOutputValue = round(value, digits = aglu.DIGITS_CALOUTPUT)) %>%
@@ -154,6 +153,7 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
              tech.share.weight = if_else(calOutputValue > 0, 1, 0)) %>%
       select(LEVEL2_DATA_NAMES[["AgProduction"]]) ->
       L2012.AgProduction_ag_irr_mgmt
+    print(L2012.AgProduction_ag_irr_mgmt, n=100)
 
     # L2012.AgProduction_For and L2012.AgProduction_Past: Forest and pasture product calibration (output)
     L123.For_Prod_bm3_R_Y_GLU %>%
@@ -191,6 +191,8 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       left_join_error_no_match(select(basin_to_country_mapping, GLU_code, GLU_name), by = c("GLU" = "GLU_code")) %>%
       select(region, GLU_name, year, harvests.per.year) ->
       L2012.ag_HA_to_CropLand_R_Y_GLU
+
+    print(L2012.AgProduction_ag_irr_mgmt %>% filter(AgProductionTechnology == "CornC4_NelsonR_RFD_biochar"), n = 100) # has calOutputValues, sub, tech share weights for biochar - if allocation is set to 0, calOutputValue and tech share weights go to 0
 
     # Then start from production table, join in the HA:CL, and expand the final base year to all future years
     L2012.AgProduction_ag_irr_mgmt %>%
@@ -395,8 +397,6 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
                      "water/basin_to_country_mapping",
                      "L181.ag_Prod_Mt_R_C_Y_GLU_irr_level") ->
       L2012.AgProduction_ag_irr_mgmt
-
-    print(L2012.AgProduction_ag_irr_mgmt)
 
     L2012.AgProduction_For_Past %>%
       filter(AgSupplySector == "Forest") %>%

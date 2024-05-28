@@ -167,6 +167,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
     # remove_zero_production_land_leafs
     # A function to remove land leafs for each region-year whose production, read in from
     # a provided table, is 0
+    # function is modified so as to not remove biochar landleafs
     remove_zero_production_land_leafs <- function(land, prod) {
 
       # remove 0 production region-years and add an id combining
@@ -211,7 +212,8 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              value = round(value, aglu.DIGITS_LAND_USE)) %>%
       rename(allocation = value) %>%
       select(region, year, LandLeaf, allocation) ->
-      L2252.LC_bm2_R_C_Yh_GLU_irr_mgmt
+      L2252.LC_bm2_R_C_Yh_GLU_irr_mgmt # contains biochar info
+    print(L2252.LC_bm2_R_C_Yh_GLU_irr_mgmt %>% filter(LandLeaf == "CornC4_NelsonR_RFD_biochar"), n = 100) # biochar unallocated until 1973
 
     # Use L2252.LN5_Logit to get names of LandNodes, copy to all years
     # Add land leafs using `convert_LN4_to_LN5`, then join land allocation information
@@ -227,6 +229,8 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       replace_na(list(allocation = 0)) ->
       ALL_LAND_ALLOCATION
 
+    print(ALL_LAND_ALLOCATION, n = 100) # allocation values should be increased by 50% from what they are - TODO: check history of allocation calculations
+
     # L2252.LN5_HistMgdAllocation_crop: historical cropland allocation
     # in the fifth land nest ie for each crop-irr-mgmt combo in each region-glu-year.
     ALL_LAND_ALLOCATION %>%
@@ -234,13 +238,24 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       filter(year %in% aglu.LAND_HISTORY_YEARS) ->
       L2252.LN5_HistMgdAllocation_crop
 
+    print(ALL_LAND_ALLOCATION %>%
+            filter(!grepl("biomassGrass", LandLeaf), !grepl("biomassTree", LandLeaf)) %>%
+            filter(year %in% MODEL_BASE_YEARS)  %>%
+            filter(grepl("biochar$", LandLeaf))) # grabs all biochar rows
+
     # L2252.LN5_MgdAllocation_crop: cropland allocation
     # in the fifth land nest ie for each crop-irr-mgmt combo in each region-glu-year.
     ALL_LAND_ALLOCATION %>%
       filter(!grepl("biomassGrass", LandLeaf), !grepl("biomassTree", LandLeaf)) %>%
       filter(year %in% MODEL_BASE_YEARS)  %>%
-      remove_zero_production_land_leafs(prod = L2012.AgProduction_ag_irr_mgmt) ->
-      L2252.LN5_MgdAllocation_crop
+      remove_zero_production_land_leafs(prod = L2012.AgProduction_ag_irr_mgmt) %>%
+      bind_rows(ALL_LAND_ALLOCATION %>%
+              filter(!grepl("biomassGrass", LandLeaf), !grepl("biomassTree", LandLeaf)) %>%
+              filter(year %in% MODEL_BASE_YEARS)  %>%
+              filter(grepl("biochar$", LandLeaf)))-> # remove zero production land leafs, then add back in the biochar land leafs (which have 0 production because they are not allocated in the past)
+      L2252.LN5_MgdAllocation_crop #contains biochar as LandLeaf
+
+    print(L2252.LN5_MgdAllocation_crop)
 
     # L2252.LN5_HistMgdAllocation_bio
     ALL_LAND_ALLOCATION %>%
@@ -300,9 +315,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              LandNode4 = paste(GCAM_subsector, GLU, sep = "_"),
              LandLeaf = paste(LandNode4, Irr_Rfd, sep = "_")) %>%
       convert_LN4_to_LN5(names = LEVEL2_DATA_NAMES[["LN5_MgdCarbon"]]) ->
-      L2252.LN5_MgdCarbon_crop
-
-    print(L2252.LN5_MgdCarbon_crop)
+      L2252.LN5_MgdCarbon_crop #contains biochar
 
     L2012.AgYield_bio_ref %>%
       filter(year == max(MODEL_BASE_YEARS)) %>%
@@ -335,7 +348,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              LandLeaf = paste(LandNode5, level, sep = "_")) %>%
       select(c(LEVEL2_DATA_NAMES[["LN5_MgdCarbon"]], "GLU", "Irr_Rfd", "level")) %>%
       mutate(Irr_Rfd = tolower(Irr_Rfd)) ->
-      L2252.LN5_MgdCarbon_bio
+      L2252.LN5_MgdCarbon_bio #does not contain biochar, which I think is fine, as biochar need only be applied to cropland for now
 
     # L2252.LN5_LeafGhostShare: Ghost share of the new landleaf (lo-input versus hi-input)
     # NOTE: The ghost shares are inferred from average land shares allocated to hi-input
@@ -347,7 +360,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       separate(variable, c("variable", "level")) %>%
       select(-GCAM_region_ID, -variable) %>%
       mutate(Irr_Rfd = toupper(Irr_Rfd)) ->
-      L2252.LandShare_R_bio_GLU_irr
+      L2252.LandShare_R_bio_GLU_irr # does not contain biochar
 
     L2252.LN5_MgdAllocation_bio %>%
       distinct(region, LandAllocatorRoot, LandNode1, LandNode2, LandNode3, LandNode4, LandNode5, LandLeaf) %>%
@@ -359,8 +372,12 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       select(-landshare) %>%
       # For bio techs with no ghost share info, set lo- and hi-input techs to 0.5
       replace_na(replace = list(ghost.unnormalized.share = 0.5)) %>%
+      # we want to have positive ghost shares for biochar in future years, but not impact land use in past years
+      # mutate(ghost.unnormalized.share = replace(ghost.unnormalized.share, level == "biochar", 0))%>%
       select(c(LEVEL2_DATA_NAMES[["LN5_LeafGhostShare"]], "GLU", "Irr_Rfd", "level")) ->
-      L2252.LN5_LeafGhostShare
+      L2252.LN5_LeafGhostShare # contains biochar
+
+    print(L2252.LN5_LeafGhostShare)
 
     # Calculate share of irrigated vs rainfed land
     # First, multiply irrigated land by aglu.IRR_GHOST_SHARE_MULT
@@ -392,13 +409,24 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
     L2252.LN5_LeafGhostShare %>%
       distinct(region, LandAllocatorRoot, LandNode1, LandNode2, LandNode3, LandNode4, LandNode5, year, GLU, Irr_Rfd) %>%
       left_join(LANDSHARE_IRR_RFD, by = c("region", "GLU", "Irr_Rfd")) %>%
-      mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_LAND_USE)) %>%
+      mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_LAND_USE)) %>% #TODO remove biochar ghost share nodes from these calculations so it doesn't influence historical land uses
       select(-landshare) %>%
       # For bio techs with no ghost share info, set irr to 0 and rfd to 1
       mutate(ghost.unnormalized.share = if_else(is.na(ghost.unnormalized.share) & Irr_Rfd == "RFD", 1, ghost.unnormalized.share),
              ghost.unnormalized.share = if_else(is.na(ghost.unnormalized.share) & Irr_Rfd == "IRR", 0, ghost.unnormalized.share)) %>%
       select(c(LEVEL2_DATA_NAMES[["LN5_NodeGhostShare"]])) ->
       L2252.LN5_NodeGhostShare
+
+    print(L2252.LN5_LeafGhostShare)
+    print(L2252.LN5_LeafGhostShare %>%
+            distinct(region, LandAllocatorRoot, LandNode1, LandNode2, LandNode3, LandNode4, LandNode5, year, GLU, Irr_Rfd) %>%
+            left_join(LANDSHARE_IRR_RFD, by = c("region", "GLU", "Irr_Rfd")) %>%
+            mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_LAND_USE)))
+    print(L2252.LN5_LeafGhostShare %>%
+            distinct(region, LandAllocatorRoot, LandNode1, LandNode2, LandNode3, LandNode4, LandNode5, year, GLU, Irr_Rfd) %>%
+            left_join(LANDSHARE_IRR_RFD, by = c("region", "GLU", "Irr_Rfd")) %>%
+            mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_LAND_USE)) %>% #TODO remove biochar ghost share nodes from these calculations so it doesn't influence historical land uses
+            select(-landshare))
 
     # Produce outputs
     L2252.LN5_Logit %>%

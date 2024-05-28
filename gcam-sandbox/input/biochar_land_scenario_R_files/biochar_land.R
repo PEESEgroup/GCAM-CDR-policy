@@ -1,4 +1,5 @@
 #TODO
+# 0. Fix Could not find associated product leaf in the land allocator for biochar - look in L2252
 # 1. Get rid of fertilizer sector - here - DONE
 # 2. Update assumptions on avoided/sequestered C emissions - here
 # 3. Build new land use nodes - land_input_5_IRR_MGMT - L2252.LN5_* - DONE

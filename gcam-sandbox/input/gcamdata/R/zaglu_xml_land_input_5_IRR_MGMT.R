@@ -39,6 +39,17 @@ module_aglu_land_input_5_IRR_MGMT_xml <- function(command, ...) {
     L2252.LN5_NodeGhostShare <- get_data(all_data, "L2252.LN5_NodeGhostShare")
 
     # ===================================================
+    # normal land allocations for crops has reduced by 50%
+    print(L2252.LN5_Logit) # no levels
+    print(L2252.LN5_HistMgdAllocation_crop, n = 20) # wrong allocations due to biochar - fixing code
+    print(L2252.LN5_MgdAllocation_crop) # has biochar with allocation
+    print(L2252.LN5_HistMgdAllocation_bio) # has biochar with 0 allocation
+    print(L2252.LN5_MgdAllocation_bio) # has biochar with 0 allocation
+    print(L2252.LN5_MgdCarbon_crop) # has biochar - fix soil carbon density
+    print(L2252.LN5_MgdCarbon_bio)
+    print(L2252.LN5_LeafGhostShare %>% filter(level == "biochar")) # has biochar - fix ghost share
+    print(L2252.LN5_NodeGhostShare) # no levels
+
 
     # Produce outputs
     create_xml("land_input_5_IRR_MGMT.xml") %>%

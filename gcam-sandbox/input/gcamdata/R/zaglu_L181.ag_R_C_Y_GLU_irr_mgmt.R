@@ -81,10 +81,11 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
              # Calculate the land shares to allocate to low, and high is the rest (currently the shares are set at 0.5/0.5 to all)
              landshare_lo = (1 - yieldmult_hi) / (yieldmult_lo - yieldmult_hi), landshare_hi = 1 - landshare_lo,
              # low- and high-input land are calculated as the total times the shares
-             LC_bm2_lo = value * 0.334, LC_bm2_hi = value * 0.333, LC_bm2_biochar=value*0.333) %>% # TODO: update biochar land shares here (currently 1/3, but this is likely to make errors)
+             LC_bm2_lo = value * landshare_lo, LC_bm2_hi = value * landshare_hi, LC_bm2_biochar=0) %>% # TODO: update biochar land shares here (currently 0)
       select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, year, LC_bm2_hi, LC_bm2_lo, LC_bm2_biochar) %>%
       gather(level, value, -GCAM_region_ID, -GCAM_commodity, -GCAM_subsector, -GLU, -Irr_Rfd, -year) %>%
-      mutate(level = sub("LC_bm2_", "", level)) ->
+      mutate(level = sub("LC_bm2_", "", level)) %>% # -> replace all allocation values with biochar to 0, as these don't exist in the past
+      mutate(value = replace(value, level=="biochar", 0)) ->
       L181.LC_bm2_R_C_Yh_GLU_irr_level
 
     # Third, calculate production: economic yield times land area
