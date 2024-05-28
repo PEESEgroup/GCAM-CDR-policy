@@ -1162,6 +1162,9 @@ def sensitivity(dataframe, RCP, base_SSP, year, column, percentages=False):
     """
     fig, ax = plt.subplots()
 
+    #drop np.nan
+    dataframe = dataframe[dataframe[year].notna()]
+
     # get base values on a per product basis
     base_vals = dataframe[dataframe[['SSP']].isin([base_SSP]).any(axis=1)]
     print("base values", base_vals.loc[:, [column, year, "Units"]])
