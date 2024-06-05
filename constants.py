@@ -4,8 +4,8 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
-    version = [["pyrolysis-nofert", "6p0"]] #TODO: updated data is grabbed for 4p5 only
-    GCAMDB_filenames = ["data/gcam_out/pyrolysis-nofert/6p0/ref.csv"]
+    version = [["biochar", "6p0"]] #TODO: updated data is grabbed for 4p5 only
+    GCAMDB_filenames = ["data/gcam_out/biochar/6p0/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
@@ -46,6 +46,11 @@ class GCAMConstants:
     animal_manure_ratio["pyrolysis-nofert", "pork"] = 1/0.304
     animal_manure_ratio["pyrolysis-nofert", "poultry"] = 1/1.381
     animal_manure_ratio["pyrolysis-nofert", "goat"] = 1/3.101
+    animal_manure_ratio["biochar", "beef"] = 1/2.589
+    animal_manure_ratio["biochar", "dairy"] = 1/0.878
+    animal_manure_ratio["biochar", "pork"] = 1/0.304
+    animal_manure_ratio["biochar", "poultry"] = 1/1.381
+    animal_manure_ratio["biochar", "goat"] = 1/3.101
 
     manure_biochar_ratio = dict()
     manure_biochar_ratio["pyrolysis", "beef"] = 2.1815
@@ -53,6 +58,11 @@ class GCAMConstants:
     manure_biochar_ratio["pyrolysis", "pork"] = 2.136
     manure_biochar_ratio["pyrolysis", "poultry"] = 2.1276
     manure_biochar_ratio["pyrolysis", "goat"] = 2.055
+    manure_biochar_ratio["biochar", "beef"] = 2.1815
+    manure_biochar_ratio["biochar", "dairy"] = 2.1052
+    manure_biochar_ratio["biochar", "pork"] = 2.136
+    manure_biochar_ratio["biochar", "poultry"] = 2.1276
+    manure_biochar_ratio["biochar", "goat"] = 2.055
 
     manure_biooil_ratio = dict()
     manure_biooil_ratio["pyrolysis", "beef manure"] = 0.00477
@@ -84,6 +94,11 @@ class GCAMConstants:
     manure_C_ratio["pyrolysis-nofert", "pork"] = -0.581
     manure_C_ratio["pyrolysis-nofert", "poultry"] = -.304
     manure_C_ratio["pyrolysis-nofert", "goat"] = -0.273
+    manure_C_ratio["pyrolysis", "beef"] = -0.147
+    manure_C_ratio["pyrolysis", "dairy"] = -0.147
+    manure_C_ratio["pyrolysis", "pork"] = -0.425
+    manure_C_ratio["pyrolysis", "poultry"] = -0.160
+    manure_C_ratio["pyrolysis", "goat"] = -0.425
 
     secout = dict()
     secout[2025, "beef manure"] = 0.048325

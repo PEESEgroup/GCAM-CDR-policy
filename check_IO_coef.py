@@ -151,7 +151,7 @@ def getMask(nonBaselineScenario, RCP, filepath):
                                                 nonBaselineScenario, str(j)) if x not in mask)
 
         mask.extend(x for x in biooil(ifBiooilSecout, mask, supply, nonBaselineScenario) if x not in mask)
-        mask.extend(x for x in secondary_outputs(mask, nonBaselineScenario, supply) if x not in mask)
+        # mask.extend(x for x in secondary_outputs(mask, nonBaselineScenario, supply) if x not in mask)
         print(mask)
         sys.stdout = old_stdout
         return mask
