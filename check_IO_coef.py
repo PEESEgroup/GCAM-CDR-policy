@@ -83,6 +83,8 @@ def getTestParams(scenarioName):
         return True, True, True
     elif scenarioName == "pyrolysis-nofert":
         return False, False, False
+    elif scenarioName == "biochar":
+        return True, False, False
     else:
         return None
 
@@ -166,6 +168,9 @@ def biooil(ifBiooilSecout, mask, supply, nonBaselineScenario):
     :param nonBaselineScenario: the non-baseline GCAM scenario
     :return:
     """
+    if not ifBiooilSecout:
+        return mask
+
     # manure to manure fuel coefficient
     products = ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]
     manure_fuel = supply[supply['product'].str.contains("|".join(["manure fuel feedstock", "manure_fuel"]))]
