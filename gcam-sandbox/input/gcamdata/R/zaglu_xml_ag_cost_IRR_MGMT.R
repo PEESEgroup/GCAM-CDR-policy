@@ -1,3 +1,5 @@
+# this file has been edited
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_aglu_ag_cost_IRR_MGMT_xml
@@ -33,6 +35,10 @@ module_aglu_ag_cost_IRR_MGMT_xml <- function(command, ...) {
     get_data_list(all_data, MODULE_INPUTS, strip_attributes = TRUE)
 
     # ===================================================
+    print(L2062.AgCost_ag_irr_mgmt_adj %>% filter(AgProductionTechnology == "CornC4_NelsonR_IRR_biochar")) # biochar has the same land use costs as other land types, regardless of biochar application rate
+    print(L2062.AgCost_bio_irr_mgmt_adj %>% filter(AgProductionTechnology == "biomassGrass_NelsonR_IRR_biochar")) # biochar has the same land use costs as other land types
+    print(L2052.AgCost_For) # no need to contain biochar
+    print(L2052.AgCalMinProfitRate) # no need to contain biochar
 
     # Produce outputs
     create_xml("ag_cost_IRR_MGMT.xml") %>%

@@ -1,3 +1,5 @@
+# this file has been edited
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_aglu_ag_water_input_IRR_MGMT_xml
@@ -31,6 +33,15 @@ module_aglu_ag_water_input_IRR_MGMT_xml <- function(command, ...) {
 
     # Load required inputs ----
     get_data_list(all_data, MODULE_INPUTS, strip_attributes = TRUE)
+
+    print(L2072.AgCoef_IrrBphysWater_ag_mgmt %>% filter (AgProductionTechnology == "CornC4_NelsonR_IRR_biochar")) #has biochar
+    print(L2072.AgCoef_IrrWaterWdraw_ag_mgmt%>% filter (AgProductionTechnology == "CornC4_NelsonR_IRR_biochar")) #has biochar
+    print(L2072.AgCoef_IrrWaterCons_ag_mgmt%>% filter (AgProductionTechnology == "CornC4_NelsonR_IRR_biochar")) # has biochar
+    print(L2072.AgCoef_RfdBphysWater_ag_mgmt%>% filter (AgProductionTechnology == "CornC4_NelsonR_RFD_biochar")) # has biochar
+    print(L2072.AgCoef_BphysWater_bio_mgmt%>% filter (AgProductionTechnology == "biomassGrass_NelsonR_IRR_biochar")) # has biochar
+    print(L2072.AgCoef_IrrWaterWdraw_bio_mgmt%>% filter (AgProductionTechnology == "biomassGrass_NelsonR_IRR_biochar")) #has biochar
+    print(L2072.AgCoef_IrrWaterCons_bio_mgmt%>% filter (AgProductionTechnology == "biomassGrass_NelsonR_IRR_biochar")) #has biochar
+
 
     # ===================================================
 

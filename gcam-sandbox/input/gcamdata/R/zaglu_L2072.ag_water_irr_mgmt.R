@@ -93,7 +93,7 @@ module_aglu_L2072.ag_water_irr_mgmt <- function(command, ...) {
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
       # Copy to both high and low management levels
-      repeat_add_columns(tibble(MGMT = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
       # Add sector, subsector, technology names
       mutate(AgSupplySector = GCAM_commodity,
              AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),

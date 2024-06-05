@@ -1,3 +1,5 @@
+# this file has been edited to let the xml files have more memory
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 # xml.R
@@ -123,7 +125,7 @@ make_run_xml_conversion <- function() {
       close(tmp_conn)
       args <- c(
         "-cp", shQuote(java_cp),
-        "-Xmx2g", # TODO: memory limits?
+        "-Xmx4g", # TODO: memory limits?original was 2g but more land nodes from biochar means more memory needed
         "ModelInterface.ModelGUI2.csvconv.CSVToXMLMain",
         tmpfn, # Read from the temporary file
         shQuote(dot$mi_header),

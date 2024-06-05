@@ -32,6 +32,13 @@ module_aglu_resbio_input_IRR_MGMT_xml <- function(command, ...) {
     L2042.AgResBio_ag_irr_mgmt <- get_data(all_data, "L2042.AgResBio_ag_irr_mgmt")
     L2042.AgResBioCurve_ag_irr_mgmt <- get_data(all_data, "L2042.AgResBioCurve_ag_irr_mgmt")
 
+    print(L2042.AgResBio_For)
+    print(L2042.AgResBioCurve_For)
+    print(L2042.GlobalResBio_Mill) #no biochar, but forest related
+    print(L2042.StubResBioCurve_Mill)  #no biochar, but forest related
+    print(L2042.AgResBio_ag_irr_mgmt) # has biochar and nonzeroes
+    print(L2042.AgResBioCurve_ag_irr_mgmt) #has biochar and nonzeros
+
     # ===================================================
 
     # Produce outputs

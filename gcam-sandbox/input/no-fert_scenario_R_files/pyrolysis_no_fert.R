@@ -418,11 +418,11 @@ print(tmp)
 #   Dairy: 2.54 g C avoided decomposition per g C sequestered in biochar (same as beef)
 #    Goat: 2.54 g C avoided decomposition per g C sequestered in biochar (same as beef)
 
-tmp[31] <- "poultry manure,-.304,0" # (1.63e9 [avoided Mg C] + 1.23e9 [net sequestered Mg C]) / 94 Tg *1000000 Mg/Tg [manure supply /year] * 100 years [beta secenario in 6, supplemental SI, supplemental .xlsx]
-tmp[32] <- "pork manure,-.581,0" # (2.76e9 [avoided Mg C] + 9.01e8 [net sequestered Mg C]) / 63 Tg *1000000 Mg/Tg * 100 years
-tmp[33] <- "beef manure,-.273,0" # (4.70e9 [avoided Mg C] + 3.33e9 [net sequestered Mg C]) / 294 Tg*1000000 Mg/Tg* 100 years
-tmp[34] <- "dairy manure,-.273,0" # (4.70e9 [avoided Mg C] + 3.33e9 [net sequestered Mg C]) / 294 Tg*1000000 Mg/Tg* 100 years
-tmp[35] <- "goat manure,-.273,0" # (same as cattle)
+tmp[31] <- "poultry manure,-.160,0" # (1.63e9 [avoided Mg C] + 1.23e9 [net sequestered Mg C]) / 94 Tg *1000000 Mg/Tg [manure supply /year] * 100 years [beta secenario in 6, supplemental SI, supplemental .xlsx]
+tmp[32] <- "pork manure,-.425,0" # (2.76e9 [avoided Mg C] + 9.01e8 [net sequestered Mg C]) / 63 Tg *1000000 Mg/Tg * 100 years
+tmp[33] <- "beef manure,-.147,0" # (4.70e9 [avoided Mg C] + 3.33e9 [net sequestered Mg C]) / 294 Tg*1000000 Mg/Tg* 100 years
+tmp[34] <- "dairy manure,-.147,0" # (4.70e9 [avoided Mg C] + 3.33e9 [net sequestered Mg C]) / 294 Tg*1000000 Mg/Tg* 100 years
+tmp[35] <- "goat manure,-.425,0" # (same as swine)
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)

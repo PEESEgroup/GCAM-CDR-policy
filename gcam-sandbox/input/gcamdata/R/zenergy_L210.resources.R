@@ -1,3 +1,5 @@
+# this file has been edited
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_energy_L210.resources
@@ -397,7 +399,7 @@ module_energy_L210.resources <- function(command, ...) {
     L210.ReserveCalReserve.uncon_other_reg <- L210.ReserveCalReserve %>%
                                               filter(resource =="coal") %>%
                                               filter(!region %in% c(unique(L210.ReserveCalReserve_unoil$region))) %>%
-                                              mutate(resource =paste0("crude oil"),reserve.subresource =paste0("unconventional oil"),cal.reserve=0)
+                                              mutate(resource =paste0("crude oil"),reserve.subresource =paste0("unconventional oil"),cal.reserve=if_else(cal.reserve!=0, 0, 0)) # still sets this column to all zeroes
     L210.ReserveCalReserve <- bind_rows(L210.ReserveCalReserve,L210.ReserveCalReserve.uncon_other_reg)
 
     # D. Resource supply curves
@@ -513,7 +515,7 @@ module_energy_L210.resources <- function(command, ...) {
     L210.RsrcEnvironCost_SSPs <- A10.EnvironCost_SSPs %>%
       repeat_add_columns(GCAM_region_names) %>%
       mutate(minicam.non.energy.input = "environCost") %>%
-      rename(input.cost = value) %>%
+      rename(input.cost = value) %>% #defines where the input.cost is set to the environCost
       # Split by SSP and assign attributes
       split(.$SSP) %>%
       lapply(function(df) {
@@ -534,14 +536,11 @@ module_energy_L210.resources <- function(command, ...) {
     L210.high_reg <- get_ssp_regions(L102.pcgdp_thous90USD_Scen_R_Y, GCAM_region_names, "high")
     L210.low_reg <- get_ssp_regions(L102.pcgdp_thous90USD_Scen_R_Y, GCAM_region_names, "low")
 
-
-    ### MODIFICATIONS MADE HERE
-
     L210.RsrcEnvironCost_SSP4 %>%
       # Set environmental costs for coal to 0 for low growth regions,
       # 10 * environcost for high growth regions
-      mutate(input.cost = if_else(resource == "coal" & region %in% L210.low_reg, 0, input.cost),
-             input.cost = if_else(resource == "coal" & region %in% L210.high_reg, 10 * input.cost, input.cost)) %>%
+      mutate(environCost = if_else(resource == "coal" & region %in% L210.low_reg, 0, input.cost), # it appears that the input.cost here is the same as the environmental cost
+             environCost = if_else(resource == "coal" & region %in% L210.high_reg, 10 * input.cost, input.cost)) %>%
       add_title("Environmental Costs for Depletable Resources: SSP4", overwrite = TRUE) %>%
       add_units("$/GJ") %>%
       add_comments("A10.EnvironCost_SSPs written to all regions") %>%
@@ -549,9 +548,6 @@ module_energy_L210.resources <- function(command, ...) {
       add_legacy_name("L210.RsrcEnvironCost_SSP4", overwrite = TRUE) %>%
       add_precursors("energy/A10.EnvironCost_SSPs", "common/GCAM_region_names", "energy/A10.subrsrc_info", "L102.pcgdp_thous90USD_Scen_R_Y") ->
       L210.RsrcEnvironCost_SSP4
-
-    ### END MODIFICATIONS
-
 
     # Resource-reserve assumptions which just need to get copied to all regions and years
     A10.ResSubresourceProdLifetime %>%

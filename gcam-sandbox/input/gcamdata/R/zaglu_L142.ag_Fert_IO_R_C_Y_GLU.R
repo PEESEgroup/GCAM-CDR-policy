@@ -65,6 +65,8 @@ module_aglu_L142.ag_Fert_IO_R_C_Y_GLU <- function(command, ...) {
       select(year, adj) ->
       L142.ag_Fert_Prod_adj
 
+    print(L100.FAO_Fert_Prod_tN)
+
     L100.FAO_Fert_Prod_tN %>%
       select(iso, year, value) %>%
       left_join_error_no_match(L142.ag_Fert_Prod_adj, by = "year") %>%   # Match in the rates for adjustment

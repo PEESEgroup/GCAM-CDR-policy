@@ -155,6 +155,8 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
       # store in an LDS harvested area table
       L141.LDS_ag_HA_ha
 
+    print(L141.LDS_ag_HA_ha)
+
     # Step 1: Supplement IFA (Heffer 2009) global fertilizer consumption by commodity and region to more detailed inventory
     # with partial coverage. The purpose of this step is to improve the specificity of both crops and regions, where possible.
     # This ultimately leads to the bottom-up estimate of fertilizer consumption at the iso-GTAPcrop level, using scaled
@@ -175,6 +177,7 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
       rename(IFA2002_country= COUNTRY, IFA2002_crop = CROP) ->
       # store in a table of ferlizer application rates for each iso-GTAPcrop combo
       L141.IFA2002_Fert_ktN
+    print(L141.IFA2002_Fert_ktN)
 
     # Calculate fertilizer demand coefficients for 87 countries / 106 crops where available
     # Fertilizer demand = harvested area * fertilizer application rate for each country-crop.
@@ -222,6 +225,7 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
       drop_na(IFA_commodity) ->
       # store in ctry-crop specific table of fertilizer consumption rates in t/ha for use in multiple subsequent pipelines
       L141.IFA_Fert_Cons_MtN_ctry_crop
+    print(L141.IFA_Fert_Cons_MtN_ctry_crop)
 
     # Take the above-processed country-crop specific Fertilizer information, aggregate to IFAregion-IFAcommodity
     # and use the top down estimates in table L141.IFA_Fert_ktN to calculate a default fertilizer consumption rate for
@@ -240,6 +244,7 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
       mutate(IFA_N_tha_default = IFA_N_Mt / HA_ha / CONV_T_MT) ->
       # store in a table by IFAregion and IFAcommodity:
       L141.HA_ha_Rifa_Cifa
+    print(L141.HA_ha_Rifa_Cifa)
 
     # Use the bottom-up country crop table of harvested area and N application rate, L141.IFA_Fert_Cons_MtN_ctry_crop,
     # to calculate specific bottom up fertilizer demand = harvested area * application rate.
@@ -256,6 +261,7 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
                                          (HA_ha * IFA_N_tha_default)[is.na(IFA_N_Mt_unscaled)] * CONV_T_MT)) ->
       # store in table of ctry-crop level bottom up estimates of N consumption
       L141.IFA_Fert_Cons_MtN_ctry_crop
+    print(L141.IFA_Fert_Cons_MtN_ctry_crop)
 
 
     # Step 2: Re-scale fertilizer consumption estimates so that totals match the IFA top-down inventory

@@ -47,22 +47,22 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
     # ===================================================
     # For all of the animal emission tables add high and low management level
     L2111.AGRBio %>%
-      repeat_add_columns(tibble(level = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
       unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
       L2112.AGRBio
 
     L2111.AWB_BCOC_EmissCoeff %>%
-      repeat_add_columns(tibble(level = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
       unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
       L2112.AWB_BCOC_EmissCoeff
 
     L2111.nonghg_max_reduction %>%
-      repeat_add_columns(tibble(level = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
       unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
       L2112.nonghg_max_reduction
 
     L2111.nonghg_steepness %>%
-      repeat_add_columns(tibble(level = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
       unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
       L2112.nonghg_steepness
 
@@ -73,9 +73,10 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
     # First calculate the total emissions for each region, supply sector, subsector,
     # technology level in the most recent model base year. This total will latter be
     # used to  calculate share weights.
+    print(L2012.AgProduction_ag_irr_mgmt)
     L2012.AgProduction_ag_irr_mgmt %>%
       filter(year == max(MODEL_BASE_YEARS)) %>%
-      mutate(AgProductionTechnology_nolvl = gsub("_hi|_lo", "", AgProductionTechnology)) %>%
+      mutate(AgProductionTechnology_nolvl = gsub("_hi|_lo|_biochar", "", AgProductionTechnology)) %>%
       group_by(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology_nolvl, year) %>%
       summarise(total = sum(calOutputValue)) %>%
       ungroup() ->
@@ -87,7 +88,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
     L2012.AgProduction_ag_irr_mgmt %>%
       filter(year == max(MODEL_BASE_YEARS)) %>%
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology_lvl = AgProductionTechnology, year, calOutputValue) %>%
-      mutate(AgProductionTechnology_nolvl = gsub("_hi|_lo", "", AgProductionTechnology_lvl)) ->
+      mutate(AgProductionTechnology_nolvl = gsub("_hi|_lo|_biochar", "", AgProductionTechnology_lvl)) ->
       L2112.AgProduction_ag
 
     # Calculate the share weights or the fraction of emissions for each region, sector, subsector,
@@ -105,7 +106,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
     # technology column.
     L2111.AWBEmissions %>%
       bind_rows(L2111.AGREmissions) %>%
-      repeat_add_columns(tibble(level = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
       unite(AgProductionTechnology_lvl, AgProductionTechnology, level, sep = "_", remove = FALSE) ->
       L2112.awb_agr_emissions
 
@@ -121,13 +122,17 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
     # Where shares allocated to lo/hi are NA but emissions are positive, split it 50/50 between
     # the techs. For all others, set share to zero. Then scale the input emissions by the emission
     # shares.
+    print(L2112.awb_agr_emissions %>% filter(level=="biochar"))
     L2112.awb_agr_emissions %>%
+      mutate(share_tech = if_else(level == "biochar" & input.emissions > 1e-6, 0.5, share_tech)) %>% #ensure biochar land has associated ag emissions
       mutate(share_tech = if_else(is.na(share_tech) & input.emissions > 1e-6, 0.5, share_tech)) %>%
       replace_na(list(share_tech = 0)) %>%
-      mutate(input.emissions  = input.emissions * share_tech) %>%
+      mutate(input.emissions  = input.emissions * share_tech) %>% #biochar has a share_tech of 0
       select(region, AgSupplySector, AgProductionTechnology = AgProductionTechnology_lvl, AgSupplySubsector,
              year, Non.CO2, input.emissions, level) ->
       L2112.awb_agr_emissions_disag
+
+    print(L2112.awb_agr_emissions %>% filter(level=="biochar"))
 
     # The disaggregated agricultural waste burning emissions.
     L2112.awb_agr_emissions_disag %>%
@@ -136,8 +141,14 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
 
     # The disaggregated non agricultural waste burning emissions.
     L2112.awb_agr_emissions_disag %>%
-      filter(!grepl("AWB", Non.CO2)) ->
+      filter(!grepl("AWB", Non.CO2)) %>%
+      # update emissions for biochar lands
+      # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
+      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "CH4_AGR", input.emissions*.9985, input.emissions)) %>%
+      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR", input.emissions*.9885, input.emissions))->
       L2112.AGREmissions
+
+    print(L2112.AGREmissions)
 
     # ===================================================
     # Produce outputs
@@ -174,7 +185,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       L2112.nonghg_steepness
 
     L2112.AWBEmissions %>%
-      add_title("Input table of agricultural waste burning emissions by production") %>%
+      add_title("Input table of agricultural waste burning emissions by production ") %>%
       add_units("Tg") %>%
       add_comments("Production share weights are set for irrigated vs. rainfed, same for high and low management.") %>%
       add_legacy_name("L2112.AWBEmissions") %>%

@@ -64,7 +64,7 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       # SET THE SAME YIELD MULTIPLIERS EVERYWHERE, 1 plus or minus an adj fraction.
       mutate(yieldmult_hi = 1 + aglu.MGMT_YIELD_ADJ, yieldmult_lo = 1 - aglu.MGMT_YIELD_ADJ,
              # high and low yields are now calculated as the observed yield times the multipliers
-             EcYield_kgm2_lo = value * yieldmult_lo, EcYield_kgm2_hi = value * yieldmult_hi, EcYield_kgm2_biochar = value) %>% #TODO: update yield increases due to biochar here
+             EcYield_kgm2_lo = value * yieldmult_lo, EcYield_kgm2_hi = value * yieldmult_hi, EcYield_kgm2_biochar = yieldmult_hi) %>% # assuming that biochar gets yield increases
       select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, year, EcYield_kgm2_hi, EcYield_kgm2_lo, EcYield_kgm2_biochar) %>%
       gather(level, value, -GCAM_region_ID, -GCAM_commodity, -GCAM_subsector, -GLU, -Irr_Rfd, -year) %>%
       mutate(level = sub("EcYield_kgm2_", "", level)) ->
@@ -81,12 +81,15 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
              # Calculate the land shares to allocate to low, and high is the rest (currently the shares are set at 0.5/0.5 to all)
              landshare_lo = (1 - yieldmult_hi) / (yieldmult_lo - yieldmult_hi), landshare_hi = 1 - landshare_lo,
              # low- and high-input land are calculated as the total times the shares
-             LC_bm2_lo = value * landshare_lo, LC_bm2_hi = value * landshare_hi, LC_bm2_biochar=0) %>% # TODO: update biochar land shares here (currently 0)
+             LC_bm2_lo = value * landshare_lo, LC_bm2_hi = value * landshare_hi, LC_bm2_biochar=value * landshare_hi) %>% # TODO: update biochar land shares here (currently 0.5)
       select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, year, LC_bm2_hi, LC_bm2_lo, LC_bm2_biochar) %>%
       gather(level, value, -GCAM_region_ID, -GCAM_commodity, -GCAM_subsector, -GLU, -Irr_Rfd, -year) %>%
       mutate(level = sub("LC_bm2_", "", level)) %>% # -> replace all allocation values with biochar to 0, as these don't exist in the past
       mutate(value = replace(value, level=="biochar", 0)) ->
+      # TODO: find a way to get biochar a positive tech shareweight in 2015???
       L181.LC_bm2_R_C_Yh_GLU_irr_level
+
+    print(L181.LC_bm2_R_C_Yh_GLU_irr_level %>% filter(level=="biochar"), n=50)
 
     # Third, calculate production: economic yield times land area
     L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
@@ -98,6 +101,8 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       mutate(value = round(value, digits = aglu.DIGITS_LAND_USE) * yield) %>%
       select(-yield) ->
       L181.ag_Prod_Mt_R_C_Y_GLU_irr_level
+
+    print(L181.LC_bm2_R_C_Yh_GLU_irr_level %>% filter(level=="biochar"), n=50)
 
     # Calculate bioenergy yield levels
     L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%

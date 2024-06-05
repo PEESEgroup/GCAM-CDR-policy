@@ -32,6 +32,8 @@ module_energy_bio_externality_xml <- function(command, ...) {
     L270.ResTechShrwt <- get_data(all_data, "L270.ResTechShrwt")
     L270.AgCoef_bioext <- get_data(all_data, "L270.AgCoef_bioext")
 
+    print(L270.AgCoef_bioext %>% filter(AgProductionTechnology == "biomassGrass_NelsonR_IRR_biochar" | AgProductionTechnology == "CornC4_NileR_IRR_biochar"), n=50)
+
     # ===================================================
 
     # Produce outputs

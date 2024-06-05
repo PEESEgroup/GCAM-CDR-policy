@@ -192,7 +192,7 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       select(region, GLU_name, year, harvests.per.year) ->
       L2012.ag_HA_to_CropLand_R_Y_GLU
 
-    print(L2012.AgProduction_ag_irr_mgmt %>% filter(AgProductionTechnology == "CornC4_NelsonR_RFD_biochar"), n = 100) # has calOutputValues, sub, tech share weights for biochar - if allocation is set to 0, calOutputValue and tech share weights go to 0
+    print(L2012.AgProduction_ag_irr_mgmt %>% filter(AgProductionTechnology == "CornC4_NelsonR_RFD_biochar"), n = 80) # has calOutputValues, sub, tech share weights for biochar - if allocation is set to 0, calOutputValue and tech share weights go to 0
 
     # Then start from production table, join in the HA:CL, and expand the final base year to all future years
     L2012.AgProduction_ag_irr_mgmt %>%
@@ -327,7 +327,7 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
     L2011.AgYield_bio_grass_irr %>%
       bind_rows(L2011.AgYield_bio_tree_irr) %>%
       # Copy to high and low management levels
-      repeat_add_columns(tibble(MGMT = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
       # Separate technology to match in the multipliers
       separate(AgProductionTechnology, c("biomass", "GLU_name", "IRR_RFD")) %>%
       # Match in multipliers, use left_join instead because of NAs

@@ -79,7 +79,7 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       left_join_error_no_match(L164.ag_Cost_75USDkg_C, by = "GCAM_commodity") %>%
       mutate(nonLandVariableCost = round(Cost_75USDkg, aglu.DIGITS_CALPRICE)) %>%
       # Copy costs to high and low management levels
-      repeat_add_columns(tibble(MGMT = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
       # Add sector, subsector, technology names
@@ -133,7 +133,7 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
                                            aglu.BIO_TREE_COST_75USD_GJ)) %>%
       # Copy coefficients to all four technologies
       repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
-      repeat_add_columns(tibble(MGMT = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
       # Revise technology names, adding info of irr/rfd and hi/lo
       mutate(AgProductionTechnology = paste(AgProductionTechnology, IRR_RFD, MGMT, sep = "_")) %>%
       # Copy costs to all model years
@@ -199,7 +199,7 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       # Set the Inf to 0, and keep the technologies out.
       mutate(AgProdChange = replace(AgProdChange, AgProdChange == Inf, 0)) %>%
       # Copy costs to high and low management levels
-      repeat_add_columns(tibble(MGMT = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
       # Add sector, subsector, technology names
@@ -237,7 +237,7 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       # These regions are assumed minor agriculturally and as such not assigned yield improvement for tree-based bioenergy crops.
       replace_na(list(AgProdChange = 0)) %>%
       # Copy coefficients to high and low management levels
-      repeat_add_columns(tibble(MGMT = c("hi", "lo"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
       # Revise technology names to add all technologies
       mutate(AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.CROP_GLU_DELIMITER),
                                             MGMT, sep = aglu.MGMT_DELIMITER)) %>%

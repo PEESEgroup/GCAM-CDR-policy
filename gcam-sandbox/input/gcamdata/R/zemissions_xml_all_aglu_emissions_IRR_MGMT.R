@@ -48,6 +48,19 @@ module_emissions_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...) {
     # Rename the tibble column names to match the header names.
     L2112.AGRBio <- rename(L2112.AGRBio, emiss.coef = bio_N2O_coef)
 
+    print(L2112.AGRBio) # contains biochar - only 1975, which appears to be fine
+    print(L2112.AWB_BCOC_EmissCoeff %>% filter(AgProductionTechnology == "CornC4_NelsonR_IRR_biochar")) # contains biochar, set to defaults
+    print(L2112.nonghg_max_reduction %>% filter(AgProductionTechnology == "CornC4_NelsonR_IRR_biochar")) # contains biochar, set to defaults
+    print(L2112.nonghg_steepness %>% filter(AgProductionTechnology == "CornC4_NelsonR_IRR_biochar")) # contains biochar, set to defaults
+    print(L211.AnEmissions)
+    print(L211.AnNH3Emissions)
+    print(L2112.AWBEmissions %>% filter(level =="biochar"), n=50) # contains biochar, though input.emissions are 0
+    print(L2112.AGREmissions %>% filter(level =="biochar"), n=40) # contains biochar, though input.emissions are 0
+    print(L252.AgMAC) # contains biochar
+    print(L252.AgMAC_tc_average) # contains biochar
+    print(L252.MAC_an)
+    print(L252.MAC_an_tc_average)
+
     # Produce outputs
     create_xml("all_aglu_emissions_IRR_MGMT.xml") %>%
       add_xml_data(L2112.AGRBio, "OutputEmissCoeffAg") %>%

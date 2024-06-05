@@ -52,16 +52,40 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
     # start with Ag supply techs picking out instances of zeros across all historical years
     # then we will continually aggregate up to subsector then to sector doing the same checks
     L2012.AgProduction_ag_irr_mgmt %>%
+      #remove biochar from here - the nodes are manually deleted later and biochar has non-zero production values to get a positive share-weight in final base year
+      filter(!grepl("biochar", AgProductionTechnology)) %>%
       group_by(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology) %>%
       summarize(calOutputValue = sum(calOutputValue)) ->
       # leave it grouped, this is a case where popping groups one at a time is exactly what we want
       prune_agsupply
 
-    # save the empty techs
+    # get all instances of lo management classes that need to be removed
     prune_agsupply %>%
       filter(calOutputValue == 0) %>%
-      select(-calOutputValue) ->
+      # if the hi and lo management classes need to be removed, remove also biochar
+      filter(grepl("lo$", AgProductionTechnology)) -> lo_tech_remove
+
+    # get all instances of hi management classes that need to be removed
+    prune_agsupply %>%
+      filter(calOutputValue == 0) %>%
+      # if the hi and lo management classes need to be removed, remove also biochar
+      filter(grepl("hi$", AgProductionTechnology)) -> hi_tech_remove
+
+    # bind all rows that need to be removed, including biochar, and then remove duplicates, because there are likely to be biochar duplicates
+    bind_rows(lo_tech_remove,
+              hi_tech_remove,
+              lo_tech_remove %>% mutate(AgProductionTechnology = stringr::str_replace(AgProductionTechnology, "_lo", "_biochar")),
+              hi_tech_remove %>% mutate(AgProductionTechnology = stringr::str_replace(AgProductionTechnology, "_hi", "_biochar"))) %>%
+      distinct() %>% select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology) ->
       empty_ag_tech
+
+    prune_agsupply %>%
+      filter(calOutputValue == 0) %>%
+      # if the hi and lo management classes exist in a ag supply sector, keep the biochar nodes
+      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology) ->
+      real_empty_ag_tech
+
+    print(empty_ag_tech)
 
     # aggregate up
     prune_agsupply %>%
@@ -73,6 +97,8 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
       select(-calOutputValue) ->
       empty_ag_subsec
 
+    print(empty_ag_subsec)
+
     # aggregate up
     prune_agsupply %>%
       summarize(calOutputValue = sum(calOutputValue)) ->
@@ -82,6 +108,7 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
       filter(calOutputValue == 0, AgSupplySector != "FodderHerb") %>%
       select(-calOutputValue) ->
       empty_ag_sec
+    print(empty_ag_sec)
 
     # if we removed the sector we need to clean up a few more places such as trading
     # markets
@@ -92,6 +119,8 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
       select(minicam.energy.input = AgSupplySector,
              market.name = region) ->
       prune_agsupply
+
+    print(prune_agsupply)
 
     # do not attempt to export a region+crop that is empty
     L240.TechCoef_tra %>%
@@ -118,12 +147,16 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
       filter(subsector == "FodderGrass") ->
       prune_fodder_grass
 
+    print(prune_fodder_grass)
+
     L202.StubTech_in %>%
       select(region, supplysector, subsector) %>%
       bind_rows(L203.StubTech_demand_nonfood %>% select(region, supplysector, subsector)) %>%
       inner_join(prune_fodder_grass, by=c("region", "subsector")) %>%
       distinct() ->
       empty_foddergrass
+
+    print(empty_foddergrass)
 
     ###
     # switching to the land side checking for zero land allocation across all historical years
@@ -133,19 +166,6 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
     LandNode_MaxDepth <- length(LandNode_columns)
 
     # start with some error checking that non-zero land matches non-zero supply
-    print(L2252.LN5_MgdCarbon_crop %>%
-            select(region, LandAllocatorRoot, matches('LandNode'), LandLeaf) %>%
-            repeat_add_columns(tibble(year=MODEL_BASE_YEARS)) %>%
-            # some empty land node/leaves appear because we have read in carbon information
-            # for them but they do not appear in the historical land allocation table (L2252.LN5_MgdAllocation_crop)
-            # so join them here and fill zeros so we can clean them up together with the
-            # rest of the zero land node/leaves
-            left_join(L2252.LN5_MgdAllocation_crop, by=c("region", "LandAllocatorRoot", LandNode_columns, "LandLeaf", "year")) %>%
-            mutate(allocation = if_else(is.na(allocation), 0, allocation)) %>%
-            left_join(L2012.AgProduction_ag_irr_mgmt %>%
-                                       select(region, AgProductionTechnology, year, calOutputValue),
-                                     by=c("region", "LandLeaf" = "AgProductionTechnology", "year")) %>%
-            filter(if_any(everything(), is.na))) # looking for biochar
 
     L2252.LN5_MgdCarbon_crop %>%
       select(region, LandAllocatorRoot, matches('LandNode'), LandLeaf) %>%
@@ -161,6 +181,7 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
                 by=c("region", "LandLeaf" = "AgProductionTechnology", "year")) %>%
       filter((allocation <= 0 & calOutputValue > 0) | (calOutputValue <= 0 & allocation > 0)) ->
       mismath_double_check
+    print(mismath_double_check)
     assertthat::assert_that(nrow(mismath_double_check) == 0)
 
     # prepare the historical land areas for our empty checks
@@ -173,10 +194,13 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
       # rest of the zero land node/leaves
       left_join(L2252.LN5_MgdAllocation_crop, by=c("region", "LandAllocatorRoot", LandNode_columns, "LandLeaf", "year")) %>%
       mutate(allocation = if_else(is.na(allocation), 0, allocation)) %>%
+      mutate(allocation = if_else(grepl("biochar", LandLeaf), 0, allocation))%>% # set biochar allocations back to 0 so that the nodes can be recursively deleted
       dplyr::group_by_at(vars(-year, -allocation)) %>%
       summarize(allocation = sum(allocation)) ->
       # leave it grouped, this is a case where popping groups one at a time is exactly what we want
       prune_data
+
+    print(prune_data)
 
     # because we are going to need to go up an unknown number of land node levels it is
     # easier to just process this recursively in a function

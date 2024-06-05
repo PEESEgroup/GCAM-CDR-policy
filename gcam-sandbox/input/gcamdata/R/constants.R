@@ -282,6 +282,9 @@ aglu.BIO_GRASS_YIELD_KGCM2  <- 0.34
 aglu.BIO_TREE_FERT_IO_GNM2  <- 3.36
 aglu.BIO_TREE_YIELD_KGCM2   <- 0.345
 
+# biochar application rate for biomass. Values from Lehmann et al. 2010
+aglu.BIO_BIOCHAR_IO_KGBM2    <- 8.3
+
 # Water characteristics for biomass
 # Reference: Chaturvedi et al. 2015, Climate mitigation policy implications for global irrigation water demand, Mitig Adapt Strateg Glob Change (2015) 20:389-407. DOI 10.1007/s11027-013-9497-4
 aglu.BIO_GRASS_WATER_IO_KM3EJ <- 25

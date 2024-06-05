@@ -74,6 +74,8 @@ module_emissions_L2111.ag_nonco2_IRR <- function(command, ...) {
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year,
              Non.CO2, input.emissions)
 
+    print(L2111.AWBEmissions)
+
     # L2111.AGREmissions: ag AGR emissions in all regions
     L2111.AGREmissions <- L1221.ghg_tg_R_agr_C_Y_GLU_IRR %>%
       filter(year %in% emissions.MODEL_BASE_YEARS) %>%
@@ -86,6 +88,8 @@ module_emissions_L2111.ag_nonco2_IRR <- function(command, ...) {
              input.emissions = round(input.emissions, emissions.DIGITS_EMISSIONS)) %>%
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year,
              Non.CO2, input.emissions)
+
+    print(L2111.AGREmissions)
 
     # L2111.AGRBio, L2111.AWB_BCOC_EmissCoeff, L2111.nonghg_max_reduction, L2111.nonghg_steepness: repeat by irr/rfd and copy
     Irr_Rfd <- tibble(Irr_Rfd = c("IRR", "RFD"))

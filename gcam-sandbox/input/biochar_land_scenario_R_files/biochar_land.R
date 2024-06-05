@@ -1,24 +1,25 @@
 #TODO
-# 0. Fix Could not find associated product leaf in the land allocator for biochar - look in L2252
+# 0 TODO: fix biochar not appearing for crops, and appearing from biomass grass/tree without fert demands???
+# 0. Fix Could not find associated product leaf in the land allocator for biochar - look in L2252 - DONE
 # 1. Get rid of fertilizer sector - here - DONE
-# 2. Update assumptions on avoided/sequestered C emissions - here
+# 2. Update assumptions on avoided/sequestered C emissions - here - coefficients - DONE
+# Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
 # 3. Build new land use nodes - land_input_5_IRR_MGMT - L2252.LN5_* - DONE
-# 3.1. land allocation - land_input_5_IRR_MGMT - L2252.LN5_*
-# 3.2. carbon densities, mature age - land_input_5_IRR_MGMT  - L2252.LN5_*
-# 3c. update logits - land_input_5_IRR_MGMT  - L2252.LN5_*
-# 3d. update share-weights - land_input_5_IRR_MGMT - L2252.LN5_*
-# 3a. nonLandVariableCost same as others - ag_cost_IRR_MGMT - L2062.AgCost_ag_irr_mgmt_adj - L142.ag_Fert_IO_R_C_Y_GLU - L100.LDS_ag_prod_t
-#                                                           - L2052.AgCalMinProfitRate - L161.ag_irrProd_Mt_R_C_Y_GLU - L152.ag_*
-# 3b. set minicam-energy-input name to biochar in addition to N fertilizer - ag_Fert_IRR_MGMT - L142.ag_Fert_IO_R_C_Y_GLU - L100.LDS_ag_prod_t
-# 3b1. get coefficients for biochar demand - ag_Fert_IRR_MGMT - L2062.AgCoef_Fert_ag_irr_mgmt - L142.ag_Fert_IO_R_C_Y_GLU - L100.LDS_ag_prod_t
-# 3e. update agProdChange - ag_prodchange_ssp2_IRR_MGMT - L2052.AgProdChange_ag_irr_ref
-#                                                       - L2052.AgProdChange_bio_irr_ref
-# 3g. update biophysical water consumption - ag_water_input_IRR_MGMT - L2072.AgCoef_*_ag_mgmt
-# 3i. update bio_externality_cost - bio_externality - L270.AGCoef_bioext
-# 3f. update biomass emissions - all_aglu_emissions_IRR_MGMT - L252.AgMAC - L211.AGREmissions - L122.ghg_tg_R_agr_C_Y_GLU
-# 3h. update MAC coefficients - all_aglu_emissions_IRR_MGMT - L252.AgMAC - L211.AGREmissions - L122.ghg_tg_R_agr_C_Y_GLU
-# 3j. update residue biomass-production - resbio_input_IRR_MGMT - L2042.AgResBio_ag_irr_mgmt - L101.ag_Prod_Mt_R_C_Y_GLU - "aglu/FAO/FAO_ag_items_PRODSTAT" OR "aglu/LDS/LDS_land_types"
-# 3k. update locations where certain land nodes cannot exist - prune_empty_ag - L240.TechCoef_tra - aglu/A_agTradedTechnology
+# 3.1. land allocation - land_input_5_IRR_MGMT - L2252.LN5_* - DONE
+# 3.2. carbon densities, mature age - land_input_5_IRR_MGMT  - L2252.LN5_* - coefficients - DONE
+# Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
+# 3c. update logits - land_input_5_IRR_MGMT  - L2252.LN5_* -DONE
+# 3d. update share-weights - land_input_5_IRR_MGMT - L2252.LN5_* -DONE
+# 3a. nonLandVariableCost same as others - ag_cost_IRR_MGMT - L2062.AgCost_ag_irr_mgmt_adj - L142.ag_Fert_IO_R_C_Y_GLU - L100.LDS_ag_prod_t - DONE
+# 3b. set minicam-energy-input name to biochar in addition to N fertilizer - ag_Fert_IRR_MGMT - L142.ag_Fert_IO_R_C_Y_GLU - L100.LDS_ag_prod_t - DONE
+# 3b1. get coefficients for biochar demand - ag_Fert_IRR_MGMT - L2062.AgCoef_Fert_ag_irr_mgmt - L142.ag_Fert_IO_R_C_Y_GLU - L100.LDS_ag_prod_t - coefficients - DONE
+# 3e. update agProdChange - ag_prodchange_ssp2_IRR_MGMT - L2052.AgProdChange_ag_irr_ref - DONE
+# 3g. update biophysical water consumption - ag_water_input_IRR_MGMT - L2072.AgCoef_*_ag_mgmt - DONE
+# 3i. update bio_externality_cost - bio_externality - L270.AGCoef_bioext - DONE
+# 3f. update biomass emissions - all_aglu_emissions_IRR_MGMT - L252.AgMAC - L211.AGREmissions - L122.ghg_tg_R_agr_C_Y_GLU - DONE
+# 3h. update MAC coefficients - all_aglu_emissions_IRR_MGMT - L252.AgMAC - L211.AGREmissions - L122.ghg_tg_R_agr_C_Y_GLU - DONE
+# 3j. update residue biomass-production - resbio_input_IRR_MGMT - L2042.AgResBio_ag_irr_mgmt - L101.ag_Prod_Mt_R_C_Y_GLU - "aglu/FAO/FAO_ag_items_PRODSTAT" OR "aglu/LDS/LDS_land_types" - DONE
+# 3k. update locations where certain land nodes cannot exist - prune_empty_ag - L240.TechCoef_tra - aglu/A_agTradedTechnology - DONE
 # 4. find which R files correspond to what xml output files - DONE
 
 
@@ -48,7 +49,7 @@ devtools::load_all()
 #           beef (units): 0.5391 (kg collectible manure solids /day /head) [9] * 1 (head) / 228 (kg meat/head) [5] * 3 (year lifespan) * 365 (days) [5] = 2.589 Mt manure/Mt Beef
 #           pork (units): 0.0930 (kg collectible manure solids /day /head) [9] * 1 (head) / 55.76 (kg meat/head) [5] * 0.5 (year lifespan) * 365 (days) [5] = 0.304 Mt manure/Mt Pork
 #           goat (units): 0.2433 (kg collectible manure solids /day /head) [9] * 1 (head) / 19.1 (kg meat/head) [5] * .667 (year lifespan) * 365 (days) [5] = 3.101 Mt manure/Mt Goat
-
+# calculations in plant_costs.xlsx
 
 ## A_An_secout_prices:
 # manure prices
@@ -281,11 +282,11 @@ print(tmp)
 #   Dairy: 2.54 g C avoided decomposition per g C sequestered in biochar (same as beef)
 #    Goat: 2.54 g C avoided decomposition per g C sequestered in biochar (same as beef)
 
-tmp[31] <- "poultry manure,-1.073,0" # .664 * (1 + 2.44) * .47 [2] (yield)
-tmp[32] <- "pork manure,-0.632,0" # .252 * (1 + 4.36) * .468 [yield] [5]
-tmp[33] <- "beef manure,-0.927,0" # .572 * (1 + 2.54) * .4584 [yield] [4]
-tmp[34] <- "dairy manure,-0.583,0" # .347 * (1 + 2.54) * .475 [yield] [3]
-tmp[35] <- "goat manure,-1.376,0" # .293 * (1 + 2.54) * .486 [yield] [5]
+tmp[31] <- "poultry manure,-.160,0" # (1.63e9 [avoided Mg C] + 1.23e9 [net sequestered Mg C]) / 94 Tg *1000000 Mg/Tg [manure supply /year] * 100 years [beta secenario in 6, supplemental SI, supplemental .xlsx]
+tmp[32] <- "pork manure,-.425,0" # (2.76e9 [avoided Mg C] + 9.01e8 [net sequestered Mg C]) / 63 Tg *1000000 Mg/Tg * 100 years
+tmp[33] <- "beef manure,-.147,0" # (4.70e9 [avoided Mg C] + 3.33e9 [net sequestered Mg C]) / 294 Tg*1000000 Mg/Tg* 100 years
+tmp[34] <- "dairy manure,-.147,0" # (4.70e9 [avoided Mg C] + 3.33e9 [net sequestered Mg C]) / 294 Tg*1000000 Mg/Tg* 100 years
+tmp[35] <- "goat manure,-.425,0" # (same as swine)
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
