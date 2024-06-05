@@ -118,7 +118,7 @@ def getMask(nonBaselineScenario, RCP, filepath):
             # carbon yields from manure
             products = [str(j) + " manure"]
             if ifBiochar:
-                co2 = co2_emissions[co2_emissions['sector'].str.contains("|".join([str(j) + "_biochar"]))]
+                co2 = co2_emissions[co2_emissions['sector'].str.contains("|".join([str(j) + "_biochar"])) | co2_emissions['technology'].str.contains("|".join([str(j) + "_biochar"]))]
             else:
                 co2 = co2_emissions[co2_emissions['technology'].str.contains("|".join(["slow pyrolysis_" + str(j)]))]
             manure = supply[supply['product'].str.contains("|".join(products))]
@@ -147,10 +147,12 @@ def getMask(nonBaselineScenario, RCP, filepath):
                 manure = supply[supply['product'].str.contains("|".join(products))]
                 products = [str(j) + "_biochar"]
                 biochar = supply[supply['product'].str.contains("|".join(products))]
-                # merge and extract coefficient
-                comb = pd.merge(manure, biochar, how="inner", on=['GCAM', 'SSP'])
-                mask.extend(x for x in IO_check(comb, c.GCAMConstants.manure_biochar_ratio, "assert manure and biochar",
-                                                nonBaselineScenario, str(j)) if x not in mask)
+
+                if not biochar.empty:
+                    # merge and extract coefficient
+                    comb = pd.merge(manure, biochar, how="inner", on=['GCAM', 'SSP'])
+                    mask.extend(x for x in IO_check(comb, c.GCAMConstants.manure_biochar_ratio, "assert manure and biochar",
+                                                    nonBaselineScenario, str(j)) if x not in mask)
 
         mask.extend(x for x in biooil(ifBiooilSecout, mask, supply, nonBaselineScenario) if x not in mask)
         # mask.extend(x for x in secondary_outputs(mask, nonBaselineScenario, supply) if x not in mask)

@@ -915,10 +915,10 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    figure2("pyrolysis-nofert", "6p0", ["SSP5"])
-    figure3("pyrolysis-nofert", "6p0", ["SSP5"])
-    figure4("pyrolysis-nofert", "6p0", ["SSP5"])
-    figure5("pyrolysis-nofert", "6p0", ["SSP5"])
-    figure6("pyrolysis-nofert", "6p0", ["SSP5"])
-    figure7("pyrolysis-nofert", ["6p0"], c.GCAMConstants.SSPs)
-    cue_figure("pyrolysis-nofert", ["6p0"], c.GCAMConstants.SSPs)
+    #figure2("biochar", "6p0", ["SSP3"])
+    figure3("biochar", "6p0", ["SSP3"])
+    figure4("biochar", "6p0", ["SSP3"])
+    figure5("biochar", "6p0", ["SSP3"])
+    figure6("biochar", "6p0", ["SSP3"])
+    figure7("biochar", ["6p0"], c.GCAMConstants.SSPs)
+    cue_figure("biochar", ["6p0"], c.GCAMConstants.SSPs)
