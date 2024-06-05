@@ -43,8 +43,7 @@ def percent_difference(old, new, columns):
     merged = old.merge(new, how="left", on=columns, suffixes=("_left", "_right"))
 
     for i in c.GCAMConstants.x:
-        merged[str(i)] = 100 * (merged[str(i) + "_right"] - merged[str(i) + "_left"]) / (
-                merged[str(i) + "_left"] + 1e-7)
+        merged[str(i)] = merged.apply(lambda row: calc_percs(row, i), axis=1)
         merged = merged.drop([str(i) + "_left"], axis=1)
 
     # update columns
@@ -59,6 +58,18 @@ def percent_difference(old, new, columns):
 
     return merged
 
+
+def calc_percs(row, i):
+    """
+    if a row has no baseline value, return np.nan instead of percentage change
+    :param row: row in dataframe
+    :param i: string of product year
+    :return: percent difference from right entry over left
+    """
+    if row[str(i) + "_left"] == 0:
+        return np.nan
+    else:
+        return 100 * (row[str(i) + "_right"] - row[str(i) + "_left"]) / (row[str(i) + "_left"] + 1e-7)
 
 def percent_of_total(old, new, columns):
     """
