@@ -504,7 +504,7 @@ def figure2(nonBaselineScenario, RCP, SSP):
     co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
     co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "sector"), axis=1)
     co2_seq_pyrolysis['Units'] = "Mt C"
-    products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar", "manure fuel"]
+    products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar", "manure fuel", "biochar"]
     biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
 
     if biochar_pyrolysis["sector"].unique()[0] == "manure fuel":
@@ -915,7 +915,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    #figure2("biochar", "6p0", ["SSP3"])
+    figure2("biochar", "6p0", ["SSP3"])
     figure3("biochar", "6p0", ["SSP3"])
     figure4("biochar", "6p0", ["SSP3"])
     figure5("biochar", "6p0", ["SSP3"])
