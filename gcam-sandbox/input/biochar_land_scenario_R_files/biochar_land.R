@@ -1,5 +1,3 @@
-#TODO
-# 0 TODO: fix biochar not appearing for crops, and appearing from biomass grass/tree without fert demands???
 # 0. Fix Could not find associated product leaf in the land allocator for biochar - look in L2252 - DONE
 # 1. Get rid of fertilizer sector - here - DONE
 # 2. Update assumptions on avoided/sequestered C emissions - here - coefficients - DONE
@@ -52,7 +50,7 @@ devtools::load_all()
 # calculations in plant_costs.xlsx
 
 ## A_An_secout_prices:
-# manure prices
+# manure prices are set to 1e-4, as that is the smallest possible price
 
 
 #modify A21.globaltech_cost.csv

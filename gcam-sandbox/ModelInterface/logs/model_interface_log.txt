@@ -23,6 +23,16 @@ Didn't find builder for land leaf shares query going to use defaults
 Didn't find builder for land leaf shares in a specified land use region query going to use defaults
 Didn't find builder for National Account query going to use defaults
 Didn't find builder for Social Accounting Matrix query going to use defaults
+Removing :GCAM_SSP3531095210
+Removing :GCAM_SSP3531114602
+Removing :GCAM_SSP3531124218
+Removing :GCAM_SSP3531134624
+Removing :GCAM_SSP3603122236
+Removing :GCAM_SSP3603131908
+Removing :GCAM_SSP3603142316
+Removing :GCAM_SSP3604115140
+About to perform query: collection()/scenario
+About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
 Going to change controls
 About to perform query: collection()/scenario
 About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
@@ -43,6 +53,7 @@ Didn't find builder for land leaf shares query going to use defaults
 Didn't find builder for land leaf shares in a specified land use region query going to use defaults
 Didn't find builder for National Account query going to use defaults
 Didn't find builder for Social Accounting Matrix query going to use defaults
+Removing :run_050624-101323.xml
 About to perform query: collection()/scenario
 About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
 Caught the window closing
