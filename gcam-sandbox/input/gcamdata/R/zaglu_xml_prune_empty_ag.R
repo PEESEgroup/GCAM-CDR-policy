@@ -179,7 +179,8 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
       left_join_error_no_match(L2012.AgProduction_ag_irr_mgmt %>%
                   select(region, AgProductionTechnology, year, calOutputValue),
                 by=c("region", "LandLeaf" = "AgProductionTechnology", "year")) %>%
-      filter((allocation <= 0 & calOutputValue > 0) | (calOutputValue <= 0 & allocation > 0)) ->
+      # biochar has positive yields but 0 allocation because it doesn't exist as a tech in the past, so we ignore the biochar rows in this analysis
+      filter((allocation <= 0 & calOutputValue > 0 & !grepl("biochar", LandLeaf)) | (calOutputValue <= 0 & allocation > 0 & !grepl("biochar", LandLeaf))) ->
       mismath_double_check
     print(mismath_double_check)
     assertthat::assert_that(nrow(mismath_double_check) == 0)

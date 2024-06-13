@@ -209,10 +209,13 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              LandLeaf = paste(paste(paste(GCAM_subsector, GLU, sep = aglu.CROP_GLU_DELIMITER),
                                     Irr_Rfd, sep = aglu.IRR_DELIMITER),
                               level, sep = aglu.MGMT_DELIMITER),
-             value = round(value, aglu.DIGITS_LAND_USE)) %>%
+             # set biochar allocation values to 0
+             value = ifelse(grepl("biochar", LandLeaf), 0, round(value, aglu.DIGITS_LAND_USE))) %>%
       rename(allocation = value) %>%
       select(region, year, LandLeaf, allocation) ->
       L2252.LC_bm2_R_C_Yh_GLU_irr_mgmt # contains biochar info
+
+    print(L2252.LC_bm2_R_C_Yh_GLU_irr_mgmt %>% filter(grepl("biochar", LandLeaf)), n=100)
 
     # Use L2252.LN5_Logit to get names of LandNodes, copy to all years
     # Add land leafs using `convert_LN4_to_LN5`, then join land allocation information
@@ -225,7 +228,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       select(-allocation) %>%
       # Biomass leafs don't have historical land area, but we want to keep them, so using full_join
       full_join(L2252.LC_bm2_R_C_Yh_GLU_irr_mgmt, by = c("region", "year", "LandLeaf")) %>%
-      replace_na(list(allocation = 0)) ->
+      replace_na(list(allocation = 0)) -> # biochar shouldn't have any land allocation in historical periods
       ALL_LAND_ALLOCATION
 
     # L2252.LN5_HistMgdAllocation_crop: historical cropland allocation
@@ -235,7 +238,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       filter(year %in% aglu.LAND_HISTORY_YEARS) ->
       L2252.LN5_HistMgdAllocation_crop
 
-    print(ALL_LAND_ALLOCATION)
+    print(ALL_LAND_ALLOCATION, n=100)
 
     # L2252.LN5_MgdAllocation_crop: cropland allocation
     # in the fifth land nest ie for each crop-irr-mgmt combo in each region-glu-year.
