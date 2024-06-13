@@ -1,3 +1,6 @@
+#TODO: make it so that biochar when applied to croplands has yield equivalent to hi mgmt tech
+#TODO: make it so that biochar when applied to biomass has yield equivalents to hi mgmt tech - already has a yield value
+
 # 0. Fix Could not find associated product leaf in the land allocator for biochar - look in L2252 - DONE
 # 1. Get rid of fertilizer sector - here - DONE
 # 2. Update assumptions on avoided/sequestered C emissions - here - coefficients - DONE
