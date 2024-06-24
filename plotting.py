@@ -266,8 +266,12 @@ def get_df_to_plot(dataframe, ncol, nrow, fig, axs, cmap, normalizer, counter, c
     :param subplot_title: the title for the subplot
     :return: unit label for the subplot
     """
-    filter_data = dataframe[dataframe[[column]].isin([products]).any(axis=1)]
-    filter_data = filter_data[filter_data[['SSP']].isin([SSPs]).any(axis=1)]
+    if column != "":
+        filter_data = dataframe[dataframe[[column]].isin([products]).any(axis=1)]
+        filter_data = filter_data[filter_data[['SSP']].isin([SSPs]).any(axis=1)]
+    else:
+        filter_data=dataframe
+
     # if there is no data in the filter data, delete all following axis
     if filter_data.empty:
         if ncol == 1:
@@ -349,8 +353,11 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     :return: a set of figure objects
     """
     # at this stage, if this df is empty, then we know that there is no material to plot
-    df = dataframe[
-        (dataframe[product_column].str.contains("|".join(products))) & (dataframe['SSP'].str.contains("|".join(SSP)))]
+    if product_column != "":
+        df = dataframe[
+            (dataframe[product_column].str.contains("|".join(products))) & (dataframe['SSP'].str.contains("|".join(SSP)))]
+    else:
+        df = dataframe
 
     # residual data cleaning
     if df.empty:

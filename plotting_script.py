@@ -1,3 +1,4 @@
+from matplotlib import pyplot as plt
 import plotting
 import data_manipulation
 import constants as c
@@ -861,6 +862,32 @@ def figure7(nonBaselineScenario, RCP, SSP):
         plotting.sensitivity(diff_Pcal, i, "released", "2050", "technology")
 
 
+def carbon_price_biochar_supply(nonBaselineScenario, RCP, SSP):
+    carbon_price = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
+            RCP) + "/masked" + "/CO2_prices.csv")
+    biochar_supply = pd.read_csv(
+            "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
+                RCP) + "/masked" + "/supply_of_all_markets.csv")
+    carbon_price = carbon_price[carbon_price[['SSP']].isin(SSP).any(axis=1)]
+    carbon_price = carbon_price[carbon_price[['product']].isin(["CO2"]).any(axis=1)].drop_duplicates()
+    biochar_supply = biochar_supply[biochar_supply[['SSP']].isin(SSP).any(axis=1)]
+    biochar_supply = biochar_supply[biochar_supply[['product']].isin(["biochar"]).any(axis=1)]
+
+    for i in c.GCAMConstants.future_x:
+        plt.scatter(biochar_supply[str(i)], carbon_price[str(i)])
+        plt.xlabel("biochar supply by country (Mt)")
+        plt.ylabel("carbon price (1990$USD/tC)")
+        plt.title("carbon price by biochar supply")
+    plt.show()
+
+    biochar_price = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
+            RCP) + "/masked" + "/prices_of_all_markets.csv")
+    biochar_price = biochar_price[biochar_price[['SSP']].isin(SSP).any(axis=1)]
+    biochar_price = biochar_price[biochar_price[['product']].isin(["biochar", "beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)]
+    print(biochar_price)
+
 def cue_figure(nonBaselineScenario, RCP, SSP):
     """
     Returns plots for potential figure in the CUE conference paper
@@ -915,10 +942,12 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    figure2("biochar", "6p0", ["SSP2"])
-    figure3("biochar", "6p0", ["SSP2"])
-    figure4("biochar", "6p0", ["SSP2"])
-    figure5("biochar", "6p0", ["SSP2"])
-    figure6("biochar", "6p0", ["SSP2"])
-    figure7("biochar", ["6p0"], c.GCAMConstants.SSPs)
-    cue_figure("biochar", ["6p0"], c.GCAMConstants.SSPs)
+    carbon_price_biochar_supply("biochar", "6p0", ["SSP2"])
+    carbon_price_biochar_supply("biochar", "4p5", ["SSP2"])
+    figure2("biochar", "4p5", ["SSP2"])
+    figure3("biochar", "4p5", ["SSP2"])
+    figure4("biochar", "4p5", ["SSP2"])
+    figure5("biochar", "4p5", ["SSP2"])
+    figure6("biochar", "4p5", ["SSP2"])
+    figure7("biochar", ["4p5"], c.GCAMConstants.SSPs)
+    cue_figure("biochar", ["4p5"], c.GCAMConstants.SSPs)

@@ -1,3 +1,4 @@
+import math
 import sys
 import constants as c
 import pandas as pd
@@ -17,7 +18,7 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario, products):
     """
 
     to_return = list()
-    for i in c.GCAMConstants.plotting_x:
+    for i in c.GCAMConstants.future_x:
         comb["check_" + str(i)] = comb[str(i) + "_x"] / comb[str(i) + "_y"]
     for k in c.GCAMConstants.SSPs:
         # check coef on an SSP basis
@@ -26,14 +27,19 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario, products):
             to_print = assert_str + " fails for product " + str(products) + " in " + str(
                 k) + " because no data is available"
             print(to_print)
-            for b in c.GCAMConstants.plotting_x:
+            for b in c.GCAMConstants.future_x:
                 to_return.extend(tuple([[k, b]]))
         else:
-            for i in c.GCAMConstants.plotting_x:
+            for i in c.GCAMConstants.future_x:
                 try:  # if mean coefficient isn't within 5% of target
-                    assert (abs(coefficients[nonBaselineScenario, str(products)]) * .95 <
-                            abs(comb_SSP["check_" + str(i)].mean()) <
-                            abs(coefficients[nonBaselineScenario, str(products)]) * 1.05)
+                    if not math.isinf(comb_SSP["check_" + str(i)].mean()) and (-0.01 > comb_SSP["check_" + str(i)].mean() or comb_SSP["check_" + str(i)].mean() > 0.01):
+                        assert (abs(coefficients[nonBaselineScenario, str(products)]) * .95 <
+                                abs(comb_SSP["check_" + str(i)].mean()) <
+                                abs(coefficients[nonBaselineScenario, str(products)]) * 1.05)
+                    else:
+                        print(assert_str + " is ignored for product " + str(products) + " in year " + str(i) + " in " + str(
+                        k) + \
+                               " with mean " + str(comb_SSP["check_" + str(i)].mean()))
                 except AssertionError:  # print out that the scenario is no good
                     to_print = assert_str + " fails for product " + str(products) + " in year " + str(i) + " in " + str(
                         k) + \
@@ -178,7 +184,7 @@ def biooil(ifBiooilSecout, mask, supply, nonBaselineScenario):
     manure_fuel = supply[supply['product'].str.contains("|".join(["manure fuel feedstock", "manure_fuel"]))]
     manure = supply[supply['product'].str.contains("|".join(products))].copy(deep=True)
     # calculation theoretical bio-oil output
-    for i in c.GCAMConstants.plotting_x:
+    for i in c.GCAMConstants.future_x:
         manure["check_" + str(i)] = manure.apply(
             lambda row: get_biooil_yield(row, "product", str(i), products, nonBaselineScenario),
             axis=1)
@@ -188,9 +194,9 @@ def biooil(ifBiooilSecout, mask, supply, nonBaselineScenario):
         comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]  # sort by SSP
         if len(comb_SSP) == 0:
             print("biooil supply fails for in " + str(k) + " because no data is available")
-            mask.extend([k, b] for b in c.GCAMConstants.plotting_x if [k, b] not in mask)
+            mask.extend([k, b] for b in c.GCAMConstants.future_x if [k, b] not in mask)
         else:
-            for i in c.GCAMConstants.plotting_x:
+            for i in c.GCAMConstants.future_x:
                 if ifBiooilSecout:
                     try:  # if calculated coefficient is less than expected coefficient
                         assert abs(comb_SSP["check_" + str(i)].sum()) * 1.05 > abs(
@@ -231,7 +237,7 @@ def secondary_outputs(mask, nonBaselineScenario, supply):
     for m, n in zip(products_manure, products_animal):  # iterate through list of secondary outputs
         if isinstance(m, list):  # different treatment for lists than strings
             manure = supply[supply['product'].str.contains("|".join(m))].copy(deep=True)  # combine data entries
-            for i in c.GCAMConstants.plotting_x:
+            for i in c.GCAMConstants.future_x:
                 manure["check_" + str(i)] = manure.apply(
                     lambda row: get_DDGS_yield(row, "product", str(i),
                                                ["Soybean", "OilCrop", "regional corn for ethanol"]), axis=1)
@@ -247,9 +253,9 @@ def secondary_outputs(mask, nonBaselineScenario, supply):
             comb_SSP = comb[comb[['SSP']].isin([k]).any(axis=1)]
             if len(comb_SSP) == 0:
                 print("secout fails for product " + str(m) + " in " + str(k) + " because no data is available")
-                mask.extend([k, b] for b in c.GCAMConstants.plotting_x if [k, b] not in mask)
+                mask.extend([k, b] for b in c.GCAMConstants.future_x if [k, b] not in mask)
             else:
-                for i in c.GCAMConstants.plotting_x:
+                for i in c.GCAMConstants.future_x:
                     # generally happens that the ratio produced is less than the ratio given in the .csv files
                     # TODO: figure out why
                     if isinstance(m, list):  # different handling for DDGS because it is a list

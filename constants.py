@@ -4,8 +4,8 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
-    version = [["biochar", "6p0"]] #TODO: updated data is grabbed for 4p5 only
-    GCAMDB_filenames = ["data/gcam_out/biochar/6p0/ref.csv"]
+    version = [["biochar", "6p0"], ["biochar", "4p5"]] #TODO: updated data is grabbed for 4p5 only
+    GCAMDB_filenames = ["data/gcam_out/biochar/6p0/ref.csv", "data/gcam_out/biochar/4p5/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
