@@ -14,4 +14,4 @@ SET CLASSPATH=gcam-7_1-sandbox\libs\jars\*;gcam-7_1-sandbox\output\modelinterfac
 REM Run the Model Interface.  Note we are redirecting output to a log file with the
 REM -l option.  Users could also modify the command below to use the -b option to
 REM a Model Interface Batch Command file.
-java ModelInterface.InterfaceMain -b xml/xmldb_batch_ref_6p0.xml
+java ModelInterface.InterfaceMain -b xml/xmldb_batch_ref_1p9.xml
