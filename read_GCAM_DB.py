@@ -62,7 +62,7 @@ def main():
         lines = open(bat_file, 'r').readlines()
 
         # now edit the last line of the list of lines
-        new_last_line = ("java ModelInterface/InterfaceMain -b " + filename)
+        new_last_line = ("java ModelInterface.InterfaceMain -b " + filename)
         lines[-1] = new_last_line
 
         print(lines[-1])

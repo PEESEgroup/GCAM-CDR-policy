@@ -9,9 +9,9 @@ REM SET PATH=%JAVA_HOME%\bin;%JAVA_HOME%\bin\server
 
 REM Find the various Model Interface components and dependencies where they live
 REM in the release package.
-SET CLASSPATH=gcam-sandbox\libs\jars\*;gcam-sandbox\output\modelinterface\ModelInterface.jar
+SET CLASSPATH=gcam-7_1-sandbox\libs\jars\*;gcam-7_1-sandbox\output\modelinterface\ModelInterface.jar
 
 REM Run the Model Interface.  Note we are redirecting output to a log file with the
 REM -l option.  Users could also modify the command below to use the -b option to
 REM a Model Interface Batch Command file.
-java ModelInterface/InterfaceMain -b xml/xmldb_batch_biochar_4p5.xml
+java ModelInterface.InterfaceMain -b xml/xmldb_batch_ref_6p0.xml
