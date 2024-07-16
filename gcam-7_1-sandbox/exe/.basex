@@ -1,8 +1,8 @@
 # General Options
 DEBUG = false
-DBPATH = C:\Users\natha\PycharmProjects\IAM_test\gcam-7_1 - sandbox\exe\data
+DBPATH = C:\Users\natha\PycharmProjects\IAM_test\gcam-v7.1-Windows-Release-Package\exe\data
 LOGPATH = .logs
-REPOPATH = C:\Users\natha\PycharmProjects\IAM_test\gcam-7_1 - sandbox\exe\repo
+REPOPATH = C:\Users\natha\PycharmProjects\IAM_test\gcam-v7.1-Windows-Release-Package\exe\repo
 LANG = English
 LANGKEYS = false
 FAIRLOCK = false
@@ -28,7 +28,7 @@ LOGMSGMAXLEN = 1000
 LOGTRACE = true
 
 # HTTP Services
-WEBPATH = C:\Users\natha\PycharmProjects\IAM_test\gcam-7_1 - sandbox\exe\webapp
+WEBPATH = C:\Users\natha\PycharmProjects\IAM_test\gcam-v7.1-Windows-Release-Package\exe\webapp
 GZIP = false
 RESTPATH = 
 RESTXQPATH = 

@@ -20,7 +20,12 @@
 # 3k. update locations where certain land nodes cannot exist - prune_empty_ag - L240.TechCoef_tra - aglu/A_agTradedTechnology - DONE
 # 4. find which R files correspond to what xml output files - DONE
 
-### ZEMISSIONS_ZML_ALL_AGLU_EMISSIONS_IRR_MGMT_XML CURRENTLY PRODUCES AN INVALID XML FILE
+## changing biochar application rates is done in constants
+
+## TODO: fix negative profit rate for biomassGrassin 2015
+## TODO: fix biochar not having input in next period in 2005
+## TODO: fix calOutputVals in years previous to 2015
+## TODO: fix ZEMISSIONS_XML_ALL_AGLU_EMISSIONS_IRR_MGMT_XML producing an invalid XML file
 
 devtools::load_all()
 

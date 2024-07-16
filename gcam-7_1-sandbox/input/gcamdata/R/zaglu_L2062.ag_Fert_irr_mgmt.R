@@ -1,3 +1,5 @@
+# this file has been edited
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_aglu_L2062.ag_Fert_irr_mgmt
@@ -56,7 +58,6 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
 
 
     # Process Fertilizer Coefficients: Copy coefficients to all four technologies (irr/rfd + hi/lo)
-    # Process Fertilizer Coefficients: Copy coefficients to all four technologies (irr/rfd + hi/lo)
     L142.ag_Fert_IO_R_C_Y_GLU %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
@@ -70,7 +71,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       # add fertilizer requirement to biochar land use types
     print(L2062.ag_Fert_MGMT) #unitless IO
 
-    #calculate IO coef by 8.3 kg/m^2 biochar per crop production in kg/m^2
+    #calculate IO coef by kg/m^2 biochar per crop production in kg/m^2
     # Add name of additional minicam.energy.input for biochar land use types of 50 Mg C/ha, which corresponds to 83 Mg biochar / ha with C weight % of 60%
     # Enders, A., Hanley, K., Whitman, T., Joseph, S. and Lehmann, J., 2012. Characterization of biochars to evaluate recalcitrance and agronomic performance. Bioresource technology, 114, pp.644-653.
     # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
@@ -78,7 +79,6 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
         left_join(L171.ag_rfdEcYield_kgm2_R_C_Y_GLU, by = c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year"))%>%
         filter(MGMT == "biochar") %>%
         mutate(value = if_else(value.y==0, 0, aglu.BIO_BIOCHAR_IO_KGBM2/value.y))%>% # if there is no fert demand, there should be no biochar demand
-      #TODO: update the value in the constants based on correspondence w/ Prof. Lehmann
         mutate(minicam.energy.input = "biochar")%>%
         select(-value.y, -value.x) -> L2062.ag_biochar_MGMT
 
@@ -166,7 +166,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
                                    bio_grass_biochar_coef$coefficient, bio_tree_biochar_coef$coefficient)) ->
       L2062.AgCoef_Biochar_bio_irr_mgmt
 
-    print(L2062.AgCoef_Biochar_bio_irr_mgmt)
+    print(L2062.AgCoef_Biochar_bio_irr_mgmt %>% filter(year == 2015))
 
     # combine fertilizer and biochar requirements
     bind_rows(L2062.AgCoef_Fert_bio_irr_mgmt, L2062.AgCoef_Biochar_bio_irr_mgmt) -> L2062.AgCoef_Fert_bio_irr_mgmt

@@ -1,3 +1,5 @@
+# this file has been edited
+
 # Copyright 2019 Battelle Memorial Institute; see the LICENSE file.
 
 #' module_aglu_L2252.land_input_5_irr_mgmt
@@ -310,8 +312,8 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       # at 50 Mg C/ ha application rate of biochar, is 5 kg C/ sq m. TODO: does not take into consideration consecutive applications of biochar
       # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
       # from: jgcri.github.io/gcam-doc/land.html, give soil carbon emissions as exponential formula
-      mutate(soil.carbon.density = if_else(grepl("biochar$", LandLeaf), soil.carbon.density + 5, soil.carbon.density),
-             hist.soil.carbon.density = if_else(grepl("biochar$", LandLeaf), hist.soil.carbon.density + 5, hist.soil.carbon.density))->
+      mutate(soil.carbon.density = if_else(grepl("biochar$", LandLeaf), soil.carbon.density + aglu.BIO_BIOCHAR_IO_KGBM2, soil.carbon.density),
+             hist.soil.carbon.density = if_else(grepl("biochar$", LandLeaf), hist.soil.carbon.density + aglu.BIO_BIOCHAR_IO_KGBM2, hist.soil.carbon.density))->
       L2252.LN5_MgdCarbon_crop #contains biochar
 
     L2012.AgYield_bio_ref %>%
