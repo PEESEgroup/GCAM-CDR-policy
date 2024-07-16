@@ -1,46 +1,5 @@
 <aQuery>
     <region name="Global"/>
-    <supplyDemandQuery title="refined liquids costs by tech">
-        <axis1 name="technology">technology</axis1>
-        <axis2 name="Year">cost</axis2>
-        <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (@name='refining')]/*[@type='subsector']/*[@type='technology']/cost/text()</xPath>
-        <comments/>
-    </supplyDemandQuery>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
-    <supplyDemandQuery title="refined liquids production by tech (new)">
-        <axis1 name="technology">technology</axis1>
-        <axis2 name="Year">physical-output[@vintage]</axis2>
-        <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and contains(@name,'refining')]/*[@type='subsector']/
-   *[@type='technology']/output-primary[@type='output']/physical-output[
-   @vintage=parent::*/parent::*/@year]/node()</xPath>
-        <comments/>
-    </supplyDemandQuery>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
-    <supplyDemandQuery title="refined liquids production by tech">
-        <axis1 name="technology">technology</axis1>
-        <axis2 name="Year">physical-output[@vintage]</axis2>
-        <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and contains(@name,'refining')]/*[@type='subsector']/
-   *[@type='technology']/output-primary[@type='output']/physical-output/node()</xPath>
-        <comments/>
-    </supplyDemandQuery>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
-    <supplyDemandQuery title="fertilizer production by tech">
-        <axis1 name="technology">technology</axis1>
-        <axis2 name="Year">physical-output[@vintage]</axis2>
-        <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and (@name='N fertilizer')]/
-*[@type='subsector' and not(@name='Imports')]/*[@type='technology']/
-*[@type='output']/physical-output/node()</xPath>
-        <comments/>
-    </supplyDemandQuery>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
         <axis2 name="Year">land-allocation[@year]</axis2>
@@ -97,15 +56,6 @@
 </aQuery>
 <aQuery>
     <region name="Global"/>
-    <supplyDemandQuery title="ag commodity prices">
-        <axis1 name="sector">sector</axis1>
-        <axis2 name="Year">cost</axis2>
-        <xPath buildList="true" dataName="price" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/cost/text()</xPath>
-        <comments/>
-    </supplyDemandQuery>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
     <supplyDemandQuery title="fertilizer consumption by crop type">
         <axis1 name="sector">sector</axis1>
         <axis2 name="Year">demand-physical[@vintage]</axis2>
@@ -142,43 +92,6 @@
             <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
             <comments/>
         </marketQuery>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
-        <costCurveQuery title="policy cost by period">
-            <axis1 name="region">Curve</axis1>
-            <axis2 name="Year">DataPoint</axis2>
-            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/y/text()</xPath>
-            <comments/>
-        </costCurveQuery>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
-        <costCurveQuery title="undiscounted policy cost">
-            <axis1 name="UndiscountedCost">UndiscountedCost</axis1>
-            <axis2 name="region">UndiscountedCost</axis2>
-            <xPath buildList="true" dataName="Undiscounted Cost" group="false" sumAll="false">/text()</xPath>
-            <comments/>
-        </costCurveQuery>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
-        <costCurveQuery title="discounted policy cost">
-            <axis1 name="DiscountedCost">DiscountedCost</axis1>
-            <axis2 name="region">DiscountedCost</axis2>
-            <xPath buildList="true" dataName="Discounted Cost" group="false" sumAll="false">/text()</xPath>
-            <comments/>
-        </costCurveQuery>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
-        <costCurveQuery title="regional CO2 MAC curves by period">
-            <axis1 name="region">Curve</axis1>
-            <axis2 name="Tax">DataPoint</axis2>
-            <chartLabelColumn>CostCurves</chartLabelColumn>
-            <xPath buildList="true" dataName="Cost" group="false" sumAll="false">PointSet/DataPoint/x/text()</xPath>
-            <comments/>
-        </costCurveQuery>
 </aQuery>
 <aQuery>
     <region name="Global"/>
@@ -240,37 +153,50 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
-    <region name="Global"/>
-        <emissionsQueryBuilder title="nonCO2 emissions by region">
-            <axis1 name="GHG">GHG</axis1>
-            <axis2 name="Year">emissions</axis2>
-            <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' (:collapse:) or @type = 'resource' (:collapse:)](: / *[@type = 'subresource' (: collapse :)] :)//
-        *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
-            <labelRewriteList append-values="false">
-                <level name="GHG">
-                    <rewrite from="CO2_FUG" to="CO2"/>
-                </level>
-            </labelRewriteList>
-            <comments/>
-        </emissionsQueryBuilder>
+    <region name = "Global"/>
+    <demographicsQuery title="population by region">
+        <axis1 name="region">region</axis1>
+        <axis2 name="Year">populationMiniCAM</axis2>
+        <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
+        <comments/>
+    </demographicsQuery>
 </aQuery>
 <aQuery>
     <region name = "Global"/>
-        <demographicsQuery title="population by region">
-            <axis1 name="region">region</axis1>
-            <axis2 name="Year">populationMiniCAM</axis2>
-            <xPath buildList="true" dataName="total-population" group="false" sumAll="false">demographics/populationMiniCAM/total-population/node()</xPath>
-            <comments/>
-        </demographicsQuery>
+    <supplyDemandQuery title="food consumption by type (specific)">
+        <axis1 name="technology">technology</axis1>
+        <axis2 name="Year">physical-output[@vintage]</axis2>
+        <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
+    *[@type='subsector']//*[@type='technology']/
+    *[@type='output' (:collapse:)]/physical-output/node()</xPath>
+        <comments/>
+    </supplyDemandQuery>
 </aQuery>
 <aQuery>
     <region name = "Global"/>
-        <supplyDemandQuery title="food consumption by type (specific)">
-                <axis1 name="technology">technology</axis1>
-                <axis2 name="Year">physical-output[@vintage]</axis2>
-                <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='FoodDemand_Staples' or @name='FoodDemand_NonStaples')]//
-            *[@type='subsector']//*[@type='technology']/
-            *[@type='output' (:collapse:)]/physical-output/node()</xPath>
-                <comments/>
-        </supplyDemandQuery>
+    <query title="detailed land allocation">
+        <axis1 name="LandLeaf">LandLeaf[@name]</axis1>
+        <axis2 name="Year">land-allocation[@year]</axis2>
+        <xPath buildList="true" dataName="LandLeaf" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//land-allocation/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
+<aQuery>
+    <region name = "Global"/>
+    <query title="LUC emissions by LUT">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">land-use-change-emission[@year]</axis2>
+        <xPath buildList="true" dataName="land-use-change-emission" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//
+        land-use-change-emission[@year&gt;1970]/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
+<aQuery>
+    <region name = "Global"/>
+    <query title="profit rate">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">profit-rate[@year]</axis2>
+        <xPath buildList="true" dataName="profit-rate" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//profit-rate/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
