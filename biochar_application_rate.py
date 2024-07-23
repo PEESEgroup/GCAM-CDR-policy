@@ -155,13 +155,13 @@ if __name__ == '__main__':
     print(K_rates[["GCAM", "2050"]])
 
     # map C application rates on cropland, bio-energy land, and both
-    #plot_world(C_rates, c.GCAMConstants.future_x, "C application rates (Mg/ha)")
+    plot_world(C_rates, c.GCAMConstants.future_x, "C application rates (Mg/ha)")
 
     # map P application rates on cropland, bio-energy land, and both
-    #plot_world(P_rates, c.GCAMConstants.future_x, "P application rates (Mg/ha)")
+    plot_world(P_rates, c.GCAMConstants.future_x, "P application rates (Mg/ha)")
 
     # map K application rates on cropland, bio-energy land, and both
-    #plot_world(K_rates, c.GCAMConstants.future_x, "K application rates (Mg/ha)")
+    plot_world(K_rates, c.GCAMConstants.future_x, "K application rates (Mg/ha)")
 
     # graph histogram of C application rates across all years and regions
     C_rates = C_rates[[str(i) for i in c.GCAMConstants.future_x]]
