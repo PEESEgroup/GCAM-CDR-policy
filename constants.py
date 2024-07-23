@@ -10,7 +10,7 @@ class GCAMConstants:
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
     #  This location should only need to be set once
-    XML_DB_loc = "../gcam-v7.1-Windows-Release-Package/output/database_basexdb-"
+    XML_DB_loc = "gcam/output/database_basexdb-"
     processed_map_loc = "data/maps/simplified_world_map.shp"
 
     combines_csv_fnames = ["refined liquids costs by tech", "refined liquids production by tech (new)", "refined liquids production by tech"]
@@ -51,6 +51,11 @@ class GCAMConstants:
     animal_manure_ratio["biochar", "pork"] = 1/0.304
     animal_manure_ratio["biochar", "poultry"] = 1/1.381
     animal_manure_ratio["biochar", "goat"] = 1/3.101
+    animal_manure_ratio["test", "beef"] = 1/2.589
+    animal_manure_ratio["test", "dairy"] = 1/0.018
+    animal_manure_ratio["test", "pork"] = 1/0.304
+    animal_manure_ratio["test", "poultry"] = 1/1.381
+    animal_manure_ratio["test", "goat"] = 1/3.101
 
     manure_biochar_ratio = dict()
     manure_biochar_ratio["pyrolysis", "beef"] = 2.1815
@@ -63,6 +68,11 @@ class GCAMConstants:
     manure_biochar_ratio["biochar", "pork"] = 2.136
     manure_biochar_ratio["biochar", "poultry"] = 2.1276
     manure_biochar_ratio["biochar", "goat"] = 2.055
+    manure_biochar_ratio["test", "beef"] = 2.1815
+    manure_biochar_ratio["test", "dairy"] = 2.1052
+    manure_biochar_ratio["test", "pork"] = 2.136
+    manure_biochar_ratio["test", "poultry"] = 2.1276
+    manure_biochar_ratio["test", "goat"] = 2.055
 
     manure_biooil_ratio = dict()
     manure_biooil_ratio["pyrolysis", "beef manure"] = 0.00477
@@ -99,6 +109,11 @@ class GCAMConstants:
     manure_C_ratio["biochar", "pork"] = -0.425
     manure_C_ratio["biochar", "poultry"] = -0.160
     manure_C_ratio["biochar", "goat"] = -0.425
+    manure_C_ratio["test", "beef"] = -0.147
+    manure_C_ratio["test", "dairy"] = -0.147
+    manure_C_ratio["test", "pork"] = -0.425
+    manure_C_ratio["test", "poultry"] = -0.160
+    manure_C_ratio["test", "goat"] = -0.425
 
     secout = dict()
     secout[2025, "beef manure"] = 0.048325
