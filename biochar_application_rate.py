@@ -1,9 +1,6 @@
 import matplotlib.pyplot as plt
-
-import data_manipulation
 import constants as c
 import pandas as pd
-
 import plotting
 
 
@@ -152,14 +149,19 @@ if __name__ == '__main__':
     P_rates["Units"] = "Mg/ha"
     K_rates["Units"] = "Mg/ha"
 
+    print("P rates")
+    print(P_rates[["GCAM", "2050"]])
+    print("K rates")
+    print(K_rates[["GCAM", "2050"]])
+
     # map C application rates on cropland, bio-energy land, and both
-    plot_world(C_rates, c.GCAMConstants.future_x, "C application rates (Mg/ha)")
+    #plot_world(C_rates, c.GCAMConstants.future_x, "C application rates (Mg/ha)")
 
     # map P application rates on cropland, bio-energy land, and both
-    plot_world(P_rates, c.GCAMConstants.future_x, "P application rates (Mg/ha)")
+    #plot_world(P_rates, c.GCAMConstants.future_x, "P application rates (Mg/ha)")
 
     # map K application rates on cropland, bio-energy land, and both
-    plot_world(K_rates, c.GCAMConstants.future_x, "K application rates (Mg/ha)")
+    #plot_world(K_rates, c.GCAMConstants.future_x, "K application rates (Mg/ha)")
 
     # graph histogram of C application rates across all years and regions
     C_rates = C_rates[[str(i) for i in c.GCAMConstants.future_x]]
@@ -171,13 +173,15 @@ if __name__ == '__main__':
     # graph histogram of P application rates across all years and regions
     P_rates = P_rates[[str(i) for i in c.GCAMConstants.future_x]]
     P_rates = P_rates.melt()
+    P_rates['value'] = P_rates['value'] * 1000  # convert from Mg to kg
     plt.hist(P_rates["value"])
-    plt.title("Histogram of P application rates in all regions in all time periods (Mg/ha)")
+    plt.title("Histogram of P application rates in all regions in all time periods (kg/ha)")
     plt.show()
 
     # graph histogram of K application rates across all years and regions
     K_rates = K_rates[[str(i) for i in c.GCAMConstants.future_x]]
     K_rates = K_rates.melt()
+    K_rates['value'] = K_rates['value'] * 1000  # convert from Mg to kg
     plt.hist(K_rates["value"])
-    plt.title("Histogram of K application rates in all regions in all time periods (Mg/ha)")
+    plt.title("Histogram of K application rates in all regions in all time periods (kg/ha)")
     plt.show()
