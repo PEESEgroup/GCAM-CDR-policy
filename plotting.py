@@ -59,7 +59,7 @@ def plot_world(dataframe, products, SSPS, groupby, column, years, title):
     :param dataframe: the dataframe containing data to be plotted
     :param products: the list of products that are to be plotted
     :param SSPS: the list of SSPs by which the data is to be plotted
-    :param groupby: how the data should be grouped. Accepted values include "SSP", "Products
+    :param groupby: how the data should be grouped. Accepted values include "SSP", "product", "year"
     :param column: the column on which the data should be filtered by product
     :param title: the title of the plot
     :return: shows the relevant plot

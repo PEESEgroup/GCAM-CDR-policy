@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import constants as c
 import pandas as pd
+import numpy as np
+import data_manipulation
 import plotting
 
 
@@ -59,7 +61,7 @@ def get_app_rate(row, product, biochar, nutrient, year, land):
             biochar_to_nutrient = .048616
 
     # Mt animal product * Mt biochar/Mt animal product * Mt nutrient/Mt biochar * 1e6 Mg / Mt) / (thousand km2 * hectares/thousand km2)
-    return row[year] * row[biochar] * biochar_to_nutrient * 1e6 / (row[land] *100000)
+    return row[year] * row[biochar] * biochar_to_nutrient * 1e6 / (row[land] * 100000) if row[land] != 0 else np.nan
 
 
 def plot_world(dataframe, year, title):
@@ -72,7 +74,7 @@ def plot_world(dataframe, year, title):
             inner_loop_set=year,
             products=[i],
             year=year,
-            SSP=["SSP2"],
+            SSP=["SSP1"],
             product_column="",
             title=title)
 
@@ -90,7 +92,7 @@ def plot_world(dataframe, year, title):
                 counter=counter,
                 column="",
                 products=i,
-                SSPs="SSP2",
+                SSPs="SSP1",
                 years=j,
                 subplot_title=subplot_title)
             counter = counter + 1
@@ -104,14 +106,14 @@ def plot_world(dataframe, year, title):
 
 if __name__ == '__main__':
     # get supply of animal products
-    released_supply = pd.read_csv("data/gcam_out/released/6p0/original/supply_of_all_markets.csv")
+    released_supply = pd.read_csv("data/gcam_out/test/2p6/masked/supply_of_all_markets.csv")
     products = ["Beef", "Pork", "Dairy", "Poultry", "SheepGoat"]
     released_supply = released_supply[released_supply[['product']].isin(products).any(axis=1)]
-    released_supply = released_supply[released_supply[['SSP']].isin(["SSP2"]).any(axis=1)]
+    released_supply = released_supply[released_supply[['SSP']].isin(["SSP1"]).any(axis=1)]
     released_supply = released_supply[~released_supply[['GCAM']].isin(["global"]).any(axis=1)]
 
     # get hypothetical biochar conversion ratios
-    biochar_coef = pd.read_csv("gcam-sandbox/input/gcamdata/inst/extdata/aglu/A_an_secout - Copy.csv")
+    biochar_coef = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_an_secout - Copy.csv")
     # group by supply sector
     biochar_coef = biochar_coef.groupby("supplysector")[[str(i) for i in c.GCAMConstants.future_x]].mean().reset_index()
 
@@ -120,9 +122,11 @@ if __name__ == '__main__':
                       suffixes=("", "_biochar"))
 
     # get land area
-    released_land = pd.read_csv("data/gcam_out/released/6p0/original/aggregated_land_allocation.csv")
-    released_land = released_land[released_land[['LandLeaf']].isin(["crops"]).any(axis=1)]
-    released_land = released_land[released_land[['SSP']].isin(["SSP2"]).any(axis=1)]
+    released_land = pd.read_csv("data/gcam_out/test/2p6/masked/detailed_land_allocation.csv")
+    released_land = released_land[released_land['LandLeaf'].str.contains("biochar")]
+    released_land = released_land[released_land[['SSP']].isin(["SSP1"]).any(axis=1)]
+    released_land = released_land[released_land['2055'] > 0]
+    released_land = data_manipulation.group(released_land, "GCAM") # group by GCAM data
     merged = pd.merge(merged, released_land, "left", left_on="GCAM", right_on="GCAM",
                       suffixes=("", "_land"))
 
@@ -149,10 +153,10 @@ if __name__ == '__main__':
     P_rates["Units"] = "Mg/ha"
     K_rates["Units"] = "Mg/ha"
 
-    print("P rates")
-    print(P_rates[["GCAM", "2050"]])
-    print("K rates")
-    print(K_rates[["GCAM", "2050"]])
+    print("P rates Mg/ha")
+    print(P_rates[["GCAM", "2055"]])
+    print("K rates Mg/ha")
+    print(K_rates[["GCAM", "2055"]])
 
     # map C application rates on cropland, bio-energy land, and both
     plot_world(C_rates, c.GCAMConstants.future_x, "C application rates (Mg/ha)")

@@ -23,11 +23,36 @@ Didn't find builder for land leaf shares query going to use defaults
 Didn't find builder for land leaf shares in a specified land use region query going to use defaults
 Didn't find builder for National Account query going to use defaults
 Didn't find builder for Social Accounting Matrix query going to use defaults
-Removing :GCAM_SSP1716150036
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
-Before Function: 1721741623532
-About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-18-7T09:40:40-04:00') ]/world/Marketplace/market[true() and ContainedRegion[(child::text() = 'USA') ] ]/supply/node()
-In Function: 1721741623533
-After build Tree: 1721741623912
-After Add table: 1721741623912
+About to perform query: collection()/singleQueryListCache/cache[@id=639696155]/text()
+Time : 10
+Before Function: 1721745198611
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-18-7T09:40:40-04:00') ]/world/Marketplace/market[true() and contains(@name,'CO2') and ContainedRegion[(child::text() = 'USA') ] ]/price/node()
+In Function: 1721745198611
+After build Tree: 1721745198819
+After Add table: 1721745198819
+Before Function: 1721745215476
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-18-7T09:40:40-04:00') ]/world/region[ (@name='USA') ]/*[@type='sector' and (@name='biomass')]//*[@type='output' (:collapse:)]/
+            physical-output/node()
+In Function: 1721745215476
+After build Tree: 1721745215577
+After Add table: 1721745215577
+About to perform query: collection()/singleQueryListCache/cache[@id=-1961143988]/text()
+Time : 7
+Before Function: 1721745227688
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-18-7T09:40:40-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//profit-rate/text()
+In Function: 1721745227688
+After build Tree: 1721745228473
+After Add table: 1721745228473
+About to perform query: collection()/singleQueryListCache/cache[@id=-2021137471]/text()
+Time : 0
+Before Function: 1721745372531
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-18-7T09:40:40-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//
+                land-use-change-emission[@year>1970]/text()
+In Function: 1721745372531
+After build Tree: 1721745373354
+After Add table: 1721745373354
+Caught the window closing
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control

@@ -341,7 +341,29 @@ def climate(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
-    # plotting CO2 sequestering
+    # land use change emissions from biochar
+    # get luc change data
+    luc = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/LUC_emissions_by_LUT.csv")
+    luc = luc[luc['LandLeaf'].str.contains("biochar")]
+    luc = luc[luc[['SSP']].isin(SSP).any(axis=1)]
+    luc = data_manipulation.group(luc, "GCAM")
+
+    # get biochar supply data
+    supply = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/supply_of_all_markets.csv")
+    supply = supply[supply[['product']].isin(["biochar"]).any(axis=1)]
+
+    # calculate ratio of biochar to LUC
+    merged = pd.merge(luc, supply, "left", left_on="GCAM", right_on="GCAM", suffixes=("_luc", "_biochar"))
+    for i in c.GCAMConstants.future_x:
+        # calculate application rates
+        merged[str(i)] = merged[str(i)+"_luc"] / merged[str(i)+"_biochar"]
+    merged["SSP"] = "SSP1"
+    merged["Units"] = "Mt C/Mt biochar"
+    plotting.plot_world(merged, ["biochar"], ["SSP1"], "year", "product_biochar", c.GCAMConstants.future_x, "biochar C sequestration rates")
+
+    # plotting CO2 avoidance
     co2_seq_released = pd.read_csv(
         "data/gcam_out/released/" + RCP + "/original/CO2_emissions_by_tech_excluding_resource_production.csv")
     co2_seq_pyrolysis = pd.read_csv(
@@ -352,7 +374,7 @@ def climate(nonBaselineScenario, RCP, SSP):
     products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar"]
     biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
     plotting.plot_line(biochar_pyrolysis, products, SSP, "product", "sector", "Version",
-                       title="CO2 sequestration from biochar")
+                       title="CO2 emission avoidance from biochar")
 
     # combine similar sectors
     co2_seq_released['sector'] = co2_seq_released.apply(lambda row: data_manipulation.label_sequestration_sectors(row),
@@ -386,6 +408,7 @@ def climate(nonBaselineScenario, RCP, SSP):
                                                          ["SSP", "GCAM", "GHG"])
     plotting.plot_world(flat_diff_nonCO2, ["N2O_AGR", "CH4_AGR", "NMVOC_AGR", "NOx_AGR", "NH3_AGR"],
                         SSP, "product", "GHG", ["2050"], "Spatial change in agricultural emissions in 2050")
+
 
 
 def land(nonBaselineScenario, RCP, SSP):
@@ -942,6 +965,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
+    climate("test", "2p6", ["SSP1"])
     carbon_price_biochar_supply("biochar", "6p0", ["SSP2"])
     carbon_price_biochar_supply("biochar", "4p5", ["SSP2"])
     figure2("biochar", "4p5", ["SSP2"])

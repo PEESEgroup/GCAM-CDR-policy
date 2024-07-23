@@ -204,7 +204,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              LandLeaf = paste(paste(paste(GCAM_subsector, GLU, sep = aglu.CROP_GLU_DELIMITER),
                                     Irr_Rfd, sep = aglu.IRR_DELIMITER),
                               level, sep = aglu.MGMT_DELIMITER),
-             # set biochar allocation values to 0
+             # set biochar allocation values to 0 to avoid creating extra land in the GCAM model in historical time periods
              value = ifelse(grepl("biochar", LandLeaf), 0, round(value, aglu.DIGITS_LAND_USE))) %>%
       rename(allocation = value) %>%
       select(region, year, LandLeaf, allocation) ->
@@ -312,8 +312,8 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       # at 50 Mg C/ ha application rate of biochar, is 5 kg C/ sq m. TODO: does not take into consideration consecutive applications of biochar
       # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
       # from: jgcri.github.io/gcam-doc/land.html, give soil carbon emissions as exponential formula
-      mutate(soil.carbon.density = if_else(grepl("biochar$", LandLeaf), soil.carbon.density + aglu.BIO_BIOCHAR_IO_KGBM2, soil.carbon.density),
-             hist.soil.carbon.density = if_else(grepl("biochar$", LandLeaf), hist.soil.carbon.density + aglu.BIO_BIOCHAR_IO_KGBM2, hist.soil.carbon.density))->
+      mutate(soil.carbon.density = if_else(grepl("biochar$", LandLeaf), soil.carbon.density + aglu.BIO_BIOCHAR_IO_KGBM2 * 10, soil.carbon.density),
+             hist.soil.carbon.density = if_else(grepl("biochar$", LandLeaf), hist.soil.carbon.density + aglu.BIO_BIOCHAR_IO_KGBM2 * 10, hist.soil.carbon.density))->
       L2252.LN5_MgdCarbon_crop #contains biochar
 
     L2012.AgYield_bio_ref %>%
