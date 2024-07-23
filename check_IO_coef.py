@@ -89,7 +89,7 @@ def getTestParams(scenarioName):
         return True, True, True
     elif scenarioName == "pyrolysis-nofert":
         return False, False, False
-    elif scenarioName == "biochar":
+    elif scenarioName == "biochar" or scenarioName=="test":
         return True, False, False
     else:
         return None
@@ -117,8 +117,9 @@ def getMask(nonBaselineScenario, RCP, filepath):
             nonBaselineScenario) + "/" + RCP + "/original/supply_of_all_markets.csv")  # current wd is /xml for some reason
         co2_emissions = pd.read_csv("data/gcam_out/" + str(
             nonBaselineScenario) + "/" + RCP + "/original/CO2_emissions_by_tech_excluding_resource_production.csv")
-        fert_tech = pd.read_csv("data/gcam_out/" + str(
-            nonBaselineScenario) + "/" + RCP + "/original/fertilizer_production_by_tech.csv")
+        if ifBiocharToFertilizer:
+            fert_tech = pd.read_csv("data/gcam_out/" + str(
+                nonBaselineScenario) + "/" + RCP + "/original/fertilizer_production_by_tech.csv")
 
         for j in ["beef", "dairy", "goat", "pork", "poultry"]:
             # carbon yields from manure
