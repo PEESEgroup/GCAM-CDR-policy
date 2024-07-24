@@ -24,7 +24,7 @@
 
 ## TODO: fix negative profit rate for biomassGrass in 2015
 ## it should be necessary to fix the calOutputValues for biochar being positive in the past
-## TODO: fix ZEMISSIONS_XML_ALL_AGLU_EMISSIONS_IRR_MGMT_XML producing an invalid XML file
+## ZEMISSIONS_XML_ALL_AGLU_EMISSIONS_IRR_MGMT_XML producing an invalid XML file - only differences are emissions parameters in Taiwan
 
 devtools::load_all()
 

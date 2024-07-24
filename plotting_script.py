@@ -361,7 +361,7 @@ def climate(nonBaselineScenario, RCP, SSP):
         merged[str(i)] = merged[str(i)+"_luc"] / merged[str(i)+"_biochar"]
     merged["SSP"] = "SSP1"
     merged["Units"] = "Mt C/Mt biochar"
-    plotting.plot_world(merged, ["biochar"], ["SSP1"], "year", "product_biochar", c.GCAMConstants.future_x, "biochar C sequestration rates")
+    plotting.plot_world(merged, ["biochar"], ["SSP1"], "year", "product_biochar", c.GCAMConstants.biochar_x, "biochar C sequestration rates")
 
     # plotting CO2 avoidance
     co2_seq_released = pd.read_csv(
