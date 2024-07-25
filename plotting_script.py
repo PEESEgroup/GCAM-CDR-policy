@@ -636,12 +636,12 @@ def figure4(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # regional land use change
-    released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/original/aggregated_land_allocation.csv")
+    released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/original/detailed_land_allocation.csv")
     pyrolysis_land = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/detailed_land_allocation.csv")
     released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_land = pyrolysis_land[pyrolysis_land[['SSP']].isin(SSP).any(axis=1)]
-    released_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
+    released_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row), axis=1)
     pyrolysis_land["LandLeaf"] = pyrolysis_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row), axis=1)
     pyrolysis_land = data_manipulation.group(pyrolysis_land, ["GCAM", "LandLeaf"])
     released_land = data_manipulation.group(released_land, ["GCAM", "LandLeaf"])

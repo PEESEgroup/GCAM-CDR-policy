@@ -1,0 +1,16 @@
+# File: A_agBiocharCropYieldIncrease,
+# Title: Crop yield increases over inorganic fertilizer controls,
+# Units: unitless,
+# Comments: Assumes inorganic fertilizer application in baseline,
+# Source: Ye L. Camps?Arbestain M. Shen Q. Lehmann J. Singh B. and Sabir M. 2020. Biochar effects on crop yields with and without fertilizer: A meta?analysis of field studies using separate controls. Soil Use and Management 36(1) pp.2-18.,
+# Column types: ccccnc,
+# ----------,
+Crop,Yield.Increase
+RootTuber,1.099
+Vegetables,1.159
+Legumes,1.272
+Wheat,1.028
+OtherGrains,1.028
+Rice,1.08
+Corn,1.127
+Other,1.099

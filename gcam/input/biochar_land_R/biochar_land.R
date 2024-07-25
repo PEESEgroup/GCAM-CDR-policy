@@ -57,7 +57,7 @@ devtools::load_all()
 ## A_An_secout_prices:
 # manure prices are set to 1e-7, as that is the smallest possible price based on the rounding in L202.an_input
 
-
+### TODO update based on book from Mann library
 #modify A21.globaltech_cost.csv
 example_file <- find_csv_file("energy/A21.globaltech_cost", FALSE)[[1]]
 file.copy(from = example_file, to = paste0(example_file, ".bak"))
@@ -241,9 +241,7 @@ readr::write_lines(tmp, example_file)
 
 
 ### CHANGES TO EMISSIONS ###
-
 #modify A_PrimaryFuelCCoef.csv
-#this is where I assume the emissions factors for pyrolysis itself should kept.
 example_file <- find_csv_file("emissions/A_PrimaryFuelCCoef.csv", FALSE)[[1]]
 file.copy(from = example_file, to = paste0(example_file, ".bak"))
 
@@ -252,17 +250,21 @@ tmp <- readr::read_lines(example_file)
 print("\n file before changes")
 print(tmp)
 # original value (units): (Mt C per Mt manure supply)
-#     used value (units): avoided biomass N2O CO2 CH4
-#               source 6: Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
+#     used value (units): C stored as biochar
+#               source 1: Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
 
-tmp[37] <- "poultry manure,-.160,0" # (1.63e9 [avoided Mg C] + 1.23e9 [net sequestered Mg C]) / 94 Tg *1000000 Mg/Tg [manure supply /year] * 100 years [beta secenario in 6, supplemental SI, supplemental .xlsx] * yield
-tmp[38] <- "pork manure,-.425,0" # (2.76e9 [avoided Mg C] + 9.01e8 [net sequestered Mg C]) / 63 Tg *1000000 Mg/Tg * 100 years * yield (manure/biochar)
-tmp[39] <- "beef manure,-.147,0" # (4.70e9 [avoided Mg C] + 3.33e9 [net sequestered Mg C]) / 294 Tg*1000000 Mg/Tg* 100 years * yield
-tmp[40] <- "dairy manure,-.147,0" # (4.70e9 [avoided Mg C] + 3.33e9 [net sequestered Mg C]) / 294 Tg*1000000 Mg/Tg* 100 years * yield
-tmp[41] <- "goat manure,-.425,0" # (same as swine)
+### THESE VALUES ARE FOR CDR AND ARE SUBJECT TO CARBON SUBSIDIES ###
+tmp[37] <- "poultry manure,-.131,0" # (1.23e9 [net sequestered Mg C]) / 94 Tg *1000000 Mg/Tg [manure supply /year] * 100 years [beta secenario in 6, supplemental SI, supplemental .xlsx] * yield
+tmp[38] <- "pork manure,-.143,0" # (63 Tg *1000000 Mg/Tg * 100 years * yield (manure/biochar)
+tmp[39] <- "beef manure,-.113,0" # (294 Tg*1000000 Mg/Tg* 100 years * yield
+tmp[40] <- "dairy manure,-.113,0" # (294 Tg*1000000 Mg/Tg* 100 years * yield
+tmp[41] <- "goat manure,-.143,0" # (same as swine)
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
+
+
+#TODO: add avoided emissions somewhere without climate taxes....
 
 
 ### update xml files ###
