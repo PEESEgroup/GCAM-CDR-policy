@@ -27,7 +27,7 @@ def build_batch_query(version, RCP, fname):
     ET.SubElement(command, "queryFile").text = "xml/query_list.xml"
 
     outdir = "data/gcam_out/" + str(version) + "/" + str(RCP)
-    outfile = outdir + "/ref.csv"
+    outfile = outdir + "/released.csv"
 
     ET.SubElement(command, "outFile").text = outfile
 

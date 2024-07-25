@@ -125,7 +125,29 @@ def group(df, columns):
     df = df.groupby(columns).sum()
     df = df.reset_index()
     df['Units'] = unit
+    df['SSP'] = df.apply(lambda row: relabel_SSP(row), axis=1)
     return df
+
+
+def relabel_SSP(row):
+    """
+    lambda function to relabel GCAM SSP after grouping.
+    :param row: row of data
+    :return: ungrouped GCAM SSP
+    """
+    SSP = row["SSP"]  # Products in staples vs. non staples in A_demand_subsector.csv
+    if "1" in SSP:
+        return "SSP1"
+    elif "2" in SSP:
+        return "SSP2"
+    elif "3" in SSP:
+        return "SSP3"
+    elif "4" in SSP:
+        return "SSP4"
+    elif "5" in SSP:
+        return "SSP5"
+    else:
+        return "error"
 
 
 def flat_summation(old, new, columns):
@@ -374,9 +396,9 @@ def relabel_land_use(row):
         return "grass land"
     elif luc == "shrubs":
         return "shrub land"
-    elif "forest (managed)" == luc:
+    elif "Hardwood_Forest" == luc or "Softwood_Forest" == luc:
         return "commercial forest"
-    elif "forest (unmanaged)" == luc:
+    elif "UnmanagedHardwood_Forest" == luc or "UnmanagedSoftwood_Forest" == luc:
         return "forest"
     elif "pasture (grazed)" == luc:
         return "intensively-grazed pasture"
@@ -386,6 +408,102 @@ def relabel_land_use(row):
         return "other arable land"
     else:
         return luc
+
+
+def relabel_detailed_land_use(row):
+    """
+    lambda function to relabel GCAM LandLeaf for greater accessibility. From: https://jgcri.github.io/gcam-doc/land.html
+    :param row: row of data
+    :return: updated name of GCAM LandLeaf
+    """
+    luc = row["LandLeaf"]
+    if "Grassland" in luc:
+         return "grass"
+    elif "ProtectedUnmanagedPasture" in luc:
+         return "pasture (other)"
+    elif "Vegetables" in luc:
+         return "crops"
+    elif "FodderHerb" in luc:
+         return "crops"
+    elif "MiscCrop" in luc:
+         return "crops"
+    elif "OtherGrainC4" in luc:
+         return "crops"
+    elif "PalmFruit" in luc:
+         return "crops"
+    elif "FiberCrop" in luc:
+         return "crops"
+    elif "NutsSeeds" in luc:
+         return "crops"
+    elif "OtherGrain" in luc:
+         return "crops"
+    elif "Soybean" in luc:
+         return "crops"
+    elif "FodderGrass" in luc:
+         return "crops"
+    elif "ProtectedGrassland" in luc:
+         return "grass"
+    elif "Fruits" in luc:
+         return "crops"
+    elif "FodderHerbC4" in luc:
+         return "crops"
+    elif "ProtectedUnmanagedForest" in luc:
+         return "forest (unmanaged)"
+    elif "biomassTree" in luc:
+         return "biomass"
+    elif "OilPalm" in luc:
+         return "crops"
+    elif "OtherArableLand" in luc:
+         return "otherarable"
+    elif "MiscCropTree" in luc:
+         return "crops"
+    elif "OilPalmTree" in luc:
+         return "crops"
+    elif "Rice" in luc:
+         return "crops"
+    elif "Legumes" in luc:
+         return "crops"
+    elif "NutsSeedsTree" in luc:
+         return "crops"
+    elif "OilCropTree" in luc:
+         return "crops"
+    elif "UrbanLand" in luc:
+         return "urban"
+    elif "RockIceDesert" in luc:
+         return "rock and desert"
+    elif "RootTuber" in luc:
+         return "crops"
+    elif "Corn" in luc:
+         return "crops"
+    elif "FruitsTree" in luc:
+         return "crops"
+    elif "OilCrop" in luc:
+         return "crops"
+    elif "ProtectedShrubland" in luc:
+         return "shrubs"
+    elif "SugarCrop" in luc:
+         return "crops"
+    elif "UnmanagedForest" in luc:
+         return "forest (unmanaged)"
+    elif "SugarCropC4" in luc:
+         return "crops"
+    elif "Pasture" in luc:
+         return "pasture (grazed)"
+    elif "Forest" in luc:
+         return "forest (managed)"
+    elif "biomassGrass" in luc:
+         return "biomass"
+    elif "Shrubland" in luc:
+         return "shrubs"
+    elif "UnmanagedPasture" in luc:
+         return "pasture (other)"
+    elif "Tundra" in luc:
+         return "tundra"
+    elif "Wheat" in luc:
+         return "crops"
+    elif "CornC4" in luc:
+         return "crops"
+    return "error"
 
 
 def relabel_food(row):

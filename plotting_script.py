@@ -333,6 +333,23 @@ def energy(nonBaselineScenario, RCP, SSP):
                         "spatial distribution in percentage change in price of refined liquids")
 
 
+def get_app_rate(row, product, year):
+    yields = 0
+    feedstock = row[product]
+    if feedstock == "beef manure":
+        yields = 0.11
+    if feedstock == "dairy manure":
+        yields = 0.11
+    if feedstock == "goat manure":
+        yields = 0.11
+    if feedstock == "pork manure":
+        yields = 0.14
+    if feedstock == "poultry manure":
+        yields = 0.13
+
+    # Mt manure * Mt C sequestration in biochar/Mt manure
+    return row[year] * yields
+
 def climate(nonBaselineScenario, RCP, SSP):
     """
     Returns plots related to climate
@@ -348,20 +365,38 @@ def climate(nonBaselineScenario, RCP, SSP):
     luc = luc[luc['LandLeaf'].str.contains("biochar")]
     luc = luc[luc[['SSP']].isin(SSP).any(axis=1)]
     luc = data_manipulation.group(luc, "GCAM")
+    luc["Units"] = "Modeled Mt C sequestered"
+    luc["product"] = "seq_C"
+    luc["SSP"] = "SSP1"
+    #plotting.plot_world(luc, ["seq_C"], ["SSP1"], "year", "product", c.GCAMConstants.biochar_x, "Modeled C sequestration (Mt)")
 
-    # get biochar supply data
-    supply = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/supply_of_all_markets.csv")
-    supply = supply[supply[['product']].isin(["biochar"]).any(axis=1)]
+    # calculate biochar sequestration rate
+    released_supply = pd.read_csv("data/gcam_out/test/2p6/masked/supply_of_all_markets.csv")
+    products = ["beef manure", "pork manure", "dairy manure", "poultry manure", "goat manure"]
+    released_supply = released_supply[released_supply[['product']].isin(products).any(axis=1)]
+    released_supply = released_supply[released_supply[['SSP']].isin(["SSP1"]).any(axis=1)]
+    released_supply = released_supply[~released_supply[['GCAM']].isin(["global"]).any(axis=1)]
 
-    # calculate ratio of biochar to LUC
-    merged = pd.merge(luc, supply, "left", left_on="GCAM", right_on="GCAM", suffixes=("_luc", "_biochar"))
-    for i in c.GCAMConstants.future_x:
+    # for each future year
+    for i in c.GCAMConstants.biochar_x:
         # calculate application rates
-        merged[str(i)] = merged[str(i)+"_luc"] / merged[str(i)+"_biochar"]
-    merged["SSP"] = "SSP1"
-    merged["Units"] = "Mt C/Mt biochar"
-    plotting.plot_world(merged, ["biochar"], ["SSP1"], "year", "product_biochar", c.GCAMConstants.biochar_x, "biochar C sequestration rates")
+        released_supply[str(i) + "_C"] = released_supply.apply(lambda row: get_app_rate(row, 'product', str(i)), axis=1)
+
+    C_rates = released_supply.groupby("GCAM")[[str(i) + "_C" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    C_rates.columns = C_rates.columns.str.rstrip("_C")
+    C_rates["Units"] = "Calculated Sequestered C (Mt)"
+    C_rates["SSP"] = "SSP1"
+
+    # map actual C sequestration
+    #plotting.plot_world(C_rates, ["SSP1"], ["SSP1"],"year", "SSP", c.GCAMConstants.biochar_x, "Actual C application rates (Mt)")
+
+    colors, num = plotting.get_colors(20)
+    for year, j in zip(c.GCAMConstants.biochar_x, range(len(c.GCAMConstants.biochar_x))):
+        plt.scatter(C_rates[str(year)], luc[str(year)], color=colors[j])
+    plt.xlabel("actual biochar C sequestration by country (Mt)")
+    plt.ylabel("modeled biochar C sequestration by country (Mt)")
+    plt.title("biochar C sequestration validation")
+    plt.show()
 
     # plotting CO2 avoidance
     co2_seq_released = pd.read_csv(
@@ -603,20 +638,26 @@ def figure4(nonBaselineScenario, RCP, SSP):
     # regional land use change
     released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/original/aggregated_land_allocation.csv")
     pyrolysis_land = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/aggregated_land_allocation.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/detailed_land_allocation.csv")
     released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_land = pyrolysis_land[pyrolysis_land[['SSP']].isin(SSP).any(axis=1)]
+    released_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
+    pyrolysis_land["LandLeaf"] = pyrolysis_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row), axis=1)
+    pyrolysis_land = data_manipulation.group(pyrolysis_land, ["GCAM", "LandLeaf"])
+    released_land = data_manipulation.group(released_land, ["GCAM", "LandLeaf"])
     flat_diff_land = data_manipulation.flat_difference(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
 
     flat_diff_land['GCAM'] = flat_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     flat_diff_land["LandLeaf"] = flat_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
-    plotting.plot_stacked_bar_product(flat_diff_land, "2050", SSP, "LandLeaf", "land use change by region")
+    flat_diff_land = data_manipulation.group(flat_diff_land, ["GCAM", "LandLeaf"])
+    for i in c.GCAMConstants.future_x: #
+        plotting.plot_stacked_bar_product(flat_diff_land, str(i), SSP, "LandLeaf", "land use change by region " + str(i))
 
     flat_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
 
     flat_diff_land['GCAM'] = flat_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     flat_diff_land["LandLeaf"] = flat_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
-    plotting.plot_stacked_bar_product(flat_diff_land, "2050", SSP, "LandLeaf", "land use change by region")
+    plotting.plot_stacked_bar_product(flat_diff_land, "2070", SSP, "LandLeaf", "land use change by region")
 
 
 def figure5(nonBaselineScenario, RCP, SSP):
@@ -965,12 +1006,12 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    climate("test", "2p6", ["SSP1"])
-    carbon_price_biochar_supply("biochar", "6p0", ["SSP2"])
-    carbon_price_biochar_supply("biochar", "4p5", ["SSP2"])
-    figure2("biochar", "4p5", ["SSP2"])
-    figure3("biochar", "4p5", ["SSP2"])
-    figure4("biochar", "4p5", ["SSP2"])
+    #climate("test", "2p6", ["SSP1"])
+    #carbon_price_biochar_supply("biochar", "6p0", ["SSP2"])
+    #carbon_price_biochar_supply("biochar", "4p5", ["SSP2"])
+    #figure2("biochar", "4p5", ["SSP2"])
+    #figure3("biochar", "4p5", ["SSP2"])
+    figure4("test", "2p6", ["SSP1"])
     figure5("biochar", "4p5", ["SSP2"])
     figure6("biochar", "4p5", ["SSP2"])
     figure7("biochar", ["4p5"], c.GCAMConstants.SSPs)
