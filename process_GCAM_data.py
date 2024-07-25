@@ -231,7 +231,7 @@ def main():
         csvs = split_file(i)  # split file based on header rows
 
         # get the mask if it isn't the reference data
-        if i.split("/")[2] != "ref":
+        if i.split("/")[2] != "ref" and i.split("/")[2] != "released":
             mask = check_IO_coef.getMask(i.split("/")[2], i.split("/")[3], "/".join(i.split("/")[:-1])+"/")
 
             # create directories if they don't already exist
