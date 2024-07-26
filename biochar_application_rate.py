@@ -1,22 +1,19 @@
 import math
-
-import matplotlib.pyplot as plt
 import constants as c
 import pandas as pd
-import numpy as np
 import data_manipulation
 import plotting
 
 
 def nutrient_supply(row, product, nutrient, year, biochar=False):
     """
-    calculates the nutrient supply based on the supply of animal products
-    :param row: row in a pandas dataframe
-    :param product: product used as the basis for calculation, with the gompertz function being added to calculations based on supply of animal products
-    :param nutrient: nutrient applied to the field
-    :param year: year of supply
-    :param biochar: if just the supply of biochar is calculated
-    :return: supply of the nutrient in Mt
+    calculates the nutrient supply based on the supply of animal products :param row: row in a pandas dataframe
+    :param product: product used as the basis for calculation, with the gompertz function being added to calculations
+    based on supply of animal products :param nutrient: nutrient applied to the field :param year: year of supply
+    :param biochar: if just the supply of biochar is calculated :return: supply of the nutrient in Mt
+    :param row: row in pandas dataframe
+    :param nutrient: nutrient being analyzed, such as C, P, or K
+    :param year: GCAM model year
     """
     biochar_to_nutrient = 0
     biochar_yields = 0
@@ -27,7 +24,8 @@ def nutrient_supply(row, product, nutrient, year, biochar=False):
         if feedstock == "Beef":
             manure_yields = 2.589 * gompertz(year)
         if nutrient == "C":
-            # 7: Atienza-Martínez, M., Ábrego, J., Gea, G. & Marías, F. Pyrolysis of dairy cattle manure: evolution of char characteristics. Journal of Analytical and Applied Pyrolysis 145, 104724 (2020).
+            # 7: Atienza-Martínez, M., Ábrego, J., Gea, G. & Marías, F. Pyrolysis of dairy cattle manure: evolution
+            # of char characteristics. Journal of Analytical and Applied Pyrolysis 145, 104724 (2020).
             biochar_to_nutrient = .396
         elif nutrient == "P":
             # element info taken from Enders et al. 2012 at 500 C
@@ -99,13 +97,24 @@ def nutrient_supply(row, product, nutrient, year, biochar=False):
 
 
 def gompertz(year):
+    """
+    calculates the rate of biochar adoption based on a gompertz curve from literature
+    :param year: GCAM model year
+    :return: fraction of adoption
+    """
     return 1*math.exp(-11*math.exp(-0.25*(int(year)-2028)))
 
 
 def plot_world(dataframe, year, title):
+    """
+    Plots dataframe on a world map
+    :param dataframe: data to be plotted
+    :param year: list of years to be plotted
+    :param title: title of plot
+    :return: N/A
+    """
     try:
         counter = 0
-        units = "N/A"
         # get plot information
         axs, cmap, fig, im, ncol, normalizer, nrow = plotting.create_subplots(
             dataframe=dataframe,
@@ -119,7 +128,7 @@ def plot_world(dataframe, year, title):
         # iterate through all subplots
         for j in year:
             subplot_title = str(j)
-            units = plotting.get_df_to_plot(
+            plotting.get_df_to_plot(
                 dataframe=dataframe,
                 ncol=ncol,
                 nrow=nrow,
@@ -144,6 +153,13 @@ def plot_world(dataframe, year, title):
 
 
 def nutrient_spatial_analysis(supply, land, version):
+    """
+    conducts a spatial andlysis of nutrient needs by crops
+    :param supply: supply of biochar
+    :param land: land area devoted to crops
+    :param version: scenario name
+    :return: .csv files containing nutrient supplies and demands by region
+    """
     # get nutrient demands in kg/ha
     released_nutrients = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_agRecommendedNutrientRates.csv")
     # remove header rows
@@ -227,7 +243,7 @@ def nutrient_spatial_analysis(supply, land, version):
     plot_world(K_diff, c.GCAMConstants.biochar_x, "K supply in biochar - K demand (Mt)")
     K_diff.to_csv("data/data_analysis/K_diff_" + version + ".csv")
 
-    #process P/K ratios and output to csv
+    # process P/K ratios and output to csv
     P_ratio = P_merged.groupby("GCAM")[[str(i) + "_ratio" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
     P_ratio.columns = P_ratio.columns.str.rstrip("_ratio")
     P_ratio["Units"] = "Mt"
@@ -245,6 +261,10 @@ def nutrient_spatial_analysis(supply, land, version):
 
 
 def nutrient_supply_scenarios():
+    """
+    reads in data from stored .csv files to prepare nutrient spatial analysis calculation scenarios
+    :return: N/A
+    """
     # with hypothetical data
     products = ["Beef", "Pork", "Dairy", "SheepGoat", "Poultry"]
     released_supply = pd.read_csv("data/gcam_out/released/2p6/original/supply_of_all_markets.csv")
@@ -273,6 +293,12 @@ def nutrient_supply_scenarios():
 
 
 def nutrient_limit(row, year):
+    """
+    identifies the limiting nutrient
+    :param row: row in pandas dataframe
+    :param year: year in GCAM model
+    :return: the nutrient that limits biochar application
+    """
     # if demand ratio < supply ratio, limit on P
     # else limit on K
     if row[str(year) + "_demand"] > row[str(year) + "_supply"]:
@@ -281,12 +307,21 @@ def nutrient_limit(row, year):
 
 
 def biochar_rate(row, year):
+    """
+    calculates the biochar application rate depending on the limiting nutrient
+    :param row: row in pandas dataframe
+    :param year: GCAM model year
+    :return: supply of biochar necessary to meet land requirements for limited nutrient
+    """
     # Mt / unitless = Mt
     return row[str(year) + "_P"] / row[str(year) + "_P_frac"] if row[str(year) + "limit"] == "P" else row[str(year) + "_K"] / row[str(year)]
 
 
 def biochar_application_rate_calculations():
-    global i, P_K_supply
+    """
+    calculates biochar application rate based on nutrient demands by crop in different land regions by year
+    :return: N/A
+    """
     P_supply = pd.read_csv("data/data_analysis/P_supplyhypothetical.csv")  # Mt
     K_supply = pd.read_csv("data/data_analysis/K_supplyhypothetical.csv")
     P_K_supply = pd.merge(P_supply, K_supply, how="left", on="GCAM", suffixes=("_P", "_K"))
@@ -307,8 +342,8 @@ def biochar_application_rate_calculations():
     PK_ratios = pd.merge(P_K_demand, P_K_supply, how="left", on="GCAM", suffixes=("_demand", "_supply"))
     for i in c.GCAMConstants.biochar_x:
         PK_ratios[str(i) + "limit"] = PK_ratios.apply(lambda row: nutrient_limit(row, i), axis=1)
+
     # get P, K, C, biochar supply by region
-    C_supply = pd.read_csv("data/data_analysis/C_supplyhypothetical.csv")
     biochar_supply = pd.read_csv("data/data_analysis/biochar_supplyhypothetical.csv")  # Mt
     # get P/K as fraction of biochar
     P_frac = pd.merge(biochar_supply, P_supply, how="left", on="GCAM", suffixes=("_biochar", "_P"))
