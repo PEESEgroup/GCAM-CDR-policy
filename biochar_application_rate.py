@@ -8,13 +8,14 @@ import data_manipulation
 import plotting
 
 
-def nutrient_supply(row, product, nutrient, year):
+def nutrient_supply(row, product, nutrient, year, biochar=False):
     """
     calculates the nutrient supply based on the supply of animal products
     :param row: row in a pandas dataframe
     :param product: product used as the basis for calculation, with the gompertz function being added to calculations based on supply of animal products
     :param nutrient: nutrient applied to the field
     :param year: year of supply
+    :param biochar: if just the supply of biochar is calculated
     :return: supply of the nutrient in Mt
     """
     biochar_to_nutrient = 0
@@ -89,7 +90,12 @@ def nutrient_supply(row, product, nutrient, year):
 
     # Mt manure * Mt biochar/Mt manure * Mt nutrient/Mt biochar * 1 (if already manure)
     # Mt animal product * Mt manure/Mt animal product * Mt biochar/Mt manure * Mt nutrient/Mt biochar (if using released model)
-    return row[year] * biochar_yields * biochar_to_nutrient * manure_yields
+    if biochar:
+        return row[year] * biochar_yields * manure_yields
+    else:
+        # Mt manure * Mt biochar/Mt manure * Mt nutrient/Mt biochar * 1 (if already manure)
+        # Mt animal product * Mt manure/Mt animal product * Mt biochar/Mt manure * Mt nutrient/Mt biochar (if using released model)
+        return row[year] * biochar_yields * biochar_to_nutrient * manure_yields
 
 
 def gompertz(year):
@@ -159,24 +165,36 @@ def nutrient_spatial_analysis(supply, land, version):
             "Commodity_Median_P"] * conversion_factor
         land_nutrients[str(i) + "_K"] = land_nutrients[str(i)] * land_nutrients[
             "Commodity_Median_K"] * conversion_factor
+
+    # nutrient demands by crop/region
+    P_demand_crop_region = land_nutrients.groupby(["GCAM", "LandLeaf"])[[str(i) + "_P" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    K_demand_crop_region = land_nutrients.groupby(["GCAM", "LandLeaf"])[
+        [str(i) + "_K" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    P_demand_crop_region.to_csv("gcam/input/gcamdata/inst/extdata/aglu/P_demand_crop_region_" + version + ".csv")
+    K_demand_crop_region.to_csv("gcam/input/gcamdata/inst/extdata/aglu/K_demand_crop_region_" + version + ".csv")
+
     land_nutrients = data_manipulation.group(land_nutrients, ["GCAM"])  # group nutrient demands by GCAM region
     # for each year with biochar, calculate supply of nutrients
     for i in c.GCAMConstants.biochar_x:
         supply[str(i) + "_C"] = supply.apply(
             lambda row: nutrient_supply(row, 'product', "C", str(i)), axis=1)
         supply[str(i) + "_P"] = supply.apply(
-            lambda row: nutrient_supply(row, 'product', "C", str(i)), axis=1)
+            lambda row: nutrient_supply(row, 'product', "P", str(i)), axis=1)
         supply[str(i) + "_K"] = supply.apply(
-            lambda row: nutrient_supply(row, 'product', "C", str(i)), axis=1)
+            lambda row: nutrient_supply(row, 'product', "K", str(i)), axis=1)
+        supply[str(i) + "_biochar"] = supply.apply(
+            lambda row: nutrient_supply(row, 'product', "K", str(i), biochar=True), axis=1)
     # group amounts by region and process dataframe
     C_supply = supply.groupby("GCAM")[[str(i) + "_C" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
     P_supply = supply.groupby("GCAM")[[str(i) + "_P" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
     K_supply = supply.groupby("GCAM")[[str(i) + "_K" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    biochar_supply = supply.groupby("GCAM")[[str(i) + "_biochar" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
     P_demand = land_nutrients.groupby("GCAM")[[str(i) + "_P" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
     K_demand = land_nutrients.groupby("GCAM")[[str(i) + "_K" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
     C_supply.columns = C_supply.columns.str.rstrip("_C")
     P_supply.columns = P_supply.columns.str.rstrip("_P")
     K_supply.columns = K_supply.columns.str.rstrip("_K")
+    biochar_supply.columns = biochar_supply.columns.str.rstrip("_biochar")
     P_demand.columns = P_demand.columns.str.rstrip("_P")
     K_demand.columns = K_demand.columns.str.rstrip("_K")
     C_supply["Units"] = "Mt"
@@ -209,42 +227,128 @@ def nutrient_spatial_analysis(supply, land, version):
     plot_world(K_diff, c.GCAMConstants.biochar_x, "K supply in biochar - K demand (Mt)")
     K_diff.to_csv("data/data_analysis/K_diff_" + version + ".csv")
 
-    #TODO: process P/K ratios and output to csv
-    #TODO: process C supply and output to csv
+    #process P/K ratios and output to csv
+    P_ratio = P_merged.groupby("GCAM")[[str(i) + "_ratio" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    P_ratio.columns = P_ratio.columns.str.rstrip("_ratio")
+    P_ratio["Units"] = "Mt"
+    P_ratio.to_csv("data/data_analysis/P_ratio_" + version + ".csv")
+    K_ratio = K_merged.groupby("GCAM")[[str(i) + "_ratio" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    K_ratio.columns = K_ratio.columns.str.rstrip("_ratio")
+    K_ratio["Units"] = "Mt"
+    K_ratio.to_csv("data/data_analysis/K_ratio_" + version + ".csv")
+
+    # process C supply and output to csv
+    C_supply.to_csv("data/data_analysis/C_supply" + version + ".csv")
+    P_supply.to_csv("data/data_analysis/P_supply" + version + ".csv")
+    K_supply.to_csv("data/data_analysis/K_supply" + version + ".csv")
+    biochar_supply.to_csv("data/data_analysis/biochar_supply" + version + ".csv")
 
 
-if __name__ == '__main__':
-    # get supply of animal products
-    #TODO extract method
+def nutrient_supply_scenarios():
+    # with hypothetical data
     products = ["Beef", "Pork", "Dairy", "SheepGoat", "Poultry"]
     released_supply = pd.read_csv("data/gcam_out/released/2p6/original/supply_of_all_markets.csv")
     released_supply = released_supply[released_supply[['product']].isin(products).any(axis=1)]
     released_supply = released_supply[released_supply[['SSP']].isin(["SSP1"]).any(axis=1)]
     released_supply = released_supply[~released_supply[['GCAM']].isin(["global"]).any(axis=1)]
-
     # get land area in thousand km2
     released_land = pd.read_csv("data/gcam_out/released/2p6/original/detailed_land_allocation.csv")
     released_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_land_crops(row), axis=1)
     released_land = data_manipulation.group(released_land, ["GCAM", "LandLeaf"])
     released_land = released_land[~released_land[['GCAM']].isin(["global"]).any(axis=1)]
-
     nutrient_spatial_analysis(released_supply, released_land, "hypothetical")
 
+    # with existing data
     products = ["beef manure", "pork manure", "dairy manure", "poultry manure", "goat manure"]
     biochar_supply = pd.read_csv("data/gcam_out/test/2p6/masked/supply_of_all_markets.csv")
     biochar_supply = biochar_supply[biochar_supply[['product']].isin(products).any(axis=1)]
     biochar_supply = biochar_supply[biochar_supply[['SSP']].isin(["SSP1"]).any(axis=1)]
     biochar_supply = biochar_supply[~biochar_supply[['GCAM']].isin(["global"]).any(axis=1)]
-
     # get land area in thousand km2
     biochar_land = pd.read_csv("data/gcam_out/test/2p6/masked/detailed_land_allocation.csv")
     biochar_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_land_crops(row), axis=1)
     biochar_land = data_manipulation.group(released_land, ["GCAM", "LandLeaf"])
     biochar_land = biochar_land[~biochar_land[['GCAM']].isin(["global"]).any(axis=1)]
-
     nutrient_spatial_analysis(biochar_supply, biochar_land, "3Mg_ha")
 
-    # TODO load in P/K ratios
-    # TODO combine dataframes, take 1 - minimum ratio, multiply by biochar C to get excess biochar
-    # TODO get crop-specific biochar application rates in kg/ha
 
+def nutrient_limit(row, year):
+    # if demand ratio < supply ratio, limit on P
+    # else limit on K
+    if row[str(year) + "_demand"] > row[str(year) + "_supply"]:
+        return "K"
+    return "P"
+
+
+def biochar_rate(row, year):
+    # Mt / unitless = Mt
+    return row[str(year) + "_P"] / row[str(year) + "_P_frac"] if row[str(year) + "limit"] == "P" else row[str(year) + "_K"] / row[str(year)]
+
+
+def biochar_application_rate_calculations():
+    global i, P_K_supply
+    P_supply = pd.read_csv("data/data_analysis/P_supplyhypothetical.csv")  # Mt
+    K_supply = pd.read_csv("data/data_analysis/K_supplyhypothetical.csv")
+    P_K_supply = pd.merge(P_supply, K_supply, how="left", on="GCAM", suffixes=("_P", "_K"))
+    for i in c.GCAMConstants.biochar_x:
+        P_K_supply[str(i) + "_PK-ratio"] = P_K_supply[str(i) + "_P"] / P_K_supply[str(i) + "_K"]
+    P_K_supply = P_K_supply.groupby("GCAM")[
+        [str(i) + "_PK-ratio" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    P_K_supply.columns = P_K_supply.columns.str.rstrip("_PK-ratio")  # P/K of the supply of biochar
+    # demand is crop specific - supply is not
+    P_demand = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/P_demand_crop_region_hypothetical.csv")  # Mt
+    K_demand = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/K_demand_crop_region_hypothetical.csv")
+    P_K_demand = pd.merge(P_demand, K_demand, how="left", on=["GCAM", "LandLeaf"], suffixes=("_P", "_K"))
+    for i in c.GCAMConstants.biochar_x:
+        P_K_demand[str(i) + "_PK-ratio"] = P_K_demand[str(i) + "_P"] / P_K_demand[str(i) + "_K"]
+    P_K_demand = P_K_demand.groupby(["GCAM", "LandLeaf"])[
+        [str(i) + "_PK-ratio" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    P_K_demand.columns = P_K_demand.columns.str.rstrip("_PK-ratio")  # P/K of the demand of biochar
+    PK_ratios = pd.merge(P_K_demand, P_K_supply, how="left", on="GCAM", suffixes=("_demand", "_supply"))
+    for i in c.GCAMConstants.biochar_x:
+        PK_ratios[str(i) + "limit"] = PK_ratios.apply(lambda row: nutrient_limit(row, i), axis=1)
+    # get P, K, C, biochar supply by region
+    C_supply = pd.read_csv("data/data_analysis/C_supplyhypothetical.csv")
+    biochar_supply = pd.read_csv("data/data_analysis/biochar_supplyhypothetical.csv")  # Mt
+    # get P/K as fraction of biochar
+    P_frac = pd.merge(biochar_supply, P_supply, how="left", on="GCAM", suffixes=("_biochar", "_P"))
+    K_frac = pd.merge(biochar_supply, K_supply, how="left", on="GCAM", suffixes=("_biochar", "_K"))
+    # calculate fraction for each time period
+    for i in c.GCAMConstants.biochar_x:
+        P_frac[str(i)] = P_frac[str(i) + "_P"] / P_frac[str(i) + "_biochar"]
+        K_frac[str(i)] = K_frac[str(i) + "_K"] / K_frac[str(i) + "_biochar"]
+    # get mean fraction
+    P_frac = P_frac.groupby("GCAM")[[str(i) for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    K_frac = K_frac.groupby("GCAM")[[str(i) for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    # divide demand by P or K fraction depending by limiting factor to get biochar rates
+    nutrient_demand = pd.merge(P_demand, K_demand, how="left", on=["GCAM", "LandLeaf"])
+    nutrient_demand = pd.merge(nutrient_demand, PK_ratios, how="left", on=["GCAM", "LandLeaf"])
+    nutrient_demand = pd.merge(nutrient_demand, K_frac, how="left", on="GCAM")
+    nutrient_demand = pd.merge(nutrient_demand, P_frac, how="left", on="GCAM", suffixes=("", "_P_frac"))
+    for i in c.GCAMConstants.biochar_x:
+        nutrient_demand[str(i) + "_biochar_demand"] = nutrient_demand.apply(lambda row: biochar_rate(row, i), axis=1)
+    biochar_demand = nutrient_demand.groupby(["GCAM", "LandLeaf"])[
+        [str(i) + "_biochar_demand" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    biochar_demand["Units"] = "Mt biochar"
+    released_land = pd.read_csv("data/gcam_out/released/2p6/original/detailed_land_allocation.csv")
+    released_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_land_crops(row), axis=1)
+    released_land = data_manipulation.group(released_land, ["GCAM", "LandLeaf"])
+    released_land = released_land[~released_land[['GCAM']].isin(["global"]).any(axis=1)]
+    biochar_app_rate = pd.merge(biochar_demand, released_land, how="left", on=["GCAM", "LandLeaf"])
+    for i in c.GCAMConstants.biochar_x:
+        # [Mt / 1000 km2] / [ha / 1000 km2] * [kg/Mt]
+        biochar_app_rate[str(i) + "_app_rate"] = biochar_demand[str(i) + "_biochar_demand"] / biochar_app_rate[
+            str(i)] / 100000 * 1e9
+    biochar_app_rate = biochar_app_rate.groupby(["GCAM", "LandLeaf"])[
+        [str(i) + "_app_rate" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
+    biochar_app_rate["Units"] = "kg/ha"
+    biochar_app_rate.columns = biochar_app_rate.columns.str.rstrip("_app_rate")
+    biochar_app_rate.to_csv("gcam/input/gcamdata/inst/extdata/aglu/A_AgBiocharApplicationRateYrCropLand.csv")
+
+
+if __name__ == '__main__':
+    # get supply of animal products
+    # nutrient_supply_scenarios()
+
+    # calculate ratio of P / K in supply and demand
+    biochar_application_rate_calculations()
