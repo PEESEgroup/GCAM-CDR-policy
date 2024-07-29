@@ -3,6 +3,7 @@ import constants as c
 import pandas as pd
 import data_manipulation
 import plotting
+import csv
 
 
 def nutrient_supply(row, product, nutrient, year, biochar=False):
@@ -376,14 +377,51 @@ def biochar_application_rate_calculations():
             str(i)] / 100000 * 1e9
     biochar_app_rate = biochar_app_rate.groupby(["GCAM", "LandLeaf"])[
         [str(i) + "_app_rate" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
-    biochar_app_rate["Units"] = "kg/ha"
+    # biochar_app_rate["Units"] = "kg/ha"
     biochar_app_rate.columns = biochar_app_rate.columns.str.rstrip("_app_rate")
-    biochar_app_rate.to_csv("gcam/input/gcamdata/inst/extdata/aglu/A_AgBiocharApplicationRateYrCropLand.csv")
+    # add extra columns for earlier dates that copy 2035 demand
+    for i in c.GCAMConstants.x:
+        if i < 2035:
+            biochar_app_rate[str(i)] = biochar_app_rate["2035"]
+    biochar_app_rate["1975"] = biochar_app_rate["2035"]
+
+    # get GCAM AgSectors only
+    leafs = ["Corn", "FiberCrop", "FodderGrass", "FodderHerb", "Fruits", "Legumes", "MiscCrop", "NutsSeeds", "OilCrop",
+             "OilPalm", "OtherGrain", "Rice", "RootTuber", "Soybean", "SugarCrop", "Vegetables", "Wheat"]
+    biochar_app_rate = biochar_app_rate[biochar_app_rate[["LandLeaf"]].isin(leafs).any(axis=1)]
+    biochar_app_rate = pd.melt(biochar_app_rate, id_vars=["GCAM", "LandLeaf"], value_vars=[x for x in biochar_app_rate.columns if x not in ["GCAM", "LandLeaf"]])
+    biochar_app_rate.columns = ["region", "AgSupplySector", "year", "rate_kg_ha"]
+    biochar_app_rate.to_csv("gcam/input/gcamdata/inst/extdata/aglu/BiocharAppRates.csv", index=False)
+    with open("gcam/input/gcamdata/inst/extdata/aglu/A_AgBiocharApplicationRateYrCropLand.csv", 'w', newline='') as out_f:
+        writer = csv.writer(out_f)
+
+        # read in input data
+        with open("gcam/input/gcamdata/inst/extdata/aglu/BiocharAppRates.csv", newline='') as in_f:
+            reader = csv.reader(in_f)
+
+            # write out the header data
+            header = [
+                ["# File: A_AgBiocharApplicationRateYrCropLand.csv"],
+                ["# Title: Biochar application rates based on the year; crop type; and GCAM region"],
+                ["# Units: kg biochar/ha"],
+                ["# Comments: N/A"],
+                ["# Source: A_agRecommendedNutrientRates"],
+                ["# Column types: ccnn"],
+                ["# ------------"],
+            ]
+
+            # write out the header info
+            for row in header:
+                writer.writerow(row)
+
+            # copy over the data
+            for row in reader:
+                writer.writerow(row)
 
 
 if __name__ == '__main__':
     # get supply of animal products
-    # nutrient_supply_scenarios()
+    nutrient_supply_scenarios()
 
     # calculate ratio of P / K in supply and demand
     biochar_application_rate_calculations()

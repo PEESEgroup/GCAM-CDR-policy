@@ -425,7 +425,7 @@ def relabel_detailed_land_use(row):
     elif "Vegetables" in luc:
         return "crops"
     elif "FodderHerb" in luc:
-        return "crops"
+        return "FodderHerb"
     elif "MiscCrop" in luc:
         return "crops"
     elif "OtherGrainC4" in luc:
@@ -441,13 +441,13 @@ def relabel_detailed_land_use(row):
     elif "Soybean" in luc:
         return "crops"
     elif "FodderGrass" in luc:
-        return "crops"
+        return "FodderGrass"
     elif "ProtectedGrassland" in luc:
         return "grass"
     elif "Fruits" in luc:
         return "crops"
     elif "FodderHerbC4" in luc:
-        return "crops"
+        return "FodderHerb"
     elif "ProtectedUnmanagedForest" in luc:
         return "forest (unmanaged)"
     elif "biomassTree" in luc:
@@ -581,7 +581,7 @@ def relabel_land_crops(row):
     elif "Vegetables" in luc:
         return "Vegetables"
     elif "FodderHerb" in luc:
-        return "fodder"
+        return "FodderHerb"
     elif "MiscCrop" in luc:
         return "MiscCrop"
     elif "OtherGrainC4" in luc:
@@ -597,13 +597,13 @@ def relabel_land_crops(row):
     elif "Soybean" in luc:
         return "Soybean"
     elif "FodderGrass" in luc:
-        return "fodder"
+        return "FodderGrass"
     elif "ProtectedGrassland" in luc:
         return "grass"
     elif "Fruits" in luc:
         return "Fruits"
     elif "FodderHerbC4" in luc:
-        return "fodder"
+        return "FodderHerb"
     elif "ProtectedUnmanagedForest" in luc:
         return "forest (unmanaged)"
     elif "biomassTree" in luc:

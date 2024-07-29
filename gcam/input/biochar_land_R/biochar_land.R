@@ -22,8 +22,11 @@
 
 ## changing biochar application rates is done in constants
 
-## TODO: fix negative profit rate for biomassGrass in 2015
-## it should be necessary to fix the calOutputValues for biochar being positive in the past
+## TODO: update calOutputValues
+## TODO: update prune_ag for biochar lands with 0 biochar applied - may need to change in L171.ag_rfdEcYield_kgm2_R_C_Y_GLU actually
+## TODO: update economic coefficients
+## TODO: update climate coefficients for avoided emissions
+## TODO: update P and K costs for biochar lands
 ## ZEMISSIONS_XML_ALL_AGLU_EMISSIONS_IRR_MGMT_XML producing an invalid XML file - only differences are emissions parameters in Taiwan
 
 devtools::load_all()

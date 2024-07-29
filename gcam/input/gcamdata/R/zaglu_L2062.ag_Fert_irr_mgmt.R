@@ -76,12 +76,35 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
     # Enders, A., Hanley, K., Whitman, T., Joseph, S. and Lehmann, J., 2012. Characterization of biochars to evaluate recalcitrance and agronomic performance. Bioresource technology, 114, pp.644-653.
     # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
     # TODO: replace
+
+    A_AgBiocharApplicationRateYrCropLand %>%
+      mutate(GCAM_commodity = AgSupplySector) %>%
+      select(-AgSupplySector)->
+      L2062.bio_app_rate
+
+
     L2062.ag_Fert_MGMT %>%
         left_join(L171.ag_rfdEcYield_kgm2_R_C_Y_GLU, by = c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year"))%>%
         filter(MGMT == "biochar") %>%
-        mutate(value = if_else(value.y==0, 0, aglu.BIO_BIOCHAR_IO_KGBM2/value.y))%>% # if there is no fert demand, there should be no biochar demand
+        filter(year == max(MODEL_BASE_YEARS)) %>%
+        select(-year) %>%
+        repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS)) %>%
+        bind_rows(L2062.ag_Fert_MGMT %>%
+                    left_join(L171.ag_rfdEcYield_kgm2_R_C_Y_GLU, by = c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year"))%>%
+                    filter(MGMT == "biochar")) %>%
+        left_join(L2062.bio_app_rate, by=c("region", "GCAM_commodity", "year")) %>%
+        replace_na(list(rate_kg_ha = 0)) %>%
+        mutate(value = if_else(value.y==0, 0, rate_kg_ha/10000/value.y))%>% # kg/ha to km sqm divided by yield on a square meter basis
         mutate(minicam.energy.input = "biochar") %>%
-        select(-value.y, -value.x) -> L2062.ag_biochar_MGMT
+        select(-value.y, -value.x, -rate_kg_ha) %>%
+        mutate(AgSupplySector = GCAM_commodity,
+               AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
+               AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.IRR_DELIMITER),
+                                              MGMT, sep = aglu.MGMT_DELIMITER)) %>%
+        rename(coefficient = value) %>% #remove inclusion of minicam energy input here because it was added earlier
+        select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, minicam.energy.input, year, coefficient)-> L2062.ag_biochar_MGMT
+
+      print(L2062.ag_biochar_MGMT %>% filter(year> 2035))
 
     # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
     # assumes a 50% increase in N use efficiency due to biochar application - this is modeled by reducing the N fertilizer requirement by 2
@@ -106,10 +129,13 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       filter(year == max(MODEL_BASE_YEARS)) %>%
       select(-year) %>%
       repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS)) %>%
-      bind_rows(L2062.AgCoef_Fert_ag_irr_mgmt) %>%filter(coefficient > 0) ->
+      bind_rows(L2062.AgCoef_Fert_ag_irr_mgmt) %>%
+      bind_rows(L2062.ag_biochar_MGMT) %>%
+      filter(coefficient > 0) ->
       L2062.AgCoef_Fert_ag_irr_mgmt
 
     print(L2062.AgCoef_Fert_ag_irr_mgmt)
+
 
     # Calculate fertilizer coefficients for grassy bioenergy crops
     A_Fodderbio_chars %>%
@@ -132,44 +158,15 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       select(-nonLandVariableCost) %>%                  # We are just using this data.frame to get the region/sector/tech names
       mutate(minicam.energy.input = "N fertilizer",
              coefficient = if_else(grepl("^biomassGrass", AgSupplySubsector),
-                                   bio_grass_coef$coefficient, bio_tree_coef$coefficient)) %>%
-      # lower N use due to increase in N use efficiency caused by biochar application - same justification as crop lands above
-      mutate(coefficient = if_else(grepl("biochar", AgProductionTechnology), coefficient/2, coefficient))->
+                                   bio_grass_coef$coefficient, bio_tree_coef$coefficient)) ->
       L2062.AgCoef_Fert_bio_irr_mgmt
 
     print(L2052.AgCost_bio_irr_mgmt)
 
-    # Calculate biochar coefficients for grassy bioenergy crops
-    A_Fodderbio_chars %>%
-      filter(GCAM_commodity == "biomassGrass") %>%
-      mutate(coefficient = (aglu.BIO_BIOCHAR_IO_KGBM2 / aglu.BIO_GRASS_YIELD_KGCM2    # Convert from application per unit area to per unit carbon
-                            * aglu.CCONTENT_CELLULOSE * (1 - WaterContent))                         # Convert from carbon to wet biomass
-             / (aglu.BIO_ENERGY_CONTENT_GJT * CONV_KG_T)) ->                         # Convert from biomass to energy
-      bio_grass_biochar_coef # getting biochar demand for biomassTree biochar nodes
-
-    # Calculate biochar coefficients for tree bioenergy crops
-    A_Fodderbio_chars %>%
-      filter(GCAM_commodity == "biomassTree") %>%
-      mutate(coefficient = (aglu.BIO_BIOCHAR_IO_KGBM2 / aglu.BIO_TREE_YIELD_KGCM2    # Convert from application per unit area to per unit carbon
-                            * aglu.CCONTENT_CELLULOSE * (1 - WaterContent))                         # Convert from carbon to wet biomass
-             / (aglu.BIO_ENERGY_CONTENT_GJT * CONV_KG_T)) ->                         # Convert from biomass to energy
-      bio_tree_biochar_coef # getting biochar demand for biomassGrass biochar nodes
-
-    L2052.AgCost_bio_irr_mgmt %>%
-      filter(grepl("biochar", AgProductionTechnology)) %>%
-      select(-nonLandVariableCost) %>%                  # We are just using this data.frame to get the region/sector/tech names
-      mutate(minicam.energy.input = "biochar",
-             coefficient = if_else(grepl("^biomassGrass", AgSupplySubsector),
-                                   bio_grass_biochar_coef$coefficient, bio_tree_biochar_coef$coefficient)) %>%
-      mutate(coefficient = if_else(year < 2020, 0, coefficient)) -> # biochar demands in historical years are none
-      L2062.AgCoef_Biochar_bio_irr_mgmt
-
-    print(L2062.AgCoef_Biochar_bio_irr_mgmt %>% filter(year == 2015))
-
-    # combine fertilizer and biochar requirements
-    bind_rows(L2062.AgCoef_Fert_bio_irr_mgmt, L2062.AgCoef_Biochar_bio_irr_mgmt) -> L2062.AgCoef_Fert_bio_irr_mgmt
+    # biochar not applied to bioenergy crops because grasslands have a recommended fertilizer addition of 0Kg/ha P
 
     # Adjust nonLandVariableCost to separate fertilizer cost (which is accounted for specifically) ----
+    # TODO: further adjust to include avoidance of P and K fertilizer costs
     # Note that fertilizer price is determined by supply in calibration
     L2052.AgCost_ag_irr_mgmt %>%
       # Note: using left_join because there are instances with cost but no fertilizer use.
