@@ -38,6 +38,7 @@ module_emissions_L252.MACC <- function(command, ...) {
              "L232.nonco2_prc",
              "L241.hfc_all",
              "L241.pfc_all",
+             "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level",
              FILE = "socioeconomics/income_shares"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L252.ResMAC_fos",
@@ -104,6 +105,7 @@ module_emissions_L252.MACC <- function(command, ...) {
     L241.hfc_all <- get_data(all_data, "L241.hfc_all", strip_attributes = TRUE)
     L241.pfc_all <- get_data(all_data, "L241.pfc_all", strip_attributes = TRUE)
     EPA_MACC_PhaseInTime <- get_data(all_data, "emissions/EPA_MACC_PhaseInTime")
+    L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level <- get_data(all_data, "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level")
     income_shares<-get_data(all_data, "socioeconomics/income_shares")
     groups<-income_shares %>% select(category) %>% distinct()
 
@@ -177,7 +179,7 @@ module_emissions_L252.MACC <- function(command, ...) {
 
     # L252.AgMAC: Agricultural abatement (including bioenergy)
     # L252.AgMAC_full contains year-specific MACs for all future modeling periods till 2050
-    L252.AgMAC_full <- L211.AGREmissions %>%
+    L211.AGREmissions %>%
       select(-input.emissions, -year) %>%
       bind_rows(L211.AGRBio %>%
                   select(-bio_N2O_coef, -year)) %>%
@@ -193,7 +195,24 @@ module_emissions_L252.MACC <- function(command, ...) {
       # Add column for market variable
       mutate(market.name = emissions.MAC_MARKET) %>%
       repeat_add_columns(tibble(Irr_Rfd = paste0(aglu.IRR_DELIMITER, c("IRR", "RFD")))) %>%
-      repeat_add_columns(tibble(mgmt = paste0(aglu.MGMT_DELIMITER, c("lo", "hi", "biochar")))) %>%
+      repeat_add_columns(tibble(mgmt = paste0(aglu.MGMT_DELIMITER, c("lo", "hi", "biochar")))) ->
+      L252.AgMAC_full
+
+      print(L252.AgMAC_full)
+
+      L252.AgMAC_full%>% filter(mgmt == "_biochar") %>%
+        mutate(level = "biochar") %>%
+        left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                    left_join_error_no_match(GCAM_region_names, by = c("GCAM_region_ID")),
+                  by=c("region", "AgSupplySector" = "GCAM_commodity", "level", "year")) %>%
+        dplyr::distinct_all() %>%
+        drop_na() %>% #drop rows for crops that don't need biochar
+        select(-GCAM_region_ID, -GCAM_subsector, -GLU, -Irr_Rfd, -value, -level) %>%
+        bind_rows(L252.AgMAC_full %>%
+                    filter(mgmt == "_biochar")) ->L252.AgMAC_full
+
+      L252.AgMAC_full%>%
+      #TODO: update biochar lands
       unite(AgProductionTechnology, AgProductionTechnology, Irr_Rfd, mgmt, sep = "") %>%
       # Remove EPA_Region - useful up to now for diagnostic, but not needed for csv->xml conversion
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, Non.CO2,

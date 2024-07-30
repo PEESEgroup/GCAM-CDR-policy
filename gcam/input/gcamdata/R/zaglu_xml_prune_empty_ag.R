@@ -176,7 +176,8 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
             mutate(allocation = if_else(is.na(allocation), 0, allocation)) %>%
             left_join(L2012.AgProduction_ag_irr_mgmt %>%
                                        select(region, AgProductionTechnology, year, calOutputValue),
-                                     by=c("region", "LandLeaf" = "AgProductionTechnology", "year")) %>% dplyr::filter_all(dplyr::any_vars(is.na(.))))
+                                     by=c("region", "LandLeaf" = "AgProductionTechnology", "year")) %>% dplyr::filter_all(dplyr::any_vars(is.na(.)))
+          %>% select(LandLeaf, region, calOutputValue, year))
 
     # start with some error checking that non-zero land matches non-zero supply
     L2252.LN5_MgdCarbon_crop %>%

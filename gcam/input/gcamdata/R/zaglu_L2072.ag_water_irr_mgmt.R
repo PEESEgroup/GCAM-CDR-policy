@@ -33,6 +33,7 @@ module_aglu_L2072.ag_water_irr_mgmt <- function(command, ...) {
       "L165.GreenRfd_m3kg_R_C_GLU",
       "L165.ag_IrrEff_R",
       "L2052.AgCost_bio_irr_mgmt",
+      "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level",
       FILE = "water/water_td_sectors")
 
   MODULE_OUTPUTS <-
@@ -88,12 +89,48 @@ module_aglu_L2072.ag_water_irr_mgmt <- function(command, ...) {
       L2072.Bio_RFD_IO_R_C_GLU
 
     # Following are repeated processing steps for the three files, so combine them all together
+    print(L2072.Blue_IRR_IO_R_C_GLU %>%
+            bind_rows(L2072.Bio_IRR_IO_R_C_GLU, L2072.Bio_RFD_IO_R_C_GLU) %>%
+            left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+            left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")))
+
+    print(L2072.Blue_IRR_IO_R_C_GLU %>%
+                  bind_rows(L2072.Bio_IRR_IO_R_C_GLU, L2072.Bio_RFD_IO_R_C_GLU) %>%
+                  left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+                  left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
+                  # Copy to both high and low management levels
+                  repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>% filter(MGMT == "biochar"))
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+            filter(year == 1975) %>% mutate(IRR_RFD = toupper(Irr_Rfd)) %>% select(-value, -Irr_Rfd))
+    print(L2072.Blue_IRR_IO_R_C_GLU %>%
+            bind_rows(L2072.Bio_IRR_IO_R_C_GLU, L2072.Bio_RFD_IO_R_C_GLU) %>%
+            left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+            left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
+            # Copy to both high and low management levels
+            repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>% filter(MGMT == "biochar") %>%
+            left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                        filter(year == 1975) %>% mutate(IRR_RFD = toupper(Irr_Rfd)) %>% select(-value, -Irr_Rfd) ,# only need one match
+                      by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "IRR_RFD", "MGMT"="level")))
+
     L2072.Blue_IRR_IO_R_C_GLU %>%
       bind_rows(L2072.Bio_IRR_IO_R_C_GLU, L2072.Bio_RFD_IO_R_C_GLU) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
       # Copy to both high and low management levels
-      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                  filter(year == 1975) %>% mutate(IRR_RFD = toupper(Irr_Rfd)) %>% select(-value, -Irr_Rfd) ,# only need one match
+                by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "IRR_RFD", "MGMT"="level")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-year) %>%
+      bind_rows(L2072.Blue_IRR_IO_R_C_GLU %>%
+                  bind_rows(L2072.Bio_IRR_IO_R_C_GLU, L2072.Bio_RFD_IO_R_C_GLU) %>%
+                  left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+                  left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
+                  # Copy to both high and low management levels
+                  repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
+                  filter(MGMT != "biochar")) %>%
       # Add sector, subsector, technology names
       mutate(AgSupplySector = GCAM_commodity,
              AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),

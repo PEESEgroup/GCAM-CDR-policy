@@ -17,13 +17,15 @@
 #' @author KD July 2017
 module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
-    return(c("L2111.AGREmissions",
+    return(c(FILE = "common/GCAM_region_names",
+             "L2111.AGREmissions",
              "L2111.AGRBio",
              "L2111.AWB_BCOC_EmissCoeff",
              "L2111.nonghg_max_reduction",
              "L2111.nonghg_steepness",
              "L2111.AWBEmissions",
-             "L2012.AgProduction_ag_irr_mgmt"))
+             "L2012.AgProduction_ag_irr_mgmt",
+             "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2112.AGRBio", "L2112.AWB_BCOC_EmissCoeff", "L2112.nonghg_max_reduction",
              "L2112.nonghg_steepness", "L2112.AWBEmissions", "L2112.AGREmissions"))
@@ -43,28 +45,75 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
     L2111.nonghg_max_reduction <- get_data(all_data, "L2111.nonghg_max_reduction")
     L2111.nonghg_steepness <- get_data(all_data, "L2111.nonghg_steepness")
     L2012.AgProduction_ag_irr_mgmt <- get_data(all_data, "L2012.AgProduction_ag_irr_mgmt", strip_attributes = TRUE)
+    L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level <- get_data(all_data, "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level")
+    GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
 
     # ===================================================
     # For all of the animal emission tables add high and low management level
-        L2111.AGRBio %>%
-      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
-      unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
+    #L2111.AGRBio %>%
+    #  repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
+    #  unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
+    #  L2112.AGRBio
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
+    print(L2111.AGRBio)
+    L2111.AGRBio %>%
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>% filter(level == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),# only need one match
+                by=c("AgSupplySector"="GCAM_commodity", "region", "year", "level")) %>% dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-GCAM_region_ID, -GCAM_subsector, -GLU, -Irr_Rfd, -value) %>%
+      bind_rows(L2111.AGRBio %>%
+                  repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
+                  filter(level != "biochar"))%>%
+      unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") %>%
+      dplyr::distinct_all() ->
       L2112.AGRBio
+    print(L2112.AGRBio)
 
+    print(L2111.AWB_BCOC_EmissCoeff)
     L2111.AWB_BCOC_EmissCoeff %>%
-      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
-      unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>% filter(level == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),# only need one match
+                by=c("AgSupplySector"="GCAM_commodity", "region", "year", "level")) %>% dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-GCAM_region_ID, -GCAM_subsector, -GLU, -Irr_Rfd, -value) %>%
+      bind_rows(L2111.AWB_BCOC_EmissCoeff %>%
+                  repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
+                  filter(level != "biochar"))%>%
+      unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") %>%
+      dplyr::distinct_all() ->
       L2112.AWB_BCOC_EmissCoeff
+    print(L2112.AWB_BCOC_EmissCoeff)
 
-    L2111.nonghg_max_reduction %>%
-      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
-      unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
+    print(L2111.nonghg_max_reduction)
+    L2111.nonghg_max_reduction  %>%
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>% filter(level == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),# only need one match
+                by=c("AgSupplySector"="GCAM_commodity", "region", "year", "level")) %>% dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-GCAM_region_ID, -GCAM_subsector, -GLU, -Irr_Rfd, -value) %>%
+      bind_rows(L2111.nonghg_max_reduction %>%
+                  repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
+                  filter(level != "biochar"))%>%
+      unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") %>%
+      dplyr::distinct_all() ->
       L2112.nonghg_max_reduction
+    print(L2112.nonghg_max_reduction)
 
-    L2111.nonghg_steepness %>%
-      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
-      unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
+    print(L2111.nonghg_steepness)
+    L2111.nonghg_steepness  %>%
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>% filter(level == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),# only need one match
+                by=c("AgSupplySector"="GCAM_commodity", "region", "year", "level")) %>% dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-GCAM_region_ID, -GCAM_subsector, -GLU, -Irr_Rfd, -value) %>%
+      bind_rows(L2111.nonghg_steepness %>%
+                  repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
+                  filter(level != "biochar"))%>%
+      unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") %>%
+      dplyr::distinct_all() ->
       L2112.nonghg_steepness
+    print(L2112.nonghg_max_reduction)
 
 
     # For the tables whose emissions are read as quantities rather than rates,

@@ -106,7 +106,6 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       L121.CarbonContent_kgm2_R_LT_GLU <- get_data(all_data, "L121.CarbonContent_kgm2_R_LT_GLU")
 
     }
-
     # Replace GLU names and Add region names
     L181.LandShare_R_bio_GLU_irr %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
@@ -156,7 +155,21 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
         mutate(LandNode5 = LandLeaf,
                LandLeaf = paste(LandNode5, level, sep = aglu.MGMT_DELIMITER)) ->
         data_new
-      print(data_new)
+      print(data_new, n=20)
+
+      # if GCAM commodities are available, make sure biochar is
+      if ("GCAM_commodity" %in% names(data_new)) {
+        print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
+        data_new %>% filter(level == "biochar") %>%
+          left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                        mutate(Irr_Rfd = toupper(Irr_Rfd))%>%
+                        left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")) %>%
+                        replace_GLU(map = basin_to_country_mapping),
+                    by=c("GCAM_commodity", "GCAM_subsector", "region", "GLU", "year", "level", "Irr_Rfd")) %>%
+          drop_na() %>% #drop rows fir crios that don't need biochar
+          bind_rows(data_new %>% filter(level != "biochar")) -> data_new
+      }
+
       data_new <- data_new[names]
       print(data_new)
 

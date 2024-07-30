@@ -33,7 +33,8 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       "L163.ag_irrBioYield_GJm2_R_GLU",
       "L163.ag_rfdBioYield_GJm2_R_GLU",
       "L181.ag_Prod_Mt_R_C_Y_GLU_irr_level",
-      "L181.YieldMult_R_bio_GLU_irr")
+      "L181.YieldMult_R_bio_GLU_irr",
+      "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level")
 
   MODULE_OUTPUTS <-
     c("L2012.AgSupplySector",
@@ -147,6 +148,7 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
     L181.ag_Prod_Mt_R_C_Y_GLU_irr_level %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       mutate(calOutputValue = round(value, digits = aglu.DIGITS_CALOUTPUT)) %>%
+      mutate(calOutputValue = if_else(level=="biochar" & year < 2014, 0, calOutputValue)) %>% #biochar land shouldn't have a calOutputValue until the final base year, which is required because future yields are built on this value
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       left_join_error_no_match(select(basin_to_country_mapping, GLU_code, GLU_name), by = c("GLU" = "GLU_code")) %>%
       # Add AgSupplySector, AgSupplySubsector, AgProductionTechnology names.
@@ -159,12 +161,9 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
              subsector = AgSupplySubsector) %>%
       set_subsector_shrwt() %>%
       mutate(share.weight.year = year,
-             tech.share.weight = if_else(calOutputValue > 0, 1, 0)) %>% #biochar land shouldn't have a calOutputValue until the final base year, which is required because future yields are built on this value
-      # do not set biochar calOutputVals to 0, even if they are not in historical data
+             tech.share.weight = if_else(calOutputValue > 0, 1, 0)) %>% # do not set biochar calOutputVals to 0, even if they are not in historical data
       select(LEVEL2_DATA_NAMES[["AgProduction"]]) ->
       L2012.AgProduction_ag_irr_mgmt
-
-    print(L2012.AgProduction_ag_irr_mgmt %>% filter(grepl("biochar", AgProductionTechnology)), n = 50)
 
     # L2012.AgProduction_For and L2012.AgProduction_Past: Forest and pasture product calibration (output)
     L123.For_Prod_bm3_R_Y_GLU %>%
@@ -342,7 +341,22 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
     L2011.AgYield_bio_grass_irr %>%
       bind_rows(L2011.AgYield_bio_tree_irr) %>%
       # Copy to high and low management levels
-      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) ->L2012.AgYield_bio_ref
+
+    print(L2012.AgYield_bio_ref)
+
+    L2012.AgYield_bio_ref%>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                  left_join_error_no_match(GCAM_region_names, by = c("GCAM_region_ID")),
+                by=c("region", "AgSupplySector" = "GCAM_commodity", "MGMT"="level", "year")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-GCAM_region_ID, -GCAM_subsector, -GLU, -Irr_Rfd, -value) %>%
+      bind_rows(L2012.AgYield_bio_ref %>%
+                  filter(MGMT != "biochar")) ->L2012.AgYield_bio_ref
+
+    L2012.AgYield_bio_ref%>%
+      # TODO: fix biochar land uses
       # Separate technology to match in the multipliers
       separate(AgProductionTechnology, c("biomass", "GLU_name", "IRR_RFD")) %>%
       # Match in multipliers, use left_join instead because of NAs
