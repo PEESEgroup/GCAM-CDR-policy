@@ -48,6 +48,7 @@ module_aglu_L161.ag_R_C_Y_GLU_irr <- function(command, ...) {
     L152.ag_rfdProd_Mt_R_C_GLU <- get_data(all_data, "L152.ag_rfdProd_Mt_R_C_GLU")
     L152.ag_rfdHA_bm2_R_C_GLU <- get_data(all_data, "L152.ag_rfdHA_bm2_R_C_GLU")
 
+
     # Compute irrigated and rainfed agriculture production by GCAM region / commodity / GLU / year
     # Combine FAO annual data and GTAP irrigated vs rainfed disaggregated data
     # Multiply annual production and a constant irrigated vs rainfed fraction for each GCAM region / commodity / GLU

@@ -55,7 +55,8 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       "L120.LC_soil_veg_carbon_GLU",
       "L121.CarbonContent_kgm2_R_TreeCrop_GLU",
       "L2012.AgYield_bio_ref",
-      "L2012.AgProduction_ag_irr_mgmt")
+      "L2012.AgProduction_ag_irr_mgmt",
+      "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level")
 
   MODULE_OUTPUTS <-
     c("L2252.LN5_Logit",
@@ -155,7 +156,9 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
         mutate(LandNode5 = LandLeaf,
                LandLeaf = paste(LandNode5, level, sep = aglu.MGMT_DELIMITER)) ->
         data_new
+      print(data_new)
       data_new <- data_new[names]
+      print(data_new)
 
       return(data_new)
     } # end convert_LN4_to_LN5
@@ -210,8 +213,6 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       select(region, year, LandLeaf, allocation) ->
       L2252.LC_bm2_R_C_Yh_GLU_irr_mgmt # contains biochar info
 
-    print(L2252.LC_bm2_R_C_Yh_GLU_irr_mgmt %>% filter(grepl("biochar", LandLeaf) & year == 2015))
-
     # Use L2252.LN5_Logit to get names of LandNodes, copy to all years
     # Add land leafs using `convert_LN4_to_LN5`, then join land allocation information
     L2252.LN5_Logit %>%
@@ -226,13 +227,8 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       replace_na(list(allocation = 0)) -> # biochar shouldn't have any land allocation in historical periods
       ALL_LAND_ALLOCATION
 
-    print(L2252.LN5_Logit %>%
-             rename(LandLeaf = LandNode5) %>%
-             select(-logit.year.fillout, -logit.exponent, -logit.type) %>%
-             repeat_add_columns(tibble(year = aglu.LAND_COVER_YEARS)) %>%
-             mutate(allocation = -1))
-    print(ALL_LAND_ALLOCATION %>% filter(grepl("NA", LandNode5)))
-    print(ALL_LAND_ALLOCATION %>% filter(grepl("biochar", LandLeaf)),n = 100)
+    #TODO: remove biochar land nodes which don't exist
+    print(ALL_LAND_ALLOCATION)
 
     # L2252.LN5_HistMgdAllocation_crop: historical cropland allocation
     # in the fifth land nest ie for each crop-irr-mgmt combo in each region-glu-year.
@@ -262,8 +258,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       L2252.LN5_MgdAllocation_bio
 
     print(L171.ag_EcYield_kgm2_R_C_Y_GLU)
-    print(L2012.AgYield_bio_ref)
-    print(L2252.LN5_MgdAllocation_bio)
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
 
     # L2252.LN5_MgdCarbon_crop: Carbon content info, managed land in the fifth nest, cropland (no bio)
     # Soil will use default values, but vegetation will be replaced by bottom-up estimates
@@ -308,12 +303,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              LandNode3 = paste(LandNode3, GLU, sep = "_"),
              LandNode4 = paste(GCAM_subsector, GLU, sep = "_"),
              LandLeaf = paste(LandNode4, Irr_Rfd, sep = "_")) %>%
-      convert_LN4_to_LN5(names = LEVEL2_DATA_NAMES[["LN5_MgdCarbon"]]) %>%
-      # at 50 Mg C/ ha application rate of biochar, is 5 kg C/ sq m. TODO: does not take into consideration consecutive applications of biochar
-      # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
-      # from: jgcri.github.io/gcam-doc/land.html, give soil carbon emissions as exponential formula
-      mutate(soil.carbon.density = if_else(grepl("biochar$", LandLeaf), soil.carbon.density + aglu.BIO_BIOCHAR_IO_KGBM2 * 10, soil.carbon.density),
-             hist.soil.carbon.density = if_else(grepl("biochar$", LandLeaf), hist.soil.carbon.density + aglu.BIO_BIOCHAR_IO_KGBM2 * 10, hist.soil.carbon.density))->
+      convert_LN4_to_LN5(names = LEVEL2_DATA_NAMES[["LN5_MgdCarbon"]])->
       L2252.LN5_MgdCarbon_crop #contains biochar
 
     L2012.AgYield_bio_ref %>%
@@ -414,8 +404,6 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       select(-value, -total_land) ->
       LANDSHARE_IRR_RFD
 
-    print(L2252.LN5_LeafGhostShare %>% filter(grepl("NA", LandNode5)))
-
     # L2252.LN5_NodeGhostShare: Ghost share of the new nodes (irrigated versus rainfed)
     L2252.LN5_LeafGhostShare %>%
       distinct(region, LandAllocatorRoot, LandNode1, LandNode2, LandNode3, LandNode4, LandNode5, year, GLU, Irr_Rfd) %>%
@@ -427,14 +415,6 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              ghost.unnormalized.share = if_else(is.na(ghost.unnormalized.share) & Irr_Rfd == "IRR", 0, ghost.unnormalized.share)) %>%
       select(c(LEVEL2_DATA_NAMES[["LN5_NodeGhostShare"]])) ->
       L2252.LN5_NodeGhostShare
-
-    print(L2252.LN5_NodeGhostShare %>% filter(grepl("NA", LandNode5)))
-    print(L2252.LN5_HistMgdAllocation_crop %>% filter(grepl("biochar", LandLeaf)))
-    print(L2252.LN5_MgdAllocation_crop %>% filter(grepl("biochar", LandLeaf)))
-    print(L2252.LN5_HistMgdAllocation_bio %>% filter(grepl("biochar", LandLeaf)))
-    print(L2252.LN5_MgdAllocation_bio %>% filter(grepl("biochar", LandLeaf)))
-    print(L2252.LN5_MgdCarbon_crop %>% filter(grepl("biochar", LandLeaf)))
-    print(L2252.LN5_MgdCarbon_bio %>% filter(grepl("biochar", LandLeaf)))
 
     # Produce outputs
     L2252.LN5_Logit %>%

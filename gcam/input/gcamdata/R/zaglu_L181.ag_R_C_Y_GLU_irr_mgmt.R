@@ -22,7 +22,10 @@
 #' @author RC May 2017
 module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
-    return(c("L171.LC_bm2_R_rfdHarvCropLand_C_Yh_GLU",
+    return(c(FILE = "common/GCAM_region_names",
+             FILE = "aglu/A_AgBiocharApplicationRateYrCropLand",
+             FILE = "aglu/A_agBiocharCropYieldIncrease",
+             "L171.LC_bm2_R_rfdHarvCropLand_C_Yh_GLU",
              "L171.LC_bm2_R_irrHarvCropLand_C_Yh_GLU",
              "L171.ag_irrEcYield_kgm2_R_C_Y_GLU",
              "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU"))
@@ -45,9 +48,20 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
     L171.LC_bm2_R_irrHarvCropLand_C_Yh_GLU <- get_data(all_data, "L171.LC_bm2_R_irrHarvCropLand_C_Yh_GLU")
     L171.ag_irrEcYield_kgm2_R_C_Y_GLU <- get_data(all_data, "L171.ag_irrEcYield_kgm2_R_C_Y_GLU")
     L171.ag_rfdEcYield_kgm2_R_C_Y_GLU <- get_data(all_data, "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU")
+    A_AgBiocharApplicationRateYrCropLand <- get_data(all_data, "aglu/A_AgBiocharApplicationRateYrCropLand")
+    A_agBiocharCropYieldIncrease <- get_data(all_data, "aglu/A_agBiocharCropYieldIncrease")
+    GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
+
+    # get the list of crops/regions to which biochar can actually be applied
+    A_AgBiocharApplicationRateYrCropLand %>%
+      filter(year == 1975) %>% # only need to take 1 year of data
+      filter(rate_kg_ha > 0) %>%
+      select(-year) -> # only take crops that have biochar demand
+      L181.ag_C_GLU_biochar
+    print(L181.ag_C_GLU_biochar)
 
     # In order to calculate weighted yield levels for aggregation, we don't want to be using the raw yields, as our
-    # GCAM commodities may include a blend of heterogeneous yielding commodities. For example, cucumber yields are in
+    # GCAM commodities may include a blend of heterogeneous yieldL181.ag_C_GLU_biocharing commodities. For example, cucumber yields are in
     # excess of 400 tonnes/hectare in some places, whereas pulses tend to be about 2. In a non-indexed aggregation,
     # the cucumbers would be the only crop that matters for the final yields, and the yield of the "high" technology
     # would not be representative of a biophysically attainable yield for the commodity class as a whole.
@@ -70,7 +84,24 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       mutate(level = sub("EcYield_kgm2_", "", level)) ->
       L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level
 
-    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% filter(level=="biochar"))
+    L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% filter(level!="biochar") ->
+      L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi
+
+    # biochar land regions should not exist if 0 biochar is applied to them
+    L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+      filter(level=="biochar") %>%
+      left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")) %>%
+      mutate(AgSupplySector = GCAM_commodity) %>%
+      left_join(L181.ag_C_GLU_biochar, by = c("region", "AgSupplySector")) %>%
+      drop_na() %>% # keep only land use types where biochar is applied to land
+      left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("AgSupplySector"))%>% # copy in yield increase data
+      mutate(value = value*Yield.Increase) %>%
+      select(-region, -AgSupplySector, -rate_kg_ha, -Yield.Increase) -> L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar # include yield increases
+
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar, n=20)
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi)
+
+    bind_rows(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar, L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi) -> L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level
 
     # Second, apply land shares to disaggregate low- and high-input land
      L171.LC_bm2_R_rfdHarvCropLand_C_Yh_GLU %>%
@@ -83,16 +114,31 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
              # Calculate the land shares to allocate to low, and high is the rest (currently the shares are set at 0.5/0.5 to all)
              landshare_lo = (1 - yieldmult_hi) / (yieldmult_lo - yieldmult_hi), landshare_hi = 1 - landshare_lo,
              # low- and high-input land are calculated as the total times the shares
-             LC_bm2_lo = value * landshare_lo, LC_bm2_hi = value * landshare_hi, LC_bm2_biochar=value * landshare_hi) %>% # TODO: update biochar land shares here (currently 0.5)
+             LC_bm2_lo = value * landshare_lo, LC_bm2_hi = value * landshare_hi, LC_bm2_biochar=value * landshare_hi) %>% # update biochar land shares here (currently 0.5)
       select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, year, LC_bm2_hi, LC_bm2_lo, LC_bm2_biochar) %>%
       gather(level, value, -GCAM_region_ID, -GCAM_commodity, -GCAM_subsector, -GLU, -Irr_Rfd, -year) %>%
       mutate(level = sub("LC_bm2_", "", level)) -> # value here is the yield, which we don't want to set to 0
-      # TODO: find a way to get biochar a positive tech shareweight in 2015???
       L181.LC_bm2_R_C_Yh_GLU_irr_level
 
-    print(L181.LC_bm2_R_C_Yh_GLU_irr_level %>% filter(level=="biochar"))
+     print(L181.LC_bm2_R_C_Yh_GLU_irr_level)
+
+    # ensure that other land data contains biochar land areas which have non-zero biochar demand
+     L181.LC_bm2_R_C_Yh_GLU_irr_level %>%
+       filter(level == "biochar") %>% # get biochar data
+       left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level, by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "Irr_Rfd", "year", "level")) %>% # if there isn't biochar land use, don't include as empty node
+       drop_na() %>% # remove land leafs without valid biochar application
+       mutate(value = value.x) %>% # rename rows for rowbind
+       select(-value.x, -value.y) %>%
+       bind_rows(L181.LC_bm2_R_C_Yh_GLU_irr_level %>% filter(level != "biochar")) -> L181.LC_bm2_R_C_Yh_GLU_irr_level
+    print(L181.LC_bm2_R_C_Yh_GLU_irr_level)
 
     # Third, calculate production: economic yield times land area
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+            rename(yield = value) %>%
+            left_join(L181.LC_bm2_R_C_Yh_GLU_irr_level,
+                                     by = c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector",
+                                            "GLU", "Irr_Rfd", "year", "level"))%>% dplyr::filter_all(dplyr::any_vars(is.na(.))))
+
     L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
       rename(yield = value) %>%
       left_join_error_no_match(L181.LC_bm2_R_C_Yh_GLU_irr_level,
@@ -111,7 +157,7 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       unique() %>%
       # SET THE SAME YIELD MULTIPLIERS EVERYWHERE
       # give biochar the benefit of high yield
-      mutate(yieldmult_hi = 1 + aglu.MGMT_YIELD_ADJ, yieldmult_lo = 1 - aglu.MGMT_YIELD_ADJ, yieldmult_biochar = 1 + aglu.MGMT_YIELD_ADJ) ->
+      mutate(yieldmult_hi = 1 + aglu.MGMT_YIELD_ADJ, yieldmult_lo = 1 - aglu.MGMT_YIELD_ADJ) ->
       L181.YieldMult_R_bio_GLU_irr
 
     # Calculate bioenergy land shares
@@ -120,7 +166,7 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       select(GCAM_region_ID, GLU, Irr_Rfd) %>%
       unique() %>%
       # SET THE SAME LADN SHARE, even including biochar
-      mutate(landshare_lo = 0.5, landshare_hi = 0.5, landshare_biochar = 0.5) ->
+      mutate(landshare_lo = 0.5, landshare_hi = 0.5) ->
       L181.LandShare_R_bio_GLU_irr
 
     # Produce outputs
@@ -140,7 +186,9 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       add_comments("Currently the same yield mutipliers are set for all region/commodity/GLU/irrigation.") %>%
       add_legacy_name("L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") %>%
       add_precursors("L171.ag_irrEcYield_kgm2_R_C_Y_GLU",
-                     "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU") ->
+                     "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU",
+                     "aglu/A_AgBiocharApplicationRateYrCropLand",
+                     "aglu/A_agBiocharCropYieldIncrease") ->
       L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level
 
     L181.ag_Prod_Mt_R_C_Y_GLU_irr_level %>%

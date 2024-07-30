@@ -165,6 +165,19 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
     LandNode_columns <- names(L2252.LN5_MgdAllocation_crop)[grepl('LandNode', names(L2252.LN5_MgdAllocation_crop))]
     LandNode_MaxDepth <- length(LandNode_columns)
 
+    print(L2252.LN5_MgdCarbon_crop %>%
+            select(region, LandAllocatorRoot, matches('LandNode'), LandLeaf) %>%
+            repeat_add_columns(tibble(year=MODEL_BASE_YEARS)) %>%
+            # some empty land node/leaves appear because we have read in carbon information
+            # for them but they do not appear in the historical land allocation table (L2252.LN5_MgdAllocation_crop)
+            # so join them here and fill zeros so we can clean them up together with the
+            # rest of the zero land node/leaves
+            left_join(L2252.LN5_MgdAllocation_crop, by=c("region", "LandAllocatorRoot", LandNode_columns, "LandLeaf", "year")) %>%
+            mutate(allocation = if_else(is.na(allocation), 0, allocation)) %>%
+            left_join(L2012.AgProduction_ag_irr_mgmt %>%
+                                       select(region, AgProductionTechnology, year, calOutputValue),
+                                     by=c("region", "LandLeaf" = "AgProductionTechnology", "year")) %>% dplyr::filter_all(dplyr::any_vars(is.na(.))))
+
     # start with some error checking that non-zero land matches non-zero supply
     L2252.LN5_MgdCarbon_crop %>%
       select(region, LandAllocatorRoot, matches('LandNode'), LandLeaf) %>%

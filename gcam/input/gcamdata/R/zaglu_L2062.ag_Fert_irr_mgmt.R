@@ -83,6 +83,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       L2062.bio_app_rate
 
 
+    # TODO filter land usage by outputs from eventual outputs of 181
     L2062.ag_Fert_MGMT %>%
         left_join(L171.ag_rfdEcYield_kgm2_R_C_Y_GLU, by = c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year"))%>%
         filter(MGMT == "biochar") %>%
