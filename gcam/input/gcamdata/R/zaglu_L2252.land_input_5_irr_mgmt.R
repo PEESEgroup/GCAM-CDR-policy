@@ -243,6 +243,23 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
     #TODO: remove biochar land nodes which don't exist
     print(ALL_LAND_ALLOCATION)
 
+    # remove biochar lands without biochar application from the list of land allocations
+    ALL_LAND_ALLOCATION%>% filter(grepl("biochar", LandLeaf))%>%
+      separate(col=LandNode5, into=c("AgSupplySector", "GLU_Name", "IRR_RFD"), sep=aglu.IRR_DELIMITER, remove=FALSE)%>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                  mutate(IRR_RFD = toupper(Irr_Rfd)) %>%
+                  replace_GLU(map = basin_to_country_mapping) %>%
+                  left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),
+                by=c("region", "AgSupplySector" = "GCAM_subsector", "GLU_Name"="GLU", "IRR_RFD", "year")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-AgSupplySector, -GLU_Name, -IRR_RFD, -GCAM_REGION_ID, -GCAM_commodity, -Irr_Rfd, -level, -value) %>%
+      dplyr::distinct_all() %>%
+      bind_rows(ALL_LAND_ALLOCATION %>%
+                  filter(!grepl("biochar", LandLeaf))) ->ALL_LAND_ALLOCATION
+
+    print(ALL_LAND_ALLOCATION)
+
     # L2252.LN5_HistMgdAllocation_crop: historical cropland allocation
     # in the fifth land nest ie for each crop-irr-mgmt combo in each region-glu-year.
     ALL_LAND_ALLOCATION %>%
@@ -269,9 +286,6 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       filter(grepl("biomassGrass", LandLeaf) | grepl("biomassTree", LandLeaf)) %>%
       filter(year %in% MODEL_BASE_YEARS) ->
       L2252.LN5_MgdAllocation_bio
-
-    print(L171.ag_EcYield_kgm2_R_C_Y_GLU)
-    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
 
     # L2252.LN5_MgdCarbon_crop: Carbon content info, managed land in the fifth nest, cropland (no bio)
     # Soil will use default values, but vegetation will be replaced by bottom-up estimates

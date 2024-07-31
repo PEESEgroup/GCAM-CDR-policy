@@ -73,7 +73,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
 
       L2062.ag_Fert_MGMT%>% filter(MGMT == "biochar") %>%
         left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
-                    by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", MGMT="level")) %>%
+                    by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
         dplyr::distinct_all() %>%
         drop_na() %>% #drop rows for crops that don't need biochar
         mutate(value = value.x) %>%
@@ -86,6 +86,9 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       mutate(minicam.energy.input = "N fertilizer") -> L2062.ag_Fert_MGMT
       # Add name of minicam.energy.input
       # add fertilizer requirement to biochar land use types
+
+      print(L2062.ag_Fert_MGMT)
+      print(L2062.ag_Fert_MGMT %>% filter(if_any(everything(), is.na)))
 
     #calculate IO coef by kg/m^2 biochar per crop production in kg/m^2
     # Add name of additional minicam.energy.input for biochar land use types of 50 Mg C/ha, which corresponds to 83 Mg biochar / ha with C weight % of 60%
@@ -151,7 +154,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       filter(coefficient > 0) ->
       L2062.AgCoef_Fert_ag_irr_mgmt
 
-    print(L2062.AgCoef_Fert_ag_irr_mgmt)
+    print(L2062.AgCoef_Fert_ag_irr_mgmt, n=20)
 
 
     # Calculate fertilizer coefficients for grassy bioenergy crops

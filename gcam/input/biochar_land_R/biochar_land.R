@@ -22,9 +22,8 @@
 
 ## changing biochar application rates is done in constants
 
-## TODO: update calOutputValues
-## TODO: update prune_ag for biochar lands with 0 biochar applied - may need to change in L171.ag_rfdEcYield_kgm2_R_C_Y_GLU actually
-## TODO: update economic coefficients
+## TODO: fix biochar doesn't have matching input in next period
+## TODO: fix invalid profit rates in Indonesian biomass LandLeafs
 ## TODO: update climate coefficients for avoided emissions
 ## TODO: update P and K costs for biochar lands
 ## ZEMISSIONS_XML_ALL_AGLU_EMISSIONS_IRR_MGMT_XML producing an invalid XML file - only differences are emissions parameters in Taiwan
@@ -60,8 +59,8 @@ devtools::load_all()
 ## A_An_secout_prices:
 # manure prices are set to 1e-7, as that is the smallest possible price based on the rounding in L202.an_input
 
-### TODO update based on book from Mann library
-#modify A21.globaltech_cost.csv
+#A21.globaltech_cost.csv is assumed to model capital costs, per description in A22.globaltech_cost_low.csv, given that the same columns are present
+# instead of adding additional costs on the biochar input (pre-treatment/post-treatment costs for biochar are considered as part of the capital costs) - per docs /supply_energy
 example_file <- find_csv_file("energy/A21.globaltech_cost", FALSE)[[1]]
 file.copy(from = example_file, to = paste0(example_file, ".bak"))
 
@@ -70,28 +69,12 @@ tmp <- readr::read_lines(example_file)
 print("\n file before changes")
 print(tmp)
 
-#               source 1: Bridgwater, A. V., Toft, A. J. & Brammer, J. G. A techno-economic comparison of power production by biomass fast pyrolysis with gasification and combustion. Renewable and Sustainable Energy Reviews 6, 181–246 (2002).
-#               source 2: Bora, R. R. et al. Techno-Economic Feasibility and Spatial Analysis of Thermochemical Conversion Pathways for Regional Poultry Waste Valorization. ACS Sustainable Chem. Eng. 8, 5763–5775 (2020).
-#               source 3: Santos, T. M., Silva, W. R. da, Carregosa, J. de C. & Wisniewski, A. Comprehensive characterization of cattle manure bio-oil for scale-up assessment comparing non-equivalent reactor designs. Journal of Analytical and Applied Pyrolysis 162, 105465 (2022).
-#               source 4: Baniasadi, M. et al. Waste to energy valorization of poultry litter by slow pyrolysis. Renewable Energy 90, 458–468 (2016).
-#               source 5: A22.globaltech_retirement (halflife of 30 years)
-#               source 6: KPMG. Cost of Capital Study 2022. (2022).
-#               source 7: Atienza-Martínez, M., Ábrego, J., Gea, G. & Marías, F. Pyrolysis of dairy cattle manure: evolution of char characteristics. Journal of Analytical and Applied Pyrolysis 145, 104724 (2020).
-#               source 8: Lima, I. M., McAloon, A. & Boateng, A. A. Activated carbon from broiler litter: Process description and cost of production. Biomass and Bioenergy 32, 568–572 (2008).
-#               source 9: Poddar, S. & Sarat Chandra Babu, J. Modelling and optimization of a pyrolysis plant using swine and goat manure as feedstock. Renewable Energy 175, 253–269 (2021).
-# original value (units): cost curves are ignored, so a facility size with 1,980 tons per month (3 dry tons per hour) [1], 9% annual TPC as OPEX [2], with input already given in kg
-#          capital costs: 40.8*(3*1000)^0.6194 = TPC
-#        operating costs: sum_n=1^30 {0.09*TPC+1.04*3^0.475}/(1+0.07)^n = OPEX
-#     biochar production: 3 (tons/hr) * 24 (hours/day) * 330 (days/year) [8] * 0.47 (biochar yield) [4] *1000kg/ton = 11167200 - poultry
-#     biochar production: 3 (tons/hr) * 24 (hours/day) * 330 (days/year) [8] * 0.468 (biochar yield) [9] *1000kg/ton = 11119680 - pork
-#     biochar production: 3 (tons/hr) * 24 (hours/day) * 330 (days/year) [8] * 0.4584 (biochar yield) [3] *1000kg/ton = 10891584 - beef
-#     biochar production: 3 (tons/hr) * 24 (hours/day) * 330 (days/year) [8] * 0.475 (biochar yield) [7] *1000kg/ton = 11286000 - dairy
-#        converted costs: (TPC + OPEX)*1000 (to convert from kEuros to Euros) /0.9233 (to 2000$) * 0.32 (to 1975$) = $4,272,142.60 - to EAUW: $344,276.1
-tmp[15] <- "biochar,slow pyrolysis,poultry_biochar,non-energy,0.0308,0.0308"
-tmp[16] <- "biochar,slow pyrolysis,pork_biochar,non-energy,0.0309,0.0309"
-tmp[17] <- "biochar,slow pyrolysis,beef_biochar,non-energy,0.0316,0.0316"
-tmp[18] <- "biochar,slow pyrolysis,dairy_biochar,non-energy,0.0305,0.0305"
-tmp[19] <- "biochar,slow pyrolysis,goat_biochar,non-energy,0.0298,0.0298"
+#           source 1: plant costs.xlsx
+tmp[15] <- "biochar,slow pyrolysis,poultry_biochar,non-energy,0.0602,0.0602"
+tmp[16] <- "biochar,slow pyrolysis,pork_biochar,non-energy,0.0604,0.0604"
+tmp[17] <- "biochar,slow pyrolysis,beef_biochar,non-energy,0.0617,0.0617"
+tmp[18] <- "biochar,slow pyrolysis,dairy_biochar,non-energy,0.0595,0.0595"
+tmp[19] <- "biochar,slow pyrolysis,goat_biochar,non-energy,0.0581,0.0581"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -252,16 +235,13 @@ file.copy(from = example_file, to = paste0(example_file, ".bak"))
 tmp <- readr::read_lines(example_file)
 print("\n file before changes")
 print(tmp)
-# original value (units): (Mt C per Mt manure supply)
+# original value (units): (Mt C per Mt biochar supply)
 #     used value (units): C stored as biochar
 #               source 1: Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
 
 ### THESE VALUES ARE FOR CDR AND ARE SUBJECT TO CARBON SUBSIDIES ###
-tmp[37] <- "poultry manure,-.131,0" # (1.23e9 [net sequestered Mg C]) / 94 Tg *1000000 Mg/Tg [manure supply /year] * 100 years [beta secenario in 6, supplemental SI, supplemental .xlsx] * yield
-tmp[38] <- "pork manure,-.143,0" # (63 Tg *1000000 Mg/Tg * 100 years * yield (manure/biochar)
-tmp[39] <- "beef manure,-.113,0" # (294 Tg*1000000 Mg/Tg* 100 years * yield
-tmp[40] <- "dairy manure,-.113,0" # (294 Tg*1000000 Mg/Tg* 100 years * yield
-tmp[41] <- "goat manure,-.143,0" # (same as swine)
+### valus calculated in 41467_2010 excel spreadsheet
+tmp[37] <- "biochar,-0.26,0"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)

@@ -32,7 +32,8 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       "L201.AgYield_bio_grass",
       "L201.AgYield_bio_tree",
       "L102.pcgdp_thous90USD_Scen_R_Y",
-      "L1321.expP_R_F_75USDm3")
+      "L1321.expP_R_F_75USDm3",
+      "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level")
 
   MODULE_OUTPUTS <-
     c("L2052.AgCost_ag_irr_mgmt",
@@ -81,7 +82,18 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       # Copy costs to high and low management levels
       repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
+      left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) -> L2052.AgCost_ag_irr_mgmt
+
+    L2052.AgCost_ag_irr_mgmt%>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)) %>% filter(year == 1975),
+                by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "IRR_RFD", MGMT="level")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-Irr_Rfd, -year, -value) %>%
+      bind_rows(L2052.AgCost_ag_irr_mgmt %>%
+                  filter(MGMT != "biochar")) ->L2052.AgCost_ag_irr_mgmt
+
+    L2052.AgCost_ag_irr_mgmt%>%
       # Add sector, subsector, technology names
       mutate(AgSupplySector = GCAM_commodity,
              AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
@@ -133,15 +145,27 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
                                            aglu.BIO_TREE_COST_75USD_GJ)) %>%
       # Copy coefficients to all four technologies
       repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
-      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2052.AgCost_bio_irr_mgmt
+
+    L2052.AgCost_bio_irr_mgmt%>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                  mutate(IRR_RFD = toupper(Irr_Rfd)) %>%
+                  filter(year == 1975) %>%
+                  left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),
+                by=c("region", "AgSupplySector" = "GCAM_commodity", "IRR_RFD", MGMT="level")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-Irr_Rfd, -GCAM_region_ID, -year, -value, -GCAM_subsector, -GLU) %>%
+      bind_rows(L2052.AgCost_bio_irr_mgmt %>%
+                  filter(MGMT != "biochar")) ->L2052.AgCost_bio_irr_mgmt
+
+    L2052.AgCost_bio_irr_mgmt %>%
       # Revise technology names, adding info of irr/rfd and hi/lo
       mutate(AgProductionTechnology = paste(AgProductionTechnology, IRR_RFD, MGMT, sep = "_")) %>%
       # Copy costs to all model years
       repeat_add_columns(tibble(year = MODEL_YEARS)) %>%
       select(names_AgCost) ->
       L2052.AgCost_bio_irr_mgmt
-
-    print(L2052.AgCost_bio_irr_mgmt %>% filter(grepl("biochar", AgProductionTechnology)))
 
     # Assign nonLandVariableCost of forest production
     # Start with the yield table to determine where forest are being read in
@@ -193,8 +217,6 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       mutate(cal.min.profit.rate = min(L2052.UnAdjProfits[year = max(MODEL_BASE_YEARS)]$Profit)) ->
       L2052.AgCalMinProfitRate
 
-    print(L2052.AgCalMinProfitRate, n=100) # TODO fix profit rate in 2015 for biomassTree/Grass
-
 
     # Future agricultural productivity changes ----
     # Specify reference scenario agricultural productivity change for crops (not incl biomass)
@@ -209,7 +231,26 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       # Copy costs to high and low management levels
       repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-      left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
+      left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) ->
+      L2052.AgProdChange_ag_irr_ref
+
+    print(L2052.AgProdChange_ag_irr_ref)
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
+
+    L2052.AgProdChange_ag_irr_ref%>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                  mutate(Irr_Rfd = toupper(Irr_Rfd)),
+                by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "Irr_Rfd", "year", MGMT="level")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      mutate(value = value.x) %>%
+      select(-value.y, -value.x) %>%
+      bind_rows(L2052.AgProdChange_ag_irr_ref %>%
+                  filter(MGMT != "biochar")) ->L2052.AgProdChange_ag_irr_ref
+
+    print(L2052.AgProdChange_ag_irr_ref)
+
+    L2052.AgProdChange_ag_irr_ref%>%
       # Add sector, subsector, technology names
       mutate(AgSupplySector = GCAM_commodity,
              AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
@@ -248,7 +289,25 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       # These regions are assumed minor agriculturally and as such not assigned yield improvement for tree-based bioenergy crops.
       replace_na(list(AgProdChange = 0)) %>%
       # Copy coefficients to high and low management levels
-      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar")))->
+      L2052.AgProdChange_bio_irr_ref
+
+    print(L2052.AgProdChange_bio_irr_ref)
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
+
+    L2052.AgProdChange_bio_irr_ref%>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                  mutate(IRR_RFD = toupper(Irr_Rfd)) %>%
+                  left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID"))%>%
+                  left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")),
+                by=c("region", "AgSupplySector" = "GCAM_commodity", "GLU_name", "year", "IRR_RFD", MGMT="level")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-Irr_Rfd, -GCAM_region_ID, -value, -GCAM_subsector, -GLU) %>%
+      bind_rows(L2052.AgProdChange_bio_irr_ref %>%
+                  filter(MGMT != "biochar")) ->L2052.AgProdChange_bio_irr_ref
+
+    print(L2052.AgProdChange_bio_irr_ref) %>%
       # Revise technology names to add all technologies
       mutate(AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.CROP_GLU_DELIMITER),
                                             MGMT, sep = aglu.MGMT_DELIMITER)) %>%
