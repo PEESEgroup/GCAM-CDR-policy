@@ -193,8 +193,8 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       filter(!grepl("AWB", Non.CO2)) %>%
       # update emissions for biochar lands
       # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
-      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "CH4_AGR", input.emissions*.9985, input.emissions)) %>%
-      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR", input.emissions*.9885, input.emissions))->
+      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "CH4_AGR", input.emissions*.9967, input.emissions)) %>%
+      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR", input.emissions*.9750, input.emissions))->
       L2112.AGREmissions
 
     # ===================================================
