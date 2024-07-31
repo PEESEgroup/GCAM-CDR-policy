@@ -1,0 +1,12 @@
+# File: A21.globaltech_input_driver.csv
+# Title: Refining primary input name to drive non-co2 emissions
+# Units: Unitless
+# Comments: Used to identify which is the appropriate input to drive non-co2 emissions
+# Column types: cccc
+# ----------
+supplysector,subsector,technology,input.name
+biochar,slow pyrolysis,poultry_biochar,poultry manure
+biochar,slow pyrolysis,pork_biochar,pork manure
+biochar,slow pyrolysis,beef_biochar,beef manure
+biochar,slow pyrolysis,dairy_biochar,dairy manure
+biochar,slow pyrolysis,goat_biochar,goat manure

@@ -25,6 +25,7 @@ module_emissions_L241.en_newtech_nonco2 <- function(command, ...) {
              FILE = "emissions/A51.steepness",
              # the following files to be able to map in the input.name to
              # use for the input-driver
+             FILE = "energy/A21.globaltech_input_driver",
              FILE = "energy/A22.globaltech_input_driver",
              FILE = "energy/A23.globaltech_input_driver",
              FILE = "energy/A25.globaltech_input_driver",
@@ -60,6 +61,7 @@ module_emissions_L241.en_newtech_nonco2 <- function(command, ...) {
     # make a complete mapping to be able to look up with sector + subsector + tech the
     # input name to use for an input-driver
     bind_rows(
+      get_data(all_data, "energy/A21.globaltech_input_driver"),
       get_data(all_data, "energy/A22.globaltech_input_driver"),
       get_data(all_data, "energy/A23.globaltech_input_driver"),
       get_data(all_data, "energy/A25.globaltech_input_driver"),
@@ -234,6 +236,18 @@ module_emissions_L241.en_newtech_nonco2 <- function(command, ...) {
     region_biofuels <- c(En_A_regions_biofuels$region_eth, En_A_regions_biofuels$region_bio)
 
     # Now remove the non-applicable first-genbio technologies from the data frames.
+    print(L241.nonco2_tech_coeff %>%
+            unite(region_bio, region, stub.technology, sep = "~", remove = FALSE) %>%
+            filter(!stub.technology %in% L241.firstgenbio_techs | region_bio %in% region_biofuels) %>%
+            select(-region_bio) %>% filter(supplysector == "biochar"))
+    print(L241.nonco2_tech_coeff %>%
+            unite(region_bio, region, stub.technology, sep = "~", remove = FALSE) %>%
+            filter(!stub.technology %in% L241.firstgenbio_techs | region_bio %in% region_biofuels) %>%
+            select(-region_bio) %>%
+            left_join(EnTechInputMap, by = c("supplysector", "subsector", "stub.technology")) %>%
+            dplyr::filter_all(dplyr::any_vars(is.na(.))))
+
+    print(EnTechInputMap %>% filter(supplysector=="biochar"))
     L241.nonco2_tech_coeff %>%
       unite(region_bio, region, stub.technology, sep = "~", remove = FALSE) %>%
       filter(!stub.technology %in% L241.firstgenbio_techs | region_bio %in% region_biofuels) %>%
@@ -304,6 +318,7 @@ module_emissions_L241.en_newtech_nonco2 <- function(command, ...) {
       add_precursors("common/GCAM_region_names", "emissions/A_regions",
                      "energy/A_regions",
                      "emissions/A41.tech_coeff",
+                     "energy/A21.globaltech_input_driver",
                      "energy/A22.globaltech_input_driver",
                      "energy/A23.globaltech_input_driver",
                      "energy/A25.globaltech_input_driver",

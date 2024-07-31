@@ -235,7 +235,6 @@ file.copy(from = example_file, to = paste0(example_file, ".bak"))
 tmp <- readr::read_lines(example_file)
 print("\n file before changes")
 print(tmp)
-# original value (units): (Mt C per Mt biochar supply)
 #     used value (units): C stored as biochar
 #               source 1: Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
 
@@ -247,7 +246,28 @@ print(tmp)
 readr::write_lines(tmp, example_file)
 
 
-#TODO: add avoided emissions somewhere without climate taxes....
+#modify A41.tech_coeff.csv
+example_file <- find_csv_file("emissions/A41.tech_coeff.csv", FALSE)[[1]]
+file.copy(from = example_file, to = paste0(example_file, ".bak"))
+
+# Change one value in file, then rewrite to same path
+tmp <- readr::read_lines(example_file)
+print("\n file before changes")
+print(tmp)
+# original value (units): (Mt CH4 per Mt biochar supply)
+#               source 1: Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
+
+### THESE VALUES ARE FOR CARBON AVOIDANCE AND ARE NOT SUBJECT TO CARBON SUBSIDIES ###
+### values calculated in 41467_2010 excel spreadsheet
+tmp[41] <- "biochar,slow pyrolysis,dairy_biochar,,,,-0.0118,,,,,,,"
+tmp[42] <- "biochar,slow pyrolysis,beef_biochar,,,,-0.0118,,,,,,,"
+tmp[43] <- "biochar,slow pyrolysis,pork_biochar,,,,-0.0334,,,,,,,"
+tmp[44] <- "biochar,slow pyrolysis,goat_biochar,,,,-0.0118,,,,,,,"
+tmp[45] <- "biochar,slow pyrolysis,poultry_biochar,,,,-0.0126,,,,,,,"
+
+print("\n file after changes")
+print(tmp)
+readr::write_lines(tmp, example_file)
 
 
 ### update xml files ###
