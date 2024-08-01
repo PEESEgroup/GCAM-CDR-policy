@@ -259,16 +259,15 @@ print(tmp)
 
 ### THESE VALUES ARE FOR CARBON AVOIDANCE AND ARE NOT SUBJECT TO CARBON SUBSIDIES ###
 ### values calculated in 41467_2010 excel spreadsheet
-tmp[41] <- "biochar,slow pyrolysis,dairy_biochar,,,,-0.0118,,,,,,,"
-tmp[42] <- "biochar,slow pyrolysis,beef_biochar,,,,-0.0118,,,,,,,"
-tmp[43] <- "biochar,slow pyrolysis,pork_biochar,,,,-0.0334,,,,,,,"
-tmp[44] <- "biochar,slow pyrolysis,goat_biochar,,,,-0.0118,,,,,,,"
-tmp[45] <- "biochar,slow pyrolysis,poultry_biochar,,,,-0.0126,,,,,,,"
+tmp[41] <- "biochar,slow pyrolysis,dairy_biochar,,,,-0.0432,,,,,,,"
+tmp[42] <- "biochar,slow pyrolysis,beef_biochar,,,,-0.0432,,,,,,,"
+tmp[43] <- "biochar,slow pyrolysis,pork_biochar,,,,-0.1222,,,,,,,"
+tmp[44] <- "biochar,slow pyrolysis,goat_biochar,,,,-0.0432,,,,,,,"
+tmp[45] <- "biochar,slow pyrolysis,poultry_biochar,,,,-0.0460,,,,,,,"
 
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
-
 
 ### update xml files ###
 devtools::load_all()

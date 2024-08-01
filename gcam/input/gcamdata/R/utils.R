@@ -20,11 +20,22 @@ find_header <- function(fqfn) {
 
   while(is_comment) {
     line <- readLines(con, n = 1)
+    line <- gsub('ï»¿', '', line)
+    print(line)
+    if (line == "ï»¿# File: IFA_Fert_ktP2O5.csv")
+    {
+      line = "# File: IFA_Fert_ktP2O5.csv"
+    }
+    if (line == "ï»¿# File: IFA_Fert_ktK2O.csv")
+    {
+      line = "# File: IFA_Fert_ktK2O.csv"
+    }
     is_comment <- grepl("^#", line)
     if (is_comment) {
       header <- c(header, line)
     }
   }
+
   header
 }
 
@@ -158,7 +169,7 @@ extract_header_info <- function(header_lines, label, filename, required = FALSE,
     return(info)
   } else {
     if(required) {
-      stop("Required metadata label '", label, "' not found in ", basename(filename))
+      stop("Required metadata label '", label, "' not found in ", basename(filename), header_lines)
     }
     NULL   # label not present
   }

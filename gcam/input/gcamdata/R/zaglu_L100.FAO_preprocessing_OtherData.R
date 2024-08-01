@@ -26,7 +26,9 @@ module_aglu_L100.FAO_preprocessing_OtherData <- function(command, ...) {
       FILE = "aglu/FAO/GCAMDATA_FAOSTAT_ForProdTrade_215Regs_Roundwood_1973to2020",
       FILE = "aglu/FAO/GCAMDATA_FAOSTAT_AnimalStock_202Regs_22Items_1973to2020",
       FILE = "aglu/FAO/GCAMDATA_FAOSTAT_LandCover_229Regs_3Covers_1973to2020",
-      FILE = "aglu/FAO/GCAMDATA_FAOSTAT_NFertilizerProdDemand_175Regs_1Item_1973to2020")
+      FILE = "aglu/FAO/GCAMDATA_FAOSTAT_NFertilizerProdDemand_175Regs_1Item_1973to2020",
+      FILE = "aglu/FAO/GCAMDATA_FAOSTAT_PFertilizerProdDemand_175Regs_1Item_1973to2020",
+      FILE = "aglu/FAO/GCAMDATA_FAOSTAT_KFertilizerProdDemand_175Regs_1Item_1973to2020")
 
   MODULE_OUTPUTS <-
     c("L100.FAO_an_Stocks",
@@ -36,6 +38,10 @@ module_aglu_L100.FAO_preprocessing_OtherData <- function(command, ...) {
       "L100.FAO_harv_CL_kha",
       "L100.FAO_Fert_Cons_tN",
       "L100.FAO_Fert_Prod_tN",
+      "L100.FAO_Fert_Cons_tK2O",
+      "L100.FAO_Fert_Prod_tK2O",
+      "L100.FAO_Fert_Cons_tP2O5",
+      "L100.FAO_Fert_Prod_tP2O5",
       "L100.FAO_For_Exp_m3",
       "L100.FAO_For_Imp_m3",
       "L100.FAO_For_Prod_m3")
@@ -206,6 +212,57 @@ module_aglu_L100.FAO_preprocessing_OtherData <- function(command, ...) {
       add_precursors("aglu/FAO/GCAMDATA_FAOSTAT_NFertilizerProdDemand_175Regs_1Item_1973to2020",
                      "aglu/AGLU_ctry", "common/iso_GCAM_regID") ->
       L100.FAO_Fert_Prod_tN
+
+
+    ##* L100.FAO_Fert_Prod_tK2O ----
+    GCAMDATA_FAOSTAT_KFertilizerProdDemand_175Regs_1Item_1973to2020 %>%
+      filter(element == "Production") %>%
+      gather_years() %>% filter(!is.na(value)) %>%
+      FAO_REG_YEAR_MAP %>%
+      add_title("FAO fertilizer production by country, year") %>%
+      add_comments("FAO nitrogen K2O (total) production") %>%
+      add_units("tonnes K2O") %>%
+      add_precursors("aglu/FAO/GCAMDATA_FAOSTAT_KFertilizerProdDemand_175Regs_1Item_1973to2020",
+                     "aglu/AGLU_ctry", "common/iso_GCAM_regID") ->
+      L100.FAO_Fert_Prod_tK2O
+
+
+    ##* L100.FAO_Fert_Cons_tK2O ----
+    GCAMDATA_FAOSTAT_KFertilizerProdDemand_175Regs_1Item_1973to2020 %>%
+      filter(element == "Agricultural Use") %>%
+      gather_years() %>% filter(!is.na(value)) %>%
+      FAO_REG_YEAR_MAP %>%
+      add_title("FAO fertilizer consumption by country, year") %>%
+      add_comments("FAO nitrogen K2O (total) consumption") %>%
+      add_units("tonnes K2O") %>%
+      add_precursors("aglu/FAO/GCAMDATA_FAOSTAT_KFertilizerProdDemand_175Regs_1Item_1973to2020",
+                     "aglu/AGLU_ctry", "common/iso_GCAM_regID") ->
+      L100.FAO_Fert_Cons_tK2O
+
+
+    ##* L100.FAO_Fert_Cons_tN ----
+    GCAMDATA_FAOSTAT_PFertilizerProdDemand_175Regs_1Item_1973to2020 %>%
+      filter(element == "Agricultural Use") %>%
+      gather_years() %>% filter(!is.na(value)) %>%
+      FAO_REG_YEAR_MAP %>%
+      add_title("FAO fertilizer consumption by country, year") %>%
+      add_comments("FAO nitrogen P2O5 (total) consumption") %>%
+      add_units("tonnes P2O5") %>%
+      add_precursors("aglu/FAO/GCAMDATA_FAOSTAT_P2O5FertilizerProdDemand_175Regs_1Item_1973to2020",
+                     "aglu/AGLU_ctry", "common/iso_GCAM_regID") ->
+      L100.FAO_Fert_Cons_tP2O5
+
+    ##* L100.FAO_Fert_Prod_tP2O5 ----
+    GCAMDATA_FAOSTAT_PFertilizerProdDemand_175Regs_1Item_1973to2020 %>%
+      filter(element == "Production") %>%
+      gather_years() %>% filter(!is.na(value)) %>%
+      FAO_REG_YEAR_MAP %>%
+      add_title("FAO fertilizer production by country, year") %>%
+      add_comments("FAO nitrogen P2O5 (total) production") %>%
+      add_units("tonnes P2O5") %>%
+      add_precursors("aglu/FAO/GCAMDATA_FAOSTAT_PFertilizerProdDemand_175Regs_1Item_1973to2020",
+                     "aglu/AGLU_ctry", "common/iso_GCAM_regID") ->
+      L100.FAO_Fert_Prod_tP2O5
 
 
     ##* L100.FAO_CL_kha ----

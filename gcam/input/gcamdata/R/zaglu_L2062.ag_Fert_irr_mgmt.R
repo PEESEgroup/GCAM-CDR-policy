@@ -101,8 +101,6 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       select(-AgSupplySector)->
       L2062.bio_app_rate
 
-
-    # TODO filter land usage by outputs from eventual outputs of 181
     L2062.ag_Fert_MGMT %>%
         left_join(L171.ag_rfdEcYield_kgm2_R_C_Y_GLU, by = c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year"))%>%
         filter(MGMT == "biochar") %>%
@@ -126,13 +124,9 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
 
       print(L2062.ag_biochar_MGMT %>% filter(year> 2035))
 
-    # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
-    # assumes a 50% increase in N use efficiency due to biochar application - this is modeled by reducing the N fertilizer requirement by 2
-    L2062.ag_Fert_MGMT %>%
-      mutate(value = if_else(MGMT == "biochar", value/2, value)) ->
-      L2062.ag_Fert_MGMT
-
-
+    # because these fert inputs lower fixed costs by the amount of fertilizer applied
+    # delay the reduction in N fert inputs due to higher N use efficiency until after
+    # the variables costs have been calculated
     L2062.ag_Fert_MGMT%>% #combine fert and biochar demands
       # Add sector, subsector, technology names
       mutate(AgSupplySector = GCAM_commodity,
@@ -206,6 +200,16 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       select(-minicam.energy.input, -coefficient, -FertCost) ->
       L2062.AgCost_ag_irr_mgmt_adj
 
+
+
+
+    # TODO: for biochar mgmt levels, also calculate and subtract P and K costs
+    print(L2062.AgCost_ag_irr_mgmt_adj)
+
+
+
+
+
     L2052.AgCost_bio_irr_mgmt %>%
       # Note: using left_join because there are instances with cost but no fertilizer use
       left_join(L2062.AgCoef_Fert_bio_irr_mgmt,
@@ -223,6 +227,28 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       mutate(nonLandVariableCost = round(nonLandVariableCost - FertCost, aglu.DIGITS_CALPRICE)) %>%
       select(-minicam.energy.input, -coefficient, -FertCost) ->
       L2062.AgCost_bio_irr_mgmt_adj
+
+    # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
+    # assumes a 50% increase in N use efficiency due to biochar application - this is modeled by reducing the N fertilizer requirement by 2
+    L2062.ag_Fert_MGMT %>%
+      mutate(value = if_else(MGMT == "biochar", value/2, value)) ->
+      L2062.ag_Fert_MGMT %>% #combine fert and biochar demands
+      # Add sector, subsector, technology names
+      mutate(AgSupplySector = GCAM_commodity,
+             AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
+             AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.IRR_DELIMITER),
+                                            MGMT, sep = aglu.MGMT_DELIMITER)) %>%
+      rename(coefficient = value) %>% #remove inclusion of minicam energy input here because it was added earlier
+      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, minicam.energy.input, year, coefficient) %>%
+    # Copy final base year coefficients to all future years, bind with historic coefficients, then remove zeroes
+    # Note: this assumes constant fertilizer coefficients in the future ----
+      filter(year == max(MODEL_BASE_YEARS)) %>%
+      select(-year) %>%
+      repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS)) %>%
+      bind_rows(L2062.AgCoef_Fert_ag_irr_mgmt) %>%
+      bind_rows(L2062.ag_biochar_MGMT) %>%
+      filter(coefficient > 0) ->
+      L2062.AgCoef_Fert_ag_irr_mgmt
 
     # Produce outputs
     L2062.AgCoef_Fert_ag_irr_mgmt %>%
