@@ -26,13 +26,21 @@ module_aglu_L142.ag_Fert_IO_R_C_Y_GLU <- function(command, ...) {
       "L100.LDS_ag_prod_t",
       "L100.FAO_Fert_Cons_tN",
       "L100.FAO_Fert_Prod_tN",
+      "L100.FAO_Fert_Cons_tK2O",
+      "L100.FAO_Fert_Prod_tK2O",
+      "L100.FAO_Fert_Cons_tP2O5",
+      "L100.FAO_Fert_Prod_tP2O5",
       "L101.ag_Prod_Mt_R_C_Y_GLU",
-      "L141.ag_Fert_Cons_MtN_ctry_crop")
+      "L141.ag_Fert_Cons_MtN_ctry_crop",
+      "L141.ag_Fert_Cons_MtK2O_ctry_crop",
+      "L141.ag_Fert_Cons_MtP2O5_ctry_crop")
 
   MODULE_OUTPUTS <-
     c("L142.ag_Fert_Prod_MtN_ctry_Y",
       "L142.ag_Fert_NetExp_MtN_R_Y",
-      "L142.ag_Fert_IO_R_C_Y_GLU")
+      "L142.ag_Fert_IO_R_C_Y_GLU",
+      "L142.ag_Fert_IO_R_C_Y_GLU_K2O",
+      "L142.ag_Fert_IO_R_C_Y_GLU_P2O5")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)

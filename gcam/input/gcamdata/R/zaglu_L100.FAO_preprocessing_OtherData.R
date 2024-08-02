@@ -213,7 +213,6 @@ module_aglu_L100.FAO_preprocessing_OtherData <- function(command, ...) {
                      "aglu/AGLU_ctry", "common/iso_GCAM_regID") ->
       L100.FAO_Fert_Prod_tN
 
-
     ##* L100.FAO_Fert_Prod_tK2O ----
     GCAMDATA_FAOSTAT_KFertilizerProdDemand_175Regs_1Item_1973to2020 %>%
       filter(element == "Production") %>%

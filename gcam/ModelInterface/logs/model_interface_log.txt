@@ -23,30 +23,47 @@ Didn't find builder for land leaf shares query going to use defaults
 Didn't find builder for land leaf shares in a specified land use region query going to use defaults
 Didn't find builder for National Account query going to use defaults
 Didn't find builder for Social Accounting Matrix query going to use defaults
-About to perform query: collection()/singleQueryListCache/cache[@id=-2064818699]/text()
+About to perform query: collection()/singleQueryListCache/cache[@id=1057439673]/text()
+Time : 2
+About to perform query: collection()/singleQueryListCache/cache[@id=1127998875]/text()
 Time : 0
-About to perform query: collection()/singleQueryListCache/cache[@id=-2064818699]/text()
-Time : 0
-Before Function: 1721919456738
-About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-23-7T11:51:35-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//land-allocation/text()
-In Function: 1721919456738
-After build Tree: 1721919458212
-After Add table: 1721919458212
-About to perform query: collection()/singleQueryListCache/cache[@id=-2064605714]/text()
-Time : 0
-Before Function: 1721919463477
-About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-23-7T11:51:35-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//land-allocation/text()
-In Function: 1721919463477
-After build Tree: 1721919465038
-After Add table: 1721919465038
+Before Function: 1722602764623
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/Marketplace/market[true() and ContainedRegion[(child::text() = 'USA') ] ]/supply/node()
+In Function: 1722602764623
+After build Tree: 1722602764973
+After Add table: 1722602764973
 About to perform query: collection()/singleQueryListCache/cache[@id=-1961143988]/text()
-Time : 1
-Before Function: 1721927652260
-About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-23-7T11:51:35-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//profit-rate/text()
-In Function: 1721927652260
-After build Tree: 1721927653021
-After Add table: 1721927653021
+Time : 0
+Before Function: 1722602795201
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//profit-rate/text()
+In Function: 1722602795201
+After build Tree: 1722602795943
+After Add table: 1722602795943
+About to perform query: collection()/singleQueryListCache/cache[@id=639696155]/text()
+Time : 0
+About to perform query: collection()/singleQueryListCache/cache[@id=-70521030]/text()
+Time : 0
+Before Function: 1722602818201
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/region[ (@name='USA') ]/*[@type = 'resource' and contains(@name, 'water withdrawals')]//production/node()
+In Function: 1722602818201
+After build Tree: 1722602818271
+After Add table: 1722602818271
+Before Function: 1722602819891
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/Marketplace/market[true() and contains(@name,'CO2') and ContainedRegion[(child::text() = 'USA') ] ]/price/node()
+In Function: 1722602819891
+After build Tree: 1722602820041
+After Add table: 1722602820041
+About to perform query: collection()/singleQueryListCache/cache[@id=2138411424]/text()
+Time : 2
+Before Function: 1722602859641
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/region[ (@name='USA') ]/*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//
+            CO2/emissions/node()
+In Function: 1722602859641
+After build Tree: 1722602860053
+After Add table: 1722602860053
 Caught the window closing
+Doing remove because of control
+Doing remove because of control
 Doing remove because of control
 Doing remove because of control
 Doing remove because of control

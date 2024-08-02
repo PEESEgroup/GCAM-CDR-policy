@@ -239,8 +239,12 @@ print(tmp)
 #               source 1: Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
 
 ### THESE VALUES ARE FOR CDR AND ARE SUBJECT TO CARBON SUBSIDIES ###
-### valus calculated in 41467_2010 excel spreadsheet
-tmp[37] <- "biochar,-0.26,0"
+### values calculated in 41467_2010 excel spreadsheet
+tmp[37] <- "beef manure,-0.113,0"
+tmp[38] <- "dairy manure,-0.113,0"
+tmp[39] <- "goat manure,-0.143,0"
+tmp[40] <- "pork manure,-0.143,0"
+tmp[41] <- "poultry manure,-0.131,0"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)

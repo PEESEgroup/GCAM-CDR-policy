@@ -32,7 +32,9 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
       FILE = "aglu/IFA_Fert_ktP2O5")
 
   MODULE_OUTPUTS <-
-    c("L141.ag_Fert_Cons_MtN_ctry_crop")
+    c("L141.ag_Fert_Cons_MtN_ctry_crop",
+      "L141.ag_Fert_Cons_MtK2O_ctry_crop",
+      "L141.ag_Fert_Cons_MtP2O5_ctry_crop")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -198,7 +200,7 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
       # store in a table of ferlizer application rates for each iso-GTAPcrop combo
       L141.IFA2002_Fert_ktN
 
-    IFA2002_Fert_ktK2O %>%
+    IFA2002_Fert_ktN %>%
       # calculate nitrogen consumption in tons per hectare N_tha = N_kt / AREA_thousHa
       mutate(K2O_tha = K2O_kt / AREA_thousHa) %>%
       na.omit() %>%
@@ -461,17 +463,26 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
     L141.IFA_Fert_Cons_MtK2O_ctry_crop %>%
       left_join_error_no_match(select(L141.IFA_Fert_Cons_Rifa_Cifa_K2O, IFA_region, IFA_commodity, scaler),
                                by = c("IFA_region", "IFA_commodity")) %>%
-      mutate(Fert_Cons_MtK2O = IFA_N_Mt_unscaled * scaler) %>%
+      mutate(Fert_Cons_MtK2O = IFA_K2O_Mt_unscaled * scaler) %>%
       select(iso, GTAP_crop, Fert_Cons_MtK2O) ->
       L141.ag_Fert_Cons_MtK2O_ctry_crop
 
     # Pipeline 1:
     # take ctry crop bottom up estimate of N consumption
+    print(L141.IFA_Fert_Cons_MtP2O5_ctry_crop)
+    print(L141.IFA_Fert_Cons_MtP2O5_ctry_crop %>%
+            select(IFA_region, IFA_commodity, IFA_P2O5_Mt_unscaled) %>%
+            # aggregate to IFA_region, IFA_commodity via summing
+            group_by(IFA_region, IFA_commodity) %>%
+            summarise(IFA_P2O5_Mt_unscaled = sum(IFA_P2O5_Mt_unscaled)) %>%
+            ungroup() %>%
+            # join top down IFA fertilizer estimates
+            left_join_error_no_match(select(L141.IFA_Fert_ktP2O5, -Fert_ktP2O5), by = c("IFA_region", "IFA_commodity")))
     L141.IFA_Fert_Cons_MtP2O5_ctry_crop %>%
       select(IFA_region, IFA_commodity, IFA_P2O5_Mt_unscaled) %>%
       # aggregate to IFA_region, IFA_commodity via summing
       group_by(IFA_region, IFA_commodity) %>%
-      summarise(IFA_N_Mt_unscaled = sum(IFA_P2O5_Mt_unscaled)) %>%
+      summarise(IFA_P2O5_Mt_unscaled = sum(IFA_P2O5_Mt_unscaled)) %>%
       ungroup() %>%
       # join top down IFA fertilizer estimates
       left_join_error_no_match(select(L141.IFA_Fert_ktP2O5, -Fert_ktP2O5), by = c("IFA_region", "IFA_commodity")) %>%
@@ -487,7 +498,7 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
     L141.IFA_Fert_Cons_MtP2O5_ctry_crop %>%
       left_join_error_no_match(select(L141.IFA_Fert_Cons_Rifa_Cifa_P2O5, IFA_region, IFA_commodity, scaler),
                                by = c("IFA_region", "IFA_commodity")) %>%
-      mutate(Fert_Cons_MtN = IFA_P2O5_Mt_unscaled * scaler) %>%
+      mutate(Fert_Cons_MtP2O5 = IFA_P2O5_Mt_unscaled * scaler) %>%
       select(iso, GTAP_crop, Fert_Cons_MtP2O5) ->
       L141.ag_Fert_Cons_MtP2O5_ctry_crop
 
