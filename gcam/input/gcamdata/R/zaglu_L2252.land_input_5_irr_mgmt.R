@@ -155,18 +155,26 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
         mutate(LandNode5 = LandLeaf,
                LandLeaf = paste(LandNode5, level, sep = aglu.MGMT_DELIMITER)) ->
         data_new
+      print("converted LN4 to LN5 data")
       print(data_new, n=20)
 
-      # if GCAM commodities are available, make sure biochar is
+      # if GCAM commodities are available, make sure biochar is available too
       if ("GCAM_commodity" %in% names(data_new)) {
-        print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
+        print(data_new %>% filter(level == "biochar") %>%
+                left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+                            mutate(Irr_Rfd = toupper(Irr_Rfd))%>%
+                            left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")) %>%
+                            replace_GLU(map = basin_to_country_mapping),
+                          by=c("GCAM_commodity", "GCAM_subsector", "region", "GLU", "year", "level", "Irr_Rfd"))%>%
+                dplyr::filter_all(dplyr::any_vars(is.na(value.y))), n=200)
+
         data_new %>% filter(level == "biochar") %>%
           left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
                         mutate(Irr_Rfd = toupper(Irr_Rfd))%>%
                         left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")) %>%
                         replace_GLU(map = basin_to_country_mapping),
                     by=c("GCAM_commodity", "GCAM_subsector", "region", "GLU", "year", "level", "Irr_Rfd")) %>%
-          drop_na() %>% #drop rows fir crios that don't need biochar
+          drop_na(value.y) %>% #drop rows for crops that don't need biochar
           bind_rows(data_new %>% filter(level != "biochar")) -> data_new
       }
 
@@ -332,6 +340,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              LandLeaf = paste(LandNode4, Irr_Rfd, sep = "_")) %>%
       convert_LN4_to_LN5(names = LEVEL2_DATA_NAMES[["LN5_MgdCarbon"]])->
       L2252.LN5_MgdCarbon_crop #contains biochar
+    print(L2252.LN5_MgdCarbon_crop %>% filter(grepl("biochar", LandLeaf))) # check that biochar has land carbon values
 
     L2012.AgYield_bio_ref %>%
       filter(year == max(MODEL_BASE_YEARS)) %>%
