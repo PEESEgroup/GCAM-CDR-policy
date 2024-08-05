@@ -273,7 +273,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       select(-minicam.energy.input, -coefficient, -FertCost) ->
       L2062.AgCost_ag_irr_mgmt_adj_old
 
-
+    print(L2062.AgCost_ag_irr_mgmt_adj_old %>% arrange(nonLandVariableCost))
 
     # load in the costs of Ag Prices
     #subtract K2O costs from existing ag costs
@@ -292,7 +292,6 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       select(-minicam.energy.input, -coefficient, -FertCost) ->
       L2062.AgCost_ag_irr_mgmt_adj
     # and P2O5
-    print(L2062.AgCost_ag_irr_mgmt_adj)
 
     L2062.AgCost_ag_irr_mgmt_adj %>%
       # Note: using left_join because there are instances with cost but no fertilizer use.
@@ -309,14 +308,22 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       select(-minicam.energy.input, -coefficient, -FertCost) ->
       L2062.AgCost_ag_irr_mgmt_adj
 
-    print(L2062.AgCost_ag_irr_mgmt_adj %>%
-            left_join(L2062.AgCost_ag_irr_mgmt_adj_old, by=c("region", "AgSupplySector", "AgProductionTechnology", "year"))%>%
-            mutate(ratio = 100*(nonLandVariableCost.x-nonLandVariableCost.y)/nonLandVariableCost.y) %>%
-            select(region, AgSupplySector, year, ratio, nonLandVariableCost.x, nonLandVariableCost.y) %>%
-            dplyr::distinct_all() %>%
-            #TODO sort
-            filter(ratio < -20))
+    # if the ratio is too large, replace with the average reduction in price
+    # assuming 2018 USDA NASS fertilizers as average percent of production expenses at 10.9%
+    L2062.AgCost_ag_irr_mgmt_adj %>%
+      left_join(L2062.AgCost_ag_irr_mgmt_adj_old, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year"))%>%
+      mutate(ratio = 100*(nonLandVariableCost.x-nonLandVariableCost.y)/nonLandVariableCost.y,
+             nonLandVariableCost = nonLandVariableCost.x) %>% # calculate percentage reduction in crop costs
+      mutate(nonLandVariableCost = if_else(nonLandVariableCost.y == 0, nonLandVariableCost.y, nonLandVariableCost)) %>% # remove cost reductions if theres a divide by 0 error and replace with original
+      mutate(nonLandVariableCost = if_else(ratio < -2*10.9, -.109*nonLandVariableCost.y, nonLandVariableCost)) %>%# replace outliers on cost reduction with average fertilizer expenditures
+      mutate(nonLandVariableCost = if_else(is.na(nonLandVariableCost), nonLandVariableCost.y, nonLandVariableCost)) %>% # remove NA values
+      select(-nonLandVariableCost.y, -nonLandVariableCost.x, -ratio) -> L2062.AgCost_ag_irr_mgmt_adj
 
+    print(L2062.AgCost_ag_irr_mgmt_adj %>% arrange(nonLandVariableCost))
+    print(L2062.AgCost_ag_irr_mgmt_adj %>% dplyr::filter_all(dplyr::any_vars(is.na(.))))
+    print(L2062.AgCost_ag_irr_mgmt_adj_old %>% dplyr::filter_all(dplyr::any_vars(is.na(.))))
+
+    #TODO: check calMinProfitRate code, because biochar has lots of negative profit rates
 
 
     L2052.AgCost_bio_irr_mgmt %>%

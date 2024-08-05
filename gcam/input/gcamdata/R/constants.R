@@ -432,7 +432,7 @@ aglu.LN1_PROTUNMGD_LOGIT_TYPE <- NA
 
 # default logit exponent and type for LN5, the competition betweein high and lo management
 aglu.MGMT_LOGIT_EXP  <- 2.5
-aglu.MGMT_LOGIT_TYPE <- "absolute-cost-logit"
+aglu.MGMT_LOGIT_TYPE <- "relative-cost-logit" # changed to a relative cost logit because negative profit rates are allowed now
 
 # Statistical differences reconciliation: China's Vegetable production estimates are inconsistent between the PRODSTAT
 # ("Production") and SUA ("Commodity Balances"). Because the latter dataset is used for estimating food consumption in

@@ -24,8 +24,9 @@
 
 ## TODO: fix biochar doesn't have matching input in next period
 ## TODO: fix invalid profit rates in Indonesian biomass LandLeafs
-## TODO: update climate coefficients for avoided emissions
-## TODO: update P and K costs for biochar lands
+## TODO: let biochar have carbon contents in land nodes
+## TODO: let biochar have a negative profit rate
+## TODO: add ghost-shares to biochar lands???
 ## ZEMISSIONS_XML_ALL_AGLU_EMISSIONS_IRR_MGMT_XML producing an invalid XML file - only differences are emissions parameters in Taiwan
 
 devtools::load_all()

@@ -24,44 +24,1897 @@ Didn't find builder for land leaf shares in a specified land use region query go
 Didn't find builder for National Account query going to use defaults
 Didn't find builder for Social Accounting Matrix query going to use defaults
 About to perform query: collection()/singleQueryListCache/cache[@id=1057439673]/text()
-Time : 2
-About to perform query: collection()/singleQueryListCache/cache[@id=1127998875]/text()
 Time : 0
-Before Function: 1722602764623
-About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/Marketplace/market[true() and ContainedRegion[(child::text() = 'USA') ] ]/supply/node()
-In Function: 1722602764623
-After build Tree: 1722602764973
-After Add table: 1722602764973
+Before Function: 1722874538022
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T14:56:35-04:00') ]/world/Marketplace/market[true() and ContainedRegion[(child::text() = 'USA') ] ]/price/node()
+In Function: 1722874538022
+After build Tree: 1722874538373
+After Add table: 1722874538373
+About to perform query: collection()/singleQueryListCache/cache[@id=1127998875]/text()
+Time : 7
+Before Function: 1722874575995
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T14:56:35-04:00') ]/world/Marketplace/market[true() and ContainedRegion[(child::text() = 'USA') ] ]/supply/node()
+In Function: 1722874575995
+After build Tree: 1722874576255
+After Add table: 1722874576255
+Before Function: 1722874607857
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/Marketplace/market[true() and ContainedRegion[(child::text() = 'USA') ] ]/supply/node()
+In Function: 1722874607857
+After build Tree: 1722874608189
+After Add table: 1722874608189
+Before Function: 1722874620543
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/Marketplace/market[true() and ContainedRegion[(child::text() = 'USA') ] ]/price/node()
+In Function: 1722874620543
+After build Tree: 1722874620803
+After Add table: 1722874620803
+Before Function: 1722874636370
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/Marketplace/market[true() and ContainedRegion[(child::text() = 'EU-12') ] ]/supply/node()
+In Function: 1722874636370
+After build Tree: 1722874636622
+After Add table: 1722874636622
 About to perform query: collection()/singleQueryListCache/cache[@id=-1961143988]/text()
 Time : 0
-Before Function: 1722602795201
-About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//profit-rate/text()
-In Function: 1722602795201
-After build Tree: 1722602795943
-After Add table: 1722602795943
+Before Function: 1722874667033
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//profit-rate/text()
+In Function: 1722874667033
+After build Tree: 1722874667435
+After Add table: 1722874667435
+About to perform query: collection()/singleQueryListCache/cache[@id=-1013158960]/text()
+Time : 0
+Before Function: 1722874817735
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type='sector' and (@name='wholesale gas' or @name='delivered gas' or
+            @name='delivered coal' or @name='delivered biomass' or @name='traditional biomass' or
+            @name='elect_td_ind' or @name='elect_td_bld' or @name='elect_td_trn' or
+            @name='H2 wholesale dispensing' or @name='H2 wholesale delivery' or @name='H2 retail dispensing' or @name='H2 retail delivery' or
+            @name='refined liquids industrial' or @name='refined liquids enduse' or @name='waste biomass for paper')]/
+            cost/text()
+In Function: 1722874817735
+After build Tree: 1722874817765
+After Add table: 1722874817765
+About to perform query: collection()/singleQueryListCache/cache[@id=-1826020088]/text()
+Time : 3
+Before Function: 1722874833320
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type='sector' and contains(@name,'feedstocks')]//
+               *[@type='input' and @name != 'oil-credits']/demand-physical/node()
+In Function: 1722874833320
+After build Tree: 1722874833325
+After Add table: 1722874833335
+About to perform query: collection()/singleQueryListCache/cache[@id=-225872105]/text()
+Time : 1
+Before Function: 1722874844826
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type='sector' (:collapse:) and (@name='refining')]//
+               output-primary[@type='output']/physical-output/node()
+In Function: 1722874844826
+After build Tree: 1722874844846
+After Add table: 1722874844846
+About to perform query: collection()/singleQueryListCache/cache[@id=464095256]/text()
+Time : 0
+Before Function: 1722874848569
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type='sector' and contains(@name,'refining')]/*[@type='subsector']/
+               *[@type='technology']/output-primary[@type='output']/physical-output/node()
+In Function: 1722874848569
+After build Tree: 1722874848589
+After Add table: 1722874848589
+About to perform query: collection()/singleQueryListCache/cache[@id=-1136608076]/text()
+Time : 0
+Before Function: 1722874857992
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type='resource']//output/node()
+In Function: 1722874857992
+After build Tree: 1722874858012
+After Add table: 1722874858012
+About to perform query: collection()/singleQueryListCache/cache[@id=121359279]/text()
+Time : 0
+Before Function: 1722874886471
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type='resource']//grade/available/node()
+In Function: 1722874886471
+After build Tree: 1722874886582
+After Add table: 1722874886582
+About to perform query: collection()/singleQueryListCache/cache[@id=-1411195844]/text()
+Time : 0
+Before Function: 1722874906689
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type = 'sector' and (@name='regional oil' or @name='regional natural gas'
+            or @name='regional coal' or @name='regional biomass' or @name='nuclearFuelGenIII')]/
+            cost/text()
+In Function: 1722874906689
+After build Tree: 1722874906692
+After Add table: 1722874906692
+About to perform query: collection()/singleQueryListCache/cache[@id=-1235412779]/text()
+Time : 0
+Before Function: 1722874933281
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type='resource']/*[@type='subresource']/
+            *[@type='technology']/output-primary[@type='output' (:collapse:)]/physical-output/node()
+In Function: 1722874933281
+After build Tree: 1722874933341
+After Add table: 1722874933341
+About to perform query: collection()/singleQueryListCache/cache[@id=2138411424]/text()
+Time : 0
+Before Function: 1722875115133
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//
+            CO2/emissions/node()
+In Function: 1722875115133
+After build Tree: 1722875115443
+After Add table: 1722875115443
+About to perform query: collection()/singleQueryListCache/cache[@id=191939293]/text()
+Time : 3
+About to perform query: collection()/singleQueryListCache/cache[@id=-1849958245]/text()
+Time : 3
+Before Function: 1722875132081
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//
+            CO2/emissions-sequestered/node()
+In Function: 1722875132081
+After build Tree: 1722875132251
+After Add table: 1722875132251
+About to perform query: collection()/singleQueryListCache/cache[@id=83837723]/text()
+Time : 0
+Before Function: 1722875149775
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()
+In Function: 1722875149775
+After build Tree: 1722875151439
+After Add table: 1722875151449
+About to perform query: collection()/singleQueryListCache/cache[@id=-688534275]/text()
+Time : 0
+Before Function: 1722875181415
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/climate-model/CO2-concentration/text()
+In Function: 1722875181415
+After build Tree: 1722875181415
+After Add table: 1722875181415
 About to perform query: collection()/singleQueryListCache/cache[@id=639696155]/text()
 Time : 0
-About to perform query: collection()/singleQueryListCache/cache[@id=-70521030]/text()
+Before Function: 1722875190402
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/Marketplace/market[true() and contains(@name,'CO2') and ContainedRegion[(child::text() = 'EU-12') ] ]/price/node()
+In Function: 1722875190402
+After build Tree: 1722875190590
+After Add table: 1722875190590
+About to perform query: collection()/singleQueryListCache/cache[@id=-526735581]/text()
 Time : 0
-Before Function: 1722602818201
-About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/region[ (@name='USA') ]/*[@type = 'resource' and contains(@name, 'water withdrawals')]//production/node()
-In Function: 1722602818201
-After build Tree: 1722602818271
-After Add table: 1722602818271
-Before Function: 1722602819891
-About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/Marketplace/market[true() and contains(@name,'CO2') and ContainedRegion[(child::text() = 'USA') ] ]/price/node()
-In Function: 1722602819891
-After build Tree: 1722602820041
-After Add table: 1722602820041
-About to perform query: collection()/singleQueryListCache/cache[@id=2138411424]/text()
-Time : 2
-Before Function: 1722602859641
-About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-31-7T15:00:59-04:00') ]/world/region[ (@name='USA') ]/*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//
-            CO2/emissions/node()
-In Function: 1722602859641
-After build Tree: 1722602860053
-After Add table: 1722602860053
+Before Function: 1722875203470
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='EU-12') ]/*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()
+In Function: 1722875203470
+After build Tree: 1722875203660
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@Beef~subsector@Mixed~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@Beef~subsector@Pastoral~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@Dairy~subsector@Mixed~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@Dairy~subsector@Pastoral~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@DanubeR_desalinated water~subsector@DanubeR_desalinated water~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@ElbeR_desalinated water~subsector@ElbeR_desalinated water~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@Corn~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@DDGS and feedcakes~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@FiberCrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@Fruits~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@Legumes~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@MiscCrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@NutsSeeds~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@OilCrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@OilPalm~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@OtherGrain~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@Rice~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@RootTuber~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@Soybean~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@SugarCrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@Vegetables~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FeedCrops~subsector@Wheat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FodderHerb_Residue~subsector@FodderHerb~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@FodderHerb_Residue~subsector@Residue~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 central production~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 central production~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 central production~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 central production~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 central production~subsector@nuclear~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 central production~subsector@solar~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 central production~subsector@wind~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 industrial~subsector@H2 delivery~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 industrial~subsector@onsite production~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 liquid truck~subsector@H2 liquid truck~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 pipeline~subsector@H2 pipeline~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 retail delivery~subsector@H2 retail delivery~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 retail dispensing~subsector@H2 retail dispensing~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 wholesale delivery~subsector@H2 liquid truck~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 wholesale delivery~subsector@H2 pipeline~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 wholesale dispensing~subsector@H2 delivery~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@H2 wholesale dispensing~subsector@forecourt production~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@MeditE_desalinated water~subsector@MeditE_desalinated water~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@N fertilizer~subsector@N fertilizer~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NemanR_desalinated water~subsector@NemanR_desalinated water~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@Corn~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@FiberCrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@FodderGrass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@FodderHerb~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@Fruits~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@Legumes~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@MiscCrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@NutsSeeds~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@OilCrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@OilPalm~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@OtherGrain~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@Rice~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@RootTuber~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@Soybean~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@SugarCrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@Vegetables~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Crops~subsector@Wheat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Meat~subsector@Beef~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Meat~subsector@Dairy~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Meat~subsector@OtherMeat_Fish~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Meat~subsector@Pork~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Meat~subsector@Poultry~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_Meat~subsector@SheepGoat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@NonFoodDemand_sawnwood~subsector@Forest~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@OderR_desalinated water~subsector@OderR_desalinated water~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@Pasture_FodderGrass~subsector@FodderGrass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@Pasture_FodderGrass~subsector@Pasture~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@PolandCst_desalinated water~subsector@PolandCst_desalinated water~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@Pork~subsector@Mixed~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@Poultry~subsector@Mixed~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@Scavenging_Other~subsector@Scavenging_Other~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@SheepGoat~subsector@Mixed~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@SheepGoat~subsector@Pastoral~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@WislaR_desalinated water~subsector@WislaR_desalinated water~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@agricultural energy use~subsector@mobile~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@agricultural energy use~subsector@stationary~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@alumina~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@alumina~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@alumina~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@alumina~subsector@heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@alumina~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@aluminum~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@ammonia~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@ammonia~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@ammonia~subsector@hydrogen~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@ammonia~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@backup_electricity~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@backup_electricity~subsector@hydrogen~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@biochar~subsector@slow pyrolysis~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@carbon-storage~subsector@offshore carbon-storage~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@carbon-storage~subsector@onshore carbon-storage~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@cement~subsector@cement~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical~subsector@chemical~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical energy use~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical energy use~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical energy use~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical energy use~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical energy use~subsector@heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical energy use~subsector@hydrogen~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical energy use~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical feedstocks~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical feedstocks~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@chemical feedstocks~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm cooling~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm cooling~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm heating~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm heating~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm heating~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm heating~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm heating~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm heating~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm others~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm others~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm others~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm others~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm others~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@comm others~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@construction~subsector@construction~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@construction energy use~subsector@mobile~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@construction energy use~subsector@stationary~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@construction feedstocks~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@csp_backup~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@delivered biomass~subsector@delivered biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@delivered coal~subsector@delivered coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@delivered gas~subsector@delivered gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@desalinated water~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@desalinated water~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@desalinated water~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@district heat~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@district heat~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@district heat~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@district heat~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_CSP~subsector@CSP~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_CSP_storage~subsector@CSP_storage~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_Gen_III~subsector@Gen_III~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_Gen_II_LWR~subsector@Gen_II_LWR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_biomass (IGCC CCS)~subsector@biomass (IGCC CCS)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_biomass (IGCC)~subsector@biomass (IGCC)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_biomass (conv CCS)~subsector@biomass (conv CCS)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_biomass (conv)~subsector@biomass (conv)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_coal (IGCC CCS)~subsector@coal (IGCC CCS)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_coal (IGCC)~subsector@coal (IGCC)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_coal (conv pul CCS)~subsector@coal (conv pul CCS)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_coal (conv pul)~subsector@coal (conv pul)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_gas (CC CCS)~subsector@gas (CC CCS)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_gas (CC)~subsector@gas (CC)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_gas (steam/CT)~subsector@gas (steam/CT)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_geothermal~subsector@geothermal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_refined liquids (CC CCS)~subsector@refined liquids (CC CCS)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_refined liquids (CC)~subsector@refined liquids (CC)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elec_refined liquids (steam/CT)~subsector@refined liquids (steam/CT)~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elect_td_bld~subsector@elect_td_bld~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elect_td_bld~subsector@rooftop_pv~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elect_td_ind~subsector@elect_td_ind~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@elect_td_trn~subsector@elect_td_trn~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@electricity~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@electricity~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@electricity~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@electricity~subsector@geothermal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@electricity~subsector@nuclear~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@electricity~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@electricity~subsector@solar~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@electricity~subsector@wind~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@electricity_net_ownuse~subsector@electricity_net_ownuse~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@food processing~subsector@food processing~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@gas pipeline~subsector@gas pipeline~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@gas processing~subsector@biomass gasification~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@gas processing~subsector@coal gasification~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@gas processing~subsector@natural gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@industrial wastewater treatment~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@industrial water abstraction~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@industrial water treatment~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@iron and steel~subsector@BLASTFUR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@iron and steel~subsector@EAF with DRI~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@iron and steel~subsector@EAF with scrap~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@irrigation water abstraction~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@mining energy use~subsector@mobile~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@mining energy use~subsector@stationary~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@municipal wastewater treatment~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@municipal water~subsector@municipal water~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@municipal water abstraction~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@municipal water distribution~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@municipal water treatment~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@nuclearFuelGenII~subsector@enrichedUranium~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@nuclearFuelGenIII~subsector@enrichedUranium~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial energy use~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial energy use~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial energy use~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial energy use~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial energy use~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial energy use~subsector@hydrogen~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial energy use~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial feedstocks~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial feedstocks~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industrial feedstocks~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@other industry~subsector@other industry~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@paper~subsector@paper~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat cement~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat cement~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat cement~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat cement~subsector@hydrogen~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat cement~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat food processing~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat food processing~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat food processing~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat food processing~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat food processing~subsector@heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat food processing~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat paper~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat paper~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat paper~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat paper~subsector@heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat paper~subsector@hydrogen~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@process heat paper~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@refined liquids enduse~subsector@refined liquids enduse~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@refined liquids industrial~subsector@refined liquids industrial~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@refining~subsector@biomass liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@refining~subsector@coal to liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@refining~subsector@gas to liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@refining~subsector@oil refining~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional ammonia~subsector@domestic ammonia~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional ammonia~subsector@imported ammonia~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional beef~subsector@regional beef~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional biomass~subsector@regional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional biomassOil~subsector@regional biomassOil~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional coal~subsector@domestic coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional coal~subsector@imported coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional corn~subsector@regional corn~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional corn for ethanol~subsector@regional corn for ethanol~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional dairy~subsector@regional dairy~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional fibercrop~subsector@regional fibercrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional fruits~subsector@regional fruits~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional industrial_roundwood~subsector@domestic industrial_roundwood~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional industrial_roundwood~subsector@imported industrial_roundwood~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional iron and steel~subsector@domestic iron and steel~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional iron and steel~subsector@imported iron and steel~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional legumes~subsector@regional legumes~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional misccrop~subsector@regional misccrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional nuts_seeds~subsector@regional nuts_seeds~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional oil~subsector@domestic crude oil~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional oil~subsector@imported crude oil~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional oilcrop~subsector@regional oilcrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional oilpalm~subsector@regional oilpalm~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional othergrain~subsector@regional othergrain~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional pork~subsector@regional pork~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional poultry~subsector@regional poultry~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional rice~subsector@regional rice~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional root_tuber~subsector@regional root_tuber~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional sawnwood~subsector@domestic sawnwood~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional sawnwood~subsector@imported sawnwood~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional sheepgoat~subsector@regional sheepgoat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional soybean~subsector@regional soybean~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional sugar for ethanol~subsector@regional sugar for ethanol~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional sugarcrop~subsector@regional sugarcrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional vegetables~subsector@regional vegetables~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional wheat~subsector@regional wheat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional woodpulp~subsector@domestic woodpulp~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional woodpulp~subsector@imported woodpulp~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@regional woodpulp for energy~subsector@regional woodpulp for energy~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d1~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d1~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d10~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d10~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d2~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d2~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d3~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d3~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d4~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d4~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d5~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d5~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d6~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d6~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d7~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d7~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d8~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d8~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d9~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid cooling modern_d9~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d1~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d10~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d2~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d3~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d4~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d5~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d6~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d7~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d8~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating TradBio_d9~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d1~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d10~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d2~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d3~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d4~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d5~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d6~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d7~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d8~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating coal_d9~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d1~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d1~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d1~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d1~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d1~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d10~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d10~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d10~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d10~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d10~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d2~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d2~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d2~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d2~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d2~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d3~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d3~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d3~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d3~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d3~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d4~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d4~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d4~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d4~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d4~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d5~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d5~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d5~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d5~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d5~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d6~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d6~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d6~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d6~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d6~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d7~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d7~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d7~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d7~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d7~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d8~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d8~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d8~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d8~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d8~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d9~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d9~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d9~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d9~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid heating modern_d9~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d1~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d10~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d2~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d3~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d4~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d5~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d6~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d7~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d8~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others TradBio_d9~subsector@traditional biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d1~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d10~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d2~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d3~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d4~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d5~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d6~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d7~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d8~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others coal_d9~subsector@coal~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d1~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d1~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d1~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d1~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d1~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d10~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d10~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d10~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d10~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d10~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d2~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d2~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d2~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d2~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d2~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d3~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d3~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d3~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d3~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d3~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d4~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d4~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d4~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d4~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d4~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d5~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d5~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d5~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d5~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d5~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d6~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d6~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d6~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d6~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d6~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d7~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d7~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d7~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d7~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d7~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d8~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d8~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d8~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d8~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d8~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d9~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d9~subsector@district heat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d9~subsector@electricity~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d9~subsector@gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@resid others modern_d9~subsector@refined liquids~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@sawnwood_processing~subsector@sawnwood~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total beef~subsector@domestic beef~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total beef~subsector@imported beef~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total biomass~subsector@domestic biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total biomass~subsector@imported biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total corn~subsector@domestic corn~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total corn~subsector@imported corn~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total dairy~subsector@domestic dairy~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total dairy~subsector@imported dairy~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total fibercrop~subsector@domestic fibercrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total fibercrop~subsector@imported fibercrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total fruits~subsector@domestic fruits~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total fruits~subsector@imported fruits~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total legumes~subsector@domestic legumes~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total legumes~subsector@imported legumes~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total misccrop~subsector@domestic misccrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total misccrop~subsector@imported misccrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total nuts_seeds~subsector@domestic nuts_seeds~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total nuts_seeds~subsector@imported nuts_seeds~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total oilcrop~subsector@domestic oilcrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total oilcrop~subsector@imported oilcrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total oilpalm~subsector@domestic oilpalm~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total oilpalm~subsector@imported oilpalm~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total othergrain~subsector@domestic othergrain~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total othergrain~subsector@imported othergrain~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total pork~subsector@domestic pork~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total pork~subsector@imported pork~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total poultry~subsector@domestic poultry~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total poultry~subsector@imported poultry~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total rice~subsector@domestic rice~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total rice~subsector@imported rice~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total root_tuber~subsector@domestic root_tuber~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total root_tuber~subsector@imported root_tuber~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total sheepgoat~subsector@domestic sheepgoat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total sheepgoat~subsector@imported sheepgoat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total soybean~subsector@domestic soybean~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total soybean~subsector@imported soybean~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total sugarcrop~subsector@domestic sugarcrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total sugarcrop~subsector@imported sugarcrop~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total vegetables~subsector@domestic vegetables~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total vegetables~subsector@imported vegetables~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total wheat~subsector@domestic wheat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@total wheat~subsector@imported wheat~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_aviation_intl~subsector@International Aviation~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_freight~subsector@Domestic Ship~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_freight~subsector@Freight Rail~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_freight~subsector@road~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_freight_road~subsector@Heavy truck~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_freight_road~subsector@Light truck~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_freight_road~subsector@Medium truck~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass~subsector@Domestic Aviation~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass~subsector@HSR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass~subsector@Passenger Rail~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass~subsector@road~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass_road~subsector@Bus~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass_road~subsector@LDV~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass_road_LDV~subsector@2W and 3W~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass_road_LDV~subsector@4W~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass_road_LDV_4W~subsector@Car~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_pass_road_LDV_4W~subsector@Large Car and Truck~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@trn_shipping_intl~subsector@International Ship~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@waste biomass for paper~subsector@biomass~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@AdrBlkSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@BalticSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@DanubeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@DaugavaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@ElbeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@MeditE~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@NarvaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@NemanR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@OderR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@PolandCst~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_an_W~subsector@WislaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@AdrBlkSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@BalticSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@DanubeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@DaugavaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@ElbeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@MeditE~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@NarvaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@NemanR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@OderR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@PolandCst~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_elec_W~subsector@WislaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@AdrBlkSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@BalticSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@DanubeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@DaugavaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@ElbeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@MeditE~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@NarvaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@NemanR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@OderR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@PolandCst~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_ind_W~subsector@WislaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_AdrBlkSea_W~subsector@AdrBlkSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_BalticSea_W~subsector@BalticSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_DanubeR_W~subsector@DanubeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_DaugavaR_W~subsector@DaugavaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_DniesterR_W~subsector@DniesterR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_DnkGrmCst_W~subsector@DnkGrmCst~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_ElbeR_W~subsector@ElbeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_MeditE_W~subsector@MeditE~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_NarvaR_W~subsector@NarvaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_NemanR_W~subsector@NemanR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_OderR_W~subsector@OderR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_PolandCst_W~subsector@PolandCst~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_irr_WislaR_W~subsector@WislaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@AdrBlkSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@BalticSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@DanubeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@DaugavaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@ElbeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@MeditE~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@NarvaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@NemanR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@OderR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@PolandCst~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_muni_W~subsector@WislaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@AdrBlkSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@BalticSea~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@DanubeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@DaugavaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@ElbeR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@MeditE~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@NarvaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@NemanR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@OderR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@PolandCst~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@water_td_pri_W~subsector@WislaR~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@wholesale gas~subsector@wholesale gas~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@woodpulp_energy~subsector@woodpulp_energy~cost@
+allNodeInfo: cost@
+BIG PROBLEM, COUNT TOKENS ISN'T 2!!!!!!!!!!: cost@
+lineToParse: scenario@GCAM_SSP1,date=2024-2-8T13:45:38-04:00~region@EU-12~sector@woodpulp_processing~subsector@woodpulp~cost@
+allNodeInfo: cost@
+After Add table: 1722875203670
+Removing :GCAM_SSP1718094040
+Removing :GCAM_SSP1723115135
+Removing :GCAM_SSP1731113720
+Removing :GCAM_SSP1731135325
+About to perform query: collection()/scenario
+About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
+Before Function: 1722875290758
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='USA') ]/*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/cost/text()
+In Function: 1722875290758
+After build Tree: 1722875291069
+After Add table: 1722875291069
+About to perform query: collection()/singleQueryListCache/cache[@id=-2064818699]/text()
+Time : 0
+Before Function: 1722875393726
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//land-allocation/text()
+In Function: 1722875393726
+After build Tree: 1722875394506
+After Add table: 1722875394506
+About to perform query: collection()/singleQueryListCache/cache[@id=-2064605714]/text()
+Time : 11
+Before Function: 1722875411173
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//land-allocation/text()
+In Function: 1722875411173
+After build Tree: 1722875411995
+After Add table: 1722875411995
+About to perform query: collection()/singleQueryListCache/cache[@id=-436607540]/text()
+Time : 0
+Before Function: 1722875536359
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//
+            LandLeaf[@land-region='MissouriR']/
+            profit-rate/text()
+In Function: 1722875536359
+After build Tree: 1722875536670
+After Add table: 1722875536670
+About to perform query: collection()/singleQueryListCache/cache[@id=270374950]/text()
+Time : 0
+Before Function: 1722875549075
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-2-8T13:45:38-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()
+In Function: 1722875549075
+After build Tree: 1722875549926
+After Add table: 1722875549926
+Before Function: 1722875566819
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-16-7T15:00:36-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()
+In Function: 1722875566819
+After build Tree: 1722875567826
+After Add table: 1722875567826
+Before Function: 1722875594624
+About to perform query: collection()/scenario[ (@name='GCAM_SSP1' and @date='2024-16-7T15:00:36-04:00') ]/world/region[ (@name='USA') ]//LandNode[@name='root' or @type='LandNode' (:collapse:)]//profit-rate/text()
+In Function: 1722875594624
+After build Tree: 1722875595345
+After Add table: 1722875595345
 Caught the window closing
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
+Doing remove because of control
 Doing remove because of control
 Doing remove because of control
 Doing remove because of control
