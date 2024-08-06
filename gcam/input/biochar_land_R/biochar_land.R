@@ -24,7 +24,6 @@
 
 ## TODO: fix biochar doesn't have matching input in next period
 ## TODO: fix invalid profit rates in Indonesian biomass LandLeafs
-## TODO: let biochar have carbon contents in land nodes
 ## TODO: let biochar have a negative profit rate
 ## TODO: add ghost-shares to biochar lands???
 ## ZEMISSIONS_XML_ALL_AGLU_EMISSIONS_IRR_MGMT_XML producing an invalid XML file - only differences are emissions parameters in Taiwan
@@ -71,11 +70,11 @@ print("\n file before changes")
 print(tmp)
 
 #           source 1: plant costs.xlsx
-tmp[15] <- "biochar,slow pyrolysis,poultry_biochar,non-energy,0.0602,0.0602"
-tmp[16] <- "biochar,slow pyrolysis,pork_biochar,non-energy,0.0604,0.0604"
-tmp[17] <- "biochar,slow pyrolysis,beef_biochar,non-energy,0.0617,0.0617"
-tmp[18] <- "biochar,slow pyrolysis,dairy_biochar,non-energy,0.0595,0.0595"
-tmp[19] <- "biochar,slow pyrolysis,goat_biochar,non-energy,0.0581,0.0581"
+tmp[15] <- "biochar,slow pyrolysis,poultry_biochar,non-energy,0.0118,0.0118"
+tmp[16] <- "biochar,slow pyrolysis,pork_biochar,non-energy,0.0118,0.0118"
+tmp[17] <- "biochar,slow pyrolysis,beef_biochar,non-energy,0.0118,0.0118"
+tmp[18] <- "biochar,slow pyrolysis,dairy_biochar,non-energy,0.0118,0.0118"
+tmp[19] <- "biochar,slow pyrolysis,goat_biochar,non-energy,0.0118,0.0118"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
