@@ -201,6 +201,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "USA"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Africa_Eastern"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -402,6 +413,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Africa_Eastern"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="Africa_Northern"/>
     <query title="aggregated land allocation">
@@ -605,6 +627,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Africa_Northern"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Africa_Southern"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -806,6 +839,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Africa_Southern"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="Africa_Western"/>
     <query title="aggregated land allocation">
@@ -1009,6 +1053,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Africa_Western"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Australia_NZ"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -1210,6 +1265,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Australia_NZ"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="Brazil"/>
     <query title="aggregated land allocation">
@@ -1413,6 +1479,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Brazil"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Canada"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -1614,6 +1691,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Canada"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="Central America and Caribbean"/>
     <query title="aggregated land allocation">
@@ -1817,6 +1905,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Central America and Caribbean"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Central Asia"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -2018,6 +2117,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Central Asia"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="China"/>
     <query title="aggregated land allocation">
@@ -2221,6 +2331,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "China"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="EU-12"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -2422,6 +2543,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "EU-12"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="EU-15"/>
     <query title="aggregated land allocation">
@@ -2625,6 +2757,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "EU-15"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Europe_Eastern"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -2826,6 +2969,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Europe_Eastern"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="Europe_Non_EU"/>
     <query title="aggregated land allocation">
@@ -3029,6 +3183,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Europe_Non_EU"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="European Free Trade Association"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -3230,6 +3395,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "European Free Trade Association"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="India"/>
     <query title="aggregated land allocation">
@@ -3433,6 +3609,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "India"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Indonesia"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -3634,6 +3821,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Indonesia"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="Japan"/>
     <query title="aggregated land allocation">
@@ -3837,6 +4035,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Japan"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Mexico"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -4038,6 +4247,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Mexico"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="Middle East"/>
     <query title="aggregated land allocation">
@@ -4241,6 +4461,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Middle East"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Pakistan"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -4442,6 +4673,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Pakistan"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="Russia"/>
     <query title="aggregated land allocation">
@@ -4645,6 +4887,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Russia"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="South Africa"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -4846,6 +5099,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "South Africa"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="South America_Northern"/>
     <query title="aggregated land allocation">
@@ -5049,6 +5313,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "South America_Northern"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="South America_Southern"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -5250,6 +5525,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "South America_Southern"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="South Asia"/>
     <query title="aggregated land allocation">
@@ -5453,6 +5739,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "South Asia"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="South Korea"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -5654,6 +5951,17 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "South Korea"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
 <aQuery>
     <region name="Southeast Asia"/>
     <query title="aggregated land allocation">
@@ -5857,6 +6165,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Southeast Asia"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Taiwan"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -6059,6 +6378,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Taiwan"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Argentina"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -6261,6 +6591,17 @@
     </query>
 </aQuery>
 <aQuery>
+    <region name = "Argentina"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+
+<aQuery>
     <region name="Colombia"/>
     <query title="aggregated land allocation">
         <axis1 name="LandLeaf">LandLeaf[@crop]</axis1>
@@ -6462,3 +6803,14 @@
         <comments/>
     </query>
 </aQuery>
+<aQuery>
+    <region name = "Colombia"/>
+    <supplyDemandQuery title="ag tech yield">
+                    <axis1 name="technology">technology</axis1>
+                    <axis2 name="Year">technology</axis2>
+                    <xPath buildList="true" dataName="yield" group="false" sumAll="false">*[@type='sector' and (local-name()='AgSupplySector')]/
+            *[@type='subsector']/*[@type='technology']/yield/text()</xPath>
+                    <comments/>
+                </supplyDemandQuery>
+</aQuery>
+

@@ -169,7 +169,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       }
 
       data_new <- data_new[names]
-      print(data_new)
+      print(data_new, n=12)
 
       return(data_new)
     } # end convert_LN4_to_LN5
@@ -182,7 +182,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       # remove 0 production region-years and add an id combining
       # region, AgProductionTechnology, year info"
       prod %>%
-        filter(calOutputValue > 0) %>%
+        filter(calOutputValue > 0 | grepl("biochar", AgProductionTechnology)) %>% #it's okay for biochar to have zero calOutputValue because it has yields instead
         mutate(id = paste0(region, AgProductionTechnology, year)) %>%
         select(id) %>%
         distinct() ->
@@ -238,9 +238,6 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       replace_na(list(allocation = 0)) -> # biochar shouldn't have any land allocation in historical periods
       ALL_LAND_ALLOCATION
 
-    #TODO: remove biochar land nodes which don't exist
-    print(ALL_LAND_ALLOCATION)
-
     # remove biochar lands without biochar application from the list of land allocations
     ALL_LAND_ALLOCATION%>% filter(grepl("biochar", LandLeaf))%>%
       separate(col=LandNode5, into=c("AgSupplySector", "GLU_Name", "IRR_RFD"), sep=aglu.IRR_DELIMITER, remove=FALSE)%>%
@@ -255,8 +252,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       dplyr::distinct_all() %>%
       bind_rows(ALL_LAND_ALLOCATION %>%
                   filter(!grepl("biochar", LandLeaf))) ->ALL_LAND_ALLOCATION
-
-    print(ALL_LAND_ALLOCATION)
+    print(ALL_LAND_ALLOCATION%>% filter(grepl("biochar", LandLeaf)), n=8)
 
     # L2252.LN5_HistMgdAllocation_crop: historical cropland allocation
     # in the fifth land nest ie for each crop-irr-mgmt combo in each region-glu-year.
@@ -272,6 +268,10 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       filter(year %in% MODEL_BASE_YEARS)  %>%
       remove_zero_production_land_leafs(prod = L2012.AgProduction_ag_irr_mgmt) ->
             L2252.LN5_MgdAllocation_crop #contains biochar as LandLeaf
+
+    print(L2252.LN5_MgdAllocation_crop)
+    print(L2252.LN5_MgdAllocation_crop %>%
+            filter(grepl("biochar", LandLeaf)),n =7)
 
     # L2252.LN5_HistMgdAllocation_bio
     ALL_LAND_ALLOCATION %>%
@@ -330,7 +330,6 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
              LandLeaf = paste(LandNode4, Irr_Rfd, sep = "_")) %>%
       convert_LN4_to_LN5(names = LEVEL2_DATA_NAMES[["LN5_MgdCarbon"]])->
       L2252.LN5_MgdCarbon_crop #contains biochar
-    print(L2252.LN5_MgdCarbon_crop %>% filter(grepl("biochar", LandLeaf))) # check that biochar has land carbon values
 
     L2012.AgYield_bio_ref %>%
       filter(grepl("biomass", AgSupplySector)) %>% # keep only the yields from the biomass sectors, not the biochar sectors
@@ -405,8 +404,8 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       select(c(LEVEL2_DATA_NAMES[["LN5_LeafGhostShare"]], "GLU", "Irr_Rfd", "level")) ->
       L2252.LN5_LeafGhostShare_bio # contains biochar
 
+    print(L2252.LN5_MgdAllocation_crop %>% filter(grepl("biochar", LandLeaf)))
     print(L2252.LandShare_R_bio_GLU_irr)
-    print(L2252.LN5_LeafGhostShare_bio)
 
     # get biochar nodes to have ghost shares
     L2252.LN5_MgdAllocation_crop%>%

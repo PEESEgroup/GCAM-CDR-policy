@@ -24,6 +24,9 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       FILE = "water/basin_to_country_mapping",
       FILE = "aglu/A_agSupplySector",
       FILE = "aglu/A_agSupplySubsector",
+      FILE = "aglu/A_ag_tech_yield",
+      FILE = "aglu/A_agBiocharCropYieldIncrease",
+      FILE = "aglu/A_AgBiocharApplicationRateYrCropLand",
       "L113.ag_bioYield_GJm2_R_GLU",
       "L122.ag_HA_bm2_R_Y_GLU_AnnualCHF",
       "L123.ag_Prod_Mt_R_Past_Y_GLU",
@@ -225,8 +228,6 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       ungroup() ->
       L2012.AgHAtoCL_irr_mgmt
 
-    print(L2012.AgHAtoCL_irr_mgmt)
-
     # L2012.AgYield_bio_ref: bioenergy yields.
     # For bio grass crops, start with data of irrigated and rainfed split;
     # For bio tree crops, use the no-tech-split data of bio grass crops,
@@ -348,8 +349,6 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       # Copy to high and low management levels
       repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) ->L2012.AgYield_bio_ref
 
-    print(L2012.AgYield_bio_ref)
-
     L2012.AgYield_bio_ref%>% filter(MGMT == "biochar") %>%
       left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
                   left_join_error_no_match(GCAM_region_names, by = c("GCAM_region_ID")),
@@ -374,9 +373,6 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["AgYield"]]) ->
       L2012.AgYield_bio_ref
 
-    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% filter(level == "biochar"))
-    print(L2012.AgYield_bio_ref)
-
     # Add sector, subsector, and technology information to L201.AgYield_bio_grass
     L201.AgYield_bio_grass %>%
       mutate(AgSupplySector = "biomass",
@@ -386,24 +382,34 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       select(-GLU_name) ->
       L201.AgYield_bio_grass
 
-    print(L201.AgYield_bio_grass)
+    print(L2012.AgYield_bio_ref)
+    print(A_ag_tech_yield)
+    print(A_ag_tech_yield %>% gather(key = year, value="yield", -region, -AgSupplySector, -AgSupplySubsector, -AgProductionTechnology))
+
+    A_AgBiocharApplicationRateYrCropLand %>%
+      filter(year == 1975) %>% # only need to take 1 year of data
+      filter(rate_kg_ha > 0) %>%
+      select(-year) -> # only take crops that have biochar demand
+      L181.ag_C_GLU_biochar
 
     # create yields for biochar technologies
-    # TODO: units converted from kg/bm2 to kg/m2???
-    L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
-            filter(level == "biochar") %>%
-            filter(year == 1975)%>%
-            mutate(IRR_RFD = toupper(Irr_Rfd)) %>%
-            left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-            left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code"))%>%
-            mutate(AgSupplySector = GCAM_commodity,
-                   AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
-                   AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.IRR_DELIMITER),
-                                                  level, sep = aglu.MGMT_DELIMITER))%>%
-            select(-year)%>%
-            mutate(yield = value) %>%
-            repeat_add_columns((tibble(year = MODEL_BASE_YEARS))) %>%
-      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, yield) ->L2012.AgYield_biochar_ref
+    A_ag_tech_yield %>% gather(key = year, value="yield", -region, -AgSupplySector, -AgSupplySubsector, -AgProductionTechnology) -> L2012.biochar_base_yields
+
+    print(L2012.biochar_base_yields %>%
+            mutate(AgProductionTechnology = gsub("_hi", "_biochar", AgProductionTechnology)) %>% # move yields to biochar lands
+            left_join(L181.ag_C_GLU_biochar, by = c("region", "AgSupplySector")) %>%
+            drop_na() %>% # keep only land use types where biochar is applied to land
+            left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("AgSupplySector")))
+
+    L2012.biochar_base_yields %>%
+      mutate(AgProductionTechnology = gsub("_hi", "_biochar", AgProductionTechnology)) %>% # move yields to biochar lands
+      left_join(L181.ag_C_GLU_biochar, by = c("region", "AgSupplySector")) %>%
+      drop_na() %>% # keep only land use types where biochar is applied to land
+      left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("AgSupplySector"))%>% # copy in yield increase data
+      mutate(yield = yield*Yield.Increase) %>%
+      select(-rate_kg_ha, -Yield.Increase) -> L2012.AgYield_biochar_ref
+
+    print(L2012.AgYield_biochar_ref)
 
     # Write out the all years and CO2 object for Pasture AgProductionTechnologies
     L2012.AgProduction_For_Past %>%
@@ -507,6 +513,7 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       add_precursors("common/GCAM_region_names",
                      "water/basin_to_country_mapping",
                      "aglu/A_agSupplySector",
+                     "aglu/A_ag_tech_yield",
                      "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2012.AgYield_biochar_ref
 

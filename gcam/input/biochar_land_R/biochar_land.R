@@ -20,6 +20,8 @@
 # 3k. update locations where certain land nodes cannot exist - prune_empty_ag - L240.TechCoef_tra - aglu/A_agTradedTechnology - DONE
 # 4. find which R files correspond to what xml output files - DONE
 
+## TODO: fix biochar yields for IRR crops by loading in hi yields from existing GCAM output
+## TODO: fix biochar land shares
 ## TODO: fix biochar doesn't have matching input in next period
 ## TODO: fix invalid profit rates in Indonesian biomass LandLeafs
 

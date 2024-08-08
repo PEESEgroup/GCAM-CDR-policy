@@ -194,6 +194,7 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
                 by=c("region", "LandLeaf" = "AgProductionTechnology", "year")) %>%
       filter((allocation <= 0 & calOutputValue > 0 & !grepl("biochar", LandLeaf)) | (calOutputValue <= 0 & allocation > 0 & !grepl("biochar", LandLeaf))) ->
       mismath_double_check
+    print(mismath_double_check %>% select(region, LandLeaf, year, allocation, calOutputValue))
     assertthat::assert_that(nrow(mismath_double_check) == 0)
 
     # prepare the historical land areas for our empty checks
