@@ -155,19 +155,9 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
         mutate(LandNode5 = LandLeaf,
                LandLeaf = paste(LandNode5, level, sep = aglu.MGMT_DELIMITER)) ->
         data_new
-      print("converted LN4 to LN5 data")
-      print(data_new, n=20)
 
       # if GCAM commodities are available, make sure biochar is available too
       if ("GCAM_commodity" %in% names(data_new)) {
-        print(data_new %>% filter(level == "biochar") %>%
-                left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
-                            mutate(Irr_Rfd = toupper(Irr_Rfd))%>%
-                            left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")) %>%
-                            replace_GLU(map = basin_to_country_mapping),
-                          by=c("GCAM_commodity", "GCAM_subsector", "region", "GLU", "year", "level", "Irr_Rfd"))%>%
-                dplyr::filter_all(dplyr::any_vars(is.na(value.y))), n=200)
-
         data_new %>% filter(level == "biochar") %>%
           left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
                         mutate(Irr_Rfd = toupper(Irr_Rfd))%>%
@@ -343,6 +333,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
     print(L2252.LN5_MgdCarbon_crop %>% filter(grepl("biochar", LandLeaf))) # check that biochar has land carbon values
 
     L2012.AgYield_bio_ref %>%
+      filter(grepl("biomass", AgSupplySector)) %>% # keep only the yields from the biomass sectors, not the biochar sectors
       filter(year == max(MODEL_BASE_YEARS)) %>%
       select(region, AgProductionTechnology, yield) %>%
       separate(AgProductionTechnology, c("GCAM_subsector", "GLU", "Irr_Rfd", "level")) %>%
@@ -412,7 +403,31 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       # we want to have positive ghost shares for biochar in future years, but not impact land use in past years
       # mutate(ghost.unnormalized.share = replace(ghost.unnormalized.share, level == "biochar", 0))%>%
       select(c(LEVEL2_DATA_NAMES[["LN5_LeafGhostShare"]], "GLU", "Irr_Rfd", "level")) ->
-      L2252.LN5_LeafGhostShare # contains biochar
+      L2252.LN5_LeafGhostShare_bio # contains biochar
+
+    print(L2252.LandShare_R_bio_GLU_irr)
+    print(L2252.LN5_LeafGhostShare_bio)
+
+    # get biochar nodes to have ghost shares
+    L2252.LN5_MgdAllocation_crop%>%
+      distinct(region, LandAllocatorRoot, LandNode1, LandNode2, LandNode3, LandNode4, LandNode5, LandLeaf) %>%
+      separate(LandLeaf, c("crop1", "GLU", "Irr_Rfd", "level"), remove = FALSE) %>%
+      select(-crop1)  %>%
+      # use left_join to keep NA's for further manipulation
+      left_join(L2252.LandShare_R_bio_GLU_irr, by = c("region", "GLU", "Irr_Rfd", "level")) %>%
+      mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_GHOSTSHARE), year = aglu.BIO_START_YEAR) %>%
+      select(-landshare) %>%
+      # For bio techs with no ghost share info, set lo- and hi-input techs to 0.5
+      replace_na(replace = list(ghost.unnormalized.share = 0.5)) %>%
+      # we want to have positive ghost shares for biochar in future years, but not impact land use in past years
+      # mutate(ghost.unnormalized.share = replace(ghost.unnormalized.share, level == "biochar", 0))%>%
+      filter(grepl("biochar", LandLeaf)) %>% # only have ghost shares for biochar
+      select(c(LEVEL2_DATA_NAMES[["LN5_LeafGhostShare"]], "GLU", "Irr_Rfd", "level")) ->
+      L2252.LN5_LeafGhostShare_crop # contains biochar
+
+    print(L2252.LN5_LeafGhostShare_crop %>% filter(grepl("biochar", LandLeaf)))
+
+    L2252.LN5_LeafGhostShare <- bind_rows(L2252.LN5_LeafGhostShare_bio, L2252.LN5_LeafGhostShare_crop)
 
     # Calculate share of irrigated vs rainfed land
     # First, multiply irrigated land by aglu.IRR_GHOST_SHARE_MULT

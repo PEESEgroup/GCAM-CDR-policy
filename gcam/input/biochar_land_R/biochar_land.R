@@ -20,13 +20,8 @@
 # 3k. update locations where certain land nodes cannot exist - prune_empty_ag - L240.TechCoef_tra - aglu/A_agTradedTechnology - DONE
 # 4. find which R files correspond to what xml output files - DONE
 
-## changing biochar application rates is done in constants
-
 ## TODO: fix biochar doesn't have matching input in next period
 ## TODO: fix invalid profit rates in Indonesian biomass LandLeafs
-## TODO: let biochar have a negative profit rate
-## TODO: add ghost-shares to biochar lands???
-## ZEMISSIONS_XML_ALL_AGLU_EMISSIONS_IRR_MGMT_XML producing an invalid XML file - only differences are emissions parameters in Taiwan
 
 devtools::load_all()
 

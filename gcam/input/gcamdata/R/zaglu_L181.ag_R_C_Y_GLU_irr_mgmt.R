@@ -160,6 +160,8 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       mutate(yieldmult_hi = 1 + aglu.MGMT_YIELD_ADJ, yieldmult_lo = 1 - aglu.MGMT_YIELD_ADJ) ->
       L181.YieldMult_R_bio_GLU_irr
 
+    print(L181.YieldMult_R_bio_GLU_irr)
+
     # Calculate bioenergy land shares
     L181.LC_bm2_R_C_Yh_GLU_irr_level %>%
       filter(value > 0) %>%
@@ -168,6 +170,8 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       # SET THE SAME LADN SHARE, even including biochar
       mutate(landshare_lo = 0.5, landshare_hi = 0.5) ->
       L181.LandShare_R_bio_GLU_irr
+
+    print(L181.LandShare_R_bio_GLU_irr)
 
     # Produce outputs
     L181.LC_bm2_R_C_Yh_GLU_irr_level %>%

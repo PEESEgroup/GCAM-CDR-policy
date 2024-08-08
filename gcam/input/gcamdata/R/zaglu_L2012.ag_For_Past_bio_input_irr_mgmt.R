@@ -44,6 +44,7 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       "L2012.AgProduction_Past",
       "L2012.AgHAtoCL_irr_mgmt",
       "L2012.AgYield_bio_ref",
+      "L2012.AgYield_biochar_ref",
       "L201.AgYield_bio_grass",
       "L201.AgYield_bio_tree",
       "L2012.AgTechYr_Past")
@@ -148,7 +149,7 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
     L181.ag_Prod_Mt_R_C_Y_GLU_irr_level %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       mutate(calOutputValue = round(value, digits = aglu.DIGITS_CALOUTPUT)) %>%
-      mutate(calOutputValue = if_else(level=="biochar" & year < 2014, 0, calOutputValue)) %>% #biochar land shouldn't have a calOutputValue until the final base year, which is required because future yields are built on this value
+      mutate(calOutputValue = if_else(level=="biochar" & year < 2019, 0, calOutputValue)) %>% #biochar has yield and ghost shares, and therefore doesn't need calibrated outputvalues
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       left_join_error_no_match(select(basin_to_country_mapping, GLU_code, GLU_name), by = c("GLU" = "GLU_code")) %>%
       # Add AgSupplySector, AgSupplySubsector, AgProductionTechnology names.
@@ -161,7 +162,9 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
              subsector = AgSupplySubsector) %>%
       set_subsector_shrwt() %>%
       mutate(share.weight.year = year,
-             tech.share.weight = if_else(calOutputValue > 0, 1, 0)) %>% # do not set biochar calOutputVals to 0, even if they are not in historical data
+             tech.share.weight = if_else(calOutputValue > 0, 1, 0),
+             tech.share.weight = if_else(grepl("biochar", AgProductionTechnology), 1, tech.share.weight)) %>% # do not set tech.share.weights to 0, even if they are not in historical data
+      # becasue GCAM copies forward the shareweight from the previous time period
       select(LEVEL2_DATA_NAMES[["AgProduction"]]) ->
       L2012.AgProduction_ag_irr_mgmt
 
@@ -221,6 +224,8 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       mutate(harvests.per.year = approx_fun(year, harvests.per.year, rule = 2)) %>%
       ungroup() ->
       L2012.AgHAtoCL_irr_mgmt
+
+    print(L2012.AgHAtoCL_irr_mgmt)
 
     # L2012.AgYield_bio_ref: bioenergy yields.
     # For bio grass crops, start with data of irrigated and rainfed split;
@@ -369,6 +374,7 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       select(LEVEL2_DATA_NAMES[["AgYield"]]) ->
       L2012.AgYield_bio_ref
 
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% filter(level == "biochar"))
     print(L2012.AgYield_bio_ref)
 
     # Add sector, subsector, and technology information to L201.AgYield_bio_grass
@@ -379,6 +385,25 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       repeat_add_columns((tibble(year = MODEL_BASE_YEARS))) %>%
       select(-GLU_name) ->
       L201.AgYield_bio_grass
+
+    print(L201.AgYield_bio_grass)
+
+    # create yields for biochar technologies
+    # TODO: units converted from kg/bm2 to kg/m2???
+    L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+            filter(level == "biochar") %>%
+            filter(year == 1975)%>%
+            mutate(IRR_RFD = toupper(Irr_Rfd)) %>%
+            left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+            left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code"))%>%
+            mutate(AgSupplySector = GCAM_commodity,
+                   AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
+                   AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.IRR_DELIMITER),
+                                                  level, sep = aglu.MGMT_DELIMITER))%>%
+            select(-year)%>%
+            mutate(yield = value) %>%
+            repeat_add_columns((tibble(year = MODEL_BASE_YEARS))) %>%
+      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, yield) ->L2012.AgYield_biochar_ref
 
     # Write out the all years and CO2 object for Pasture AgProductionTechnologies
     L2012.AgProduction_For_Past %>%
@@ -474,6 +499,16 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
                      "L163.ag_rfdBioYield_GJm2_R_GLU",
                      "L181.YieldMult_R_bio_GLU_irr") ->
       L2012.AgYield_bio_ref
+
+    L2012.AgYield_biochar_ref %>%
+      add_title("Biochar land yields") %>%
+      add_units("kg/m2") %>%
+      add_legacy_name("L2012.AgYield_biochar_ref") %>%
+      add_precursors("common/GCAM_region_names",
+                     "water/basin_to_country_mapping",
+                     "aglu/A_agSupplySector",
+                     "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
+      L2012.AgYield_biochar_ref
 
     L201.AgYield_bio_grass %>%
       add_title("Bioenergy grass crops yields for aggregate tech") %>%

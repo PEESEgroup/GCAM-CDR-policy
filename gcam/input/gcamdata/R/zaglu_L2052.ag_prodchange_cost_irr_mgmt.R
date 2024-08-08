@@ -199,13 +199,11 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
     # in previous model runs, biochar would only be applied to biomassGrass/biomassTree LandLeafs
     # hypothetically because they do not have a minimum profit rate
     # to test this idea, biochar lands do not have a minimum profit rate.
-    print(L2052.AgCost_ag_irr_mgmt)
     L2052.AgCost_ag_irr_mgmt %>%
       left_join_error_no_match(select(L2012.AgSupplySector, region, AgSupplySector, calPrice),
                                by = c("region", "AgSupplySector")) %>%
       mutate(Profit = calPrice - nonLandVariableCost) ->
       L2052.UnAdjProfits
-    print(L2052.UnAdjProfits %>% filter(year==2010))
 
     # The min profit is uniform across regions & crops (not including bio & forest)
     # Check min profit by ag sector here. This could be considered later when needed
@@ -221,11 +219,8 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
     L2052.UnAdjProfits %>%
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology) %>%
       distinct() %>%
-      filter(grepl("zzzzz", AgProductionTechnology)) %>% # don't set a min cal profit rate for crop lands
       mutate(cal.min.profit.rate = min(L2052.UnAdjProfits[year = max(MODEL_BASE_YEARS)]$Profit)) ->
       L2052.AgCalMinProfitRate
-    print(L2052.AgCalMinProfitRate)
-
 
     # Future agricultural productivity changes ----
     # Specify reference scenario agricultural productivity change for crops (not incl biomass)
@@ -243,16 +238,23 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       left_join_error_no_match(basin_to_country_mapping[c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) ->
       L2052.AgProdChange_ag_irr_ref
 
+    print(L2052.AgProdChange_ag_irr_ref)
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+            mutate(Irr_Rfd = toupper(Irr_Rfd)))
+
     L2052.AgProdChange_ag_irr_ref%>% filter(MGMT == "biochar") %>%
       left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
-                  mutate(Irr_Rfd = toupper(Irr_Rfd)),
-                by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "Irr_Rfd", "year", MGMT="level")) %>%
+                  mutate(Irr_Rfd = toupper(Irr_Rfd)) %>%
+                           filter(year == 1975),
+                by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "Irr_Rfd", MGMT="level")) %>%
       dplyr::distinct_all() %>%
-      drop_na() %>% #drop rows for crops that don't need biochar
-      mutate(value = value.x) %>%
-      select(-value.y, -value.x) %>%
+      drop_na(value.y) %>% #drop rows for crops that don't need biochar
+      mutate(value = value.x, year = year.x) %>%
+      select(-value.y, -value.x, -year.x, -year.y) %>%
       bind_rows(L2052.AgProdChange_ag_irr_ref %>%
                   filter(MGMT != "biochar")) ->L2052.AgProdChange_ag_irr_ref
+
+    print(L2052.AgProdChange_ag_irr_ref %>% filter(MGMT == "biochar"))
 
     L2052.AgProdChange_ag_irr_ref%>%
       # Add sector, subsector, technology names
@@ -262,6 +264,7 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
                                             MGMT, sep = aglu.MGMT_DELIMITER)) %>%
       select(names_AgProdChange) ->
       L2052.AgProdChange_ag_irr_ref
+    print(L2052.AgProdChange_ag_irr_ref)
 
     # Specify reference scenario agricultural productivity change for biomass
     L162.bio_YieldRate_R_Y_GLU_irr %>%
