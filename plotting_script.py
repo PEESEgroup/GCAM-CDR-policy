@@ -535,9 +535,19 @@ def fertilizer(nonBaselineScenario, RCP, SSP):
 
     # spatial distribution of biochar/manure supply and prices
     biochar_price = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/prices_of_all_markets.csv")
     products = ["biochar"]
-    plotting.plot_world(biochar_price, products, SSP, "product", "product", ["2050"],
+    plotting.plot_world(biochar_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x,
+                        "spatial distribution of biochar prices")
+    biochar_price = biochar_price[biochar_price[['product']].isin(products).any(axis=1)]
+    biochar_price = biochar_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.future_x])
+    biochar_price['2024_value'] = biochar_price['value']/.17*1000
+    plt.hist(biochar_price['2024_value'])
+    plt.title("biochar price histogram")
+    plt.xlabel("biochar price 2024$/ton")
+    plt.ylabel("count region-years")
+    plt.show()
+    plotting.plot_world(biochar_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x,
                         "spatial distribution of biochar prices")
     products = ["beef manure", "dairy manure", "pork manure", "poultry manure", "goat manure"]
     plotting.plot_world(biochar_price, products, SSP, "product", "product", ["2050"],
