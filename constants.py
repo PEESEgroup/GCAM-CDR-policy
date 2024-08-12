@@ -4,8 +4,8 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
-    version = [["released", "2p6"], ["test", "2p6"]]
-    GCAMDB_filenames = ["data/gcam_out/released/2p6/ref.csv", "data/gcam_out/test/2p6/ref.csv"]
+    version = [["test", "6p0"]]
+    GCAMDB_filenames = ["data/gcam_out/test/6p0/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
@@ -110,11 +110,11 @@ class GCAMConstants:
     manure_C_ratio["biochar", "pork"] = -0.425
     manure_C_ratio["biochar", "poultry"] = -0.160
     manure_C_ratio["biochar", "goat"] = -0.425
-    manure_C_ratio["test", "beef"] = -0.147
-    manure_C_ratio["test", "dairy"] = -0.147
-    manure_C_ratio["test", "pork"] = -0.425
-    manure_C_ratio["test", "poultry"] = -0.160
-    manure_C_ratio["test", "goat"] = -0.425
+    manure_C_ratio["test", "beef"] = -0.113
+    manure_C_ratio["test", "dairy"] = -0.113
+    manure_C_ratio["test", "pork"] = -0.143
+    manure_C_ratio["test", "poultry"] = -0.131
+    manure_C_ratio["test", "goat"] = -0.143
 
     secout = dict()
     secout[2025, "beef manure"] = 0.048325

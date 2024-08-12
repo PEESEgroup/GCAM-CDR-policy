@@ -533,25 +533,6 @@ def fertilizer(nonBaselineScenario, RCP, SSP):
     # plotting.plot_world(biochar_supply, products, SSP, "product", "product", ["2050"],
     #                     "spatial distribution of manure supply")
 
-    # spatial distribution of biochar/manure supply and prices
-    biochar_price = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/prices_of_all_markets.csv")
-    products = ["biochar"]
-    plotting.plot_world(biochar_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x,
-                        "spatial distribution of biochar prices")
-    biochar_price = biochar_price[biochar_price[['product']].isin(products).any(axis=1)]
-    biochar_price = biochar_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.future_x])
-    biochar_price['2024_value'] = biochar_price['value']/.17*1000
-    plt.hist(biochar_price['2024_value'])
-    plt.title("biochar price histogram")
-    plt.xlabel("biochar price 2024$/ton")
-    plt.ylabel("count region-years")
-    plt.show()
-    plotting.plot_world(biochar_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x,
-                        "spatial distribution of biochar prices")
-    products = ["beef manure", "dairy manure", "pork manure", "poultry manure", "goat manure"]
-    plotting.plot_world(biochar_price, products, SSP, "product", "product", ["2050"],
-                        "spatial distribution of manure prices")
 
 
 def figure2(nonBaselineScenario, RCP, SSP):
@@ -935,10 +916,10 @@ def figure7(nonBaselineScenario, RCP, SSP):
 def carbon_price_biochar_supply(nonBaselineScenario, RCP, SSP):
     carbon_price = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
-            RCP) + "/masked" + "/CO2_prices.csv")
+            RCP) + "/original" + "/CO2_prices.csv")
     biochar_supply = pd.read_csv(
             "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
-                RCP) + "/masked" + "/supply_of_all_markets.csv")
+                RCP) + "/original" + "/supply_of_all_markets.csv")
     carbon_price = carbon_price[carbon_price[['SSP']].isin(SSP).any(axis=1)]
     carbon_price = carbon_price[carbon_price[['product']].isin(["CO2"]).any(axis=1)].drop_duplicates()
     biochar_supply = biochar_supply[biochar_supply[['SSP']].isin(SSP).any(axis=1)]
@@ -951,12 +932,68 @@ def carbon_price_biochar_supply(nonBaselineScenario, RCP, SSP):
         plt.title("carbon price by biochar supply")
     plt.show()
 
+
+
+    # spatial distribution of biochar/manure supply and prices
     biochar_price = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/prices_of_all_markets.csv")
+    products = ["biochar"]
+    plotting.plot_world(biochar_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x,
+                        "spatial distribution of biochar prices")
+    biochar_price = biochar_price[biochar_price[['product']].isin(products).any(axis=1)]
+    biochar_price = biochar_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.future_x])
+    biochar_price['2024_value'] = biochar_price['value'] / .17 * 1000
+    plt.hist(biochar_price['2024_value'])
+    plt.title("biochar price histogram")
+    plt.xlabel("biochar price 2024$/ton")
+    plt.ylabel("count region-years")
+    plt.show()
+
+    prices = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
-            RCP) + "/masked" + "/prices_of_all_markets.csv")
-    biochar_price = biochar_price[biochar_price[['SSP']].isin(SSP).any(axis=1)]
-    biochar_price = biochar_price[biochar_price[['product']].isin(["biochar", "beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)]
+            RCP) + "/original" + "/prices_of_all_markets.csv")
+    prices = prices[prices[['SSP']].isin(SSP).any(axis=1)]
+    biochar_price = prices[prices[['product']].isin(["biochar", "beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)]
+    manure_price = prices[prices[['product']].isin(
+        ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)]
+    manure_price = manure_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.future_x])
+    manure_price['2024_value'] = manure_price['value'] / .17 * 1000
+    plt.hist(manure_price['2024_value'])
+    plt.title("manure price histogram")
+    plt.xlabel("manure price 1975$/kg")
+    plt.ylabel("count region-years")
+    plt.show()
     print(biochar_price)
+    print(manure_price)
+
+    prices = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
+            RCP) + "/original" + "/prices_of_all_markets.csv")
+    prices = prices[prices[['SSP']].isin(SSP).any(axis=1)]
+    biochar_price = prices[prices[['product']].isin(
+        ["biochar", "beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)]
+    manure_price = prices[prices[['product']].isin(
+        ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)]
+    c_adj_bio_price = pd.merge(biochar_price, carbon_price, on=["GCAM", "SSP"], suffixes=("", "_C"))
+    c_adj_bio_price = pd.merge(c_adj_bio_price, manure_price, on=["GCAM", "SSP"], suffixes=("", "_cost"))
+    for i in c.GCAMConstants.plotting_x:
+        c_adj_bio_price[str(i)+"_adj"] = (c_adj_bio_price[str(i)] - .11*c_adj_bio_price[str(i) + "_C"])*.17/1000
+        c_adj_bio_price[str(i) + "_prod_cost"] = (c_adj_bio_price[str(i)] + .11*c_adj_bio_price[str(i) + "_C"]*0.41 - 2.4*c_adj_bio_price[str(i) + "_cost"])*.17/1000
+    adj_bio_price = c_adj_bio_price.groupby("GCAM")[[str(i) + "_adj" for i in c.GCAMConstants.plotting_x]].sum().reset_index()
+    adj_bio_price.columns = adj_bio_price.columns.str.rstrip("_adj")
+    adj_bio_price["Units"] = "2024$/ton"
+    adj_bio_price["SSP"] = "SSP1"
+    adj_bio_price["product"] = "biochar"
+    c_adj_bio_prod = c_adj_bio_price.groupby("GCAM")[
+        [str(i) + "_adj" for i in c.GCAMConstants.plotting_x]].sum().reset_index()
+    c_adj_bio_prod.columns = c_adj_bio_prod.columns.str.rstrip("_adj")
+    c_adj_bio_prod["Units"] = "2024$/ton"
+    c_adj_bio_prod["SSP"] = "SSP1"
+    c_adj_bio_prod["product"] = "biochar"
+
+    plotting.plot_world(adj_bio_price, ["biochar"], ["SSP1"], "year", "product", c.GCAMConstants.plotting_x, "2024$ C adj biochar price")
+    plotting.plot_world(c_adj_bio_prod, ["biochar"], ["SSP1"], "year", "product", c.GCAMConstants.plotting_x,
+                        "2024$ C adj biochar production cost as a biochar price")
 
 def cue_figure(nonBaselineScenario, RCP, SSP):
     """
@@ -1012,7 +1049,8 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    fertilizer("test", "2p6", ["SSP1"])
+    fertilizer("test", "6p0", ["SSP1"])
+    carbon_price_biochar_supply("test", "6p0", ["SSP1"])
     #climate("test", "2p6", ["SSP1"])
     #carbon_price_biochar_supply("biochar", "6p0", ["SSP2"])
     #carbon_price_biochar_supply("biochar", "4p5", ["SSP2"])

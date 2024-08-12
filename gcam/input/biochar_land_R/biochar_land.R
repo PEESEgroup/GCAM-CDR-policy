@@ -67,11 +67,11 @@ print("\n file before changes")
 print(tmp)
 
 #           source 1: plant costs.xlsx
-tmp[15] <- "biochar,slow pyrolysis,poultry_biochar,non-energy,0.0118,0.0118"
-tmp[16] <- "biochar,slow pyrolysis,pork_biochar,non-energy,0.0118,0.0118"
-tmp[17] <- "biochar,slow pyrolysis,beef_biochar,non-energy,0.0118,0.0118"
-tmp[18] <- "biochar,slow pyrolysis,dairy_biochar,non-energy,0.0118,0.0118"
-tmp[19] <- "biochar,slow pyrolysis,goat_biochar,non-energy,0.0118,0.0118"
+tmp[15] <- "biochar,slow pyrolysis,poultry_biochar,non-energy,0.0251,0.0251"
+tmp[16] <- "biochar,slow pyrolysis,pork_biochar,non-energy,0.0252,0.0252"
+tmp[17] <- "biochar,slow pyrolysis,beef_biochar,non-energy,0.0257,0.0257"
+tmp[18] <- "biochar,slow pyrolysis,dairy_biochar,non-energy,0.0248,0.0248"
+tmp[19] <- "biochar,slow pyrolysis,goat_biochar,non-energy,0.0242,0.0242"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
