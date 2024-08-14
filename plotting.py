@@ -1054,8 +1054,9 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
                 axs[0].fill_between(c.GCAMConstants.biochar_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
 
                 # add rectangles on right plot
-                rect = patches.Rectangle((color_counter*0.2, CI_df["2050"].min()),
-                                         0.15, CI_df["2050"].max()-CI_df["2050"].min(), facecolor=color)
+                bar_year = str(max(c.GCAMConstants.biochar_x))
+                rect = patches.Rectangle((color_counter*0.2, CI_df[bar_year].min()),
+                                         0.15, CI_df[bar_year].max()-CI_df[bar_year].min(), facecolor=color)
 
                 # Add the patch to the Axes
                 axs[1].add_patch(rect)
@@ -1064,7 +1065,7 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
 
         # get units
         units = dataframe['Units'].unique()[0]
-        l, h = finalize_line_subplot(axs, units, str(SSP_baseline), ncol, nrow, 0)
+        l, h = finalize_line_subplot(axs, units, title, ncol, nrow, 0)
 
         axs[1].axis('off')
 
