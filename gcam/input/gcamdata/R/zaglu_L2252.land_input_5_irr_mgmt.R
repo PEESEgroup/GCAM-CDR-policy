@@ -395,15 +395,16 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       select(-crop1)  %>%
       # use left_join to keep NA's for further manipulation
       left_join(L2252.LandShare_R_bio_GLU_irr, by = c("region", "GLU", "Irr_Rfd", "level")) %>%
-      mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_GHOSTSHARE), year = aglu.BIO_START_YEAR) %>%
+      mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_GHOSTSHARE), year = 2030) %>%
       select(-landshare) %>%
-      # For bio techs with no ghost share info, set lo- and hi-input techs to 0.5
-      replace_na(replace = list(ghost.unnormalized.share = 0.5)) %>%
+      # For biochar techs, set ghost-share to 0.1
+      replace_na(replace = list(ghost.unnormalized.share = 0.1)) %>%
       # we want to have positive ghost shares for biochar in future years, but not impact land use in past years
       # mutate(ghost.unnormalized.share = replace(ghost.unnormalized.share, level == "biochar", 0))%>%
       select(c(LEVEL2_DATA_NAMES[["LN5_LeafGhostShare"]], "GLU", "Irr_Rfd", "level")) ->
       L2252.LN5_LeafGhostShare_bio # contains biochar
 
+    print(L2252.LN5_LeafGhostShare_bio)
     print(L2252.LN5_MgdAllocation_crop %>% filter(grepl("biochar", LandLeaf)))
     print(L2252.LandShare_R_bio_GLU_irr)
 

@@ -231,7 +231,7 @@ def energy(nonBaselineScenario, RCP, SSP):
 
     # add manure fuel row to the released version so that the flat diff can be analyzed
     man_fuel = ref_pyrolysis.loc[ref_pyrolysis["technology"] == "manure fuel"]
-    for i in c.GCAMConstants.plotting_x:
+    for i in c.GCAMConstants.biochar_x:
         man_fuel.loc[:, str(i)] = 0
     ref_released = pd.concat([ref_released, man_fuel])
 
@@ -307,7 +307,7 @@ def energy(nonBaselineScenario, RCP, SSP):
 
     # add baseline for manure fuel production to released model
     man_fuel = pyrolysis_new.loc[pyrolysis_new["technology"] == "manure fuel"]
-    for i in c.GCAMConstants.plotting_x:
+    for i in c.GCAMConstants.biochar_x:
         man_fuel.loc[:, str(i)] = 0
     released_new = pd.concat([released_new, man_fuel])
 
@@ -514,7 +514,7 @@ def fertilizer(nonBaselineScenario, RCP, SSP):
     # # absolute change
     # # add biochar row to the released version so that the flat diff can be analyzed
     # biochar = pyrolysis_f.loc[pyrolysis_f["technology"] == "biochar_sup"]
-    # for i in c.GCAMConstants.plotting_x:
+    # for i in c.GCAMConstants.biochar_x:
     #     biochar.loc[:, str(i)] = 0
     # ref_released = pd.concat([released_f, biochar])
     # flat_diff_f = data_manipulation.flat_difference(ref_released, pyrolysis_f, ["SSP", "GCAM", "subsector"])
@@ -550,7 +550,7 @@ def figure2(nonBaselineScenario, RCP, SSP):
     co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
     co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "sector"), axis=1)
     co2_seq_pyrolysis['Units'] = "Mt C"
-    products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar", "manure fuel", "biochar"]
+    products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar", "manure fuel", "biochar"]
     biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
 
     if biochar_pyrolysis["sector"].unique()[0] == "manure fuel":
@@ -558,7 +558,7 @@ def figure2(nonBaselineScenario, RCP, SSP):
         plotting.plot_line_product_CI(biochar_pyrolysis, technologies, "technology", SSP[0], "Version",
                                       title="CO2 sequestration from biooil")
     else:
-        plotting.plot_line_product_CI(biochar_pyrolysis, products, "sector", SSP[0], "Version",
+        plotting.plot_line_product_CI(biochar_pyrolysis, products, "technology", SSP[0], "Version",
                                       title="CO2 sequestration from biochar")
     # print values of Mt C sequestered
     biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
@@ -637,7 +637,7 @@ def figure4(nonBaselineScenario, RCP, SSP):
     flat_diff_land['GCAM'] = flat_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     flat_diff_land["LandLeaf"] = flat_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
     flat_diff_land = data_manipulation.group(flat_diff_land, ["GCAM", "LandLeaf"])
-    for i in c.GCAMConstants.future_x: #
+    for i in c.GCAMConstants.biochar_x: #
         plotting.plot_stacked_bar_product(flat_diff_land, str(i), SSP, "LandLeaf", "land use change by region " + str(i))
 
     flat_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
@@ -783,7 +783,7 @@ def figure6(nonBaselineScenario, RCP, SSP):
 
     # add biochar row to the released version so that the flat diff can be analyzed
     biochar = pyrolysis_f.loc[pyrolysis_f["subsector"] == "biochar"]
-    for i in c.GCAMConstants.plotting_x:
+    for i in c.GCAMConstants.biochar_x:
         biochar.loc[:, str(i)] = 0
     ref_released = pd.concat([released_f, biochar])
     flat_diff_f = data_manipulation.flat_difference(ref_released, pyrolysis_f, ["SSP", "GCAM", "subsector"])
@@ -809,7 +809,7 @@ def figure6(nonBaselineScenario, RCP, SSP):
 
     # add manure fuel row to the released version so that the flat diff can be analyzed
     man_fuel = ref_pyrolysis[ref_pyrolysis[["technology"]].isin(["manure fuel", "manure_fuel"]).any(axis=1)]
-    for i in c.GCAMConstants.plotting_x:
+    for i in c.GCAMConstants.biochar_x:
         man_fuel.loc[:, str(i)] = 0
     ref_released = pd.concat([ref_released, man_fuel])
 
@@ -925,7 +925,7 @@ def carbon_price_biochar_supply(nonBaselineScenario, RCP, SSP):
     biochar_supply = biochar_supply[biochar_supply[['SSP']].isin(SSP).any(axis=1)]
     biochar_supply = biochar_supply[biochar_supply[['product']].isin(["biochar"]).any(axis=1)]
 
-    for i in c.GCAMConstants.future_x:
+    for i in c.GCAMConstants.biochar_x:
         plt.scatter(biochar_supply[str(i)], carbon_price[str(i)])
         plt.xlabel("biochar supply by country (Mt)")
         plt.ylabel("carbon price (1990$USD/tC)")
@@ -938,10 +938,10 @@ def carbon_price_biochar_supply(nonBaselineScenario, RCP, SSP):
     biochar_price = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/prices_of_all_markets.csv")
     products = ["biochar"]
-    plotting.plot_world(biochar_price, products, SSP, "year", "product", c.GCAMConstants.plotting_x,
+    plotting.plot_world(biochar_price, products, SSP, "year", "product", c.GCAMConstants.biochar_x,
                         "spatial distribution of biochar prices")
     biochar_price = biochar_price[biochar_price[['product']].isin(products).any(axis=1)]
-    biochar_price = biochar_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.future_x])
+    biochar_price = biochar_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.biochar_x])
     biochar_price['2024_value'] = biochar_price['value'] / .17 * 1000
     plt.hist(biochar_price['2024_value'])
     plt.title("biochar price histogram")
@@ -956,7 +956,7 @@ def carbon_price_biochar_supply(nonBaselineScenario, RCP, SSP):
     biochar_price = prices[prices[['product']].isin(["biochar", "beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)]
     manure_price = prices[prices[['product']].isin(
         ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)]
-    manure_price = manure_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.future_x])
+    manure_price = manure_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.biochar_x])
     manure_price['2024_value'] = manure_price['value'] / .17 * 1000
     plt.hist(manure_price['2024_value'])
     plt.title("manure price histogram")
@@ -976,23 +976,23 @@ def carbon_price_biochar_supply(nonBaselineScenario, RCP, SSP):
         ["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)]
     c_adj_bio_price = pd.merge(biochar_price, carbon_price, on=["GCAM", "SSP"], suffixes=("", "_C"))
     c_adj_bio_price = pd.merge(c_adj_bio_price, manure_price, on=["GCAM", "SSP"], suffixes=("", "_cost"))
-    for i in c.GCAMConstants.plotting_x:
+    for i in c.GCAMConstants.biochar_x:
         c_adj_bio_price[str(i)+"_adj"] = (c_adj_bio_price[str(i)] - .11*c_adj_bio_price[str(i) + "_C"])*.17/1000
         c_adj_bio_price[str(i) + "_prod_cost"] = (c_adj_bio_price[str(i)] + .11*c_adj_bio_price[str(i) + "_C"]*0.41 - 2.4*c_adj_bio_price[str(i) + "_cost"])*.17/1000
-    adj_bio_price = c_adj_bio_price.groupby("GCAM")[[str(i) + "_adj" for i in c.GCAMConstants.plotting_x]].sum().reset_index()
+    adj_bio_price = c_adj_bio_price.groupby("GCAM")[[str(i) + "_adj" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
     adj_bio_price.columns = adj_bio_price.columns.str.rstrip("_adj")
     adj_bio_price["Units"] = "2024$/ton"
     adj_bio_price["SSP"] = "SSP1"
     adj_bio_price["product"] = "biochar"
     c_adj_bio_prod = c_adj_bio_price.groupby("GCAM")[
-        [str(i) + "_adj" for i in c.GCAMConstants.plotting_x]].sum().reset_index()
+        [str(i) + "_adj" for i in c.GCAMConstants.biochar_x]].sum().reset_index()
     c_adj_bio_prod.columns = c_adj_bio_prod.columns.str.rstrip("_adj")
     c_adj_bio_prod["Units"] = "2024$/ton"
     c_adj_bio_prod["SSP"] = "SSP1"
     c_adj_bio_prod["product"] = "biochar"
 
-    plotting.plot_world(adj_bio_price, ["biochar"], ["SSP1"], "year", "product", c.GCAMConstants.plotting_x, "2024$ C adj biochar price")
-    plotting.plot_world(c_adj_bio_prod, ["biochar"], ["SSP1"], "year", "product", c.GCAMConstants.plotting_x,
+    plotting.plot_world(adj_bio_price, ["biochar"], ["SSP1"], "year", "product", c.GCAMConstants.biochar_x, "2024$ C adj biochar price")
+    plotting.plot_world(c_adj_bio_prod, ["biochar"], ["SSP1"], "year", "product", c.GCAMConstants.biochar_x,
                         "2024$ C adj biochar production cost as a biochar price")
 
 def cue_figure(nonBaselineScenario, RCP, SSP):
@@ -1013,7 +1013,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
         # add manure fuel row to the released version so that the flat diff can be analyzed
         man_fuel = ref_pyrolysis[ref_pyrolysis[["technology"]].isin(["manure fuel", "manure_fuel"]).any(axis=1)]
-        for j in c.GCAMConstants.plotting_x:
+        for j in c.GCAMConstants.biochar_x:
             man_fuel.loc[:, str(j)] = 0
         ref_released = pd.concat([ref_released, man_fuel])
 
@@ -1049,15 +1049,12 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 if __name__ == '__main__':
-    fertilizer("test", "6p0", ["SSP1"])
-    carbon_price_biochar_supply("test", "6p0", ["SSP1"])
-    #climate("test", "2p6", ["SSP1"])
-    #carbon_price_biochar_supply("biochar", "6p0", ["SSP2"])
-    #carbon_price_biochar_supply("biochar", "4p5", ["SSP2"])
-    #figure2("biochar", "4p5", ["SSP2"])
-    #figure3("biochar", "4p5", ["SSP2"])
-    figure4("test", "2p6", ["SSP1"])
-    figure5("biochar", "4p5", ["SSP2"])
-    figure6("biochar", "4p5", ["SSP2"])
-    figure7("biochar", ["4p5"], c.GCAMConstants.SSPs)
-    cue_figure("biochar", ["4p5"], c.GCAMConstants.SSPs)
+    # fertilizer("test", "6p0", ["SSP1"])
+    # carbon_price_biochar_supply("test", "6p0", ["SSP1"])
+    figure2("test", "6p0", ["SSP1"])
+    figure3("test", "6p0", ["SSP1"])
+    figure4("test", "6p0", ["SSP1"])
+    figure5("test", "6p0", ["SSP1"])
+    # figure6("test", "6p0", ["SSP1"])
+    figure7("test", ["6p0"],["SSP1"])
+    cue_figure("test", ["6p0"], ["SSP1"])

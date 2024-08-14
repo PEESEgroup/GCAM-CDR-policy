@@ -455,7 +455,7 @@ def plot_line_by_SSP(dataframe, products, column, SSP, differentiator, title):
             dataframe=dataframe,
             inner_loop_set=products,
             products=products,
-            year=c.GCAMConstants.plotting_x,
+            year=c.GCAMConstants.biochar_x,
             SSP=SSP,
             product_column=column,
             title=title)
@@ -487,9 +487,9 @@ def plot_line_by_SSP(dataframe, products, column, SSP, differentiator, title):
                         # get line of data to plot and plot it
                         df = y[y[differentiator] == j]
                         y_to_plot = df.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
-                            c.GCAMConstants.plotting_x)]  # only take the x values
+                            c.GCAMConstants.biochar_x)]  # only take the x values
                         plot_line_on_axs(
-                            x=c.GCAMConstants.plotting_x,
+                            x=c.GCAMConstants.biochar_x,
                             y=y_to_plot,
                             lab=lab,
                             color=color,
@@ -621,7 +621,7 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
         dataframe=dataframe,
         inner_loop_set=SSP,
         products=products,
-        year=c.GCAMConstants.plotting_x,
+        year=c.GCAMConstants.biochar_x,
         SSP=SSP,
         product_column=column,
         title=title)
@@ -643,8 +643,8 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
 
                     # get line of data to plot and plot it
                     y_to_plot = y.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
-                        c.GCAMConstants.plotting_x)]  # only take the x values
-                    plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, str(i), color, axs, nrow, ncol, counter)
+                        c.GCAMConstants.biochar_x)]  # only take the x values
+                    plot_line_on_axs(c.GCAMConstants.biochar_x, y_to_plot, str(i), color, axs, nrow, ncol, counter)
 
                     # get units
                     units = y['Units'].unique()[0]
@@ -1042,16 +1042,16 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
 
                 # get line of data to plot and plot it
                 y_to_plot = y.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
-                    c.GCAMConstants.plotting_x)]  # only take the x values
-                plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, str(i), color, axs, nrow, ncol, 0)
+                    c.GCAMConstants.biochar_x)]  # only take the x values
+                plot_line_on_axs(c.GCAMConstants.biochar_x, y_to_plot, str(i), color, axs, nrow, ncol, 0)
 
                 # get min and max data across SSPs
                 CI_df = dataframe[(dataframe[column] == i)]
-                min_seq = [CI_df[str(i)].min() for i in c.GCAMConstants.plotting_x]
-                max_seq = [CI_df[str(i)].max() for i in c.GCAMConstants.plotting_x]
+                min_seq = [CI_df[str(i)].min() for i in c.GCAMConstants.biochar_x]
+                max_seq = [CI_df[str(i)].max() for i in c.GCAMConstants.biochar_x]
 
                 # plot the min and max data
-                axs[0].fill_between(c.GCAMConstants.plotting_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
+                axs[0].fill_between(c.GCAMConstants.biochar_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
 
                 # add rectangles on right plot
                 rect = patches.Rectangle((color_counter*0.2, CI_df["2050"].min()),
