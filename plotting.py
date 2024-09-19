@@ -890,18 +890,23 @@ def plot_stacked_bar_product(df, year, SSP, column, title):
 
         # format table
         plot_df = df[df[['SSP']].isin(SSP).any(axis=1)]
-        plot_df = plot_df.loc[:, [year, 'SSP', 'GCAM', column]]
-        plot_df = plot_df.pivot(index='GCAM', columns=column, values=year)
-        plot_df = plot_df.drop(["rock and desert", "tundra", "urban"], axis=1)  # in SSP2 RCP4.5 2050, shrubs in India has .nan, so cannot drop by na
-        plot_df = plot_df.loc[:, (plot_df != 0).any(axis=0)]
-
-        # add a column to df for sorting, then remove it
-        plot_df["sum"] = plot_df.abs().sum(axis=1)
-        plot_df = plot_df.sort_values(by="sum", ascending=False)
-        plot_df = plot_df.drop(['sum'], axis = 1)
-
-        # plot stacked bar chart
-        plot_df.plot(kind="bar", stacked=True, color=colors, ax=axs)
+        if not isinstance(year, list):
+            plot_df = plot_df.loc[:, [year, 'SSP', 'GCAM', column]]
+            plot_df = plot_df.pivot(index='GCAM', columns=column, values=year)
+            plot_df = plot_df.drop(["rock and desert", "tundra", "urban"],
+                                   axis=1)  # in SSP2 RCP4.5 2050, shrubs in India has .nan, so cannot drop by na
+            plot_df = plot_df.loc[:, (plot_df != 0).any(axis=0)]
+            # add a column to df for sorting, then remove it
+            plot_df["sum"] = plot_df.abs().sum(axis=1)
+            plot_df = plot_df.sort_values(by="sum", ascending=False)
+            plot_df = plot_df.drop(['sum'], axis=1)
+            # plot stacked bar chart
+            plot_df.plot(kind="bar", stacked=True, color=colors, ax=axs)
+        else:
+            plot_df = pd.melt(plot_df, id_vars=['LandLeaf'], value_vars=[str(j) for j in year])
+            plot_df = plot_df.pivot(index="variable", columns="LandLeaf", values="value")
+            # plot stacked bar chart
+            plot_df.plot(kind="bar", stacked=True, color=colors, ax=axs)
 
         # format plot
         axs.set_title(title)
@@ -1324,33 +1329,47 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
     colors, divisions = get_colors(1)
 
     # plot for each SSP
-    for i in SSPs:
-        dataframe = prices[prices['SSP'].str.contains(i)]
-        supply = supply[supply['SSP'].str.contains(i)]
-        df = dataframe.loc[:, [str(year), column]]
-        products = df[column].unique().tolist()
-        df = df.pivot(columns=column, values=str(year))
+    if column != "SSP":
+        for k in SSPs:
+            dataframe = prices[prices['SSP'].str.contains(k)]
+            supply = supply[supply['SSP'].str.contains(k)]
+            plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year)
+    else:
+        plot_weighted_average_hist(colors, column, prices, supply, title, y_label, year)
 
-        # plot histogram
-        bins = [50 * i for i in range(1 + int(dataframe[year].max() / 50))]
-        plt.hist([df[i] for i in products], bins, stacked=True, label=df.columns, histtype='bar',
-                 color=[colors[i] for i in range(len(products))])
 
-        # calculate averages
-        for idx, item in enumerate(dataframe[column].unique()):
-            df_price = dataframe.loc[dataframe[column] == str(item)]
-            df_supply = supply.loc[supply[column] == str(item)]
-            weighted_avg = pd.merge(df_price, df_supply, on=["GCAM"])
-            weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
+def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year):
+    """
+    :param colors: plotting colors used
+    :param column: column of unique histogram types
+    :param dataframe: price data
+    :param supply:  supply data
+    :param title: graph title
+    :param y_label: y-axis label
+    :param year: year being evaluated
+    :return: histogram plot
+    """
+    df = dataframe.loc[:, [str(year), column]]
+    products = df[column].unique().tolist()
+    df = df.pivot(columns=column, values=str(year))
+    # plot histogram
+    bins = [50 * i for i in range(1 + int(dataframe[year].max() / 50))]
+    plt.hist([df[i] for i in products], bins, stacked=True, label=df.columns, histtype='bar',
+             color=[colors[i] for i in range(len(products))])
+    # calculate averages
+    for idx, item in enumerate(dataframe[column].unique()):
+        df_price = dataframe.loc[dataframe[column] == str(item)]
+        df_supply = supply.loc[supply[column] == str(item)]
+        weighted_avg = pd.merge(df_price, df_supply, on=["GCAM"])
+        weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
 
-            print("avg price:", str(item), weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum())
-
-        # finalize plot
-        plt.ylabel("number of regions")
-        plt.xlabel(y_label)
-        plt.xticks(rotation=60, ha='right')
-        plt.title(title)
-        plt.legend(bbox_to_anchor=(1, 1))
-        plt.subplots_adjust(bottom=0.4, right=.7)
-        plt.show()
+        print("avg price:", str(item), weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum())
+    # finalize plot
+    plt.ylabel("number of regions")
+    plt.xlabel(y_label)
+    plt.xticks(rotation=60, ha='right')
+    plt.title(title)
+    plt.legend(bbox_to_anchor=(1, 1))
+    plt.subplots_adjust(bottom=0.4, right=.7)
+    plt.show()
 
