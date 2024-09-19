@@ -9,7 +9,7 @@
          <scenario name="GCAM_SSP5"/>
          <queryFile>xml/query_list.xml</queryFile>
          <outFile>data/gcam_out/biochar/4p5/ref.csv</outFile>
-         <xmldbLocation>gcam-sandbox/output/database_basexdb-biochar_4p5</xmldbLocation>
+         <xmldbLocation>gcam/output/database_basexdb-biochar_4p5</xmldbLocation>
       </command>
    </class>
 </ModelInterfaceBatch>

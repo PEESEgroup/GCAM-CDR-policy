@@ -1048,13 +1048,17 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
         plotting.sensitivity(perc_diff_biofuel, str(i), "released", "2050", "technology")
 
 
-if __name__ == '__main__':
-    # fertilizer("test", "6p0", ["SSP1"])
+def main():
+    fertilizer("biochar", "2p6", ["SSP4"])
     # carbon_price_biochar_supply("test", "6p0", ["SSP1"])
-    figure2("test", "6p0", ["SSP1"])
-    figure3("test", "6p0", ["SSP1"])
-    figure4("test", "6p0", ["SSP1"])
-    figure5("test", "6p0", ["SSP1"])
+    figure2("biochar", "2p6", ["SSP4"])
+    figure3("biochar", "2p6", ["SSP4"])
+    figure4("biochar", "2p6", ["SSP4"])
+    figure5("biochar", "2p6", ["SSP4"])
     # figure6("test", "6p0", ["SSP1"])
-    figure7("test", ["6p0"],["SSP1"])
-    cue_figure("test", ["6p0"], ["SSP1"])
+    figure7("biochar", ["2p6"], ["SSP4"])
+    cue_figure("biochar", ["2p6"], ["SSP4"])
+
+
+if __name__ == '__main__':
+    main()
