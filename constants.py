@@ -33,7 +33,7 @@ class GCAMConstants:
     plotting_x = [2025, 2030, 2035, 2040, 2045, 2050]
     future_x = [2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
     biochar_x = [2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
-    skip_years = 5
+    skip_years = x.index(biochar_x[0])
 
     # constants to evaluate IO coefficients
     animal_manure_ratio = dict()

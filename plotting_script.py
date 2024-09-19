@@ -558,8 +558,8 @@ def figure2(nonBaselineScenario, RCP, SSP):
         plotting.plot_line_product_CI(biochar_pyrolysis, technologies, "technology", SSP[0], "Version",
                                       title="CO2 sequestration from biooil")
     else:
-        plotting.plot_line_product_CI(biochar_pyrolysis, products, "technology", SSP[0], "Version",
-                                      title="CO2 sequestration from biochar")
+        plotting.plot_line_product_CI(biochar_pyrolysis, products, "technology", "SSP2", "Version",
+                                      title="C sequestration from biochar in SSP2 baseline")
     # print values of Mt C sequestered
     biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
     print(biochar_group.loc[:, ["2050", "SSP"]])
@@ -1051,10 +1051,10 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 def main():
     fertilizer("biochar", "2p6", ["SSP4"])
     # carbon_price_biochar_supply("test", "6p0", ["SSP1"])
-    figure2("biochar", "2p6", ["SSP4"])
-    figure3("biochar", "2p6", ["SSP4"])
-    figure4("biochar", "2p6", ["SSP4"])
-    figure5("biochar", "2p6", ["SSP4"])
+    figure2("test", "6p0", ["SSP1"])
+    figure3("test", "6p0", ["SSP1"])
+    figure4("test", "6p0", ["SSP1"])
+    figure5("test", "6p0", ["SSP1"])
     # figure6("test", "6p0", ["SSP1"])
     figure7("biochar", ["2p6"], ["SSP4"])
     cue_figure("biochar", ["2p6"], ["SSP4"])
