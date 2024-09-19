@@ -544,25 +544,45 @@ def figure2(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # plotting CO2 sequestering
-    co2_seq_pyrolysis = pd.read_csv(
-        "data/gcam_out/" + str(
-            nonBaselineScenario) + "/" + RCP + "/masked" + "/CO2_emissions_by_tech_excluding_resource_production.csv")
-    co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-    co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "sector"), axis=1)
-    co2_seq_pyrolysis['Units'] = "Mt C"
-    products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar", "manure fuel", "biochar"]
-    biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
+    for r in RCP:
+        co2_seq_pyrolysis = pd.read_csv(
+            "data/gcam_out/" + str(
+                nonBaselineScenario) + "/" + r + "/masked" + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+        co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+        co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "sector"), axis=1)
+        co2_seq_pyrolysis['Units'] = "Mt C"
+        products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar", "manure fuel", "biochar"]
+        biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
 
-    if biochar_pyrolysis["sector"].unique()[0] == "manure fuel":
-        technologies = ["slow pyrolysis_beef", "slow pyrolysis_dairy", "slow pyrolysis_goat", "slow pyrolysis_pork", "slow pyrolysis_poultry"]
-        plotting.plot_line_product_CI(biochar_pyrolysis, technologies, "technology", SSP[0], "Version",
-                                      title="CO2 sequestration from biooil")
-    else:
-        plotting.plot_line_product_CI(biochar_pyrolysis, products, "technology", "SSP2", "Version",
-                                      title="C sequestration from biochar in SSP2 baseline")
-    # print values of Mt C sequestered
-    biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
-    print(biochar_group.loc[:, ["2050", "SSP"]])
+        if biochar_pyrolysis["sector"].unique()[0] == "manure fuel":
+            technologies = ["slow pyrolysis_beef", "slow pyrolysis_dairy", "slow pyrolysis_goat", "slow pyrolysis_pork", "slow pyrolysis_poultry"]
+            plotting.plot_line_product_CI(biochar_pyrolysis, technologies, "technology", SSP[0], "Version",
+                                          title="CO2 sequestration from biooil")
+        else:
+            plotting.plot_line_product_CI(biochar_pyrolysis, products, "technology", "SSP2", "Version",
+                                          title="C sequestration from biochar in SSP2 baseline in RCP" + str(r))
+        # print values of Mt C sequestered
+        biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
+        print(biochar_group.loc[:, ["2050", "SSP"]])
+
+    # plotting ghg emissions avoidance
+    for r in RCP:
+        co2_seq_pyrolysis = pd.read_csv(
+            "data/gcam_out/" + str(
+                nonBaselineScenario) + "/" + r + "/masked" + "/non_CO2_emissions_by_tech_excluding_resource_production.csv")
+        co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+        co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "sector"),
+                                                              axis=1)
+        co2_seq_pyrolysis['Units'] = "Mt CH4"
+        technologies = ["slow pyrolysis_beef", "slow pyrolysis_dairy", "slow pyrolysis_goat",
+                        "slow pyrolysis_pork", "slow pyrolysis_poultry"]
+        biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['technology'].str.contains("|".join(technologies))]
+
+        plotting.plot_line_product_CI(biochar_pyrolysis, technologies, "technology", "SSP2", "Version",
+                                          title="CH4 emissions avoidance from biochar in SSP2 baseline in RCP" + str(r))
+        # print values of Mt C sequestered
+        biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
+        print(biochar_group.loc[:, ["2050", "SSP"]])
 
 
 def figure3(nonBaselineScenario, RCP, SSP):
@@ -1049,15 +1069,14 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 
 def main():
-    fertilizer("biochar", "2p6", ["SSP4"])
+    # fertilizer("biochar", "2p6", ["SSP4"])
     # carbon_price_biochar_supply("test", "6p0", ["SSP1"])
-    figure2("test", "6p0", ["SSP1"])
-    figure3("test", "6p0", ["SSP1"])
-    figure4("test", "6p0", ["SSP1"])
-    figure5("test", "6p0", ["SSP1"])
-    # figure6("test", "6p0", ["SSP1"])
+    figure2("biochar", c.GCAMConstants.RCPs, c.GCAMConstants.SSPs)
+    figure3("biochar", "6p0", ["SSP1"])
+    figure4("biochar", "6p0", ["SSP1"])
+    figure5("biochar", "6p0", ["SSP1"])
+    # figure6("biochar", "6p0", ["SSP1"])
     figure7("biochar", ["2p6"], ["SSP4"])
-    cue_figure("biochar", ["2p6"], ["SSP4"])
 
 
 if __name__ == '__main__':

@@ -32,7 +32,7 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario, products):
         else:
             for i in c.GCAMConstants.future_x:
                 try:  # if mean coefficient isn't within 5% of target
-                    if not math.isinf(comb_SSP["check_" + str(i)].mean()) and (-0.01 > comb_SSP["check_" + str(i)].mean() or comb_SSP["check_" + str(i)].mean() > 0.01):
+                    if not math.isinf(comb_SSP["check_" + str(i)].mean()):
                         assert (abs(coefficients[nonBaselineScenario, str(products)]) * .95 <
                                 abs(comb_SSP["check_" + str(i)].mean()) <
                                 abs(coefficients[nonBaselineScenario, str(products)]) * 1.05)
