@@ -8,11 +8,11 @@ assert C and manure fails for product beef in year 2030 in SSP4 with mean -0.096
 assert C and manure fails for product beef in SSP5 because no data is available
 assert C and manure fails for product dairy in SSP1 because no data is available
 assert C and manure is ignored for product dairy in year 2025 in SSP2 with mean -inf
-assert C and manure is ignored for product dairy in year 2030 in SSP2 with mean nan
+assert C and manure fails for product dairy in year 2030 in SSP2 with mean nan
 assert C and manure fails for product dairy in year 2035 in SSP2 with mean -0.10034326003507762
 assert C and manure fails for product dairy in SSP3 because no data is available
 assert C and manure is ignored for product dairy in year 2025 in SSP4 with mean -inf
-assert C and manure is ignored for product dairy in year 2030 in SSP4 with mean nan
+assert C and manure fails for product dairy in year 2030 in SSP4 with mean nan
 assert C and manure fails for product dairy in year 2035 in SSP4 with mean -0.2474362122895116
 assert C and manure fails for product dairy in SSP5 because no data is available
 assert C and manure fails for product goat in SSP1 because no data is available
@@ -25,11 +25,11 @@ assert C and manure fails for product goat in year 2035 in SSP4 with mean -0.159
 assert C and manure fails for product goat in SSP5 because no data is available
 assert C and manure fails for product pork in SSP1 because no data is available
 assert C and manure is ignored for product pork in year 2025 in SSP2 with mean -inf
-assert C and manure is ignored for product pork in year 2030 in SSP2 with mean nan
+assert C and manure fails for product pork in year 2030 in SSP2 with mean nan
 assert C and manure fails for product pork in year 2035 in SSP2 with mean -0.10483394292513623
 assert C and manure fails for product pork in SSP3 because no data is available
 assert C and manure is ignored for product pork in year 2025 in SSP4 with mean -inf
-assert C and manure is ignored for product pork in year 2030 in SSP4 with mean nan
+assert C and manure fails for product pork in year 2030 in SSP4 with mean nan
 assert C and manure fails for product pork in year 2035 in SSP4 with mean -0.6934915828418653
 assert C and manure fails for product pork in SSP5 because no data is available
 assert C and manure fails for product poultry in SSP1 because no data is available
