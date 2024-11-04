@@ -18,6 +18,7 @@ def split_file(fname):
     frames = {}
     names = {}
     row_counter = 0
+    frames_key = ""
 
     with open(fname) as f:
         csv_reader = csv.reader(f)

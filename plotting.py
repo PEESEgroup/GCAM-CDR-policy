@@ -1,5 +1,6 @@
 import geopandas as gpd
 import matplotlib.patches as patches
+import matplotlib.pyplot as plt
 from matplotlib.collections import PatchCollection
 import pandas as pd
 import constants as c
@@ -173,7 +174,7 @@ def plot_world_by_products(dataframe, products, column, year, SSP, title):
                 # update the figure with shared colorbar
                 dl = len(products)
                 lab = units
-                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow)
+                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title)
             except ValueError as e:
                 print(e)
 
@@ -187,7 +188,7 @@ def axs_params(ax, plot_title):
     """
     ax.tick_params(left=False, right=False, labelleft=False, labelbottom=False, bottom=False)
     ax.margins(x=0.005, y=0.005)
-    ax.set_title(str(plot_title))
+    ax.set_title(str(plot_title), fontsize=12)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
@@ -376,7 +377,7 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     return axs, cmap, fig, im, ncol, normalizer, nrow
 
 
-def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow):
+def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname):
     """
     Adds the colorbar to the graph and produces output
     :param axs: matplotlib axes
@@ -386,6 +387,7 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow):
     :param lab: label for the colorbar
     :param ncol: number of rows of axes
     :param nrow: number of columns of axes
+    :param fname: filename for output image
     :return: plotted figure
     """
     del_axes_counter = 0
@@ -426,6 +428,7 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow):
         fig.set_size_inches(16, 5.1)
     elif nrow * ncol == 20:
         fig.set_size_inches(16, 9)
+    plt.savefig("data/data_analysis/images/" + fname +".png", dpi=300)
     plt.show()
 
 
@@ -516,13 +519,13 @@ def plot_line_by_SSP(dataframe, products, column, SSP, differentiator, title):
             l, h = finalize_line_subplot(axs, units, str(i), ncol, nrow, counter)
 
             counter = counter + 1
-        finalize_line_plot(fig, h, l, axs, nrow, ncol, counter)
+        finalize_line_plot(fig, h, l, axs, nrow, ncol, counter, title)
 
     except ValueError as e:
         print(e)
 
 
-def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter):
+def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title):
     """
     adds a legend to the plot and removes unnecessary axes
     :param fig: matplotlib figure
@@ -532,6 +535,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter):
     :param nrow: the number of rows of subplots
     :param ncol: the number of columns of subplots
     :param counter: the number of used subplots
+    :param title: the title of the plot
     :return: N/A
     """
     if nrow * ncol == 1:
@@ -557,6 +561,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter):
     for i in range(nrow * ncol - counter):
         fig.delaxes(axs[int((counter + i) / ncol), int((counter + i) % ncol)])
 
+    plt.savefig("data/data_analysis/images/" + title +".png", dpi=300)
     plt.show()
 
 
@@ -1090,7 +1095,7 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
 
         axs[1].axis('off')
 
-        finalize_line_plot(fig, h, l, axs, nrow, ncol, 2)
+        finalize_line_plot(fig, h, l, axs, nrow, ncol, 2, title)
 
     except ValueError as e:
         print(e)
@@ -1344,14 +1349,33 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
     # get colors
     colors, divisions = get_colors(1)
 
-    # plot for each SSP
-    if column != "SSP":
-        for k in SSPs:
-            dataframe = prices[prices['SSP'].str.contains(k)]
-            supply = supply[supply['SSP'].str.contains(k)]
-            plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year)
+    if supply == "na":
+        df = prices.loc[:, [str(year), column]]
+        products = df[column].unique().tolist()
+        df = df.pivot(columns=column, values=str(year))
+        # plot histogram
+        bins = [50 * i for i in range(1 + int(prices[year].max() / 50))]
+        plt.hist([df[i] for i in products], bins, stacked=True, label=df.columns, histtype='bar',
+                 color=[colors[i] for i in range(len(products))])
+
+        # finalize plot
+        plt.ylabel(y_label)
+        plt.xlabel("USD$2024")
+        plt.xticks(rotation=60, ha='right')
+        plt.title(title)
+        plt.legend(bbox_to_anchor=(1, 1))
+        plt.subplots_adjust(bottom=0.4, right=.7)
+        plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
+        plt.show()
     else:
-        plot_weighted_average_hist(colors, column, prices, supply, title, y_label, year)
+        # plot for each SSP
+        if column != "SSP":
+            for k in SSPs:
+                dataframe = prices[prices['SSP'].str.contains(k)]
+                supply = supply[supply['SSP'].str.contains(k)]
+                plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year)
+        else:
+            plot_weighted_average_hist(colors, column, prices, supply, title, y_label, year)
 
 
 def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year):
@@ -1387,5 +1411,6 @@ def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label
     plt.title(title)
     plt.legend(bbox_to_anchor=(1, 1))
     plt.subplots_adjust(bottom=0.4, right=.7)
+    plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
     plt.show()
 

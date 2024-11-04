@@ -535,12 +535,9 @@ def fertilizer(nonBaselineScenario, RCP, SSP):
 
 
 
-def figure2(nonBaselineScenario, RCP, SSP):
+def figure2():
     """
     Returns plots for figure 2
-    :param nonBaselineScenario: the scenario to be compared to the released scenario
-    :param RCP: the RCP pathways being considered
-    :param SSP: the baseline SSP pathway being considered. only the first element in the list is used
     :return: N/A
     """
     # read in biochar application rates, and get the 2050 application rates
@@ -554,65 +551,12 @@ def figure2(nonBaselineScenario, RCP, SSP):
     biochar_app_rate["SSP"] = "SSP2"
 
     # extract information on crops
-    crops = biochar_app_rate["AgSupplySector"].unique()
+    biochar_app_rate['technology'] = biochar_app_rate['AgSupplySector']
+    biochar_app_rate['technology'] = biochar_app_rate.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+    crops = biochar_app_rate["technology"].unique()
 
     # plot the data
-    plotting.plot_world(biochar_app_rate, crops, ["SSP2"], "product", "AgSupplySector", ["2050"],"nutrient-limited biochar application rate")
-
-    # for each crop type, plot biochar application rate for each region
-    for c in crops:
-        data_to_plot = biochar_app_rate[biochar_app_rate["AgSupplySector" == c]]
-
-
-    ### OLD CODE
-    # plotting CO2 sequestering
-    for r in RCP:
-        co2_seq_pyrolysis = pd.read_csv(
-            "data/gcam_out/" + str(
-                nonBaselineScenario) + "/" + r + "/masked" + "/CO2_emissions_by_tech_excluding_resource_production.csv")
-        co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-        co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "sector"), axis=1)
-        co2_seq_pyrolysis['Units'] = "Mt C"
-        products = ["beef_biochar", "dairy_biochar", "pork_biochar", "poultry_biochar", "goat_biochar", "manure fuel", "biochar"]
-        biochar_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['sector'].str.contains("|".join(products))]
-
-        if biochar_pyrolysis["sector"].unique()[0] == "manure fuel":
-            technologies = ["slow pyrolysis_beef", "slow pyrolysis_dairy", "slow pyrolysis_goat", "slow pyrolysis_pork", "slow pyrolysis_poultry"]
-            plotting.plot_line_product_CI(biochar_pyrolysis, technologies, "technology", SSP[0], "Version",
-                                          title="CO2 sequestration from biooil")
-        else:
-            plotting.plot_line_product_CI(biochar_pyrolysis, products, "technology", "SSP2", "Version",
-                                          title="C sequestration from biochar in SSP2 baseline in RCP" + str(r))
-        # print values of Mt C sequestered
-        biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
-        print(biochar_group.loc[:, ["2050", "SSP"]])
-
-    # plotting ghg emissions avoidance
-    biochar_pyrolysis = pd.DataFrame()
-    technologies = ["beef_biochar", "dairy_biochar", "goat_biochar", "poultry_biochar", "pork_biochar"]
-    s = ["SSP4"]
-
-    for r in RCP:
-        co2_seq_pyrolysis = pd.read_csv(
-            "data/gcam_out/" + str(
-                nonBaselineScenario) + "/" + r + "/masked" + "/nonCO2_emissions_by_tech_excluding_resource_production.csv")
-        co2_seq_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['technology'].str.contains("|".join(technologies))]
-        co2_seq_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis[['SSP']].isin(s).any(axis=1)]
-        co2_seq_pyrolysis = data_manipulation.group(co2_seq_pyrolysis, ["technology"])
-
-        # relabel fields
-        co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-        co2_seq_pyrolysis['sector'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "sector"),
-                                                              axis=1)
-        co2_seq_pyrolysis['Units'] = "Mt CH4"
-        co2_seq_pyrolysis['Version'] = str(r)
-        biochar_pyrolysis = pd.concat([co2_seq_pyrolysis, biochar_pyrolysis])
-
-    plotting.plot_line_product_CI(biochar_pyrolysis, technologies, "technology", "2p6", "Version",
-                                      title="CH4 emissions avoidance across RCP pathways in " + str(s[0]) + " and RCP 2.6 baseline")
-    # print values of Mt C sequestered
-    biochar_group = data_manipulation.group(biochar_pyrolysis, "SSP")
-    print(biochar_group.loc[:, ["2050", "SSP"]])
+    plotting.plot_world(biochar_app_rate, crops, ["SSP2"], "product", "technology", ["2050"],"nutrient-limited biochar application rate")
 
 
 def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -622,49 +566,104 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     :param RCP: the RCP pathways being considered
     :param SSP: the SSP pathways being considered
     :param biochar_year: the year for biochar/carbon prices to be evaluated and plotted
-    :return: N/A
+    :return: graph of biochar C sequestration, biochar C emissions avoidance, and biochar prices
     """
-    # spatial distribution of biochar/manure prices
+    # plotting CO2 sequestering
+    SSP_baseline = "SSP1"
+    co2_seq_pyrolysis = pd.read_csv(
+        "data/gcam_out/" + str(
+            nonBaselineScenario) + "/" + RCP + "/masked" + "/CO2_emissions_by_tech_excluding_resource_production.csv")
+    co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+    co2_seq_pyrolysis['technology'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "technology"),
+                                                          axis=1)
+    co2_seq_pyrolysis['Units'] = "Mt C"
+    products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"]
+    co2_seq_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['technology'].str.contains("|".join(products))]
+    plotting.plot_line_product_CI(co2_seq_pyrolysis, products, "technology", SSP_baseline, "Version",
+                                      title="C sequestration from biochar in " + SSP_baseline +" baseline in RCP" + str(RCP))
+
+    # print values of Mt C sequestered
+    print(co2_seq_pyrolysis.loc[:, [biochar_year, "SSP", "technology"]])
+
+    # # plotting ghg emissions avoidance
+    # co2_avd_pyrolysis = pd.read_csv(
+    #     "data/gcam_out/" + str(
+    #         nonBaselineScenario) + "/" + RCP + "/masked" + "/nonCO2_emissions_by_tech_excluding_resource_production.csv")
+    # co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+    # co2_seq_pyrolysis['Units'] = "Mt C"
+    # co2_avd_pyrolysis['technology'] = co2_avd_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "technology"),
+    #                                                       axis=1)
+    # co2_avd_pyrolysis = co2_avd_pyrolysis[co2_avd_pyrolysis['technology'].str.contains("|".join(products))]
+    # co2_avd_pyrolysis = co2_avd_pyrolysis[co2_avd_pyrolysis[['SSP']].isin(SSP).any(axis=1)]
+    # co2_avd_pyrolysis = data_manipulation.group(co2_avd_pyrolysis, ["technology"])
+    #
+    #
+    # # convert values from Mt CH4 to MT C
+    # co2_avd_pyrolysis['Units'] = "Mt C" # assuming a GWP of 27.2 (IPCC AR6), same GWP used in biochar CH4 avoidance spreadsheet calcs
+    # for y in c.GCAMConstants.biochar_x:
+    #     co2_avd_pyrolysis[str(y)] = co2_avd_pyrolysis[str(y)] * 27.2
+    #
+    # plotting.plot_line_product_CI(co2_avd_pyrolysis, products, "technology", SSP_baseline, "Version",
+    #                               title="carbon emissions avoidance across RCP pathways in " + SSP_baseline +" baseline in RCP" + str(RCP))
+    # # print values of Mt C avoided
+    # print(co2_avd_pyrolysis.loc[:, [biochar_year, "SSP"]])
+
+    # frequency of biochar prices
+    # spatial distribution of biochar/manure supply and prices
     biochar_price = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
     biochar_price['product'] = biochar_price.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
-    biochar_supply = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/supply_of_all_markets.csv")
-    biochar_supply['product'] = biochar_supply.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
-    products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar", "manure-fuel", "biochar"]
-    biochar_price[str(biochar_year) + "_conv"] = biochar_price[
-                                     str(biochar_year)] * 5.92 * 1000  # Jan 1975 to Jan 2024 https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=197501&year2=202401 * kg to ton
-    biochar_price.loc[biochar_price[str(biochar_year)] > 2000, str(biochar_year) + "_conv"] = np.nan  # manually removing outliers
-    biochar_supply[str(biochar_year) + "_conv"] = biochar_supply[str(biochar_year)]
-    biochar_price = biochar_price[biochar_price[['product']].isin(products).any(axis=1)]
-    biochar_supply = biochar_supply[biochar_supply[['product']].isin(products).any(axis=1)]
+    biochar_price = biochar_price[biochar_price[['product']].isin(["biochar"]).any(axis=1)]
+    biochar_price = biochar_price[biochar_price[['SSP']].isin([SSP_baseline]).any(axis=1)]
+    biochar_price = biochar_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.biochar_x])
+    biochar_price['2024_value'] = biochar_price['value'] / .17 * 1000 # converting from 1975 to 2024 dollars
+    plotting.plot_regional_hist_avg(biochar_price, '2024_value', SSP_baseline, "count region/year combinations",
+                                    "histogram of price of biochar", "variable", supply="na")
 
-    if not biochar_supply.empty:
-        biochar_supply['GCAM'] = biochar_supply.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-        biochar_price['GCAM'] = biochar_price.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-        plotting.plot_regional_hist_avg(biochar_price, str(biochar_year) + "_conv", SSP, "2024 US$/ton", "price of products", "SSP",
-                                        biochar_supply)
-    else:
-        print("no biochar supply for the given year")
+
+    # biochar_price = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
+    # biochar_price['product'] = biochar_price.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
+    # biochar_supply = pd.read_csv(
+    #     "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/supply_of_all_markets.csv")
+    # biochar_supply['product'] = biochar_supply.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
+    # products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar", "manure-fuel", "biochar"]
+    # biochar_price[str(biochar_year) + "_conv"] = biochar_price[
+    #                                  str(biochar_year)] * 5.92 * 1000  # Jan 1975 to Jan 2024 https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=197501&year2=202401 * kg to ton
+    # biochar_price.loc[biochar_price[str(biochar_year)] > 2000, str(biochar_year) + "_conv"] = np.nan  # manually removing outliers
+    # biochar_supply[str(biochar_year) + "_conv"] = biochar_supply[str(biochar_year)]
+    # biochar_price = biochar_price[biochar_price[['product']].isin(products).any(axis=1)]
+    # biochar_supply = biochar_supply[biochar_supply[['product']].isin(products).any(axis=1)]
+    #
+    # if not biochar_supply.empty:
+    #     biochar_supply['GCAM'] = biochar_supply.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    #     biochar_price['GCAM'] = biochar_price.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    #     plotting.plot_regional_hist_avg(biochar_price, str(biochar_year) + "_conv", SSP, "2024 US$/ton", "price of products", "SSP",
+    #                                     biochar_supply)
+    # else:
+    #     print("no biochar supply for the given year")
 
     # print out differences in carbon prices
-    c_pyro_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/CO2_prices.csv")
-    c_rel_price = pd.read_csv("data/gcam_out/released/" + RCP + "/original/CO2_prices.csv")
-    c_pyro_price = c_pyro_price.drop_duplicates()
-    c_rel_price = c_rel_price.drop_duplicates()
-    product = ["CO2"]
-    c_rel_price = c_rel_price[c_rel_price[['product']].isin(product).any(axis=1)]
-    c_pyro_price = c_pyro_price[c_pyro_price[['product']].isin(product).any(axis=1)]
-    flat_diff_c_price = data_manipulation.flat_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
-    flat_diff_c_price[str(biochar_year) + "_conv"] = flat_diff_c_price[
-                                         str(biochar_year)] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
-    unique_c_price = flat_diff_c_price[[str(biochar_year) + "_conv", "SSP"]].drop_duplicates()
-    print(unique_c_price)
-    perc_diff_c_price = data_manipulation.percent_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
-    perc_diff_c_price[str(biochar_year) + "_conv"] = perc_diff_c_price[
-                                         str(biochar_year)] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
-    unique_c_price = perc_diff_c_price[[str(biochar_year) + "_conv", "SSP"]].drop_duplicates()
-    print(unique_c_price)
+    for year in c.GCAMConstants.biochar_x:
+        c_pyro_price = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/CO2_prices.csv")
+        c_rel_price = pd.read_csv("data/gcam_out/released/" + RCP + "/original/CO2_prices.csv")
+        c_pyro_price = c_pyro_price.drop_duplicates()
+        c_rel_price = c_rel_price.drop_duplicates()
+        product = ["CO2"]
+        c_rel_price = c_rel_price[c_rel_price[['product']].isin(product).any(axis=1)]
+        c_pyro_price = c_pyro_price[c_pyro_price[['product']].isin(product).any(axis=1)]
+        flat_diff_c_price = data_manipulation.flat_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
+        flat_diff_c_price[str(year) + "_conv"] = flat_diff_c_price[
+                                             str(year)] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
+        unique_c_price = flat_diff_c_price[[str(year) + "_conv", "SSP"]].drop_duplicates()
+        print("flat difference between C prices in year " + str(year))
+        print(unique_c_price)
+        perc_diff_c_price = data_manipulation.percent_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
+        perc_diff_c_price[str(year) + "_conv"] = perc_diff_c_price[
+                                             str(year)] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
+        unique_c_price = perc_diff_c_price[[str(year) + "_conv", "SSP"]].drop_duplicates()
+        print("percent difference between C prices in year " + str(year))
+        print(unique_c_price)
 
 
 def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -991,8 +990,6 @@ def carbon_price_biochar_supply(nonBaselineScenario, RCP, SSP):
         plt.title("carbon price by biochar supply")
     plt.show()
 
-
-
     # spatial distribution of biochar/manure supply and prices
     biochar_price = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/prices_of_all_markets.csv")
@@ -1110,8 +1107,8 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 def main():
     # fertilizer("biochar", "2p6", ["SSP4"])
     # carbon_price_biochar_supply("test", "6p0", ["SSP1"])
-    figure2("biochar", c.GCAMConstants.RCPs, c.GCAMConstants.SSPs)
-    # figure3("biochar", "6p0", c.GCAMConstants.SSPs, 2060)
+    # figure2()
+    figure3("biochar", "2p6", c.GCAMConstants.SSPs, "2050")
     figure4("biochar", "2p6", ["SSP4"], 2050)
     figure5("biochar", "2p6", ["SSP4"])
     figure6("biochar", "2p6", ["SSP4"])

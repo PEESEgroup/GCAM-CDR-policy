@@ -305,6 +305,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="USA"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "USA"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -516,6 +526,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "Africa_Eastern"/>
@@ -731,6 +751,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Africa_Northern"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Africa_Northern"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -942,6 +972,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "Africa_Southern"/>
@@ -1157,6 +1197,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Africa_Western"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Africa_Western"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -1368,6 +1418,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "Australia_NZ"/>
@@ -1583,6 +1643,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Brazil"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Brazil"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -1794,6 +1864,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "Canada"/>
@@ -2009,6 +2089,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Central America and Caribbean"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Central America and Caribbean"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -2220,6 +2310,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "Central Asia"/>
@@ -2435,6 +2535,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="China"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "China"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -2646,6 +2756,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "EU-12"/>
@@ -2861,6 +2981,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="EU-15"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "EU-15"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -3072,6 +3202,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "Europe_Eastern"/>
@@ -3287,6 +3427,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Europe_Non_EU"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Europe_Non_EU"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -3498,6 +3648,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "European Free Trade Association"/>
@@ -3713,6 +3873,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="India"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "India"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -3924,6 +4094,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "Indonesia"/>
@@ -4139,6 +4319,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Japan"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Japan"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -4350,6 +4540,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "Mexico"/>
@@ -4565,6 +4765,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Middle East"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Middle East"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -4776,6 +4986,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "Pakistan"/>
@@ -4991,6 +5211,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Russia"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Russia"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -5202,6 +5432,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "South Africa"/>
@@ -5417,6 +5657,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="South America_Northern"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "South America_Northern"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -5628,6 +5878,16 @@
             </labelRewriteList>
             <comments/>
         </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
     <region name = "South America_Southern"/>
@@ -5843,6 +6103,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="South Asia"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "South Asia"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -6056,6 +6326,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="South Korea"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "South Korea"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -6269,6 +6549,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Southeast Asia"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Southeast Asia"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -6482,6 +6772,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Taiwan"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Taiwan"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -6695,6 +6995,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Argentina"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Argentina"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -6908,6 +7218,16 @@
         </emissionsQueryBuilder>
 </aQuery>
 <aQuery>
+    <region name="Colombia"/>
+            <emissionsQueryBuilder title="nonCO2 emissions by tech (excluding resource production)">
+                <axis1 name="GHG">GHG</axis1>
+                <axis2 name="Year">emissions</axis2>
+                <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type = 'GHG' and @name != 'CO2' and @name != 'CO2_FUG']/emissions/node()</xPath>
+                <comments/>
+            </emissionsQueryBuilder>
+</aQuery>
+<aQuery>
     <region name = "Colombia"/>
     <demographicsQuery title="population by region">
         <axis1 name="region">region</axis1>
@@ -6965,5 +7285,6 @@
                     <comments/>
                 </supplyDemandQuery>
 </aQuery>
+
 
 </queries>
