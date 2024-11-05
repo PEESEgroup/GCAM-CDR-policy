@@ -648,10 +648,10 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
     colors, num_colors = get_colors(len(versions))
     counter = 0
     try:
-        for k in SSP:
+        for k in versions:
             color_counter = 0
             for i in products:
-                y = dataframe[(dataframe[column] == i) & (dataframe['SSP'] == k)]
+                y = dataframe[(dataframe[column] == i) & (dataframe[differentiator] == k)]
 
                 if not y.empty:
                     # plot all versions in y
@@ -668,7 +668,7 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
                     color_counter = color_counter + 1
 
             counter = counter + 1
-        finalize_line_plot(fig, h, l, axs, nrow, ncol, counter)
+        finalize_line_plot(fig, h, l, axs, nrow, ncol, counter, title)
 
     except ValueError as e:
         print(e)
@@ -909,8 +909,6 @@ def plot_stacked_bar_product(df, year, SSP, column, title):
         if not isinstance(year, list):
             plot_df = plot_df.loc[:, [year, 'SSP', 'GCAM', column]]
             plot_df = plot_df.pivot(index='GCAM', columns=column, values=year)
-            plot_df = plot_df.drop(["rock and desert", "tundra", "urban"],
-                                   axis=1)  # in SSP2 RCP4.5 2050, shrubs in India has .nan, so cannot drop by na
             plot_df = plot_df.loc[:, (plot_df != 0).any(axis=0)]
             # add a column to df for sorting, then remove it
             plot_df["sum"] = plot_df.abs().sum(axis=1)
@@ -930,6 +928,9 @@ def plot_stacked_bar_product(df, year, SSP, column, title):
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
         plt.xticks(rotation=60, ha='right')
+        ymin, ymax = axs.get_ylim()
+        axs.set_ylim(-ymax, ymax)
+        plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
         plt.show()
 
     except ValueError as e:

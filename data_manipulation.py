@@ -127,6 +127,7 @@ def group(df, columns):
     df = df.reset_index()
     df['Units'] = unit
     df['SSP'] = df.apply(lambda row: relabel_SSP(row), axis=1)
+    df = df[c.GCAMConstants.column_order]
     return df
 
 
@@ -419,91 +420,91 @@ def relabel_detailed_land_use(row):
     """
     luc = row["LandLeaf"]
     if "Grassland" in luc:
-        return "grass"
+        return "Grasslands"
     elif "ProtectedUnmanagedPasture" in luc:
-        return "pasture (other)"
+        return "Protected Lands"
     elif "Vegetables" in luc:
-        return "crops"
+        return "Crops"
     elif "FodderHerb" in luc:
-        return "FodderHerb"
+        return "Animal Feed"
     elif "MiscCrop" in luc:
-        return "crops"
+        return "Crops"
     elif "OtherGrainC4" in luc:
-        return "crops"
+        return "Crops"
     elif "PalmFruit" in luc:
-        return "crops"
+        return "Crops"
     elif "FiberCrop" in luc:
-        return "crops"
+        return "Crops"
     elif "NutsSeeds" in luc:
-        return "crops"
+        return "Crops"
     elif "OtherGrain" in luc:
-        return "crops"
+        return "Crops"
     elif "Soybean" in luc:
-        return "crops"
+        return "Crops"
     elif "FodderGrass" in luc:
-        return "FodderGrass"
+        return "Animal Feed"
     elif "ProtectedGrassland" in luc:
-        return "grass"
+        return "Protected Lands"
     elif "Fruits" in luc:
-        return "crops"
+        return "Crops"
     elif "FodderHerbC4" in luc:
         return "FodderHerb"
     elif "ProtectedUnmanagedForest" in luc:
-        return "forest (unmanaged)"
+        return "Protected Lands"
     elif "biomassTree" in luc:
-        return "biomass"
+        return "Biomass for Energy"
     elif "OilPalm" in luc:
-        return "crops"
+        return "Crops"
     elif "OtherArableLand" in luc:
-        return "otherarable"
+        return "Other Arable Land"
     elif "MiscCropTree" in luc:
-        return "crops"
+        return "Crops"
     elif "OilPalmTree" in luc:
-        return "crops"
+        return "Crops"
     elif "Rice" in luc:
-        return "crops"
+        return "Crops"
     elif "Legumes" in luc:
-        return "crops"
+        return "Crops"
     elif "NutsSeedsTree" in luc:
-        return "crops"
+        return "Crops"
     elif "OilCropTree" in luc:
-        return "crops"
+        return "Crops"
     elif "UrbanLand" in luc:
-        return "urban"
+        return "Urban"
     elif "RockIceDesert" in luc:
-        return "rock and desert"
+        return "Rock and Desert"
     elif "RootTuber" in luc:
-        return "crops"
+        return "Crops"
     elif "Corn" in luc:
-        return "crops"
+        return "Crops"
     elif "FruitsTree" in luc:
-        return "crops"
+        return "Crops"
     elif "OilCrop" in luc:
-        return "crops"
+        return "Crops"
     elif "ProtectedShrubland" in luc:
-        return "shrubs"
+        return "Protected Lands"
     elif "SugarCrop" in luc:
-        return "crops"
+        return "Crops"
     elif "UnmanagedForest" in luc:
-        return "forest (unmanaged)"
+        return "Forest"
     elif "SugarCropC4" in luc:
-        return "crops"
+        return "Crops"
     elif "Pasture" in luc:
-        return "pasture (grazed)"
+        return "Pasture"
     elif "Forest" in luc:
-        return "forest (managed)"
+        return "Forest"
     elif "biomassGrass" in luc:
-        return "biomass"
+        return "Biomass for Energy"
     elif "Shrubland" in luc:
-        return "shrubs"
+        return "Shrubland"
     elif "UnmanagedPasture" in luc:
-        return "pasture (other)"
+        return "Pasture"
     elif "Tundra" in luc:
-        return "tundra"
+        return "Tundra"
     elif "Wheat" in luc:
-        return "crops"
+        return "Crops"
     elif "CornC4" in luc:
-        return "crops"
+        return "Crops"
     return "error"
 
 
