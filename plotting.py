@@ -8,6 +8,9 @@ from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from pylab import *
 from scipy.stats import bootstrap, ttest_rel, pearsonr
 import data_manipulation
+import plotly.express as px
+import plotly.graph_objects as go
+import plotly.io as pio
 
 
 def world_data(data):
@@ -1414,4 +1417,18 @@ def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label
     plt.subplots_adjust(bottom=0.4, right=.7)
     plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
     plt.show()
+
+
+def plot_alluvial(df):
+    df["color"] = df.apply(lambda row: data_manipulation.mgmt_to_color(row), axis=1)
+    fig = px.parallel_categories(df, dimensions=["Region", "2020", "2050", "Management"],
+                                 labels={"Region": "Crop Land by Region in 2020",
+                                         "2020": "Crop Land by Type in 2020",
+                                         "2050": "Crop Land by Type in 2050",
+                                         "Management": "Crop Land by Management Type in 2050"},
+                                 color=df["color"], width=1920)
+    fig.update_layout(margin=dict(l=500, r=500, t=100, b=100))
+    fig.show()
+
+
 

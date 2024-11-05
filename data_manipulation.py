@@ -590,75 +590,75 @@ def relabel_land_crops(row):
     elif "Vegetables" in luc:
         return "Vegetables"
     elif "FodderHerb" in luc:
-        return "FodderHerb"
+        return "Animal Feed"
     elif "MiscCrop" in luc:
-        return "MiscCrop"
+        return "Other Crops"
     elif "OtherGrainC4" in luc:
-        return "OtherGrain"
+        return "Other Crops"
     elif "PalmFruit" in luc:
-        return "crops"
+        return "Fruits"
     elif "FiberCrop" in luc:
-        return "FiberCrop"
+        return "Fiber Crops"
     elif "NutsSeeds" in luc:
-        return "NutsSeeds"
+        return "Nuts and Seeds"
     elif "OtherGrain" in luc:
-        return "OtherGrain"
+        return "Other Crops"
     elif "Soybean" in luc:
         return "Soybean"
     elif "FodderGrass" in luc:
-        return "FodderGrass"
+        return "Animal Feed"
     elif "ProtectedGrassland" in luc:
         return "grass"
     elif "Fruits" in luc:
         return "Fruits"
     elif "FodderHerbC4" in luc:
-        return "FodderHerb"
+        return "Animal Feed"
     elif "ProtectedUnmanagedForest" in luc:
         return "forest (unmanaged)"
     elif "biomassTree" in luc:
-        return "biomass"
+        return "Biomass for Energy"
     elif "OilPalm" in luc:
-        return "OilPalm"
+        return "Plant Oils"
     elif "OtherArableLand" in luc:
         return "otherarable"
     elif "MiscCropTree" in luc:
-        return "MiscCrop"
+        return "Other Crops"
     elif "OilPalmTree" in luc:
-        return "OilPalm"
+        return "Plant Oils"
     elif "Rice" in luc:
         return "Rice"
     elif "Legumes" in luc:
         return "Legumes"
     elif "NutsSeedsTree" in luc:
-        return "NutSeeds"
+        return "Nuts and Seeds"
     elif "OilCropTree" in luc:
-        return "OilCrop"
+        return "Plant Oils"
     elif "UrbanLand" in luc:
         return "urban"
     elif "RockIceDesert" in luc:
         return "rock and desert"
     elif "RootTuber" in luc:
-        return "RootTuber"
+        return "Roots and Tubers"
     elif "Corn" in luc:
         return "Corn"
     elif "FruitsTree" in luc:
         return "Fruits"
     elif "OilCrop" in luc:
-        return "OilCrop"
+        return "Plant Oils"
     elif "ProtectedShrubland" in luc:
         return "shrubs"
     elif "SugarCrop" in luc:
-        return "SugarCrop"
+        return "Sugar Crops"
     elif "UnmanagedForest" in luc:
         return "forest (unmanaged)"
     elif "SugarCropC4" in luc:
-        return "SugarCrop"
+        return "Sugar Crops"
     elif "Pasture" in luc:
         return "pasture (grazed)"
     elif "Forest" in luc:
         return "forest (managed)"
     elif "biomassGrass" in luc:
-        return "biomass"
+        return "Biomass for Energy"
     elif "Shrubland" in luc:
         return "shrubs"
     elif "UnmanagedPasture" in luc:
@@ -670,3 +670,41 @@ def relabel_land_crops(row):
     elif "CornC4" in luc:
         return "Corn"
     return "error"
+
+
+def relabel_MGMT(row):
+    """
+    lambda function to relabel GCAM food demand categories for greater accessibility.
+    :param row: row of data
+    :return: updated name of GCAM region
+    """
+    input = row["MGMT"]
+    if input == "hi":
+        return "High Intensity"
+    elif input == "lo":
+        return "Low Intensity"
+    else:
+        return "Biochar Application"
+
+def mgmt_to_color(row):
+    if row["Management"] == "High Intensity":
+        return "violet"
+    elif row["Management"] == "Low Intensity":
+        return "lightskyblue"
+    elif row["Management"] == "Biochar Application":
+        return "gold"
+    elif row["Management"] == "Unmanaged":
+        return "palegreen"
+
+
+def relabel_region_alluvial(row):
+    if row["Region_2020"] is None:
+        return row["Region_2050"]
+    else:
+        return row["Region_2020"]
+
+def relabel_management_alluvial(row):
+    if row["Management_2050"] is None:
+        return "Unmanaged"
+    else:
+        return row["Management_2050"]

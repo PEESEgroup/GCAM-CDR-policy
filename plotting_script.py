@@ -5,6 +5,7 @@ import constants as c
 import pandas as pd
 import stats as stats
 import numpy as np
+import plotly.express as px
 
 
 def food(nonBaselineScenario, RCP, SSP):
@@ -647,6 +648,77 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year being analyzed in detail
     :return: N/A
     """
+    #TODO: filter out existing LUC in SSP1 scenario
+
+    # biochar cropland application changes
+    land_use = pd.read_csv("data/gcam_out/biochar/" + RCP + "/masked/detailed_land_allocation.csv")
+    land_use = land_use[land_use[['SSP']].isin(SSP).any(axis=1)]
+    # get land use type information
+    land_use[["Crop", "Basin", "IRR_RFD", "MGMT"]] = land_use['LandLeaf'].str.split("_", expand=True)
+    land_use["Crop"] = land_use.apply(lambda row: data_manipulation.relabel_land_crops(row), axis=1)
+    # group land use by crop and management type
+    unit = land_use.groupby(["Crop", "MGMT"]).first().reset_index()["Units"]
+    land_use = land_use.groupby(["Crop", "MGMT", "GCAM"]).sum(min_count=1)
+    land_use = land_use.reset_index()
+    land_use['Units'] = unit
+    land_use['SSP'] = land_use.apply(lambda row: data_manipulation.relabel_SSP(row), axis=1)
+    land_use['MGMT'] = land_use.apply(lambda row: data_manipulation.relabel_MGMT(row), axis=1)
+    land_use['GCAM'] = land_use.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+
+    land_for_alluvial = pd.DataFrame()
+    for r in land_use['GCAM'].unique():
+        one_region = land_use[land_use[['GCAM']].isin([r]).any(axis=1)]
+        for crop_type in one_region['Crop'].unique():
+            crops = one_region[one_region[['Crop']].isin([crop_type]).any(axis=1)]
+            by_mgmt_type_2020 = pd.Series()
+            by_mgmt_type_2050 = pd.Series()
+            for mgmt_type in crops['MGMT'].unique():
+                mgmt = crops[crops[['MGMT']].isin([mgmt_type]).any(axis=1)]
+                year_2020 = pd.Series()
+                year_2050 = pd.Series()
+                regions = mgmt[mgmt[['GCAM']].isin([r]).any(axis=1)]
+                repeat_times_2020 = regions["2020"]
+                repeat_string_2020 = str(crop_type) + "_" + str(mgmt_type) + "_" + str(r)
+                # repeat the land area a number of times equal to the amount of land
+                crop_by_mgmt = pd.Series([repeat_string_2020]).repeat(repeat_times_2020)
+                # add the repeated number of rows to a list
+                year_2020 = pd.concat([year_2020, crop_by_mgmt])
+                year_2020 = year_2020.reset_index(drop=True)
+
+                repeat_times_2050 = regions["2050"]
+                repeat_string_2050 = str(crop_type) + "_" + str(mgmt_type) + "_" + str(r)
+                # repeat the land area a number of times equal to the amount of land
+                crop_by_mgmt = pd.Series([repeat_string_2050]).repeat(repeat_times_2050)
+                # add the repeated number of rows to a list
+                year_2050 = pd.concat([year_2050, crop_by_mgmt])
+                year_2050 = year_2050.reset_index(drop=True)
+                by_mgmt_type_2020 = pd.concat([by_mgmt_type_2020, year_2020])
+                by_mgmt_type_2050 = pd.concat([by_mgmt_type_2050, year_2050])
+                by_mgmt_type_2050 = by_mgmt_type_2050.reset_index(drop=True)
+                by_mgmt_type_2020 = by_mgmt_type_2020.reset_index(drop=True)
+
+            # gather excess land not present in either year
+            by_mgmt_type = pd.DataFrame()
+            if by_mgmt_type_2050.size > by_mgmt_type_2020.size:
+                by_mgmt_type["2050"] = by_mgmt_type_2050
+                by_mgmt_type["2020"] = by_mgmt_type_2020
+            else:
+                by_mgmt_type["2020"] = by_mgmt_type_2020
+                by_mgmt_type["2050"] = by_mgmt_type_2050
+            by_mgmt_type = by_mgmt_type.fillna("Other Land Use Types")
+            by_mgmt_type = by_mgmt_type.reset_index(drop=True)
+
+            land_for_alluvial = pd.concat([land_for_alluvial, by_mgmt_type])
+
+    # build a alluvial plot
+    land_for_alluvial[["2050", "Management_2050", "Region_2050"]] = land_for_alluvial['2050'].str.split("_", expand=True)
+    land_for_alluvial[["2020", "Management_2020", "Region_2020"]] = land_for_alluvial['2020'].str.split("_",
+                                                                                                        expand=True)
+    land_for_alluvial["Region"] = land_for_alluvial.apply(lambda row: data_manipulation.relabel_region_alluvial(row), axis=1)
+    land_for_alluvial["Management"] = land_for_alluvial.apply(lambda row: data_manipulation.relabel_management_alluvial(row), axis=1)
+    land_for_alluvial = land_for_alluvial.sort_values(by='Management', ascending=True)
+    plotting.plot_alluvial(land_for_alluvial)
+
     # regional land use change
     released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/original/detailed_land_allocation.csv")
     pyrolysis_land = pd.read_csv(
