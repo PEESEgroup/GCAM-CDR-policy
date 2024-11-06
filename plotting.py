@@ -1128,14 +1128,14 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
             ax = plt.subplot(111, polar=True)
             ax.set_rlabel_position(0)
             ax.spines["polar"].set_color('#ffffff')
-            ax.set_title(str(item))
+            # ax.set_title(str(item))
             ax.grid(color="#d5d5d5", linestyle="dashed")
             ax.text(np.radians(5), df[year].max(), y_label,
                     rotation=0, ha='center', va='center')
             plt.subplots_adjust(bottom=0.2, top=0.8)
             plt.xticks([])
             cmap = plt.colormaps.get_cmap('cool')
-            fig.suptitle(title)
+            # fig.suptitle(title)
             normalizer = Normalize(dataframe[year].min(), dataframe[year].max())
             im = cm.ScalarMappable(norm=normalizer, cmap=cmap)
 
@@ -1185,6 +1185,8 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                     fontstretch= "extra-condensed",
                     fontsize= "x-large"
                 )
+
+            #TODO: fix labels being cutoff when saved
             plt.savefig("data/data_analysis/images/" + str(item) + ".png", dpi=300)
             plt.show()
 
