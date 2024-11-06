@@ -1002,7 +1002,7 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
     :return: N/A
     """
     # get colors
-    colors, divisions = get_colors(1)
+    colors, divisions = get_colors(5)
 
     # plot for each SSP
     for i in SSPs:
@@ -1028,6 +1028,7 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
+        plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
         plt.show()
 
 
@@ -1184,7 +1185,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                     fontstretch= "extra-condensed",
                     fontsize= "x-large"
                 )
-
+            plt.savefig("data/data_analysis/images/" + str(item) + ".png", dpi=300)
             plt.show()
 
 
@@ -1427,7 +1428,10 @@ def plot_alluvial(df):
                                          "2050": "Crop Land by Type in 2050",
                                          "Management": "Crop Land by Management Type in 2050"},
                                  color=df["color"], width=1920)
-    fig.update_layout(margin=dict(l=500, r=500, t=100, b=100))
+    fig.update_layout(margin=dict(l=500, r=500, t=100, b=100),
+                      font_family="Arial",
+                      font_size=20
+                      )
     fig.show()
 
 

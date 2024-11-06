@@ -1,6 +1,7 @@
 import numpy as np
 import constants as c
 import pandas as pd
+import random
 
 
 def flat_difference(old, new, columns):
@@ -687,13 +688,13 @@ def relabel_MGMT(row):
         return "Biochar Application"
 
 def mgmt_to_color(row):
-    if row["Management"] == "High Intensity":
+    if "High Intensity" in row["Management"]:
         return "violet"
-    elif row["Management"] == "Low Intensity":
+    elif "Low Intensity" in row["Management"]:
         return "lightskyblue"
-    elif row["Management"] == "Biochar Application":
+    elif "Biochar Application" in row["Management"]:
         return "gold"
-    elif row["Management"] == "Unmanaged":
+    elif "Unmanaged" in row["Management"]:
         return "palegreen"
 
 
@@ -703,8 +704,101 @@ def relabel_region_alluvial(row):
     else:
         return row["Region_2020"]
 
-def relabel_management_alluvial(row):
+def relabel_management_alluvial(row, counts):
     if row["Management_2050"] is None:
         return "Unmanaged"
     else:
-        return row["Management_2050"]
+        return row["Management_2050"] + ":\n" + str(counts[row["Management_2050"]]) + " thousand square km"
+
+
+def process_luc(land_use):
+    scale_factor = 1
+
+    land_for_alluvial = pd.DataFrame()
+    for r in land_use['GCAM'].unique():
+        one_region = land_use[land_use[['GCAM']].isin([r]).any(axis=1)]
+        for basin in one_region["Basin"].unique():
+            land_per_basin = pd.DataFrame()
+            b = one_region[one_region[['Basin']].isin([basin]).any(axis=1)]
+            for crop_type in b['Crop'].unique():
+                crops = b[b[['Crop']].isin([crop_type]).any(axis=1)]
+                by_mgmt_type_2020 = pd.Series()
+                by_mgmt_type_2050 = pd.Series()
+                for mgmt_type in crops['MGMT'].unique():
+                    mgmt = crops[crops[['MGMT']].isin([mgmt_type]).any(axis=1)]
+                    year_2020 = pd.Series()
+                    year_2050 = pd.Series()
+                    regions = mgmt[mgmt[['GCAM']].isin([r]).any(axis=1)]
+                    repeat_times_2020 = regions["2020"]
+                    repeat_string_2020 = str(crop_type) + "_" + str(mgmt_type) + "_" + str(r)
+                    # repeat the land area a number of times equal to the amount of land
+                    crop_by_mgmt = pd.Series([repeat_string_2020]).repeat(repeat_times_2020 * scale_factor)
+                    # add the repeated number of rows to a list
+                    year_2020 = pd.concat([year_2020, crop_by_mgmt])
+                    year_2020 = year_2020.reset_index(drop=True)
+
+                    repeat_times_2050 = regions["2050"]
+                    repeat_string_2050 = str(crop_type) + "_" + str(mgmt_type) + "_" + str(r)
+                    # repeat the land area a number of times equal to the amount of land
+                    crop_by_mgmt = pd.Series([repeat_string_2050]).repeat(repeat_times_2050 * scale_factor)
+                    # add the repeated number of rows to a list
+                    year_2050 = pd.concat([year_2050, crop_by_mgmt])
+                    year_2050 = year_2050.reset_index(drop=True)
+
+                    # add the lists to a dataframe
+                    by_mgmt_type_2020 = pd.concat([by_mgmt_type_2020, year_2020])
+                    by_mgmt_type_2050 = pd.concat([by_mgmt_type_2050, year_2050])
+                    by_mgmt_type_2050 = by_mgmt_type_2050.reset_index(drop=True)
+                    by_mgmt_type_2020 = by_mgmt_type_2020.reset_index(drop=True)
+
+                # gather excess land not present in either year
+                by_mgmt_type = pd.DataFrame()
+                if by_mgmt_type_2050.size > by_mgmt_type_2020.size:
+                    by_mgmt_type["2020"] = by_mgmt_type_2020
+                    by_mgmt_type["2050"] = by_mgmt_type_2050
+                else:
+                    by_mgmt_type["2020"] = by_mgmt_type_2020
+                    by_mgmt_type["2050"] = by_mgmt_type_2050
+                by_mgmt_type = by_mgmt_type.fillna("Other Land Use Types")
+                by_mgmt_type = by_mgmt_type.reset_index(drop=True)
+
+                land_per_basin = pd.concat([land_per_basin, by_mgmt_type])
+
+            # on a per-basin basis, rearrange luc so that unmanaged land is matched with unmanaged land
+            df_both_managed = land_per_basin[
+                (land_per_basin["2020"] != "Other Land Use Types") & (land_per_basin["2050"] != "Other Land Use Types")].reset_index(drop=True)
+            df_2020_managed = land_per_basin[(land_per_basin["2050"] == "Other Land Use Types")].reset_index(drop=True)
+            df_2050_managed = land_per_basin[(land_per_basin["2020"] == "Other Land Use Types")].reset_index(drop=True)
+
+            #shuffle both lists
+            df_2020_managed = df_2020_managed.sample(frac=1, random_state=1).reset_index(drop=True)
+            df_2050_managed = df_2050_managed.sample(frac=1, random_state=1).reset_index(drop=True)
+
+            # get excess other land use types and put them in their own df, so that 2020/2050 managed have the same length
+            excess = pd.DataFrame()
+            if len(df_2020_managed.index) > len(df_2050_managed.index):
+                excess = pd.concat([excess, df_2020_managed.iloc[len(df_2050_managed.index):]])
+                df_2020_managed = df_2020_managed.iloc[:len(df_2050_managed.index)]
+            else:
+                excess = pd.concat([excess, df_2050_managed.iloc[len(df_2020_managed.index):]])
+                df_2050_managed = df_2050_managed.iloc[:len(df_2020_managed.index)]
+
+            # turn dfs into lists
+            df_2020_managed_list = df_2020_managed.to_numpy().tolist()
+            df_2050_managed_list = df_2050_managed.to_numpy().tolist()
+
+            pairs = zip(df_2020_managed_list, df_2050_managed_list)
+            paired = pd.DataFrame(columns=["2020", "2050"])
+            for i, j in pairs:
+                paired.loc[len(paired)] = [i[0], j[1]] # based on column order in dataframes
+
+            df_doubly_unmanaged = paired[
+                (paired["2020"] == "Other Land Use Types") & (
+                            paired["2050"] == "Other Land Use Types")].reset_index(drop=True)
+
+            if len(df_doubly_unmanaged) > 0:
+                print(r, basin)
+            df_both_managed = pd.concat([df_both_managed, paired, excess])
+            land_for_alluvial = pd.concat([land_for_alluvial, df_both_managed])
+
+    return land_for_alluvial
