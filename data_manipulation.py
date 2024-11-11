@@ -689,31 +689,30 @@ def relabel_MGMT(row):
 
 def mgmt_to_color(row):
     if "High Intensity" in row["Management"]:
-        return "violet"
+        return "#698FC6"
     elif "Low Intensity" in row["Management"]:
-        return "lightskyblue"
+        return "#BFBE43"
     elif "Biochar Application" in row["Management"]:
-        return "gold"
+        return "#C16861"
     elif "Unmanaged" in row["Management"]:
-        return "palegreen"
+        return "#74A751"
 
 
 def relabel_region_alluvial(row):
-    if row["Region_2020"] is None:
-        return row["Region_2050"]
-    else:
+    if row["Region_2050"] is None:
         return row["Region_2020"]
+    else:
+        return row["Region_2050"]
+
 
 def relabel_management_alluvial(row, counts):
     if row["Management_2050"] is None:
         return "Unmanaged"
     else:
-        return row["Management_2050"] + ":\n" + str(counts[row["Management_2050"]]) + " thousand square km"
+        return row["Management_2050"] + ":<br>" + f'{float(f"{counts[row.Management_2050]:.5g}"):g}' + " km<sup>2</sup>"
 
 
-def process_luc(land_use):
-    scale_factor = 1
-
+def process_luc(land_use, scale_factor):
     land_for_alluvial = pd.DataFrame()
     for r in land_use['GCAM'].unique():
         one_region = land_use[land_use[['GCAM']].isin([r]).any(axis=1)]

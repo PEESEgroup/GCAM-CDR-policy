@@ -929,10 +929,14 @@ def plot_stacked_bar_product(df, year, SSP, column, title):
         axs.set_title(title)
         axs.set_ylabel(df["Units"].unique()[0])
         plt.legend(bbox_to_anchor=(1, 1))
-        plt.subplots_adjust(bottom=0.4, right=.7)
+        plt.subplots_adjust(bottom=0.5, right=.7, left=.15)
         plt.xticks(rotation=60, ha='right')
         ymin, ymax = axs.get_ylim()
         axs.set_ylim(-ymax, ymax)
+        if title == "global land use change by year":
+            plt.gcf().set_size_inches(7, 8)
+        else:
+            plt.gcf().set_size_inches(12, 8)
         plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
         plt.show()
 
@@ -1027,7 +1031,8 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
         plt.xticks(rotation=60, ha='right')
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))
-        plt.subplots_adjust(bottom=0.4, right=.7)
+        plt.subplots_adjust(bottom=0.5, right=.7, left=.15)
+        plt.gcf().set_size_inches(12, 8)
         plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
         plt.show()
 
@@ -1186,7 +1191,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                     fontsize= "x-large"
                 )
 
-            #TODO: fix labels being cutoff when saved
+            plt.gcf().set_size_inches(12, 12)
             plt.savefig("data/data_analysis/images/" + str(item) + ".png", dpi=300)
             plt.show()
 
@@ -1353,28 +1358,40 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
     :param supply: supply data being plotted for weighted averages
     :return: N/A
     """
-    # get colors
-    colors, divisions = get_colors(1)
-
     if supply == "na":
         df = prices.loc[:, [str(year), column]]
         products = df[column].unique().tolist()
+        units = prices["Units"].unique()[0]
         df = df.pivot(columns=column, values=str(year))
+
+        # get colors
+        n = len(products)
+        if n == 5:
+            n = 1
+        colors, divisions = get_colors(n)
+
         # plot histogram
-        bins = [50 * i for i in range(1 + int(prices[year].max() / 50))]
+        bind_width = (int(prices[year].max()) - int(prices[year].min()))/25
+        if bind_width > 250:
+            bind_width = 250
+        elif bind_width > 30:
+            bind_width = 40
+        bins = [bind_width * i for i in range(int(prices[year].min() / bind_width) - 1, int(prices[year].max() / bind_width) + 2)]
         plt.hist([df[i] for i in products], bins, stacked=True, label=df.columns, histtype='bar',
                  color=[colors[i] for i in range(len(products))])
 
         # finalize plot
         plt.ylabel(y_label)
-        plt.xlabel("USD$2024")
+        plt.xlabel(units)
         plt.xticks(rotation=60, ha='right')
+        plt.xlim(int(prices[year].min()) - bind_width, int(prices[year].max()) + bind_width)
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
         plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
         plt.show()
     else:
+        colors, divisions = get_colors(1)
         # plot for each SSP
         if column != "SSP":
             for k in SSPs:
@@ -1424,11 +1441,11 @@ def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label
 
 def plot_alluvial(df):
     df["color"] = df.apply(lambda row: data_manipulation.mgmt_to_color(row), axis=1)
-    fig = px.parallel_categories(df, dimensions=["Region", "2020", "2050", "Management"],
-                                 labels={"Region": "Crop Land by Region in 2020",
-                                         "2020": "Crop Land by Type in 2020",
-                                         "2050": "Crop Land by Type in 2050",
-                                         "Management": "Crop Land by Management Type in 2050"},
+    fig = px.parallel_categories(df, dimensions=["2020", "2050", "Management", "Region"],
+                                 labels={"Region": "Region in 2050",
+                                         "2020": "Crops in 2020",
+                                         "2050": "Crops in 2050",
+                                         "Management": "Management Type in 2050"},
                                  color=df["color"], width=1920)
     fig.update_layout(margin=dict(l=500, r=500, t=100, b=100),
                       font_family="Arial",
