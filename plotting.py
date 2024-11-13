@@ -1023,7 +1023,8 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
             weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
             plt.axhline(y=weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum(), color=colors[idx],
                         linestyle='dashed')
-            print("avg price:", str(item), weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum())
+            print("avg:", str(item), str(weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum()) + " " +
+                  str(weighted_avg["Units_left"].unique()[0]))
 
         # finalize plot
         plt.ylabel(y_label)
@@ -1427,7 +1428,8 @@ def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label
         weighted_avg = pd.merge(df_price, df_supply, on=["GCAM"])
         weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
 
-        print("avg price:", str(item), weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum())
+        print("avg:", str(item), str(weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum()) + " " +
+              str(weighted_avg["Units"].unique()[0]))
     # finalize plot
     plt.ylabel("number of regions")
     plt.xlabel(y_label)

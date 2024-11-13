@@ -561,18 +561,18 @@ def figure2(nonBaselineScenario, RCP, SSP):
                                     "histogram of biochar app rates", "technology", "na")
 
     # global fertilizer reduction
-    released_land = pd.read_csv("data/gcam_out/released/" + RCP + "/original/detailed_land_allocation.csv")
-    pyrolysis_land = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/detailed_land_allocation.csv")
-    released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_land = pyrolysis_land[pyrolysis_land[['SSP']].isin(SSP).any(axis=1)]
-    released_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row),
-                                                    axis=1)
-    pyrolysis_land["LandLeaf"] = pyrolysis_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row),
-                                                      axis=1)
-    pyrolysis_land = data_manipulation.group(pyrolysis_land, ["GCAM", "LandLeaf"])
-    released_land = data_manipulation.group(released_land, ["GCAM", "LandLeaf"])
-    flat_diff_land = data_manipulation.flat_difference(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
+    released_N = pd.read_csv("data/gcam_out/released/" + RCP + "/original/ammonia_production_by_tech.csv")
+    pyrolysis_N = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/ammonia_production_by_tech.csv")
+    released_N = released_N[released_N[['SSP']].isin([SSP]).any(axis=1)]
+    released_N = data_manipulation.group(released_N, ["SSP"]) # get global level data
+    pyrolysis_N = pyrolysis_N[pyrolysis_N[['SSP']].isin([SSP]).any(axis=1)]
+    pyrolysis_N = data_manipulation.group(pyrolysis_N, ["SSP"]) # get global level data
+
+    flat_diff_land = data_manipulation.flat_difference(released_N, pyrolysis_N, ["SSP", "LandLeaf", "GCAM"])
+    perc_diff_land = data_manipulation.percent_difference(released_N, pyrolysis_N, ["SSP", "LandLeaf", "GCAM"])
+    print(flat_diff_land[["2050", "SSP", "Units"]])
+    print(perc_diff_land[["2050", "SSP", "Units"]])
 
 
 def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -584,6 +584,25 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year for biochar/carbon prices to be evaluated and plotted
     :return: graph of biochar C sequestration, biochar C emissions avoidance, and biochar prices
     """
+    # plotting changes in energy mix
+    ref_released = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/original/primary_energy_consumption_by_region_direct_equivalent.csv")
+    ref_pyrolysis = pd.read_csv(
+        "data/gcam_out/" + str(
+            nonBaselineScenario) + "/" + RCP + "/masked/primary_energy_consumption_by_region_direct_equivalent.csv")
+
+    # get the right SSP data
+    ref_released = ref_released[ref_released[['SSP']].isin([SSP]).any(axis=1)]
+    ref_pyrolysis = ref_pyrolysis[ref_pyrolysis[['SSP']].isin([SSP]).any(axis=1)]
+    ref_released["SSP"] = "released"
+    ref_pyrolysis["SSP"] = "pyrolysis"
+
+    # get the flat difference and plot it
+    flat_diff = data_manipulation.flat_difference(ref_released, ref_pyrolysis, ["fuel"])
+    print(flat_diff[[biochar_year, "fuel", "Units"]])
+    perc_diff = data_manipulation.percent_difference(ref_released, ref_pyrolysis, ["fuel"])
+    print(perc_diff[[biochar_year, "fuel", "Units"]])
+
     # plotting CO2 sequestering
     co2_seq_pyrolysis = pd.read_csv(
         "data/gcam_out/" + str(
@@ -835,6 +854,25 @@ def figure5(nonBaselineScenario, RCP, SSP):
                            "2050"] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
 
     diff_food_staple_income = diff_food_staple_income.sort_values(by="2050_conv", ascending=False)
+    diff_food_staple_income["Units"] = "2024 USD$/Mcal/day"
+
+    print(diff_food_staple_income.groupby("input")["2050_conv"].mean(), SSP[0], diff_food_staple_income["Units"].unique()[0])
+
+    # calculate global average percent difference
+    perc_diff = data_manipulation.percent_difference(pyrolysis_staple_expenditure,
+                                                                released_staple_expenditure,
+                                                                ["SSP", "GCAM", "input"])
+
+    perc_diff['GCAM'] = perc_diff.apply(lambda row: data_manipulation.relabel_region(row),
+                                                                    axis=1)
+    perc_diff['input'] = perc_diff.apply(
+        lambda row: data_manipulation.relabel_food_demand(row), axis=1)
+    perc_diff["2050_conv"] = perc_diff["2050"] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
+
+    perc_diff = perc_diff.sort_values(by="2050_conv", ascending=False)
+    perc_diff["Units"] = "%"
+
+    print(perc_diff.groupby("input")["2050_conv"].mean(), SSP[0], perc_diff["Units"].unique()[0])
 
     # add an empty row at the top of the dataframe
     new_row1 = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
@@ -851,61 +889,6 @@ def figure5(nonBaselineScenario, RCP, SSP):
     plotting.plot_regional_rose(diff_food_staple_income, "2050_conv", SSP, "change in food expenditure (USD$2024/Mcal/day)",
                                 "food expenditure in 2050 in " + str(SSP[0]) + " and RCP " + str(RCP),
                                 column="input")
-
-
-def figure6(nonBaselineScenario, RCP, SSP):
-    """
-    Returns plots for figure 6
-    :param nonBaselineScenario: the scenario to be compared to the released scenario
-    :param RCP: the RCP pathways being considered
-    :param SSP: the SSP pathways being considered
-    :return: N/A
-    """
-    for i in RCP:
-        # Changes in energy mix
-        # refined liquids production
-        #TODO find out a way to measure changes to energy supply
-        ref_released = pd.read_csv(
-            "data/gcam_out/released/" + str(i) + "/original/refined_liquids_production_by_tech.csv")
-        ref_pyrolysis = pd.read_csv(
-            "data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
-                i) + "/masked" + "/refined_liquids_production_by_tech.csv")
-
-        # add manure fuel row to the released version so that the flat diff can be analyzed
-        man_fuel = ref_pyrolysis[ref_pyrolysis[["technology"]].isin(["manure fuel", "manure_fuel"]).any(axis=1)]
-        for j in c.GCAMConstants.biochar_x:
-            man_fuel.loc[:, str(j)] = 0
-        ref_released = pd.concat([ref_released, man_fuel])
-
-        # select global region
-        ref_released = ref_released[ref_released[['GCAM']].isin(["Global"]).any(axis=1)]
-        ref_pyrolysis = ref_pyrolysis[ref_pyrolysis[['GCAM']].isin(["Global"]).any(axis=1)]
-
-        # add baseline data
-        flat_diff_biofuel = data_manipulation.flat_difference(ref_released, ref_pyrolysis,
-                                                              ["SSP", "technology", "GCAM"])
-        perc_diff_biofuel = data_manipulation.percent_difference(ref_released, ref_pyrolysis,
-                                                                 ["SSP", "technology", "GCAM"])
-
-        baseline_data = flat_diff_biofuel.copy(deep=True)
-        baseline_data = baseline_data[baseline_data[['SSP']].isin(["SSP1"]).any(axis=1)]
-        baseline_data["technology"] = baseline_data.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
-        baseline_data["SSP"] = "released"
-        for j in c.GCAMConstants.x:
-            baseline_data[str(j)] = 0
-        flat_diff_biofuel = pd.concat([flat_diff_biofuel, baseline_data])
-
-        baseline_data = perc_diff_biofuel.copy(deep=True)
-        baseline_data = baseline_data[baseline_data[['SSP']].isin(["SSP1"]).any(axis=1)]
-        baseline_data["technology"] = baseline_data.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
-        baseline_data["SSP"] = "released"
-        for j in c.GCAMConstants.x:
-            baseline_data[str(j)] = 0
-        perc_diff_biofuel = pd.concat([perc_diff_biofuel, baseline_data])
-
-        # plot products
-        plotting.sensitivity(flat_diff_biofuel, str(i), "released", "2050", "technology")
-        plotting.sensitivity(perc_diff_biofuel, str(i), "released", "2050", "technology")
 
 
 def carbon_price_biochar_supply(nonBaselineScenario, RCP, SSP):
@@ -1046,11 +1029,10 @@ def main():
     reference_RCP = "2p6"
     # fertilizer("biochar", "2p6", ["SSP4"])
     # carbon_price_biochar_supply("test", "6p0", ["SSP1"])
-    #figure2(reference_SSP)
+    # figure2("biochar", reference_RCP, reference_SSP)
     # figure3("biochar", reference_RCP, [reference_SSP], 2050)
-    #figure4("biochar", reference_RCP, c.GCAMConstants.SSPs, "2050")
+    figure4("biochar", reference_RCP, reference_SSP, "2050")
     figure5("biochar", reference_RCP, [reference_SSP])
-    figure6("biochar", reference_RCP, [reference_SSP])
     carbon_price_biochar_supply("biochar", [reference_RCP], [reference_SSP])
 
 

@@ -4,8 +4,8 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
-    version = [["biochar", "2p6"], ["released", "2p6"]]
-    GCAMDB_filenames = ["data/gcam_out/biochar/2p6/ref.csv","data/gcam_out/released/2p6/ref.csv"]
+    version = [["released", "2p6"]]
+    GCAMDB_filenames = ["data/gcam_out/released/2p6/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
@@ -27,7 +27,7 @@ class GCAMConstants:
     missing = "missing"
     column_order = ["1990", "2005", "2010", "2015", "2020", "2025", "2030", "2035", "2040", "2045", "2050", "2055",
                     "2060", "2065", "2070", "2075", "2080", "2085", "2090", "2095", "2100", 'SSP', 'Version',
-                    "GCAM", "sector", "subsector", "technology", "output", "concentration", "input", "product",
+                    "GCAM", "sector", "subsector", "technology", "output", "concentration", "input", "product", "fuel",
                     "LandLeaf", "GHG", "Units"]
     world_columns = ['OBJECTID', 'geometry', 'GCAM']
     x = [1990, 2005, 2010, 2015, 2020, 2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]

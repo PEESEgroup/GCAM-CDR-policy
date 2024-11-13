@@ -801,3 +801,7 @@ def process_luc(land_use, scale_factor):
             land_for_alluvial = pd.concat([land_for_alluvial, df_both_managed])
 
     return land_for_alluvial
+
+
+def relabel_fuel(row):
+    return row["fuel"][2:]
