@@ -622,7 +622,7 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
                                       title="C sequestration from biochar in " + SSP +" baseline in RCP" + str(RCP))
 
     # print values of Mt C sequestered
-    print("sequestered C\n", co2_seq_pyrolysis.loc[:, [biochar_year, "SSP", "technology"]])
+    print("sequestered C\n", co2_seq_pyrolysis.loc[:, [biochar_year, "SSP", "technology", "Units"]])
 
     # plotting ghg emissions avoidance
     co2_avd_pyrolysis = pd.read_csv(
@@ -640,10 +640,18 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     plotting.plot_line_product_CI(co2_avd_pyrolysis, products, "technology", SSP, "Version",
                                   title="carbon emissions avoidance across RCP pathways in " + SSP +" baseline in RCP" + str(RCP))
     # print values of Mt C avoided
-    print("avoided C\n", co2_avd_pyrolysis.loc[:, [biochar_year, "SSP", "technology"]])
+    print("avoided C\n", co2_avd_pyrolysis.loc[:, [biochar_year, "SSP", "technology", "Units"]])
+
+    # print values of biocahr supply
+    biochar_supply = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + str(
+                RCP) + "/original" + "/supply_of_all_markets.csv")
+    biochar_supply = biochar_supply[biochar_supply[['SSP']].isin([SSP]).any(axis=1)]
+    biochar_supply = biochar_supply[biochar_supply[['product']].isin(["biochar"]).any(axis=1)]
+    biochar_supply = data_manipulation.group(biochar_supply, ["product"])
+    print(biochar_supply.loc[:, [biochar_year, "Units"]])
+
 
     # frequency of biochar prices
-    # spatial distribution of biochar/manure supply and prices
     biochar_price = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
     biochar_price['product'] = biochar_price.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
