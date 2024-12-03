@@ -20,11 +20,6 @@
 # 3k. update locations where certain land nodes cannot exist - prune_empty_ag - L240.TechCoef_tra - aglu/A_agTradedTechnology - DONE
 # 4. find which R files correspond to what xml output files - DONE
 
-## TODO: fix biochar yields for IRR crops by loading in hi yields from existing GCAM output
-## TODO: fix biochar land shares
-## TODO: fix biochar doesn't have matching input in next period
-## TODO: fix invalid profit rates in Indonesian biomass LandLeafs
-
 devtools::load_all()
 
 # supply sector   subsector       technology
@@ -43,7 +38,6 @@ devtools::load_all()
 #               source 1: Bentley, J. A. et al. Economics of Dairy Manure Management in Iowa. Iowa State University Animal Industry Report 13, (2016).
 #               source 2: Malone, G. W. Nutrient Enrichment in integrated Broiler Production Systems. Poultry Science 71, 1117–1122 (1992).
 #               source 3: https://www.fao.org/3/i6421e/i6421e.pdf
-#               source 4: https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=201401&year2=197501
 #               source 5: https://www.fao.org/3/t0279e/T0279E05.htm
 #               source 9: Lefebvre, D. et al. Biomass residue to carbon dioxide removal: quantifying the global impact of manure_fuel. manure_fuel 5, 65 (2023).
 #        poultry (units): 0.0273 (kg collectible manure solids /day /head) [9] * 1 (head) / 1.008 (kg meat/head) [3] * 51 day lifespan [2] = 1.381 Mt manure/Mt Poultry
@@ -54,7 +48,7 @@ devtools::load_all()
 # calculations in plant_costs.xlsx
 
 ## A_An_secout_prices:
-# manure prices are set to 1e-7, as that is the smallest possible price based on the rounding in L202.an_input
+# manure prices are set to 1e-4, as that is the smallest possible price based on the rounding in L202.an_input
 
 #A21.globaltech_cost.csv is assumed to model capital costs, per description in A22.globaltech_cost_low.csv, given that the same columns are present
 # instead of adding additional costs on the biochar input (pre-treatment/post-treatment costs for biochar are considered as part of the capital costs) - per docs /supply_energy
