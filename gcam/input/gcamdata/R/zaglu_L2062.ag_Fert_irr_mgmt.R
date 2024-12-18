@@ -131,11 +131,6 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
         mutate(minicam.energy.input = "P2O5 fertilizer") -> L2062.ag_Fert_MGMT_P2O5
 
     #calculate IO coef by kg/m^2 biochar per crop production in kg/m^2
-    # Add name of additional minicam.energy.input for biochar land use types of 50 Mg C/ha, which corresponds to 83 Mg biochar / ha with C weight % of 60%
-    # Enders, A., Hanley, K., Whitman, T., Joseph, S. and Lehmann, J., 2012. Characterization of biochars to evaluate recalcitrance and agronomic performance. Bioresource technology, 114, pp.644-653.
-    # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
-    # TODO: replace
-
     A_AgBiocharApplicationRateYrCropLand %>%
       mutate(GCAM_commodity = AgSupplySector) %>%
       select(-AgSupplySector)->
@@ -152,7 +147,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
                     filter(MGMT == "biochar")) %>%
         left_join(L2062.bio_app_rate, by=c("region", "GCAM_commodity", "year")) %>%
         replace_na(list(rate_kg_ha = 0)) %>%
-        mutate(value = if_else(value.y==0, 0, rate_kg_ha/10000/value.y))%>% # kg/ha to km sqm divided by yield on a square meter basis
+        mutate(value = if_else(value.y==0, 0, rate_kg_ha/10000/value.y))%>% # kg/ha to kg sqm divided by yield on a square meter basis
         mutate(minicam.energy.input = "biochar") %>%
         select(-value.y, -value.x, -rate_kg_ha) %>%
         mutate(AgSupplySector = GCAM_commodity,

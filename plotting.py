@@ -246,7 +246,7 @@ def plot_world_by_years(dataframe, products, column, year, SSP, title):
                 # update the figure with shared colorbar
                 dl = len(year)
                 lab = str(units)
-                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow)
+                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title)
             except ValueError as e:
                 print(e)
 
@@ -417,7 +417,8 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname):
         fig.colorbar(im, cax=axins1, orientation="horizontal")
     elif ncol == 1:
         if nrow == 1:
-            fig.colorbar(im, shrink=0.6, orientation="vertical", label=lab)
+            cax = fig.add_axes([0.9, 0.25, 0.02, 0.5])
+            fig.colorbar(im, cax=cax, shrink=0.6, orientation="vertical", label=lab)
         else:
             fig.colorbar(im, ax=axs[:], shrink=0.6, orientation="vertical", label=lab)
     else:
