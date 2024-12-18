@@ -1106,14 +1106,14 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
 
 def main():
     reference_SSP= "SSP1"
-    reference_RCP = "2p6"
+    reference_RCP = "1p9"
     # fertilizer("biochar", "2p6", ["SSP4"])
     # carbon_price_biochar_supply("test", "6p0", ["SSP1"])
-    # figure2("biochar", reference_RCP, reference_SSP)
-    #figure3("biochar", reference_RCP, [reference_SSP], 2050)
-    # figure4("biochar", reference_RCP, reference_SSP, "2050")
+    figure2("biochar", reference_RCP, reference_SSP)
+    figure3("biochar", reference_RCP, [reference_SSP], 2050)
+    figure4("biochar", reference_RCP, reference_SSP, "2050")
     figure5("biochar", reference_RCP, [reference_SSP])
-    carbon_price_biochar_supply("biochar", [reference_RCP], [reference_SSP])
+    #carbon_price_biochar_supply("biochar", [reference_RCP], [reference_SSP])
 
 
 if __name__ == '__main__':

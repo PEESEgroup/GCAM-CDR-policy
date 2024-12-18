@@ -23,70 +23,52 @@ Didn't find builder for land leaf shares query going to use defaults
 Didn't find builder for land leaf shares in a specified land use region query going to use defaults
 Didn't find builder for National Account query going to use defaults
 Didn't find builder for Social Accounting Matrix query going to use defaults
-About to perform query: collection()/singleQueryListCache/cache[@id=-1508065300]/text()
-Time : 0
-Before Function: 1731508231339
-About to perform query: 
-                     
-			 	 	 declare function local:append-heirarchy($parent as node(), $append as node()) as node() {
-			 	 		 let $scn := $parent/ancestor::scenario,
-			 			   	  $rgn := $parent/ancestor::region
-			 			   return
-			 			   	  document { element scenario {
-			 			 	  					$scn/@*,
-			 			 						element region {
-			 			 							$rgn/@*,
-			 			 							$append
-			 			 						}
-			 			 	  				}
-			 				}
-			 	 	 };  
-			 	 	 declare function local:get-primary-renewable($outputs as node()*) as node()* {
-			 	 	 unordered { 	
-			 	 	 for $output in $outputs 
-			 	 	 let $new_output :=  
-			 	 	 element input {
-			 	 		 attribute type {'input'},
-			 	 		 attribute name {$output/parent::*/following-sibling::keyword/@primary-renewable},
-			 	 		 element demand-physical {
-			 	 			 attribute vintage {$output/@vintage},
-			 	 			 attribute unit {$output/@unit},
-			 	 			 text { $output }
-			 	 		 }
-			 	 	 },
-			 	 	 $new_root := local:append-heirarchy($output/parent::*/parent::*, $new_output)
-			 	 	 return $new_root//text()
-			 	 	 } 
-			 	 	 };
-			 	 	 declare function local:run-primary-energy($scenarios as xs:string*, $regions as xs:string*, $collection as xs:string*) as node()* { 	
-			 	 	 let $regionsG := if(not($regions[1] = 'Global'))
-			 	 	 		  then $regions
-			 	 	 		  else distinct-values(collection($collection)/scenario/world/*[@type='region']/@name)
-			 	 	 return
-			 	 	 for $scenario in $scenarios, 	    
-			 	 	 $region in $regionsG 	
-			 	 	 let $scenario_split := tokenize($scenario, ' '), 	    
-                     $scenario_name := string-join($scenario_split[position() < last()], ' '),
-			 	 	 $scenario_date := $scenario_split[last()],
-			 	 	 $currTree := collection($collection)/scenario[@name = $scenario_name and @date = $scenario_date]/world/*[@type = 'region' and @name=$region]
-			 	 	 return (: get renewables from electricity :)
-					 	 	 	local:get-primary-renewable($currTree/*[@type='sector' (: collapse :) and (@name='electricity' or @name='elect_td_bld' or starts-with(@name,'elec_'))]//keyword[fn:exists(@primary-renewable)]/preceding-sibling::output-primary/physical-output)
-					 		 	| (: get renewables from H2ProdCS :)
-					 	 	 	local:get-primary-renewable($currTree/supplysector[@name='H2 central production'](: /*[@type='subsector' (: collapse :) and fn:not(@name='electrolysis')] :)//keyword[fn:exists(@primary-renewable)]/preceding-sibling::output-primary/physical-output)
-					 	 	 	| (: get renewables from H2ProdDist :)
-					 	 	 	local:get-primary-renewable($currTree/supplysector[@name='H2 forecourt production'](: /*[@type='subsector' (: collapse :) and fn:not(@name='electrolysis')] :)//keyword[fn:exists(@primary-renewable)]/preceding-sibling::output-primary/physical-output)
-					 	 	 	| (: get the primaries :)
-	 	 						$currTree//keyword[fn:exists(@primary-consumption)]/preceding-sibling::*[@type='input']/demand-physical/text()
-                                | (: get traditional biomass :)
-							    $currTree//*[@type='input' and @name='traditional biomass']/demand-physical/node()
-			 	 	 	
-	 	 }; 
-            	 local:run-primary-energy(('GCAM_SSP2 2024-14-8T11:09:59-04:00'), ('USA'), ())
-                 
-            
-                
-In Function: 1731508231339
-After build Tree: 1731508232512
-After Add table: 1731508232512
+Going to change controls
+About to perform query: collection()/scenario
+About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
+Didn't find builder for detailed land allocation query going to use defaults
+Didn't find builder for detailed historical land allocation query going to use defaults
+Didn't find builder for land allocation by crop query going to use defaults
+Didn't find builder for aggregated land allocation query going to use defaults
+Didn't find builder for aggregated historical land allocation query going to use defaults
+Didn't find builder for land allocation in a specified land use region query going to use defaults
+Didn't find builder for land allocation by crop and water source query going to use defaults
+Didn't find builder for LUC emissions by region query going to use defaults
+Didn't find builder for LUC emissions by LUT query going to use defaults
+Didn't find builder for LUC emissions by LUT in a specified land use region query going to use defaults
+Didn't find builder for vegetative carbon stock by region query going to use defaults
+Didn't find builder for profit rate query going to use defaults
+Didn't find builder for profit rate in a specified land use region query going to use defaults
+Didn't find builder for land leaf shares query going to use defaults
+Didn't find builder for land leaf shares in a specified land use region query going to use defaults
+Didn't find builder for National Account query going to use defaults
+Didn't find builder for Social Accounting Matrix query going to use defaults
+About to perform query: collection()/scenario
+About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
+Going to change controls
+About to perform query: collection()/scenario
+About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
+Didn't find builder for detailed land allocation query going to use defaults
+Didn't find builder for detailed historical land allocation query going to use defaults
+Didn't find builder for land allocation by crop query going to use defaults
+Didn't find builder for aggregated land allocation query going to use defaults
+Didn't find builder for aggregated historical land allocation query going to use defaults
+Didn't find builder for land allocation in a specified land use region query going to use defaults
+Didn't find builder for land allocation by crop and water source query going to use defaults
+Didn't find builder for LUC emissions by region query going to use defaults
+Didn't find builder for LUC emissions by LUT query going to use defaults
+Didn't find builder for LUC emissions by LUT in a specified land use region query going to use defaults
+Didn't find builder for vegetative carbon stock by region query going to use defaults
+Didn't find builder for profit rate query going to use defaults
+Didn't find builder for profit rate in a specified land use region query going to use defaults
+Didn't find builder for land leaf shares query going to use defaults
+Didn't find builder for land leaf shares in a specified land use region query going to use defaults
+Didn't find builder for National Account query going to use defaults
+Didn't find builder for Social Accounting Matrix query going to use defaults
+Removing :run_210824-013713.xml
+Removing :run_311024-082059.xml
+Removing :run_311024-082225.xml
+About to perform query: collection()/scenario
+About to perform query: collection()/scenario
+About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
 Caught the window closing
-Doing remove because of control
