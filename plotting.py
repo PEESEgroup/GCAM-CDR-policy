@@ -124,7 +124,7 @@ def plot_world_by_SSP(dataframe, products, column, year, SSP, title):
                 # update the figure with shared colorbar
                 dl = len(SSP)
                 lab = units
-                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow)
+                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title)
             except ValueError as e:
                 print(e)
 
