@@ -57,6 +57,8 @@ def luc_by_region(nonBaselineScenario, RCP, SSP):
     #                              "net difference in LUC emissions by region")
 
     flat_diff_luc = data_manipulation.group(flat_diff_luc, ["SSP"])
+    released_luc_total = data_manipulation.group(released_luc, ["SSP"])
+    print(released_luc_total[["2040", "2050", "Units"]])
     plotting.plot_line_by_product(flat_diff_luc, ["SSP1"], "SSP", ["SSP1"], "SSP", "Net LUC compared to reference scenario")
 
     released_luc = pd.read_csv(
@@ -75,9 +77,44 @@ def luc_by_region(nonBaselineScenario, RCP, SSP):
                                     "LandLeaf", "na")
 
 
+def animal_feed_and_products(nonBaselineScenario, RCP, SSP):
+    released_supply = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/original/supply_of_all_markets.csv")
+    pyrolysis_supply = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/supply_of_all_markets.csv")
+    released_supply = released_supply[released_supply[['SSP']].isin(SSP).any(axis=1)]
+    pyrolysis_supply = pyrolysis_supply[pyrolysis_supply[['SSP']].isin(SSP).any(axis=1)]
+    feed = ["FodderHerb_Residue", "FeedCrops", "Pasture_FodderGrass", "Scavenging_Other"] # the different feed types
+    released_feed = released_supply[released_supply[['product']].isin(feed).any(axis=1)]
+    pyrolysis_feed = pyrolysis_supply[pyrolysis_supply[['product']].isin(feed).any(axis=1)]
+    products = ["Beef", "Dairy", "SheepGoat", "Pork", "Poultry"] # the different product types
+    released_products = released_supply[released_supply[['product']].isin(products).any(axis=1)]
+    pyrolysis_products = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)]
+
+    flat_diff_feed = data_manipulation.flat_difference(released_feed, pyrolysis_feed, ["GCAM", "SSP", "product"])
+    perc_diff_feed = data_manipulation.percent_difference(released_feed, pyrolysis_feed, ["GCAM", "SSP", "product"])
+    flat_diff_animal = data_manipulation.flat_difference(released_products, pyrolysis_products, ["GCAM", "SSP", "product"])
+    perc_diff_animal = data_manipulation.percent_difference(released_products, pyrolysis_products, ["GCAM", "SSP", "product"])
+
+    plotting.plot_world(flat_diff_feed, feed, SSP, "product", "product", ["2050"], "change in animal feed by region (Mt) in 2050")
+    plotting.plot_world(perc_diff_feed, feed, SSP, "product", "product", ["2050"], "percentage change in animal feed by region in 2050")
+    plotting.plot_world(flat_diff_animal, products, SSP, "product", "product", ["2050"], "change in animal products by region in 2050")
+    plotting.plot_world(perc_diff_animal, products, SSP, "product", "product", ["2050"], "percentage change in animal products by region in 2050")
+
+    flat_diff_feed = data_manipulation.group(flat_diff_feed, ["GCAM"])
+    print(data_manipulation.group(released_feed, ["SSP"])[["2050", "Units"]])
+    print(flat_diff_feed[["2050", "GCAM", "Units"]])
+    flat_diff_animal = data_manipulation.group(flat_diff_animal, ["GCAM"])
+    print(data_manipulation.group(released_products, ["SSP"])[["2050", "Units"]])
+    print(flat_diff_animal[["2050", "GCAM", "Units"]])
+
+
+
+
 def main():
     reference_SSP = "SSP1"
     reference_RCP = "2p6"
+    animal_feed_and_products("biochar", reference_RCP, [reference_SSP])
     luc_by_region("biochar", reference_RCP, [reference_SSP])
     pop_and_calories("biochar", reference_RCP, [reference_SSP])
 

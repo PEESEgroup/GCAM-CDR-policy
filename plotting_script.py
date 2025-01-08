@@ -650,7 +650,6 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     biochar_supply = data_manipulation.group(biochar_supply, ["product"])
     print(biochar_supply.loc[:, [biochar_year, "Units"]])
 
-
     # frequency of biochar prices
     biochar_price = pd.read_csv(
         "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
@@ -662,6 +661,14 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     biochar_price["Units"] = "USD$2024/ton"
     plotting.plot_regional_hist_avg(biochar_price, '2024_value', SSP, "count region/year combinations",
                                     "histogram of price of biochar", "variable", supply="na")
+
+    # further analysis on regions with biochar prices <$0
+    subzero_biochar_price = biochar_price[biochar_price['2024_value'] < 0]
+
+    # further analysis on regions with biochar prices >$400
+    huge_biochar_price = biochar_price[biochar_price['2024_value'] > 400]
+    print(subzero_biochar_price)
+    print(huge_biochar_price[["GCAM", "variable", "2024_value", "Units"]])
 
     # print out differences in carbon prices
     for year in c.GCAMConstants.biochar_x:
@@ -1114,10 +1121,10 @@ def main():
     # carbon_price_biochar_supply("test", "6p0", ["SSP1"])
     # figure2("biochar", reference_RCP, reference_SSP)
     # figure3("biochar", reference_RCP, [reference_SSP], 2050)
-    # figure4("biochar", reference_RCP, reference_SSP, "2050")
+    figure4("biochar", reference_RCP, reference_SSP, "2050")
     # figure5("biochar", reference_RCP, [reference_SSP])
     # TODO move biochar supply to appropriate figure
-    carbon_price_biochar_supply("biochar", reference_RCP, [reference_SSP])
+    # carbon_price_biochar_supply("biochar", reference_RCP, [reference_SSP])
 
 
 if __name__ == '__main__':
