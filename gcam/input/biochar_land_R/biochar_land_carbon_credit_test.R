@@ -92,6 +92,11 @@ tmp[17] <- "biochar,slow pyrolysis,pork_biochar,pork manure,2.136,2.136,2.136" #
 tmp[18] <- "biochar,slow pyrolysis,beef_biochar,beef manure,2.1815,2.1815,2.1815" #[3]
 tmp[19] <- "biochar,slow pyrolysis,dairy_biochar,dairy manure,2.1052,2.1052,2.1052" #[2]
 tmp[20] <- "biochar,slow pyrolysis,goat_biochar,goat manure,2.055,2.055,2.055" #[4]
+tmp[21] <- "biochar,slow pyrolysis,poultry_biochar,CO2,-0.131,0.131,0.131"
+tmp[22] <- "biochar,slow pyrolysis,pork_biochar,CO2,-0.143,-0.143,-0.143"
+tmp[23] <- "biochar,slow pyrolysis,beef_biochar,CO2,-0.113,-0.113,-0.113"
+tmp[24] <- "biochar,slow pyrolysis,dairy_biochar,CO2,-0.113,-0.113,-0.113"
+tmp[25] <- "biochar,slow pyrolysis,goat_biochar,CO2,-0.143,-0.143,-0.143"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
