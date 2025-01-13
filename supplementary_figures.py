@@ -162,6 +162,27 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
     pyrolysis_profit_rate = pyrolysis_profit_rate[pyrolysis_profit_rate[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_yields = pyrolysis_yields[pyrolysis_yields[['SSP']].isin(SSP).any(axis=1)]
 
+    # profit rates
+    # change in profit to the farmer compared to baseline (hi mgmt type)
+    units = pyrolysis_profit_rate["Units"].unique()[0]
+    pyrolysis_profit_rate[["Crop", "basin", "rainfed", "mgmt"]] = pyrolysis_profit_rate['LandLeaf'].str.split('_',expand=True)
+    pyrolysis_hi_profit = pyrolysis_profit_rate[pyrolysis_profit_rate[['mgmt']].isin(["hi"]).any(axis=1)].copy(deep=True)
+    pyrolysis_biochar_profit = pyrolysis_profit_rate[pyrolysis_profit_rate[['mgmt']].isin(["biochar"]).any(axis=1)].copy(
+        deep=True)
+    pyrolysis_diff_profit = pd.merge(pyrolysis_hi_profit, pyrolysis_biochar_profit, how="left", on=["GCAM", "SSP", "Crop", "basin", "rainfed"], suffixes=("_left","_right"))
+    pyrolysis_diff_profit["Units"] = units
+    pyrolysis_diff_profit['Crop'] = pyrolysis_diff_profit.apply(lambda row: data_manipulation.relabel_land_crops(row, "Crop"), axis=1)
+    for i in c.GCAMConstants.x:
+        pyrolysis_diff_profit[str(i)] = pyrolysis_diff_profit[str(i)+"_right"] - pyrolysis_diff_profit[str(i)+"_left"]
+
+    pyrolysis_diff_profit = pyrolysis_diff_profit.sort_values(by='2050')
+    flat_diff_small = pyrolysis_diff_profit[(-6e7 < pyrolysis_diff_profit['2050']) & (pyrolysis_diff_profit['2050'] < 6e7)]
+    flat_diff_large = pyrolysis_diff_profit[(-6e7 >= pyrolysis_diff_profit['2050']) | (pyrolysis_diff_profit['2050'] >= 6e7)]
+    plotting.plot_regional_hist_avg(flat_diff_small, "2050", ["SSP1"], "count crop-basin-irrigation-year",
+                                    "histogram of small farmer profit rate changes at the crop level", "Crop", "na")
+    plotting.plot_regional_hist_avg(flat_diff_large, "2050", ["SSP1"], "count crop-basin-irrigation-year",
+                                    "histogram of large farmer profit rate changes at the crop level", "Crop", "na")
+
     # change in per crop supply
     pyrolysis_yields_lands = pd.merge(pyrolysis_yields, pyrolysis_land, "left", left_on=["GCAM", "SSP", "technology"], right_on=["GCAM", "SSP","LandLeaf"], suffixes=("_left","_right"))
     released_yields_lands = pd.merge(released_yields, released_land, "left",

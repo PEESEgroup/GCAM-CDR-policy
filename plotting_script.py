@@ -550,7 +550,7 @@ def figure2(nonBaselineScenario, RCP, SSP):
 
     # extract information on crops
     biochar_app_rate['technology'] = biochar_app_rate['AgSupplySector']
-    biochar_app_rate['technology'] = biochar_app_rate.apply(lambda row: data_manipulation.relabel_food(row), axis=1)
+    biochar_app_rate['technology'] = biochar_app_rate.apply(lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
     crops = biochar_app_rate["technology"].unique()
 
     # plot the data

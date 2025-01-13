@@ -509,13 +509,13 @@ def relabel_detailed_land_use(row):
     return "error"
 
 
-def relabel_food(row):
+def relabel_food(row, column):
     """
     lambda function to relabel GCAM food categories for greater accessibility. From: A_demand_technology.csv
     :param row: row of data
     :return: updated name of GCAM region
     """
-    food = row["technology"]
+    food = row[column]
     matches = ["Corn", "Rice", "Wheat", "Fruits", "Vegetables", "Legumes", "Soybean"]
     if any(x in food for x in matches):
         return food
@@ -577,13 +577,13 @@ def relabel_fertilizer_product(row):
         return input
 
 
-def relabel_land_crops(row):
+def relabel_land_crops(row, column):
     """
     lambda function to relabel GCAM LandLeaf to extract different crop classes
     :param row: row of data
     :return: updated name of GCAM LandLeaf
     """
-    luc = row["LandLeaf"]
+    luc = row[column]
     if "Grassland" in luc:
         return "grass"
     elif "ProtectedUnmanagedPasture" in luc:

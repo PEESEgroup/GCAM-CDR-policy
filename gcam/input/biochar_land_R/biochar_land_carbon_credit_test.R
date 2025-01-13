@@ -50,6 +50,16 @@ devtools::load_all()
 ## A_An_secout_prices:
 # manure prices are set to 1e-4, as that is the smallest possible price based on the rounding in L202.an_input
 
+#TODO: have biochar release a custom GHG which is just MtC sequestered
+#TODO: find out where ghg emissions are in the xml files
+#TODO: find the R code that produces the ghg emissions in the xml files
+#TODO: pray that I find a link between that and A41.tech_coef
+#TODO: update A41.tech_coef with new biochar GHG as new column???
+#TODO: get coefs for biochar net ghg sequestration
+#TODO: build carbon credit link policy in the biochar subsidy
+#TODO: update batch xml files with the biochar carbon credit link policy
+#TODO: test it out
+
 #A21.globaltech_cost.csv is assumed to model capital costs, per description in A22.globaltech_cost_low.csv, given that the same columns are present
 # instead of adding additional costs on the biochar input (pre-treatment/post-treatment costs for biochar are considered as part of the capital costs) - per docs /supply_energy
 example_file <- find_csv_file("energy/A21.globaltech_cost", FALSE)[[1]]
@@ -92,11 +102,6 @@ tmp[17] <- "biochar,slow pyrolysis,pork_biochar,pork manure,2.136,2.136,2.136" #
 tmp[18] <- "biochar,slow pyrolysis,beef_biochar,beef manure,2.1815,2.1815,2.1815" #[3]
 tmp[19] <- "biochar,slow pyrolysis,dairy_biochar,dairy manure,2.1052,2.1052,2.1052" #[2]
 tmp[20] <- "biochar,slow pyrolysis,goat_biochar,goat manure,2.055,2.055,2.055" #[4]
-tmp[21] <- "biochar,slow pyrolysis,poultry_biochar,CO2,-0.131,0.131,0.131"
-tmp[22] <- "biochar,slow pyrolysis,pork_biochar,CO2,-0.143,-0.143,-0.143"
-tmp[23] <- "biochar,slow pyrolysis,beef_biochar,CO2,-0.113,-0.113,-0.113"
-tmp[24] <- "biochar,slow pyrolysis,dairy_biochar,CO2,-0.113,-0.113,-0.113"
-tmp[25] <- "biochar,slow pyrolysis,goat_biochar,CO2,-0.143,-0.143,-0.143"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)

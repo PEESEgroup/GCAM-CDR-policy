@@ -1375,7 +1375,9 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
 
         # plot histogram
         bind_width = (int(prices[year].max()+.1) - int(prices[year].min()-.1))/25
-        if bind_width > 250:
+        if bind_width > 10000:
+            bind_width = bind_width
+        elif bind_width > 250:
             bind_width = 250
         elif bind_width > 30:
             bind_width = 40
