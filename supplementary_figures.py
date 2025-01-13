@@ -215,7 +215,7 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
 
     # yield differences between crops
     flat_diff_effective_yields = data_manipulation.flat_difference(released_effective_yield, pyrolysis_effective_yield, ["GCAM", "SSP", "sector"])
-    # plotting.plot_regional_hist_avg(flat_diff_effective_yields, "2050", ["SSP1"], "count region-year", "histogram of yield changes at the crop level", "sector", "na")
+    plotting.plot_regional_hist_avg(flat_diff_effective_yields, "2050", ["SSP1"], "count region-year", "histogram of yield changes at the crop level", "sector", "na")
 
     empty_pyro = pyrolysis_land[pyrolysis_land["LandLeaf"].str.contains("biochar")].copy(deep=True)
     for i in c.GCAMConstants.x:

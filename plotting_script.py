@@ -1119,11 +1119,10 @@ def main():
     reference_RCP = "2p6"
     # fertilizer("biochar", "2p6", ["SSP4"])
     # carbon_price_biochar_supply("test", "6p0", ["SSP1"])
-    # figure2("biochar", reference_RCP, reference_SSP)
+    figure2("biochar", reference_RCP, reference_SSP)
     figure3("biochar", reference_RCP, [reference_SSP], 2050)
-    # figure4("biochar", reference_RCP, reference_SSP, "2050")
-    # figure5("biochar", reference_RCP, [reference_SSP])
-    # TODO move biochar supply to appropriate figure
+    figure4("biochar", reference_RCP, reference_SSP, "2050")
+    figure5("biochar", reference_RCP, [reference_SSP])
     # carbon_price_biochar_supply("biochar", reference_RCP, [reference_SSP])
 
 
