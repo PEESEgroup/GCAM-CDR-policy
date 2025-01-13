@@ -109,11 +109,135 @@ def animal_feed_and_products(nonBaselineScenario, RCP, SSP):
     print(flat_diff_animal[["2050", "GCAM", "Units"]])
 
 
+def pyrolysis_costing(nonBaselineScenario, RCP, SSP):
+    #get total costs
+    total_cost = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/costs_by_tech.csv")
+    # get unit costs (no capex)
+    unit_cost = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/costs_by_tech_and_input.csv")
+    # get feedstock costs
+    feedstock_cost = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
+
+    total_cost = total_cost[total_cost[['SSP']].isin(SSP).any(axis=1)]
+    unit_cost = unit_cost[unit_cost[['SSP']].isin(SSP).any(axis=1)]
+    feedstock_cost = feedstock_cost[feedstock_cost[['SSP']].isin(SSP).any(axis=1)]
+    total_cost = total_cost[total_cost[['sector']].isin(['biochar']).any(axis=1)]
+    unit_cost = unit_cost[unit_cost[['sector']].isin(['biochar']).any(axis=1)]
+    feedstock_cost = feedstock_cost[feedstock_cost[['product']].isin(['beef manure', 'dairy manure', 'goat manure', 'pork manure', 'poultry manure', "biochar"]).any(axis=1)]
+    total_cost[["GCAM", "2050", "technology", "Units"]].to_csv("data/data_analysis/total_cost_pyrolysis.csv")
+    unit_cost[["GCAM", "2050", "technology", "Units"]].to_csv("data/data_analysis/unit_cost_pyrolysis.csv")
+    feedstock_cost[["GCAM", "2050", "product", "Units"]].to_csv("data/data_analysis/feedstock_cost_pyrolysis.csv")
+
+    feedstock_cost = feedstock_cost[feedstock_cost[['product']].isin(
+        ['beef manure', 'dairy manure', 'goat manure', 'pork manure', 'poultry manure']).any(axis=1)]
+    # drop outliers
+    feedstock_cost = feedstock_cost[feedstock_cost["2050"] < 3]
+    feedstock_cost["2050"] = feedstock_cost["2050"] / 0.17 * 1000
+    feedstock_cost["Units"] = "USD$/ton"
+    plotting.plot_regional_hist_avg(feedstock_cost, "2050", SSP, "count", "price distribution of manures", "product", "na")
+
+
+def farmer_economics(nonBaselineScenario, RCP, SSP):
+    # get data
+    pyrolysis_yields = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/ag_tech_yield.csv")
+    pyrolysis_land = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/detailed_land_allocation.csv")
+    pyrolysis_profit_rate = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/profit_rate.csv")
+    released_yields = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/original/ag_tech_yield.csv")
+    released_land = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/original/detailed_land_allocation.csv")
+    released_profit_rate = pd.read_csv(
+        "data/gcam_out/released/" + RCP + "/original/profit_rate.csv")
+    pyrolysis_yields["Units"] = "NA"
+    released_yields["Units"] = "NA"
+    released_yields = released_yields[released_yields[['SSP']].isin(SSP).any(axis=1)]
+    released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
+    released_profit_rate = released_profit_rate[released_profit_rate[['SSP']].isin(SSP).any(axis=1)]
+    pyrolysis_land = pyrolysis_land[pyrolysis_land[['SSP']].isin(SSP).any(axis=1)]
+    pyrolysis_profit_rate = pyrolysis_profit_rate[pyrolysis_profit_rate[['SSP']].isin(SSP).any(axis=1)]
+    pyrolysis_yields = pyrolysis_yields[pyrolysis_yields[['SSP']].isin(SSP).any(axis=1)]
+
+    # change in per crop supply
+    pyrolysis_yields_lands = pd.merge(pyrolysis_yields, pyrolysis_land, "left", left_on=["GCAM", "SSP", "technology"], right_on=["GCAM", "SSP","LandLeaf"], suffixes=("_left","_right"))
+    released_yields_lands = pd.merge(released_yields, released_land, "left",
+                                      left_on=["GCAM", "SSP", "technology"], right_on=["GCAM", "SSP","LandLeaf"],
+                                      suffixes=("_left", "_right"))
+    pyrolysis_lands_grouping = pyrolysis_yields_lands.copy(deep=True)
+    released_lands_grouping = released_yields_lands.copy(deep=True)
+
+    for i in c.GCAMConstants.x:
+        pyrolysis_yields_lands[str(i)] = pyrolysis_yields_lands[str(i)+"_left"] * pyrolysis_yields_lands[str(i)+"_right"]
+        released_yields_lands[str(i)] = released_yields_lands[str(i) + "_left"] * released_yields_lands[str(i) + "_right"]
+        pyrolysis_lands_grouping[str(i)] = pyrolysis_yields_lands[str(i) + "_right"]
+        released_lands_grouping[str(i)] = released_yields_lands[str(i) + "_right"]
+
+    #group by crop
+    pyrolysis_yields_lands[['Version', 'output', 'concentration', 'input', 'product', 'fuel', 'LandLeaf', 'GHG', "Units", "subsector", "technology"]] = "NA"
+    released_yields_lands[['Version', 'output', 'concentration', 'input', 'product', 'fuel', 'LandLeaf', 'GHG', "Units", "subsector", "technology"]] = "NA"
+    pyrolysis_lands_grouping[
+        ['Version', 'output', 'concentration', 'input', 'product', 'fuel', 'LandLeaf', 'GHG', "Units", "subsector",
+         "technology"]] = "NA"
+    released_lands_grouping[
+        ['Version', 'output', 'concentration', 'input', 'product', 'fuel', 'LandLeaf', 'GHG', "Units", "subsector",
+         "technology"]] = "NA"
+    pyrolysis_yields_lands["sector"] = pyrolysis_yields_lands["sector_left"]
+    released_yields_lands["sector"] = released_yields_lands["sector_left"]
+    pyrolysis_lands_grouping["sector"] = pyrolysis_lands_grouping["sector_left"]
+    released_lands_grouping["sector"] = released_lands_grouping["sector_left"]
+    pyrolysis_effective_yield = data_manipulation.group(pyrolysis_yields_lands, ["GCAM", "SSP", "sector"])
+    released_effective_yield = data_manipulation.group(released_yields_lands, ["GCAM", "SSP", "sector"])
+    pyrolysis_lands_grouping = data_manipulation.group(pyrolysis_lands_grouping, ["GCAM", "SSP", "sector"])
+    released_lands_grouping = data_manipulation.group(released_lands_grouping, ["GCAM", "SSP", "sector"])
+
+    # divide by available crop land
+    pyrolysis_effective_yield = pd.merge(pyrolysis_effective_yield, pyrolysis_lands_grouping, "left", on=["GCAM", "SSP", "sector"],
+                                      suffixes=("_left", "_right"))
+    released_effective_yield = pd.merge(released_effective_yield, released_lands_grouping, "left", on=["GCAM", "SSP", "sector"],
+                                      suffixes=("_left", "_right"))
+    for i in c.GCAMConstants.x:
+        pyrolysis_effective_yield[str(i)] = pyrolysis_effective_yield[str(i)+"_left"] / pyrolysis_effective_yield[str(i)+"_right"]
+        released_effective_yield[str(i)] = released_effective_yield[str(i) + "_left"] / released_effective_yield[str(i) + "_right"]
+
+    pyrolysis_effective_yield[
+        ['Version', 'output', 'concentration', 'input', 'product', 'fuel', 'LandLeaf', 'GHG', "Units", "subsector",
+         "technology"]] = "NA"
+    released_effective_yield[
+        ['Version', 'output', 'concentration', 'input', 'product', 'fuel', 'LandLeaf', 'GHG', "Units", "subsector",
+         "technology"]] = "NA"
+
+    pyrolysis_effective_yield = pyrolysis_effective_yield[c.GCAMConstants.column_order]
+    released_effective_yield = released_effective_yield[c.GCAMConstants.column_order]
+
+    # yield differences between crops
+    flat_diff_effective_yields = data_manipulation.flat_difference(released_effective_yield, pyrolysis_effective_yield, ["GCAM", "SSP", "sector"])
+    # plotting.plot_regional_hist_avg(flat_diff_effective_yields, "2050", ["SSP1"], "count region-year", "histogram of yield changes at the crop level", "sector", "na")
+
+    empty_pyro = pyrolysis_land[pyrolysis_land["LandLeaf"].str.contains("biochar")].copy(deep=True)
+    for i in c.GCAMConstants.x:
+        empty_pyro[str(i)] = 0
+    released_land = pd.concat([released_land, empty_pyro])
+    # subtract from pyrolysis land
+    flat_diff_mgmt = data_manipulation.flat_difference(released_land, pyrolysis_land, ["GCAM", "SSP", "LandLeaf"])
+    flat_diff_mgmt[["Crop", "basin", "rainfed", "mgmt"]] = flat_diff_mgmt['LandLeaf'].str.split('_',expand=True)
+    flat_diff_mgmt = flat_diff_mgmt[flat_diff_mgmt['mgmt'].notna()]
+    flat_diff_mgmt = flat_diff_mgmt.sort_values(by='2050')
+    flat_diff_small = flat_diff_mgmt[(-1 < flat_diff_mgmt['2050']) & (flat_diff_mgmt['2050'] < 1)]
+    flat_diff_large = flat_diff_mgmt[(-1 >= flat_diff_mgmt['2050']) | (flat_diff_mgmt['2050'] >= 1)]
+    plotting.plot_regional_hist_avg(flat_diff_small, "2050", ["SSP1"], "count basin-crop-irrigation", "histogram of small land mgmt changes in terms of area compared to reference scenario", "mgmt", "na")
+    plotting.plot_regional_hist_avg(flat_diff_large, "2050", ["SSP1"], "count basin-crop-irrigation", "histogram of large land mgmt changes in terms of area compared to reference scenario", "mgmt", "na")
+
 
 
 def main():
     reference_SSP = "SSP1"
     reference_RCP = "2p6"
+    farmer_economics("biochar", reference_RCP, [reference_SSP])
+    pyrolysis_costing("biochar", reference_RCP, [reference_SSP])
     animal_feed_and_products("biochar", reference_RCP, [reference_SSP])
     luc_by_region("biochar", reference_RCP, [reference_SSP])
     pop_and_calories("biochar", reference_RCP, [reference_SSP])

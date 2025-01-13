@@ -1365,6 +1365,7 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
         products = df[column].unique().tolist()
         units = prices["Units"].unique()[0]
         df = df.pivot(columns=column, values=str(year))
+        df = df.sort_values([column for column in df.columns])
 
         # get colors
         n = len(products)
@@ -1373,20 +1374,23 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
         colors, divisions = get_colors(n)
 
         # plot histogram
-        bind_width = (int(prices[year].max()) - int(prices[year].min()))/25
+        bind_width = (int(prices[year].max()+.1) - int(prices[year].min()-.1))/25
         if bind_width > 250:
             bind_width = 250
         elif bind_width > 30:
             bind_width = 40
         bins = [bind_width * i for i in range(int(prices[year].min() / bind_width) - 1, int(prices[year].max() / bind_width) + 2)]
-        plt.hist([df[i] for i in products], bins, stacked=True, label=df.columns, histtype='bar',
+
+        data_series = [df[column] for column in df.columns]
+
+        plt.hist(data_series, bins, stacked=True, label=df.columns, histtype='bar',
                  color=[colors[i] for i in range(len(products))])
 
         # finalize plot
         plt.ylabel(y_label)
         plt.xlabel(units)
         plt.xticks(rotation=60, ha='right')
-        plt.xlim(int(prices[year].min()) - bind_width, int(prices[year].max()) + bind_width)
+        plt.xlim(int(prices[year].min()-.1) - bind_width, int(prices[year].max()+.1) + bind_width)
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
