@@ -50,8 +50,11 @@ devtools::load_all()
 ## A_An_secout_prices:
 # manure prices are set to 1e-4, as that is the smallest possible price based on the rounding in L202.an_input
 
-#TODO: have biochar release a custom GHG which is just MtC sequestered
-#TODO: find out where ghg emissions are in the xml files
+#TODO: find a way for biochar to emit negative amounts of CO2??? But this would not give biochar credits for other avoided ghg emissions
+#TODO: have biochar release a custom GHG which is just MtC sequestered, with a coefficienct combining all sources of ghg reduction
+
+#TODO: all_energy_emissions links to A41.tech_coef - would require this new type of emission as non-CO2, which is fine.
+#TODO: find where CO2 emissions are handled in the xml files - does biochar already produce a negative amount through fuelCCoef? Does this already cause the subsidy???
 #TODO: find the R code that produces the ghg emissions in the xml files
 #TODO: pray that I find a link between that and A41.tech_coef
 #TODO: update A41.tech_coef with new biochar GHG as new column???
@@ -262,11 +265,11 @@ print(tmp)
 
 ### THESE VALUES ARE FOR CARBON AVOIDANCE AND ARE NOT SUBJECT TO CARBON SUBSIDIES ###
 ### values calculated in 41467_2010 excel spreadsheet
-tmp[41] <- "biochar,slow pyrolysis,dairy_biochar,,,,-0.0432,,,,,,,"
-tmp[42] <- "biochar,slow pyrolysis,beef_biochar,,,,-0.0432,,,,,,,"
-tmp[43] <- "biochar,slow pyrolysis,pork_biochar,,,,-0.1222,,,,,,,"
-tmp[44] <- "biochar,slow pyrolysis,goat_biochar,,,,-0.0432,,,,,,,"
-tmp[45] <- "biochar,slow pyrolysis,poultry_biochar,,,,-0.0460,,,,,,,"
+tmp[41] <- "biochar,slow pyrolysis,dairy_biochar,0.113,,,,-0.0432,,,,,,,"
+tmp[42] <- "biochar,slow pyrolysis,beef_biochar,0.113,,,,-0.0432,,,,,,,"
+tmp[43] <- "biochar,slow pyrolysis,pork_biochar,0.143,,,,-0.1222,,,,,,,"
+tmp[44] <- "biochar,slow pyrolysis,goat_biochar,0.143,,,,-0.0432,,,,,,,"
+tmp[45] <- "biochar,slow pyrolysis,poultry_biochar,0.131,,,,-0.0460,,,,,,,"
 
 print("\n file after changes")
 print(tmp)
