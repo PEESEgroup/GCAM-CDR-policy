@@ -103,7 +103,7 @@ def gompertz(year):
     :param year: GCAM model year
     :return: fraction of adoption
     """
-    return 1*math.exp(-11*math.exp(-0.25*(int(year)-2028)))
+    return 1*math.exp(-11*math.exp(-0.2*(int(year)-2030)))
 
 
 def plot_world(dataframe, year, title):
