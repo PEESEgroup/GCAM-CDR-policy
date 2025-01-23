@@ -1,7 +1,6 @@
 import numpy as np
 import constants as c
 import pandas as pd
-import random
 
 
 def flat_difference(old, new, columns):
@@ -513,6 +512,7 @@ def relabel_food(row, column):
     """
     lambda function to relabel GCAM food categories for greater accessibility. From: A_demand_technology.csv
     :param row: row of data
+    :param column: column of data to be processed
     :return: updated name of GCAM region
     """
     food = row[column]
@@ -568,19 +568,20 @@ def relabel_fertilizer_product(row):
     :param row: row of data
     :return: updated name of GCAM region
     """
-    input = row["subsector"]
-    if input == "beef_biochar" or input == "dairy_biochar" or input == "goat_biochar" or input == "pork_biochar" or input == "poultry_biochar":
+    item = row["subsector"]
+    if item == "beef_biochar" or item == "dairy_biochar" or item == "goat_biochar" or item == "pork_biochar" or item == "poultry_biochar":
         return "biochar"
-    elif input == "gas" or input == "refined liquids" or input == "coal":
+    elif item == "gas" or item == "refined liquids" or item == "coal":
         return "fossil fuels"
     else:
-        return input
+        return item
 
 
 def relabel_land_crops(row, column):
     """
     lambda function to relabel GCAM LandLeaf to extract different crop classes
     :param row: row of data
+    :param column: column of data
     :return: updated name of GCAM LandLeaf
     """
     luc = row[column]
@@ -679,15 +680,21 @@ def relabel_MGMT(row):
     :param row: row of data
     :return: updated name of GCAM region
     """
-    input = row["MGMT"]
-    if input == "hi":
+    item = row["MGMT"]
+    if item == "hi":
         return "High Intensity"
-    elif input == "lo":
+    elif item == "lo":
         return "Low Intensity"
     else:
         return "Biochar Application"
 
+
 def mgmt_to_color(row):
+    """
+    give colors to the different management types
+    :param row: row of a pandas dataframe
+    :return: hex code for a color
+    """
     if "High Intensity" in row["Management"]:
         return "#698FC6"
     elif "Low Intensity" in row["Management"]:
@@ -699,6 +706,11 @@ def mgmt_to_color(row):
 
 
 def relabel_region_alluvial(row):
+    """
+    process data for the alluvial figure
+    :param row: row from a pandas dataframe
+    :return: get data based on the year
+    """
     if row["Region_2050"] is None:
         return row["Region_2020"]
     else:
@@ -706,6 +718,12 @@ def relabel_region_alluvial(row):
 
 
 def relabel_management_alluvial(row, counts):
+    """
+    relabel land management type
+    :param row: row of a pandas dataframe
+    :param counts: count of the number of entries of a value in the pandas dataframe
+    :return: a string describing the land type and amount
+    """
     if row["Management_2050"] is None:
         return "Unmanaged"
     else:
@@ -713,6 +731,14 @@ def relabel_management_alluvial(row, counts):
 
 
 def process_luc(land_use, scale_factor):
+    """
+    process land use change, attempting to map other land use types to other land use types within a region/basin,
+    while matching the same type of crops in both years
+    :param land_use: dataframe containing land use types
+    :param scale_factor: scale factor increasing the number of rows, and thus increasing the precision of the data,
+    while increasing the computation time for the method
+    :return: pandas dataframe containing land use mappings for different crops
+    """
     land_for_alluvial = pd.DataFrame()
     for r in land_use['GCAM'].unique():
         one_region = land_use[land_use[['GCAM']].isin([r]).any(axis=1)]
@@ -769,7 +795,7 @@ def process_luc(land_use, scale_factor):
             df_2020_managed = land_per_basin[(land_per_basin["2050"] == "Other Land Use Types")].reset_index(drop=True)
             df_2050_managed = land_per_basin[(land_per_basin["2020"] == "Other Land Use Types")].reset_index(drop=True)
 
-            #shuffle both lists
+            # shuffle both lists
             df_2020_managed = df_2020_managed.sample(frac=1, random_state=1).reset_index(drop=True)
             df_2050_managed = df_2050_managed.sample(frac=1, random_state=1).reset_index(drop=True)
 
@@ -789,7 +815,7 @@ def process_luc(land_use, scale_factor):
             pairs = zip(df_2020_managed_list, df_2050_managed_list)
             paired = pd.DataFrame(columns=["2020", "2050"])
             for i, j in pairs:
-                paired.loc[len(paired)] = [i[0], j[1]] # based on column order in dataframes
+                paired.loc[len(paired)] = [i[0], j[1]]  # based on column order in dataframes
 
             df_doubly_unmanaged = paired[
                 (paired["2020"] == "Other Land Use Types") & (
@@ -804,4 +830,9 @@ def process_luc(land_use, scale_factor):
 
 
 def relabel_fuel(row):
+    """
+    relabels fuel by stripping additional labeling information
+    :param row: row of pandas data frame
+    :return: the easily readable data
+    """
     return row["fuel"][2:]

@@ -216,7 +216,7 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
     pyrolysis_profit_rate[["Crop", "basin", "rainfed", "mgmt"]] = pyrolysis_profit_rate['LandLeaf'].str.split('_',
                                                                                                               expand=True)
     released_profit_rate[["Crop", "basin", "rainfed", "mgmt"]] = released_profit_rate['LandLeaf'].str.split('_',
-                                                                                                              expand=True)
+                                                                                                            expand=True)
     released_hi_profit = released_profit_rate[released_profit_rate[['mgmt']].isin(["hi"]).any(axis=1)].copy(
         deep=True)
     pyrolysis_biochar_profit = pyrolysis_profit_rate[
@@ -258,7 +258,7 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
         pyrolysis_lands_grouping[str(i)] = pyrolysis_yields_lands[str(i) + "_right"]
         released_lands_grouping[str(i)] = released_yields_lands[str(i) + "_right"]
 
-    #group by crop
+    # group by crop
     pyrolysis_yields_lands[
         ['Version', 'output', 'concentration', 'input', 'product', 'fuel', 'LandLeaf', 'GHG', "Units", "subsector",
          "technology"]] = "NA"

@@ -1,6 +1,5 @@
 import geopandas as gpd
 import matplotlib.patches as patches
-import matplotlib.pyplot as plt
 from matplotlib.collections import PatchCollection
 import pandas as pd
 import constants as c
@@ -9,8 +8,6 @@ from pylab import *
 from scipy.stats import bootstrap, ttest_rel, pearsonr
 import data_manipulation
 import plotly.express as px
-import plotly.graph_objects as go
-import plotly.io as pio
 
 
 def world_data(data):
@@ -274,7 +271,7 @@ def get_df_to_plot(dataframe, ncol, nrow, fig, axs, cmap, normalizer, counter, c
         filter_data = dataframe[dataframe[[column]].isin([products]).any(axis=1)]
         filter_data = filter_data[filter_data[['SSP']].isin([SSPs]).any(axis=1)]
     else:
-        filter_data=dataframe
+        filter_data = dataframe
 
     # if there is no data in the filter data, delete all following axis
     if filter_data.empty:
@@ -359,7 +356,8 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     # at this stage, if this df is empty, then we know that there is no material to plot
     if product_column != "":
         df = dataframe[
-            (dataframe[product_column].str.contains("|".join(products))) & (dataframe['SSP'].str.contains("|".join(SSP)))]
+            (dataframe[product_column].str.contains("|".join(products))) & (
+                dataframe['SSP'].str.contains("|".join(SSP)))]
     else:
         df = dataframe
 
@@ -401,14 +399,14 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname):
         if del_axes_counter == 3:
             axins1 = inset_axes(
                 axs[int((datalength + 1) / ncol), int((datalength + 1) % ncol)],
-                width=str(100*del_axes_counter) + "%",  # width: 50% of parent_bbox width
+                width=str(100 * del_axes_counter) + "%",  # width: 50% of parent_bbox width
                 height="10%",  # height: 5%
                 loc="center",
             )
         else:
             axins1 = inset_axes(
                 axs[int(datalength / ncol), int(datalength % ncol)],
-                width=str(100*del_axes_counter) + "%",  # width: 50% of parent_bbox width
+                width=str(100 * del_axes_counter) + "%",  # width: 50% of parent_bbox width
                 height="10%",  # height: 5%
                 loc="center",
             )
@@ -432,7 +430,7 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname):
         fig.set_size_inches(16, 5.1)
     elif nrow * ncol == 20:
         fig.set_size_inches(16, 9)
-    plt.savefig("data/data_analysis/images/" + fname +".png", dpi=300)
+    plt.savefig("data/data_analysis/images/" + fname + ".png", dpi=300)
     plt.show()
 
 
@@ -565,7 +563,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title):
     for i in range(nrow * ncol - counter):
         fig.delaxes(axs[int((counter + i) / ncol), int((counter + i) % ncol)])
 
-    plt.savefig("data/data_analysis/images/" + title +".png", dpi=300)
+    plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
     plt.show()
 
 
@@ -685,9 +683,9 @@ def get_colors(num_versions):
     :return: a list containing the requisite colors, the number of colors for each product
     """
     if num_versions == 1:
-        cmap = matplotlib.colormaps.get_cmap('tab10')
         num_sub_colors = 1
-        return ["#BFBE43", "#74A751", "#698FC6", "#DD9452", "#C16861", "#A577A8", "#72B1B4", "#DCC060", "#AD9077", "#9299A9"], num_sub_colors
+        return ["#BFBE43", "#74A751", "#698FC6", "#DD9452", "#C16861", "#A577A8", "#72B1B4", "#DCC060", "#AD9077",
+                "#9299A9"], num_sub_colors
     elif num_versions == 2:
         cmap = matplotlib.colormaps.get_cmap('tab20')
         num_sub_colors = 2
@@ -1093,8 +1091,8 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
 
                 # add rectangles on right plot
                 bar_year = str(max(c.GCAMConstants.biochar_x))
-                rect = patches.Rectangle((color_counter*0.2, CI_df[bar_year].min()),
-                                         0.15, CI_df[bar_year].max()-CI_df[bar_year].min(), facecolor=color)
+                rect = patches.Rectangle((color_counter * 0.2, CI_df[bar_year].min()),
+                                         0.15, CI_df[bar_year].max() - CI_df[bar_year].min(), facecolor=color)
 
                 # Add the patch to the Axes
                 axs[1].add_patch(rect)
@@ -1171,7 +1169,6 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                 rotation = np.rad2deg(angle)
 
                 # Flip some labels upside down
-                alignment = ""
                 if np.pi / 2 <= angle < 3 * np.pi / 2:
                     alignment = "right"
                     rotation = rotation + 180
@@ -1188,9 +1185,9 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                     rotation=rotation,
                     rotation_mode="anchor",
                     zorder=.2,
-                    fontfamily= "Arial",
-                    fontstretch= "extra-condensed",
-                    fontsize= "x-large"
+                    fontfamily="Arial",
+                    fontstretch="extra-condensed",
+                    fontsize="x-large"
                 )
 
             plt.gcf().set_size_inches(12, 12)
@@ -1206,11 +1203,12 @@ def sensitivity(dataframe, RCP, base_SSP, year, column, percentages=False):
     :param base_SSP: baseline SSP
     :param year: year for evaluation
     :param column: column containing differentiation
+    :param percentages: whether or not the data is in percentages or absolute terms
     :return: N/A
     """
     fig, ax = plt.subplots()
 
-    #drop np.nan
+    # drop np.nan
     dataframe = dataframe[dataframe[year].notna()]
 
     # get base values on a per product basis
@@ -1275,8 +1273,8 @@ def sensitivity(dataframe, RCP, base_SSP, year, column, percentages=False):
         ymax = y + 0.4
         im = gradient_image(ax, direction=1,
                             extent=(
-                            baseline_value - max(min_low, max_high), baseline_value + max(min_low, max_high), ymin,
-                            ymax),
+                                baseline_value - max(min_low, max_high), baseline_value + max(min_low, max_high), ymin,
+                                ymax),
                             cmap=cmap,
                             cmap_range=(normalizer(-max(min_low, max_high)), normalizer(max(min_low, max_high))))
         # crop image by patch
@@ -1374,14 +1372,15 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
         colors, divisions = get_colors(n)
 
         # plot histogram
-        bind_width = (int(prices[year].max()+.1) - int(prices[year].min()-.1))/25
+        bind_width = (int(prices[year].max() + .1) - int(prices[year].min() - .1)) / 25
         if bind_width > 10000:
             bind_width = bind_width
         elif bind_width > 250:
             bind_width = 250
         elif bind_width > 30:
             bind_width = 40
-        bins = [bind_width * i for i in range(int(prices[year].min() / bind_width) - 1, int(prices[year].max() / bind_width) + 2)]
+        bins = [bind_width * i for i in
+                range(int(prices[year].min() / bind_width) - 1, int(prices[year].max() / bind_width) + 2)]
 
         data_series = [df[column] for column in df.columns]
 
@@ -1392,7 +1391,7 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
         plt.ylabel(y_label)
         plt.xlabel(units)
         plt.xticks(rotation=60, ha='right')
-        plt.xlim(int(prices[year].min()-.1) - bind_width, int(prices[year].max()+.1) + bind_width)
+        plt.xlim(int(prices[year].min() - .1) - bind_width, int(prices[year].max() + .1) + bind_width)
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
@@ -1461,6 +1460,3 @@ def plot_alluvial(df):
                       font_size=20
                       )
     fig.show()
-
-
-
