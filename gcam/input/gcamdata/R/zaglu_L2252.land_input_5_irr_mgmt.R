@@ -395,7 +395,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       select(-crop1)  %>%
       # use left_join to keep NA's for further manipulation
       left_join(L2252.LandShare_R_bio_GLU_irr, by = c("region", "GLU", "Irr_Rfd", "level")) %>%
-      mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_GHOSTSHARE), year = 2030) %>%
+      mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_GHOSTSHARE), year = 2035) %>%
       select(-landshare) %>%
       # For biochar techs, set ghost-share to 0.05, or 5%
       replace_na(replace = list(ghost.unnormalized.share = 0.05)) %>%

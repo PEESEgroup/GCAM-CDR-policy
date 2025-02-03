@@ -23,8 +23,8 @@
 module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
-             FILE = "aglu/A_AgBiocharApplicationRateYrCropLand",
              FILE = "aglu/A_agBiocharCropYieldIncrease",
+             "L142.ag_Fert_IO_R_C_Y_GLU_biochar",
              "L171.LC_bm2_R_rfdHarvCropLand_C_Yh_GLU",
              "L171.LC_bm2_R_irrHarvCropLand_C_Yh_GLU",
              "L171.ag_irrEcYield_kgm2_R_C_Y_GLU",
@@ -34,7 +34,8 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
              "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level",
              "L181.ag_Prod_Mt_R_C_Y_GLU_irr_level",
              "L181.YieldMult_R_bio_GLU_irr",
-             "L181.LandShare_R_bio_GLU_irr"))
+             "L181.LandShare_R_bio_GLU_irr",
+             "L181.ag_kgbioha_R_C_Y_GLU_irr_level"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -48,14 +49,14 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
     L171.LC_bm2_R_irrHarvCropLand_C_Yh_GLU <- get_data(all_data, "L171.LC_bm2_R_irrHarvCropLand_C_Yh_GLU")
     L171.ag_irrEcYield_kgm2_R_C_Y_GLU <- get_data(all_data, "L171.ag_irrEcYield_kgm2_R_C_Y_GLU")
     L171.ag_rfdEcYield_kgm2_R_C_Y_GLU <- get_data(all_data, "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU")
-    A_AgBiocharApplicationRateYrCropLand <- get_data(all_data, "aglu/A_AgBiocharApplicationRateYrCropLand")
     A_agBiocharCropYieldIncrease <- get_data(all_data, "aglu/A_agBiocharCropYieldIncrease")
+    L142.ag_Fert_IO_R_C_Y_GLU_biochar <- get_data(all_data, "L142.ag_Fert_IO_R_C_Y_GLU_biochar")
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
 
     # get the list of crops/regions to which biochar can actually be applied
-    A_AgBiocharApplicationRateYrCropLand %>%
-      filter(year == 1975) %>% # only need to take 1 year of data
-      filter(rate_kg_ha > 0) %>%
+    L142.ag_Fert_IO_R_C_Y_GLU_biochar %>%
+      filter(kg_biochar_kg_crop_limited > 0) %>%
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       select(-year) -> # only take crops that have biochar demand
       L181.ag_C_GLU_biochar
     print(L181.ag_C_GLU_biochar)
@@ -84,6 +85,25 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       mutate(level = sub("EcYield_kgm2_", "", level)) ->
       L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level
 
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
+
+    #calculate biochar application rates - this is calculated before the yield increases induced by biochar
+    # kg crop/m2 * kg biochar/kg crop * m2/ha = kg biochar/ha
+    L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
+      filter(level=="biochar", year == 2015) %>%
+      left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")) %>%
+      mutate(AgSupplySector = GCAM_commodity) %>%
+      left_join(L181.ag_C_GLU_biochar, by = c("region", "GCAM_commodity", "GCAM_subsector", "GLU", "GCAM_region_ID")) %>%
+      mutate(kg_bio_ha = value*kg_biochar_kg_crop_limited*CONV_HA_M2) %>%
+      replace_na(list(kg_bio_ha = 0)) %>%
+      select(region, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, kg_bio_ha) ->
+      L181.ag_kgbioha_R_C_Y_GLU_irr_level
+
+    L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
+      write.csv('./inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level.csv')
+
+    print(L181.ag_kgbioha_R_C_Y_GLU_irr_level)
+
     L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% filter(level!="biochar") ->
       L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi
 
@@ -92,11 +112,13 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       filter(level=="biochar") %>%
       left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")) %>%
       mutate(AgSupplySector = GCAM_commodity) %>%
-      left_join(L181.ag_C_GLU_biochar, by = c("region", "AgSupplySector")) %>%
+      left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by = c("region", "GCAM_commodity", "GCAM_subsector", "GLU", "Irr_Rfd")) %>%
       drop_na() %>% # keep only land use types where biochar is applied to land
-      left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("AgSupplySector"))%>% # copy in yield increase data
-      mutate(value = value*Yield.Increase) %>%
-      select(-region, -AgSupplySector, -rate_kg_ha, -Yield.Increase) -> L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar # include yield increases
+      left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("GCAM_commodity" ="AgSupplySector"))%>% # copy in yield increase data
+      # this adds yield increases only to biochar lands with greater than 1t/ha or 1000kg/ha, due to the number of land types with near 0 application rates
+      # to be clear, those lands gain the other agronomic benefits
+      mutate(value = if_else(kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE, value*Yield.Increase, value)) %>%
+      select(-region, -AgSupplySector, -kg_bio_ha, -Yield.Increase) -> L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar # include yield increases
 
     print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar, n=20)
     print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi)
@@ -133,12 +155,6 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
     print(L181.LC_bm2_R_C_Yh_GLU_irr_level)
 
     # Third, calculate production: economic yield times land area
-    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
-            rename(yield = value) %>%
-            left_join(L181.LC_bm2_R_C_Yh_GLU_irr_level,
-                                     by = c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector",
-                                            "GLU", "Irr_Rfd", "year", "level"))%>% dplyr::filter_all(dplyr::any_vars(is.na(.))))
-
     L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
       rename(yield = value) %>%
       left_join_error_no_match(L181.LC_bm2_R_C_Yh_GLU_irr_level,
@@ -191,8 +207,8 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       add_legacy_name("L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") %>%
       add_precursors("L171.ag_irrEcYield_kgm2_R_C_Y_GLU",
                      "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU",
-                     "aglu/A_AgBiocharApplicationRateYrCropLand",
-                     "aglu/A_agBiocharCropYieldIncrease") ->
+                     "aglu/A_agBiocharCropYieldIncrease",
+                     "L142.ag_Fert_IO_R_C_Y_GLU_biochar") ->
       L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level
 
     L181.ag_Prod_Mt_R_C_Y_GLU_irr_level %>%
@@ -219,7 +235,14 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       add_precursors() ->
       L181.LandShare_R_bio_GLU_irr
 
-    return_data(L181.LC_bm2_R_C_Yh_GLU_irr_level, L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level, L181.ag_Prod_Mt_R_C_Y_GLU_irr_level, L181.YieldMult_R_bio_GLU_irr, L181.LandShare_R_bio_GLU_irr)
+    L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
+      add_title("application rates for biochar by region / GLU / irrigation / mgmt level") %>%
+      add_units("kg/ha") %>%
+      add_legacy_name("L181.ag_kgbioha_R_C_Y_GLU_irr_level") %>%
+      add_precursors("L142.ag_Fert_IO_R_C_Y_GLU_biochar") ->
+      L181.ag_kgbioha_R_C_Y_GLU_irr_level
+
+    return_data(L181.LC_bm2_R_C_Yh_GLU_irr_level, L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level, L181.ag_Prod_Mt_R_C_Y_GLU_irr_level, L181.YieldMult_R_bio_GLU_irr, L181.LandShare_R_bio_GLU_irr, L181.ag_kgbioha_R_C_Y_GLU_irr_level)
   } else {
     stop("Unknown command")
   }

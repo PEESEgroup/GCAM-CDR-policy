@@ -536,29 +536,38 @@ def figure2(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # read in biochar application rates, and get the 2050 application rates
-    biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_AgBiocharApplicationRateYrCropLand.csv",
-                                   skiprows=7)
-    biochar_app_rate = biochar_app_rate[biochar_app_rate[['year']].isin([2050]).any(axis=1)]
+    biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level.csv")
 
     # add extra data to dataframe to help downstream code
-    biochar_app_rate['2050'] = biochar_app_rate['rate_kg_ha']
+    biochar_app_rate['2050'] = biochar_app_rate['kg_bio_ha']
     biochar_app_rate['GCAM'] = biochar_app_rate['region']
     biochar_app_rate['Units'] = 'kg biochar/ha/yr'
     biochar_app_rate["SSP"] = SSP
 
     # extract information on crops
-    biochar_app_rate['technology'] = biochar_app_rate['AgSupplySector']
+    biochar_app_rate['technology'] = biochar_app_rate['GCAM_commodity']
     biochar_app_rate['technology'] = biochar_app_rate.apply(
         lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
     crops = biochar_app_rate["technology"].unique()
 
-    # plot the data
-    plotting.plot_world(biochar_app_rate, crops, [SSP], "product", "technology", ["2050"],
-                        "nutrient-limited biochar application rate")
+    # # plot the data
+    # plotting.plot_world(biochar_app_rate, crops, [SSP], "product", "technology", ["2050"],
+    #                     "nutrient-limited biochar application rate")
 
     # plot histogram of crop/region price combinations
-    plotting.plot_regional_hist_avg(biochar_app_rate, "2050", [SSP], "region-crop combination count",
+    plotting.plot_regional_hist_avg(biochar_app_rate, "2050", [SSP], "region-basin-crop-irr combination count",
                                     "histogram of biochar app rates", "technology", "na")
+
+    # remove outliers for plotting purposes
+    outlier_cutoff = 6000 # kg/ha/yr
+    biochar_app_rate_no_outlier = biochar_app_rate[biochar_app_rate['2050'] < outlier_cutoff]
+    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, "2050", [SSP], "region-basin-crop-irr combination count",
+                                    "histogram of outlier " + str(outlier_cutoff) + "kg per ha removed biochar app rates", "technology", "na")
+
+    outlier_cutoff = 2000 # kg/ha/yr
+    biochar_app_rate_no_outlier = biochar_app_rate[biochar_app_rate['2050'] < outlier_cutoff]
+    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, "2050", [SSP], "region-basin-crop-irr combination count",
+                                    "histogram of outlier " + str(outlier_cutoff) + "kg per ha removed biochar app rates", "technology", "na")
 
     # global fertilizer reduction
     released_N = pd.read_csv("data/gcam_out/released/" + RCP + "/original/ammonia_production_by_tech.csv")

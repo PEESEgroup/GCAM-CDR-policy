@@ -373,6 +373,7 @@ aglu.MIN_SOIL_CARBON_DENSITY <- 0
 
 # biochar C densities
 aglu.BIO_BIOCHAR_IO_KGBM2 <- 0.3 # * 10 for Mg/Ha
+aglu.BIOCHAR_LOWER_APP_RATE <- 250
 
 #This is the model carbon year. Carbon outputs are scaled to this year
 MODEL_CARBON_YEAR <- 2010
