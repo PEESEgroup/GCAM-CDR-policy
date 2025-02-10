@@ -23,4 +23,12 @@ Didn't find builder for land leaf shares query going to use defaults
 Didn't find builder for land leaf shares in a specified land use region query going to use defaults
 Didn't find builder for National Account query going to use defaults
 Didn't find builder for Social Accounting Matrix query going to use defaults
+Removing :GCAM_SSP11209101113
+Removing :GCAM_SSP11209124224
+Removing :GCAM_SSP1114101307
+Removing :GCAM_SSP1117085120
+Removing :GCAM_SSP1206144104
+Removing :GCAM_SSP1206190951
+About to perform query: collection()/scenario
+About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
 Caught the window closing

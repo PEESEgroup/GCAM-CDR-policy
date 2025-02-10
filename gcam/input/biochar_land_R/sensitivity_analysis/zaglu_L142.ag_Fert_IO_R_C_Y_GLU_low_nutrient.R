@@ -488,7 +488,7 @@ module_aglu_L142.ag_Fert_IO_R_C_Y_GLU <- function(command, ...) {
       L142.ag_Fert_IO_R_C_Y_GLU_P2O5
 
     L142_biochar_fertilizer %>%
-      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, year, kg_biochar_kg_crop_limited) ->
+      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, year, kg_biochar_kg_crop_limited, rep_K2O, rep_P2O5) ->
       L142.ag_Fert_IO_R_C_Y_GLU_biochar
 
 

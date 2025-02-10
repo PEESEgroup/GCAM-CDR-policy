@@ -16,7 +16,7 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP):
     released_pop = pd.read_csv(
         "data/gcam_out/released/" + RCP + "/original/population_by_region.csv")
     pyrolysis_pop = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/population_by_region.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/population_by_region.csv")
     released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_pop = pyrolysis_pop[pyrolysis_pop[['SSP']].isin(SSP).any(axis=1)]
     flat_diff_pop = data_manipulation.flat_difference(released_pop, pyrolysis_pop, ["SSP", "GCAM"])
@@ -26,7 +26,7 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP):
     released_Pcal = pd.read_csv(
         "data/gcam_out/released/" + RCP + "/original/food_consumption_by_type_specific.csv")
     pyrolysis_Pcal = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/food_consumption_by_type_specific.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/food_consumption_by_type_specific.csv")
     released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
     released_global_pcal = released_Pcal[released_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
@@ -64,7 +64,7 @@ def luc_by_region(nonBaselineScenario, RCP, SSP):
     released_luc = pd.read_csv(
         "data/gcam_out/released/" + RCP + "/original/LUC_emissions_by_LUT.csv")
     pyrolysis_luc = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/LUC_emissions_by_LUT.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/LUC_emissions_by_LUT.csv")
     released_luc = data_manipulation.group(released_luc, ["GCAM", "SSP"])
     released_luc = released_luc[released_luc[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["GCAM", "SSP"])
@@ -82,7 +82,7 @@ def luc_by_region(nonBaselineScenario, RCP, SSP):
     released_luc = pd.read_csv(
         "data/gcam_out/released/" + RCP + "/original/LUC_emissions_by_LUT.csv")
     pyrolysis_luc = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/LUC_emissions_by_LUT.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/LUC_emissions_by_LUT.csv")
     released_luc = released_luc[released_luc[['SSP']].isin(SSP).any(axis=1)]
     released_luc["LandLeaf"] = released_luc.apply(lambda row: data_manipulation.relabel_detailed_land_use(row), axis=1)
     pyrolysis_luc["LandLeaf"] = pyrolysis_luc.apply(lambda row: data_manipulation.relabel_detailed_land_use(row),
@@ -107,7 +107,7 @@ def animal_feed_and_products(nonBaselineScenario, RCP, SSP):
     released_supply = pd.read_csv(
         "data/gcam_out/released/" + RCP + "/original/supply_of_all_markets.csv")
     pyrolysis_supply = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/supply_of_all_markets.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/supply_of_all_markets.csv")
     released_supply = released_supply[released_supply[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_supply = pyrolysis_supply[pyrolysis_supply[['SSP']].isin(SSP).any(axis=1)]
     feed = ["FodderHerb_Residue", "FeedCrops", "Pasture_FodderGrass", "Scavenging_Other"]  # the different feed types
@@ -151,13 +151,13 @@ def pyrolysis_costing(nonBaselineScenario, RCP, SSP):
     """
     #get total costs
     total_cost = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/costs_by_tech.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/costs_by_tech.csv")
     # get unit costs (no capex)
     unit_cost = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/costs_by_tech_and_input.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/costs_by_tech_and_input.csv")
     # get feedstock costs
     feedstock_cost = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/prices_of_all_markets.csv")
 
     total_cost = total_cost[total_cost[['SSP']].isin(SSP).any(axis=1)]
     unit_cost = unit_cost[unit_cost[['SSP']].isin(SSP).any(axis=1)]
@@ -190,11 +190,11 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
     """
     # get data
     pyrolysis_yields = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/ag_tech_yield.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/ag_tech_yield.csv")
     pyrolysis_land = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/detailed_land_allocation.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/detailed_land_allocation.csv")
     pyrolysis_profit_rate = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/profit_rate.csv")
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/profit_rate.csv")
     released_yields = pd.read_csv(
         "data/gcam_out/released/" + RCP + "/original/ag_tech_yield.csv")
     released_land = pd.read_csv(
@@ -334,8 +334,8 @@ def main():
     :return: N/A
     """
     reference_SSP = "SSP1"
-    reference_RCP = "2p6"
-    other_scenario = "biochar"  # biochar
+    reference_RCP = "6p0"
+    other_scenario = "test"  # biochar
     farmer_economics(other_scenario, reference_RCP, [reference_SSP])
     pyrolysis_costing(other_scenario, reference_RCP, [reference_SSP])
     animal_feed_and_products(other_scenario, reference_RCP, [reference_SSP])
