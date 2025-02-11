@@ -292,6 +292,8 @@ module_aglu_L141.ag_Fert_IFA_ctry_crop <- function(command, ...) {
       # store in ctry-crop specific table of fertilizer consumption rates in t/ha for use in multiple subsequent pipelines
       L141.IFA_Fert_Cons_MtK2O_ctry_crop
 
+    print(L141.IFA_Fert_Cons_MtK2O_ctry_crop)
+
     # process L141.LDS_ag_HA_ha
     L141.LDS_ag_HA_ha %>%
       # Aggregate to the iso-GTAPcrop level

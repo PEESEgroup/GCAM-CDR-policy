@@ -271,7 +271,7 @@ aglu.BIO_GRASS_COST_75USD_GJ <- 0.75   # Production costs of biomass (from Patri
 aglu.BIO_TREE_COST_75USD_GJ  <- 0.67   # Production costs of biomass (from Patrick Luckow's work)
 aglu.FERT_PRICE              <- 596    # Price of fertilizer, 2010$ per ton NH3
 aglu.FERT_PRICE_K2O          <- 630    # Price of fertilizer, 2010$ per ton K2O U.S. Department of the Interior U.S. Geological Survey MINERAL COMMODITY SUMMARIES 2023 via https://www.statista.com/statistics/604716/price-of-potash/
-aglu.FERT_PRICE_P2O5         <- 123    # Price of fertilizer, 2010$ per ton P2O5 https://documents1.worldbank.org/curated/en/496391468337295606/pdf/667740BRI00PUB0sReview0February2012.pdf
+aglu.FERT_PRICE_P2O5         <- 123   # Price of fertilizer, 2010$ per ton P2O5 https://documents1.worldbank.org/curated/en/496391468337295606/pdf/667740BRI00PUB0sReview0February2012.pdf
 aglu.FERT_PRICE_YEAR         <- 2010   # Year corresponding to the above price/cost
 aglu.FOR_COST_SHARE_HARDWOOD          <- 0.59   # Non-land forestry cost share (from 2011 GTAP data base)
 aglu.FOR_COST_SHARE_SOFTWOOD          <- 0.59   # Non-land forestry cost share (from 2011 GTAP data base)
@@ -373,6 +373,7 @@ aglu.MIN_SOIL_CARBON_DENSITY <- 0
 
 # biochar C densities
 aglu.BIO_BIOCHAR_IO_KGBM2 <- 0.3 # * 10 for Mg/Ha
+aglu.BIOCHAR_LOWER_APP_RATE <- 1000
 
 #This is the model carbon year. Carbon outputs are scaled to this year
 MODEL_CARBON_YEAR <- 2010

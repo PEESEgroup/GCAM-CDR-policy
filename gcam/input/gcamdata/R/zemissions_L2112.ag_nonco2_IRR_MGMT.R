@@ -18,6 +18,7 @@
 module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
   if(command == driver.DECLARE_INPUTS) {
     return(c(FILE = "common/GCAM_region_names",
+             FILE = "water/basin_to_country_mapping",
              "L2111.AGREmissions",
              "L2111.AGRBio",
              "L2111.AWB_BCOC_EmissCoeff",
@@ -25,7 +26,8 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
              "L2111.nonghg_steepness",
              "L2111.AWBEmissions",
              "L2012.AgProduction_ag_irr_mgmt",
-             "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level"))
+             "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level",
+             "L181.ag_kgbioha_R_C_Y_GLU_irr_level"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2112.AGRBio", "L2112.AWB_BCOC_EmissCoeff", "L2112.nonghg_max_reduction",
              "L2112.nonghg_steepness", "L2112.AWBEmissions", "L2112.AGREmissions"))
@@ -46,7 +48,9 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
     L2111.nonghg_steepness <- get_data(all_data, "L2111.nonghg_steepness")
     L2012.AgProduction_ag_irr_mgmt <- get_data(all_data, "L2012.AgProduction_ag_irr_mgmt", strip_attributes = TRUE)
     L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level <- get_data(all_data, "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level")
+    L181.ag_kgbioha_R_C_Y_GLU_irr_level <- get_data(all_data, "L181.ag_kgbioha_R_C_Y_GLU_irr_level")
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
+    basin_to_country_mapping <- get_data(all_data, "water/basin_to_country_mapping")
 
     # ===================================================
     # For all of the animal emission tables add high and low management level
@@ -188,13 +192,31 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       filter(grepl("AWB", Non.CO2)) ->
       L2112.AWBEmissions
 
+    L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
+      left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
+      repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
+      mutate(IRR_RFD = toupper(Irr_Rfd)) %>%
+      # Add sector, subsector, technology names
+      mutate(AgSupplySector = GCAM_commodity,
+             AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
+             AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD , sep = aglu.IRR_DELIMITER),
+                                            level, sep = aglu.MGMT_DELIMITER)) %>%
+      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, level, kg_bio_ha) ->
+      L181.ag_kgbioha_R_C_Y_GLU_irr_level
+
+    print(L181.ag_kgbioha_R_C_Y_GLU_irr_level)
+    print(L2112.awb_agr_emissions_disag %>%
+            filter(!grepl("AWB", Non.CO2)))
+
     # The disaggregated non agricultural waste burning emissions.
     L2112.awb_agr_emissions_disag %>%
       filter(!grepl("AWB", Non.CO2)) %>%
+      left_join_error_no_match(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by=c("region", "AgSupplySector", "AgProductionTechnology", "AgSupplySubsector", "level")) %>%
       # update emissions for biochar lands
       # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
-      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "CH4_AGR", input.emissions*.9967, input.emissions)) %>%
-      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR", input.emissions*.9750, input.emissions))->
+      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "CH4_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE) , input.emissions*.9967, input.emissions)) %>%
+      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE), input.emissions*.9750, input.emissions)) %>%
+      select(-kg_bio_ha) ->
       L2112.AGREmissions
 
     # ===================================================

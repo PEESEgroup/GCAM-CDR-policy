@@ -4,8 +4,8 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
-    version = [["released", "1p9"]]
-    GCAMDB_filenames = ["data/gcam_out/released/1p9/ref.csv"]
+    version = [["test", "6p0"], ["test", "4p5"]]
+    GCAMDB_filenames = ["data/gcam_out/test/6p0/ref.csv","data/gcam_out/test/4p5/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
@@ -49,7 +49,7 @@ class GCAMConstants:
     animal_manure_ratio["pyrolysis-nofert", "poultry"] = 1/1.381
     animal_manure_ratio["pyrolysis-nofert", "goat"] = 1/3.101
     animal_manure_ratio["biochar", "beef"] = 1/2.589
-    animal_manure_ratio["biochar", "dairy"] = 1/0.878
+    animal_manure_ratio["biochar", "dairy"] = 1/0.018
     animal_manure_ratio["biochar", "pork"] = 1/0.304
     animal_manure_ratio["biochar", "poultry"] = 1/1.381
     animal_manure_ratio["biochar", "goat"] = 1/3.101
@@ -65,10 +65,10 @@ class GCAMConstants:
     manure_biochar_ratio["pyrolysis", "pork"] = 2.136
     manure_biochar_ratio["pyrolysis", "poultry"] = 2.1276
     manure_biochar_ratio["pyrolysis", "goat"] = 2.055
-    manure_biochar_ratio["biochar", "beef"] = 2.1815
-    manure_biochar_ratio["biochar", "dairy"] = 2.1052
+    manure_biochar_ratio["biochar", "beef"] = 2.105
+    manure_biochar_ratio["biochar", "dairy"] = 2.105
     manure_biochar_ratio["biochar", "pork"] = 2.136
-    manure_biochar_ratio["biochar", "poultry"] = 2.1276
+    manure_biochar_ratio["biochar", "poultry"] = 2.139
     manure_biochar_ratio["biochar", "goat"] = 2.055
     manure_biochar_ratio["test", "beef"] = 2.1815
     manure_biochar_ratio["test", "dairy"] = 2.1052
@@ -106,11 +106,11 @@ class GCAMConstants:
     manure_C_ratio["pyrolysis-nofert", "pork"] = -0.581
     manure_C_ratio["pyrolysis-nofert", "poultry"] = -.304
     manure_C_ratio["pyrolysis-nofert", "goat"] = -0.273
-    manure_C_ratio["biochar", "beef"] = -0.113
-    manure_C_ratio["biochar", "dairy"] = -0.113
-    manure_C_ratio["biochar", "pork"] = -0.143
-    manure_C_ratio["biochar", "poultry"] = -0.131
-    manure_C_ratio["biochar", "goat"] = -0.143
+    manure_C_ratio["biochar", "beef"] = -0.459
+    manure_C_ratio["biochar", "dairy"] = -0.459
+    manure_C_ratio["biochar", "pork"] = -0.522
+    manure_C_ratio["biochar", "poultry"] = -0.522
+    manure_C_ratio["biochar", "goat"] = -0.526
     manure_C_ratio["test", "beef"] = -0.113
     manure_C_ratio["test", "dairy"] = -0.113
     manure_C_ratio["test", "pork"] = -0.143

@@ -87,16 +87,14 @@ print(tmp)
 #               source 4: Poddar, S. & Sarat Chandra Babu, J. Modelling and optimization of a pyrolysis plant using swine and goat manure as feedstock. Renewable Energy 175, 253–269 (2021).
 # original value (units): unitless
 #     used value (units): 47% yield implies 2.1276 Mt feedstock / Mt biochar
-# TODO: calculations
-tmp[16] <- "biochar,slow pyrolysis,poultry_biochar,poultry manure,2.1276,2.1276,2.1276" #[1]
+tmp[16] <- "biochar,slow pyrolysis,poultry_biochar,poultry manure,2.139,2.139,2.139" #[1]
 tmp[17] <- "biochar,slow pyrolysis,pork_biochar,pork manure,2.136,2.136,2.136" # [4]
-tmp[18] <- "biochar,slow pyrolysis,beef_biochar,beef manure,2.1815,2.1815,2.1815" #[3]
-tmp[19] <- "biochar,slow pyrolysis,dairy_biochar,dairy manure,2.1052,2.1052,2.1052" #[2]
+tmp[18] <- "biochar,slow pyrolysis,beef_biochar,beef manure,2.105,2.105,2.105" #[3]
+tmp[19] <- "biochar,slow pyrolysis,dairy_biochar,dairy manure,2.105,2.105,2.105" #[2]
 tmp[20] <- "biochar,slow pyrolysis,goat_biochar,goat manure,2.055,2.055,2.055" #[4]
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
-
 
 
 #modify A21.globaltech_shrwt.csv
@@ -229,13 +227,13 @@ print(tmp)
 #     used value (units): C stored as biochar
 #               source 1: Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
 
-### THESE VALUES ARE FOR CDR AND ARE SUBJECT TO CARBON SUBSIDIES ###
+### THESE VALUES ARE FOR CARBON STORED IN BIOCHAR ###
 ### values calculated in 41467_2010 excel spreadsheet
-tmp[37] <- "beef manure,-0.113,0"
-tmp[38] <- "dairy manure,-0.113,0"
-tmp[39] <- "goat manure,-0.143,0"
-tmp[40] <- "pork manure,-0.143,0"
-tmp[41] <- "poultry manure,-0.131,0"
+tmp[37] <- "beef manure,-0.459,0"
+tmp[38] <- "dairy manure,-0.459,0"
+tmp[39] <- "goat manure,-0.522,0"
+tmp[40] <- "pork manure,-0.522,0"
+tmp[41] <- "poultry manure,-0.526,0"
 print("\n file after changes")
 print(tmp)
 readr::write_lines(tmp, example_file)
@@ -254,11 +252,11 @@ print(tmp)
 
 ### THESE VALUES ARE FOR CARBON AVOIDANCE AND ARE NOT SUBJECT TO CARBON SUBSIDIES ###
 ### values calculated in 41467_2010 excel spreadsheet
-tmp[41] <- "biochar,slow pyrolysis,dairy_biochar,,,,-0.0432,,,,,,,"
-tmp[42] <- "biochar,slow pyrolysis,beef_biochar,,,,-0.0432,,,,,,,"
-tmp[43] <- "biochar,slow pyrolysis,pork_biochar,,,,-0.1222,,,,,,,"
-tmp[44] <- "biochar,slow pyrolysis,goat_biochar,,,,-0.0432,,,,,,,"
-tmp[45] <- "biochar,slow pyrolysis,poultry_biochar,,,,-0.0460,,,,,,,"
+tmp[41] <- "biochar,slow pyrolysis,dairy_biochar,,,,-0.0106,-0.00052,,,,,,"
+tmp[42] <- "biochar,slow pyrolysis,beef_biochar,,,,-0.0106,-0.00052,,,,,,"
+tmp[43] <- "biochar,slow pyrolysis,pork_biochar,,,,-0.1023,-0.00061,,,,,,"
+tmp[44] <- "biochar,slow pyrolysis,goat_biochar,,,,-0.1023,-0.00061,,,,,,"
+tmp[45] <- "biochar,slow pyrolysis,poultry_biochar,,,,-0.0057,-0.00074,,,,,,"
 
 print("\n file after changes")
 print(tmp)

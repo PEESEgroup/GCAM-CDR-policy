@@ -22,7 +22,9 @@ module_aglu_L142.ag_Fert_IO_R_C_Y_GLU <- function(command, ...) {
 
   MODULE_INPUTS <-
     c(FILE = "common/iso_GCAM_regID",
+      FILE = "common/GCAM_region_names",
       FILE = "aglu/FAO/FAO_ag_items_PRODSTAT",
+      FILE = "aglu/A_SSP1_RCP2p6_an_prod_supply",
       "L100.LDS_ag_prod_t",
       "L100.FAO_Fert_Cons_tN",
       "L100.FAO_Fert_Prod_tN",
@@ -40,7 +42,8 @@ module_aglu_L142.ag_Fert_IO_R_C_Y_GLU <- function(command, ...) {
       "L142.ag_Fert_NetExp_MtN_R_Y",
       "L142.ag_Fert_IO_R_C_Y_GLU",
       "L142.ag_Fert_IO_R_C_Y_GLU_K2O",
-      "L142.ag_Fert_IO_R_C_Y_GLU_P2O5")
+      "L142.ag_Fert_IO_R_C_Y_GLU_P2O5",
+      "L142.ag_Fert_IO_R_C_Y_GLU_biochar")
 
   if(command == driver.DECLARE_INPUTS) {
     return(MODULE_INPUTS)
@@ -382,6 +385,7 @@ module_aglu_L142.ag_Fert_IO_R_C_Y_GLU <- function(command, ...) {
       select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, year, value = Fert_IO) ->
       L142.ag_Fert_IO_R_C_Y_GLU_P2O5
 
+
     # Check to make sure that the fertilizer inputs do not blink in and out (if present in any year, need to be present in all years)
     L142.ag_Fert_IO_R_C_Y_GLU %>%
       group_by(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU) %>%
@@ -400,6 +404,99 @@ module_aglu_L142.ag_Fert_IO_R_C_Y_GLU <- function(command, ...) {
     if(any(L142.Fert_IO_check$value == 0)) {
       stop("Fertilizer input-output coefficients need to be specified in all historical years")
     }
+
+    # compared to N, it's fine if K2O and P2O5 are 0, as those types of fertilizers may not be applied
+
+    print(L142.ag_Fert_IO_R_C_Y_GLU_K2O)
+    print(L142.ag_Fert_IO_R_C_Y_GLU_P2O5)
+
+    # load in manure production
+    # constants for biochar yield
+    beef_yield =1/2.105
+    dairy_yield =1/2.105
+    goat_yield =1/2.055
+    pork_yield = 1/2.136
+    poultry_yield = 1/2.139
+
+    # constants for P and K nutrients in biochar in kg nutrient/kg biochar
+    beef_P = 0.0081
+    dairy_P = 0.0081
+    goat_P = 0.0035
+    pork_P = 0.0690
+    poultry_P = 0.0271
+
+    beef_K = 0.0005
+    dairy_K = 0.0005
+    goat_K = 0.0280
+    pork_K = 0.0290
+    poultry_K = 0.0720
+
+    K_K2O = 1.2046
+    P_P2O5 = 2.2951
+
+    # for each region, calculate the amount of P/K in each representative ton biochar
+    print(A_SSP1_RCP2p6_an_prod_supply)
+    A_SSP1_RCP2p6_an_prod_supply %>%
+      mutate(total_P = if_else(product == "Beef", Yield*beef_yield*beef_P, if_else(product == "Dairy", Yield*dairy_yield*dairy_P, if_else(product == "SheepGoat", Yield*goat_yield*goat_P, if_else(product == "Pork", Yield*pork_yield*pork_P, if_else(product == "Poultry", Yield*poultry_yield*poultry_P, 0))))),
+             total_K = if_else(product == "Beef", Yield*beef_yield*beef_K, if_else(product == "Dairy", Yield*dairy_yield*dairy_K, if_else(product == "SheepGoat", Yield*goat_yield*goat_K, if_else(product == "Pork", Yield*pork_yield*pork_K, if_else(product == "Poultry", Yield*poultry_yield*poultry_K, 0))))),
+             total_biochar = if_else(product == "Beef", Yield*beef_yield, if_else(product == "Dairy", Yield*dairy_yield, if_else(product == "SheepGoat", Yield*goat_yield, if_else(product == "Pork", Yield*pork_yield, if_else(product == "Poultry", Yield*poultry_yield, 0)))))) %>%
+      group_by(GCAM)%>%
+      summarise(total_P = sum(total_P), total_K = sum(total_K), total_biochar = sum(total_biochar)) %>%
+      ungroup() %>%
+      mutate(rep_P2O5 = P_P2O5*total_P/total_biochar, # convert to fertilizer equivalents
+             rep_K2O = K_K2O*total_K/total_biochar) %>%
+      select(GCAM, rep_P2O5, rep_K2O) -> L142.biochar_nutrient_content # units are in kg K2O/kg biochar
+
+    # match 2015 GCAM data with 2015 fertilizer data
+    L142.ag_Fert_IO_R_C_Y_GLU_K2O %>% filter(year==2015) %>%
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+      mutate(K2O = value) %>%
+      select(-value)-> L142.ag_Fert_IO_R_C_Y_GLU_K2O
+    L142.ag_Fert_IO_R_C_Y_GLU_P2O5 %>% filter(year==2015) %>%
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+      mutate(P2O5 = value) %>%
+      select(-value)->L142.ag_Fert_IO_R_C_Y_GLU_P2O5
+
+    # merge all the data into one table
+    print(L142.ag_Fert_IO_R_C_Y_GLU_K2O %>%
+            left_join(L142.ag_Fert_IO_R_C_Y_GLU_P2O5, by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "region")))
+
+    L142.ag_Fert_IO_R_C_Y_GLU_K2O %>%
+      left_join(L142.ag_Fert_IO_R_C_Y_GLU_P2O5, by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "region")) %>%
+      left_join(L142.biochar_nutrient_content, by = c("region" = "GCAM")) -> L142_biochar_fertilizer
+
+    # calculate kg biochar per kg crop
+    # [kg K2O/ kg crop] / [kg K2O / kg biochar] = kg biochar/kg crop
+    L142_biochar_fertilizer %>%
+      mutate(kg_biochar_kg_crop_P_limit = K2O/rep_K2O,# above dimensional analysis
+             kg_biochar_kg_crop_K_limit = P2O5/rep_P2O5, # above dimensional analysis
+             kg_biochar_kg_crop_limited = pmin(kg_biochar_kg_crop_K_limit, kg_biochar_kg_crop_P_limit), # choose whatever limits first
+             avoided_K2O = kg_biochar_kg_crop_limited * rep_K2O, # kg biochar/kg crop * kg K2O/kg biochar = kg K2O/kg crop
+             avoided_P2O5 = kg_biochar_kg_crop_limited * rep_P2O5) ->
+      L142_biochar_fertilizer
+
+    print(L142_biochar_fertilizer)
+
+    L142_biochar_fertilizer %>%
+      mutate(value = avoided_K2O) %>%
+      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, year, value) ->
+      L142.ag_Fert_IO_R_C_Y_GLU_K2O
+
+    L142_biochar_fertilizer %>%
+      mutate(value = avoided_P2O5) %>%
+      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, year, value) ->
+      L142.ag_Fert_IO_R_C_Y_GLU_P2O5
+
+    L142_biochar_fertilizer %>%
+      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, year, kg_biochar_kg_crop_limited, rep_K2O, rep_P2O5) ->
+      L142.ag_Fert_IO_R_C_Y_GLU_biochar
+
+
+    print(L142.ag_Fert_IO_R_C_Y_GLU_K2O)
+    print(L142.ag_Fert_IO_R_C_Y_GLU_P2O5)
+    print(L142.ag_Fert_IO_R_C_Y_GLU_biochar)
+
+
 
     # Produce outputs
     L142.ag_Fert_Prod_MtN_ctry_Y %>%
@@ -439,11 +536,11 @@ module_aglu_L142.ag_Fert_IO_R_C_Y_GLU <- function(command, ...) {
 
     L142.ag_Fert_IO_R_C_Y_GLU_K2O %>%
       add_title("Fertilizer input-output coefficients by GCAM region / crop / year / GLU") %>%
-      add_units("Unitless IO") %>%
+      add_units("kg avoided K2O/kg crop") %>%
       add_comments("Fertilizer demands are downscaled to GLU based on agriculture production share in each country") %>%
-      add_comments("Input-output coefficients for each crop are first calculated as fertilizer demands divided by agriculture production in the base year") %>%
+      add_comments("Input-output coefficients for each crop are first calculated as fertilizer demands divided by agriculture production in 2015") %>%
       add_comments("And then are scaled so that regional total fertilizer consumptions are balanced") %>%
-      add_legacy_name("L142.ag_Fert_IO_R_C_Y_GLU") %>%
+      add_legacy_name("L142.ag_Fert_IO_R_C_Y_GLU_K2O") %>%
       add_precursors("common/iso_GCAM_regID",
                      "aglu/FAO/FAO_ag_items_PRODSTAT",
                      "L100.LDS_ag_prod_t",
@@ -453,17 +550,31 @@ module_aglu_L142.ag_Fert_IO_R_C_Y_GLU <- function(command, ...) {
 
     L142.ag_Fert_IO_R_C_Y_GLU_P2O5 %>%
       add_title("Fertilizer input-output coefficients by GCAM region / crop / year / GLU") %>%
-      add_units("Unitless IO") %>%
+      add_units("kg avoided P2O5/kg crop") %>%
       add_comments("Fertilizer demands are downscaled to GLU based on agriculture production share in each country") %>%
-      add_comments("Input-output coefficients for each crop are first calculated as fertilizer demands divided by agriculture production in the base year") %>%
+      add_comments("Input-output coefficients for each crop are first calculated as fertilizer demands divided by agriculture production in 2015") %>%
       add_comments("And then are scaled so that regional total fertilizer consumptions are balanced") %>%
-      add_legacy_name("L142.ag_Fert_IO_R_C_Y_GLU") %>%
+      add_legacy_name("L142.ag_Fert_IO_R_C_Y_GLU_P2O5") %>%
       add_precursors("common/iso_GCAM_regID",
                      "aglu/FAO/FAO_ag_items_PRODSTAT",
                      "L100.LDS_ag_prod_t",
                      "L101.ag_Prod_Mt_R_C_Y_GLU",
                      "L141.ag_Fert_Cons_MtP2O5_ctry_crop") ->
       L142.ag_Fert_IO_R_C_Y_GLU_P2O5
+
+    L142.ag_Fert_IO_R_C_Y_GLU_biochar %>%
+      add_title("Fertilizer input-output coefficients by GCAM region / crop / year / GLU") %>%
+      add_units("kg biochar applied/kg crop") %>%
+      add_comments("Fertilizer demands are downscaled to GLU based on agriculture production share in each country") %>%
+      add_comments("Input-output coefficients for each crop are first calculated as fertilizer demands divided by agriculture production in 2015") %>%
+      add_comments("And then are scaled so that regional total fertilizer consumptions are balanced") %>%
+      add_legacy_name("L142.ag_Fert_IO_R_C_Y_GLU_biochar") %>%
+      add_precursors("common/iso_GCAM_regID",
+                     "aglu/FAO/FAO_ag_items_PRODSTAT",
+                     "L100.LDS_ag_prod_t",
+                     "L101.ag_Prod_Mt_R_C_Y_GLU",
+                     "L141.ag_Fert_Cons_MtP2O5_ctry_crop") ->
+      L142.ag_Fert_IO_R_C_Y_GLU_biochar
 
     return_data(MODULE_OUTPUTS)
   } else {

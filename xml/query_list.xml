@@ -527,7 +527,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "USA"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "USA"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Africa_Eastern"/>
@@ -797,7 +815,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Africa_Eastern"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Africa_Eastern"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Africa_Northern"/>
@@ -1067,7 +1103,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Africa_Northern"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Africa_Northern"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Africa_Southern"/>
@@ -1337,7 +1391,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Africa_Southern"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Africa_Southern"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Africa_Western"/>
@@ -1607,7 +1679,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Africa_Western"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Africa_Western"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Australia_NZ"/>
@@ -1877,7 +1967,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Australia_NZ"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Australia_NZ"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Brazil"/>
@@ -2147,7 +2255,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Brazil"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Brazil"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Canada"/>
@@ -2417,7 +2543,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Canada"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Canada"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Central America and Caribbean"/>
@@ -2687,7 +2831,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Central America and Caribbean"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Central America and Caribbean"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Central Asia"/>
@@ -2957,7 +3119,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Central Asia"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Central Asia"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="China"/>
@@ -3227,7 +3407,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "China"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "China"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="EU-12"/>
@@ -3497,7 +3695,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "EU-12"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "EU-12"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="EU-15"/>
@@ -3767,7 +3983,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "EU-15"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "EU-15"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Europe_Eastern"/>
@@ -4037,7 +4271,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Europe_Eastern"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Europe_Eastern"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Europe_Non_EU"/>
@@ -4307,7 +4559,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Europe_Non_EU"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Europe_Non_EU"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="European Free Trade Association"/>
@@ -4577,7 +4847,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "European Free Trade Association"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "European Free Trade Association"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="India"/>
@@ -4847,7 +5135,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "India"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "India"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Indonesia"/>
@@ -5117,7 +5423,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Indonesia"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Indonesia"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Japan"/>
@@ -5387,7 +5711,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Japan"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Japan"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Mexico"/>
@@ -5657,7 +5999,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Mexico"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Mexico"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Middle East"/>
@@ -5927,7 +6287,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Middle East"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Middle East"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Pakistan"/>
@@ -6197,7 +6575,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Pakistan"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Pakistan"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Russia"/>
@@ -6467,7 +6863,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Russia"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Russia"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="South Africa"/>
@@ -6737,7 +7151,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "South Africa"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "South Africa"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="South America_Northern"/>
@@ -7007,7 +7439,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "South America_Northern"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "South America_Northern"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="South America_Southern"/>
@@ -7277,7 +7727,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "South America_Southern"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "South America_Southern"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="South Asia"/>
@@ -7547,7 +8015,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "South Asia"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "South Asia"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="South Korea"/>
@@ -7817,7 +8303,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "South Korea"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "South Korea"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Southeast Asia"/>
@@ -8087,7 +8591,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Southeast Asia"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Southeast Asia"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Taiwan"/>
@@ -8357,7 +8879,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Taiwan"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Taiwan"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Argentina"/>
@@ -8627,7 +9167,25 @@
                         <comments/>
                     </supplyDemandQuery>
 </aQuery>
-
+<aQuery>
+<region name = "Argentina"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Argentina"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
+</aQuery>
 
 <aQuery>
     <region name="Colombia"/>
@@ -8896,5 +9454,24 @@
                *[@type='output']/physical-output/node()</xPath>
                         <comments/>
                     </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Colombia"/>
+<supplyDemandQuery title="costs by tech">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">technology</axis2>
+                <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (local-name()!='AgSupplySector')]/*[@type = 'subsector']/*[@type = 'technology']/cost/text()</xPath>
+                <comments>Excludes AgProductionTechnology costs, where data written out are no meaningful</comments>
+            </supplyDemandQuery>
+</aQuery>
+<aQuery>
+<region name = "Colombia"/>
+            <supplyDemandQuery title="costs by tech and input">
+                <axis1 name="technology">technology</axis1>
+                <axis2 name="Year">price-paid[@vintage]</axis2>
+                <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/
+            *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
+                <comments>excludes energy and emissions related costs which are not printed</comments>
+            </supplyDemandQuery>
 </aQuery>
 </queries>
