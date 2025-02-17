@@ -957,34 +957,36 @@ def label_other(row, column, products):
         return "other"
 
 
-def plot_regional_vertical(dataframe, year, SSPs, y_label, title, column):
+def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_column, x_label):
     """
     Plots regional data in a categorical scatterplot
     :param dataframe: data being plotted
-    :param year: evaluation column
+    :param year: year of y_axis data
     :param SSPs: SSPs being evaluated
     :param y_label: ylabel for graph
+    :param x_label: x-label for graph
     :param title: title of graph
-    :param column: column used to identify unique categories
+    :param x_column: column used on the x-axis (formerly "GCAM")
+    :param y_column: column used on the y-axis (formerly "columnn")
     :return: N/A
     """
     # get colors
-    colors, divisions = get_colors(len(dataframe[column].unique()))
+    colors, divisions = get_colors(len(dataframe[y_column].unique()))
 
     # plot for each SSP
     for i in SSPs:
         dataframe = dataframe[dataframe['SSP'].str.contains(i)]
-        for idx, item in enumerate(dataframe[column].unique()):
-            df = dataframe.loc[dataframe[column] == str(item)]
+        for idx, item in enumerate(dataframe[y_column].unique()):
+            df = dataframe.loc[dataframe[y_column] == str(item)]
             # scatter points
-            plt.scatter(x=df["GCAM"], y=df[str(year)], color=colors[idx], label=str(item))
+            plt.scatter(x=df[x_column], y=df[str(year)], color=colors[idx], label=str(item))
 
             # plot averages
             # plt.axhline(y=df[str(year)].mean(), color=colors[idx], linestyle='dashed', label=str(item) + " average")
 
         # finalize plot
         plt.ylabel(y_label)
-        plt.xlabel("Region")
+        plt.xlabel(x_label)
         plt.xticks(rotation=60, ha='right')
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))

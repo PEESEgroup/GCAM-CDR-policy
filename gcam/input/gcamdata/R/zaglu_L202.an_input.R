@@ -819,7 +819,8 @@ module_aglu_L202.an_input <- function(command, ...) {
 
     # Calibrate the price (as a fixed price, not a point on a supply curve) in the base year
     L202.StubTechFractSecOut_an %>%
-      filter(year %in% MODEL_BASE_YEARS) %>%                                 # In the base years the fractional secondary outputs are de-activated in order to calibrate the flows
+      #filter(year %in% MODEL_BASE_YEARS) %>%                                 # In the base years the fractional secondary outputs are de-activated in order to calibrate the flows
+      filter(year < 2035) %>% # wait for biochar to be able to be applied to land before enabling the secondary output
       select(-output.ratio) %>%
       left_join(L202.an_FeedPrice_R_Yf, by = c("region" = "region", "fractional.secondary.output" = "secout"))  %>%
       mutate(calPrice = round(feed_price, digits = aglu.DIGITS_CALOUTPUT)) %>%

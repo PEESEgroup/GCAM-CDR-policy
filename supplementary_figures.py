@@ -180,6 +180,51 @@ def pyrolysis_costing(nonBaselineScenario, RCP, SSP):
                                     "na")
 
 
+def biochar_rate_by_land_size(nonBaselineScenario, RCP, SSP):
+    """
+    scatter plot of biochar application rate to the size of the biochar land area in 2050
+    :param nonBaselineScenario: the scenario to be compared to the released scenario
+    :param RCP: the RCP pathways being considered
+    :param SSP: the SSP pathways being considered
+    :return: N/A
+    """
+    # read in biochar application rates, and get the 2050 application rates
+    biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level.csv")
+    region_names = pd.read_csv("gcam/input/gcamdata/inst/extdata/water/basin_to_country_mapping.csv")
+
+    # add extra data to dataframe to help downstream code
+    biochar_app_rate['GCAM'] = biochar_app_rate['region']
+    biochar_app_rate['Units'] = 'kg biochar/ha/yr'
+    biochar_app_rate["SSP"] = SSP
+
+    # rename GLU for mapping
+    biochar_app_rate = biochar_app_rate.merge(region_names, "left", on=["GLU"=="GLU_code"])
+    biochar_app_rate = biochar_app_rate[["kg_bio_ha", "Units", "SSP", "region", "GCAM_commodity", "GCAM_subsector", "GLU_name", "Irr_Rfd"]]
+
+    # extract information on crops
+    biochar_app_rate['technology'] = biochar_app_rate['GCAM_commodity']
+    biochar_app_rate['technology'] = biochar_app_rate.apply(
+        lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
+
+    # read in detailed land allocation
+    # biochar cropland application changes
+    land_use = pd.read_csv(
+        "data/gcam_out/" + nonBaselineScenario + "/" + RCP + "/original/detailed_land_allocation.csv")
+    land_use = land_use[land_use[['SSP']].isin(SSP).any(axis=1)]
+    # get biochar land use type information
+    land_use[["GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"]] = land_use['LandLeaf'].str.split("_", expand=True)
+    land_use = land_use[land_use[['MGMT']].isin(["biochar"]).any(axis=1)]
+    land_use = land_use[["GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT", "2050"]]
+
+    # merge datasets
+    scatter_data = pd.merge(biochar_app_rate, land_use, "left", on=["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd"])
+
+    # plot datasets
+    plotting.plot_regional_vertical(scatter_data, "2050", ["SSP1"], y_label="land area (units)",
+                                    title="distribution of usage of biochar lands", x_column="kg_bio_ha",
+                                    x_label="kg biochar/ha/yr", y_column="SSP")
+
+
 def farmer_economics(nonBaselineScenario, RCP, SSP):
     """
     plots information related to the changes in farming due to biochar production
