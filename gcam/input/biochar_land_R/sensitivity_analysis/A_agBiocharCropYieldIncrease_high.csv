@@ -1,0 +1,28 @@
+# File: A_agBiocharCropYieldIncrease.csv
+# Title: Crop yield increases over inorganic fertilizer controls
+# Units: unitless
+# Comments: Assumes inorganic fertilizer application in baseline
+# Source: Ye L. Camps Arbestain M. Shen Q. Lehmann J. Singh B. and Sabir M. 2020. Biochar effects on crop yields with and without fertilizer: A meta?analysis of field studies using separate controls. Soil Use and Management 36(1) pp.2-18.
+# Column types: cn
+# ----------
+AgSupplySector,Yield.Increase
+Corn,1.236
+FiberCrop,1.143
+FodderGrass,1.143
+FodderHerb,1.143
+Fruits,1.143
+Legumes,1.494
+MiscCrop,1.143
+NutsSeeds,1.143
+OilCrop,1.143
+OtherGrain,1.071
+OilPalm,1.143
+Rice,1.148
+RootTuber,1.132
+Soybean,1.143
+SugarCrop,1.143
+Vegetables,1.363
+Wheat,1.071
+Forest,1.143
+biomass,1.143
+Pasture,1.143
