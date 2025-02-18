@@ -37,7 +37,8 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
        "L2052.AgCost_bio_irr_mgmt",
        "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU",
       "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level",
-      "L181.ag_kgbioha_R_C_Y_GLU_irr_level")
+      "L181.ag_kgbioha_R_C_Y_GLU_irr_level",
+      "L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU")
 
   MODULE_OUTPUTS <-
     c("L2062.AgCoef_Fert_ag_irr_mgmt",
@@ -72,121 +73,131 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
       repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2062.ag_Fert_MGMT
 
-      L2062.ag_Fert_MGMT%>% filter(MGMT == "biochar") %>%
-        left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
-                    by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
-        dplyr::distinct_all() %>%
-        drop_na() %>% #drop rows for crops that don't need biochar
-        mutate(value = value.x) %>%
-        select(-Irr_Rfd, -value.y, -value.x) %>%
-        bind_rows(L2062.ag_Fert_MGMT %>%
-                    filter(MGMT != "biochar")) ->L2062.ag_Fert_MGMT # at this point, agFertMGMT should have only biochar regions for which biochar can be applied
-
-      L2062.ag_Fert_MGMT%>%
-      mutate(minicam.energy.input = "N fertilizer") -> L2062.ag_Fert_MGMT # units still in kg N/kg crop
-      # Add name of minicam.energy.input
-      # add fertilizer requirement to biochar land use types
-
-
-      # same calcs for K2O
-      L142.ag_Fert_IO_R_C_Y_GLU_K2O %>%
-        filter(year %in% MODEL_BASE_YEARS) %>%
-        left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-        left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
-
-        # Copy coefficients to all four technologies
-        repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
-        repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2062.ag_Fert_MGMT_K2O
-
-      L2062.ag_Fert_MGMT_K2O%>% filter(MGMT == "biochar") %>%
-        left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
+    L2062.ag_Fert_MGMT%>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
                   by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
-        dplyr::distinct_all() %>%
-        drop_na() %>% #drop rows for crops that don't need biochar
-        mutate(value = value.x) %>%
-        select(-Irr_Rfd, -value.y, -value.x) %>%
-        bind_rows(L2062.ag_Fert_MGMT_K2O %>%
-                    filter(MGMT != "biochar")) ->L2062.ag_Fert_MGMT_K2O
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      mutate(value = value.x) %>%
+      select(-Irr_Rfd, -value.y, -value.x) %>%
+      bind_rows(L2062.ag_Fert_MGMT %>%
+                  filter(MGMT != "biochar")) ->L2062.ag_Fert_MGMT # at this point, L2062.ag_Fert_MGMT should have only biochar regions for which biochar can be applied
 
-      L2062.ag_Fert_MGMT_K2O%>%
-        mutate(minicam.energy.input = "K2O fertilizer") -> L2062.ag_Fert_MGMT_K2O
-
-
-
-      # same calcs for P2O5
-      L142.ag_Fert_IO_R_C_Y_GLU_P2O5 %>%
-        filter(year %in% MODEL_BASE_YEARS) %>%
-        left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-        left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
-
-        # Copy coefficients to all four technologies
-        repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
-        repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2062.ag_Fert_MGMT_P2O5
-
-      L2062.ag_Fert_MGMT_P2O5%>% filter(MGMT == "biochar") %>%
-        left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
-                  by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
-        dplyr::distinct_all() %>%
-        drop_na() %>% #drop rows for crops that don't need biochar
-        mutate(value = value.x) %>%
-        select(-Irr_Rfd, -value.y, -value.x) %>%
-        bind_rows(L2062.ag_Fert_MGMT_P2O5 %>%
-                    filter(MGMT != "biochar")) ->L2062.ag_Fert_MGMT_P2O5
-
-      L2062.ag_Fert_MGMT_P2O5%>%
-        mutate(minicam.energy.input = "P2O5 fertilizer") -> L2062.ag_Fert_MGMT_P2O5
+    L2062.ag_Fert_MGMT%>%
+      mutate(minicam.energy.input = "N fertilizer") -> # Add name of minicam.energy.input
+      L2062.ag_Fert_MGMT # units still in kg N/kg crop
 
 
-      # same calcs for biochar application rate
-      L142.ag_Fert_IO_R_C_Y_GLU_biochar %>%
-        filter(year %in% MODEL_BASE_YEARS) %>%
-        left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
-        left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
 
-        # Copy coefficients to all four technologies
-        repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
-        repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2062.ag_Fert_MGMT_biochar
+    # same calcs for K2O
+    L142.ag_Fert_IO_R_C_Y_GLU_K2O %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+      left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
 
-      L2062.ag_Fert_MGMT_biochar%>% filter(MGMT == "biochar") %>%
-        left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
-                  by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
-        dplyr::distinct_all() %>%
-        drop_na() %>% #drop rows for crops that don't need biochar
-        select(-Irr_Rfd, -value) %>%
-        mutate(minicam.energy.input = "biochar") -> L2062.ag_Fert_MGMT_biochar
+      # Copy coefficients to all four technologies
+      repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2062.ag_Fert_MGMT_K2O
+
+    L2062.ag_Fert_MGMT_K2O%>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
+                by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      mutate(value = value.x) %>%
+      select(-Irr_Rfd, -value.y, -value.x) %>%
+      bind_rows(L2062.ag_Fert_MGMT_K2O %>%
+                  filter(MGMT != "biochar")) ->L2062.ag_Fert_MGMT_K2O
+
+    L2062.ag_Fert_MGMT_K2O%>%
+      mutate(minicam.energy.input = "K2O fertilizer") -> L2062.ag_Fert_MGMT_K2O
 
 
-      # because these fert inputs lower fixed costs by the amount of fertilizer applied
-      # delay the reduction in N fert inputs due to higher N use efficiency until after
-      # the variables costs have been calculated
-      L2062.ag_Fert_MGMT%>% #combine fert and biochar demands
-        # Add sector, subsector, technology names
-        mutate(AgSupplySector = GCAM_commodity,
-               AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
-               AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.IRR_DELIMITER),
-                                              MGMT, sep = aglu.MGMT_DELIMITER)) %>%
-        rename(coefficient = value) %>% #remove inclusion of minicam energy input here because it was added earlier
-        select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, minicam.energy.input, year, coefficient) ->
-        L2062.AgCoef_Fert_ag_irr_mgmt
 
-      # same calcs for biochar
-      L2062.ag_Fert_MGMT_biochar %>%
-        mutate(AgSupplySector = GCAM_commodity,
-               AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
-               AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.IRR_DELIMITER),
-                                              MGMT, sep = aglu.MGMT_DELIMITER)) %>%
-        rename(coefficient = kg_biochar_kg_crop_limited) %>% #remove inclusion of minicam energy input here because it was added earlier
-        select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, minicam.energy.input, year, coefficient) ->
-        L2062.AgCoef_biochar_ag_irr_mgmt
+    # same calcs for P2O5
+    L142.ag_Fert_IO_R_C_Y_GLU_P2O5 %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+      left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
 
-      print(L142.ag_Fert_IO_R_C_Y_GLU)
-      print(L2062.ag_Fert_MGMT)
-      print(L2062.ag_Fert_MGMT_biochar)
-      print(L2062.AgCoef_Fert_ag_irr_mgmt)
-      print(L2062.AgCoef_biochar_ag_irr_mgmt)
+      # Copy coefficients to all four technologies
+      repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2062.ag_Fert_MGMT_P2O5
+
+    L2062.ag_Fert_MGMT_P2O5%>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
+                by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      mutate(value = value.x) %>%
+      select(-Irr_Rfd, -value.y, -value.x) %>%
+      bind_rows(L2062.ag_Fert_MGMT_P2O5 %>%
+                  filter(MGMT != "biochar")) ->L2062.ag_Fert_MGMT_P2O5
+
+    L2062.ag_Fert_MGMT_P2O5%>%
+      mutate(minicam.energy.input = "P2O5 fertilizer") -> L2062.ag_Fert_MGMT_P2O5
+
+    print(L142.ag_Fert_IO_R_C_Y_GLU_biochar %>% filter(kg_biochar_kg_crop_limited == 0))
+    print(L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU)
+
+    # same calcs for biochar application rate
+    L142.ag_Fert_IO_R_C_Y_GLU_biochar %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      select(-kg_biochar_kg_crop_limited) %>% # remove wrong application rates
+      left_join(L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU, by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU")) %>% # merge in correct application rates
+      drop_na() %>% #drop regions without biochar application
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+      left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
+      # Copy coefficients to all four technologies
+      repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2062.ag_Fert_MGMT_biochar
+
+    L2062.ag_Fert_MGMT_biochar%>% filter(MGMT == "biochar") %>%
+      left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
+                by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
+      dplyr::distinct_all() %>%
+      drop_na() %>% #drop rows for crops that don't need biochar
+      select(-Irr_Rfd, -value) %>%
+      mutate(minicam.energy.input = "biochar") ->
+      L2062.ag_Fert_MGMT_biochar
+
+
+    # because these fert inputs lower fixed costs by the amount of fertilizer applied
+    # delay the reduction in N fert inputs due to higher N use efficiency until after
+    # the variables costs have been calculated
+    L2062.ag_Fert_MGMT%>% #combine fert and biochar demands
+      # Add sector, subsector, technology names
+      mutate(AgSupplySector = GCAM_commodity,
+             AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
+             AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.IRR_DELIMITER),
+                                            MGMT, sep = aglu.MGMT_DELIMITER)) %>%
+      rename(coefficient = value) %>% #remove inclusion of minicam energy input here because it was added earlier
+      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, minicam.energy.input, year, coefficient) ->
+      L2062.AgCoef_Fert_ag_irr_mgmt
+
+    # same calcs for biochar
+    L2062.ag_Fert_MGMT_biochar %>%
+      mutate(AgSupplySector = GCAM_commodity,
+             AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
+             AgProductionTechnology = paste(paste(AgSupplySubsector, IRR_RFD, sep = aglu.IRR_DELIMITER),
+                                            MGMT, sep = aglu.MGMT_DELIMITER)) %>%
+      rename(coefficient = kg_biochar_kg_crop) %>% # copy over biochar coefficient
+      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, minicam.energy.input, year, coefficient) ->
+      L2062.AgCoef_biochar_ag_irr_mgmt
 
     # merge biochar and N fertilizer inputs together
     bind_rows(L2062.AgCoef_Fert_ag_irr_mgmt, L2062.AgCoef_biochar_ag_irr_mgmt) -> L2062.AgCoef_Fert_ag_irr_mgmt
+
+    print(L2062.AgCoef_Fert_ag_irr_mgmt %>%
+            filter(grepl("biochar", AgProductionTechnology)) %>%
+            left_join(L2062.AgCoef_biochar_ag_irr_mgmt, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year")) %>%
+            filter(if_any(everything(), is.na)) %>%
+            filter(year==2015), n=100) # biochar should be demanded in all time periods after 2015
+    print(L2062.AgCoef_Fert_ag_irr_mgmt %>%
+            filter(grepl("biochar", AgProductionTechnology)) %>%
+            left_join(L2062.AgCoef_biochar_ag_irr_mgmt, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year")) %>%
+            filter(coefficient.y == 0, coefficient.x > 0) %>% # check for 0 biochar application rates in some regions where N fertilizer is also applied
+            filter(year==2015), n=100) # biochar should be demanded in all time periods after 2015
 
     # Copy final base year coefficients to all future years, bind with historic coefficients, then remove zeroes
     # Note: this assumes constant fertilizer coefficients in the future ----
@@ -290,7 +301,6 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       select(-minicam.energy.input, -coefficient, -FertCost) ->
       L2062.AgCost_ag_irr_mgmt_adj_old
 
-    print(L2062.AgCost_ag_irr_mgmt_adj_old %>% arrange(nonLandVariableCost))
 
     # load agronomic benefits from replace P and K fertilizers. There benefits aren't limited by amount of biochar applied to land
     #subtract K2O costs from existing ag costs
@@ -337,8 +347,6 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       mutate(nonLandVariableCost = if_else(ratio < -2*10.9, -.109*nonLandVariableCost.y, nonLandVariableCost)) %>%# replace outliers on cost reduction with average fertilizer expenditures
       mutate(nonLandVariableCost = if_else(is.na(nonLandVariableCost), nonLandVariableCost.y, nonLandVariableCost)) %>% # remove NA values
       select(-nonLandVariableCost.y, -nonLandVariableCost.x, -ratio) -> L2062.AgCost_ag_irr_mgmt_adj
-
-    print(L2062.AgCost_ag_irr_mgmt_adj %>% arrange(nonLandVariableCost))
 
 
 

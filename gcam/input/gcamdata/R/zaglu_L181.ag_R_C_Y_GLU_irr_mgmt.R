@@ -37,7 +37,8 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
              "L181.ag_Prod_Mt_R_C_Y_GLU_irr_level",
              "L181.YieldMult_R_bio_GLU_irr",
              "L181.LandShare_R_bio_GLU_irr",
-             "L181.ag_kgbioha_R_C_Y_GLU_irr_level"))
+             "L181.ag_kgbioha_R_C_Y_GLU_irr_level",
+             "L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU"))
   } else if(command == driver.MAKE) {
 
     all_data <- list(...)[[1]]
@@ -283,7 +284,14 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       add_precursors("L142.ag_Fert_IO_R_C_Y_GLU_biochar") ->
       L181.ag_kgbioha_R_C_Y_GLU_irr_level
 
-    return_data(L181.LC_bm2_R_C_Yh_GLU_irr_level, L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level, L181.ag_Prod_Mt_R_C_Y_GLU_irr_level, L181.YieldMult_R_bio_GLU_irr, L181.LandShare_R_bio_GLU_irr, L181.ag_kgbioha_R_C_Y_GLU_irr_level)
+    L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU %>%
+      add_title("application rates for biochar by region / GLU / irrigation / mgmt level") %>%
+      add_units("kg/ha") %>%
+      add_legacy_name("L181.ag_kgbioha_R_C_Y_GLU_irr_level") %>%
+      add_precursors("L142.ag_Fert_IO_R_C_Y_GLU_biochar") ->
+      L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU
+
+    return_data(L181.LC_bm2_R_C_Yh_GLU_irr_level, L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level, L181.ag_Prod_Mt_R_C_Y_GLU_irr_level, L181.YieldMult_R_bio_GLU_irr, L181.LandShare_R_bio_GLU_irr, L181.ag_kgbioha_R_C_Y_GLU_irr_level, L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU)
   } else {
     stop("Unknown command")
   }
