@@ -80,7 +80,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
         mutate(value = value.x) %>%
         select(-Irr_Rfd, -value.y, -value.x) %>%
         bind_rows(L2062.ag_Fert_MGMT %>%
-                    filter(MGMT != "biochar")) ->L2062.ag_Fert_MGMT
+                    filter(MGMT != "biochar")) ->L2062.ag_Fert_MGMT # at this point, agFertMGMT should have only biochar regions for which biochar can be applied
 
       L2062.ag_Fert_MGMT%>%
       mutate(minicam.energy.input = "N fertilizer") -> L2062.ag_Fert_MGMT # units still in kg N/kg crop

@@ -154,14 +154,14 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")) %>%
       mutate(AgSupplySector = GCAM_commodity) %>%
       left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by = c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "Irr_Rfd", "region")) %>%
-      drop_na() %>% # keep only land use types where non-zero biochar is applied to land
+      drop_na() %>% filter(kg_bio_ha > 0) %>% # keep only land use types where non-zero biochar is applied to land
       left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("GCAM_commodity" ="AgSupplySector"))%>% # copy in yield increase data
       # this adds yield increases only to biochar lands with greater than 1t/ha or 1000kg/ha, due to the number of land types with near 0 application rates
       # to be clear, those lands gain the other agronomic benefits
       mutate(value = if_else(kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE, value*Yield.Increase, value)) %>%
       select(-region, -AgSupplySector, -kg_bio_ha, -Yield.Increase) -> L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar # include yield increases
 
-    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar, n=20) # this should be half the length of the other table
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar %>% filter(GCAM_subsector == "MiscCropTree", year == 2015, level=="biochar"), n=20) # this should be half the length of the other table
     print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi)
 
     bind_rows(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_biochar, L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi) -> L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level
