@@ -231,6 +231,7 @@ def biochar_rate_by_land_size(nonBaselineScenario, RCP, SSP):
 
     # plot datasets
     for i in c.GCAMConstants.future_x:
+        # check to ensure that biochar land doesn't exist until biochar is adopted in 2035
         plotting.plot_regional_vertical(scatter_data, str(i), ["SSP1"], y_label="land area (thousand km2)",
                                     title="distribution of usage of biochar lands in " + str(i), x_column="kg_bio_ha",
                                     x_label="kg biochar/ha/yr", y_column="GCAM_subsector")

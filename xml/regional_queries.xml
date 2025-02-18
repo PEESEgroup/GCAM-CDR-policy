@@ -285,6 +285,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="USA"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Africa_Eastern"/>
@@ -572,6 +581,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Eastern"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -861,6 +879,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Africa_Northern"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Africa_Southern"/>
@@ -1148,6 +1175,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Africa_Southern"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -1437,6 +1473,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Africa_Western"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Australia_NZ"/>
@@ -1724,6 +1769,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Australia_NZ"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -2013,6 +2067,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Brazil"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Canada"/>
@@ -2300,6 +2363,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Canada"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -2589,6 +2661,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Central America and Caribbean"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Central Asia"/>
@@ -2876,6 +2957,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Central Asia"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -3165,6 +3255,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="China"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="EU-12"/>
@@ -3452,6 +3551,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="EU-12"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -3741,6 +3849,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="EU-15"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Europe_Eastern"/>
@@ -4028,6 +4145,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Europe_Eastern"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -4317,6 +4443,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Europe_Non_EU"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="European Free Trade Association"/>
@@ -4604,6 +4739,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="European Free Trade Association"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -4893,6 +5037,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="India"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Indonesia"/>
@@ -5180,6 +5333,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Indonesia"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -5469,6 +5631,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Japan"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Mexico"/>
@@ -5756,6 +5927,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Mexico"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -6045,6 +6225,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Middle East"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Pakistan"/>
@@ -6332,6 +6521,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Pakistan"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -6621,6 +6819,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Russia"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="South Africa"/>
@@ -6908,6 +7115,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Africa"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -7197,6 +7413,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="South America_Northern"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="South America_Southern"/>
@@ -7484,6 +7709,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South America_Southern"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -7773,6 +8007,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="South Asia"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="South Korea"/>
@@ -8060,6 +8303,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="South Korea"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -8349,6 +8601,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Southeast Asia"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Taiwan"/>
@@ -8636,6 +8897,15 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Taiwan"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
 <aQuery>
@@ -8925,6 +9195,15 @@
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
 </aQuery>
+<aQuery>
+    <region name="Argentina"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
 
 <aQuery>
     <region name="Colombia"/>
@@ -9212,5 +9491,14 @@
             *[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
                 <comments>excludes energy and emissions related costs which are not printed</comments>
             </supplyDemandQuery>
+</aQuery>
+<aQuery>
+    <region name="Colombia"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
 </aQuery>
 
