@@ -188,21 +188,25 @@ def biochar_rate_by_land_size(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
+    #
+
     # read in biochar application rates, and get the 2050 application rates
     biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level.csv")
-    region_names = pd.read_csv("gcam/input/gcamdata/inst/extdata/water/basin_to_country_mapping.csv")
+    region_names = pd.read_csv("gcam/input/gcamdata/inst/extdata/water/basin_to_country_mapping.csv", skiprows=7)
 
     # add extra data to dataframe to help downstream code
     biochar_app_rate['GCAM'] = biochar_app_rate['region']
     biochar_app_rate['Units'] = 'kg biochar/ha/yr'
-    biochar_app_rate["SSP"] = SSP
+    biochar_app_rate["SSP"] = SSP[0]
 
     # rename GLU for mapping
-    biochar_app_rate = biochar_app_rate.merge(region_names, "left", on=["GLU"=="GLU_code"])
+    biochar_app_rate = biochar_app_rate.merge(region_names, "left", left_on="GLU", right_on="GLU_code")
     biochar_app_rate = biochar_app_rate[["kg_bio_ha", "Units", "SSP", "region", "GCAM_commodity", "GCAM_subsector", "GLU_name", "Irr_Rfd"]]
+    biochar_app_rate["Irr_Rfd"] = biochar_app_rate["Irr_Rfd"].str.upper()
 
     # extract information on crops
     biochar_app_rate['technology'] = biochar_app_rate['GCAM_commodity']
+    biochar_app_rate['GCAM'] = biochar_app_rate['region']
     biochar_app_rate['technology'] = biochar_app_rate.apply(
         lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
 
@@ -214,15 +218,22 @@ def biochar_rate_by_land_size(nonBaselineScenario, RCP, SSP):
     # get biochar land use type information
     land_use[["GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"]] = land_use['LandLeaf'].str.split("_", expand=True)
     land_use = land_use[land_use[['MGMT']].isin(["biochar"]).any(axis=1)]
-    land_use = land_use[["GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT", "2050"]]
+    print(["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"] + [str(i) for i in c.GCAMConstants.future_x])
+    land_use = land_use[["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"] + [str(i) for i in c.GCAMConstants.future_x]]
+    land_use["Irr_Rfd"] = land_use["Irr_Rfd"].str.upper()
 
     # merge datasets
     scatter_data = pd.merge(biochar_app_rate, land_use, "left", on=["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd"])
 
+    # remove high outlier
+    outlier_cutoff = 2000 # kg/ha/yr
+    scatter_data = scatter_data[scatter_data['kg_bio_ha'] < outlier_cutoff]
+
     # plot datasets
-    plotting.plot_regional_vertical(scatter_data, "2050", ["SSP1"], y_label="land area (units)",
-                                    title="distribution of usage of biochar lands", x_column="kg_bio_ha",
-                                    x_label="kg biochar/ha/yr", y_column="SSP")
+    for i in c.GCAMConstants.future_x:
+        plotting.plot_regional_vertical(scatter_data, str(i), ["SSP1"], y_label="land area (thousand km2)",
+                                    title="distribution of usage of biochar lands in " + str(i), x_column="kg_bio_ha",
+                                    x_label="kg biochar/ha/yr", y_column="GCAM_subsector")
 
 
 def farmer_economics(nonBaselineScenario, RCP, SSP):
@@ -372,6 +383,14 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
                                     "histogram of large land mgmt changes in terms of area compared to reference scenario",
                                     "mgmt", "na")
 
+    # land leaf shares histogram
+    pyrolysis_landleafs = pd.read_csv(
+        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/original" + "/land_leaf_shares.csv")
+    pyrolysis_landleafs[["Crop", "basin", "rainfed", "MGMT"]] = pyrolysis_landleafs['LandLeaf'].str.split('_', expand=True)
+    pyrolysis_landleafs = pyrolysis_landleafs[pyrolysis_landleafs[['MGMT']].isin(["biochar"]).any(axis=1)]
+    for i in c.GCAMConstants.biochar_x:
+        plotting.plot_regional_hist_avg(pyrolysis_landleafs, str(i), SSP, "count land leafs", "histogram of land leaf shares for biochar lands in "+ str(i), "MGMT", "na")
+
 
 def main():
     """
@@ -381,6 +400,7 @@ def main():
     reference_SSP = "SSP1"
     reference_RCP = "6p0"
     other_scenario = "test"  # biochar
+    biochar_rate_by_land_size(other_scenario, reference_RCP, [reference_SSP])
     farmer_economics(other_scenario, reference_RCP, [reference_SSP])
     pyrolysis_costing(other_scenario, reference_RCP, [reference_SSP])
     animal_feed_and_products(other_scenario, reference_RCP, [reference_SSP])

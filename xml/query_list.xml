@@ -10,6 +10,15 @@
 </aQuery>
 <aQuery>
     <region name="Global"/>
+    <query title="land leaf shares">
+        <axis1 name="LandLeaf">LandLeaf</axis1>
+        <axis2 name="Year">share[@year]</axis2>
+        <xPath buildList="true" dataName="share" group="false" sumAll="false">/LandNode[@name='root' or @type='LandNode' (:collapse:)]//share/text()</xPath>
+        <comments/>
+    </query>
+</aQuery>
+<aQuery>
+    <region name="Global"/>
     <marketQuery title="supply of all markets">
         <axis1 name="market">market</axis1>
         <axis2 name="Year">market</axis2>
