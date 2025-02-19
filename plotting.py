@@ -5,7 +5,6 @@ import pandas as pd
 import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from pylab import *
-from scipy.stats import bootstrap, ttest_rel, pearsonr
 import data_manipulation
 import plotly.express as px
 

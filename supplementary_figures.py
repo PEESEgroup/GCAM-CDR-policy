@@ -13,26 +13,18 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # get population data
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    released_pop = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/original/population_by_region.csv")
-    pyrolysis_pop = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/population_by_region.csv")
-    released_pop = released_pop[released_pop[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_pop = pyrolysis_pop[pyrolysis_pop[['SSP']].isin(SSP).any(axis=1)]
+    released_pop = data_manipulation.get_sensitivity_data(["released"], "population_by_region", SSP, RCP=RCP,
+                                                          source="original")
+    pyrolysis_pop = data_manipulation.get_sensitivity_data(nonBaselineScenario, "population_by_region", SSP, RCP=RCP,
+                                                           source="masked")
     flat_diff_pop = data_manipulation.flat_difference(released_pop, pyrolysis_pop, ["SSP", "GCAM"])
     print(flat_diff_pop["2050"])
 
     # get calorie data
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    released_Pcal = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/original/food_consumption_by_type_specific.csv")
-    pyrolysis_Pcal = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/food_consumption_by_type_specific.csv")
-    released_Pcal = released_Pcal[released_Pcal[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_Pcal = pyrolysis_Pcal[pyrolysis_Pcal[['SSP']].isin(SSP).any(axis=1)]
+    released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,
+                                                           RCP=RCP, source="original")
+    pyrolysis_Pcal = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_consumption_by_type_specific",
+                                                            SSP, RCP=RCP, source="masked")
     released_global_pcal = released_Pcal[released_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
     print(released_global_pcal[["subsector", "technology", "2050", "Units"]])
     flat_diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal,
@@ -65,14 +57,12 @@ def luc_by_region(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # get luc data
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    released_luc = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/original/LUC_emissions_by_LUT.csv")
-    pyrolysis_luc = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/LUC_emissions_by_LUT.csv")
+    released_luc = data_manipulation.get_sensitivity_data(["released"], "LUC_emissions_by_LUT", SSP, RCP=RCP,
+                                                          source="original")
+    pyrolysis_luc = data_manipulation.get_sensitivity_data(nonBaselineScenario, "LUC_emissions_by_LUT", SSP, RCP=RCP,
+                                                           source="masked")
+
     released_luc = data_manipulation.group(released_luc, ["GCAM", "SSP"])
-    released_luc = released_luc[released_luc[['SSP']].isin(SSP).any(axis=1)]
     pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["GCAM", "SSP"])
     flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
     print(flat_diff_luc[["GCAM", "2050", "Units"]])
@@ -85,13 +75,10 @@ def luc_by_region(nonBaselineScenario, RCP, SSP):
     plotting.plot_line_by_product(flat_diff_luc, ["SSP1"], "SSP", ["SSP1"], "SSP",
                                   "Net LUC compared to reference scenario")
 
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    released_luc = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/original/LUC_emissions_by_LUT.csv")
-    pyrolysis_luc = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/LUC_emissions_by_LUT.csv")
-    released_luc = released_luc[released_luc[['SSP']].isin(SSP).any(axis=1)]
+    released_luc = data_manipulation.get_sensitivity_data(["released"], "LUC_emissions_by_LUT", SSP, RCP=RCP,
+                                                          source="original")
+    pyrolysis_luc = data_manipulation.get_sensitivity_data(nonBaselineScenario, "LUC_emissions_by_LUT", SSP, RCP=RCP,
+                                                           source="masked")
     released_luc["LandLeaf"] = released_luc.apply(lambda row: data_manipulation.relabel_detailed_land_use(row), axis=1)
     pyrolysis_luc["LandLeaf"] = pyrolysis_luc.apply(lambda row: data_manipulation.relabel_detailed_land_use(row),
                                                     axis=1)
@@ -112,14 +99,10 @@ def animal_feed_and_products(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    released_supply = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/original/supply_of_all_markets.csv")
-    pyrolysis_supply = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/supply_of_all_markets.csv")
-    released_supply = released_supply[released_supply[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_supply = pyrolysis_supply[pyrolysis_supply[['SSP']].isin(SSP).any(axis=1)]
+    released_supply = data_manipulation.get_sensitivity_data(["released"], "supply_of_all_markets", SSP, RCP=RCP,
+                                                             source="original")
+    pyrolysis_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP,
+                                                              RCP=RCP, source="masked")
     feed = ["FodderHerb_Residue", "FeedCrops", "Pasture_FodderGrass", "Scavenging_Other"]  # the different feed types
     released_feed = released_supply[released_supply[['product']].isin(feed).any(axis=1)]
     pyrolysis_feed = pyrolysis_supply[pyrolysis_supply[['product']].isin(feed).any(axis=1)]
@@ -159,22 +142,14 @@ def pyrolysis_costing(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
-    #get total costs
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    total_cost = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/costs_by_tech.csv")
-    # get unit costs (no capex)
-    unit_cost = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/costs_by_tech_and_input.csv")
-    # get feedstock costs
-    feedstock_cost = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/prices_of_all_markets.csv")
+    # get total costs
+    total_cost = data_manipulation.get_sensitivity_data(nonBaselineScenario, "costs_by_tech", SSP, RCP=RCP,
+                                                        source="masked")
+    unit_cost = data_manipulation.get_sensitivity_data(nonBaselineScenario, "costs_by_tech_and_input", SSP, RCP=RCP,
+                                                       source="masked")
+    feedstock_cost = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP, RCP=RCP,
+                                                            source="masked")
 
-    total_cost = total_cost[total_cost[['SSP']].isin(SSP).any(axis=1)]
-    unit_cost = unit_cost[unit_cost[['SSP']].isin(SSP).any(axis=1)]
-    feedstock_cost = feedstock_cost[feedstock_cost[['SSP']].isin(SSP).any(axis=1)]
     total_cost = total_cost[total_cost[['sector']].isin(['biochar']).any(axis=1)]
     unit_cost = unit_cost[unit_cost[['sector']].isin(['biochar']).any(axis=1)]
     feedstock_cost = feedstock_cost[feedstock_cost[['product']].isin(
@@ -202,8 +177,6 @@ def biochar_rate_by_land_size(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # read in biochar application rates, and get the 2050 application rates
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
     biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level.csv")
     region_names = pd.read_csv("gcam/input/gcamdata/inst/extdata/water/basin_to_country_mapping.csv", skiprows=7)
 
@@ -214,7 +187,8 @@ def biochar_rate_by_land_size(nonBaselineScenario, RCP, SSP):
 
     # rename GLU for mapping
     biochar_app_rate = biochar_app_rate.merge(region_names, "left", left_on="GLU", right_on="GLU_code")
-    biochar_app_rate = biochar_app_rate[["kg_bio_ha", "Units", "SSP", "region", "GCAM_commodity", "GCAM_subsector", "GLU_name", "Irr_Rfd"]]
+    biochar_app_rate = biochar_app_rate[
+        ["kg_bio_ha", "Units", "SSP", "region", "GCAM_commodity", "GCAM_subsector", "GLU_name", "Irr_Rfd"]]
     biochar_app_rate["Irr_Rfd"] = biochar_app_rate["Irr_Rfd"].str.upper()
 
     # extract information on crops
@@ -225,30 +199,30 @@ def biochar_rate_by_land_size(nonBaselineScenario, RCP, SSP):
 
     # read in detailed land allocation
     # biochar cropland application changes
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    land_use = pd.read_csv(
-        "data/gcam_out/" + nonBaselineScenario + "/" + RCP + "/masked/" + "detailed_land_allocation.csv")
-    land_use = land_use[land_use[['SSP']].isin(SSP).any(axis=1)]
+    land_use = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP, RCP=RCP,
+                                                      source="masked")
     # get biochar land use type information
     land_use[["GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"]] = land_use['LandLeaf'].str.split("_", expand=True)
     land_use = land_use[land_use[['MGMT']].isin(["biochar"]).any(axis=1)]
     print(["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"] + [str(i) for i in c.GCAMConstants.future_x])
-    land_use = land_use[["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"] + [str(i) for i in c.GCAMConstants.future_x]]
+    land_use = land_use[
+        ["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"] + [str(i) for i in c.GCAMConstants.future_x]]
     land_use["Irr_Rfd"] = land_use["Irr_Rfd"].str.upper()
 
     # merge datasets
     scatter_data = pd.merge(biochar_app_rate, land_use, "left", on=["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd"])
 
     # remove high outlier
-    outlier_cutoff = 2000 # kg/ha/yr
+    outlier_cutoff = 2000  # kg/ha/yr
     scatter_data = scatter_data[scatter_data['kg_bio_ha'] < outlier_cutoff]
 
     # plot datasets
     for i in c.GCAMConstants.future_x:
         # check to ensure that biochar land doesn't exist until biochar is adopted in 2035
         plotting.plot_regional_vertical(scatter_data, str(i), ["SSP1"], y_label="land area (thousand km2)",
-                                    title="distribution of usage of biochar lands in " + str(i), x_column="kg_bio_ha",
-                                    x_label="kg biochar/ha/yr", y_column="GCAM_subsector")
+                                        title="distribution of usage of biochar lands in " + str(i),
+                                        x_column="kg_bio_ha",
+                                        x_label="kg biochar/ha/yr", y_column="GCAM_subsector")
 
 
 def farmer_economics(nonBaselineScenario, RCP, SSP):
@@ -260,32 +234,20 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # get data
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    pyrolysis_yields = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/ag_tech_yield.csv")
-    pyrolysis_land = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/detailed_land_allocation.csv")
-    pyrolysis_profit_rate = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/profit_rate.csv")
-    released_yields = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/original/ag_tech_yield.csv")
-    released_land = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/original/detailed_land_allocation.csv")
-    released_profit_rate = pd.read_csv(
-        "data/gcam_out/released/" + RCP + "/original/profit_rate.csv")
+    pyrolysis_yields = data_manipulation.get_sensitivity_data(nonBaselineScenario, "ag_tech_yield", SSP, RCP=RCP,
+                                                              source="masked")
+    pyrolysis_land = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP,
+                                                            RCP=RCP, source="masked")
+    pyrolysis_profit_rate = data_manipulation.get_sensitivity_data(nonBaselineScenario, "profit_rate", SSP, RCP=RCP,
+                                                                   source="masked")
+    released_yields = data_manipulation.get_sensitivity_data(["released"], "ag_tech_yield", SSP, RCP=RCP,
+                                                             source="original")
+    released_land = data_manipulation.get_sensitivity_data(["released"], "detailed_land_allocation", SSP, RCP=RCP,
+                                                           source="original")
+    released_profit_rate = data_manipulation.get_sensitivity_data(["released"], "profit_rate", SSP, RCP=RCP,
+                                                                  source="original")
     pyrolysis_yields["Units"] = "NA"
     released_yields["Units"] = "NA"
-    released_yields = released_yields[released_yields[['SSP']].isin(SSP).any(axis=1)]
-    released_land = released_land[released_land[['SSP']].isin(SSP).any(axis=1)]
-    released_profit_rate = released_profit_rate[released_profit_rate[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_land = pyrolysis_land[pyrolysis_land[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_profit_rate = pyrolysis_profit_rate[pyrolysis_profit_rate[['SSP']].isin(SSP).any(axis=1)]
-    pyrolysis_yields = pyrolysis_yields[pyrolysis_yields[['SSP']].isin(SSP).any(axis=1)]
 
     # profit rates
     # change in profit to the farmer compared to baseline (hi mgmt type)
@@ -405,13 +367,14 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
                                     "mgmt", "na")
 
     # land leaf shares histogram
-    get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
-    pyrolysis_landleafs = pd.read_csv(
-        "data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/land_leaf_shares.csv")
-    pyrolysis_landleafs[["Crop", "basin", "rainfed", "MGMT"]] = pyrolysis_landleafs['LandLeaf'].str.split('_', expand=True)
+    pyrolysis_landleafs = data_manipulation.get_sensitivity_data(nonBaselineScenario, "land_leaf_shares", SSP, RCP=RCP,
+                                                                 source="masked")
+    pyrolysis_landleafs[["Crop", "basin", "rainfed", "MGMT"]] = pyrolysis_landleafs['LandLeaf'].str.split('_',
+                                                                                                          expand=True)
     pyrolysis_landleafs = pyrolysis_landleafs[pyrolysis_landleafs[['MGMT']].isin(["biochar"]).any(axis=1)]
     for i in c.GCAMConstants.biochar_x:
-        plotting.plot_regional_hist_avg(pyrolysis_landleafs, str(i), SSP, "count land leafs", "histogram of land leaf shares for biochar lands in "+ str(i), "MGMT", "na")
+        plotting.plot_regional_hist_avg(pyrolysis_landleafs, str(i), SSP, "count land leafs",
+                                        "histogram of land leaf shares for biochar lands in " + str(i), "MGMT", "na")
 
 
 def main():

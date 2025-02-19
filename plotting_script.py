@@ -429,22 +429,15 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
-    #TODO: get working
+    #TODO: get working, if not for the refined liquids market, for the inevitable sensitivity analysis
     for i in RCP:
-        # Changes in energy mix
-        # refined liquids production
+        # Changes in energy mix, especially refined liquids production
         ref_released = data_manipulation.get_sensitivity_data(["released"], "refined_liquids_production_by_tech", SSP, RCP=RCP, source="original")
         ref_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario, "refined_liquids_production_by_tech", SSP, RCP=RCP, source="masked")
 
-        # add manure fuel row to the released version so that the flat diff can be analyzed
-        man_fuel = ref_pyrolysis[ref_pyrolysis[["technology"]].isin(["manure fuel", "manure_fuel"]).any(axis=1)]
-        for j in c.GCAMConstants.biochar_x:
-            man_fuel.loc[:, str(j)] = 0
-        ref_released = pd.concat([ref_released, man_fuel])
-
-        # select global region
-        ref_released = ref_released[ref_released[['GCAM']].isin(["Global"]).any(axis=1)]
-        ref_pyrolysis = ref_pyrolysis[ref_pyrolysis[['GCAM']].isin(["Global"]).any(axis=1)]
+        # calculate global amounts
+        ref_released = data_manipulation.group(ref_released, "technology")
+        ref_pyrolysis = data_manipulation.group(ref_pyrolysis, "technology")
 
         # add baseline data
         flat_diff_biofuel = data_manipulation.flat_difference(ref_released, ref_pyrolysis,
@@ -453,7 +446,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
                                                                  ["SSP", "technology", "GCAM"])
 
         baseline_data = flat_diff_biofuel.copy(deep=True)
-        baseline_data = baseline_data[baseline_data[['SSP']].isin(["SSP1"]).any(axis=1)]
+        baseline_data = baseline_data[baseline_data[['SSP']].isin([]).any(axis=1)]
         baseline_data["technology"] = baseline_data.apply(lambda row: data_manipulation.relabel_food(row, "technology"),
                                                           axis=1)
         baseline_data["SSP"] = "released"
@@ -484,10 +477,10 @@ def main():
     reference_RCP = "6p0"
     other_scenario = ["test"]  # biochar
     biochar_year = "2050"
-    figure2(other_scenario, reference_RCP, reference_SSP)
-    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure5(other_scenario, reference_RCP, reference_SSP)
+    #figure2(other_scenario, reference_RCP, reference_SSP)
+    #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure5(other_scenario, reference_RCP, reference_SSP)
     cue_figure(other_scenario, reference_RCP, reference_SSP)
 
 
