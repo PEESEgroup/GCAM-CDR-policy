@@ -372,6 +372,7 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
     pyrolysis_landleafs[["Crop", "basin", "rainfed", "MGMT"]] = pyrolysis_landleafs['LandLeaf'].str.split('_',
                                                                                                           expand=True)
     pyrolysis_landleafs = pyrolysis_landleafs[pyrolysis_landleafs[['MGMT']].isin(["biochar"]).any(axis=1)]
+    pyrolysis_landleafs["Units"] = "land share"
     for i in c.GCAMConstants.biochar_x:
         plotting.plot_regional_hist_avg(pyrolysis_landleafs, str(i), SSP, "count land leafs",
                                         "histogram of land leaf shares for biochar lands in " + str(i), "MGMT", "na")
@@ -382,15 +383,15 @@ def main():
     Main method for running all scripts
     :return: N/A
     """
-    reference_SSP = "SSP1"
+    reference_SSP = ["SSP1"]
     reference_RCP = "6p0"
-    other_scenario = "test"  # biochar
-    biochar_rate_by_land_size(other_scenario, reference_RCP, [reference_SSP])
-    farmer_economics(other_scenario, reference_RCP, [reference_SSP])
-    pyrolysis_costing(other_scenario, reference_RCP, [reference_SSP])
-    animal_feed_and_products(other_scenario, reference_RCP, [reference_SSP])
-    luc_by_region(other_scenario, reference_RCP, [reference_SSP])
-    pop_and_calories(other_scenario, reference_RCP, [reference_SSP])
+    other_scenario = ["test"]  # biochar
+    # biochar_rate_by_land_size(other_scenario, reference_RCP, reference_SSP)
+    farmer_economics(other_scenario, reference_RCP, reference_SSP)
+    pyrolysis_costing(other_scenario, reference_RCP, reference_SSP)
+    animal_feed_and_products(other_scenario, reference_RCP, reference_SSP)
+    luc_by_region(other_scenario, reference_RCP, reference_SSP)
+    pop_and_calories(other_scenario, reference_RCP, reference_SSP)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 import geopandas as gpd
 import matplotlib.patches as patches
+import numpy as np
 from matplotlib.collections import PatchCollection
 import pandas as pd
 import constants as c
@@ -1148,6 +1149,9 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
         if n == 5:
             n = 1
         colors, divisions = get_colors(n)
+
+        if (np.isnan(prices[year].max())) or (np.isnan(prices[year].min())):
+            return
 
         # plot histogram
         bind_width = (int(prices[year].max() + .1) - int(prices[year].min() - .1)) / 40
