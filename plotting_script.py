@@ -24,10 +24,6 @@ def figure2(nonBaselineScenario, RCP, SSP):
         lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
     crops = biochar_app_rate["technology"].unique()
 
-    # plot the data
-    plotting.plot_world(biochar_app_rate, crops, SSP, "product", "technology", ["2050"],
-                        "nutrient-limited biochar application rate")
-
     # plot histogram of crop/region price combinations
     plotting.plot_regional_hist_avg(biochar_app_rate, "2050", [SSP], "region-basin-crop-irr combination count",
                                     "histogram of biochar app rates", "technology", "na")
@@ -44,7 +40,7 @@ def figure2(nonBaselineScenario, RCP, SSP):
                                     "histogram of outlier " + str(outlier_cutoff) + "kg per ha removed biochar app rates", "technology", "na")
 
     # global fertilizer reduction
-    released_N = data_manipulation.get_sensitivity_data([["released"]], "ammonia_production_by_tech", SSP, RCP=RCP, source="original")
+    released_N = data_manipulation.get_sensitivity_data(["released"], "ammonia_production_by_tech", SSP, RCP=RCP, source="original")
     pyrolysis_N = data_manipulation.get_sensitivity_data(nonBaselineScenario, "ammonia_production_by_tech", SSP, RCP=RCP, source="masked")
     released_N = data_manipulation.group(released_N, ["SSP"])  # get global level data
     pyrolysis_N = data_manipulation.group(pyrolysis_N, ["SSP"])  # get global level data
@@ -488,8 +484,8 @@ def main():
     reference_RCP = "6p0"
     other_scenario = ["test"]  # biochar
     biochar_year = "2050"
-    #figure2(other_scenario, reference_RCP, reference_SSP)
-    #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure2(other_scenario, reference_RCP, reference_SSP)
+    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure5(other_scenario, reference_RCP, reference_SSP)
     cue_figure(other_scenario, reference_RCP, reference_SSP)

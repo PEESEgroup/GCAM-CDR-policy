@@ -246,6 +246,7 @@ def main():
             masked_fname = "/".join(dir_path)
             if not os.path.exists(masked_fname):
                 os.makedirs(masked_fname)
+                print("made masked directory")
 
             for item in csvs.items():  # for each file
                 df = process_file(item[1], i)  # preprocess the data
