@@ -152,137 +152,6 @@ def relabel_SSP(row):
         return "error"
 
 
-def flat_summation(old, new, columns):
-    """
-    Calculates the flat element-wise summation between two dataframes
-    :param old: the old dataframe
-    :param new: the new dataframe
-    :param columns: the list of columns that will uniquely identify each product
-    :return: a combined dataframe
-    """
-    # get values from dataframes
-    merged = old.merge(new, how="left", on=columns, suffixes=("_left", "_right"))
-
-    for i in c.GCAMConstants.x:
-        merged[str(i)] = merged[str(i) + "_right"] + merged[str(i) + "_left"]
-        merged = merged.drop([str(i) + "_left"], axis=1)
-
-    # update the version name
-    merged['Version'] = "flat diff between " + str(merged['Version_right'][0]) + " and " + str(
-        merged['Version_left'][0])
-    merged = merged.drop(['Version_right'], axis=1)
-    merged = merged.drop(['Version_left'], axis=1)
-
-    # fix the column names
-    merged.columns = merged.columns.str.replace("_left", '')
-    merged = merged[c.GCAMConstants.column_order]
-
-    return merged
-
-
-def label_year(row):
-    """
-    identifies the year of maximum disruption
-    :param row: a pd Series from a dataframe
-    :return: the index of the maximum disruption value
-    """
-    row = row.iloc[:len(c.GCAMConstants.x)]
-    max_val = row.max()
-    min_val = row.min()
-    if abs(min_val) > max_val:
-        return row.idxmin()
-    else:
-        return row.idxmin()
-
-
-def label_disruption(row):
-    """
-    gets the information for the maximum disruption
-    :param row: pd Series containing a row from a dataframe
-    :return: the value that is the furthest distances away from zero change
-    """
-    row = row.iloc[:len(c.GCAMConstants.x)]
-    max_val = row.max()
-    min_val = row.min()
-    if abs(min_val) > max_val:
-        return min_val
-    else:
-        return max_val
-
-
-def label_supply_in_year(row):
-    """
-    function to get the amount of supply in the year of maximum disruption
-    :param row: pd Series of a row in the dataframe
-    :return: the supply in the yeart of maximum disruption
-    """
-    return row[str(row['year']) + "_right"]
-
-
-def years_to_maximum_disruption(difference_dataframe, supply_dataframe, SSP, products, product_column):
-    """
-    calculates the year in which the maximum disruption, or change between released model and pyrolysis model occurs
-    :param difference_dataframe: the dataframe with the differences between model versions
-    :param supply_dataframe: the supply in the released model
-    :param SSP: the SSP being evaluated
-    :param products: the products being evaluated
-    :param product_column: the column containing the relevant products
-    :return: the dataframe containing this additional information
-    """
-    # at this stage, if this df is empty, then we know that there is no material to plot
-    df = difference_dataframe[
-        (difference_dataframe['SSP'].isin(SSP)) & (difference_dataframe[product_column].isin(products))]
-    df2 = supply_dataframe[(supply_dataframe['SSP'].isin(SSP)) & (supply_dataframe[product_column].isin(products))]
-    df = pd.merge(df, df2, on=["SSP", "GCAM", "technology"], how="left", suffixes=("", "_right"))
-
-    df['disruption'] = df.apply(lambda row: label_disruption(row), axis=1)
-    df['year'] = df.apply(lambda row: label_year(row), axis=1)
-    df['supply_at_year'] = df.apply(lambda row: label_supply_in_year(row), axis=1)
-
-    return df
-
-
-def change_between_years(dataframe):
-    """
-    calculates the amount of change between adjacent years for a given dataframe
-    :param dataframe: the dataframe containing data
-    :return: a dataframe with additional columns for rates of change of product value between years
-    """
-    for i in c.GCAMConstants.x:
-        if i != 1990 and i != 2005:
-            dataframe[str(i - 5) + "-" + str(i)] = (dataframe[str(i)] - dataframe[str(i - 5)])
-    return dataframe
-
-
-def percentage_change_between_years(dataframe):
-    """
-    calculates the percentage change between adjacent years for a given dataframe
-    :param dataframe: the dataframe containing data
-    :return: a dataframe with additional columns for rates of change of product value between years
-    """
-    for i in c.GCAMConstants.x:
-        if i != 1990 and i != 2005:
-            dataframe[str(i - 5) + "-" + str(i)] = 100 * (dataframe[str(i)] - dataframe[str(i - 5)]) / (
-                dataframe[str(i - 5)])
-    return dataframe
-
-
-def label_fuel_tech(row, column, products):
-    """
-    relabels similar technologies to enable grouping
-    :param row: a pd Series from a dataframe
-    :param column: the column of the pd series being searched
-    :param products: the list of suffixes to remove
-    :return: the relabeled technology
-    """
-    for i in products:
-        if i in row[column]:
-            to_return = row[column].rstrip(i)
-            if to_return == "cellulosic ethano":  # dunno why rstrip removes an extra character for cellulosic ethanol
-                return "cellulosic ethanol"
-            return to_return
-    return row[column]
-
 
 def label_sequestration_sectors(row):
     """
@@ -562,21 +431,6 @@ def relabel_food_demand(row):
         return "error"
 
 
-def relabel_fertilizer_product(row):
-    """
-    lambda function to relabel GCAM food demand categories for greater accessibility.
-    :param row: row of data
-    :return: updated name of GCAM region
-    """
-    item = row["subsector"]
-    if item == "beef_biochar" or item == "dairy_biochar" or item == "goat_biochar" or item == "pork_biochar" or item == "poultry_biochar":
-        return "biochar"
-    elif item == "gas" or item == "refined liquids" or item == "coal":
-        return "fossil fuels"
-    else:
-        return item
-
-
 def relabel_land_crops(row, column):
     """
     lambda function to relabel GCAM LandLeaf to extract different crop classes
@@ -829,26 +683,18 @@ def process_luc(land_use, scale_factor):
     return land_for_alluvial
 
 
-def relabel_fuel(row):
-    """
-    relabels fuel by stripping additional labeling information
-    :param row: row of pandas data frame
-    :return: the easily readable data
-    """
-    return row["fuel"][2:]
-
-
-def get_sensitivity_data(scenario_list, fname, RCP="2p6"):
+def get_sensitivity_data(scenario_list, fname, RCP="2p6", source="masked"):
     """
     method to get data from different csvs scattered across different scenario definitions. Useful for collating results
     across the sensitivity analyses
     :param scenario_list: a list of all scenarios to be considered in the sensitivity analysis
     :param RCP: the RCP of the scenario being used. defaults to 2.6
     :param fname: the filename (needs to include .csv extension) of the desired data sheet
+    :param source: whether to get the masked or original source data
     :return:
     """
     all_data = pd.DataFrame(c.GCAMConstants.column_order)
     for nonBaselineScenario in scenario_list:
-        pyrolysis_df = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/" + fname)
+        pyrolysis_df = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/" + source + "/" + fname)
         all_data = pd.concat([all_data, pyrolysis_df])
     return all_data
