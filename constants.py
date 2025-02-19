@@ -13,8 +13,6 @@ class GCAMConstants:
     XML_DB_loc = "gcam/output/database_basexdb-"
     processed_map_loc = "data/maps/simplified_world_map.shp"
 
-    combines_csv_fnames = ["refined liquids costs by tech", "refined liquids production by tech (new)", "refined liquids production by tech"]
-
     # other relevant constants
     SSPs = ["SSP1", "SSP2", "SSP3", "SSP4", "SSP5"]
     RCPs = ["6p0", "4p5", "3p7", "2p6", "1p9"]
@@ -30,7 +28,8 @@ class GCAMConstants:
                     "GCAM", "sector", "subsector", "technology", "output", "concentration", "input", "product", "fuel",
                     "LandLeaf", "GHG", "Units"]
     world_columns = ['OBJECTID', 'geometry', 'GCAM']
-    x = [1990, 2005, 2010, 2015, 2020, 2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
+    x = [1990, 2005, 2010, 2015, 2020, 2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085,
+         2090, 2095, 2100]
     plotting_x = [2025, 2030, 2035, 2040, 2045, 2050]
     future_x = [2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
     biochar_x = [2040, 2045, 2050, 2055, 2060]

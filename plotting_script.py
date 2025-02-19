@@ -22,26 +22,31 @@ def figure2(nonBaselineScenario, RCP, SSP):
     biochar_app_rate['technology'] = biochar_app_rate['GCAM_commodity']
     biochar_app_rate['technology'] = biochar_app_rate.apply(
         lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
-    crops = biochar_app_rate["technology"].unique()
 
     # plot histogram of crop/region price combinations
     plotting.plot_regional_hist_avg(biochar_app_rate, "2050", [SSP], "region-basin-crop-irr combination count",
                                     "histogram of biochar app rates", "technology", "na")
 
     # remove outliers for plotting purposes
-    outlier_cutoff = 6000 # kg/ha/yr
+    outlier_cutoff = 6000  # kg/ha/yr
     biochar_app_rate_no_outlier = biochar_app_rate[biochar_app_rate['2050'] < outlier_cutoff]
-    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, "2050", [SSP], "region-basin-crop-irr combination count",
-                                    "histogram of outlier " + str(outlier_cutoff) + "kg per ha removed biochar app rates", "technology", "na")
+    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, "2050", [SSP],
+                                    "region-basin-crop-irr combination count",
+                                    "histogram of outlier " + str(
+                                        outlier_cutoff) + "kg per ha removed biochar app rates", "technology", "na")
 
-    outlier_cutoff = 2000 # kg/ha/yr
+    outlier_cutoff = 2000  # kg/ha/yr
     biochar_app_rate_no_outlier = biochar_app_rate[biochar_app_rate['2050'] < outlier_cutoff]
-    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, "2050", [SSP], "region-basin-crop-irr combination count",
-                                    "histogram of outlier " + str(outlier_cutoff) + "kg per ha removed biochar app rates", "technology", "na")
+    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, "2050", [SSP],
+                                    "region-basin-crop-irr combination count",
+                                    "histogram of outlier " + str(
+                                        outlier_cutoff) + "kg per ha removed biochar app rates", "technology", "na")
 
     # global fertilizer reduction
-    released_N = data_manipulation.get_sensitivity_data(["released"], "ammonia_production_by_tech", SSP, RCP=RCP, source="original")
-    pyrolysis_N = data_manipulation.get_sensitivity_data(nonBaselineScenario, "ammonia_production_by_tech", SSP, RCP=RCP, source="masked")
+    released_N = data_manipulation.get_sensitivity_data(["released"], "ammonia_production_by_tech", SSP, RCP=RCP,
+                                                        source="original")
+    pyrolysis_N = data_manipulation.get_sensitivity_data(nonBaselineScenario, "ammonia_production_by_tech", SSP,
+                                                         RCP=RCP, source="masked")
     released_N = data_manipulation.group(released_N, ["SSP"])  # get global level data
     pyrolysis_N = data_manipulation.group(pyrolysis_N, ["SSP"])  # get global level data
 
@@ -61,7 +66,8 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     :return: N/A
     """
     # biochar cropland application changes
-    land_use = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP, RCP=RCP, source="masked")
+    land_use = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP, RCP=RCP,
+                                                      source="masked")
     # get land use type information
     land_use[["Crop", "Basin", "IRR_RFD", "MGMT"]] = land_use['LandLeaf'].str.split("_", expand=True)
     land_use["Crop"] = land_use.apply(lambda row: data_manipulation.relabel_land_crops(row, "Crop"), axis=1)
@@ -102,9 +108,12 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     plotting.plot_alluvial(land_for_alluvial)
 
     # regional land use change
-    released_land = data_manipulation.get_sensitivity_data(["released"], "detailed_land_allocation", SSP, RCP=RCP, source="original")
-    pyrolysis_land = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP, RCP=RCP, source="masked")
-    released_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row),axis=1)
+    released_land = data_manipulation.get_sensitivity_data(["released"], "detailed_land_allocation", SSP, RCP=RCP,
+                                                           source="original")
+    pyrolysis_land = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP,
+                                                            RCP=RCP, source="masked")
+    released_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row),
+                                                    axis=1)
     pyrolysis_land["LandLeaf"] = pyrolysis_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row),
                                                       axis=1)
     pyrolysis_land = data_manipulation.group(pyrolysis_land, ["GCAM", "LandLeaf"])
@@ -145,8 +154,12 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     :return: graph of biochar C sequestration, biochar C emissions avoidance, and biochar prices
     """
     # plotting changes in energy mix
-    ref_released = data_manipulation.get_sensitivity_data(["released"], "primary_energy_consumption_by_region_direct_equivalent", SSP, RCP=RCP, source="original")
-    ref_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario, "primary_energy_consumption_by_region_direct_equivalent", SSP, RCP=RCP, source="masked")
+    ref_released = data_manipulation.get_sensitivity_data(["released"],
+                                                          "primary_energy_consumption_by_region_direct_equivalent", SSP,
+                                                          RCP=RCP, source="original")
+    ref_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
+                                                           "primary_energy_consumption_by_region_direct_equivalent",
+                                                           SSP, RCP=RCP, source="masked")
 
     # get the right SSP data
     ref_released["SSP"] = "released"
@@ -159,7 +172,9 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     print(perc_diff[[biochar_year, "fuel", "Units"]])
 
     # plotting CO2 sequestering
-    co2_seq_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario, "CO2_emissions_by_tech_excluding_resource_production", SSP, RCP=RCP, source="masked")
+    co2_seq_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
+                                                               "CO2_emissions_by_tech_excluding_resource_production",
+                                                               SSP, RCP=RCP, source="masked")
     co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
     co2_seq_pyrolysis['technology'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "technology"),
                                                               axis=1)
@@ -180,7 +195,9 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     # plotting ghg emissions avoidance
     # TODO: update to include avoided N2O emissions
     # TODO: update to report values in Mt CO2-eq
-    co2_avd_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario, "nonCO2_emissions_by_tech_excluding_resource_production", SSP, RCP=RCP, source="masked")
+    co2_avd_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
+                                                               "nonCO2_emissions_by_tech_excluding_resource_production",
+                                                               SSP, RCP=RCP, source="masked")
     co2_avd_pyrolysis = data_manipulation.group(co2_avd_pyrolysis, ["technology", "SSP"])
     co2_avd_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
     co2_avd_pyrolysis['technology'] = co2_avd_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "technology"),
@@ -192,19 +209,22 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     for i in c.GCAMConstants.biochar_x:
         co2_avd_pyrolysis[str(i)] = co2_avd_pyrolysis[str(i)] * -1
     plotting.plot_line_product_CI(co2_avd_pyrolysis, products, "technology", SSP[0], "Version",
-                                  title="carbon emissions avoidance across RCP pathways in " + SSP[0] + " baseline in RCP" + str(
+                                  title="carbon emissions avoidance across RCP pathways in " + SSP[
+                                      0] + " baseline in RCP" + str(
                                       RCP))
     # print values of Mt C avoided
     print("avoided C\n", co2_avd_pyrolysis.loc[:, [biochar_year, "SSP", "technology", "Units"]])
 
     # print values of biochar supply
-    biochar_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP,RCP=RCP, source="masked")
+    biochar_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP, RCP=RCP,
+                                                            source="masked")
     biochar_supply = biochar_supply[biochar_supply[['product']].isin(["biochar"]).any(axis=1)]
     biochar_supply = data_manipulation.group(biochar_supply, ["product"])
     print(biochar_supply.loc[:, [biochar_year, "Units"]])
 
     # frequency of biochar prices
-    biochar_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP,RCP=RCP, source="masked")
+    biochar_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP, RCP=RCP,
+                                                           source="masked")
     biochar_price['product'] = biochar_price.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
     biochar_price = biochar_price[biochar_price[['product']].isin(["biochar"]).any(axis=1)]
     biochar_price = biochar_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.biochar_x])
@@ -223,8 +243,10 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
 
     # print out differences in carbon prices
     for year in c.GCAMConstants.biochar_x:
-        c_pyro_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "CO2_prices", SSP,RCP=RCP, source="masked")
-        c_rel_price = data_manipulation.get_sensitivity_data(["released"], "CO2_prices", SSP,RCP=RCP, source="original")
+        c_pyro_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "CO2_prices", SSP, RCP=RCP,
+                                                              source="masked")
+        c_rel_price = data_manipulation.get_sensitivity_data(["released"], "CO2_prices", SSP, RCP=RCP,
+                                                             source="original")
         c_pyro_price = c_pyro_price.drop_duplicates()
         c_rel_price = c_rel_price.drop_duplicates()
         product = ["CO2"]
@@ -255,20 +277,27 @@ def figure5(nonBaselineScenario, RCP, SSP):
     :return: N/A
     """
     # calculate food accessibility and undernourishment
-    released_caloric_consumption = data_manipulation.get_sensitivity_data(["released"], "food_demand_per_capita", SSP,RCP=RCP, source="original")
-    pyrolysis_caloric_consumption = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_demand_per_capita", SSP,RCP=RCP, source="masked")
+    released_caloric_consumption = data_manipulation.get_sensitivity_data(["released"], "food_demand_per_capita", SSP,
+                                                                          RCP=RCP, source="original")
+    pyrolysis_caloric_consumption = data_manipulation.get_sensitivity_data(nonBaselineScenario,
+                                                                           "food_demand_per_capita", SSP, RCP=RCP,
+                                                                           source="masked")
     released_caloric_consumption = data_manipulation.group(released_caloric_consumption, ["SSP", "GCAM"])
     pyrolysis_caloric_consumption = data_manipulation.group(pyrolysis_caloric_consumption, ["SSP", "GCAM"])
 
     # regional averaged food consumption by food type
     # convert Pcal to kcal/capita/day
     # get population data
-    released_pop = data_manipulation.get_sensitivity_data(["released"], "population_by_region", SSP,RCP=RCP, source="original")
-    pyrolysis_pop = data_manipulation.get_sensitivity_data(nonBaselineScenario, "population_by_region", SSP,RCP=RCP, source="masked")
-    released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,RCP=RCP, source="original")
-    pyrolysis_Pcal = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_consumption_by_type_specific", SSP,RCP=RCP, source="masked")
+    released_pop = data_manipulation.get_sensitivity_data(["released"], "population_by_region", SSP, RCP=RCP,
+                                                          source="original")
+    pyrolysis_pop = data_manipulation.get_sensitivity_data(nonBaselineScenario, "population_by_region", SSP, RCP=RCP,
+                                                           source="masked")
+    released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,
+                                                           RCP=RCP, source="original")
+    pyrolysis_Pcal = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_consumption_by_type_specific",
+                                                            SSP, RCP=RCP, source="masked")
 
-    # relabel data to make it more human readable
+    # relabel data to make it more human-readable
     released_Pcal['GCAM'] = released_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     released_pop['GCAM'] = released_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     pyrolysis_Pcal['GCAM'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
@@ -289,24 +318,30 @@ def figure5(nonBaselineScenario, RCP, SSP):
 
     # calculate food accessibility
     # get food prices
-    released_staple_expenditure = data_manipulation.get_sensitivity_data(["released"], "food_demand_prices", SSP,RCP=RCP, source="original")
-    pyrolysis_staple_expenditure = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_demand_prices", SSP,RCP=RCP, source="masked")
+    released_staple_expenditure = data_manipulation.get_sensitivity_data(["released"], "food_demand_prices", SSP,
+                                                                         RCP=RCP, source="original")
+    pyrolysis_staple_expenditure = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_demand_prices",
+                                                                          SSP, RCP=RCP, source="masked")
     released_staple_expenditure = released_staple_expenditure[
         released_staple_expenditure[['input']].isin(["FoodDemand_Staples"]).any(axis=1)]
     pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
         pyrolysis_staple_expenditure[['input']].isin(["FoodDemand_Staples"]).any(axis=1)]
 
     # get food consumption
-    released_staple_consumption = data_manipulation.get_sensitivity_data(["released"], "food_demand_per_capita", SSP,RCP=RCP, source="original")
-    pyrolysis_staple_consumption = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_demand_per_capita", SSP,RCP=RCP, source="masked")
+    released_staple_consumption = data_manipulation.get_sensitivity_data(["released"], "food_demand_per_capita", SSP,
+                                                                         RCP=RCP, source="original")
+    pyrolysis_staple_consumption = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_demand_per_capita",
+                                                                          SSP, RCP=RCP, source="masked")
     released_staple_consumption = released_staple_consumption[
         released_staple_consumption[['input']].isin(["FoodDemand_Staples"]).any(axis=1)]
     pyrolysis_staple_consumption = pyrolysis_staple_consumption[
         pyrolysis_staple_consumption[['input']].isin(["FoodDemand_Staples"]).any(axis=1)]
 
     # get GDP per capita
-    released_GDP_capita = data_manipulation.get_sensitivity_data(nonBaselineScenario, "GDP_per_capita_PPP_by_region", SSP, RCP=RCP, source="original")
-    pyrolysis_GDP_capita = data_manipulation.get_sensitivity_data(nonBaselineScenario, "GDP_per_capita_PPP_by_region", SSP, RCP=RCP, source="masked")
+    released_GDP_capita = data_manipulation.get_sensitivity_data(nonBaselineScenario, "GDP_per_capita_PPP_by_region",
+                                                                 SSP, RCP=RCP, source="original")
+    pyrolysis_GDP_capita = data_manipulation.get_sensitivity_data(nonBaselineScenario, "GDP_per_capita_PPP_by_region",
+                                                                  SSP, RCP=RCP, source="masked")
 
     # calculate consumption times price divided by GDP per capita
     released_consumption = pd.merge(released_staple_consumption, released_staple_expenditure, how="inner",
@@ -367,8 +402,10 @@ def figure5(nonBaselineScenario, RCP, SSP):
 
     # Staple expenditure as percentage of average income – food demand prices and GDP per capita PPP by region
     # get data
-    released_staple_expenditure = data_manipulation.get_sensitivity_data(["released"], "food_demand_prices", SSP, RCP=RCP, source="original")
-    pyrolysis_staple_expenditure = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_demand_prices", SSP, RCP=RCP, source="masked")
+    released_staple_expenditure = data_manipulation.get_sensitivity_data(["released"], "food_demand_prices", SSP,
+                                                                         RCP=RCP, source="original")
+    pyrolysis_staple_expenditure = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_demand_prices",
+                                                                          SSP, RCP=RCP, source="masked")
     diff_food_staple_income = data_manipulation.flat_difference(pyrolysis_staple_expenditure,
                                                                 released_staple_expenditure,
                                                                 ["SSP", "GCAM", "input"])
@@ -429,11 +466,14 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
     :param SSP: the SSP pathways being considered
     :return: N/A
     """
-    #TODO: get working, if not for the refined liquids market, for the inevitable sensitivity analysis
+    # TODO: get working, if not for the refined liquids market, for the inevitable sensitivity analysis
     for i in RCP:
         # Changes in energy mix, especially refined liquids production
-        ref_released = data_manipulation.get_sensitivity_data(["released"], "refined_liquids_production_by_tech", SSP, RCP=RCP, source="original")
-        ref_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario, "refined_liquids_production_by_tech", SSP, RCP=RCP, source="masked")
+        ref_released = data_manipulation.get_sensitivity_data(["released"], "refined_liquids_production_by_tech", SSP,
+                                                              RCP=RCP, source="original")
+        ref_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
+                                                               "refined_liquids_production_by_tech", SSP, RCP=RCP,
+                                                               source="masked")
 
         # calculate global amounts
         ref_released = data_manipulation.group(ref_released, "technology")
@@ -473,14 +513,14 @@ def main():
     Main method for scripts used to plot figures and information for the article
     :return: N/A
     """
-    reference_SSP = ["SSP1"] # the first SSP in the list is assumed to be the baseline
+    reference_SSP = ["SSP1"]  # the first SSP in the list is assumed to be the baseline
     reference_RCP = "6p0"
     other_scenario = ["test"]  # biochar
     biochar_year = "2050"
-    #figure2(other_scenario, reference_RCP, reference_SSP)
-    #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure5(other_scenario, reference_RCP, reference_SSP)
+    figure2(other_scenario, reference_RCP, reference_SSP)
+    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure5(other_scenario, reference_RCP, reference_SSP)
     cue_figure(other_scenario, reference_RCP, reference_SSP)
 
 

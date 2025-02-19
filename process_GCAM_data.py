@@ -254,8 +254,8 @@ def main():
                 dir_path = i.split("/")  # fix the filename
                 dir_path[-1] = "masked/" + str(item[0]) + ".csv"
                 new_fname = "/".join(dir_path)
-                new_fname = new_fname.replace(")", "").replace("(", "").replace("\\", "").replace(" ", "_").replace("b/t",
-                                                                                                                  "between")
+                new_fname = (new_fname.replace(")", "").replace("(", "").replace("\\", "").
+                             replace(" ", "_").replace("b/t", "between"))
                 print(new_fname)
                 df.to_csv(new_fname, index=False)  # save the masked file
 
