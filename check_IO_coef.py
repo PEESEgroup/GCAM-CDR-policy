@@ -2,7 +2,6 @@ import math
 import sys
 import constants as c
 import pandas as pd
-import numpy as np
 
 
 def IO_check(comb, coefficients, assert_str, nonBaselineScenario, products):

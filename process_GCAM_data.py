@@ -187,7 +187,10 @@ def masking(dataframe, mask):
     for i in mask:
         year = str(i[1])
         SSP = str(i[0])
-        dataframe.loc[:, str(i[1])] = dataframe.apply(lambda row: apply_mask(row, year, SSP), axis=1)
+        # if SSP is not in the dataframe, then there's no need to do the computations to apply the mask
+        length_SSP = dataframe[dataframe[['SSP']].isin([SSP]).any(axis=1)]
+        if len(length_SSP) > 0:
+            dataframe.loc[:, str(i[1])] = dataframe.apply(lambda row: apply_mask(row, year, SSP), axis=1)
     return dataframe
 
 
