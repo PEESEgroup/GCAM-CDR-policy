@@ -836,3 +836,19 @@ def relabel_fuel(row):
     :return: the easily readable data
     """
     return row["fuel"][2:]
+
+
+def get_sensitivity_data(scenario_list, fname, RCP="2p6"):
+    """
+    method to get data from different csvs scattered across different scenario definitions. Useful for collating results
+    across the sensitivity analyses
+    :param scenario_list: a list of all scenarios to be considered in the sensitivity analysis
+    :param RCP: the RCP of the scenario being used. defaults to 2.6
+    :param fname: the filename (needs to include .csv extension) of the desired data sheet
+    :return:
+    """
+    all_data = pd.DataFrame(c.GCAMConstants.column_order)
+    for nonBaselineScenario in scenario_list:
+        pyrolysis_df = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/masked" + "/" + fname)
+        all_data = pd.concat([all_data, pyrolysis_df])
+    return all_data
