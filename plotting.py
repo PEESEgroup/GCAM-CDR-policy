@@ -1,6 +1,5 @@
 import geopandas as gpd
 import matplotlib.patches as patches
-import numpy as np
 from matplotlib.collections import PatchCollection
 import pandas as pd
 import constants as c
@@ -53,7 +52,7 @@ def get_subplot_dimensions(list_products):
         raise ValueError("too many products. Can only plot 20 products at a time")
 
 
-def plot_world(dataframe, products, SSPS, groupby, column, years, title):
+def plot_world(dataframe, products, SSPS, groupby, column, years, title, RCP, nonBaselineScenario):
     """
     control function for plotting any plot that is placed on a world map
     :param years: the years for which the plot is to be evaluated
@@ -63,19 +62,21 @@ def plot_world(dataframe, products, SSPS, groupby, column, years, title):
     :param groupby: how the data should be grouped. Accepted values include "SSP", "product", "year"
     :param column: the column on which the data should be filtered by product
     :param title: the title of the plot
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: shows the relevant plot
     """
     if groupby == "SSP":
-        plot_world_by_SSP(dataframe, products, column, years, SSPS, title)
+        plot_world_by_SSP(dataframe, products, column, years, SSPS, title, RCP, nonBaselineScenario)
     elif groupby == "product":
-        plot_world_by_products(dataframe, products, column, years, SSPS, title)
+        plot_world_by_products(dataframe, products, column, years, SSPS, title, RCP, nonBaselineScenario)
     elif groupby == "year":
-        plot_world_by_years(dataframe, products, column, years, SSPS, title)
+        plot_world_by_years(dataframe, products, column, years, SSPS, title, RCP, nonBaselineScenario)
     else:
         raise ValueError("only 'SSP', 'product', and 'year' are considered valid groupings at this time")
 
 
-def plot_world_by_SSP(dataframe, products, column, year, SSP, title):
+def plot_world_by_SSP(dataframe, products, column, year, SSP, title, RCP, nonBaselineScenario):
     """
     For a given product, plot its values in all SSPs for a given year
     :param dataframe: the dataframe containing the data to be plotted
@@ -84,6 +85,8 @@ def plot_world_by_SSP(dataframe, products, column, year, SSP, title):
     :param year: the year being chosen
     :param title: the title for the plot
     :param SSP: the set of shared socioeconomic pathways being used as evaluation
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     """
     for j in year:
         for i in products:
@@ -121,12 +124,12 @@ def plot_world_by_SSP(dataframe, products, column, year, SSP, title):
                 # update the figure with shared colorbar
                 dl = len(SSP)
                 lab = units
-                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title)
+                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title, RCP, nonBaselineScenario)
             except ValueError as e:
                 print(e)
 
 
-def plot_world_by_products(dataframe, products, column, year, SSP, title):
+def plot_world_by_products(dataframe, products, column, year, SSP, title, RCP, nonBaselineScenario):
     """
     For each SSP, plots all relevant products
     :param SSP: the SSP scenario for the plot
@@ -135,6 +138,8 @@ def plot_world_by_products(dataframe, products, column, year, SSP, title):
     :param products: the data to be plotted
     :param column: the column for which the data is to be filtered
     :param title: the title for the plot
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: shows the relevant plot
     """
     for j in year:
@@ -174,7 +179,7 @@ def plot_world_by_products(dataframe, products, column, year, SSP, title):
                 # update the figure with shared colorbar
                 dl = len(products)
                 lab = units
-                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title)
+                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title, RCP, nonBaselineScenario)
             except ValueError as e:
                 print(e)
 
@@ -195,7 +200,7 @@ def axs_params(ax, plot_title):
     ax.spines['left'].set_visible(False)
 
 
-def plot_world_by_years(dataframe, products, column, year, SSP, title):
+def plot_world_by_years(dataframe, products, column, year, SSP, title, RCP, nonBaselineScenario):
     """
     For each SSP, plots all relevant products
     :param SSP: the SSP scenario for the plot
@@ -204,6 +209,8 @@ def plot_world_by_years(dataframe, products, column, year, SSP, title):
     :param products: the data to be plotted
     :param column: the column for which the data is to be filtered
     :param title: the title for the plot
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: shows the relevant plot
     """
     for k in SSP:
@@ -243,7 +250,7 @@ def plot_world_by_years(dataframe, products, column, year, SSP, title):
                 # update the figure with shared colorbar
                 dl = len(year)
                 lab = str(units)
-                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title)
+                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title, RCP, nonBaselineScenario)
             except ValueError as e:
                 print(e)
 
@@ -378,7 +385,7 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     return axs, cmap, fig, im, ncol, normalizer, nrow
 
 
-def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname):
+def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname, RCP, nonBaselineScenario):
     """
     Adds the colorbar to the graph and produces output
     :param axs: matplotlib axes
@@ -389,6 +396,8 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname):
     :param ncol: number of rows of axes
     :param nrow: number of columns of axes
     :param fname: filename for output image
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: plotted figure
     """
     del_axes_counter = 0
@@ -430,11 +439,11 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname):
         fig.set_size_inches(16, 5.1)
     elif nrow * ncol == 20:
         fig.set_size_inches(16, 9)
-    plt.savefig("data/data_analysis/images/" + fname + ".png", dpi=300)
+    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  fname + ".png", dpi=300)
     plt.show()
 
 
-def plot_line_by_SSP(dataframe, products, column, SSP, differentiator, title):
+def plot_line_by_SSP(dataframe, products, column, SSP, differentiator, title, RCP, nonBaselineScenario):
     """
     plots a line graph with different subplot for each SSP
     :param dataframe: the dataframe with data to be plotted
@@ -443,6 +452,8 @@ def plot_line_by_SSP(dataframe, products, column, SSP, differentiator, title):
     :param SSP: the SSP scenario
     :param differentiator: the column containing unique model names
     :param title: the title of hte plot
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     try:
@@ -501,13 +512,13 @@ def plot_line_by_SSP(dataframe, products, column, SSP, differentiator, title):
             l, h = finalize_line_subplot(axs, units, str(i), ncol, nrow, counter)
 
             counter = counter + 1
-        finalize_line_plot(fig, h, l, axs, nrow, ncol, counter, title)
+        finalize_line_plot(fig, h, l, axs, nrow, ncol, counter, title, RCP, nonBaselineScenario)
 
     except ValueError as e:
         print(e)
 
 
-def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title):
+def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title, RCP, nonBaselineScenario):
     """
     adds a legend to the plot and removes unnecessary axes
     :param fig: matplotlib figure
@@ -518,6 +529,8 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title):
     :param ncol: the number of columns of subplots
     :param counter: the number of used subplots
     :param title: the title of the plot
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     if nrow * ncol == 1:
@@ -543,7 +556,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title):
     for i in range(nrow * ncol - counter):
         fig.delaxes(axs[int((counter + i) / ncol), int((counter + i) % ncol)])
 
-    plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
+    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
     plt.show()
 
 
@@ -603,7 +616,7 @@ def finalize_line_subplot(axs, ylabel, title, ncol, nrow, counter):
     return labels, handles
 
 
-def plot_line_by_product(dataframe, products, column, SSP, differentiator, title):
+def plot_line_by_product(dataframe, products, column, SSP, differentiator, title, RCP, nonBaselineScenario):
     """
     Plots a line grouped by product
     :param dataframe: the data being plotted
@@ -612,6 +625,8 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
     :param SSP: the SSPs being plotted
     :param differentiator: a secondary column to differentiate the products
     :param title: the title of the plot
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     # get plot information
@@ -650,7 +665,7 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
                     color_counter = color_counter + 1
 
             counter = counter + 1
-        finalize_line_plot(fig, h, l, axs, nrow, ncol, counter, title)
+        finalize_line_plot(fig, h, l, axs, nrow, ncol, counter, title, RCP, nonBaselineScenario)
 
     except ValueError as e:
         print(e)
@@ -681,7 +696,7 @@ def get_colors(num_versions):
     return [matplotlib.colors.rgb2hex(c) for c in cmap.colors], num_sub_colors
 
 
-def plot_stacked_bar_product(df, year, SSP, column, title):
+def plot_stacked_bar_product(df, year, SSP, column, title, RCP, nonBaselineScenario):
     """
     Plots a stacked bar graph
     :param df: dataframe
@@ -689,6 +704,8 @@ def plot_stacked_bar_product(df, year, SSP, column, title):
     :param SSP: list of SSPs to be plotted
     :param column: column in the df to be plotted
     :param title: title for the plot
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     try:
@@ -727,7 +744,7 @@ def plot_stacked_bar_product(df, year, SSP, column, title):
             plt.gcf().set_size_inches(7, 8)
         else:
             plt.gcf().set_size_inches(12, 8)
-        plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario) + "/" + title + ".png", dpi=300)
         plt.show()
 
     except ValueError as e:
@@ -771,7 +788,7 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_co
         plt.show()
 
 
-def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, supply):
+def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, supply, RCP, nonBaselineScenario):
     """
     Plots regional data in a categorical scatterplot
     :param prices: price data being plotted
@@ -781,6 +798,8 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
     :param title: title of graph
     :param column: column used to identify unique categories
     :param supply: supply data being plotted for weighted averages
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     # get colors
@@ -812,11 +831,11 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.5, right=.7, left=.15)
         plt.gcf().set_size_inches(12, 8)
-        plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
         plt.show()
 
 
-def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiator, title):
+def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiator, title, RCP, nonBaselineScenario):
     """
     Plots a line grouped by product
     :param dataframe: the data being plotted
@@ -825,6 +844,8 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
     :param SSP_baseline: the SSPs being plotted
     :param differentiator: a secondary column to differentiate the products
     :param title: the title of the plot
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     if dataframe.empty:  # if the datafame is empty, nothing can be plotted
@@ -884,13 +905,13 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
 
         axs[1].axis('off')
 
-        finalize_line_plot(fig, h, l, axs, nrow, ncol, 2, title)
+        finalize_line_plot(fig, h, l, axs, nrow, ncol, 2, title, RCP, nonBaselineScenario)
 
     except ValueError as e:
         print(e)
 
 
-def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
+def plot_regional_rose(dataframe, year, SSPs, y_label, title, column, RCP, nonBaselineScenario):
     """
     Plots regional data in a categorical scatterplot
     :param dataframe: data being plotted
@@ -899,6 +920,8 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
     :param y_label: ylabel for graph
     :param title: title of graph
     :param column: column used to identify unique categories
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     # plot for each SSP
@@ -970,7 +993,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column):
                 )
 
             plt.gcf().set_size_inches(12, 12)
-            plt.savefig("data/data_analysis/images/" + str(item) + ".png", dpi=300)
+            plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  str(item) + ".png", dpi=300)
             plt.show()
 
 
@@ -1125,7 +1148,7 @@ def gradient_image(ax, direction=0.3, cmap_range=(0, 1), **kwargs):
     return im
 
 
-def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
+def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply, RCP, nonBaselineScenario):
     """
     Plots regional data in a stacked bar histogram
     :param prices: price data being plotted
@@ -1135,6 +1158,8 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
     :param title: title of graph
     :param column: column used to identify unique categories
     :param supply: supply data being plotted for weighted averages
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     if supply == "na":
@@ -1175,7 +1200,7 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
-        plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
         plt.show()
     else:
         colors, divisions = get_colors(1)
@@ -1184,12 +1209,12 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply):
             for k in SSPs:
                 dataframe = prices[prices['SSP'].str.contains(k)]
                 supply = supply[supply['SSP'].str.contains(k)]
-                plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year)
+                plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year, RCP, nonBaselineScenario)
         else:
-            plot_weighted_average_hist(colors, column, prices, supply, title, y_label, year)
+            plot_weighted_average_hist(colors, column, prices, supply, title, y_label, year, RCP, nonBaselineScenario)
 
 
-def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year):
+def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year, RCP, nonBaselineScenario):
     """
     :param colors: plotting colors used
     :param column: column of unique histogram types
@@ -1198,6 +1223,8 @@ def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label
     :param title: graph title
     :param y_label: y-axis label
     :param year: year being evaluated
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: histogram plot
     """
     df = dataframe.loc[:, [str(year), column]]
@@ -1223,7 +1250,7 @@ def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label
     plt.title(title)
     plt.legend(bbox_to_anchor=(1, 1))
     plt.subplots_adjust(bottom=0.4, right=.7)
-    plt.savefig("data/data_analysis/images/" + title + ".png", dpi=300)
+    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
     plt.show()
 
 

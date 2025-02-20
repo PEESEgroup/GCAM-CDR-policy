@@ -40,10 +40,10 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP, biochar_year):
     perc_diff_Pcal = perc_diff_Pcal[~perc_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
     plotting.plot_regional_hist_avg(flat_diff_Pcal, biochar_year, SSP, "count region-foodstuff",
                                     "Flat difference in Pcals consumed in pyrolysis and reference scenario",
-                                    "technology", "na")
+                                    "technology", "na", RCP, nonBaselineScenario)
     plotting.plot_regional_hist_avg(perc_diff_Pcal, biochar_year, SSP, "count region-foodstuff",
                                     "Percent difference in Pcals consumed in pyrolysis and reference scenario",
-                                    "technology", "na")
+                                    "technology", "na", RCP, nonBaselineScenario)
     # output data
     flat_diff_Pcal.to_csv(
         "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_pcal.csv")
@@ -75,11 +75,11 @@ def luc_by_region(nonBaselineScenario, RCP, SSP):
         "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_LUC_emissions.csv")
 
     plotting.plot_world_by_years(flat_diff_luc, ["MtC/yr"], "Units", c.GCAMConstants.biochar_x, SSP,
-                                 "net difference in LUC emissions by region")
+                                 "net difference in LUC emissions by region", RCP, nonBaselineScenario)
 
     flat_diff_luc = data_manipulation.group(flat_diff_luc, ["SSP"])
     plotting.plot_line_by_product(flat_diff_luc, ["SSP1"], "SSP", ["SSP1"], "SSP",
-                                  "Net LUC compared to reference scenario")
+                                  "Net LUC compared to reference scenario", RCP, nonBaselineScenario)
 
     released_luc = data_manipulation.get_sensitivity_data(["released"], "LUC_emissions_by_LUT", SSP, RCP=RCP,
                                                           source="original")
@@ -94,7 +94,7 @@ def luc_by_region(nonBaselineScenario, RCP, SSP):
     for i in ["2040", "2045", "2050"]:
         plotting.plot_regional_hist_avg(flat_diff_luc, i, SSP, "count region-LandLeaf",
                                         "Flat diffference in LUC emissions between pyrolysis and reference scenario in " + i,
-                                        "LandLeaf", "na")
+                                        "LandLeaf", "na", RCP, nonBaselineScenario)
 
 
 def animal_feed_and_products(nonBaselineScenario, RCP, SSP):
@@ -124,13 +124,13 @@ def animal_feed_and_products(nonBaselineScenario, RCP, SSP):
                                                             ["GCAM", "SSP", "product"])
 
     plotting.plot_world(flat_diff_feed, feed, SSP, "product", "product", ["2050"],
-                        "change in animal feed by region (Mt) in 2050")
+                        "change in animal feed by region (Mt) in 2050", RCP, nonBaselineScenario)
     plotting.plot_world(perc_diff_feed, feed, SSP, "product", "product", ["2050"],
-                        "percentage change in animal feed by region in 2050")
+                        "percentage change in animal feed by region in 2050", RCP, nonBaselineScenario)
     plotting.plot_world(flat_diff_animal, products, SSP, "product", "product", ["2050"],
-                        "change in animal products by region in 2050")
+                        "change in animal products by region in 2050", RCP, nonBaselineScenario)
     plotting.plot_world(perc_diff_animal, products, SSP, "product", "product", ["2050"],
-                        "percentage change in animal products by region in 2050")
+                        "percentage change in animal products by region in 2050", RCP, nonBaselineScenario)
 
     flat_diff_feed.to_csv(
         "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_animal_feed.csv")
@@ -173,7 +173,7 @@ def pyrolysis_costing(nonBaselineScenario, RCP, SSP):
     feedstock_cost["2050"] = feedstock_cost["2050"] / 0.17 * 1000
     feedstock_cost["Units"] = "USD$/ton"
     plotting.plot_regional_hist_avg(feedstock_cost, "2050", SSP, "count", "price distribution of manures", "product",
-                                    "na")
+                                    "na", RCP, nonBaselineScenario)
 
 
 def biochar_rate_by_land_size(nonBaselineScenario, RCP, SSP):
@@ -283,9 +283,9 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
     flat_diff_large = pyrolysis_diff_profit[
         (-6e7 >= pyrolysis_diff_profit['2050']) | (pyrolysis_diff_profit['2050'] >= 6e7)]
     plotting.plot_regional_hist_avg(flat_diff_small, "2050", ["SSP1"], "count crop-basin-irrigation-year",
-                                    "histogram of small farmer profit rate changes at the crop level", "Crop", "na")
+                                    "histogram of small farmer profit rate changes at the crop level", "Crop", "na", RCP, nonBaselineScenario)
     plotting.plot_regional_hist_avg(flat_diff_large, "2050", ["SSP1"], "count crop-basin-irrigation-year",
-                                    "histogram of large farmer profit rate changes at the crop level", "Crop", "na")
+                                    "histogram of large farmer profit rate changes at the crop level", "Crop", "na", RCP, nonBaselineScenario)
 
     # change in per crop supply
     pyrolysis_yields_lands = pd.merge(pyrolysis_yields, pyrolysis_land, "left", left_on=["GCAM", "SSP", "technology"],
@@ -353,7 +353,7 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
     flat_diff_effective_yields = data_manipulation.flat_difference(released_effective_yield, pyrolysis_effective_yield,
                                                                    ["GCAM", "SSP", "sector"])
     plotting.plot_regional_hist_avg(flat_diff_effective_yields, "2050", ["SSP1"], "count region-year",
-                                    "histogram of yield changes at the crop level", "sector", "na")
+                                    "histogram of yield changes at the crop level", "sector", "na", RCP, nonBaselineScenario)
 
     empty_pyro = pyrolysis_land[pyrolysis_land["LandLeaf"].str.contains("biochar")].copy(deep=True)
     for i in c.GCAMConstants.x:
@@ -368,10 +368,10 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
     flat_diff_large = flat_diff_mgmt[(-1 >= flat_diff_mgmt['2050']) | (flat_diff_mgmt['2050'] >= 1)]
     plotting.plot_regional_hist_avg(flat_diff_small, "2050", ["SSP1"], "count basin-crop-irrigation",
                                     "histogram of small land mgmt changes in terms of area compared to reference scenario",
-                                    "mgmt", "na")
+                                    "mgmt", "na", RCP, nonBaselineScenario)
     plotting.plot_regional_hist_avg(flat_diff_large, "2050", ["SSP1"], "count basin-crop-irrigation",
                                     "histogram of large land mgmt changes in terms of area compared to reference scenario",
-                                    "mgmt", "na")
+                                    "mgmt", "na", RCP, nonBaselineScenario)
 
     # land leaf shares histogram
     pyrolysis_landleafs = data_manipulation.get_sensitivity_data(nonBaselineScenario, "land_leaf_shares", SSP, RCP=RCP,
@@ -382,7 +382,7 @@ def farmer_economics(nonBaselineScenario, RCP, SSP):
     pyrolysis_landleafs["Units"] = "land share"
     for i in c.GCAMConstants.biochar_x:
         plotting.plot_regional_hist_avg(pyrolysis_landleafs, str(i), SSP, "count land leafs",
-                                        "histogram of land leaf shares for biochar lands in " + str(i), "MGMT", "na")
+                                        "histogram of land leaf shares for biochar lands in " + str(i), "MGMT", "na", RCP, nonBaselineScenario)
 
 
 def main():
@@ -393,12 +393,13 @@ def main():
     reference_SSP = ["SSP1"]
     reference_RCP = "6p0"
     other_scenario = ["test"]  # biochar
+    biochar_year = "2050"
     # biochar_rate_by_land_size(other_scenario, reference_RCP, reference_SSP)
     farmer_economics(other_scenario, reference_RCP, reference_SSP)
     pyrolysis_costing(other_scenario, reference_RCP, reference_SSP)
     animal_feed_and_products(other_scenario, reference_RCP, reference_SSP)
     luc_by_region(other_scenario, reference_RCP, reference_SSP)
-    pop_and_calories(other_scenario, reference_RCP, reference_SSP)
+    pop_and_calories(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 
 if __name__ == '__main__':
