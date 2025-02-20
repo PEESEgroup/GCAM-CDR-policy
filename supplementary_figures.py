@@ -4,12 +4,13 @@ import constants as c
 import pandas as pd
 
 
-def pop_and_calories(nonBaselineScenario, RCP, SSP):
+def pop_and_calories(nonBaselineScenario, RCP, SSP, biochar_year):
     """
     plots changes to population and calories consumed
     :param nonBaselineScenario: the scenario to be compared to the released scenario
     :param RCP: the RCP pathways being considered
     :param SSP: the SSP pathways being considered
+    :param biochar_year: the year the biochar pathways are being evaluated
     :return: N/A
     """
     # get population data
@@ -18,34 +19,36 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP):
     pyrolysis_pop = data_manipulation.get_sensitivity_data(nonBaselineScenario, "population_by_region", SSP, RCP=RCP,
                                                            source="masked")
     flat_diff_pop = data_manipulation.flat_difference(released_pop, pyrolysis_pop, ["SSP", "GCAM"])
-    print(flat_diff_pop["2050"])
+    flat_diff_pop.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/flat_change_in_population.csv")
 
     # get calorie data
     released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,
                                                            RCP=RCP, source="original")
     pyrolysis_Pcal = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_consumption_by_type_specific",
                                                             SSP, RCP=RCP, source="masked")
-    released_global_pcal = released_Pcal[released_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
-    print(released_global_pcal[["subsector", "technology", "2050", "Units"]])
+
     flat_diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal,
                                                        ["GCAM", "SSP", "subsector", "subsector.1",
                                                         "technology"]).drop_duplicates()
     perc_diff_Pcal = data_manipulation.percent_difference(released_Pcal, pyrolysis_Pcal,
                                                           ["GCAM", "SSP", "subsector", "subsector.1",
                                                            "technology"]).drop_duplicates()
-    # perc_diff_Pcal["Units"] = "%"
-    global_flat = flat_diff_Pcal[flat_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
-    print(global_flat[["subsector", "technology", "2050", "Units"]])
+
+    # calculate difference
     flat_diff_Pcal = flat_diff_Pcal[~flat_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
     perc_diff_Pcal = perc_diff_Pcal[~perc_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
-    plotting.plot_regional_hist_avg(flat_diff_Pcal, "2050", SSP, "count region-foodstuff",
+    plotting.plot_regional_hist_avg(flat_diff_Pcal, biochar_year, SSP, "count region-foodstuff",
                                     "Flat difference in Pcals consumed in pyrolysis and reference scenario",
                                     "technology", "na")
-    plotting.plot_regional_hist_avg(perc_diff_Pcal, "2050", SSP, "count region-foodstuff",
+    plotting.plot_regional_hist_avg(perc_diff_Pcal, biochar_year, SSP, "count region-foodstuff",
                                     "Percent difference in Pcals consumed in pyrolysis and reference scenario",
                                     "technology", "na")
-
-    print(flat_diff_Pcal["2050"])
+    # output data
+    flat_diff_Pcal.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_pcal.csv")
+    perc_diff_Pcal.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_pcal.csv")
 
 
 def luc_by_region(nonBaselineScenario, RCP, SSP):
@@ -65,13 +68,16 @@ def luc_by_region(nonBaselineScenario, RCP, SSP):
     released_luc = data_manipulation.group(released_luc, ["GCAM", "SSP"])
     pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["GCAM", "SSP"])
     flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
-    print(flat_diff_luc[["GCAM", "2050", "Units"]])
-    # plotting.plot_world_by_years(flat_diff_luc, ["MtC/yr"], "Units", ["2040", "2045", "2050"], SSP,
-    #                              "net difference in LUC emissions by region")
+    perc_diff_luc = data_manipulation.percent_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
+    flat_diff_luc.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_LUC_emissions.csv")
+    perc_diff_luc.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_LUC_emissions.csv")
+
+    plotting.plot_world_by_years(flat_diff_luc, ["MtC/yr"], "Units", c.GCAMConstants.biochar_x, SSP,
+                                 "net difference in LUC emissions by region")
 
     flat_diff_luc = data_manipulation.group(flat_diff_luc, ["SSP"])
-    released_luc_total = data_manipulation.group(released_luc, ["SSP"])
-    print(released_luc_total[["2040", "2050", "Units"]])
     plotting.plot_line_by_product(flat_diff_luc, ["SSP1"], "SSP", ["SSP1"], "SSP",
                                   "Net LUC compared to reference scenario")
 
@@ -126,12 +132,14 @@ def animal_feed_and_products(nonBaselineScenario, RCP, SSP):
     plotting.plot_world(perc_diff_animal, products, SSP, "product", "product", ["2050"],
                         "percentage change in animal products by region in 2050")
 
-    flat_diff_feed = data_manipulation.group(flat_diff_feed, ["GCAM"])
-    print(data_manipulation.group(released_feed, ["SSP"])[["2050", "Units"]])
-    print(flat_diff_feed[["2050", "GCAM", "Units"]])
-    flat_diff_animal = data_manipulation.group(flat_diff_animal, ["GCAM"])
-    print(data_manipulation.group(released_products, ["SSP"])[["2050", "Units"]])
-    print(flat_diff_animal[["2050", "GCAM", "Units"]])
+    flat_diff_feed.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_animal_feed.csv")
+    perc_diff_feed.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_animal_feed.csv")
+    flat_diff_animal.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_animal_herd.csv")
+    perc_diff_animal.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_animal_herd.csv")
 
 
 def pyrolysis_costing(nonBaselineScenario, RCP, SSP):
@@ -203,7 +211,6 @@ def biochar_rate_by_land_size(nonBaselineScenario, RCP, SSP):
                                                       source="masked")
     # get biochar land use type information
     land_use[["GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"]] = land_use['LandLeaf'].str.split("_", expand=True)
-    land_use = land_use[land_use[['MGMT']].isin(["biochar"]).any(axis=1)]
     print(["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"] + [str(i) for i in c.GCAMConstants.future_x])
     land_use = land_use[
         ["GCAM", "GCAM_subsector", "GLU_name", "Irr_Rfd", "MGMT"] + [str(i) for i in c.GCAMConstants.future_x]]

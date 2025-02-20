@@ -52,8 +52,10 @@ def figure2(nonBaselineScenario, RCP, SSP):
 
     flat_diff_land = data_manipulation.flat_difference(released_N, pyrolysis_N, ["SSP", "LandLeaf", "GCAM"])
     perc_diff_land = data_manipulation.percent_difference(released_N, pyrolysis_N, ["SSP", "LandLeaf", "GCAM"])
-    print(flat_diff_land[["2050", "SSP", "Units"]])
-    print(perc_diff_land[["2050", "SSP", "Units"]])
+    flat_diff_land.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/flat_difference_in_N.csv")
+    perc_diff_land.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_difference_in_N.csv")
 
 
 def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -90,7 +92,9 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     land_for_alluvial[["2020", "Management_2020", "Region_2020"]] = land_for_alluvial['2020'].str.split("_",
                                                                                                         expand=True)
     counts = land_for_alluvial["Management_2050"].value_counts() / scale_factor * 1000
-    print(counts)
+    counts.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/count_landleafs.csv")
+
     # Region_2050 data is stored in Region
     land_for_alluvial["Region"] = land_for_alluvial.apply(lambda row: data_manipulation.relabel_region_alluvial(row),
                                                           axis=1)
@@ -99,13 +103,18 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     land_for_alluvial = land_for_alluvial.sort_values(by=['Management', "Region"], ascending=[True, True])
 
     # get percentage of land with different management types on a regional basis
-    print("land management type, region, value, unit")
+    region_management_type = ""
+    land_for_alluvial['GCAM'] = land_for_alluvial.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     for usage in land_for_alluvial["Management"].unique():
         for gcam in land_for_alluvial["Region"].unique():
             regional = land_for_alluvial[land_for_alluvial[['Region']].isin([gcam]).any(axis=1)]
-            print(str(usage) + ", " + str(gcam) + " ," +
-                  str(len(regional[regional["Management"] == usage]) / len(regional) * 100) + ",%")
+            region_management_type = region_management_type + (str(usage) + ", " + str(gcam) + ", " +
+                                                               str(len(regional[regional["Management"] == usage]) / len(
+                                                                   regional) * 100) + ",%\n")
     plotting.plot_alluvial(land_for_alluvial)
+    # write out .csv data for different land management types
+    with open("data/data_analysis/supplementary_tables/" + str(RCP) + "/regional_land_mgmt.csv", 'w') as csvFile:
+        csvFile.write(region_management_type)
 
     # regional land use change
     released_land = data_manipulation.get_sensitivity_data(["released"], "detailed_land_allocation", SSP, RCP=RCP,
@@ -123,15 +132,13 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     flat_diff_land['GCAM'] = flat_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     flat_diff_land["LandLeaf"] = flat_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
     flat_diff_land["Units"] = "thousand km$^2$"
-
     global_land = data_manipulation.group(flat_diff_land, ["LandLeaf"])
     flat_diff_land = data_manipulation.group(flat_diff_land, ["GCAM", "LandLeaf"])
-    print("plot regional land use change in " + str(biochar_year))
 
     plotting.plot_stacked_bar_product(flat_diff_land, str(biochar_year), SSP, "LandLeaf",
                                       "land use change by region in " + str(biochar_year))
-    print("plotting global land use change across all years")
-    print(global_land.loc[:, ["2050", "LandLeaf", "Units"]])
+    global_land.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/global_LUC.csv")
 
     plotting.plot_stacked_bar_product(global_land, c.GCAMConstants.biochar_x, SSP, "LandLeaf",
                                       "global land use change by year")
@@ -167,9 +174,11 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
 
     # get the flat difference and plot it
     flat_diff = data_manipulation.flat_difference(ref_released, ref_pyrolysis, ["fuel"])
-    print(flat_diff[[biochar_year, "fuel", "Units"]])
+    flat_diff.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/flat_difference_primary_energy_consumption.csv")
     perc_diff = data_manipulation.percent_difference(ref_released, ref_pyrolysis, ["fuel"])
-    print(perc_diff[[biochar_year, "fuel", "Units"]])
+    perc_diff.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_difference_primary_energy_consumption.csv")
 
     # plotting CO2 sequestering
     co2_seq_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
@@ -189,8 +198,9 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     plotting.plot_line_product_CI(co2_seq_pyrolysis, products, "technology", SSP[0], "Version",
                                   title="C sequestration from biochar in " + SSP[0] + " baseline in RCP" + str(RCP))
 
-    # print values of Mt C sequestered
-    print("sequestered C\n", co2_seq_pyrolysis.loc[:, [biochar_year, "SSP", "technology", "Units"]])
+    # output values of Mt C sequestered
+    co2_seq_pyrolysis.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/CO2_sequestration_pyrolysis.csv")
 
     # plotting ghg emissions avoidance
     # TODO: update to include avoided N2O emissions
@@ -212,15 +222,17 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
                                   title="carbon emissions avoidance across RCP pathways in " + SSP[
                                       0] + " baseline in RCP" + str(
                                       RCP))
-    # print values of Mt C avoided
-    print("avoided C\n", co2_avd_pyrolysis.loc[:, [biochar_year, "SSP", "technology", "Units"]])
+    # output values of Mt C avoided
+    co2_avd_pyrolysis.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/pyrolysis_avoided_GHG.csv")
 
-    # print values of biochar supply
+    # output values of biochar supply
     biochar_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP, RCP=RCP,
                                                             source="masked")
     biochar_supply = biochar_supply[biochar_supply[['product']].isin(["biochar"]).any(axis=1)]
     biochar_supply = data_manipulation.group(biochar_supply, ["product"])
-    print(biochar_supply.loc[:, [biochar_year, "Units"]])
+    biochar_supply.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/biochar_supply.csv")
 
     # frequency of biochar prices
     biochar_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP, RCP=RCP,
@@ -232,40 +244,27 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     biochar_price["Units"] = "USD$2024/ton"
     plotting.plot_regional_hist_avg(biochar_price, '2024_value', SSP, "count region/year combinations",
                                     "histogram of price of biochar", "variable", supply="na")
+    biochar_price.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/biochar_price.csv")
 
-    # further analysis on regions with biochar prices <$0
-    subzero_biochar_price = biochar_price[biochar_price['2024_value'] < 0]
-
-    # further analysis on regions with biochar prices >$400
-    huge_biochar_price = biochar_price[biochar_price['2024_value'] > 400]
-    print(subzero_biochar_price)
-    print(huge_biochar_price[["GCAM", "variable", "2024_value", "Units"]])
-
-    # print out differences in carbon prices
-    for year in c.GCAMConstants.biochar_x:
-        c_pyro_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "CO2_prices", SSP, RCP=RCP,
-                                                              source="masked")
-        c_rel_price = data_manipulation.get_sensitivity_data(["released"], "CO2_prices", SSP, RCP=RCP,
-                                                             source="original")
-        c_pyro_price = c_pyro_price.drop_duplicates()
-        c_rel_price = c_rel_price.drop_duplicates()
-        product = ["CO2"]
-        c_rel_price = c_rel_price[c_rel_price[['product']].isin(product).any(axis=1)]
-        c_pyro_price = c_pyro_price[c_pyro_price[['product']].isin(product).any(axis=1)]
-        flat_diff_c_price = data_manipulation.flat_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
-        flat_diff_c_price[str(year) + "_conv"] = flat_diff_c_price[
-                                                     str(year)] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
-        flat_diff_c_price["Units"] = "USD$2024/t C"
-        unique_c_price = flat_diff_c_price[[str(year) + "_conv", "SSP", "Units"]].drop_duplicates()
-        print("flat difference between C prices in year " + str(year))
-        print(unique_c_price)
-        perc_diff_c_price = data_manipulation.percent_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
-        perc_diff_c_price[str(year) + "_conv"] = perc_diff_c_price[
-                                                     str(year)] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
-        flat_diff_c_price["Units"] = "%"
-        unique_c_price = perc_diff_c_price[[str(year) + "_conv", "SSP", "Units"]].drop_duplicates()
-        print("percent difference between C prices in year " + str(year))
-        print(unique_c_price)
+    # output differences in carbon prices
+    c_pyro_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "CO2_prices", SSP, RCP=RCP,
+                                                          source="masked")
+    c_rel_price = data_manipulation.get_sensitivity_data(["released"], "CO2_prices", SSP, RCP=RCP,
+                                                         source="original")
+    product = ["CO2"]
+    c_rel_price = c_rel_price[c_rel_price[['product']].isin(product).any(axis=1)]
+    c_pyro_price = c_pyro_price[c_pyro_price[['product']].isin(product).any(axis=1)]
+    for i in c.GCAMConstants.x:
+        c_rel_price[str(i)] = c_rel_price[str(i)] * 2.42 # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
+        c_pyro_price[str(i)] = c_pyro_price[str(i)] * 2.42 # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
+    flat_diff_c_price = data_manipulation.flat_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
+    flat_diff_c_price["Units"] = "USD$2024/t C"
+    perc_diff_c_price = data_manipulation.percent_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
+    flat_diff_c_price.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_carbon_price.csv")
+    perc_diff_c_price.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_carbon_price.csv")
 
 
 def figure5(nonBaselineScenario, RCP, SSP):
@@ -421,8 +420,8 @@ def figure5(nonBaselineScenario, RCP, SSP):
     diff_food_staple_income = diff_food_staple_income.sort_values(by="2050_conv", ascending=False)
     diff_food_staple_income["Units"] = "2024 USD$/Mcal/day"
 
-    print(diff_food_staple_income.groupby("input")["2050_conv"].mean(), SSP[0],
-          diff_food_staple_income["Units"].unique()[0])
+    diff_food_staple_income.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/flat_difference_food_staple_income.csv")
 
     # calculate global average percent difference
     perc_diff = data_manipulation.percent_difference(pyrolysis_staple_expenditure,
@@ -439,7 +438,8 @@ def figure5(nonBaselineScenario, RCP, SSP):
     perc_diff = perc_diff.sort_values(by="2050_conv", ascending=False)
     perc_diff["Units"] = "%"
 
-    print(perc_diff.groupby("input")["2050_conv"].mean(), SSP[0], perc_diff["Units"].unique()[0])
+    perc_diff.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_difference_food_staple_income.csv")
 
     # add an empty row at the top of the dataframe
     new_row1 = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
