@@ -233,7 +233,7 @@ def relabel_region(row):
     elif "Africa_Western" == GCAM_region:
         return "Western Africa"
     elif "Australia_NZ" == GCAM_region:
-        return "Australia, New Zealand"
+        return "Australia and New Zealand"
     elif "EU-12" == GCAM_region:
         return "Northeastern EU"
     elif "EU-15" == GCAM_region:

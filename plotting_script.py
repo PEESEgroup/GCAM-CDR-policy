@@ -4,16 +4,16 @@ import constants as c
 import pandas as pd
 
 
-def figure2(nonBaselineScenario, RCP, SSP):
+def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
     """
     Returns plots for figure 2
     :return: N/A
     """
-    # read in biochar application rates, and get the 2050 application rates
+    # read in biochar application rates, and get the application rates
     biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level.csv")
 
     # add extra data to dataframe to help downstream code
-    biochar_app_rate['2050'] = biochar_app_rate['kg_bio_ha']
+    biochar_app_rate[biochar_year] = biochar_app_rate['kg_bio_ha']
     biochar_app_rate['GCAM'] = biochar_app_rate['region']
     biochar_app_rate['Units'] = 'kg biochar/ha/yr'
     biochar_app_rate["SSP"] = SSP[0]
@@ -24,23 +24,25 @@ def figure2(nonBaselineScenario, RCP, SSP):
         lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
 
     # plot histogram of crop/region price combinations
-    plotting.plot_regional_hist_avg(biochar_app_rate, "2050", [SSP], "region-basin-crop-irr combination count",
-                                    "histogram of biochar app rates", "technology", "na", RCP, nonBaselineScenario)
+    plotting.plot_regional_hist_avg(biochar_app_rate, biochar_year, [SSP], "region-basin-crop-irr combination count",
+                                    "histogram of biochar app rates in " + biochar_year, "technology", "na", RCP, nonBaselineScenario)
 
     # remove outliers for plotting purposes
     outlier_cutoff = 6000  # kg/ha/yr
-    biochar_app_rate_no_outlier = biochar_app_rate[biochar_app_rate['2050'] < outlier_cutoff]
-    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, "2050", [SSP],
+    biochar_app_rate_no_outlier = biochar_app_rate[biochar_app_rate[biochar_year] < outlier_cutoff]
+    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, biochar_year, [SSP],
                                     "region-basin-crop-irr combination count",
                                     "histogram of outlier " + str(
                                         outlier_cutoff) + "kg per ha removed biochar app rates", "technology", "na", RCP, nonBaselineScenario)
 
-    outlier_cutoff = 2000  # kg/ha/yr
-    biochar_app_rate_no_outlier = biochar_app_rate[biochar_app_rate['2050'] < outlier_cutoff]
-    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, "2050", [SSP],
+    outlier_cutoff = 3000  # kg/ha/yr
+    lower_cutoff = 250
+    biochar_app_rate_no_outlier = biochar_app_rate[biochar_app_rate[biochar_year] < outlier_cutoff]
+    biochar_app_rate_no_outlier = biochar_app_rate_no_outlier[biochar_app_rate_no_outlier[biochar_year] > lower_cutoff]
+    plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, biochar_year, [SSP],
                                     "region-basin-crop-irr combination count",
-                                    "histogram of outlier " + str(
-                                        outlier_cutoff) + "kg per ha removed biochar app rates", "technology", "na", RCP, nonBaselineScenario)
+                                    "histogram of outlier " + str(lower_cutoff) + "-"+ str(outlier_cutoff)
+                                    + " kg per ha removed biochar app rates", "technology", "na", RCP, nonBaselineScenario)
 
     # global fertilizer reduction
     released_N = data_manipulation.get_sensitivity_data(["released"], "ammonia_production_by_tech", SSP, RCP=RCP,
@@ -84,18 +86,19 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
 
     # process alluvial data
     scale_factor = 10
+    base_year = "2020"
     land_for_alluvial = data_manipulation.process_luc(land_use, scale_factor)
 
     # build a alluvial plot
-    land_for_alluvial[["2050", "Management_2050", "Region_2050"]] = land_for_alluvial['2050'].str.split("_",
+    land_for_alluvial[[biochar_year, "Management_"+biochar_year, "Region_"+biochar_year]] = land_for_alluvial[biochar_year].str.split("_",
                                                                                                         expand=True)
-    land_for_alluvial[["2020", "Management_2020", "Region_2020"]] = land_for_alluvial['2020'].str.split("_",
+    land_for_alluvial[[base_year, "Management_"+base_year, "Region_"+base_year]] = land_for_alluvial[base_year].str.split("_",
                                                                                                         expand=True)
-    counts = land_for_alluvial["Management_2050"].value_counts() / scale_factor * 1000
+    counts = land_for_alluvial["Management_"+biochar_year].value_counts() / scale_factor * 1000
     counts.to_csv(
         "data/data_analysis/supplementary_tables/" + str(RCP) + "/count_landleafs.csv")
 
-    # Region_2050 data is stored in Region
+    # Region_ biochar_year data is stored in Region
     land_for_alluvial["Region"] = land_for_alluvial.apply(lambda row: data_manipulation.relabel_region_alluvial(row),
                                                           axis=1)
     land_for_alluvial["Management"] = land_for_alluvial.apply(
@@ -104,7 +107,6 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
 
     # get percentage of land with different management types on a regional basis
     region_management_type = ""
-    land_for_alluvial['GCAM'] = land_for_alluvial.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     for usage in land_for_alluvial["Management"].unique():
         for gcam in land_for_alluvial["Region"].unique():
             regional = land_for_alluvial[land_for_alluvial[['Region']].isin([gcam]).any(axis=1)]
@@ -151,13 +153,12 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
                                       "land use change by region in " + str(biochar_year), RCP, nonBaselineScenario)
 
 
-def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
+def figure4(nonBaselineScenario, RCP, SSP):
     """
     Returns plots for figure 3
     :param nonBaselineScenario: the scenario to be compared to the released scenario
     :param RCP: the RCP pathways being considered
     :param SSP: the SSP pathways being considered
-    :param biochar_year: the year for biochar/carbon prices to be evaluated and plotted
     :return: graph of biochar C sequestration, biochar C emissions avoidance, and biochar prices
     """
     # plotting changes in energy mix
@@ -266,12 +267,13 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
         "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_carbon_price.csv")
 
 
-def figure5(nonBaselineScenario, RCP, SSP):
+def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
     """
     Returns plots for figure 5
     :param nonBaselineScenario: the scenario to be compared to the released scenario
     :param RCP: the RCP pathways being considered
     :param SSP: the SSP pathways being considered
+    :param biochar_year: the year for biochar/carbon prices to be evaluated and plotted
     :return: N/A
     """
     # calculate food accessibility and undernourishment
@@ -366,7 +368,7 @@ def figure5(nonBaselineScenario, RCP, SSP):
                                pyrolysis_FA[str(i)] * 3.542 / pyrolysis_FA[str(i) + "_caloric"]
 
     perc_diff_FA = data_manipulation.percent_difference(released_FA, pyrolysis_FA, ["GCAM", "SSP"])
-    plotting.plot_world(perc_diff_FA, ["%"], SSP, "year", "Units", ["2050"], "Food Accessibility", RCP, nonBaselineScenario)
+    plotting.plot_world(perc_diff_FA, ["%"], SSP, "year", "Units", [biochar_year], "Food Accessibility in " + str(biochar_year), RCP, nonBaselineScenario)
 
     # calculate pcal per capita
     released_pcal_pop = pd.merge(released_Pcal, released_pop, how="inner", on=["SSP", "GCAM"],
@@ -374,28 +376,30 @@ def figure5(nonBaselineScenario, RCP, SSP):
     pyrolysis_pcal_pop = pd.merge(pyrolysis_Pcal, pyrolysis_pop, how="inner", on=["SSP", "GCAM"],
                                   suffixes=("_pcal", "_pop"))
 
-    # calculate pcal per capita in 2050
-    released_pcal_pop["pcal_capita_2050"] = released_pcal_pop["2050_pcal"] / (1000 * released_pcal_pop[
-        "2050_pop"]) * 1000000000000 / 365 / 2  # * peta to kilo/365/conversion factor of 2 randomly
-    pyrolysis_pcal_pop["pcal_capita_2050"] = pyrolysis_pcal_pop["2050_pcal"] / (
-            1000 * pyrolysis_pcal_pop["2050_pop"]) * 1000000000000 / 365 / 2
+    # calculate pcal per capita in the biochar year
+    released_pcal_pop["pcal_capita_" + biochar_year] = released_pcal_pop[biochar_year + "_pcal"] / (1000 * released_pcal_pop[
+        biochar_year + "_pop"]) * 1000000000000 / 365 / 2  # * peta to kilo/365/conversion factor of 2 randomly
+    pyrolysis_pcal_pop["pcal_capita_" + biochar_year] = pyrolysis_pcal_pop[biochar_year + "_pcal"] / (
+            1000 * pyrolysis_pcal_pop[biochar_year + "_pop"]) * 1000000000000 / 365 / 2
     released_pcal_pop["Units"] = "kcal/capita/day"
     pyrolysis_pcal_pop["Units"] = "kcal/capita/day"
 
     merged_pcal = released_pcal_pop.merge(pyrolysis_pcal_pop, how="inner", on=["SSP", "GCAM", "technology_pcal"],
                                           suffixes=("_left", "_right"))
-    merged_pcal["pcal_capita_2050"] = merged_pcal["pcal_capita_2050" + "_right"] - merged_pcal[
-        "pcal_capita_2050" + "_left"]
+    merged_pcal["pcal_capita_" + biochar_year] = merged_pcal["pcal_capita_" + biochar_year + "_right"] - merged_pcal[
+        "pcal_capita_" + biochar_year + "_left"]
+    merged_pcal.to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_consumption_kcal_capita_day.csv")
 
-    # extract population and identifying information in 2050 for weighted average calculations
+    # extract population and identifying information in biochar_year for weighted average calculations
     merged_pop = pd.DataFrame()
-    merged_pop["pcal_capita_2050"] = merged_pcal["2050_pop_right"]
+    merged_pop["pcal_capita_" + biochar_year] = merged_pcal[biochar_year + "_pop_right"]
     merged_pop["GCAM"] = merged_pcal["GCAM"]
     merged_pop["SSP"] = merged_pcal["SSP"]
     merged_pop["technology_pcal"] = merged_pcal["technology_pcal"]
 
-    plotting.plot_regional_vertical_avg(merged_pcal, "pcal_capita_2050", SSP, "change in food demand (kcal/person/day)",
-                                        "change in food demand in " + str(SSP[0]),
+    plotting.plot_regional_vertical_avg(merged_pcal, "pcal_capita_" + biochar_year, SSP, "change in food demand (kcal/person/day)",
+                                        "change in food demand in " + biochar_year + " in " + str(SSP[0]),
                                         "technology_pcal", merged_pop, RCP, nonBaselineScenario)
 
     # Staple expenditure as percentage of average income – food demand prices and GDP per capita PPP by region
@@ -413,10 +417,10 @@ def figure5(nonBaselineScenario, RCP, SSP):
     diff_food_staple_income['input'] = diff_food_staple_income.apply(
         lambda row: data_manipulation.relabel_food_demand(row), axis=1)
     diff_food_staple_income[
-        "2050_conv"] = diff_food_staple_income[
-                           "2050"] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
+        biochar_year] = diff_food_staple_income[
+                           biochar_year] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
 
-    diff_food_staple_income = diff_food_staple_income.sort_values(by="2050_conv", ascending=False)
+    diff_food_staple_income = diff_food_staple_income.sort_values(by=biochar_year, ascending=False)
     diff_food_staple_income["Units"] = "2024 USD$/Mcal/day"
 
     diff_food_staple_income.to_csv(
@@ -431,10 +435,10 @@ def figure5(nonBaselineScenario, RCP, SSP):
                                         axis=1)
     perc_diff['input'] = perc_diff.apply(
         lambda row: data_manipulation.relabel_food_demand(row), axis=1)
-    perc_diff["2050_conv"] = perc_diff[
-                                 "2050"] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
+    perc_diff[biochar_year] = perc_diff[
+                                 biochar_year] * 1.62  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1&year1=200501&year2=202401
 
-    perc_diff = perc_diff.sort_values(by="2050_conv", ascending=False)
+    perc_diff = perc_diff.sort_values(by=biochar_year, ascending=False)
     perc_diff["Units"] = "%"
 
     perc_diff.to_csv(
@@ -443,26 +447,27 @@ def figure5(nonBaselineScenario, RCP, SSP):
     # add an empty row at the top of the dataframe
     new_row1 = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
     new_row2 = pd.DataFrame(diff_food_staple_income.loc[0]).transpose()
-    new_row1["2050_conv"] = 0
+    new_row1[biochar_year] = 0
     new_row1["GCAM"] = " "
-    new_row2["2050_conv"] = 0
+    new_row2[biochar_year] = 0
     new_row2["GCAM"] = " "
     new_row2["input"] = "Staples"
     diff_food_staple_income = pd.concat([new_row1, new_row2, diff_food_staple_income, new_row2, new_row1])
 
     # plot results
-    plotting.plot_regional_rose(diff_food_staple_income, "2050_conv", SSP,
+    plotting.plot_regional_rose(diff_food_staple_income, biochar_year, SSP,
                                 "change in food expenditure (USD$2024/Mcal/day)",
-                                "food expenditure in 2050 in " + str(SSP[0]),
+                                "food expenditure in " + biochar_year + " in " + str(SSP[0]),
                                 "input", RCP, nonBaselineScenario)
 
 
-def cue_figure(nonBaselineScenario, RCP, SSP):
+def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     """
     Returns plots for potential figure in the CUE conference paper
     :param nonBaselineScenario: the scenario to be compared to the released scenario
     :param RCP: the RCP pathways being considered
     :param SSP: the SSP pathways being considered
+    :param biochar_year: the year for biochar/carbon prices to be evaluated and plotted
     :return: N/A
     """
     # TODO: get working, if not for the refined liquids market, for the inevitable sensitivity analysis
@@ -503,8 +508,8 @@ def cue_figure(nonBaselineScenario, RCP, SSP):
         perc_diff_biofuel = pd.concat([perc_diff_biofuel, baseline_data])
 
         # plot products
-        plotting.sensitivity(flat_diff_biofuel, str(i), ["released"], "2050", "technology")
-        plotting.sensitivity(perc_diff_biofuel, str(i), ["released"], "2050", "technology")
+        plotting.sensitivity(flat_diff_biofuel, str(i), ["released"], biochar_year, "technology")
+        plotting.sensitivity(perc_diff_biofuel, str(i), ["released"], biochar_year, "technology")
 
 
 def main():
@@ -516,11 +521,11 @@ def main():
     reference_RCP = "6p0"
     other_scenario = ["test"]  # biochar
     biochar_year = "2050"
-    figure2(other_scenario, reference_RCP, reference_SSP)
+    figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure5(other_scenario, reference_RCP, reference_SSP)
-    cue_figure(other_scenario, reference_RCP, reference_SSP)
+    figure4(other_scenario, reference_RCP, reference_SSP)
+    figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    cue_figure(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 
 if __name__ == '__main__':

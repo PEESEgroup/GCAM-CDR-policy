@@ -32,7 +32,7 @@ class GCAMConstants:
          2090, 2095, 2100]
     plotting_x = [2025, 2030, 2035, 2040, 2045, 2050]
     future_x = [2025, 2030, 2035, 2040, 2045, 2050, 2055, 2060, 2065, 2070, 2075, 2080, 2085, 2090, 2095, 2100]
-    biochar_x = [2040, 2045, 2050, 2055, 2060]
+    biochar_x = [2050, 2055, 2060, 2065, 2070]
     skip_years = x.index(biochar_x[0])
 
     # constants to evaluate IO coefficients

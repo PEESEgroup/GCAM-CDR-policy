@@ -751,7 +751,7 @@ def plot_stacked_bar_product(df, year, SSP, column, title, RCP, nonBaselineScena
         print(e)
 
 
-def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_column, x_label):
+def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_column, x_label, RCP, nonBaselineScenario):
     """
     Plots regional data in a categorical scatterplot
     :param dataframe: data being plotted
@@ -762,6 +762,8 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_co
     :param title: title of graph
     :param x_column: column used on the x-axis (formerly "GCAM")
     :param y_column: column used on the y-axis (formerly "columnn")
+    :param RCP: the RCP pathway on which the scenarios are evaluated
+    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     # get colors
@@ -786,6 +788,7 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_co
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
         plt.show()
+        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
 
 
 def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, supply, RCP, nonBaselineScenario):
@@ -806,6 +809,7 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
     colors, divisions = get_colors(5)
 
     # plot for each SSP
+    printing_str = ""
     for i in SSPs:
         dataframe = prices[prices['SSP'].str.contains(i)]
         supply = supply[supply['SSP'].str.contains(i)]
@@ -820,8 +824,11 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
             weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
             plt.axhline(y=weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum(), color=colors[idx],
                         linestyle='dashed')
-            print("avg:", str(item), str(weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum()) + " " +
-                  str(weighted_avg["Units_left"].unique()[0]))
+            printing_str = printing_str + "average," + str(item) + "," + str(weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum()) + ", " + str(weighted_avg["Units_left"].unique()[0] + "\n")
+
+        # output weighted averages
+        with open("data/data_analysis/supplementary_tables/" + str(RCP) + "/weighted_averages" + title + ".csv", 'w') as csvFile:
+            csvFile.write(printing_str)
 
         # finalize plot
         plt.ylabel(y_label)
@@ -1180,10 +1187,6 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply, R
 
         # plot histogram
         bind_width = (int(prices[year].max() + .1) - int(prices[year].min() - .1)) / 40
-        if bind_width > 100:
-            bind_width = bind_width
-        elif bind_width > 30:
-            bind_width = 40
         bins = [bind_width * i for i in
                 range(int(prices[year].min() / bind_width) - 1, int(prices[year].max() / bind_width) + 2)]
 
