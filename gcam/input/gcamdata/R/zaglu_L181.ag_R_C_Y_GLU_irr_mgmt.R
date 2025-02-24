@@ -59,7 +59,7 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
     GCAM_region_names <- get_data(all_data, "common/GCAM_region_names")
 
     # In order to calculate weighted yield levels for aggregation, we don't want to be using the raw yields, as our
-    # GCAM commodities may include a blend of heterogeneous yieldL181.ag_C_GLU_biocharing commodities. For example, cucumber yields are in
+    # GCAM commodities may include a blend of heterogeneous yielding commodities. For example, cucumber yields are in
     # excess of 400 tonnes/hectare in some places, whereas pulses tend to be about 2. In a non-indexed aggregation,
     # the cucumbers would be the only crop that matters for the final yields, and the yield of the "high" technology
     # would not be representative of a biophysically attainable yield for the commodity class as a whole.
@@ -144,7 +144,7 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
 
 
     L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
-      write.csv('./inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_low_nutrient_yield.csv')
+      write.csv('./inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_baseline_yield.csv')
 
     L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% filter(level!="biochar") ->
       L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi
@@ -290,6 +290,7 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       add_legacy_name("L181.ag_kgbioha_R_C_Y_GLU_irr_level") %>%
       add_precursors("L142.ag_Fert_IO_R_C_Y_GLU_biochar") ->
       L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU
+
 
     return_data(L181.LC_bm2_R_C_Yh_GLU_irr_level, L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level, L181.ag_Prod_Mt_R_C_Y_GLU_irr_level, L181.YieldMult_R_bio_GLU_irr, L181.LandShare_R_bio_GLU_irr, L181.ag_kgbioha_R_C_Y_GLU_irr_level, L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU)
   } else {

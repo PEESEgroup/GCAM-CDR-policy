@@ -43,7 +43,7 @@ module_aglu_L2042.resbio_input_irr_mgmt <- function(command, ...) {
              "L101.ag_Prod_Mt_R_C_Y_GLU",
              "L123.For_Prod_bm3_R_Y_GLU",
              "L120.LC_soil_veg_carbon_GLU",
-             "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level",
+             "L181.ag_kgbioha_R_C_Y_GLU_irr_level",
              "L110.IO_Coefs_pulp"))
   } else if(command == driver.DECLARE_OUTPUTS) {
     return(c("L2042.AgResBio_For",
@@ -74,7 +74,7 @@ module_aglu_L2042.resbio_input_irr_mgmt <- function(command, ...) {
     L123.For_Prod_bm3_R_Y_GLU <- get_data(all_data, "L123.For_Prod_bm3_R_Y_GLU", strip_attributes = TRUE)
     L120.LC_soil_veg_carbon_GLU <- get_data(all_data, "L120.LC_soil_veg_carbon_GLU", strip_attributes=TRUE)
     L110.IO_Coefs_pulp <- get_data(all_data, "L110.IO_Coefs_pulp", strip_attributes = TRUE)
-    L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level<- get_data(all_data, "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level")
+    L181.ag_kgbioha_R_C_Y_GLU_irr_level<- get_data(all_data, "L181.ag_kgbioha_R_C_Y_GLU_irr_level")
 
     # the following lines convert basin identification from the current GLU### level 1 names to the
     # level 2 names.
@@ -287,26 +287,43 @@ module_aglu_L2042.resbio_input_irr_mgmt <- function(command, ...) {
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, year, residue.biomass.production,
              mass.conversion, harvest.index, eros.ctrl, mass.to.energy, water.content) %>%
       repeat_add_columns(tibble(Irr_Rfd = c("IRR", "RFD"))) %>%
-      repeat_add_columns(tibble(level = c("lo", "hi", "biochar"))) ->L2042.AgResBio_ag_irr_mgmt
-
-      print(L2042.AgResBio_ag_irr_mgmt, n=5)
-      #TODO limit biochar lands
-
-      L2042.AgResBio_ag_irr_mgmt%>% filter(level == "biochar") %>%
-        left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>%
-                    left_join_error_no_match(GCAM_region_names, by = c("GCAM_region_ID")),
-                    by=c("region", "AgSupplySector" = "GCAM_commodity", "Irr_Rfd", "level", "year")) %>%
-        dplyr::distinct_all() %>%
-        drop_na() %>% #drop rows for crops that don't need biochar
-        select(-GCAM_region_ID, -GCAM_subsector, -GLU, -value) %>%
-        bind_rows(L2042.AgResBio_ag_irr_mgmt %>%
-                    filter(level != "biochar")) ->L2042.AgResBio_ag_irr_mgmt
-
-      L2042.AgResBio_ag_irr_mgmt %>%
+      repeat_add_columns(tibble(level = c("lo", "hi", "biochar"))) %>%
       mutate(AgProductionTechnology = paste(paste(AgProductionTechnology, Irr_Rfd, sep = aglu.IRR_DELIMITER),
                                             level, sep = aglu.MGMT_DELIMITER)) %>%
       select(-Irr_Rfd, -level) ->
       L2042.AgResBio_ag_irr_mgmt
+
+
+    L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
+      left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
+      mutate(MGMT = "biochar") %>%
+      mutate(level = "biochar") %>%
+      filter(kg_bio_ha > 0) %>%
+      mutate(Irr_Rfd = toupper(Irr_Rfd)) %>%
+      # Add sector, subsector, technology names
+      mutate(AgSupplySector = GCAM_commodity,
+             AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
+             AgProductionTechnology = paste(paste(AgSupplySubsector, Irr_Rfd , sep = aglu.IRR_DELIMITER),
+                                            MGMT, sep = aglu.MGMT_DELIMITER)) %>%
+      select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, kg_bio_ha) ->
+      L181.ag_kgbioha_R_C_Y_GLU_irr_level
+
+      print(L2042.AgResBio_ag_irr_mgmt, n=5)
+      print(L181.ag_kgbioha_R_C_Y_GLU_irr_level)
+
+      L2042.AgResBio_ag_irr_mgmt%>% filter(grepl("biochar", AgProductionTechnology)) %>%
+        left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level,
+                    by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology")) %>%
+        dplyr::distinct_all() %>%
+        drop_na() %>% #drop rows for crops that don't need biochar
+        select(-kg_bio_ha) %>%
+        bind_rows(L2042.AgResBio_ag_irr_mgmt %>%
+                    filter(!grepl("biochar", AgProductionTechnology))) ->
+        L2042.AgResBio_ag_irr_mgmt
+
+      print(L2042.AgResBio_ag_irr_mgmt, n=20)
+
+
 
     # 5. Agricultural residue biomass supply curves
     # Much simpler than for Mill or forest, no replacing of base year values.

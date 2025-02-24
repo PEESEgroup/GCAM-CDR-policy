@@ -150,8 +150,10 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
       # Copy coefficients to all four technologies
       repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
-      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2062.ag_Fert_MGMT_biochar
+      repeat_add_columns(tibble(MGMT = c("biochar"))) -> L2062.ag_Fert_MGMT_biochar
 
+    print(L2062.ag_Fert_MGMT_biochar)
+    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
     L2062.ag_Fert_MGMT_biochar%>% filter(MGMT == "biochar") %>%
       left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
                 by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
@@ -373,7 +375,9 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
     # get right columns in the biochar app rate dataframe
     L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
       left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
-      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
+      mutate(MGMT = "biochar") %>%
+      mutate(level = "biochar") %>%
+      filter(kg_bio_ha > 0) %>%
       mutate(IRR_RFD = toupper(Irr_Rfd)) %>%
       # Add sector, subsector, technology names
       mutate(AgSupplySector = GCAM_commodity,

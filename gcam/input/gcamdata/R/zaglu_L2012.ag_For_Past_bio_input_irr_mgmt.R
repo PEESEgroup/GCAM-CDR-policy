@@ -43,6 +43,7 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
     c("L2012.AgSupplySector",
       "L2012.AgSupplySubsector",
       "L2012.AgProduction_ag_irr_mgmt",
+      "L2012.AgProduction_ag_irr_mgmt_no_biochar",
       "L2012.AgProduction_For",
       "L2012.AgProduction_Past",
       "L2012.AgHAtoCL_irr_mgmt",
@@ -170,6 +171,27 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       # becasue GCAM copies forward the shareweight from the previous time period
       select(LEVEL2_DATA_NAMES[["AgProduction"]]) ->
       L2012.AgProduction_ag_irr_mgmt
+
+    L181.ag_Prod_Mt_R_C_Y_GLU_irr_level %>%
+      filter(level != "biochar") %>%
+      filter(year %in% MODEL_BASE_YEARS) %>%
+      mutate(calOutputValue = round(value, digits = aglu.DIGITS_CALOUTPUT)) %>%
+      left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
+      left_join_error_no_match(select(basin_to_country_mapping, GLU_code, GLU_name), by = c("GLU" = "GLU_code")) %>%
+      # Add AgSupplySector, AgSupplySubsector, AgProductionTechnology names.
+      # Also temporarily add "supplysector" and "subsector" names for the set_subsector_shrwt() function
+      mutate(AgSupplySector = GCAM_commodity,
+             AgSupplySubsector = paste(GCAM_subsector, GLU_name, sep = aglu.CROP_GLU_DELIMITER),
+             AgProductionTechnology = paste(AgSupplySubsector, toupper(Irr_Rfd), sep = aglu.IRR_DELIMITER),
+             AgProductionTechnology = paste(AgProductionTechnology, level, sep = aglu.MGMT_DELIMITER),
+             supplysector = AgSupplySector,
+             subsector = AgSupplySubsector) %>%
+      set_subsector_shrwt() %>%
+      mutate(share.weight.year = year,
+             tech.share.weight = if_else(calOutputValue > 0, 1, 0)) %>%
+      # becasue GCAM copies forward the shareweight from the previous time period
+      select(LEVEL2_DATA_NAMES[["AgProduction"]]) ->
+      L2012.AgProduction_ag_irr_mgmt_no_biochar
 
     # L2012.AgProduction_For and L2012.AgProduction_Past: Forest and pasture product calibration (output)
     L123.For_Prod_bm3_R_Y_GLU %>%
@@ -382,29 +404,25 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       select(-GLU_name) ->
       L201.AgYield_bio_grass
 
-    print(L2012.AgYield_bio_ref)
-    print(A_ag_tech_yield)
-    print(A_ag_tech_yield %>% gather(key = year, value="yield", -region, -AgSupplySector, -AgSupplySubsector, -AgProductionTechnology))
-
     A_AgBiocharApplicationRateYrCropLand %>%
       filter(year == 1975) %>% # only need to take 1 year of data
       filter(rate_kg_ha > 0) %>%
       select(-year) -> # only take crops that have biochar demand
-      L181.ag_C_GLU_biochar
+      L181.ag_kgbioha_R_C_Y_GLU_irr_level
 
     # create yields for biochar technologies
     A_ag_tech_yield %>% gather(key = year, value="yield", -region, -AgSupplySector, -AgSupplySubsector, -AgProductionTechnology) -> L2012.biochar_base_yields
 
     print(L2012.biochar_base_yields %>%
             mutate(AgProductionTechnology = gsub("_hi", "_biochar", AgProductionTechnology)) %>% # move yields to biochar lands
-            left_join(L181.ag_C_GLU_biochar, by = c("region", "AgSupplySector")) %>%
+            left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by = c("region", "AgSupplySector")) %>%
             drop_na() %>% # keep only land use types where biochar is applied to land
             left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("AgSupplySector")))
 
     L2012.biochar_base_yields %>%
       mutate(AgProductionTechnology = gsub("_hi", "_biochar", AgProductionTechnology)) %>% # move yields to biochar lands
-      left_join(L181.ag_C_GLU_biochar, by = c("region", "AgSupplySector")) %>%
-      drop_na() %>% # keep only land use types where biochar is applied to land
+      left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by = c("region", "AgSupplySector")) %>%
+      drop_na() %>% filter(rate_kg_ha > 0) %>% # keep only land use types where biochar is applied to land
       left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("AgSupplySector"))%>% # copy in yield increase data
       mutate(yield = yield*Yield.Increase) %>%
       select(-rate_kg_ha, -Yield.Increase) -> L2012.AgYield_biochar_ref
@@ -459,6 +477,18 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
                      "water/basin_to_country_mapping",
                      "L181.ag_Prod_Mt_R_C_Y_GLU_irr_level") ->
       L2012.AgProduction_ag_irr_mgmt
+
+    L2012.AgProduction_ag_irr_mgmt_no_biochar %>%
+      add_title("Input table for agriculture commodity production by all technologies except biochar, so that the hi and biochar mgmts can share the same ghg coefficients") %>%
+      add_units("Mt") %>%
+      add_comments("Calibrated outputs are specified by each technology") %>%
+      add_comments("Subsector shareweights are set at the aggregated region x GLU level, same for all tech") %>%
+      add_comments("Technology shareweights are set by irrigated vs. rainfed, same for high and low mgmt") %>%
+      add_legacy_name("L2012.AgProduction_ag_irr_mgmt") %>%
+      add_precursors("common/GCAM_region_names",
+                     "water/basin_to_country_mapping",
+                     "L181.ag_Prod_Mt_R_C_Y_GLU_irr_level") ->
+      L2012.AgProduction_ag_irr_mgmt_no_biochar
 
     L2012.AgProduction_For_Past %>%
       filter(AgSupplySector %in% aglu.FOREST_SUPPLY_SECTOR) %>%

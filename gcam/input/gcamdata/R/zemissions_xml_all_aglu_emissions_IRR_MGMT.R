@@ -27,7 +27,9 @@ module_emissions_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...) {
       "L2112.nonghg_max_reduction",
       "L2112.nonghg_steepness",
       "L252.AgMAC",
-      "L252.AgMAC_tc_average")
+      "L252.AgMAC_tc_average",
+      "L2112.AWBEmissions_biochar",
+      "L2112.AGREmissions_biochar")
 
   MODULE_OUTPUTS <-
     c(XML = "all_aglu_emissions_IRR_MGMT.xml",
@@ -60,6 +62,8 @@ module_emissions_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...) {
       add_xml_data(L211.AnNH3Emissions, "OutputEmissions") %>%
       add_xml_data(L2112.AWBEmissions, "OutputEmissionsAg") %>%
       add_xml_data(L2112.AGREmissions, "OutputEmissionsAg") %>%
+      add_xml_data(L2112.AWBEmissions_biochar, "OutputEmissCoeffAg") %>%
+      add_xml_data(L2112.AGREmissions_biochar, "OutputEmissCoeffAg") %>%
       add_precursors("L2112.AWBEmissions",
                      "L2112.AGREmissions",
                      "L211.AnEmissions",
@@ -67,7 +71,9 @@ module_emissions_all_aglu_emissions_IRR_MGMT_xml <- function(command, ...) {
                      "L2112.AGRBio",
                      "L2112.AWB_BCOC_EmissCoeff",
                      "L2112.nonghg_max_reduction",
-                     "L2112.nonghg_steepness") ->
+                     "L2112.nonghg_steepness",
+                     "L2112.AWBEmissions_biochar",
+                     "L2112.AGREmissions_biochar") ->
       all_aglu_emissions_IRR_MGMT.xml
 
     create_xml("all_aglu_emissions_IRR_MGMT_MAC.xml") %>%
