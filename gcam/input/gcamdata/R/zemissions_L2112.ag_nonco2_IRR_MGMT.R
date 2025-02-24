@@ -179,6 +179,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       mutate(share_tech = if_else(is.na(share_tech) & input.emissions > 1e-6, 0.5, share_tech)) %>%
       replace_na(list(share_tech = 0)) %>%
       mutate(input.emissions  = input.emissions * share_tech) %>% #biochar has a share_tech of 0
+      filter((level != "biochar") | ((level == "biochar") & (year == 1975))) %>% # makes biochar lands like biomassGrass i.e. only have emissions in 1975, but keep all other rows
       select(region, AgSupplySector, AgProductionTechnology = AgProductionTechnology_lvl, AgSupplySubsector,
              year, Non.CO2, input.emissions, level) ->
       L2112.awb_agr_emissions_disag
@@ -214,6 +215,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
       mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "CH4_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE) , input.emissions*.9967, input.emissions)) %>%
       mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE), input.emissions*.9750, input.emissions)) %>%
+      filter((level != "biochar") | ((level == "biochar") & (year == 1975))) %>% # makes biochar lands like biomassGrass i.e. only have emissions in 1975, keep all other rows
       select(-kg_bio_ha) ->
       L2112.AGREmissions
 
