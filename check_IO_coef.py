@@ -30,9 +30,9 @@ def IO_check(comb, coefficients, assert_str, nonBaselineScenario, products):
             for i in c.GCAMConstants.future_x:
                 try:  # if mean coefficient isn't within 5% of target
                     if not math.isinf(comb_SSP["check_" + str(i)].mean()):
-                        assert (abs(coefficients[nonBaselineScenario, str(products)]) * .95 <
+                        assert (abs(coefficients[str(products)]) * .95 <
                                 abs(comb_SSP["check_" + str(i)].mean()) <
-                                abs(coefficients[nonBaselineScenario, str(products)]) * 1.05)
+                                abs(coefficients[str(products)]) * 1.05)
                     else:
                         print(assert_str + " is ignored for product " + str(products) + " in year " + str(
                             i) + " in " + str(

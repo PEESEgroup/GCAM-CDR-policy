@@ -37,14 +37,9 @@ class GCAMConstants:
 
     # constants to evaluate IO coefficients
     manure_C_ratio = dict()
-    manure_C_ratio["biochar", "beef"] = -0.459
-    manure_C_ratio["biochar", "dairy"] = -0.459
-    manure_C_ratio["biochar", "pork"] = -0.522
-    manure_C_ratio["biochar", "poultry"] = -0.522
-    manure_C_ratio["biochar", "goat"] = -0.526
-    manure_C_ratio["test", "beef"] = -0.459
-    manure_C_ratio["test", "dairy"] = -0.459
-    manure_C_ratio["test", "pork"] = -0.522
-    manure_C_ratio["test", "poultry"] = -0.522
-    manure_C_ratio["test", "goat"] = -0.526
+    manure_C_ratio["beef"] = -0.459
+    manure_C_ratio["dairy"] = -0.459
+    manure_C_ratio["pork"] = -0.522
+    manure_C_ratio["poultry"] = -0.522
+    manure_C_ratio["goat"] = -0.526
 

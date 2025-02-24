@@ -519,7 +519,7 @@ def main():
     """
     reference_SSP = ["SSP1"]  # the first SSP in the list is assumed to be the baseline
     reference_RCP = "6p0"
-    other_scenario = ["test"]  # biochar
+    other_scenario = ["default", "BiocharYieldHigh"]  # biochar
     biochar_year = "2050"
     figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
