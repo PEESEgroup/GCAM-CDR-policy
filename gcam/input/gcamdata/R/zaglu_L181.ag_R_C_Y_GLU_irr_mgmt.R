@@ -144,7 +144,7 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
 
 
     L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
-      write.csv('./inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level.csv')
+      write.csv('./inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_low_nutrient_yield.csv')
 
     L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% filter(level!="biochar") ->
       L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi
