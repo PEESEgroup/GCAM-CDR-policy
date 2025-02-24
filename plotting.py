@@ -827,7 +827,7 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
             printing_str = printing_str + "average," + str(item) + "," + str(weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum()) + ", " + str(weighted_avg["Units_left"].unique()[0] + "\n")
 
         # output weighted averages
-        with open("data/data_analysis/supplementary_tables/" + str(RCP) + "/weighted_averages" + title + ".csv", 'w') as csvFile:
+        with open("data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/weighted_averages" + title + ".csv", 'w') as csvFile:
             csvFile.write(printing_str)
 
         # finalize plot

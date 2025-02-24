@@ -683,7 +683,7 @@ def process_luc(land_use, scale_factor):
     return land_for_alluvial
 
 
-def get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked"):
+def get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked", only_first_scenario=True):
     """
     method to get data from different csvs scattered across different scenario definitions. Useful for collating results
     across the sensitivity analyses
@@ -692,11 +692,14 @@ def get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked")
     :param fname: the filename of the desired data sheet
     :param source: whether to get the masked or original source data
     :param SSPs: a list of SSPs for which to extract data
+    :param only_first_scenario: only grabs the first scenario in the list for the sensitivity analysis
     :return:
     """
     if SSPs is None:
         SSPs = c.GCAMConstants.SSPs
     all_data = pd.DataFrame(columns=c.GCAMConstants.column_order)
+    if only_first_scenario:
+        scenario_list = [scenario_list[0]]
     for nonBaselineScenario in scenario_list:
         pyrolysis_df = pd.read_csv("data/gcam_out/" + str(nonBaselineScenario) + "/" + RCP + "/" + source + "/" + fname + ".csv")
         pyrolysis_df["Version"] = nonBaselineScenario

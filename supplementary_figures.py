@@ -20,7 +20,7 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP, biochar_year):
                                                            source="masked")
     flat_diff_pop = data_manipulation.flat_difference(released_pop, pyrolysis_pop, ["SSP", "GCAM"])
     flat_diff_pop.to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/flat_change_in_population.csv")
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/flat_change_in_population.csv")
 
     # get calorie data
     released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,
@@ -46,9 +46,9 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP, biochar_year):
                                     "technology", "na", RCP, nonBaselineScenario)
     # output data
     flat_diff_Pcal.to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_pcal.csv")
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_pcal.csv")
     perc_diff_Pcal.to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_pcal.csv")
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_pcal.csv")
 
 
 def luc_by_region(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -71,9 +71,9 @@ def luc_by_region(nonBaselineScenario, RCP, SSP, biochar_year):
     flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
     perc_diff_luc = data_manipulation.percent_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
     flat_diff_luc.to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_LUC_emissions.csv")
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_LUC_emissions.csv")
     perc_diff_luc.to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_LUC_emissions.csv")
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_LUC_emissions.csv")
 
     plotting.plot_world_by_years(flat_diff_luc, ["MtC/yr"], "Units", c.GCAMConstants.biochar_x, SSP,
                                  "net difference in LUC emissions by region", RCP, nonBaselineScenario)
@@ -135,13 +135,13 @@ def animal_feed_and_products(nonBaselineScenario, RCP, SSP, biochar_year):
                         "percentage change in animal products by region in " + biochar_year, RCP, nonBaselineScenario)
 
     flat_diff_feed.to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_animal_feed.csv")
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_animal_feed.csv")
     perc_diff_feed.to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_animal_feed.csv")
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_animal_feed.csv")
     flat_diff_animal.to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/change_in_animal_herd.csv")
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_animal_herd.csv")
     perc_diff_animal.to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/percent_change_in_animal_herd.csv")
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_animal_herd.csv")
 
 
 def pyrolysis_costing(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -394,7 +394,7 @@ def farmer_economics(nonBaselineScenario, RCP, SSP, biochar_year):
     pyrolysis_landleafs["Units"] = "land share"
     for i in c.GCAMConstants.biochar_x:
         plotting.plot_regional_hist_avg(pyrolysis_landleafs, str(i), SSP, "count land leafs",
-                                        "histogram of land leaf shares for biochar lands in " + str(i), "MGMT", "na",
+                                        "histogram of land leaf shares for biochar lands in " + str(i), "Crop", "na",
                                         RCP, nonBaselineScenario)
 
 
