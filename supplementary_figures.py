@@ -19,7 +19,7 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP, biochar_year):
     pyrolysis_pop = data_manipulation.get_sensitivity_data(nonBaselineScenario, "population_by_region", SSP, RCP=RCP,
                                                            source="masked")
     flat_diff_pop = data_manipulation.flat_difference(released_pop, pyrolysis_pop, ["SSP", "GCAM"])
-    flat_diff_pop.to_csv(
+    data_manipulation.drop_missing(flat_diff_pop).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/flat_change_in_population.csv")
 
     # get calorie data
@@ -45,9 +45,9 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP, biochar_year):
                                     "Percent difference in Pcals consumed in pyrolysis and reference scenario in " + biochar_year,
                                     "technology", "na", RCP, nonBaselineScenario)
     # output data
-    flat_diff_Pcal.to_csv(
+    data_manipulation.drop_missing(flat_diff_Pcal).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_pcal.csv")
-    perc_diff_Pcal.to_csv(
+    data_manipulation.drop_missing(perc_diff_Pcal).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_pcal.csv")
 
 
@@ -70,9 +70,9 @@ def luc_by_region(nonBaselineScenario, RCP, SSP, biochar_year):
     pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["GCAM", "SSP"])
     flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
     perc_diff_luc = data_manipulation.percent_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
-    flat_diff_luc.to_csv(
+    data_manipulation.drop_missing(flat_diff_luc).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_LUC_emissions.csv")
-    perc_diff_luc.to_csv(
+    data_manipulation.drop_missing(perc_diff_luc.drop("LandLeaf", axis=1)).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_LUC_emissions.csv")
 
     plotting.plot_world_by_years(flat_diff_luc, ["MtC/yr"], "Units", c.GCAMConstants.biochar_x, SSP,
@@ -134,13 +134,13 @@ def animal_feed_and_products(nonBaselineScenario, RCP, SSP, biochar_year):
     plotting.plot_world(perc_diff_animal, products, SSP, "product", "product", [biochar_year],
                         "percentage change in animal products by region in " + biochar_year, RCP, nonBaselineScenario)
 
-    flat_diff_feed.to_csv(
+    data_manipulation.drop_missing(flat_diff_feed).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_animal_feed.csv")
-    perc_diff_feed.to_csv(
+    data_manipulation.drop_missing(perc_diff_feed).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_animal_feed.csv")
-    flat_diff_animal.to_csv(
+    data_manipulation.drop_missing(flat_diff_animal).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_animal_herd.csv")
-    perc_diff_animal.to_csv(
+    data_manipulation.drop_missing(perc_diff_animal).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_animal_herd.csv")
 
 
@@ -165,9 +165,9 @@ def pyrolysis_costing(nonBaselineScenario, RCP, SSP, biochar_year):
     unit_cost = unit_cost[unit_cost[['sector']].isin(['biochar']).any(axis=1)]
     feedstock_cost = feedstock_cost[feedstock_cost[['product']].isin(
         ['beef manure', 'dairy manure', 'goat manure', 'pork manure', 'poultry manure', "biochar"]).any(axis=1)]
-    total_cost[["GCAM", biochar_year, "technology", "Units"]].to_csv("data/data_analysis/total_cost_pyrolysis.csv")
-    unit_cost[["GCAM", biochar_year, "technology", "Units"]].to_csv("data/data_analysis/unit_cost_pyrolysis.csv")
-    feedstock_cost[["GCAM", biochar_year, "product", "Units"]].to_csv("data/data_analysis/feedstock_cost_pyrolysis.csv")
+    data_manipulation.drop_missing(total_cost[["GCAM", biochar_year, "technology", "Units"]]).to_csv("data/data_analysis/total_cost_pyrolysis.csv")
+    data_manipulation.drop_missing(unit_cost[["GCAM", biochar_year, "technology", "Units"]]).to_csv("data/data_analysis/unit_cost_pyrolysis.csv")
+    data_manipulation.drop_missing(feedstock_cost[["GCAM", biochar_year, "product", "Units"]]).to_csv("data/data_analysis/feedstock_cost_pyrolysis.csv")
 
     feedstock_cost = feedstock_cost[feedstock_cost[['product']].isin(
         ['beef manure', 'dairy manure', 'goat manure', 'pork manure', 'poultry manure']).any(axis=1)]

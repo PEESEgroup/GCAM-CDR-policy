@@ -709,3 +709,12 @@ def get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked",
         else:
             all_data = pd.concat([all_data, pyrolysis_df])
     return all_data
+
+
+def drop_missing(dataframe):
+    """
+    drops columns that contain "missing" from the dataframe for cleaner output .csv files
+    :param dataframe: dataframe with columns to be removed
+    :return:
+    """
+    return dataframe.loc[:, ~dataframe.apply(lambda col: col.astype(str).str.contains("missing")).any()]
