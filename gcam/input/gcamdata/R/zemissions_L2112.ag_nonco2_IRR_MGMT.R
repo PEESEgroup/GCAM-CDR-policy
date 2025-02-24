@@ -58,13 +58,11 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
     #  repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
     #  unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") ->
     #  L2112.AGRBio
-    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
-    print(L2111.AGRBio)
     L2111.AGRBio %>%
       repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>% filter(level == "biochar") %>%
       left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),# only need one match
                 by=c("AgSupplySector"="GCAM_commodity", "region", "year", "level")) %>% dplyr::distinct_all() %>%
-      drop_na() %>% #drop rows for crops that don't need biochar
+      drop_na() %>% #drop rows for crops that don't need biochar (in this case its biomass, so it doesn't have biochar anyways)
       select(-GCAM_region_ID, -GCAM_subsector, -GLU, -Irr_Rfd, -value) %>%
       bind_rows(L2111.AGRBio %>%
                   repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>%
@@ -72,9 +70,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") %>%
       dplyr::distinct_all() ->
       L2112.AGRBio
-    print(L2112.AGRBio)
 
-    print(L2111.AWB_BCOC_EmissCoeff)
     L2111.AWB_BCOC_EmissCoeff %>%
       repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>% filter(level == "biochar") %>%
       left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),# only need one match
@@ -87,9 +83,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") %>%
       dplyr::distinct_all() ->
       L2112.AWB_BCOC_EmissCoeff
-    print(L2112.AWB_BCOC_EmissCoeff)
 
-    print(L2111.nonghg_max_reduction)
     L2111.nonghg_max_reduction  %>%
       repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>% filter(level == "biochar") %>%
       left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),# only need one match
@@ -102,9 +96,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") %>%
       dplyr::distinct_all() ->
       L2112.nonghg_max_reduction
-    print(L2112.nonghg_max_reduction)
 
-    print(L2111.nonghg_steepness)
     L2111.nonghg_steepness  %>%
       repeat_add_columns(tibble(level = c("hi", "lo", "biochar"))) %>% filter(level == "biochar") %>%
       left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")),# only need one match
@@ -117,7 +109,6 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       unite(AgProductionTechnology, AgProductionTechnology, level, sep = "_") %>%
       dplyr::distinct_all() ->
       L2112.nonghg_steepness
-    print(L2112.nonghg_max_reduction)
 
 
     # For the tables whose emissions are read as quantities rather than rates,
@@ -135,6 +126,8 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       ungroup() ->
       L2112.AgProduction_ag_irr_nomgmt_aggergate
 
+    print(L2112.AgProduction_ag_irr_nomgmt_aggergate)
+
     # Now subset the table of agricultural production for the most recent model base year
     # and format the data frame so that so that the AgProductionTechnology_level column
     # will match the column in the aggeregated data frame.
@@ -143,6 +136,8 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology_lvl = AgProductionTechnology, year, calOutputValue) %>%
       mutate(AgProductionTechnology_nolvl = gsub("_hi|_lo|_biochar", "", AgProductionTechnology_lvl)) ->
       L2112.AgProduction_ag
+
+    print(L2112.AgProduction_ag)
 
     # Calculate the share weights or the fraction of emissions for each region, sector, subsector,
     # technology and level for the using the aggrated total emissions determined above.
@@ -153,6 +148,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       mutate(share_tech = calOutputValue / total) ->
       L2112.AgProduction_ag_share
 
+    print(L2112.AgProduction_ag_share)
 
     # Combine non agricultural waste burning emissions and agricultural waste burning
     # emissions into a single data frame. Add management level information to production
@@ -163,6 +159,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       unite(AgProductionTechnology_lvl, AgProductionTechnology, level, sep = "_", remove = FALSE) ->
       L2112.awb_agr_emissions
 
+    print(L2112.awb_agr_emissions)
     # Match the shares(fraction of emissions) to the data frames containing
     # emissions quantities for the agricultural water burning and agricultural
     # non waste burning emissions.
@@ -170,6 +167,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       select(-year, -AgSupplySubsector) %>%
       left_join(L2112.awb_agr_emissions, by = c("region", "AgSupplySector", "AgProductionTechnology_lvl")) ->
       L2112.awb_agr_emissions
+    print(L2112.awb_agr_emissions)
 
 
     # Where shares allocated to lo/hi are NA but emissions are positive, split it 50/50 between
@@ -204,11 +202,11 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, level, kg_bio_ha) ->
       L181.ag_kgbioha_R_C_Y_GLU_irr_level
 
-    print(L181.ag_kgbioha_R_C_Y_GLU_irr_level)
     print(L2112.awb_agr_emissions_disag %>%
             filter(!grepl("AWB", Non.CO2)))
 
     # The disaggregated non agricultural waste burning emissions.
+    # TODO: as of 2/24 only OC_AWB and BC_AWB are showing up in model outputs
     L2112.awb_agr_emissions_disag %>%
       filter(!grepl("AWB", Non.CO2)) %>%
       left_join_error_no_match(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by=c("region", "AgSupplySector", "AgProductionTechnology", "AgSupplySubsector", "level")) %>%
@@ -218,6 +216,8 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE), input.emissions*.9750, input.emissions)) %>%
       select(-kg_bio_ha) ->
       L2112.AGREmissions
+
+    print(L2112.AGREmissions %>% filter(level == "biochar"), n=50)
 
     # ===================================================
     # Produce outputs

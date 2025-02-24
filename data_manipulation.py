@@ -718,3 +718,79 @@ def drop_missing(dataframe):
     :return:
     """
     return dataframe.loc[:, ~dataframe.apply(lambda col: col.astype(str).str.contains("missing")).any()]
+
+
+def seq_C(row, product_column, modification_column):
+    """
+    calculates the sequestered C from the net change in C due to biochar
+    :param row: the row of the dataframe being changed
+    :param product_column: the column containing the identifying product
+    :param modification_column: the column with data to be changed
+    :return: the amount of net C that is sequestered
+    """
+    if row[product_column] in ["pork biochar", "goat biochar"]:
+        return row[modification_column] * .5853 # from the ncomms spreadsheet
+    elif row[product_column] in ["beef biochar", "dairy biochar"]:
+        return row[modification_column] * .5391 # from the ncomms spreadsheet
+    elif row[product_column] in ["poultry biochar"]:
+        return row[modification_column] * .5316 # from the ncomms spreadsheet
+    else:
+        return 0
+
+
+def avd_C(row, product_column, modification_column):
+    """
+    calculates the avoided C from the net change in C due to biochar
+    :param row: the row of the dataframe being changed
+    :param product_column: the column containing the identifying product
+    :param modification_column: the column with data to be changed
+    :return: the amount of net C that is sequestered
+    """
+    if row[product_column] in ["pork biochar", "goat biochar"]:
+        return row[modification_column] * (1-.5853) # from the ncomms spreadsheet
+    elif row[product_column] in ["beef biochar", "dairy biochar"]:
+        return row[modification_column] * (1-.5391) # from the ncomms spreadsheet
+    elif row[product_column] in ["poultry biochar"]:
+        return row[modification_column] * (1-.5316) # from the ncomms spreadsheet
+    else:
+        return 0
+
+
+def avd_soil_CH4(row, product_column, modification_column):
+    """
+    calculates the avoided soil CH4 emissions from soil
+    :param row: the row of the dataframe being changed
+    :param product_column: the column containing the identifying product
+    :param modification_column: the column with data to be changed
+    :return: the amount of net C that is sequestered
+    """
+    if row[product_column] in ["CH4_AGR"]:
+        temp = row[modification_column] / .9967  # counterfactual for full GHG emissions (parameter from ncomms spreadsheet)
+        temp = temp * (1-.9967) * -23  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
+        return temp
+    elif row[product_column] in ["N2O_AGR"]:
+        temp = row[
+                   modification_column] / .9750  # counterfactual for full GHG emissions (parameter from ncomms spreadsheet)
+        temp = temp * (
+                    1 - .9750) * -296  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
+        return temp
+    else:
+        return 0
+
+
+def avd_soil_N2O(row, product_column, modification_column):
+    """
+    calculates the avoided soil N2O emissions from soil
+    :param row: the row of the dataframe being changed
+    :param product_column: the column containing the identifying product
+    :param modification_column: the column with data to be changed
+    :return: the amount of net C that is sequestered
+    """
+    if row[product_column] in ["pork biochar", "goat biochar"]:
+        return row[modification_column] * (1-.5853) # from the ncomms spreadsheet
+    elif row[product_column] in ["beef biochar", "dairy biochar"]:
+        return row[modification_column] * (1-.5391) # from the ncomms spreadsheet
+    elif row[product_column] in ["poultry biochar"]:
+        return row[modification_column] * (1-.5316) # from the ncomms spreadsheet
+    else:
+        return 0

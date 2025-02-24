@@ -182,46 +182,86 @@ def figure4(nonBaselineScenario, RCP, SSP):
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_difference_primary_energy_consumption.csv")
 
     # plotting CO2 sequestering
-    co2_seq_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
+    co2_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
                                                                "CO2_emissions_by_tech_excluding_resource_production",
                                                                SSP, RCP=RCP, source="masked")
-    co2_seq_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-    co2_seq_pyrolysis['technology'] = co2_seq_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "technology"),
+    co2_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+    co2_pyrolysis['technology'] = co2_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "technology"),
                                                               axis=1)
-    co2_seq_pyrolysis['Units'] = "Mt C Sequestered/yr"
+    co2_pyrolysis['Units'] = "Net change in Mt C/yr"
     products = ["beef biochar", "dairy biochar", "pork biochar", "poultry biochar", "goat biochar"]
-    co2_seq_pyrolysis = co2_seq_pyrolysis[co2_seq_pyrolysis['technology'].str.contains("|".join(products))]
+    co2_pyrolysis = co2_pyrolysis[co2_pyrolysis['technology'].str.contains("|".join(products))]
+    # make two copies so as to split the C coefficient between avoided and sequestered
+    co2_seq_pyrolysis = co2_pyrolysis.copy(deep=True)
+    co2_avd_pyrolysis = co2_pyrolysis
 
-    # carbon sequestration is portrayed as a negative in GCAM, but measured as a positive in this study
-    for i in c.GCAMConstants.biochar_x:
-        co2_seq_pyrolysis[str(i)] = co2_seq_pyrolysis[str(i)] * -1
+    # carbon sequestration is portrayed as a negative emission in GCAM, but measured as a positive in this study
+    for i in c.GCAMConstants.future_x:
+        co2_seq_pyrolysis[str(i)] = 3.664 * co2_pyrolysis.apply(lambda row: data_manipulation.seq_C(row, "technology", str(i)),
+                                                              axis=1)  # 3.664 converts C to CO2-eq
+        co2_avd_pyrolysis[str(i)] = 3.664 * co2_pyrolysis.apply(lambda row: data_manipulation.avd_C(row, "technology", str(i)),
+                                                              axis=1)
+    co2_seq_pyrolysis["Units"] = "Mt CO$_2$-eq Sequestered in Biochar/yr"
+    co2_avd_pyrolysis["Units"] = "Mt CO$_2$-eq Net Avoided CO$_2$/yr"
 
-    # output values of Mt C sequestered
-    data_manipulation.drop_missing(co2_seq_pyrolysis).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/CO2_sequestration_pyrolysis.csv")
-
-    # plotting ghg emissions avoidance
-    # TODO: update to include avoided N2O emissions
-    # TODO: update to report values in Mt CO2-eq
-    co2_avd_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
+    # avoided agricultural emissions from lands managed with biochar
+    ghg_er = data_manipulation.get_sensitivity_data(nonBaselineScenario,
                                                                "nonCO2_emissions_by_tech_excluding_resource_production",
                                                                SSP, RCP=RCP, source="masked")
-    co2_avd_pyrolysis = data_manipulation.group(co2_avd_pyrolysis, ["technology", "SSP", "Version"])
-    co2_avd_pyrolysis['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
-    co2_avd_pyrolysis['technology'] = co2_avd_pyrolysis.apply(lambda row: data_manipulation.remove__(row, "technology"),
+
+    ag_avd_n2o_land = ghg_er[ghg_er['technology'].str.contains("biochar")]
+    ag_avd_ch4_land = ghg_er[ghg_er['technology'].str.contains("biochar")]
+    ag_avd_n2o_land = ag_avd_n2o_land[ag_avd_n2o_land[['GHG']].isin(["N2O_AGR"]).any(axis=1)]
+    ag_avd_ch4_land = ag_avd_ch4_land[ag_avd_ch4_land[['GHG']].isin(["CH4_AGR"]).any(axis=1)]
+    for i in c.GCAMConstants.future_x:
+        ag_avd_n2o_land[str(i)] = ag_avd_n2o_land.apply(
+            lambda row: data_manipulation.avd_soil_N2O(row, "technology", str(i)), axis=1)
+        ag_avd_ch4_land[str(i)] = ag_avd_ch4_land.apply(
+            lambda row: data_manipulation.avd_soil_CH4(row, "technology", str(i)), axis=1)
+    ag_avd_n2o_land["Units"] = "Mt CO$_2$-eq Avoided Land N$_2$O/yr"
+    ag_avd_ch4_land["Units"] = "Mt CO$_2$-eq Avoided Land CH$_4$/yr"
+
+    # avoided CH4 and N2O emissions from avoided biomass decomposition
+    biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")]
+    biochar_ghg_er = data_manipulation.group(biochar_ghg_er, ["technology", "SSP", "Version"])
+
+    biochar_ghg_er = ghg_er['technology'] = ghg_er.apply(lambda row: data_manipulation.remove__(row, "technology"),
                                                               axis=1)
-    co2_avd_pyrolysis = co2_avd_pyrolysis[co2_avd_pyrolysis['technology'].str.contains("|".join(products))]
-    co2_avd_pyrolysis[
+    biochar_ghg_er = biochar_ghg_er[biochar_ghg_er['technology'].str.contains("|".join(products))]
+
+
+    ghg_er['GCAM'] = 'All'  # avoids an issue later in plotting for global SSP being dropped
+    ghg_er['technology'] = ghg_er.apply(lambda row: data_manipulation.remove__(row, "technology"),
+                                                              axis=1)
+    ghg_er = ghg_er[ghg_er['technology'].str.contains("|".join(products))]
+    ghg_er[
         'Units'] = "Mt CH4 Avoided/yr"  # assuming a GWP of 27.2 (IPCC AR6), same GWP used in biochar CH4 avoidance spreadsheet calcs
     # carbon avoidance is portrayed as a negative in GCAM, but measured as a positive in this study
-    for i in c.GCAMConstants.biochar_x:
-        co2_avd_pyrolysis[str(i)] = co2_avd_pyrolysis[str(i)] * -1
-    plotting.plot_line_product_CI(co2_avd_pyrolysis, products, "technology", SSP[0], "Version",
-                                  "carbon emissions avoidance across RCP pathways in " + SSP[
-                                      0] + " baseline", RCP, nonBaselineScenario)
-    # output values of Mt C avoided
-    data_manipulation.drop_missing(co2_avd_pyrolysis).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/pyrolysis_avoided_GHG.csv")
+    for i in c.GCAMConstants.future_x:
+        ghg_er[str(i)] = ghg_er[str(i)] * -1
+
+    # get luc emissions data
+    released_luc = data_manipulation.get_sensitivity_data(["released"], "LUC_emissions_by_LUT", SSP, RCP=RCP,
+                                                          source="original")
+    pyrolysis_luc = data_manipulation.get_sensitivity_data(nonBaselineScenario, "LUC_emissions_by_LUT", SSP,
+                                                           RCP=RCP, source="masked")
+
+    released_luc = data_manipulation.group(released_luc, ["SSP"])
+    pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["SSP"])
+    flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
+    # TODO: include reduction in biochar land emissions
+
+    biochar_ghg_emissions = pd.concat([ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis])
+
+    # plotting ghg emissions avoidance
+    plotting.plot_line_product_CI(biochar_ghg_emissions, products, "technology", SSP[0], "Version",
+                                  "ghg emissions changes in " + SSP[0], RCP, nonBaselineScenario)
+
+    # TODO write out only one .csv file containing all types of CO2 emissions
+    # output values of avoided and sequestered ghg emissions from biochar
+    data_manipulation.drop_missing(biochar_ghg_emissions).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
+            RCP) + "/biochar_ghg_emissions.csv")
 
     # output values of biochar supply
     biochar_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP, RCP=RCP,

@@ -70,7 +70,7 @@ def luc_by_region(nonBaselineScenario, RCP, SSP, biochar_year):
     pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["GCAM", "SSP"])
     flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
     perc_diff_luc = data_manipulation.percent_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
-    data_manipulation.drop_missing(flat_diff_luc).to_csv(
+    data_manipulation.drop_missing(flat_diff_luc.drop("LandLeaf", axis=1)).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_LUC_emissions.csv")
     data_manipulation.drop_missing(perc_diff_luc.drop("LandLeaf", axis=1)).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_LUC_emissions.csv")
