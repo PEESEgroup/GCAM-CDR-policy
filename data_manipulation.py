@@ -556,33 +556,36 @@ def mgmt_to_color(row):
         return "#BFBE43"
     elif "Biochar Application" in row["Management"]:
         return "#C16861"
-    elif "Unmanaged" in row["Management"]:
+    elif "Other Land Use Types" in row["Management"]:
         return "#74A751"
 
 
-def relabel_region_alluvial(row):
+def relabel_region_alluvial(row, biochar_year, base_year):
     """
     process data for the alluvial figure
     :param row: row from a pandas dataframe
+    :param biochar_year: year with widespread biochar adoption for analysis
+    :param base_year: year with no biochar adoption for analysis
     :return: get data based on the year
     """
-    if row["Region_2050"] is None:
-        return row["Region_2020"]
+    if row["Region_" + str(biochar_year)] is None:
+        return row["Region_" + str(base_year)]
     else:
-        return row["Region_2050"]
+        return row["Region_" + str(biochar_year)]
 
 
-def relabel_management_alluvial(row, counts):
+def relabel_management_alluvial(row, counts, column):
     """
     relabel land management type
     :param row: row of a pandas dataframe
     :param counts: count of the number of entries of a value in the pandas dataframe
+    :param column: column in which data is stored
     :return: a string describing the land type and amount
     """
-    if row["Management_2050"] is None:
-        return "Unmanaged"
+    if row[column] is None:
+        return "Other Land Use Types"
     else:
-        return row["Management_2050"] + ":<br>" + f'{float(f"{counts[row.Management_2050]:.5g}"):g}' + " km<sup>2</sup>"
+        return row[column] + ":<br>" + f'{float(f"{counts[row.at[column]]:.5g}"):g}' + " km<sup>2</sup>"
 
 
 def process_luc(land_use, scale_factor, base_year, biochar_year):

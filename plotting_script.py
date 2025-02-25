@@ -95,14 +95,11 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     land_for_alluvial[[base_year, "Management_"+base_year, "Region_"+base_year]] = land_for_alluvial[base_year].str.split("_",
                                                                                                         expand=True)
     counts = land_for_alluvial["Management_"+biochar_year].value_counts() / scale_factor * 1000
-    data_manipulation.drop_missing(counts).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/count_landleafs.csv")
 
     # Region_ biochar_year data is stored in Region
-    land_for_alluvial["Region"] = land_for_alluvial.apply(lambda row: data_manipulation.relabel_region_alluvial(row),
-                                                          axis=1)
+    land_for_alluvial["Region"] = land_for_alluvial.apply(lambda row: data_manipulation.relabel_region_alluvial(row, biochar_year, base_year), axis=1)
     land_for_alluvial["Management"] = land_for_alluvial.apply(
-        lambda row: data_manipulation.relabel_management_alluvial(row, counts), axis=1)
+        lambda row: data_manipulation.relabel_management_alluvial(row, counts, "Management_"+biochar_year), axis=1)
     land_for_alluvial = land_for_alluvial.sort_values(by=['Management', "Region"], ascending=[True, True])
 
     # get percentage of land with different management types on a regional basis
@@ -113,7 +110,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
             region_management_type = region_management_type + (str(usage) + ", " + str(gcam) + ", " +
                                                                str(len(regional[regional["Management"] == usage]) / len(
                                                                    regional) * 100) + ",%\n")
-    plotting.plot_alluvial(land_for_alluvial)
+    plotting.plot_alluvial(land_for_alluvial, biochar_year, base_year)
     # write out .csv data for different land management types
     with open("data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/regional_land_mgmt.csv", 'w') as csvFile:
         csvFile.write(region_management_type)
@@ -556,9 +553,9 @@ def main():
     """
     reference_SSP = ["SSP1"]  # the first SSP in the list is assumed to be the baseline
     reference_RCP = "6p0"
-    other_scenario = ["default"]  # biochar
+    other_scenario = ["default"]  # the first scenario in the list is assumed to be the baseline
     biochar_year = "2060"
-    figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure4(other_scenario, reference_RCP, reference_SSP)
     figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)

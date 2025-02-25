@@ -1257,13 +1257,20 @@ def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label
     plt.show()
 
 
-def plot_alluvial(df):
+def plot_alluvial(df, biochar_year, base_year):
+    """
+    plots the alluvial graph of changes to land use in ag
+    :param df: dataframe being plotted
+    :param biochar_year: a year in which biochar adoption is widespread
+    :param base_year: a year with no biochar adoption
+    :return:
+    """
     df["color"] = df.apply(lambda row: data_manipulation.mgmt_to_color(row), axis=1)
-    fig = px.parallel_categories(df, dimensions=["2020", "2050", "Management", "Region"],
-                                 labels={"Region": "Region in 2050",
-                                         "2020": "Crops in 2020",
-                                         "2050": "Crops in 2050",
-                                         "Management": "Management Type in 2050"},
+    fig = px.parallel_categories(df, dimensions=[base_year, biochar_year, "Management", "Region"],
+                                 labels={"Region": "Region in " + str(biochar_year),
+                                         str(base_year): "Crops in "+ str(base_year),
+                                         str(biochar_year): "Crops in " + str(biochar_year),
+                                         "Management": "Management Type in " + str(biochar_year)},
                                  color=df["color"], width=1920)
     fig.update_layout(margin=dict(l=500, r=500, t=100, b=100),
                       font_family="Arial",
