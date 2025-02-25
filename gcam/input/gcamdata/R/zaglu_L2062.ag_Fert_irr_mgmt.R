@@ -68,7 +68,6 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       filter(year %in% MODEL_BASE_YEARS) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
-
       # Copy coefficients to all four technologies
       repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
       repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) -> L2062.ag_Fert_MGMT
@@ -137,23 +136,19 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
     L2062.ag_Fert_MGMT_P2O5%>%
       mutate(minicam.energy.input = "P2O5 fertilizer") -> L2062.ag_Fert_MGMT_P2O5
 
-    print(L142.ag_Fert_IO_R_C_Y_GLU_biochar %>% filter(kg_biochar_kg_crop_limited == 0))
-    print(L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU)
-
     # same calcs for biochar application rate
     L142.ag_Fert_IO_R_C_Y_GLU_biochar %>%
       filter(year %in% MODEL_BASE_YEARS) %>%
       select(-kg_biochar_kg_crop_limited) %>% # remove wrong application rates
       left_join(L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU, by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU")) %>% # merge in correct application rates
       drop_na() %>% #drop regions without biochar application
+      filter(kg_biochar_kg_crop > 0) %>%
       left_join_error_no_match(GCAM_region_names, by = "GCAM_region_ID") %>%
       left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
       # Copy coefficients to all four technologies
       repeat_add_columns(tibble(IRR_RFD = c("IRR", "RFD"))) %>%
       repeat_add_columns(tibble(MGMT = c("biochar"))) -> L2062.ag_Fert_MGMT_biochar
 
-    print(L2062.ag_Fert_MGMT_biochar)
-    print(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level)
     L2062.ag_Fert_MGMT_biochar%>% filter(MGMT == "biochar") %>%
       left_join(L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% mutate(IRR_RFD = toupper(Irr_Rfd)),
                 by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year", "MGMT"="level", "IRR_RFD")) %>%
@@ -187,20 +182,6 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, minicam.energy.input, year, coefficient) ->
       L2062.AgCoef_biochar_ag_irr_mgmt
 
-    # merge biochar and N fertilizer inputs together
-    bind_rows(L2062.AgCoef_Fert_ag_irr_mgmt, L2062.AgCoef_biochar_ag_irr_mgmt) -> L2062.AgCoef_Fert_ag_irr_mgmt
-
-    print(L2062.AgCoef_Fert_ag_irr_mgmt %>%
-            filter(grepl("biochar", AgProductionTechnology)) %>%
-            left_join(L2062.AgCoef_biochar_ag_irr_mgmt, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year")) %>%
-            filter(if_any(everything(), is.na)) %>%
-            filter(year==2015), n=100) # biochar should be demanded in all time periods after 2015
-    print(L2062.AgCoef_Fert_ag_irr_mgmt %>%
-            filter(grepl("biochar", AgProductionTechnology)) %>%
-            left_join(L2062.AgCoef_biochar_ag_irr_mgmt, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year")) %>%
-            filter(coefficient.y == 0, coefficient.x > 0) %>% # check for 0 biochar application rates in some regions where N fertilizer is also applied
-            filter(year==2015), n=100) # biochar should be demanded in all time periods after 2015
-
     # Copy final base year coefficients to all future years, bind with historic coefficients, then remove zeroes
     # Note: this assumes constant fertilizer coefficients in the future ----
     L2062.AgCoef_Fert_ag_irr_mgmt %>%
@@ -211,7 +192,58 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       filter(coefficient > 0) ->
       L2062.AgCoef_Fert_ag_irr_mgmt
 
+    L2062.AgCoef_biochar_ag_irr_mgmt %>%
+      filter(year == max(MODEL_BASE_YEARS)) %>%
+      select(-year) %>% # might need to put biochar inputs in past years. currently starts in 2015
+      repeat_add_columns(tibble(year = MODEL_FUTURE_YEARS)) %>%
+      bind_rows(L2062.AgCoef_biochar_ag_irr_mgmt) %>%
+      filter(coefficient > 0) ->
+        L2062.AgCoef_biochar_ag_irr_mgmt
 
+    print(L2062.AgCoef_biochar_ag_irr_mgmt)
+    print(L2062.AgCoef_Fert_ag_irr_mgmt)
+
+    # before we combine the datasets, need to check to ensure correct land nodes
+    print("next 2 print statements should be empty")
+    print(L2062.AgCoef_Fert_ag_irr_mgmt %>%
+            filter(grepl("biochar", AgProductionTechnology)) %>%
+            left_join(L2062.AgCoef_biochar_ag_irr_mgmt, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year")) %>%
+            filter(if_any(everything(), is.na)) %>%
+            filter(year==2015), n=100) # biochar should be demanded in all time periods after 2015
+    print(L2062.AgCoef_Fert_ag_irr_mgmt %>%
+            filter(grepl("biochar", AgProductionTechnology)) %>%
+            left_join(L2062.AgCoef_biochar_ag_irr_mgmt, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year")) %>%
+            filter(coefficient.y == 0, coefficient.x > 0) %>% # check for 0 biochar application rates in some regions where N fertilizer is also applied
+            filter(year==2015), n=100) # biochar should be demanded in all time periods after 2015
+    print(L2062.AgCoef_biochar_ag_irr_mgmt %>%
+            filter(grepl("biochar", AgProductionTechnology)) %>%
+            left_join(L2062.AgCoef_Fert_ag_irr_mgmt, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year")) %>%
+            filter(if_any(everything(), is.na)) %>% # if N fertilizer isn't applied, neither should biochar
+            filter(year==2015), n=100) # biochar should be demanded in all time periods after 2015
+    print("next 2 print statements should be empty")
+    print(L2062.AgCoef_Fert_ag_irr_mgmt %>%
+            filter(AgProductionTechnology == "SugarCrop_RiftValley_IRR_biochar"))
+
+    L2062.AgCoef_biochar_ag_irr_mgmt %>%
+      filter(grepl("biochar", AgProductionTechnology)) %>%
+      left_join(L2062.AgCoef_Fert_ag_irr_mgmt, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year")) %>% # merge in the N fertilizer regions
+      drop_na() %>% # if N fertilizer was dropped because amount applied is 0, then no biochar should be applied as well
+      mutate(minicam.energy.input = minicam.energy.input.x,
+             coefficient = coefficient.x) %>%
+      select(-minicam.energy.input.y, -coefficient.y, -minicam.energy.input.x, -coefficient.x)->
+      L2062.AgCoef_biochar_ag_irr_mgmt
+
+    # double check on the output
+    print(L2062.AgCoef_biochar_ag_irr_mgmt %>%
+            filter(grepl("biochar", AgProductionTechnology)) %>%
+            left_join(L2062.AgCoef_Fert_ag_irr_mgmt, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology", "year")) %>%
+            filter(if_any(everything(), is.na)) %>% # if N fertilizer isn't applied, neither should biochar
+            filter(year==2015), n=100) # biochar should be demanded in all time periods after 2015
+
+    # merge biochar and N fertilizer inputs together
+    bind_rows(L2062.AgCoef_Fert_ag_irr_mgmt, L2062.AgCoef_biochar_ag_irr_mgmt) -> L2062.AgCoef_Fert_ag_irr_mgmt
+
+    print(L2062.AgCoef_Fert_ag_irr_mgmt)
 
     L2062.ag_Fert_MGMT_K2O%>% #combine fert and biochar demands
       # Add sector, subsector, technology names
@@ -375,9 +407,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
     # get right columns in the biochar app rate dataframe
     L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
       left_join_error_no_match(basin_to_country_mapping[ c("GLU_code", "GLU_name")], by = c("GLU" = "GLU_code")) %>%
-      mutate(MGMT = "biochar") %>%
-      mutate(level = "biochar") %>%
-      filter(kg_bio_ha > 0) %>%
+      repeat_add_columns(tibble(MGMT = c("hi", "lo", "biochar"))) %>%
       mutate(IRR_RFD = toupper(Irr_Rfd)) %>%
       # Add sector, subsector, technology names
       mutate(AgSupplySector = GCAM_commodity,
@@ -386,6 +416,9 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
                                             MGMT, sep = aglu.MGMT_DELIMITER)) %>%
       select(region, AgSupplySector, AgSupplySubsector, AgProductionTechnology, kg_bio_ha) ->
       L181.ag_kgbioha_R_C_Y_GLU_irr_level
+
+    print(L181.ag_kgbioha_R_C_Y_GLU_irr_level)
+    print(L2062.AgCoef_Fert_ag_irr_mgmt)
 
     # decrease fert consumption for biochar lands with sufficient app rate
     L2062.AgCoef_Fert_ag_irr_mgmt %>%

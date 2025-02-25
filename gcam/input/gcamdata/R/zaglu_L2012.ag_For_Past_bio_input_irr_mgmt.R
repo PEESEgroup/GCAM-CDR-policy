@@ -404,25 +404,29 @@ module_aglu_L2012.ag_For_Past_bio_input_irr_mgmt <- function(command, ...) {
       select(-GLU_name) ->
       L201.AgYield_bio_grass
 
+    print(L2012.AgYield_bio_ref)
+    print(A_ag_tech_yield)
+    print(A_ag_tech_yield %>% gather(key = year, value="yield", -region, -AgSupplySector, -AgSupplySubsector, -AgProductionTechnology))
+
     A_AgBiocharApplicationRateYrCropLand %>%
       filter(year == 1975) %>% # only need to take 1 year of data
       filter(rate_kg_ha > 0) %>%
       select(-year) -> # only take crops that have biochar demand
-      L181.ag_kgbioha_R_C_Y_GLU_irr_level
+      L181.ag_C_GLU_biochar
 
     # create yields for biochar technologies
     A_ag_tech_yield %>% gather(key = year, value="yield", -region, -AgSupplySector, -AgSupplySubsector, -AgProductionTechnology) -> L2012.biochar_base_yields
 
     print(L2012.biochar_base_yields %>%
             mutate(AgProductionTechnology = gsub("_hi", "_biochar", AgProductionTechnology)) %>% # move yields to biochar lands
-            left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by = c("region", "AgSupplySector")) %>%
+            left_join(L181.ag_C_GLU_biochar, by = c("region", "AgSupplySector")) %>%
             drop_na() %>% # keep only land use types where biochar is applied to land
             left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("AgSupplySector")))
 
     L2012.biochar_base_yields %>%
       mutate(AgProductionTechnology = gsub("_hi", "_biochar", AgProductionTechnology)) %>% # move yields to biochar lands
-      left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by = c("region", "AgSupplySector")) %>%
-      drop_na() %>% filter(rate_kg_ha > 0) %>% # keep only land use types where biochar is applied to land
+      left_join(L181.ag_C_GLU_biochar, by = c("region", "AgSupplySector")) %>%
+      drop_na() %>% # keep only land use types where biochar is applied to land
       left_join_error_no_match(A_agBiocharCropYieldIncrease, by=c("AgSupplySector"))%>% # copy in yield increase data
       mutate(yield = yield*Yield.Increase) %>%
       select(-rate_kg_ha, -Yield.Increase) -> L2012.AgYield_biochar_ref

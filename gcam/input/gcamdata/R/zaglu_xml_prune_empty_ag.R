@@ -77,6 +77,7 @@ module_aglu_prune_empty_ag_xml <- function(command, ...) {
       filter(grepl("hi$", AgProductionTechnology)) -> hi_tech_remove
 
     # bind all rows that need to be removed, including biochar, and then remove duplicates, because there are likely to be biochar duplicates
+    # this results in some error messages in gcam that the ag production technology could not be removed because it doesn't exist, but that should be fine.
     bind_rows(lo_tech_remove,
               hi_tech_remove,
               lo_tech_remove %>% mutate(AgProductionTechnology = stringr::str_replace(AgProductionTechnology, "_lo", "_biochar")),
