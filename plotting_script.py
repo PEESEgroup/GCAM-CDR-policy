@@ -87,7 +87,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     # process alluvial data
     scale_factor = 10
     base_year = "2020"
-    land_for_alluvial = data_manipulation.process_luc(land_use, scale_factor)
+    land_for_alluvial = data_manipulation.process_luc(land_use, scale_factor, base_year, biochar_year)
 
     # build a alluvial plot
     land_for_alluvial[[biochar_year, "Management_"+biochar_year, "Region_"+biochar_year]] = land_for_alluvial[biochar_year].str.split("_",
@@ -145,7 +145,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     plotting.plot_stacked_bar_product(global_land, c.GCAMConstants.biochar_x, SSP, "LandLeaf",
                                       "global land use change by year", RCP, nonBaselineScenario)
 
-    flat_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"])
+    flat_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"], biochar_year)
 
     flat_diff_land['GCAM'] = flat_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
     flat_diff_land["LandLeaf"] = flat_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
@@ -556,12 +556,12 @@ def main():
     """
     reference_SSP = ["SSP1"]  # the first SSP in the list is assumed to be the baseline
     reference_RCP = "6p0"
-    other_scenario = ["default", "BiocharYieldHigh"]  # biochar
-    biochar_year = "2050"
-    #figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    other_scenario = ["default"]  # biochar
+    biochar_year = "2060"
+    figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure4(other_scenario, reference_RCP, reference_SSP)
-    #figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
     cue_figure(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 

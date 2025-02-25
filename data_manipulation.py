@@ -72,12 +72,13 @@ def calc_percs(row, i):
         return 100 * (row[str(i) + "_right"] - row[str(i) + "_left"]) / (row[str(i) + "_left"] + 1e-7)
 
 
-def percent_of_total(old, new, columns):
+def percent_of_total(old, new, columns, biochar_year):
     """
     calculates the percent difference between two dataframes
     :param old: the old dataframe
     :param new: the new dataframe
     :param columns: the columns necessary to uniquely identify a product
+    :param biochar_year: a year with widespread biochar adoption
     :return: a dataframe containing the percent change between the dataframes
     """
     # get values from dataframes
@@ -95,7 +96,7 @@ def percent_of_total(old, new, columns):
                 merged_filter = merged_filter.drop([str(i) + "_left"], axis=1)
                 merged_filter = merged_filter.drop([str(i) + "_right"], axis=1)
 
-                if k == "Global" and str(i) == "2050":
+                if k == "Global" and str(i) == biochar_year:
                     print("total is", sum_col, "thousand sq km in", j)
                     merged_filter["GCAM"] = "Global (net)"
 
@@ -584,13 +585,15 @@ def relabel_management_alluvial(row, counts):
         return row["Management_2050"] + ":<br>" + f'{float(f"{counts[row.Management_2050]:.5g}"):g}' + " km<sup>2</sup>"
 
 
-def process_luc(land_use, scale_factor):
+def process_luc(land_use, scale_factor, base_year, biochar_year):
     """
     process land use change, attempting to map other land use types to other land use types within a region/basin,
     while matching the same type of crops in both years
     :param land_use: dataframe containing land use types
     :param scale_factor: scale factor increasing the number of rows, and thus increasing the precision of the data,
     while increasing the computation time for the method
+    :param base_year: base year for the analysis
+    :param biochar_year: year with widespread adoption of biochar for the analysis
     :return: pandas dataframe containing land use mappings for different crops
     """
     land_for_alluvial = pd.DataFrame()
@@ -608,7 +611,7 @@ def process_luc(land_use, scale_factor):
                     year_2020 = pd.Series()
                     year_2050 = pd.Series()
                     regions = mgmt[mgmt[['GCAM']].isin([r]).any(axis=1)]
-                    repeat_times_2020 = regions["2020"]
+                    repeat_times_2020 = regions[base_year]
                     repeat_string_2020 = str(crop_type) + "_" + str(mgmt_type) + "_" + str(r)
                     # repeat the land area a number of times equal to the amount of land
                     crop_by_mgmt = pd.Series([repeat_string_2020]).repeat(repeat_times_2020 * scale_factor)
@@ -616,7 +619,7 @@ def process_luc(land_use, scale_factor):
                     year_2020 = pd.concat([year_2020, crop_by_mgmt])
                     year_2020 = year_2020.reset_index(drop=True)
 
-                    repeat_times_2050 = regions["2050"]
+                    repeat_times_2050 = regions[biochar_year]
                     repeat_string_2050 = str(crop_type) + "_" + str(mgmt_type) + "_" + str(r)
                     # repeat the land area a number of times equal to the amount of land
                     crop_by_mgmt = pd.Series([repeat_string_2050]).repeat(repeat_times_2050 * scale_factor)
@@ -633,11 +636,11 @@ def process_luc(land_use, scale_factor):
                 # gather excess land not present in either year
                 by_mgmt_type = pd.DataFrame()
                 if by_mgmt_type_2050.size > by_mgmt_type_2020.size:
-                    by_mgmt_type["2020"] = by_mgmt_type_2020
-                    by_mgmt_type["2050"] = by_mgmt_type_2050
+                    by_mgmt_type[base_year] = by_mgmt_type_2020
+                    by_mgmt_type[biochar_year] = by_mgmt_type_2050
                 else:
-                    by_mgmt_type["2020"] = by_mgmt_type_2020
-                    by_mgmt_type["2050"] = by_mgmt_type_2050
+                    by_mgmt_type[base_year] = by_mgmt_type_2020
+                    by_mgmt_type[biochar_year] = by_mgmt_type_2050
                 by_mgmt_type = by_mgmt_type.fillna("Other Land Use Types")
                 by_mgmt_type = by_mgmt_type.reset_index(drop=True)
 
@@ -645,9 +648,9 @@ def process_luc(land_use, scale_factor):
 
             # on a per-basin basis, rearrange luc so that unmanaged land is matched with unmanaged land
             df_both_managed = land_per_basin[
-                (land_per_basin["2020"] != "Other Land Use Types") & (land_per_basin["2050"] != "Other Land Use Types")].reset_index(drop=True)
-            df_2020_managed = land_per_basin[(land_per_basin["2050"] == "Other Land Use Types")].reset_index(drop=True)
-            df_2050_managed = land_per_basin[(land_per_basin["2020"] == "Other Land Use Types")].reset_index(drop=True)
+                (land_per_basin[base_year] != "Other Land Use Types") & (land_per_basin[biochar_year] != "Other Land Use Types")].reset_index(drop=True)
+            df_2020_managed = land_per_basin[(land_per_basin[biochar_year] == "Other Land Use Types")].reset_index(drop=True)
+            df_2050_managed = land_per_basin[(land_per_basin[base_year] == "Other Land Use Types")].reset_index(drop=True)
 
             # shuffle both lists
             df_2020_managed = df_2020_managed.sample(frac=1, random_state=1).reset_index(drop=True)
@@ -667,13 +670,13 @@ def process_luc(land_use, scale_factor):
             df_2050_managed_list = df_2050_managed.to_numpy().tolist()
 
             pairs = zip(df_2020_managed_list, df_2050_managed_list)
-            paired = pd.DataFrame(columns=["2020", "2050"])
+            paired = pd.DataFrame(columns=[base_year, biochar_year])
             for i, j in pairs:
                 paired.loc[len(paired)] = [i[0], j[1]]  # based on column order in dataframes
 
             df_doubly_unmanaged = paired[
-                (paired["2020"] == "Other Land Use Types") & (
-                            paired["2050"] == "Other Land Use Types")].reset_index(drop=True)
+                (paired[base_year] == "Other Land Use Types") & (
+                            paired[biochar_year] == "Other Land Use Types")].reset_index(drop=True)
 
             if len(df_doubly_unmanaged) > 0:
                 print(r, basin)
