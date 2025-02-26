@@ -211,8 +211,8 @@ def figure4(nonBaselineScenario, RCP, SSP):
         co2_avd_pyrolysis[str(i)] = 3.664 * co2_pyrolysis.apply(
             lambda row: data_manipulation.avd_C(row, "technology", str(i)),
             axis=1)
-    co2_seq_pyrolysis["Units"] = "Mt CO$_2$-eq Sequestered in Biochar/yr"
-    co2_avd_pyrolysis["Units"] = "Mt CO$_2$-eq Net Avoided CO$_2$/yr"
+    co2_seq_pyrolysis["Units"] = "Mt CO$_2$-eq as Sequestered C in Biochar/yr"
+    co2_avd_pyrolysis["Units"] = "Mt CO$_2$-eq as Net Pyrolysis CO$_2$/yr"
 
     #output non-grouped GHG impacts
     data_manipulation.drop_missing(co2_seq_pyrolysis).to_csv(
@@ -243,11 +243,11 @@ def figure4(nonBaselineScenario, RCP, SSP):
             lambda row: data_manipulation.avd_soil_emissions(row, "GHG", str(i)), axis=1)
         ag_avd_ch4_land[str(i)] = ag_avd_ch4_land.apply(
             lambda row: data_manipulation.avd_soil_emissions(row, "GHG", str(i)), axis=1)
-    ag_avd_n2o_land["Units"] = "Mt CO$_2$-eq as Avoided Land N$_2$O/yr"
-    ag_avd_ch4_land["Units"] = "Mt CO$_2$-eq as Avoided Land CH$_4$/yr"
+    ag_avd_n2o_land["Units"] = "Mt CO$_2$-eq as Avoided Ag Land N$_2$O/yr"
+    ag_avd_ch4_land["Units"] = "Mt CO$_2$-eq as Avoided Ag Land CH$_4$/yr"
 
     # avoided CH4 and N2O emissions from avoided biomass decomposition
-    biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")]
+    biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")].copy(deep=True)
     biochar_ghg_er['technology'] = biochar_ghg_er.apply(lambda row: data_manipulation.remove__(row, "technology"),
                                                         axis=1)
     biochar_ghg_er = biochar_ghg_er[biochar_ghg_er['technology'].str.contains("|".join(products))]  # removes LUT
@@ -256,7 +256,7 @@ def figure4(nonBaselineScenario, RCP, SSP):
     # convert using GWP values
     for i in c.GCAMConstants.future_x:
         biochar_ghg_er[str(i)] = biochar_ghg_er.apply(
-            lambda row: data_manipulation.ghg_ER(row, "GHG", str(i)), axis=1)
+            lambda row: data_manipulation.ghg_ER(row, "GHG", str(i)), axis=1) # also relabels units
 
     # print ungrouped data
     data_manipulation.drop_missing(biochar_ghg_er).to_csv(
@@ -272,12 +272,15 @@ def figure4(nonBaselineScenario, RCP, SSP):
     pyrolysis_luc = data_manipulation.get_sensitivity_data(nonBaselineScenario, "LUC_emissions_by_LUT", SSP,
                                                            RCP=RCP, source="masked")
 
-    released_luc = data_manipulation.group(released_luc, ["SSP"])
-    pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["SSP"])
+    released_luc = data_manipulation.group(released_luc, ["SSP", "Version"])
+    pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["SSP", "Version"])
     flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
-    # TODO: include reduction in biochar land emissions
+    for i in c.GCAMConstants.future_x:
+        flat_diff_luc[str(i)] = 3.664 * flat_diff_luc[str(i)]  # 3.664 converts C to CO2-eq
+    flat_diff_luc["Units"] = "Mt CO$_2$-eq as LUC/yr"
 
-    biochar_ghg_emissions = pd.concat([ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis])
+    # combine all direct sources of GHG emissions changes into a single df/graph
+    biochar_ghg_emissions = pd.concat([biochar_ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis, ag_avd_n2o_land, ag_avd_ch4_land, flat_diff_luc])
 
     # plotting ghg emissions avoidance
     plotting.plot_line_product_CI(biochar_ghg_emissions, products, "technology", SSP[0], "Version",
@@ -294,6 +297,8 @@ def figure4(nonBaselineScenario, RCP, SSP):
                                                             source="masked")
     biochar_supply = biochar_supply[biochar_supply[['product']].isin(["biochar"]).any(axis=1)]
     biochar_supply = data_manipulation.group(biochar_supply, ["product", "Version"])
+
+    #TODO: biochar net Mt CO2-eq/Mt biochar
     data_manipulation.drop_missing(biochar_supply).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/biochar_supply.csv")
 
