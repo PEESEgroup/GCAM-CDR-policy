@@ -2,7 +2,7 @@ import plotting
 import data_manipulation
 import constants as c
 import pandas as pd
-
+import numpy as np
 
 def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
     """
@@ -288,7 +288,8 @@ def figure4(nonBaselineScenario, RCP, SSP):
     df_sum = biochar_ghg_emissions.sum(axis=0)
     df_sum["Units"] = "Mt CO$_2$-eq/yr" # this unit is used to label the graph
     df_sum["SSP"] = ag_avd_ch4_land["SSP"].unique()[0]
-    biochar_ghg_emissions = pd.concat([biochar_ghg_emissions, pd.DataFrame(df_sum, columns=['Total']).T])
+    df_sum = pd.DataFrame(df_sum, columns=['Total']).T
+    biochar_ghg_emissions = pd.concat([biochar_ghg_emissions, df_sum])
 
     # plotting ghg emissions avoidance
     plotting.plot_line_by_product(biochar_ghg_emissions, biochar_ghg_emissions["Units"].unique(), "Units", [SSP[0]], "SSP",
@@ -299,19 +300,36 @@ def figure4(nonBaselineScenario, RCP, SSP):
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
             RCP) + "/biochar_direct_ghg_emissions.csv")
 
-
-
-
-
     # output values of biochar supply
-    biochar_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP, RCP=RCP,
+    supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP, RCP=RCP,
                                                             source="masked")
-    biochar_supply = biochar_supply[biochar_supply[['product']].isin(["biochar"]).any(axis=1)]
+    biochar_supply = supply[supply[['product']].isin(["biochar"]).any(axis=1)].copy(deep=True)
     biochar_supply = data_manipulation.group(biochar_supply, ["product", "Version"])
 
-    #TODO: biochar net Mt CO2-eq/Mt biochar
-    data_manipulation.drop_missing(biochar_supply).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/biochar_supply.csv")
+    manure_supply = supply[supply[['product']].isin(["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(axis=1)].copy(deep=True)
+    manure_supply = data_manipulation.group(manure_supply, ["product", "Version"])
+
+    # calculate "LCA" impacts of biochar by mass biochar and global mass feedstock mix
+    total_biochar = data_manipulation.group(biochar_supply, ["SSP"])
+    total_manure = data_manipulation.group(manure_supply, ["SSP"])
+    LCA_biochar = pd.merge(df_sum, total_biochar, on="SSP", suffixes=("", "_kg biochar"))
+    LCA_manure = pd.merge(df_sum, total_manure, on="SSP", suffixes=("", "_kg biochar"))
+    for i in c.GCAMConstants.future_x:
+        if np.isnan(LCA_biochar[str(i) + "_kg biochar"][0]):
+            LCA_biochar[str(i)] = 0
+            LCA_manure[str(i)] = 0
+        else:
+            LCA_biochar[str(i)] = LCA_biochar[str(i) + ""] / LCA_biochar[str(i) + "_kg biochar"]
+            LCA_manure[str(i)] = LCA_manure[str(i) + ""] / LCA_manure[str(i) + "_kg biochar"]
+    LCA_biochar["Units"] = "kg CO2-eq/kg biochar"
+    LCA_manure["Units"] = "kg CO2-eq/kg manure mix"
+    LCA_biochar = LCA_biochar[c.GCAMConstants.column_order]
+    LCA_manure = LCA_manure[c.GCAMConstants.column_order]
+
+    LCA = pd.concat([biochar_supply, LCA_biochar, manure_supply, LCA_manure])
+
+    data_manipulation.drop_missing(LCA).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/biochar_manure_supply_GWP_kg_FU.csv")
 
     # frequency of biochar prices
     biochar_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP, RCP=RCP,
