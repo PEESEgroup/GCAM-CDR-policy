@@ -361,17 +361,9 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     :return: a set of figure objects
     """
     # at this stage, if this df is empty, then we know that there is no material to plot
-    if product_column != "":
-        df = dataframe[
-            (dataframe[product_column].str.contains("|".join(products))) & (
-                dataframe['SSP'].str.contains("|".join(SSP)))]
-    else:
-        df = dataframe
-
-    # residual data cleaning
-    if df.empty:
+    if dataframe.empty:
         raise ValueError("These products" + str(products) + "do not exist in this dataframe")
-    df = df.replace([np.inf, -np.inf], np.nan)
+    df = dataframe.replace([np.inf, -np.inf], np.nan)
 
     # get subplot size
     nrow, ncol = get_subplot_dimensions(inner_loop_set)
@@ -382,6 +374,7 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     fig.suptitle(title)
     normalizer = Normalize(min(df[str(i)].min() for i in year), max(df[str(i)].max() for i in year))
     im = cm.ScalarMappable(norm=normalizer, cmap=cmap)
+    plt.xticks(range(min(year), max(year)+1, 5))
     return axs, cmap, fig, im, ncol, normalizer, nrow
 
 

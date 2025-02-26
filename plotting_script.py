@@ -211,8 +211,8 @@ def figure4(nonBaselineScenario, RCP, SSP):
         co2_avd_pyrolysis[str(i)] = 3.664 * co2_pyrolysis.apply(
             lambda row: data_manipulation.avd_C(row, "technology", str(i)),
             axis=1)
-    co2_seq_pyrolysis["Units"] = "Mt CO$_2$-eq as Sequestered C in Biochar/yr"
-    co2_avd_pyrolysis["Units"] = "Mt CO$_2$-eq as Net Pyrolysis CO$_2$/yr"
+    co2_seq_pyrolysis["Units"] = "Sequestered C in biochar"
+    co2_avd_pyrolysis["Units"] = "Net pyrolysis CO$_2$"
 
     #output non-grouped GHG impacts
     data_manipulation.drop_missing(co2_seq_pyrolysis).to_csv(
@@ -243,8 +243,8 @@ def figure4(nonBaselineScenario, RCP, SSP):
             lambda row: data_manipulation.avd_soil_emissions(row, "GHG", str(i)), axis=1)
         ag_avd_ch4_land[str(i)] = ag_avd_ch4_land.apply(
             lambda row: data_manipulation.avd_soil_emissions(row, "GHG", str(i)), axis=1)
-    ag_avd_n2o_land["Units"] = "Mt CO$_2$-eq as Avoided Ag Land N$_2$O/yr"
-    ag_avd_ch4_land["Units"] = "Mt CO$_2$-eq as Avoided Ag Land CH$_4$/yr"
+    ag_avd_n2o_land["Units"] = "Avoided cropland N$_2$O"
+    ag_avd_ch4_land["Units"] = "Avoided cropland CH$_4$"
 
     # avoided CH4 and N2O emissions from avoided biomass decomposition
     biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")].copy(deep=True)
@@ -253,7 +253,7 @@ def figure4(nonBaselineScenario, RCP, SSP):
     biochar_ghg_er = biochar_ghg_er[biochar_ghg_er['technology'].str.contains("|".join(products))]  # removes LUT
     biochar_ghg_er = data_manipulation.group(biochar_ghg_er, ["technology", "SSP", "Version", "GHG"])
 
-    biochar_ghg_er["Units"] = biochar_ghg_er.apply(lambda row: "Mt CO$_2$-eq as Avoided Biomass Decomposition N$_2$O/yr" if row["GHG"] == "N2O" else "Mt CO$_2$-eq as Avoided Biomass Decomposition CH$_4$/yr", axis=1)
+    biochar_ghg_er["Units"] = biochar_ghg_er.apply(lambda row: "Avoided biomass decomposition N$_2$O" if row["GHG"] == "N2O" else "Avoided biomass decomposition CH$_4$", axis=1)
 
     # convert using GWP values
     for i in c.GCAMConstants.future_x:
@@ -279,20 +279,29 @@ def figure4(nonBaselineScenario, RCP, SSP):
     flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["SSP"])
     for i in c.GCAMConstants.future_x:
         flat_diff_luc[str(i)] = 3.664 * flat_diff_luc[str(i)]  # 3.664 converts C to CO2-eq
-    flat_diff_luc["Units"] = "Mt CO$_2$-eq as difference in LUC emissions from released GCAM/yr"
+    flat_diff_luc["Units"] = "Change in LUC emissions"
 
     # combine all direct sources of GHG emissions changes into a single df/graph
     biochar_ghg_emissions = pd.concat([biochar_ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis, ag_avd_n2o_land, ag_avd_ch4_land, flat_diff_luc])
 
+    # calculate net CO2 impact
+    df_sum = biochar_ghg_emissions.sum(axis=0)
+    df_sum["Units"] = "Mt CO$_2$-eq/yr" # this unit is used to label the graph
+    df_sum["SSP"] = ag_avd_ch4_land["SSP"].unique()[0]
+    biochar_ghg_emissions = pd.concat([biochar_ghg_emissions, pd.DataFrame(df_sum, columns=['Total']).T])
+
     # plotting ghg emissions avoidance
-    plotting.plot_line_by_product(biochar_ghg_emissions, products, "technology", SSP[0], "Units",
+    plotting.plot_line_by_product(biochar_ghg_emissions, biochar_ghg_emissions["Units"].unique(), "Units", [SSP[0]], "SSP",
                                   "ghg emissions changes in " + SSP[0], RCP, nonBaselineScenario)
 
-    # TODO write out only one .csv file containing all types of CO2 emissions
     # output values of avoided and sequestered ghg emissions from biochar
     data_manipulation.drop_missing(biochar_ghg_emissions).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
-            RCP) + "/biochar_ghg_emissions.csv")
+            RCP) + "/biochar_direct_ghg_emissions.csv")
+
+
+
+
 
     # output values of biochar supply
     biochar_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP, RCP=RCP,
