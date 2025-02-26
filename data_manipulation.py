@@ -762,6 +762,24 @@ def avd_C(row, product_column, modification_column):
         return 0
 
 
+def ghg_ER(row, product_column, modification_column):
+    """
+    calculates the avoided C from the net change in C due to biochar
+    :param row: the row of the dataframe being changed
+    :param product_column: the column containing the identifying product
+    :param modification_column: the column with data to be changed
+    :return: the amount of net C that is sequestered
+    """
+    # these values are already negative
+    if row[product_column] in ["CH4"]:
+        return row[modification_column] * 23  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
+    elif row[product_column] in ["N2O"]:
+        return row[modification_column] * 296 # from the ncomms spreadsheet
+    else:
+        return 0
+
+
+
 def avd_soil_emissions(row, product_column, modification_column):
     """
     calculates the avoided soil CH4 emissions from soil
