@@ -556,9 +556,9 @@ def main():
     other_scenario = ["default"]  # the first scenario in the list is assumed to be the baseline
     biochar_year = "2050"
     #figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure4(other_scenario, reference_RCP, reference_SSP)
-    figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
     cue_figure(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 

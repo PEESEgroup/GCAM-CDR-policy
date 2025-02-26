@@ -4,8 +4,8 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
-    version = [["default", "6p0"]]
-    GCAMDB_filenames = ["data/gcam_out/default/6p0/ref.csv"]
+    version = [["CostHigh", "6p0"]]
+    GCAMDB_filenames = ["data/gcam_out/CostHigh/6p0/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
