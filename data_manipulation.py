@@ -772,10 +772,8 @@ def ghg_ER(row, product_column, modification_column):
     """
     # these values are already negative
     if row[product_column] in ["CH4"]:
-        row["Units"] = "Mt CO$_2$-eq as Avoided Biomass Decomposition CH$_4$/yr"
         return row[modification_column] * 23  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
     elif row[product_column] in ["N2O"]:
-        row["Units"] = "Mt CO$_2$-eq as Avoided Biomass Decomposition NH$_2$O/yr"
         return row[modification_column] * 296 # from the ncomms spreadsheet
     else:
         return 0

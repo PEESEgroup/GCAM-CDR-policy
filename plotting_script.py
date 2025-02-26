@@ -253,10 +253,12 @@ def figure4(nonBaselineScenario, RCP, SSP):
     biochar_ghg_er = biochar_ghg_er[biochar_ghg_er['technology'].str.contains("|".join(products))]  # removes LUT
     biochar_ghg_er = data_manipulation.group(biochar_ghg_er, ["technology", "SSP", "Version", "GHG"])
 
+    biochar_ghg_er["Units"] = biochar_ghg_er.apply(lambda row: "Mt CO$_2$-eq as Avoided Biomass Decomposition N$_2$O/yr" if row["GHG"] == "N2O" else "Mt CO$_2$-eq as Avoided Biomass Decomposition CH$_4$/yr", axis=1)
+
     # convert using GWP values
     for i in c.GCAMConstants.future_x:
         biochar_ghg_er[str(i)] = biochar_ghg_er.apply(
-            lambda row: data_manipulation.ghg_ER(row, "GHG", str(i)), axis=1) # also relabels units
+            lambda row: data_manipulation.ghg_ER(row, "GHG", str(i)), axis=1)
 
     # print ungrouped data
     data_manipulation.drop_missing(biochar_ghg_er).to_csv(
@@ -274,16 +276,16 @@ def figure4(nonBaselineScenario, RCP, SSP):
 
     released_luc = data_manipulation.group(released_luc, ["SSP", "Version"])
     pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["SSP", "Version"])
-    flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["GCAM", "SSP"])
+    flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["SSP"])
     for i in c.GCAMConstants.future_x:
         flat_diff_luc[str(i)] = 3.664 * flat_diff_luc[str(i)]  # 3.664 converts C to CO2-eq
-    flat_diff_luc["Units"] = "Mt CO$_2$-eq as LUC/yr"
+    flat_diff_luc["Units"] = "Mt CO$_2$-eq as difference in LUC emissions from released GCAM/yr"
 
     # combine all direct sources of GHG emissions changes into a single df/graph
     biochar_ghg_emissions = pd.concat([biochar_ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis, ag_avd_n2o_land, ag_avd_ch4_land, flat_diff_luc])
 
     # plotting ghg emissions avoidance
-    plotting.plot_line_product_CI(biochar_ghg_emissions, products, "technology", SSP[0], "Version",
+    plotting.plot_line_by_product(biochar_ghg_emissions, products, "technology", SSP[0], "Units",
                                   "ghg emissions changes in " + SSP[0], RCP, nonBaselineScenario)
 
     # TODO write out only one .csv file containing all types of CO2 emissions
