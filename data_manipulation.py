@@ -762,7 +762,7 @@ def avd_C(row, product_column, modification_column):
         return 0
 
 
-def avd_soil_CH4(row, product_column, modification_column):
+def avd_soil_emissions(row, product_column, modification_column):
     """
     calculates the avoided soil CH4 emissions from soil
     :param row: the row of the dataframe being changed
@@ -780,23 +780,5 @@ def avd_soil_CH4(row, product_column, modification_column):
         temp = temp * (
                     1 - .9750) * -296  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
         return temp
-    else:
-        return 0
-
-
-def avd_soil_N2O(row, product_column, modification_column):
-    """
-    calculates the avoided soil N2O emissions from soil
-    :param row: the row of the dataframe being changed
-    :param product_column: the column containing the identifying product
-    :param modification_column: the column with data to be changed
-    :return: the amount of net C that is sequestered
-    """
-    if row[product_column] in ["pork biochar", "goat biochar"]:
-        return row[modification_column] * (1-.5853) # from the ncomms spreadsheet
-    elif row[product_column] in ["beef biochar", "dairy biochar"]:
-        return row[modification_column] * (1-.5391) # from the ncomms spreadsheet
-    elif row[product_column] in ["poultry biochar"]:
-        return row[modification_column] * (1-.5316) # from the ncomms spreadsheet
     else:
         return 0

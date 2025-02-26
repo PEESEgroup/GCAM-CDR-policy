@@ -206,17 +206,19 @@ def figure4(nonBaselineScenario, RCP, SSP):
                                                                "nonCO2_emissions_by_tech_excluding_resource_production",
                                                                SSP, RCP=RCP, source="masked")
 
-    ag_avd_n2o_land = ghg_er[ghg_er['technology'].str.contains("biochar")]
+    ag_avd_n2o_land = ghg_er[ghg_er['technology'].str.contains("biochar")] # get only biochar lut
     ag_avd_ch4_land = ghg_er[ghg_er['technology'].str.contains("biochar")]
-    ag_avd_n2o_land = ag_avd_n2o_land[ag_avd_n2o_land[['GHG']].isin(["N2O_AGR"]).any(axis=1)]
+    ag_avd_n2o_land = ag_avd_n2o_land[ag_avd_n2o_land[['GHG']].isin(["N2O_AGR"]).any(axis=1)] # select specific ghg
     ag_avd_ch4_land = ag_avd_ch4_land[ag_avd_ch4_land[['GHG']].isin(["CH4_AGR"]).any(axis=1)]
+    ag_avd_n2o_land = data_manipulation.group(ag_avd_n2o_land, ["Version"])  # group all biochar land leafs by version
+    ag_avd_ch4_land = data_manipulation.group(ag_avd_ch4_land, ["Version"])
     for i in c.GCAMConstants.future_x:
         ag_avd_n2o_land[str(i)] = ag_avd_n2o_land.apply(
-            lambda row: data_manipulation.avd_soil_N2O(row, "technology", str(i)), axis=1)
+            lambda row: data_manipulation.avd_soil_emissions(row, "technology", str(i)), axis=1)
         ag_avd_ch4_land[str(i)] = ag_avd_ch4_land.apply(
-            lambda row: data_manipulation.avd_soil_CH4(row, "technology", str(i)), axis=1)
-    ag_avd_n2o_land["Units"] = "Mt CO$_2$-eq Avoided Land N$_2$O/yr"
-    ag_avd_ch4_land["Units"] = "Mt CO$_2$-eq Avoided Land CH$_4$/yr"
+            lambda row: data_manipulation.avd_soil_emissions(row, "technology", str(i)), axis=1)
+    ag_avd_n2o_land["Units"] = "Mt CO$_2$-eq as Avoided Land N$_2$O/yr"
+    ag_avd_ch4_land["Units"] = "Mt CO$_2$-eq as Avoided Land CH$_4$/yr"
 
     # avoided CH4 and N2O emissions from avoided biomass decomposition
     biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")]
