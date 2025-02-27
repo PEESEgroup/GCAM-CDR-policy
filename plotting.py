@@ -1016,11 +1016,9 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
 
     # get base values on a per product basis
     base_vals = dataframe[dataframe[[Version]].isin([base_version]).any(axis=1)]
-    print("base values", base_vals.loc[:, [column, year, "Units"]])
 
     # get low and high values
     # the following 2 dataframes should have the same legnth as the baes values
-    print(dataframe.groupby(column)[year].idxmin())
     low_vals = dataframe.loc[dataframe.groupby(column)[year].idxmin()]
     high_vals = dataframe.loc[dataframe.groupby(column)[year].idxmax()]
     vals = pd.merge(low_vals, high_vals, on=[column], suffixes=("_low", "_high"))
@@ -1035,7 +1033,7 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
     bars["base"] = vals[year]
     bars["high"] = vals[year + "_high"]
     bars[column] = vals[column]
-    bars["Units"] = vals["Units"]
+    bars["Units"] = vals["Units"] #TODO: get topic specific units
     bars["base_unscaled"] = vals[year]
     bars = bars.dropna()
     baseline_value = 0

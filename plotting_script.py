@@ -612,23 +612,24 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
                                                              ["SSP", "technology"])
 
     # this method requires baseline data as an entry in the dataset, at the bottom
-    base_version_released = "released"
+    base_version_released = "reference_GCAM"
     base_version_biochar = "biochar"
     baseline_data = flat_diff_biofuel.copy(deep=True)
-    baseline_data["Version"] = base_version_released
+    baseline_data['Version'] = base_version_released
     for j in c.GCAMConstants.x:
         baseline_data[str(j)] = 0
     flat_diff_biofuel = pd.concat([flat_diff_biofuel, baseline_data]).reset_index()
 
+    perc_diff_biofuel = perc_diff_biofuel[perc_diff_biofuel[biochar_year].notna()]  # remove .nan rows from df
     baseline_data = perc_diff_biofuel.copy(deep=True)
-    baseline_data["Version"] = base_version_released
+    baseline_data['Version'] = base_version_released
     for j in c.GCAMConstants.x:
         baseline_data[str(j)] = 0
     perc_diff_biofuel = pd.concat([perc_diff_biofuel, baseline_data]).reset_index()
 
     # plot products
-    plotting.sensitivity(flat_diff_biofuel, RCP, "released", biochar_year, "technology", "Version", nonBaselineScenario)
-    plotting.sensitivity(perc_diff_biofuel, RCP, "released", biochar_year, "technology", "Version", nonBaselineScenario)
+    plotting.sensitivity(flat_diff_biofuel, RCP, base_version_released, biochar_year, "technology", "Version", nonBaselineScenario)
+    plotting.sensitivity(perc_diff_biofuel, RCP, base_version_released, biochar_year, "technology", "Version", nonBaselineScenario)
 
 
 def main():

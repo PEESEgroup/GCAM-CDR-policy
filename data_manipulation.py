@@ -51,6 +51,8 @@ def percent_difference(old, new, columns):
     merged = merged.drop(['Units_right'], axis=1)
     merged['Units'] = '%'
     merged['Version'] = "% diff between " + str(merged['Version_right'][0]) + " and " + str(merged['Version_left'][0])
+    merged = merged.drop(['Version_right'], axis=1)
+    merged = merged.drop(['Version_left'], axis=1)
 
     # replace columns
     merged.columns = merged.columns.str.replace("_left", '')
