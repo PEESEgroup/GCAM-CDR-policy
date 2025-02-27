@@ -286,13 +286,15 @@ def figure4(nonBaselineScenario, RCP, SSP):
 
     # calculate net CO2 impact
     df_sum = biochar_ghg_emissions.sum(axis=0)
-    df_sum["Units"] = "Mt CO$_2$-eq/yr" # this unit is used to label the graph
+    df_sum["Units"] = "Net Emissions Impact" # this unit is used to label the graph
     df_sum["SSP"] = ag_avd_ch4_land["SSP"].unique()[0]
     df_sum = pd.DataFrame(df_sum, columns=['Total']).T
     biochar_ghg_emissions = pd.concat([biochar_ghg_emissions, df_sum])
+    biochar_ghg_emissions["GHG_ER_type"] = biochar_ghg_emissions["Units"]
+    biochar_ghg_emissions["Units"] = "Mt CO$_2$-eq/yr"
 
     # plotting ghg emissions avoidance
-    plotting.plot_line_by_product(biochar_ghg_emissions, biochar_ghg_emissions["Units"].unique(), "Units", [SSP[0]], "SSP",
+    plotting.plot_line_by_product(biochar_ghg_emissions, biochar_ghg_emissions["Units"].unique(), "GHG_ER_type", [SSP[0]], "SSP",
                                   "ghg emissions changes in " + SSP[0], RCP, nonBaselineScenario)
 
     # output values of avoided and sequestered ghg emissions from biochar
@@ -469,8 +471,8 @@ def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
                                pyrolysis_FA[str(i)] * 3.542 / pyrolysis_FA[str(i) + "_caloric"]
 
     perc_diff_FA = data_manipulation.percent_difference(released_FA, pyrolysis_FA, ["GCAM", "SSP"])
-    plotting.plot_world(perc_diff_FA, ["%"], SSP, "year", "Units", [biochar_year],
-                        "Food Accessibility in " + str(biochar_year), RCP, nonBaselineScenario)
+    plotting.plot_world(perc_diff_FA, ["%"], SSP, "year", "Units", c.GCAMConstants.biochar_x,
+                        "Food Accessibility near midcentury ", RCP, nonBaselineScenario)
 
     # calculate pcal per capita
     released_pcal_pop = pd.merge(released_Pcal, released_pop, how="inner", on=["SSP", "GCAM"],
@@ -630,8 +632,8 @@ def main():
     biochar_year = "2050"
     #figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure4(other_scenario, reference_RCP, reference_SSP)
-    #figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure4(other_scenario, reference_RCP, reference_SSP)
+    figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
     cue_figure(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 
