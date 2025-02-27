@@ -599,37 +599,36 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
                                                            "refined_liquids_production_by_tech", SSP, RCP=RCP,
                                                            source="masked")
 
+    #TODO: initialize baseline as a separate dataframe.
+
     # calculate global amounts
     ref_released = data_manipulation.group(ref_released, ["technology", "Version"])
     ref_pyrolysis = data_manipulation.group(ref_pyrolysis, ["technology", "Version"])
 
     # add baseline data
     flat_diff_biofuel = data_manipulation.flat_difference(ref_released, ref_pyrolysis,
-                                                          ["SSP", "technology", "GCAM"])
+                                                          ["SSP", "technology"])
     perc_diff_biofuel = data_manipulation.percent_difference(ref_released, ref_pyrolysis,
-                                                             ["SSP", "technology", "GCAM"])
+                                                             ["SSP", "technology"])
 
+    # this method requires baseline data as an entry in the dataset, at the bottom
+    base_version_released = "released"
+    base_version_biochar = "biochar"
     baseline_data = flat_diff_biofuel.copy(deep=True)
-    baseline_data = baseline_data[baseline_data[['SSP']].isin([]).any(axis=1)]
-    baseline_data["technology"] = baseline_data.apply(lambda row: data_manipulation.relabel_food(row, "technology"),
-                                                      axis=1)
-    baseline_data["SSP"] = "released"
+    baseline_data["Version"] = base_version_released
     for j in c.GCAMConstants.x:
         baseline_data[str(j)] = 0
-    flat_diff_biofuel = pd.concat([flat_diff_biofuel, baseline_data])
+    flat_diff_biofuel = pd.concat([flat_diff_biofuel, baseline_data]).reset_index()
 
     baseline_data = perc_diff_biofuel.copy(deep=True)
-    baseline_data = baseline_data[baseline_data[['SSP']].isin(["SSP1"]).any(axis=1)]
-    baseline_data["technology"] = baseline_data.apply(lambda row: data_manipulation.relabel_food(row, "technology"),
-                                                      axis=1)
-    baseline_data["SSP"] = "released"
+    baseline_data["Version"] = base_version_released
     for j in c.GCAMConstants.x:
         baseline_data[str(j)] = 0
-    perc_diff_biofuel = pd.concat([perc_diff_biofuel, baseline_data])
+    perc_diff_biofuel = pd.concat([perc_diff_biofuel, baseline_data]).reset_index()
 
     # plot products
-    plotting.sensitivity(flat_diff_biofuel, str(i), ["released"], biochar_year, "technology")
-    plotting.sensitivity(perc_diff_biofuel, str(i), ["released"], biochar_year, "technology")
+    plotting.sensitivity(flat_diff_biofuel, RCP, "released", biochar_year, "technology", "Version", nonBaselineScenario)
+    plotting.sensitivity(perc_diff_biofuel, RCP, "released", biochar_year, "technology", "Version", nonBaselineScenario)
 
 
 def main():

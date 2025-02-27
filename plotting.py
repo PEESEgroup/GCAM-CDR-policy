@@ -997,15 +997,16 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column, RCP, nonBa
             plt.show()
 
 
-def sensitivity(dataframe, RCP, base_SSP, year, column, percentages=False):
+def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaselineScenario):
     """
     Plots a tornado plot for sensitivity analyses
     :param dataframe: dataframe to be plotted
     :param RCP: RCP pathway for baseline
-    :param base_SSP: baseline SSP
+    :param base_version: baseline SSP
     :param year: year for evaluation
     :param column: column containing differentiation
-    :param percentages: whether or not the data is in percentages or absolute terms
+    :param nonBaselineScenario: the list of scenarios included in the sensitivity analysis
+    :param Version: the column that contains thet version of the scenario
     :return: N/A
     """
     fig, ax = plt.subplots()
@@ -1014,47 +1015,33 @@ def sensitivity(dataframe, RCP, base_SSP, year, column, percentages=False):
     dataframe = dataframe[dataframe[year].notna()]
 
     # get base values on a per product basis
-    base_vals = dataframe[dataframe[['SSP']].isin([base_SSP]).any(axis=1)]
+    base_vals = dataframe[dataframe[[Version]].isin([base_version]).any(axis=1)]
     print("base values", base_vals.loc[:, [column, year, "Units"]])
 
-    if not percentages:
-        dataframe = dataframe[~dataframe[['SSP']].isin([base_SSP]).any(axis=1)]
-
     # get low and high values
+    # the following 2 dataframes should have the same legnth as the baes values
+    print(dataframe.groupby(column)[year].idxmin())
     low_vals = dataframe.loc[dataframe.groupby(column)[year].idxmin()]
     high_vals = dataframe.loc[dataframe.groupby(column)[year].idxmax()]
     vals = pd.merge(low_vals, high_vals, on=[column], suffixes=("_low", "_high"))
     vals = pd.merge(vals, base_vals, on=[column], suffixes=("", "_base"))
     bars = pd.DataFrame()
 
-    # normalize to percentages
-    if percentages:
-        bars["length"] = 100 * (vals[year + "_high"] - vals[year + "_low"]) / vals[year]
-        bars["low"] = 100 * vals[year + "_low"] / vals[year]
-        bars["low_SSP"] = vals["SSP_low"]
-        bars["high_SSP"] = vals["SSP_high"]
-        bars["base"] = 100 * vals[year] / vals[year]
-        bars["high"] = 100 * vals[year + "_high"] / vals[year]
-        bars[column] = vals[column]
-        bars["Units"] = "%"
-        bars["base_unscaled"] = vals[year]
-        bars = bars.dropna()
-        baseline_value = 100
-    else:
-        bars["length"] = (vals[year + "_high"] - vals[year + "_low"])
-        bars["low"] = vals[year + "_low"]
-        bars["low_SSP"] = vals["SSP_low"]
-        bars["high_SSP"] = vals["SSP_high"]
-        bars["base"] = vals[year]
-        bars["high"] = vals[year + "_high"]
-        bars[column] = vals[column]
-        bars["Units"] = vals["Units"]
-        bars["base_unscaled"] = vals[year]
-        bars = bars.dropna()
-        baseline_value = 0
+    # calculate bars
+    bars["length"] = (vals[year + "_high"] - vals[year + "_low"])
+    bars["low"] = vals[year + "_low"]
+    bars["low_Version"] = vals["Version_low"]
+    bars["high_Version"] = vals["Version_high"]
+    bars["base"] = vals[year]
+    bars["high"] = vals[year + "_high"]
+    bars[column] = vals[column]
+    bars["Units"] = vals["Units"]
+    bars["base_unscaled"] = vals[year]
+    bars = bars.dropna()
+    baseline_value = 0
 
     # sort dataframe
-    bars = bars.sort_values(by="low", ascending=True)
+    bars = bars.sort_values(by=["low", "high"], ascending=True)
     ys = range(len(bars))[::-1]  # top to bottom
 
     # get colormap and normalize it
@@ -1064,8 +1051,8 @@ def sensitivity(dataframe, RCP, base_SSP, year, column, percentages=False):
     normalizer = Normalize(-max(min_low, max_high), max(min_low, max_high))
 
     # Plot the bars, one by one
-    for y, low, value, base, low_SSP, high_SSP in zip(ys, bars["low"], bars["length"], bars["base"], bars["low_SSP"],
-                                                      bars["high_SSP"]):
+    for y, low, value, base, low_Version, high_Version in zip(ys, bars["low"], bars["length"], bars["base"], bars["low_Version"],
+                                                      bars["high_Version"]):
         # The width of the 'low' and 'high' pieces
         low_width = base - low
         high_width = low + value - base
@@ -1088,15 +1075,15 @@ def sensitivity(dataframe, RCP, base_SSP, year, column, percentages=False):
         pc = PatchCollection(edge_patch, edgecolor="#aaaaaa", facecolors="none")
         ax.add_collection(pc)
 
-        # Display the SSP as text next to the low and high bars
+        # Display the Version as text next to the low and high bars
         x = base - low_width - bars["length"].max() / 40
         if low > baseline_value:
             x = base - bars["length"].max() / 40
-        plt.text(x, y, str(low_SSP), va='center', ha='right')
+        plt.text(x, y, str(low_Version), va='center', ha='right')
         x = base + high_width + bars["length"].max() / 40
         if low + value < baseline_value:
             x = base + bars["length"].max() / 40
-        plt.text(x, y, str(high_SSP), va='center', ha='left')
+        plt.text(x, y, str(high_Version), va='center', ha='left')
 
     # Draw a vertical line down the middle
     plt.axvline(baseline_value, color='black')
@@ -1109,12 +1096,10 @@ def sensitivity(dataframe, RCP, base_SSP, year, column, percentages=False):
     # Set the portion of the x- and y-axes to show
     plt.xlim(bars["low"].min() - bars["length"].max() / 5, bars["high"].max() + bars["length"].max() / 5)
     plt.ylim(-1, len(bars[column]))
-    if percentages:
-        plt.xlabel("change from " + str(base_SSP) + " in RCP " + str(RCP) + " (" + str(bars["Units"].unique()[0]) + ")")
-    else:
-        plt.xlabel("change from released model in RCP " + str(RCP) + " (" + str(bars["Units"].unique()[0]) + ")")
-
+    plt.xlabel("change from released model in RCP " + str(RCP) + " (" + str(bars["Units"].unique()[0]) + ")")
     plt.subplots_adjust(left=.33, right=.98, bottom=.4)
+    plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario) + "/" + "sensitivity_analysis_on_" + str(base_version) + ".png",
+                dpi=300)
     plt.show()
 
 
