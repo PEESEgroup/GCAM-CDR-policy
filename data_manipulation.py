@@ -19,8 +19,7 @@ def flat_difference(old, new, columns):
         merged = merged.drop([str(i) + "_left"], axis=1)
 
     # update the version name
-    merged['Version'] = "flat diff between " + str(merged['Version_right'][0]) + " and " + str(
-        merged['Version_left'][0])
+    merged['Version'] = "change between " + merged.apply(lambda row: str_version(row), axis=1)
     merged = merged.drop(['Version_right'], axis=1)
     merged = merged.drop(['Version_left'], axis=1)
 
@@ -50,7 +49,7 @@ def percent_difference(old, new, columns):
     merged = merged.drop(['Units_left'], axis=1)
     merged = merged.drop(['Units_right'], axis=1)
     merged['Units'] = '%'
-    merged['Version'] = "% diff between " + str(merged['Version_right'][0]) + " and " + str(merged['Version_left'][0])
+    merged['Version'] = "% change between " + merged.apply(lambda row: str_version(row), axis=1)
     merged = merged.drop(['Version_right'], axis=1)
     merged = merged.drop(['Version_left'], axis=1)
 
@@ -59,6 +58,10 @@ def percent_difference(old, new, columns):
     merged = merged[c.GCAMConstants.column_order]
 
     return merged
+
+
+def str_version(row):
+    return str(row['Version_right']) + " and " + str(row['Version_left'])
 
 
 def calc_percs(row, i):

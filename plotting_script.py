@@ -684,20 +684,37 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     released_luc = data_manipulation.group(released_luc, ["SSP", "Version"])
     pyrolysis_luc = data_manipulation.group(pyrolysis_luc, ["SSP", "Version"])
     flat_diff_luc = data_manipulation.flat_difference(released_luc, pyrolysis_luc, ["SSP"])
+    perc_diff_luc = data_manipulation.percent_difference(released_luc, pyrolysis_luc, ["SSP"])
+
     for i in c.GCAMConstants.future_x:
         flat_diff_luc[str(i)] = 3.664 * flat_diff_luc[str(i)]  # 3.664 converts C to CO2-eq
-    flat_diff_luc["Units"] = "Change in LUC emissions"
+    flat_diff_luc["Units"] = "Change in LUC emissions (Mt CO2-eq)"
+    perc_diff_luc["Units"] = "% Change in LUC emissions"
+
     # Change in food Pcals
+    released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,
+                                                           RCP=RCP, source="original")
+    pyrolysis_Pcal = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_consumption_by_type_specific",
+                                                            SSP, RCP=RCP, source="masked")
+
+    flat_diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal,
+                                                       ["GCAM", "SSP", "subsector", "subsector.1",
+                                                        "technology"]).drop_duplicates()
+    perc_diff_Pcal = data_manipulation.percent_difference(released_Pcal, pyrolysis_Pcal,
+                                                          ["GCAM", "SSP", "subsector", "subsector.1",
+                                                           "technology"]).drop_duplicates()
+
+    # calculate difference
+    flat_diff_Pcal = flat_diff_Pcal[~flat_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
+    perc_diff_Pcal = perc_diff_Pcal[~perc_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
+    flat_diff_Pcal = data_manipulation.group(flat_diff_Pcal, ["Version"])
+    perc_diff_Pcal = data_manipulation.group(perc_diff_Pcal, ["Version"])
+
     # change in biofuel lands
     # change in croplands
     # change in herd size
 
-    # Changes in energy mix, especially refined liquids production
-    ref_released = data_manipulation.get_sensitivity_data(["released"], "refined_liquids_production_by_tech", SSP,
-                                                          RCP=RCP, source="original")
-    ref_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
-                                                           "refined_liquids_production_by_tech", SSP, RCP=RCP,
-                                                           source="masked")
+
 
     #TODO: initialize baseline as a separate dataframe.
 

@@ -1033,7 +1033,7 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
     bars["base"] = vals[year]
     bars["high"] = vals[year + "_high"]
     bars[column] = vals[column]
-    bars["Units"] = vals["Units"] #TODO: get topic specific units
+    bars["Units"] = vals["Units"]
     bars["base_unscaled"] = vals[year]
     bars = bars.dropna()
     baseline_value = 0
