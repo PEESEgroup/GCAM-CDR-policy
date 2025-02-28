@@ -715,23 +715,29 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     # change in herd size
     # change in temperature/forcing in 2100
 
+    flat_diffs = pd.concat([flat_diff_Pcal])
+    perc_diffs = pd.concat([perc_diff_Pcal])
 
-
-    #TODO: initialize baseline as a separate dataframe.
-    #TODO: duplicate for flat_diffs as well
     # ensure perc diff has no na
     base_version_released = "released"
-    perc_diff_biofuel = perc_diff_biofuel[perc_diff_biofuel[biochar_year].notna()]  # remove .nan rows from df
+    perc_diffs = perc_diffs[perc_diffs[biochar_year].notna()]  # remove .nan rows from df
+    flat_diffs = flat_diffs[flat_diffs[biochar_year].notna()]  # remove .nan rows from df
+
     # create baseline scenarios of 0% change
-    baseline_data = perc_diff_biofuel.copy(deep=True)
-    baseline_data['Version'] = base_version_released
+    baseline_perc_data = flat_diffs[flat_diffs["Version"] == flat_diffs["Version"].unique()[0]].copy(deep=True)
+    baseline_flat_data = perc_diffs[perc_diffs["Version"] == perc_diffs["Version"].unique()[0]].copy(deep=True)
+    baseline_perc_data['Version'] = base_version_released
+    baseline_flat_data['Version'] = base_version_released
     for j in c.GCAMConstants.x:
-        baseline_data[str(j)] = 0
-    perc_diff_biofuel = pd.concat([perc_diff_biofuel, baseline_data]).reset_index()
+        baseline_flat_data[str(j)] = 0
+        baseline_perc_data[str(j)] = 0
+
+    perc_diffs = pd.concat([perc_diffs, baseline_perc_data]).reset_index()
+    flat_diffs = pd.concat([flat_diffs, baseline_perc_data]).reset_index()
 
     # plot products
-    plotting.sensitivity(perc_diff_biofuel, RCP, base_version_released, biochar_year, "technology", "Version", nonBaselineScenario)
-    plotting.sensitivity(perc_diff_biofuel, RCP, base_version_released, biochar_year, "technology", "Version",
+    plotting.sensitivity(flat_diffs, RCP, base_version_released, biochar_year, "Units", "Version", nonBaselineScenario)
+    plotting.sensitivity(perc_diffs, RCP, base_version_released, biochar_year, "Units", "Version",
                          nonBaselineScenario)
 
 
