@@ -697,26 +697,77 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     pyrolysis_Pcal = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_consumption_by_type_specific",
                                                             SSP, RCP=RCP, source="masked")
 
-    flat_diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal,
-                                                       ["GCAM", "SSP", "subsector", "subsector.1",
-                                                        "technology"]).drop_duplicates()
-    perc_diff_Pcal = data_manipulation.percent_difference(released_Pcal, pyrolysis_Pcal,
-                                                          ["GCAM", "SSP", "subsector", "subsector.1",
-                                                           "technology"]).drop_duplicates()
+    released_Pcal = released_Pcal[~released_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
+    pyrolysis_Pcal = pyrolysis_Pcal[~pyrolysis_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
+    released_Pcal = data_manipulation.group(released_Pcal, ["SSP", "Version"])
+    pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["SSP", "Version"])
 
-    # calculate difference
-    flat_diff_Pcal = flat_diff_Pcal[~flat_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
-    perc_diff_Pcal = perc_diff_Pcal[~perc_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
-    flat_diff_Pcal = data_manipulation.group(flat_diff_Pcal, ["Version"])
-    perc_diff_Pcal = data_manipulation.group(perc_diff_Pcal, ["Version"])
+    flat_diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal,["SSP"])
+    perc_diff_Pcal = data_manipulation.percent_difference(released_Pcal, pyrolysis_Pcal,["SSP"])
+    flat_diff_Pcal["Units"] = "Change in food supply (Pcal)"
+    perc_diff_Pcal["Units"] = "% Change in food supply"
 
     # change in biofuel lands
-    # change in croplands
-    # change in herd size
-    # change in temperature/forcing in 2100
+    released_land = data_manipulation.get_sensitivity_data(["released"], "detailed_land_allocation", SSP, RCP=RCP,
+                                                           source="original")
+    pyrolysis_land = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP,
+                                                            RCP=RCP, source="masked")
+    released_land["LandLeaf"] = released_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row),
+                                                    axis=1)
+    pyrolysis_land["LandLeaf"] = pyrolysis_land.apply(lambda row: data_manipulation.relabel_detailed_land_use(row),
+                                                      axis=1)
+    pyrolysis_land = data_manipulation.group(pyrolysis_land, ["LandLeaf", "Version", "SSP"])
+    released_land = data_manipulation.group(released_land, ["SSP", "LandLeaf", "Version"])
+    pyrolysis_land_bioenergy = pyrolysis_land[pyrolysis_land[['LandLeaf']].isin(["Biomass for Energy"]).any(axis=1)]
+    released_land_bioenergy = released_land[released_land[['LandLeaf']].isin(["Biomass for Energy"]).any(axis=1)]
+    flat_diff_bioenergy = data_manipulation.flat_difference(released_land_bioenergy, pyrolysis_land_bioenergy, ["LandLeaf"])
+    perc_diff_bioenergy = data_manipulation.percent_difference(released_land_bioenergy, pyrolysis_land_bioenergy,
+                                                       ["LandLeaf"])
+    flat_diff_bioenergy["Units"] = "Change in bioenergy land supply (thousand km$^2$)"
+    perc_diff_bioenergy["Units"] = "% Change in bioenergy land supply"
 
-    flat_diffs = pd.concat([flat_diff_Pcal])
-    perc_diffs = pd.concat([perc_diff_Pcal])
+    # change in croplands
+    pyrolysis_land_crops = pyrolysis_land[pyrolysis_land[['LandLeaf']].isin(["Crops"]).any(axis=1)]
+    released_land_crops = released_land[released_land[['LandLeaf']].isin(["Crops"]).any(axis=1)]
+    flat_diff_crops = data_manipulation.flat_difference(released_land_crops, pyrolysis_land_crops, ["LandLeaf"])
+    perc_diff_crops = data_manipulation.percent_difference(released_land_crops, pyrolysis_land_crops,
+                                                       ["LandLeaf"])
+    flat_diff_crops["Units"] = "Change in crop land supply (thousand km$^2$)"
+    perc_diff_crops["Units"] = "% Change in crop land supply"
+
+    # change in herd size
+    released_supply = data_manipulation.get_sensitivity_data(["released"], "supply_of_all_markets", SSP, RCP=RCP,
+                                                             source="original")
+    pyrolysis_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP,
+                                                              RCP=RCP, source="masked")
+    feed = ["FodderHerb_Residue", "FeedCrops", "Pasture_FodderGrass", "Scavenging_Other"]  # the different feed types
+    released_feed = released_supply[released_supply[['product']].isin(feed).any(axis=1)]
+    pyrolysis_feed = pyrolysis_supply[pyrolysis_supply[['product']].isin(feed).any(axis=1)]
+    products = ["Beef", "Dairy", "SheepGoat", "Pork", "Poultry"]  # the different product types
+    released_products = released_supply[released_supply[['product']].isin(products).any(axis=1)]
+    pyrolysis_products = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)]
+
+    released_feed = data_manipulation.group(released_feed, ["SSP", "Version"])
+    pyrolysis_feed = data_manipulation.group(pyrolysis_feed, ["SSP", "Version"])
+    released_products = data_manipulation.group(released_products, ["SSP", "Version"])
+    pyrolysis_products = data_manipulation.group(pyrolysis_products, ["SSP", "Version"])
+
+    flat_diff_feed = data_manipulation.flat_difference(released_feed, pyrolysis_feed, ["SSP"])
+    perc_diff_feed = data_manipulation.percent_difference(released_feed, pyrolysis_feed, ["SSP"])
+    flat_diff_feed["Units"] = "Change in feed supply (Mt)"
+    perc_diff_feed["Units"] = "% Change in feed supply"
+    flat_diff_animal = data_manipulation.flat_difference(released_products, pyrolysis_products,
+                                                         ["SSP"])
+    perc_diff_animal = data_manipulation.percent_difference(released_products, pyrolysis_products,
+                                                            ["SSP"])
+    flat_diff_animal["Units"] = "Change in herd size (Mt)"
+    perc_diff_animal["Units"] = "% Change in herd size"
+
+    # TODO: change in temperature/forcing in 2100
+
+    # concat data frames
+    flat_diffs = pd.concat([flat_diff_Pcal, flat_diff_luc, flat_diff_bioenergy, flat_diff_crops, flat_diff_feed, flat_diff_animal])
+    perc_diffs = pd.concat([perc_diff_Pcal, perc_diff_luc, perc_diff_bioenergy, perc_diff_crops, perc_diff_feed, perc_diff_animal])
 
     # ensure perc diff has no na
     base_version_released = "released"
@@ -724,8 +775,8 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     flat_diffs = flat_diffs[flat_diffs[biochar_year].notna()]  # remove .nan rows from df
 
     # create baseline scenarios of 0% change
-    baseline_perc_data = flat_diffs[flat_diffs["Version"] == flat_diffs["Version"].unique()[0]].copy(deep=True)
-    baseline_flat_data = perc_diffs[perc_diffs["Version"] == perc_diffs["Version"].unique()[0]].copy(deep=True)
+    baseline_flat_data = flat_diffs[flat_diffs["Version"] == flat_diffs["Version"].unique()[0]].copy(deep=True)
+    baseline_perc_data = perc_diffs[perc_diffs["Version"] == perc_diffs["Version"].unique()[0]].copy(deep=True)
     baseline_perc_data['Version'] = base_version_released
     baseline_flat_data['Version'] = base_version_released
     for j in c.GCAMConstants.x:
@@ -733,7 +784,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
         baseline_perc_data[str(j)] = 0
 
     perc_diffs = pd.concat([perc_diffs, baseline_perc_data]).reset_index()
-    flat_diffs = pd.concat([flat_diffs, baseline_perc_data]).reset_index()
+    flat_diffs = pd.concat([flat_diffs, baseline_flat_data]).reset_index()
 
     # plot products
     plotting.sensitivity(flat_diffs, RCP, base_version_released, biochar_year, "Units", "Version", nonBaselineScenario)
