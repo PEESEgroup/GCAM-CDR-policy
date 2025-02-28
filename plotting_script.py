@@ -713,25 +713,16 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     # change in biofuel lands
     # change in croplands
     # change in herd size
+    # change in temperature/forcing in 2100
 
 
 
     #TODO: initialize baseline as a separate dataframe.
-
-    # calculate global amounts
-    ref_released = data_manipulation.group(ref_released, ["technology", "Version"])
-    ref_pyrolysis = data_manipulation.group(ref_pyrolysis, ["technology", "Version"])
-
-    # add baseline data
-    flat_diff_biofuel = data_manipulation.flat_difference(ref_released, ref_pyrolysis,
-                                                          ["SSP", "technology"])
-
-
-
-
-    perc_diff_biofuel = data_manipulation.percent_difference(ref_released, ref_pyrolysis,
-                                                             ["SSP", "technology"])
+    #TODO: duplicate for flat_diffs as well
+    # ensure perc diff has no na
+    base_version_released = "released"
     perc_diff_biofuel = perc_diff_biofuel[perc_diff_biofuel[biochar_year].notna()]  # remove .nan rows from df
+    # create baseline scenarios of 0% change
     baseline_data = perc_diff_biofuel.copy(deep=True)
     baseline_data['Version'] = base_version_released
     for j in c.GCAMConstants.x:
@@ -740,6 +731,8 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
 
     # plot products
     plotting.sensitivity(perc_diff_biofuel, RCP, base_version_released, biochar_year, "technology", "Version", nonBaselineScenario)
+    plotting.sensitivity(perc_diff_biofuel, RCP, base_version_released, biochar_year, "technology", "Version",
+                         nonBaselineScenario)
 
 
 def main():
