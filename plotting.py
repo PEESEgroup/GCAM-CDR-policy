@@ -1016,6 +1016,7 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
 
     # get base values on a per product basis
     base_vals = dataframe[dataframe[[Version]].isin([base_version]).any(axis=1)]
+    dataframe = dataframe[~dataframe[[Version]].isin([base_version]).any(axis=1)]
 
     # get low and high values
     # the following 2 dataframes should have the same legnth as the baes values
@@ -1074,17 +1075,13 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
         ax.add_collection(pc)
 
         # Display the Version as text next to the low and high bars
-        x = base - low_width - bars["length"].max() / 40
-        if low > baseline_value:
-            x = base - bars["length"].max() / 40
-        plt.text(x, y, str(low_Version), va='center', ha='right')
-        x = base + high_width + bars["length"].max() / 40
-        if low + value < baseline_value:
-            x = base + bars["length"].max() / 40
-        plt.text(x, y, str(high_Version), va='center', ha='left')
+        x = base - low_width - (bars["high"].max()-bars["low"].min())/ 100
+        plt.text(x, y-0.25, str(low_Version), va='center', ha='right') # TODO: update to account for length of text
+        x = base + high_width + (bars["high"].max()-bars["low"].min())/ 100
+        plt.text(x, y+0.25, str(high_Version), va='center', ha='left')
 
     # Draw a vertical line down the middle
-    plt.axvline(baseline_value, color='black')
+    plt.axvline(baseline_value, color='grey')
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
 
@@ -1092,7 +1089,7 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
     plt.yticks(ys, bars[column])
 
     # Set the portion of the x- and y-axes to show
-    plt.xlim(bars["low"].min() - bars["length"].max() / 5, bars["high"].max() + bars["length"].max() / 5)
+    plt.xlim(bars["low"].min() - (bars["high"].max()-bars["low"].min())/ 7, bars["high"].max() + (bars["high"].max()-bars["low"].min())/ 7)
     plt.ylim(-1, len(bars[column]))
     # plt.xlabel("change from released model in RCP " + str(RCP) + " (" + str(bars["Units"].unique()[0]) + ")")
     plt.subplots_adjust(left=.33, right=.98, bottom=.4)

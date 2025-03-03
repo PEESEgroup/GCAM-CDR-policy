@@ -17,14 +17,13 @@ def flat_difference(old, new, columns):
     for i in c.GCAMConstants.x:
         merged[str(i)] = merged[str(i) + "_right"] - merged[str(i) + "_left"]
         merged = merged.drop([str(i) + "_left"], axis=1)
+        merged = merged.drop([str(i) + "_right"], axis=1)
 
     # update the version name
-    merged['Version'] = "change between " + merged.apply(lambda row: str_version(row), axis=1)
-    merged = merged.drop(['Version_right'], axis=1)
-    merged = merged.drop(['Version_left'], axis=1)
+    merged['Comparison'] = "change between " + merged.apply(lambda row: str_version(row), axis=1)
 
     # fix the column names
-    merged.columns = merged.columns.str.replace("_left", '')
+    merged.columns = merged.columns.str.replace("_right", '')  # only label columns
     merged = merged[c.GCAMConstants.column_order]
 
     return merged
@@ -44,17 +43,16 @@ def percent_difference(old, new, columns):
     for i in c.GCAMConstants.x:
         merged[str(i)] = merged.apply(lambda row: calc_percs(row, i), axis=1)
         merged = merged.drop([str(i) + "_left"], axis=1)
+        merged = merged.drop([str(i) + "_right"], axis=1)
 
     # update columns
     merged = merged.drop(['Units_left'], axis=1)
     merged = merged.drop(['Units_right'], axis=1)
     merged['Units'] = '%'
-    merged['Version'] = "% change between " + merged.apply(lambda row: str_version(row), axis=1)
-    merged = merged.drop(['Version_right'], axis=1)
-    merged = merged.drop(['Version_left'], axis=1)
+    merged['Comparison'] = "% change between " + merged.apply(lambda row: str_version(row), axis=1)
 
     # replace columns
-    merged.columns = merged.columns.str.replace("_left", '')
+    merged.columns = merged.columns.str.replace("_right", '')  # only label columns
     merged = merged[c.GCAMConstants.column_order]
 
     return merged

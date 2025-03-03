@@ -579,7 +579,6 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year for biochar/carbon prices to be evaluated and plotted
     :return: N/A
     """
-    #TODO: gather data we want to plot
     # 2 figures: biochar scenarios only/change vs baseline
     # biochar scenarios only
     # Biochar Supply
@@ -647,8 +646,8 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     ag_avd_ch4_land["Units"] = "Avoided cropland CH$_4$"
 
     # avoided CH4 and N2O emissions from avoided biomass decomposition
-    biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")].copy(deep=True)
-    biochar_ghg_er['technology'] = ghg_er.apply(lambda row: data_manipulation.remove__(row, "technology"),
+    biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")].copy(deep=True) # initial screening of emissions
+    biochar_ghg_er['technology'] = biochar_ghg_er.apply(lambda row: data_manipulation.remove__(row, "technology"),
                                                         axis=1)
     biochar_ghg_er = biochar_ghg_er[biochar_ghg_er['technology'].str.contains("|".join(products))]  # removes LUT
     biochar_ghg_er = data_manipulation.group(biochar_ghg_er, ["SSP", "Version", "GHG"])
@@ -763,15 +762,19 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     flat_diff_animal["Units"] = "Change in herd size (Mt)"
     perc_diff_animal["Units"] = "% Change in herd size"
 
-    # TODO: change in temperature/forcing in 2100
-    released_supply = data_manipulation.get_sensitivity_data(["released"], "supply_of_all_markets", SSP, RCP=RCP,
+    # change in temperature/forcing in 2100
+    released_temp = data_manipulation.get_sensitivity_data(["released"], "global_mean_temperature", SSP, RCP=RCP,
                                                              source="original", only_first_scenario=False)
-    pyrolysis_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP,
+    pyrolysis_temp = data_manipulation.get_sensitivity_data(nonBaselineScenario, "global_mean_temperature", SSP,
                                                               RCP=RCP, source="masked", only_first_scenario=False)
+    flat_diff_temp = data_manipulation.flat_difference(released_temp, pyrolysis_temp,["SSP"])
+    perc_diff_temp = data_manipulation.percent_difference(released_temp, pyrolysis_temp,["SSP"])
+    flat_diff_temp["Units"] = "Change in global temperature (degree C)"
+    perc_diff_temp["Units"] = "% Change in global temperature"
 
     # concat data frames
-    flat_diffs = pd.concat([flat_diff_Pcal, flat_diff_luc, flat_diff_bioenergy, flat_diff_crops, flat_diff_feed, flat_diff_animal])
-    perc_diffs = pd.concat([perc_diff_Pcal, perc_diff_luc, perc_diff_bioenergy, perc_diff_crops, perc_diff_feed, perc_diff_animal])
+    flat_diffs = pd.concat([flat_diff_Pcal, flat_diff_luc, flat_diff_bioenergy, flat_diff_crops, flat_diff_feed, flat_diff_animal, flat_diff_temp])
+    perc_diffs = pd.concat([perc_diff_Pcal, perc_diff_luc, perc_diff_bioenergy, perc_diff_crops, perc_diff_feed, perc_diff_animal,perc_diff_temp])
 
     # ensure perc diff has no na
     base_version_released = "released"
@@ -807,8 +810,8 @@ def main():
     biochar_year = "2050"
     #figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure4(other_scenario, reference_RCP, reference_SSP)
-    figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure4(other_scenario, reference_RCP, reference_SSP)
+    #figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
     cue_figure(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 
