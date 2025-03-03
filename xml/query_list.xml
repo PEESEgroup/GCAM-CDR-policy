@@ -40,6 +40,21 @@
 </aQuery>
 <aQuery>
     <region name="Global"/>
+    <ClimateQuery title="global mean temperature">
+        <axis1 name="temperature">none</axis1>
+        <axis2 name="Year">global-mean-surface-temperature[@year]</axis2>
+        <xPath buildList="true" dataName="global-mean-temperature" group="false" sumAll="false">climate-model/global-mean-surface-temperature/text()</xPath>
+        <comments>Returns global mean surface temp anomaly relative to the 1850-1900 mean.
+Also available is global mean air temperature; in both climate model native or relative to 1850-1900 mean.
+A user can adjust the query to search for any of:
+* global-mean-surface-temperature
+* global-mean-air-temperature
+* global-mean-surface-temperature-native
+* global-mean-air-temperature-native</comments>
+    </ClimateQuery>
+</aQuery>
+<aQuery>
+    <region name="Global"/>
         <marketQuery title="CO2 prices">
             <axis1 name="market">market</axis1>
             <axis2 name="Year">market</axis2>
