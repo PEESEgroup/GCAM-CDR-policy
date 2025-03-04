@@ -405,7 +405,7 @@ def main():
     """
     reference_SSP = ["SSP1"]
     reference_RCP = "6p0"
-    other_scenario = ["default", "BiocharYieldHigh", "BiocharYieldLow", "CostHigh", "CostLow"]  # biochar
+    other_scenario = ["Baseline", "HighBiocharCost","LowBiocharCost","HighBiocharYield", "LowBiocharYield"]  # biochar
     biochar_year = "2050"
     biochar_rate_by_land_size(other_scenario, reference_RCP, reference_SSP)
     farmer_economics(other_scenario, reference_RCP, reference_SSP, biochar_year)
