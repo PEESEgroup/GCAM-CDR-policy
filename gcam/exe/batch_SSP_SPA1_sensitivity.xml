@@ -90,7 +90,7 @@
 		</FileSet>
 	</ComponentSet>
 	<ComponentSet name="SSP Harmonized">
-		<FileSet name="SSP1">
+		<FileSet name="SSP1_lowbiocharnutrients">
 			<!-- SOCIOECONOMICS -->
 			<Value name="socioeconomics">../input/gcamdata/xml/socioeconomics_SSP1.xml</Value>
 			
@@ -157,7 +157,6 @@
 	</ComponentSet>	
 	<runner-set name="policy-target-runner">
 		<Value name="_6p0">../input/policy/policy_target_6p0_spa1.xml</Value>
-		<Value name="_2p6">../input/policy/policy_target_2p6_spa1.xml</Value>
 	</runner-set>
 </BatchRunner>
 

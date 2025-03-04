@@ -1076,7 +1076,7 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
 
         # Display the Version as text next to the low and high bars
         x = base - low_width - (bars["high"].max()-bars["low"].min())/ 100
-        plt.text(x, y-0.25, str(low_Version), va='center', ha='right') # TODO: update to account for length of text
+        plt.text(x, y-0.25, str(low_Version), va='center', ha='right')
         x = base + high_width + (bars["high"].max()-bars["low"].min())/ 100
         plt.text(x, y+0.25, str(high_Version), va='center', ha='left')
 
