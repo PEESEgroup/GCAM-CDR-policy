@@ -4,8 +4,8 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
-    version = [["HighBiocharCost", "6p0"], ["LowBiocharCost", "6p0"], ["Baseline", "6p0"], ["HighBiocharYield", "6p0"], ["LowBiocharYield", "6p0"]]
-    GCAMDB_filenames = ["data/gcam_out/HighBiocharCost/6p0/ref.csv", "data/gcam_out/LowBiocharCost/6p0/ref.csv", "data/gcam_out/Baseline/6p0/ref.csv", "data/gcam_out/HighBiocharYield/6p0/ref.csv", "data/gcam_out/LowBiocharYield/6p0/ref.csv"]
+    version = [["LowBiocharNutrients", "baseline"]]
+    GCAMDB_filenames = ["data/gcam_out/LowBiocharNutrients/baseline/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.

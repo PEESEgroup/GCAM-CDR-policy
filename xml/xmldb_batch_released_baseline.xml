@@ -9,7 +9,7 @@
          <scenario name="GCAM_SSP5"/>
          <queryFile>xml/query_list.xml</queryFile>
          <outFile>data/gcam_out/released/baseline/ref.csv</outFile>
-         <xmldbLocation>../gcam-sandbox/output/database_basexdb-released_baseline</xmldbLocation>
+         <xmldbLocation>gcam/output/database_basexdb-released_baseline</xmldbLocation>
       </command>
    </class>
 </ModelInterfaceBatch>

@@ -90,7 +90,7 @@
 		</FileSet>
 	</ComponentSet>
 	<ComponentSet name="SSP Harmonized">
-		<FileSet name="SSP1_lowbiocharnutrients">
+		<FileSet name="SSP1_highcropyield">
 			<!-- SOCIOECONOMICS -->
 			<Value name="socioeconomics">../input/gcamdata/xml/socioeconomics_SSP1.xml</Value>
 			
@@ -155,9 +155,6 @@
             <Value name = "prune_ag">../input/gcamdata/xml/prune_empty_ag.xml</Value>
 		</FileSet>
 	</ComponentSet>	
-	<runner-set name="policy-target-runner">
-		<Value name="_6p0">../input/policy/policy_target_6p0_spa1.xml</Value>
-	</runner-set>
 </BatchRunner>
 
 
