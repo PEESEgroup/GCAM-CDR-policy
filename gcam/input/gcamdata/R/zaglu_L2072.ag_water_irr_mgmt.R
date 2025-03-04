@@ -254,7 +254,8 @@ module_aglu_L2072.ag_water_irr_mgmt <- function(command, ...) {
                      "water/basin_to_country_mapping",
                      "L165.BlueIrr_m3kg_R_C_GLU",
                      "L161.ag_irrProd_Mt_R_C_Y_GLU",
-                     "water/water_td_sectors") ->
+                     "water/water_td_sectors",
+                     "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2072.AgCoef_IrrWaterCons_ag_mgmt
 
     L2072.AgCoef_IrrWaterWdraw_ag_mgmt %>%
@@ -277,7 +278,8 @@ module_aglu_L2072.ag_water_irr_mgmt <- function(command, ...) {
                      "water/basin_to_country_mapping",
                      "L165.TotIrr_m3kg_R_C_GLU",
                      "L161.ag_irrProd_Mt_R_C_Y_GLU",
-                     "water/water_td_sectors") ->
+                     "water/water_td_sectors",
+                     "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2072.AgCoef_IrrBphysWater_ag_mgmt
 
     L2072.AgCoef_RfdBphysWater_ag_mgmt %>%
@@ -289,7 +291,8 @@ module_aglu_L2072.ag_water_irr_mgmt <- function(command, ...) {
                      "water/basin_to_country_mapping",
                      "L165.GreenRfd_m3kg_R_C_GLU",
                      "L161.ag_rfdProd_Mt_R_C_Y_GLU",
-                     "water/water_td_sectors") ->
+                     "water/water_td_sectors",
+                     "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2072.AgCoef_RfdBphysWater_ag_mgmt
 
     L2072.AgCoef_BphysWater_bio_mgmt %>%

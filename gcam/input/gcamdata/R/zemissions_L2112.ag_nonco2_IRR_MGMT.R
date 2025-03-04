@@ -258,7 +258,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       add_units("kt/Mt") %>%
       add_comments("L2111.AWB_BCOC_EmissCoeff repeated high and low management") %>%
       add_legacy_name("L2112.AWB_BCOC_EmissCoeff") %>%
-      add_precursors("L2111.AWB_BCOC_EmissCoeff") ->
+      add_precursors("L2111.AWB_BCOC_EmissCoeff", "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2112.AWB_BCOC_EmissCoeff
 
     L2112.nonghg_max_reduction %>%
@@ -266,7 +266,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       add_units("Percent reduction from base-year emissions coefficient") %>%
       add_comments("L2111.nonghg_max_reduction repeated by high and low management") %>%
       add_legacy_name("L2112.nonghg_max_reduction") %>%
-      add_precursors("L2111.nonghg_max_reduction") ->
+      add_precursors("L2111.nonghg_max_reduction", "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2112.nonghg_max_reduction
 
     L2112.nonghg_steepness %>%
@@ -274,7 +274,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       add_units("Unitless") %>%
       add_comments("L2111.nonghg_steepness repeated by high and low management level") %>%
       add_legacy_name("L2112.nonghg_steepness") %>%
-      add_precursors("L2111.nonghg_steepness") ->
+      add_precursors("L2111.nonghg_steepness", "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2112.nonghg_steepness
 
     L2112.AWBEmissions %>%
@@ -298,7 +298,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       add_units("kg/kg") %>%
       add_comments("GHG emissions per unit crop producted on biochar managed lands") %>%
       add_legacy_name("L2112.AWBEmissions") %>%
-      add_precursors("L2111.AWBEmissions", "L2012.AgProduction_ag_irr_mgmt") ->
+      add_precursors("L2111.AWBEmissions", "L2012.AgProduction_ag_irr_mgmt", "L181.ag_kgbioha_R_C_Y_GLU_irr_level") ->
       L2112.AWBEmissions_biochar
 
     L2112.AGREmissions_biochar %>%
@@ -306,7 +306,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       add_units("kg/kg") %>%
       add_comments("Production share weights are set for irrigated vs. rainfed, same for high and low management.") %>%
       add_legacy_name("L2112.AGREmissions") %>%
-      add_precursors("L2111.AGREmissions", "L2012.AgProduction_ag_irr_mgmt") ->
+      add_precursors("L2111.AGREmissions", "L2012.AgProduction_ag_irr_mgmt", "L181.ag_kgbioha_R_C_Y_GLU_irr_level") ->
       L2112.AGREmissions_biochar
 
     return_data(L2112.AGRBio, L2112.AWB_BCOC_EmissCoeff, L2112.nonghg_max_reduction, L2112.AWBEmissions,

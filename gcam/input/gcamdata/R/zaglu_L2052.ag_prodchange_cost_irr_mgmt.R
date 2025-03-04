@@ -360,7 +360,8 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
                      "L161.ag_rfdProd_Mt_R_C_Y_GLU",
                      "L164.ag_Cost_75USDkg_C",
                      "L1321.ag_prP_R_C_75USDkg",
-                     "L2012.AgSupplySector") ->
+                     "L2012.AgSupplySector",
+                     "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2052.AgCost_ag_irr_mgmt
 
     L2052.AgCalMinProfitRate %>%
@@ -369,7 +370,7 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       add_comments("Enables the calculation of an implicit subsidy to ensure that calibration profit rates") %>%
       add_comments("do not fall below the threshold value provided in this output regardless of dynamic costs") %>%
       add_comments("calculated such as fertilizer or water costs.") %>%
-      add_precursors("L2012.AgSupplySector", "L2052.AgCost_ag_irr_mgmt") ->
+      add_precursors("L2012.AgSupplySector", "L2052.AgCost_ag_irr_mgmt", "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2052.AgCalMinProfitRate
 
     L2052.AgCost_bio_irr_mgmt %>%
@@ -398,7 +399,7 @@ module_aglu_L2052.ag_prodchange_cost_irr_mgmt <- function(command, ...) {
       add_comments("The same productivity change are assigned to both high and low management") %>%
       add_legacy_name("L2052.AgProdChange_ag_irr_ref") %>%
       add_precursors("water/basin_to_country_mapping",
-                     "L162.ag_YieldRate_R_C_Y_GLU_irr") ->
+                     "L162.ag_YieldRate_R_C_Y_GLU_irr", "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2052.AgProdChange_ag_irr_ref
 
     L2052.AgProdChange_bio_irr_ref %>%

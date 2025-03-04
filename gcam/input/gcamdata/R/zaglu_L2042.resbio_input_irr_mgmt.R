@@ -400,7 +400,8 @@ module_aglu_L2042.resbio_input_irr_mgmt <- function(command, ...) {
                      "aglu/A_resbio_curves",
                      "aglu/A_bio_frac_prod_R",
                      "L111.ag_resbio_R_C",
-                     "L101.ag_Prod_Mt_R_C_Y_GLU") ->
+                     "L101.ag_Prod_Mt_R_C_Y_GLU",
+                     "L181.ag_kgbioha_R_C_Y_GLU_irr_level") ->
       L2042.AgResBio_ag_irr_mgmt
 
     L2042.AgResBioCurve_ag_irr_mgmt %>%

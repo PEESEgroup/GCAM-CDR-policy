@@ -441,7 +441,8 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       add_precursors("common/GCAM_region_names",
                      "water/basin_to_country_mapping",
                      "L142.ag_Fert_IO_R_C_Y_GLU",
-                     "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU") ->
+                     "L171.ag_rfdEcYield_kgm2_R_C_Y_GLU",
+                     "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2062.AgCoef_Fert_ag_irr_mgmt
     L2062.AgCoef_Fert_bio_irr_mgmt %>%
       add_title("Fertilizer coefficients for bioenergy technologies") %>%
@@ -459,7 +460,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
       add_comments("Fertilizer costs is computed using a fixed NH3 cost and the fertilizer coefficient") %>%
       add_legacy_name("L2062.AgCost_ag_irr_mgmt_adj") %>%
       same_precursors_as(L2062.AgCoef_Fert_ag_irr_mgmt) %>%
-      add_precursors("L2052.AgCost_ag_irr_mgmt") ->
+      add_precursors("L2052.AgCost_ag_irr_mgmt", "L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level") ->
       L2062.AgCost_ag_irr_mgmt_adj
     L2062.AgCost_bio_irr_mgmt_adj %>%
       add_title("Adjusted non-land variable cost for agricultural technologies") %>%
