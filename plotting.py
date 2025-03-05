@@ -2,6 +2,7 @@ import geopandas as gpd
 import matplotlib.patches as patches
 from matplotlib.collections import PatchCollection
 import pandas as pd
+import os
 import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from pylab import *
@@ -997,7 +998,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column, RCP, nonBa
             plt.show()
 
 
-def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaselineScenario):
+def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaselineScenario, title):
     """
     Plots a tornado plot for sensitivity analyses
     :param dataframe: dataframe to be plotted
@@ -1016,7 +1017,6 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
 
     # get base values on a per product basis
     base_vals = dataframe[dataframe[[Version]].isin([base_version]).any(axis=1)]
-    dataframe = dataframe[~dataframe[[Version]].isin([base_version]).any(axis=1)]
 
     # get low and high values
     # the following 2 dataframes should have the same legnth as the baes values
@@ -1057,8 +1057,9 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
         high_width = low + value - base
 
         # plot full colorbar so that the center of the colorbar is on the vertical line, then crop by data values
-        ymin = y - 0.4
-        ymax = y + 0.4
+        v_offset = 0.4
+        ymin = y - v_offset
+        ymax = y + v_offset
         im = gradient_image(ax, direction=1,
                             extent=(
                                 baseline_value - max(min_low, max_high), baseline_value + max(min_low, max_high), ymin,
@@ -1075,12 +1076,17 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
         ax.add_collection(pc)
 
         # Display the Version as text next to the low and high bars
-        x = base - low_width - (bars["high"].max()-bars["low"].min())/ 100
-        plt.text(x, y-0.25, str(low_Version), va='center', ha='right')
-        x = base + high_width + (bars["high"].max()-bars["low"].min())/ 100
-        plt.text(x, y+0.25, str(high_Version), va='center', ha='left')
+        x = base - low_width - (bars["high"].max()-bars["low"].min())/ 200
+        plt.text(x, y-0.2, str(low_Version), va='center', ha='right', fontsize='small')
+        x = base + high_width + (bars["high"].max()-bars["low"].min())/ 200
+        plt.text(x, y+0.2, str(high_Version), va='center', ha='left', fontsize='small')
 
-    # Draw a vertical line down the middle
+        # Draw a vertical line down the middle for each segment where the baseline isn't 0
+        if base != 0:
+            plt.vlines(base, color='black', ymin=ymin, ymax=ymax)
+            plt.text(base, y +1.2*v_offset, str(base_version), va='center', ha='center', fontsize='small')
+
+    # if there is still a need for a singular baseline
     plt.axvline(baseline_value, color='grey')
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
@@ -1093,7 +1099,7 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
     plt.ylim(-1, len(bars[column]))
     # plt.xlabel("change from released model in RCP " + str(RCP) + " (" + str(bars["Units"].unique()[0]) + ")")
     plt.subplots_adjust(left=.33, right=.98, bottom=.4)
-    plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario) + "/" + "sensitivity_analysis_on_" + str(base_version) + ".png",
+    plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario[0]) + "/" + str(title) + ".png",
                 dpi=300)
     plt.show()
 

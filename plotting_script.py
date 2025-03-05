@@ -670,8 +670,9 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     within_biochar = pd.concat([biochar_supply, biochar_price, biochar_ghg_emissions]).reset_index()
 
     # this method requires baseline data as an entry in the dataset, at the bottom
-    base_version_biochar = "default"
-    plotting.sensitivity(within_biochar, RCP, base_version_biochar, biochar_year, "Units", "Version", nonBaselineScenario)
+    base_version_biochar = nonBaselineScenario[0]
+    plotting.sensitivity(within_biochar, RCP, base_version_biochar, biochar_year, "Units", "Version", nonBaselineScenario,
+                         title="sensitivty analysis change compared to baseline scenario")
 
     # change vs baseline
     # Change LUC emissions
@@ -773,30 +774,18 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     perc_diff_temp["Units"] = "% Change in global temperature"
 
     # concat data frames
-    flat_diffs = pd.concat([flat_diff_Pcal, flat_diff_luc, flat_diff_bioenergy, flat_diff_crops, flat_diff_feed, flat_diff_animal, flat_diff_temp])
-    perc_diffs = pd.concat([perc_diff_Pcal, perc_diff_luc, perc_diff_bioenergy, perc_diff_crops, perc_diff_feed, perc_diff_animal,perc_diff_temp])
+    flat_diffs = pd.concat([flat_diff_Pcal, flat_diff_luc, flat_diff_bioenergy, flat_diff_crops, flat_diff_feed, flat_diff_animal, flat_diff_temp]).reset_index()
+    perc_diffs = pd.concat([perc_diff_Pcal, perc_diff_luc, perc_diff_bioenergy, perc_diff_crops, perc_diff_feed, perc_diff_animal,perc_diff_temp]).reset_index()
 
     # ensure perc diff has no na
-    base_version_released = "released"
     perc_diffs = perc_diffs[perc_diffs[biochar_year].notna()]  # remove .nan rows from df
     flat_diffs = flat_diffs[flat_diffs[biochar_year].notna()]  # remove .nan rows from df
 
-    # create baseline scenarios of 0% change
-    baseline_flat_data = flat_diffs[flat_diffs["Version"] == flat_diffs["Version"].unique()[0]].copy(deep=True)
-    baseline_perc_data = perc_diffs[perc_diffs["Version"] == perc_diffs["Version"].unique()[0]].copy(deep=True)
-    baseline_perc_data['Version'] = base_version_released
-    baseline_flat_data['Version'] = base_version_released
-    for j in c.GCAMConstants.x:
-        baseline_flat_data[str(j)] = 0
-        baseline_perc_data[str(j)] = 0
-
-    perc_diffs = pd.concat([perc_diffs, baseline_perc_data]).reset_index()
-    flat_diffs = pd.concat([flat_diffs, baseline_flat_data]).reset_index()
-
     # plot products
-    plotting.sensitivity(flat_diffs, RCP, base_version_released, biochar_year, "Units", "Version", nonBaselineScenario)
-    plotting.sensitivity(perc_diffs, RCP, base_version_released, biochar_year, "Units", "Version",
-                         nonBaselineScenario)
+    plotting.sensitivity(flat_diffs, RCP, base_version_biochar, biochar_year, "Units", "Version", nonBaselineScenario,
+                         title="sensitivty analysis change compared to reference scenario")
+    plotting.sensitivity(perc_diffs, RCP, base_version_biochar, biochar_year, "Units", "Version",
+                         nonBaselineScenario, title="sensitivty analysis percentage change compared to reference scenario")
 
 
 def main():
