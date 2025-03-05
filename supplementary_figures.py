@@ -409,12 +409,12 @@ def main():
                       "LowBiocharNutrients", "HighBiocharNutrients", "HighCropYield", "LowCropYield",
                       "LowGCAMLandShare", "HighGCAMLandShare", "LowGCAMManurePrice", "HighGCAMManurePrice"]
     biochar_year = "2050"
-    biochar_rate_by_land_size(other_scenario, reference_RCP, reference_SSP)
-    farmer_economics(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    pyrolysis_costing(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    animal_feed_and_products(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    luc_by_region(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    pop_and_calories(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #biochar_rate_by_land_size(other_scenario, reference_RCP, reference_SSP)
+    #farmer_economics(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #pyrolysis_costing(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #animal_feed_and_products(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #luc_by_region(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #pop_and_calories(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 
 if __name__ == '__main__':

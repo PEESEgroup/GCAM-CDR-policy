@@ -23,15 +23,6 @@ Didn't find builder for land leaf shares query going to use defaults
 Didn't find builder for land leaf shares in a specified land use region query going to use defaults
 Didn't find builder for National Account query going to use defaults
 Didn't find builder for Social Accounting Matrix query going to use defaults
-Removing :GCAM_SSP1_lowGCAMghostshares304145737
-About to perform query: collection()/scenario
-Removing :GCAM_SSP1_highcropyield304132609
-Removing :GCAM_SSP1_lowGCAMghostshares305095945
-Removing :GCAM_SSP1_highGCAMghostshares305100714
-Removing :GCAM_SSP1_highmanureprice305113014
-Removing :GCAM_SSP1_lowmanureprice305112813
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
 Going to change controls
 About to perform query: collection()/scenario
 About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
@@ -53,103 +44,7 @@ Didn't find builder for land leaf shares in a specified land use region query go
 Didn't find builder for National Account query going to use defaults
 Didn't find builder for Social Accounting Matrix query going to use defaults
 About to perform query: collection()/scenario
-About to perform query: collection()/scenario[@date='2025-5-3T10:07:14-05:00' and @name='GCAM_SSP1_highGCAMghostshares']/@name
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
-Going to change controls
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
-Didn't find builder for detailed land allocation query going to use defaults
-Didn't find builder for detailed historical land allocation query going to use defaults
-Didn't find builder for land allocation by crop query going to use defaults
-Didn't find builder for aggregated land allocation query going to use defaults
-Didn't find builder for aggregated historical land allocation query going to use defaults
-Didn't find builder for land allocation in a specified land use region query going to use defaults
-Didn't find builder for land allocation by crop and water source query going to use defaults
-Didn't find builder for LUC emissions by region query going to use defaults
-Didn't find builder for LUC emissions by LUT query going to use defaults
-Didn't find builder for LUC emissions by LUT in a specified land use region query going to use defaults
-Didn't find builder for vegetative carbon stock by region query going to use defaults
-Didn't find builder for profit rate query going to use defaults
-Didn't find builder for profit rate in a specified land use region query going to use defaults
-Didn't find builder for land leaf shares query going to use defaults
-Didn't find builder for land leaf shares in a specified land use region query going to use defaults
-Didn't find builder for National Account query going to use defaults
-Didn't find builder for Social Accounting Matrix query going to use defaults
-About to perform query: collection()/scenario
-About to perform query: collection()/scenario[@date='2025-5-3T11:30:14-05:00' and @name='GCAM_SSP1_highmanureprice']/@name
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
-Going to change controls
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
-Didn't find builder for detailed land allocation query going to use defaults
-Didn't find builder for detailed historical land allocation query going to use defaults
-Didn't find builder for land allocation by crop query going to use defaults
-Didn't find builder for aggregated land allocation query going to use defaults
-Didn't find builder for aggregated historical land allocation query going to use defaults
-Didn't find builder for land allocation in a specified land use region query going to use defaults
-Didn't find builder for land allocation by crop and water source query going to use defaults
-Didn't find builder for LUC emissions by region query going to use defaults
-Didn't find builder for LUC emissions by LUT query going to use defaults
-Didn't find builder for LUC emissions by LUT in a specified land use region query going to use defaults
-Didn't find builder for vegetative carbon stock by region query going to use defaults
-Didn't find builder for profit rate query going to use defaults
-Didn't find builder for profit rate in a specified land use region query going to use defaults
-Didn't find builder for land leaf shares query going to use defaults
-Didn't find builder for land leaf shares in a specified land use region query going to use defaults
-Didn't find builder for National Account query going to use defaults
-Didn't find builder for Social Accounting Matrix query going to use defaults
-About to perform query: collection()/scenario
-About to perform query: collection()/scenario[@date='2025-4-3T13:26:09-05:00' and @name='GCAM_SSP1_highcropyield']/@name
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
-Going to change controls
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
-Didn't find builder for detailed land allocation query going to use defaults
-Didn't find builder for detailed historical land allocation query going to use defaults
-Didn't find builder for land allocation by crop query going to use defaults
-Didn't find builder for aggregated land allocation query going to use defaults
-Didn't find builder for aggregated historical land allocation query going to use defaults
-Didn't find builder for land allocation in a specified land use region query going to use defaults
-Didn't find builder for land allocation by crop and water source query going to use defaults
-Didn't find builder for LUC emissions by region query going to use defaults
-Didn't find builder for LUC emissions by LUT query going to use defaults
-Didn't find builder for LUC emissions by LUT in a specified land use region query going to use defaults
-Didn't find builder for vegetative carbon stock by region query going to use defaults
-Didn't find builder for profit rate query going to use defaults
-Didn't find builder for profit rate in a specified land use region query going to use defaults
-Didn't find builder for land leaf shares query going to use defaults
-Didn't find builder for land leaf shares in a specified land use region query going to use defaults
-Didn't find builder for National Account query going to use defaults
-Didn't find builder for Social Accounting Matrix query going to use defaults
-About to perform query: collection()/scenario
-About to perform query: collection()/scenario[@date='2025-5-3T09:59:45-05:00' and @name='GCAM_SSP1_lowGCAMghostshares']/@name
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
-Going to change controls
-About to perform query: collection()/scenario
-About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
-Didn't find builder for detailed land allocation query going to use defaults
-Didn't find builder for detailed historical land allocation query going to use defaults
-Didn't find builder for land allocation by crop query going to use defaults
-Didn't find builder for aggregated land allocation query going to use defaults
-Didn't find builder for aggregated historical land allocation query going to use defaults
-Didn't find builder for land allocation in a specified land use region query going to use defaults
-Didn't find builder for land allocation by crop and water source query going to use defaults
-Didn't find builder for LUC emissions by region query going to use defaults
-Didn't find builder for LUC emissions by LUT query going to use defaults
-Didn't find builder for LUC emissions by LUT in a specified land use region query going to use defaults
-Didn't find builder for vegetative carbon stock by region query going to use defaults
-Didn't find builder for profit rate query going to use defaults
-Didn't find builder for profit rate in a specified land use region query going to use defaults
-Didn't find builder for land leaf shares query going to use defaults
-Didn't find builder for land leaf shares in a specified land use region query going to use defaults
-Didn't find builder for National Account query going to use defaults
-Didn't find builder for Social Accounting Matrix query going to use defaults
-About to perform query: collection()/scenario
-About to perform query: collection()/scenario[@date='2025-5-3T11:28:13-05:00' and @name='GCAM_SSP1_lowmanureprice']/@name
+About to perform query: collection()/scenario[@date='2025-5-3T13:16:26-05:00' and @name='GCAM_SSP1_lowcropyield']/@name
 About to perform query: collection()/scenario
 About to perform query: distinct-values(collection()/scenario/world/*[@type = 'region']/@name)
 Caught the window closing
