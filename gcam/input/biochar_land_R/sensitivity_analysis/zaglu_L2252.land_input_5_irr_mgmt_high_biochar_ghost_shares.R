@@ -398,7 +398,7 @@ module_aglu_L2252.land_input_5_irr_mgmt <- function(command, ...) {
       mutate(ghost.unnormalized.share = round(landshare, aglu.DIGITS_GHOSTSHARE), year = 2035) %>%
       select(-landshare) %>%
       # For biochar techs, set ghost-share to 0.05, or 5%
-      replace_na(replace = list(ghost.unnormalized.share = 0.1)) %>%
+      replace_na(replace = list(ghost.unnormalized.share = 0.06)) %>%
       # we want to have positive ghost shares for biochar in future years, but not impact land use in past years
       # mutate(ghost.unnormalized.share = replace(ghost.unnormalized.share, level == "biochar", 0))%>%
       select(c(LEVEL2_DATA_NAMES[["LN5_LeafGhostShare"]], "GLU", "Irr_Rfd", "level")) ->
