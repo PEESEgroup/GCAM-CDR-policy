@@ -161,7 +161,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
 
 def figure4(nonBaselineScenario, RCP, SSP):
     """
-    Returns plots for figure 3
+    Returns plots for figure 4
     :param nonBaselineScenario: the scenario to be compared to the released scenario
     :param RCP: the RCP pathways being considered
     :param SSP: the SSP pathways being considered
@@ -291,7 +291,7 @@ def figure4(nonBaselineScenario, RCP, SSP):
     df_sum = pd.DataFrame(df_sum, columns=['Total']).T
     biochar_ghg_emissions = pd.concat([biochar_ghg_emissions, df_sum])
     biochar_ghg_emissions["GHG_ER_type"] = biochar_ghg_emissions["Units"]
-    biochar_ghg_emissions["Units"] = "Mt CO$_2$-eq/yr"
+    biochar_ghg_emissions["Units"] = "GHG Emissions (Mt CO$_2$-eq/yr)"
 
     # plotting ghg emissions avoidance
     plotting.plot_line_by_product(biochar_ghg_emissions, biochar_ghg_emissions["GHG_ER_type"].unique(), "GHG_ER_type", [SSP[0]], "SSP",
@@ -689,7 +689,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     for i in c.GCAMConstants.future_x:
         flat_diff_luc[str(i)] = 3.664 * flat_diff_luc[str(i)]  # 3.664 converts C to CO2-eq
     flat_diff_luc["Units"] = "Change in LUC emissions (Mt CO2-eq)"
-    perc_diff_luc["Units"] = "% Change in LUC emissions"
+    perc_diff_luc["Units"] = "% change in LUC emissions"
 
     # Change in food Pcals
     released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,
@@ -705,7 +705,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     flat_diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal,["SSP"])
     perc_diff_Pcal = data_manipulation.percent_difference(released_Pcal, pyrolysis_Pcal,["SSP"])
     flat_diff_Pcal["Units"] = "Change in food supply (Pcal)"
-    perc_diff_Pcal["Units"] = "% Change in food supply"
+    perc_diff_Pcal["Units"] = "% change in food supply"
 
     # change in biofuel lands
     released_land = data_manipulation.get_sensitivity_data(["released"], "detailed_land_allocation", SSP, RCP=RCP,
@@ -724,7 +724,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     perc_diff_bioenergy = data_manipulation.percent_difference(released_land_bioenergy, pyrolysis_land_bioenergy,
                                                        ["LandLeaf"])
     flat_diff_bioenergy["Units"] = "Change in bioenergy land supply (thousand km$^2$)"
-    perc_diff_bioenergy["Units"] = "% Change in bioenergy land supply"
+    perc_diff_bioenergy["Units"] = "% change in bioenergy land supply"
 
     # change in croplands
     pyrolysis_land_crops = pyrolysis_land[pyrolysis_land[['LandLeaf']].isin(["Crops"]).any(axis=1)]
@@ -733,7 +733,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     perc_diff_crops = data_manipulation.percent_difference(released_land_crops, pyrolysis_land_crops,
                                                        ["LandLeaf"])
     flat_diff_crops["Units"] = "Change in crop land supply (thousand km$^2$)"
-    perc_diff_crops["Units"] = "% Change in crop land supply"
+    perc_diff_crops["Units"] = "% change in crop land supply"
 
     # change in herd size
     released_supply = data_manipulation.get_sensitivity_data(["released"], "supply_of_all_markets", SSP, RCP=RCP,
@@ -755,13 +755,13 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     flat_diff_feed = data_manipulation.flat_difference(released_feed, pyrolysis_feed, ["SSP"])
     perc_diff_feed = data_manipulation.percent_difference(released_feed, pyrolysis_feed, ["SSP"])
     flat_diff_feed["Units"] = "Change in feed supply (Mt)"
-    perc_diff_feed["Units"] = "% Change in feed supply"
+    perc_diff_feed["Units"] = "% change in feed supply"
     flat_diff_animal = data_manipulation.flat_difference(released_products, pyrolysis_products,
                                                          ["SSP"])
     perc_diff_animal = data_manipulation.percent_difference(released_products, pyrolysis_products,
                                                             ["SSP"])
     flat_diff_animal["Units"] = "Change in herd size (Mt)"
-    perc_diff_animal["Units"] = "% Change in herd size"
+    perc_diff_animal["Units"] = "% change in herd size"
 
     # change in temperature/forcing in 2100
     released_temp = data_manipulation.get_sensitivity_data(["released"], "global_mean_temperature", SSP, RCP=RCP,
@@ -771,7 +771,7 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
     flat_diff_temp = data_manipulation.flat_difference(released_temp, pyrolysis_temp,["SSP"])
     perc_diff_temp = data_manipulation.percent_difference(released_temp, pyrolysis_temp,["SSP"])
     flat_diff_temp["Units"] = "Change in global temperature (degree C)"
-    perc_diff_temp["Units"] = "% Change in global temperature"
+    perc_diff_temp["Units"] = "% change in global temperature"
 
     # concat data frames
     flat_diffs = pd.concat([flat_diff_Pcal, flat_diff_luc, flat_diff_bioenergy, flat_diff_crops, flat_diff_feed, flat_diff_animal, flat_diff_temp]).reset_index()
