@@ -397,6 +397,29 @@ def farmer_economics(nonBaselineScenario, RCP, SSP, biochar_year):
                                         "histogram of land leaf shares for biochar lands in " + str(i), "Crop", "na",
                                         RCP, nonBaselineScenario)
 
+    # output differences in carbon prices
+    c_pyro_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "CO2_prices", SSP, RCP=RCP,
+                                                          source="masked")
+    c_rel_price = data_manipulation.get_sensitivity_data(["released"], "CO2_prices", SSP, RCP=RCP,
+                                                         source="original")
+    product = ["CO2"]
+    c_rel_price = c_rel_price[c_rel_price[['product']].isin(product).any(axis=1)]
+    c_pyro_price = c_pyro_price[c_pyro_price[['product']].isin(product).any(axis=1)]
+    for i in c.GCAMConstants.x:
+        c_rel_price[str(i)] = c_rel_price[
+                                  str(i)] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
+        c_pyro_price[str(i)] = c_pyro_price[
+                                   str(i)] * 2.42  # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=199001&year2=202401
+    flat_diff_c_price = data_manipulation.flat_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
+    flat_diff_c_price["Units"] = "USD$2024/t C"
+    perc_diff_c_price = data_manipulation.percent_difference(c_pyro_price, c_rel_price, ["SSP", "GCAM"])
+    data_manipulation.drop_missing(flat_diff_c_price).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
+            RCP) + "/change_in_carbon_price.csv")
+    data_manipulation.drop_missing(perc_diff_c_price).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
+            RCP) + "/percent_change_in_carbon_price.csv")
+
 
 def main():
     """
@@ -410,7 +433,7 @@ def main():
                       "LowGCAMLandShare", "HighGCAMLandShare", "LowGCAMManurePrice", "HighGCAMManurePrice"]
     biochar_year = "2050"
     #biochar_rate_by_land_size(other_scenario, reference_RCP, reference_SSP)
-    #farmer_economics(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    farmer_economics(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #pyrolysis_costing(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #animal_feed_and_products(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #luc_by_region(other_scenario, reference_RCP, reference_SSP, biochar_year)
