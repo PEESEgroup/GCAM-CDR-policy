@@ -276,7 +276,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     biochar_price = biochar_price[biochar_price[['product']].isin(["biochar"]).any(axis=1)]
     biochar_price = biochar_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.biochar_x])
     biochar_price['2024_value'] = biochar_price['value'] / .17 * 1000  # converting from 1975 to 2024 dollars
-    biochar_price["Units"] = "USD$2024/ton"
+    biochar_price["Units"] = "USD$/ton"
     plotting.plot_regional_hist_avg(biochar_price, '2024_value', SSP, "count region/year combinations",
                                     "histogram of price of biochar", "variable", "na", RCP, nonBaselineScenario)
     data_manipulation.drop_missing(biochar_price).to_csv(
