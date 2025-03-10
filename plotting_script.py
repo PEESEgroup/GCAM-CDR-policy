@@ -453,8 +453,8 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     total_perc_diff_animal = data_manipulation.percent_difference(released_products, pyrolysis_products, ["SSP"])
 
     # recombine data to be exported
-    flat_diff_feed = pd.concat([flat_diff_feed, total_perc_diff_feed])
-    flat_diff_animal = pd.concat([flat_diff_animal, total_perc_diff_animal])
+    perc_diff_feed = pd.concat([perc_diff_feed, total_perc_diff_feed])
+    perc_diff_animal = pd.concat([perc_diff_animal, total_perc_diff_animal])
 
     # print out data to .csv
     data_manipulation.drop_missing(flat_diff_feed).to_csv(
