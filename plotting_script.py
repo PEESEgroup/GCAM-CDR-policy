@@ -405,36 +405,66 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
             RCP) + "/percent_difference_in_N.csv")
 
-def figure4(nonBaselineScenario, RCP, SSP):
+def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     """
-    Returns plots for figure 4
+    returns information related to increased herd sizes and feed demands due to the introduction of pyrolysis
     :param nonBaselineScenario: the scenario to be compared to the released scenario
     :param RCP: the RCP pathways being considered
     :param SSP: the SSP pathways being considered
-    :return: graph of biochar C sequestration, biochar C emissions avoidance, and biochar prices
+    :param biochar_year: the year the biochar pathways are being evaluated
+    :return: N/A
     """
-    # plotting changes in energy mix
-    ref_released = data_manipulation.get_sensitivity_data(["released"],
-                                                          "primary_energy_consumption_by_region_direct_equivalent", SSP,
-                                                          RCP=RCP, source="original")
-    ref_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
-                                                           "primary_energy_consumption_by_region_direct_equivalent",
-                                                           SSP, RCP=RCP, source="masked")
+    # gather data and slice by product types
+    released_supply = data_manipulation.get_sensitivity_data(["released"], "supply_of_all_markets", SSP, RCP=RCP,
+                                                             source="original")
+    pyrolysis_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP,
+                                                              RCP=RCP, source="masked")
+    feed = ["FodderHerb_Residue", "FeedCrops", "Pasture_FodderGrass", "Scavenging_Other"]  # the different feed types
+    released_feed = released_supply[released_supply[['product']].isin(feed).any(axis=1)].copy(deep=True)
+    released_feed['product'] = released_feed.apply(lambda row: data_manipulation.relabel_feeds(row), axis=1)
+    pyrolysis_feed = pyrolysis_supply[pyrolysis_supply[['product']].isin(feed).any(axis=1)].copy(deep=True)
+    pyrolysis_feed['product'] = pyrolysis_feed.apply(lambda row: data_manipulation.relabel_feeds(row), axis=1)
+    products = ["Beef", "Dairy", "SheepGoat", "Pork", "Poultry"]  # the different product types
+    released_products = released_supply[released_supply[['product']].isin(products).any(axis=1)].copy(deep=True)
+    pyrolysis_products = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)].copy(deep=True)
+    released_products['product'] = released_products.apply(lambda row: data_manipulation.relabel_animals(row), axis=1)
+    pyrolysis_products['product'] = pyrolysis_products.apply(lambda row: data_manipulation.relabel_animals(row), axis=1)
 
-    # get the right SSP data
-    ref_released["SSP"] = "released"
-    ref_pyrolysis["SSP"] = "pyrolysis"
+    # calculate changes compared to released scenario
+    flat_diff_feed = data_manipulation.flat_difference(released_feed, pyrolysis_feed, ["GCAM", "SSP", "product"])
+    perc_diff_feed = data_manipulation.percent_difference(released_feed, pyrolysis_feed, ["GCAM", "SSP", "product"])
+    flat_diff_animal = data_manipulation.flat_difference(released_products, pyrolysis_products,
+                                                         ["GCAM", "SSP", "product"])
+    perc_diff_animal = data_manipulation.percent_difference(released_products, pyrolysis_products,
+                                                            ["GCAM", "SSP", "product"])
 
-    # get the flat difference and plot it
-    flat_diff = data_manipulation.flat_difference(ref_released, ref_pyrolysis, ["fuel"])
-    data_manipulation.drop_missing(flat_diff).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
-            RCP) + "/change_in_primary_energy_consumption.csv")
-    perc_diff = data_manipulation.percent_difference(ref_released, ref_pyrolysis, ["fuel"])
-    data_manipulation.drop_missing(perc_diff).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
-            RCP) + "/percent_difference_primary_energy_consumption.csv")
+    # plot figures
+    plotting.plot_world(perc_diff_feed, perc_diff_feed['product'].unique(), SSP, "product", "product", [biochar_year],
+                        "percentage change in animal feed by region in " + biochar_year, RCP, nonBaselineScenario)
+    plotting.plot_world(perc_diff_animal, perc_diff_animal['product'].unique(), SSP, "product", "product", [biochar_year],
+                        "percentage change in animal products by region in " + biochar_year, RCP, nonBaselineScenario)
 
+    # get net differences at global level
+    released_feed = data_manipulation.group(released_feed, ["Version"])
+    pyrolysis_feed = data_manipulation.group(pyrolysis_feed, ["Version"])
+    total_perc_diff_feed = data_manipulation.percent_difference(released_feed, pyrolysis_feed, ["SSP"])
+    released_products = data_manipulation.group(released_products, ["Version"])
+    pyrolysis_products = data_manipulation.group(pyrolysis_products, ["Version"])
+    total_perc_diff_animal = data_manipulation.percent_difference(released_products, pyrolysis_products, ["SSP"])
+
+    # recombine data to be exported
+    flat_diff_feed = pd.concat([flat_diff_feed, total_perc_diff_feed])
+    flat_diff_animal = pd.concat([flat_diff_animal, total_perc_diff_animal])
+
+    # print out data to .csv
+    data_manipulation.drop_missing(flat_diff_feed).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_animal_feed.csv")
+    data_manipulation.drop_missing(perc_diff_feed).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_animal_feed.csv")
+    data_manipulation.drop_missing(flat_diff_animal).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_animal_herd.csv")
+    data_manipulation.drop_missing(perc_diff_animal).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_animal_herd.csv")
 
 
 
@@ -870,8 +900,8 @@ def main():
     biochar_year = "2050"
     #figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure4(other_scenario, reference_RCP, reference_SSP)
+    #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #cue_figure(other_scenario, reference_RCP, reference_SSP, biochar_year)
 

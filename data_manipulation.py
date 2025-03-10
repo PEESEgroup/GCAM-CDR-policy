@@ -803,3 +803,33 @@ def avd_soil_emissions(row, product_column, modification_column):
         return temp
     else:
         return 0
+
+
+def relabel_feeds(row):
+    """
+    relabels animal feeds for human clarity
+    :param row: row in pandas dataframe
+    :return: relabeled animal feed
+    """
+    if row['product'] in ["FodderHerb_Residue"]:
+        return 'Fodder - Herb'
+    elif row['product'] in ["FeedCrops"]:
+        return 'Feed Crops'
+    elif row['product'] in ["Pasture_FodderGrass"]:
+        return 'Fodder - Grass'
+    elif row['product'] in ["Scavenging_Other"]:
+        return 'Scavenging'
+    else:
+        return "error"
+
+
+def relabel_animals(row):
+    """
+    relabels animal products in GCAM for human clarity
+    :param row: row in pandas dataframe
+    :return: relabeled output
+    """
+    if row['product'] in ["SheepGoat"]:
+        return "Sheep & Goat"
+    else:
+        return row['product']
