@@ -805,24 +805,41 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
     # plot for each SSP
     printing_str = ""
     for i in SSPs:
-        dataframe = prices[prices['SSP'].str.contains(i)]
-        supply = supply[supply['SSP'].str.contains(i)]
-        for idx, item in enumerate(dataframe[column].unique()):
-            df_price = dataframe.loc[dataframe[column] == str(item)]
-            df_supply = supply.loc[supply[column] == str(item)]
-            # scatter points
-            plt.scatter(x=df_price["GCAM"], y=df_price[str(year)], color=colors[idx], label=str(item))
+        if supply == "":
+            dataframe = prices[prices['SSP'].str.contains(i)]
+            for idx, item in enumerate(dataframe[column].unique()):
+                df_price = dataframe.loc[dataframe[column] == str(item)]
+                # scatter points
+                plt.scatter(x=df_price["GCAM"], y=df_price[str(year)], color=colors[idx], label=str(item))
 
-            # averages
-            weighted_avg = pd.merge(df_price, df_supply, on=["GCAM"])
-            weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
-            plt.axhline(y=weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum(), color=colors[idx],
-                        linestyle='dashed')
-            printing_str = printing_str + "average," + str(item) + "," + str(weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum()) + ", " + str(weighted_avg["Units_left"].unique()[0] + "\n")
+                # averages
+                plt.axhline(y=df_price[str(year)].mean(), color=colors[idx], linestyle='dashed')
+                printing_str = (printing_str + "average," + str(item) + "," + str(df_price[str(year)].mean()) + ", " +
+                                str(df_price["Units"].unique()[0] + "\n"))
 
-        # output weighted averages
-        with open("data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/weighted_averages" + title + ".csv", 'w') as csvFile:
-            csvFile.write(printing_str)
+            # output weighted averages
+            with open("data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
+                    RCP) + "/weighted_averages" + title + ".csv", 'w') as csvFile:
+                csvFile.write(printing_str)
+        else:
+            dataframe = prices[prices['SSP'].str.contains(i)]
+            supply = supply[supply['SSP'].str.contains(i)]
+            for idx, item in enumerate(dataframe[column].unique()):
+                df_price = dataframe.loc[dataframe[column] == str(item)]
+                df_supply = supply.loc[supply[column] == str(item)]
+                # scatter points
+                plt.scatter(x=df_price["GCAM"], y=df_price[str(year)], color=colors[idx], label=str(item))
+
+                # averages
+                weighted_avg = pd.merge(df_price, df_supply, on=["GCAM"])
+                weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
+                plt.axhline(y=weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum(), color=colors[idx],
+                            linestyle='dashed')
+                printing_str = printing_str + "average," + str(item) + "," + str(weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum()) + ", " + str(weighted_avg["Units_left"].unique()[0] + "\n")
+
+            # output weighted averages
+            with open("data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/weighted_averages" + title + ".csv", 'w') as csvFile:
+                csvFile.write(printing_str)
 
         # finalize plot
         plt.ylabel(y_label)
@@ -1178,7 +1195,7 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply, R
         plt.ylabel(y_label)
         plt.xlabel(units)
         plt.xticks(rotation=60, ha='right')
-        plt.xlim(int(prices[year].min() - .1) - bind_width, int(prices[year].max() + .1) + bind_width)
+        plt.xlim(np.floor(prices[year].min() - bind_width), np.ceil(prices[year].max() + bind_width))
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)

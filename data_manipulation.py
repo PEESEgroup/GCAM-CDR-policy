@@ -389,13 +389,10 @@ def relabel_food(row, column):
     :return: updated name of GCAM region
     """
     food = row[column]
-    matches = ["Corn", "Rice", "Wheat", "Fruits", "Vegetables", "Legumes", "Soybean"]
-    if any(x in food for x in matches):
-        return food
-    elif food == "Fruits" or food == "Vegetables":
-        return "Fruits and Vegetables"
-    elif food == "NutsSeeds":
+    if food == "NutsSeeds":
         return "Nuts and Seeds"
+    elif "Oil" == food:
+        return "Plant Oils"
     elif "OilCrop" == food:
         return "Plant Oils"
     elif food == "OilPalm":
@@ -408,14 +405,18 @@ def relabel_food(row, column):
         return "Other Grains"
     elif "RootTuber" == food:
         return "Roots and Tubers"
-    elif "Beef" == food or "Dairy" == food or "Pork" == food or "Poultry" == food or "SheepGoat" == food or "OtherMeat_Fish" == food:
-        return "Animal Protein"
+    elif "SheepGoat" == food:
+        return "Sheep and Goat"
+    elif "OtherMeat_Fish" == food:
+        return "Fish"
     elif "FodderGrass" == food:
         return "Fodder Grass"
     elif "FodderHerb" == food:
         return "Fodder Herb"
     elif "SugarCrop" == food:
         return "Sugar Crops"
+    elif "FruitsVeg" == food:
+        return "Fruits and Vegetables"
     else:
         return food
 

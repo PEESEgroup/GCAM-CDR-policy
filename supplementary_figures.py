@@ -22,33 +22,137 @@ def pop_and_calories(nonBaselineScenario, RCP, SSP, biochar_year):
     data_manipulation.drop_missing(flat_diff_pop).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/flat_change_in_population.csv")
 
-    # get calorie data
+# calculate food accessibility and undernourishment
+    released_caloric_consumption = data_manipulation.get_sensitivity_data(["released"], "food_demand_per_capita", SSP,
+                                                                          RCP=RCP, source="original")
+    pyrolysis_caloric_consumption = data_manipulation.get_sensitivity_data(nonBaselineScenario,
+                                                                           "food_demand_per_capita", SSP, RCP=RCP,
+                                                                           source="masked")
+    released_caloric_consumption = data_manipulation.group(released_caloric_consumption, ["SSP", "GCAM", "Version"])
+    pyrolysis_caloric_consumption = data_manipulation.group(pyrolysis_caloric_consumption, ["SSP", "GCAM", "Version"])
+
+    # regional averaged food consumption by food type
+    # convert Pcal to kcal/capita/day
+    # get population data
+    released_pop = data_manipulation.get_sensitivity_data(["released"], "population_by_region", SSP, RCP=RCP,
+                                                          source="original")
+    pyrolysis_pop = data_manipulation.get_sensitivity_data(nonBaselineScenario, "population_by_region", SSP, RCP=RCP,
+                                                           source="masked")
     released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,
                                                            RCP=RCP, source="original")
     pyrolysis_Pcal = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_consumption_by_type_specific",
                                                             SSP, RCP=RCP, source="masked")
 
-    flat_diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal,
-                                                       ["GCAM", "SSP", "subsector", "subsector.1",
-                                                        "technology"]).drop_duplicates()
-    perc_diff_Pcal = data_manipulation.percent_difference(released_Pcal, pyrolysis_Pcal,
-                                                          ["GCAM", "SSP", "subsector", "subsector.1",
-                                                           "technology"]).drop_duplicates()
+    # relabel data to make it more human-readable
+    released_Pcal['GCAM'] = released_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    released_pop['GCAM'] = released_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    pyrolysis_Pcal['GCAM'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    pyrolysis_pop['GCAM'] = pyrolysis_pop.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    released_Pcal['technology'] = released_Pcal.apply(lambda row: data_manipulation.relabel_food(row, "technology"),
+                                                      axis=1)
+    pyrolysis_Pcal['technology'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_food(row, "technology"),
+                                                        axis=1)
 
-    # calculate difference
-    flat_diff_Pcal = flat_diff_Pcal[~flat_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
-    perc_diff_Pcal = perc_diff_Pcal[~perc_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
-    plotting.plot_regional_hist_avg(flat_diff_Pcal, biochar_year, SSP, "count region-foodstuff",
-                                    "Flat difference in Pcals consumed in pyrolysis and reference scenario in " + biochar_year,
-                                    "technology", "na", RCP, nonBaselineScenario)
-    plotting.plot_regional_hist_avg(perc_diff_Pcal, biochar_year, SSP, "count region-foodstuff",
-                                    "Percent difference in Pcals consumed in pyrolysis and reference scenario in " + biochar_year,
-                                    "technology", "na", RCP, nonBaselineScenario)
-    # output data
-    data_manipulation.drop_missing(flat_diff_Pcal).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_pcal.csv")
-    data_manipulation.drop_missing(perc_diff_Pcal).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_pcal.csv")
+    # drop MiscCrop and FiberCrop because those products don't have meaningful calories and clutter the graph
+    released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Fiber Crops"].index)
+    released_Pcal = released_Pcal.drop(released_Pcal[released_Pcal["technology"] == "Other Crops"].index)
+    pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Fiber Crops"].index)
+    pyrolysis_Pcal = pyrolysis_Pcal.drop(pyrolysis_Pcal[pyrolysis_Pcal["technology"] == "Other Crops"].index)
+
+    released_Pcal = data_manipulation.group(released_Pcal, ["GCAM", "SSP", "technology", "Version"])
+    pyrolysis_Pcal = data_manipulation.group(pyrolysis_Pcal, ["GCAM", "SSP", "technology", "Version"])
+
+    # calculate food accessibility
+    # get food prices
+    released_staple_expenditure = data_manipulation.get_sensitivity_data(["released"], "food_demand_prices", SSP,
+                                                                         RCP=RCP, source="original")
+    pyrolysis_staple_expenditure = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_demand_prices",
+                                                                          SSP, RCP=RCP, source="masked")
+    released_staple_expenditure = released_staple_expenditure[
+        released_staple_expenditure[['input']].isin(["FoodDemand_Staples"]).any(axis=1)]
+    pyrolysis_staple_expenditure = pyrolysis_staple_expenditure[
+        pyrolysis_staple_expenditure[['input']].isin(["FoodDemand_Staples"]).any(axis=1)]
+
+    # get food consumption
+    released_staple_consumption = data_manipulation.get_sensitivity_data(["released"], "food_demand_per_capita", SSP,
+                                                                         RCP=RCP, source="original")
+    pyrolysis_staple_consumption = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_demand_per_capita",
+                                                                          SSP, RCP=RCP, source="masked")
+    released_staple_consumption = released_staple_consumption[
+        released_staple_consumption[['input']].isin(["FoodDemand_Staples"]).any(axis=1)]
+    pyrolysis_staple_consumption = pyrolysis_staple_consumption[
+        pyrolysis_staple_consumption[['input']].isin(["FoodDemand_Staples"]).any(axis=1)]
+
+    # get GDP per capita
+    released_GDP_capita = data_manipulation.get_sensitivity_data(nonBaselineScenario, "GDP_per_capita_PPP_by_region",
+                                                                 SSP, RCP=RCP, source="original")
+    pyrolysis_GDP_capita = data_manipulation.get_sensitivity_data(nonBaselineScenario, "GDP_per_capita_PPP_by_region",
+                                                                  SSP, RCP=RCP, source="masked")
+
+    # calculate consumption times price divided by GDP per capita
+    released_consumption = pd.merge(released_staple_consumption, released_staple_expenditure, how="inner",
+                                    on=["SSP", "GCAM", "technology"],
+                                    suffixes=("_pcal", "_$"))
+    pyrolysis_consumption = pd.merge(pyrolysis_staple_consumption, pyrolysis_staple_expenditure, how="inner",
+                                     on=["SSP", "GCAM", "technology"],
+                                     suffixes=("_pcal", "_$"))
+
+    # other scaling factors
+    released_FA = pd.merge(released_consumption, released_GDP_capita, how="left", on=["SSP", "GCAM"],
+                           suffixes=("", "_capita"))
+    pyrolysis_FA = pd.merge(pyrolysis_consumption, pyrolysis_GDP_capita, how="left", on=["SSP", "GCAM"],
+                            suffixes=("", "_capita"))
+    released_FA = pd.merge(released_FA, released_caloric_consumption, how="left", on=["SSP", "GCAM"],
+                           suffixes=("", "_caloric"))
+    pyrolysis_FA = pd.merge(pyrolysis_FA, pyrolysis_caloric_consumption, how="left", on=["SSP", "GCAM"],
+                            suffixes=("", "_caloric"))
+    for i in c.GCAMConstants.biochar_x:
+        # released_FA[str(i)] corresponds to the capita column
+        released_FA[str(i)] = released_consumption[str(i) + "_pcal"] * released_consumption[str(i) + "_$"] / \
+                              released_FA[str(i)] * 3.542 / released_FA[str(i) + "_caloric"]
+        pyrolysis_FA[str(i)] = pyrolysis_consumption[str(i) + "_pcal"] * pyrolysis_consumption[str(i) + "_$"] / \
+                               pyrolysis_FA[str(i)] * 3.542 / pyrolysis_FA[str(i) + "_caloric"]
+
+    perc_diff_FA = data_manipulation.percent_difference(released_FA, pyrolysis_FA, ["GCAM", "SSP"])
+    plotting.plot_world(perc_diff_FA, ["%"], SSP, "year", "Units", c.GCAMConstants.biochar_x,
+                        "Food Accessibility near midcentury ", RCP, nonBaselineScenario)
+
+    # calculate pcal per capita
+    released_pcal_pop = pd.merge(released_Pcal, released_pop, how="inner", on=["SSP", "GCAM"],
+                                 suffixes=("_pcal", "_pop"))
+    pyrolysis_pcal_pop = pd.merge(pyrolysis_Pcal, pyrolysis_pop, how="inner", on=["SSP", "GCAM"],
+                                  suffixes=("_pcal", "_pop"))
+
+    # calculate pcal per capita in the biochar year
+    released_pcal_pop["pcal_capita_" + biochar_year] = released_pcal_pop[biochar_year + "_pcal"] / (
+                1000 * released_pcal_pop[
+            biochar_year + "_pop"]) * 1000000000000 / 365 / 2  # * peta to kilo/365/conversion factor of 2 randomly
+    pyrolysis_pcal_pop["pcal_capita_" + biochar_year] = pyrolysis_pcal_pop[biochar_year + "_pcal"] / (
+            1000 * pyrolysis_pcal_pop[biochar_year + "_pop"]) * 1000000000000 / 365 / 2
+    released_pcal_pop["Units"] = "kcal/capita/day"
+    pyrolysis_pcal_pop["Units"] = "kcal/capita/day"
+
+    merged_pcal = released_pcal_pop.merge(pyrolysis_pcal_pop, how="inner", on=["SSP", "GCAM", "technology_pcal"],
+                                          suffixes=("_left", "_right"))
+    merged_pcal["pcal_capita_" + biochar_year] = merged_pcal["pcal_capita_" + biochar_year + "_right"] - merged_pcal[
+        "pcal_capita_" + biochar_year + "_left"]
+    data_manipulation.drop_missing(merged_pcal).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
+            RCP) + "/change_in_consumption_kcal_capita_day.csv")
+
+    # extract population and identifying information in biochar_year for weighted average calculations
+    merged_pop = pd.DataFrame()
+    merged_pop["pcal_capita_" + biochar_year] = merged_pcal[biochar_year + "_pop_right"]
+    merged_pop["GCAM"] = merged_pcal["GCAM"]
+    merged_pop["SSP"] = merged_pcal["SSP"]
+    merged_pop["technology_pcal"] = merged_pcal["technology_pcal"]
+
+    plotting.plot_regional_vertical_avg(merged_pcal, "pcal_capita_" + biochar_year, SSP,
+                                        "change in food demand (kcal/person/day)",
+                                        "change in food demand in " + biochar_year + " in " + str(SSP[0]),
+                                        "technology_pcal", merged_pop, RCP, nonBaselineScenario)
+
+
 
 
 def luc_by_region(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -97,51 +201,6 @@ def luc_by_region(nonBaselineScenario, RCP, SSP, biochar_year):
                                         "Flat diffference in LUC emissions between pyrolysis and reference scenario in " + str(i),
                                         "LandLeaf", "na", RCP, nonBaselineScenario)
 
-
-def animal_feed_and_products(nonBaselineScenario, RCP, SSP, biochar_year):
-    """
-    returns information related to increased herd sizes and feed demands due to the introduction of pyrolysis
-    :param nonBaselineScenario: the scenario to be compared to the released scenario
-    :param RCP: the RCP pathways being considered
-    :param SSP: the SSP pathways being considered
-    :param biochar_year: the year the biochar pathways are being evaluated
-    :return: N/A
-    """
-    released_supply = data_manipulation.get_sensitivity_data(["released"], "supply_of_all_markets", SSP, RCP=RCP,
-                                                             source="original")
-    pyrolysis_supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP,
-                                                              RCP=RCP, source="masked")
-    feed = ["FodderHerb_Residue", "FeedCrops", "Pasture_FodderGrass", "Scavenging_Other"]  # the different feed types
-    released_feed = released_supply[released_supply[['product']].isin(feed).any(axis=1)]
-    pyrolysis_feed = pyrolysis_supply[pyrolysis_supply[['product']].isin(feed).any(axis=1)]
-    products = ["Beef", "Dairy", "SheepGoat", "Pork", "Poultry"]  # the different product types
-    released_products = released_supply[released_supply[['product']].isin(products).any(axis=1)]
-    pyrolysis_products = pyrolysis_supply[pyrolysis_supply[['product']].isin(products).any(axis=1)]
-
-    flat_diff_feed = data_manipulation.flat_difference(released_feed, pyrolysis_feed, ["GCAM", "SSP", "product"])
-    perc_diff_feed = data_manipulation.percent_difference(released_feed, pyrolysis_feed, ["GCAM", "SSP", "product"])
-    flat_diff_animal = data_manipulation.flat_difference(released_products, pyrolysis_products,
-                                                         ["GCAM", "SSP", "product"])
-    perc_diff_animal = data_manipulation.percent_difference(released_products, pyrolysis_products,
-                                                            ["GCAM", "SSP", "product"])
-
-    plotting.plot_world(flat_diff_feed, feed, SSP, "product", "product", [biochar_year],
-                        "change in animal feed by region (Mt) in " + biochar_year, RCP, nonBaselineScenario)
-    plotting.plot_world(perc_diff_feed, feed, SSP, "product", "product", [biochar_year],
-                        "percentage change in animal feed by region in " + biochar_year, RCP, nonBaselineScenario)
-    plotting.plot_world(flat_diff_animal, products, SSP, "product", "product", [biochar_year],
-                        "change in animal products by region in " + biochar_year, RCP, nonBaselineScenario)
-    plotting.plot_world(perc_diff_animal, products, SSP, "product", "product", [biochar_year],
-                        "percentage change in animal products by region in " + biochar_year, RCP, nonBaselineScenario)
-
-    data_manipulation.drop_missing(flat_diff_feed).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_animal_feed.csv")
-    data_manipulation.drop_missing(perc_diff_feed).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_animal_feed.csv")
-    data_manipulation.drop_missing(flat_diff_animal).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_animal_herd.csv")
-    data_manipulation.drop_missing(perc_diff_animal).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/percent_change_in_animal_herd.csv")
 
 
 def pyrolysis_costing(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -437,7 +496,7 @@ def main():
     #pyrolysis_costing(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #animal_feed_and_products(other_scenario, reference_RCP, reference_SSP, biochar_year)
     #luc_by_region(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #pop_and_calories(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    pop_and_calories(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 
 if __name__ == '__main__':
