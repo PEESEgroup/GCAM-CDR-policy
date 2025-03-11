@@ -810,10 +810,16 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
             for idx, item in enumerate(dataframe[column].unique()):
                 df_price = dataframe.loc[dataframe[column] == str(item)]
                 # scatter points
+                global_avg = df_price[df_price[['GCAM']].isin(["Global"]).any(axis=1)]
+                df_price = df_price[~df_price[['GCAM']].isin(["Global"]).any(axis=1)]
+
                 plt.scatter(x=df_price["GCAM"], y=df_price[str(year)], color=colors[idx], label=str(item))
 
                 # averages
-                plt.axhline(y=df_price[str(year)].mean(), color=colors[idx], linestyle='dashed')
+                if global_avg.empty:
+                    plt.axhline(y=df_price[str(year)].mean(), color=colors[idx], linestyle='dashed')
+                else:
+                    plt.axhline(y=float(global_avg[str(year)]), color=colors[idx], linestyle='dashed')
                 printing_str = (printing_str + "average," + str(item) + "," + str(df_price[str(year)].mean()) + ", " +
                                 str(df_price["Units"].unique()[0] + "\n"))
 

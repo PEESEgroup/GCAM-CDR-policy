@@ -834,3 +834,17 @@ def relabel_animals(row):
         return "Sheep & Goat"
     else:
         return row['product']
+
+
+def relabel_staple(row, column):
+    """
+        lambda function to relabel GCAM food categories for greater accessibility. From: A_demand_technology.csv
+        :param row: row of data
+        :param column: column of data to be processed
+        :return: updated name of GCAM region
+        """
+    food = row[column]
+    if food == "Corn" or food == "Wheat" or food == "OtherGrain" or food == "Rice" or food == "RootTuber":
+        return "Staples"
+    else:
+        return "Non-Staples"
