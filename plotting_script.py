@@ -820,6 +820,15 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
                          nonBaselineScenario, title="sensitivty analysis percentage change compared to reference scenario")
 
 
+def P_rate_maps():
+    # TODO: P applied to soil as biochar in 2050 - either as maps or tables
+    pass
+
+
+def biochar_application_rate_maps():
+    # TODO: biochar applied to soil in 2050 - either as maps or tables
+    pass
+
 def main():
     """
     Main method for scripts used to plot figures and information for the article

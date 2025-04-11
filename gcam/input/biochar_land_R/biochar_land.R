@@ -1,25 +1,3 @@
-# 0. Fix Could not find associated product leaf in the land allocator for biochar - look in L2252 - DONE
-# 1. Get rid of fertilizer sector - here - DONE
-# 2. Update assumptions on avoided/sequestered C emissions - here - coefficients - DONE
-# Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
-# 3. Build new land use nodes - land_input_5_IRR_MGMT - L2252.LN5_* - DONE
-# 3.1. land allocation - land_input_5_IRR_MGMT - L2252.LN5_* - DONE
-# 3.2. carbon densities, mature age - land_input_5_IRR_MGMT  - L2252.LN5_* - coefficients - DONE
-# Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
-# 3c. update logits - land_input_5_IRR_MGMT  - L2252.LN5_* -DONE
-# 3d. update share-weights - land_input_5_IRR_MGMT - L2252.LN5_* -DONE
-# 3a. nonLandVariableCost same as others - ag_cost_IRR_MGMT - L2062.AgCost_ag_irr_mgmt_adj - L142.ag_Fert_IO_R_C_Y_GLU - L100.LDS_ag_prod_t - DONE
-# 3b. set minicam-energy-input name to biochar in addition to N fertilizer - ag_Fert_IRR_MGMT - L142.ag_Fert_IO_R_C_Y_GLU - L100.LDS_ag_prod_t - DONE
-# 3b1. get coefficients for biochar demand - ag_Fert_IRR_MGMT - L2062.AgCoef_Fert_ag_irr_mgmt - L142.ag_Fert_IO_R_C_Y_GLU - L100.LDS_ag_prod_t - coefficients - DONE
-# 3e. update agProdChange - ag_prodchange_ssp2_IRR_MGMT - L2052.AgProdChange_ag_irr_ref - DONE
-# 3g. update biophysical water consumption - ag_water_input_IRR_MGMT - L2072.AgCoef_*_ag_mgmt - DONE
-# 3i. update bio_externality_cost - bio_externality - L270.AGCoef_bioext - DONE
-# 3f. update biomass emissions - all_aglu_emissions_IRR_MGMT - L252.AgMAC - L211.AGREmissions - L122.ghg_tg_R_agr_C_Y_GLU - DONE
-# 3h. update MAC coefficients - all_aglu_emissions_IRR_MGMT - L252.AgMAC - L211.AGREmissions - L122.ghg_tg_R_agr_C_Y_GLU - DONE
-# 3j. update residue biomass-production - resbio_input_IRR_MGMT - L2042.AgResBio_ag_irr_mgmt - L101.ag_Prod_Mt_R_C_Y_GLU - "aglu/FAO/FAO_ag_items_PRODSTAT" OR "aglu/LDS/LDS_land_types" - DONE
-# 3k. update locations where certain land nodes cannot exist - prune_empty_ag - L240.TechCoef_tra - aglu/A_agTradedTechnology - DONE
-# 4. find which R files correspond to what xml output files - DONE
-
 devtools::load_all()
 
 # supply sector   subsector       technology

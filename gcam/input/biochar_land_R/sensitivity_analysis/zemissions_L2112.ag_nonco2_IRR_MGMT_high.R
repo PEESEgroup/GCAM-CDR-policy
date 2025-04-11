@@ -214,7 +214,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by=c("region", "AgSupplySector", "AgProductionTechnology", "AgSupplySubsector", "level")) %>%
       drop_na() %>% # remove wrong biochar regions
       # Cayuela, M.L., Van Zwieten, L., Singh, B.P., Jeffery, S., Roig, A. and Sanchez-Monedero, M.A., 2014. Biochar's role in mitigating soil nitrous oxide emissions: A review and meta-analysis. Agriculture, Ecosystems & Environment, 191, pp.5-16.
-      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE), input.emissions*.980, input.emissions)) %>%
+      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE), input.emissions*.54, input.emissions)) %>%
       mutate(emiss.coef = input.emissions) %>% #rename coefficients so that they function as coefficients matching
       filter(year == 1975) %>% # to match biomassGrass etc. config files which work
       select(-kg_bio_ha, -input.emissions) ->
@@ -228,7 +228,7 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
       left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by=c("region", "AgSupplySector", "AgProductionTechnology", "AgSupplySubsector", "level")) %>%
       drop_na() %>% # remove wrong biochar regions
       # Cayuela, M.L., Van Zwieten, L., Singh, B.P., Jeffery, S., Roig, A. and Sanchez-Monedero, M.A., 2014. Biochar's role in mitigating soil nitrous oxide emissions: A review and meta-analysis. Agriculture, Ecosystems & Environment, 191, pp.5-16.
-      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE), input.emissions*.980, input.emissions)) %>%
+      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE), input.emissions*.54, input.emissions)) %>%
       mutate(emiss.coef = input.emissions) %>% #rename coefficients so that they function as coefficients matching
       filter(year == 1975) %>% # to match biomassGrass etc. config files which work
       select(-kg_bio_ha, -input.emissions) ->
