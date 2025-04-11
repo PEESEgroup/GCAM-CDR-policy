@@ -13,6 +13,7 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year being analyzed in detail
     :return: N/A
     """
+    # TODO: get data from all 16 scenarios, and do calculations on a per-scenario basis
     # plotting CO2 sequestering
     co2_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
                                                            "CO2_emissions_by_tech_excluding_resource_production",
@@ -39,9 +40,11 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
     co2_avd_pyrolysis["Units"] = "Net pyrolysis CO$_2$"
 
     # output non-grouped GHG impacts
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(co2_seq_pyrolysis).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
             RCP) + "/biochar_c_sequestration.csv")
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(co2_avd_pyrolysis).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
             RCP) + "/biochar_c_avoidance.csv")
@@ -87,6 +90,7 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
             lambda row: data_manipulation.ghg_ER(row, "GHG", str(i)), axis=1)
 
     # print ungrouped data
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(biochar_ghg_er).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
             RCP) + "/biochar_ghg_avoided_decomposition.csv")
@@ -121,11 +125,13 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
     biochar_ghg_emissions["Units"] = "GHG Emissions (Mt CO$_2$-eq/yr)"
 
     # plotting ghg emissions avoidance
+    #TODO: get median, min, max for each GHG accounting step
     plotting.plot_line_by_product(biochar_ghg_emissions, biochar_ghg_emissions["GHG_ER_type"].unique(), "GHG_ER_type",
                                   [SSP[0]], "SSP",
                                   "ghg emissions changes in " + SSP[0], RCP, nonBaselineScenario)
 
     # output values of avoided and sequestered ghg emissions from biochar
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(biochar_ghg_emissions).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
             RCP) + "/biochar_direct_ghg_emissions.csv")
@@ -160,6 +166,7 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
 
     LCA = pd.concat([biochar_supply, LCA_biochar, manure_supply, LCA_manure])
 
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(LCA).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
             RCP) + "/biochar_manure_supply_GWP_kg_FU.csv")
@@ -225,6 +232,7 @@ def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
         csvFile.write(region_management_type)
 
     # regional land use change
+    # TOdO: get data for all scenarios
     released_land = data_manipulation.get_sensitivity_data(["released"], "detailed_land_allocation", SSP, RCP=RCP,
                                                            source="original")
     pyrolysis_land = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP,
@@ -245,6 +253,7 @@ def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
 
     plotting.plot_stacked_bar_product(flat_diff_land, str(biochar_year), SSP, "LandLeaf",
                                       "land use change by region in " + str(biochar_year), RCP, nonBaselineScenario)
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(global_land).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/global_LUC.csv")
 
@@ -276,9 +285,10 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     biochar_price = biochar_price[biochar_price[['product']].isin(["biochar"]).any(axis=1)]
     biochar_price = biochar_price.melt(["GCAM", "product"], [str(i) for i in c.GCAMConstants.biochar_x])
     biochar_price['2024_value'] = biochar_price['value'] / .17 * 1000  # converting from 1975 to 2024 dollars
-    biochar_price["Units"] = "USD$/ton"
+    biochar_price["Units"] = "$/ton biochar"
     plotting.plot_regional_hist_avg(biochar_price, '2024_value', SSP, "count region/year combinations",
                                     "histogram of price of biochar", "variable", "na", RCP, nonBaselineScenario)
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(biochar_price).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/biochar_price.csv")
 
@@ -294,6 +304,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     unit_cost = unit_cost[unit_cost[['sector']].isin(['biochar']).any(axis=1)]
     feedstock_cost = feedstock_cost[feedstock_cost[['product']].isin(
         ['beef manure', 'dairy manure', 'goat manure', 'pork manure', 'poultry manure', "biochar"]).any(axis=1)]
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(total_cost[["GCAM", biochar_year, "technology", "Units"]]).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/total_cost_pyrolysis.csv")
     data_manipulation.drop_missing(unit_cost[["GCAM", biochar_year, "technology", "Units"]]).to_csv(
@@ -306,8 +317,8 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     # drop outliers
     feedstock_cost = feedstock_cost[feedstock_cost[biochar_year] < 3]
     feedstock_cost[biochar_year] = feedstock_cost[biochar_year] / 0.17 * 1000
-    feedstock_cost["Units"] = "USD$/ton"
-    plotting.plot_regional_hist_avg(feedstock_cost, biochar_year, SSP, "count",
+    feedstock_cost["Units"] = "$/ton manure"
+    plotting.plot_regional_hist_avg(feedstock_cost, biochar_year, SSP, "count regions",
                                     "price distribution of manures in " + biochar_year, "product",
                                     "na", RCP, nonBaselineScenario)
 
@@ -347,6 +358,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     pyrolysis_diff_profit = pyrolysis_diff_profit[
         (-7e2 < pyrolysis_diff_profit[biochar_year]) & (pyrolysis_diff_profit[biochar_year] < 2e2)]
 
+    # TODO: fix font size for axes and legend
     plotting.plot_regional_hist_avg(pyrolysis_diff_profit, biochar_year, ["SSP1"], "count crop-basin-irrigation",
                                     "histogram of percentage profit rate changes at the crop level in " + biochar_year,
                                     "Crop", "na", RCP, nonBaselineScenario)
@@ -366,6 +378,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
         lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
 
     # plot histogram of crop/region price combinations
+    # TODO: fix font size for axes and legend
     plotting.plot_regional_hist_avg(biochar_app_rate, biochar_year, [SSP], "region-basin-crop-irr combination count",
                                     "histogram of biochar app rates in " + biochar_year, "technology", "na", RCP,
                                     nonBaselineScenario)
@@ -383,6 +396,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     lower_cutoff = 250
     biochar_app_rate_no_outlier = biochar_app_rate[biochar_app_rate[biochar_year] < outlier_cutoff]
     biochar_app_rate_no_outlier = biochar_app_rate_no_outlier[biochar_app_rate_no_outlier[biochar_year] > lower_cutoff]
+    # TODO: fix font size for axes and legend
     plotting.plot_regional_hist_avg(biochar_app_rate_no_outlier, biochar_year, [SSP],
                                     "region-basin-crop-irr combination count",
                                     "histogram of outlier " + str(lower_cutoff) + "-" + str(outlier_cutoff)
@@ -399,6 +413,7 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
 
     flat_diff_land = data_manipulation.flat_difference(released_N, pyrolysis_N, ["SSP", "LandLeaf", "GCAM"])
     perc_diff_land = data_manipulation.percent_difference(released_N, pyrolysis_N, ["SSP", "LandLeaf", "GCAM"])
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(flat_diff_land).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_N.csv")
     data_manipulation.drop_missing(perc_diff_land).to_csv(
@@ -414,6 +429,7 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year the biochar pathways are being evaluated
     :return: N/A
     """
+    # TODO: fix units for both
     # gather data and slice by product types
     released_supply = data_manipulation.get_sensitivity_data(["released"], "supply_of_all_markets", SSP, RCP=RCP,
                                                              source="original")
@@ -457,6 +473,7 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     perc_diff_animal = pd.concat([perc_diff_animal, total_perc_diff_animal])
 
     # print out data to .csv
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(flat_diff_feed).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/change_in_animal_feed.csv")
     data_manipulation.drop_missing(perc_diff_feed).to_csv(
@@ -478,6 +495,7 @@ def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year for biochar/carbon prices to be evaluated and plotted
     :return: N/A
     """
+    #TODO: increase text size for all figures
     # get calorie data
     released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,
                                                            RCP=RCP, source="original")
@@ -569,10 +587,11 @@ def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
                                                                 pyrolsis_Pcal_cost,
                                                                 ["GCAM", "input"])
 
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(flat_diff_food_staple_income).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
             RCP) + "/change_in_food_prices.csv")
-
+    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(perc_diff_food_staple_income).to_csv(
         "data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
             RCP) + "/percent_change_in_food_prices.csv")

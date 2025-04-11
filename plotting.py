@@ -648,6 +648,8 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
                     # plot all versions in y
                     color = colors[color_counter]
 
+                    # TODO: plot shaded regions
+
                     # get line of data to plot and plot it
                     y_to_plot = y.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
                         c.GCAMConstants.biochar_x)]  # only take the x values
