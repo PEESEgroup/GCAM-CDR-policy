@@ -213,8 +213,8 @@ module_emissions_L2112.ag_nonco2_IRR_MGMT <- function(command, ...) {
              AgProductionTechnology = gsub("_hi", "_biochar", AgProductionTechnology)) %>%
       left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by=c("region", "AgSupplySector", "AgProductionTechnology", "AgSupplySubsector", "level")) %>%
       drop_na() %>% # remove wrong biochar regions
-      # Woolf, D., Amonette, J. E., Street-Perrott, F. A., Lehmann, J. & Joseph, S. Sustainable biochar to mitigate global climate change. Nat Commun 1, 56 (2010).
-      mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "CH4_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE) , input.emissions*.9967, input.emissions)) %>%
+      #TODO: fix value and reference!!!!
+      # Borchard, N., Schirrmann, M., Cayuela, M.L., Kammann, C., Wrage-Mönnig, N., Estavillo, J.M., Fuertes-Mendizábal, T., Sigua, G., Spokas, K., Ippolito, J.A. and Novak, J., 2019. Biochar, soil and land-use interactions that reduce nitrate leaching and N2O emissions: a meta-analysis. Science of the Total Environment, 651, pp.2354-2364.
       mutate(input.emissions = if_else(level=="biochar" & Non.CO2 == "N2O_AGR"& (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE), input.emissions*.9750, input.emissions)) %>%
       mutate(emiss.coef = input.emissions) %>% #rename coefficients so that they function as coefficients matching
       filter(year == 1975) %>% # to match biomassGrass etc. config files which work
