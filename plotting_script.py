@@ -59,19 +59,13 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
                                                     SSP, RCP=RCP, source="masked")
 
     ag_avd_n2o_land = ghg_er[ghg_er['technology'].str.contains("biochar")]  # get only biochar lut
-    ag_avd_ch4_land = ghg_er[ghg_er['technology'].str.contains("biochar")]
     ag_avd_n2o_land = ag_avd_n2o_land[ag_avd_n2o_land[['GHG']].isin(["N2O_AGR"]).any(axis=1)]  # select specific ghg
-    ag_avd_ch4_land = ag_avd_ch4_land[ag_avd_ch4_land[['GHG']].isin(["CH4_AGR"]).any(axis=1)]
     ag_avd_n2o_land = data_manipulation.group(ag_avd_n2o_land,
                                               ["Version", "GHG"])  # group all biochar land leafs by version
-    ag_avd_ch4_land = data_manipulation.group(ag_avd_ch4_land, ["Version", "GHG"])
     for i in c.GCAMConstants.future_x:
         ag_avd_n2o_land[str(i)] = ag_avd_n2o_land.apply(
             lambda row: data_manipulation.avd_soil_emissions(row, "GHG", str(i)), axis=1)
-        ag_avd_ch4_land[str(i)] = ag_avd_ch4_land.apply(
-            lambda row: data_manipulation.avd_soil_emissions(row, "GHG", str(i)), axis=1)
     ag_avd_n2o_land["Units"] = "Avoided cropland N$_2$O"
-    ag_avd_ch4_land["Units"] = "Avoided cropland CH$_4$"
 
     # avoided CH4 and N2O emissions from avoided biomass decomposition
     biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")].copy(deep=True)
@@ -113,13 +107,12 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
 
     # combine all direct sources of GHG emissions changes into a single df/graph
     biochar_ghg_emissions = pd.concat(
-        [biochar_ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis, ag_avd_n2o_land, ag_avd_ch4_land, flat_diff_luc])
+        [biochar_ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis, ag_avd_n2o_land, flat_diff_luc])
 
     # calculate net CO2 impact
-    df_sum = biochar_ghg_emissions.sum(axis=0)
+    df_sum = biochar_ghg_emissions.groupby("Version").sum() # sum in new dataframe. It's fine that all other information is overwritten, as units are all Mt CO2-eq
     df_sum["Units"] = "Net Emissions Impact"  # this unit is used to label the graph
-    df_sum["SSP"] = ag_avd_ch4_land["SSP"].unique()[0]
-    df_sum = pd.DataFrame(df_sum, columns=['Total']).T
+    df_sum["SSP"] = ag_avd_n2o_land["SSP"].unique()[0]
     biochar_ghg_emissions = pd.concat([biochar_ghg_emissions, df_sum])
     biochar_ghg_emissions["GHG_ER_type"] = biochar_ghg_emissions["Units"]
     biochar_ghg_emissions["Units"] = "GHG Emissions (Mt CO$_2$-eq/yr)"
@@ -663,19 +656,13 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
                                                     SSP, RCP=RCP, source="masked", only_first_scenario=False)
 
     ag_avd_n2o_land = ghg_er[ghg_er['technology'].str.contains("biochar")]  # get only biochar lut
-    ag_avd_ch4_land = ghg_er[ghg_er['technology'].str.contains("biochar")]
     ag_avd_n2o_land = ag_avd_n2o_land[ag_avd_n2o_land[['GHG']].isin(["N2O_AGR"]).any(axis=1)]  # select specific ghg
-    ag_avd_ch4_land = ag_avd_ch4_land[ag_avd_ch4_land[['GHG']].isin(["CH4_AGR"]).any(axis=1)]
     ag_avd_n2o_land = data_manipulation.group(ag_avd_n2o_land,
                                               ["Version", "GHG"])  # group all biochar land leafs by version
-    ag_avd_ch4_land = data_manipulation.group(ag_avd_ch4_land, ["Version", "GHG"])
     for i in c.GCAMConstants.future_x:
         ag_avd_n2o_land[str(i)] = ag_avd_n2o_land.apply(
             lambda row: data_manipulation.avd_soil_emissions(row, "GHG", str(i)), axis=1)
-        ag_avd_ch4_land[str(i)] = ag_avd_ch4_land.apply(
-            lambda row: data_manipulation.avd_soil_emissions(row, "GHG", str(i)), axis=1)
     ag_avd_n2o_land["Units"] = "Avoided cropland N$_2$O"
-    ag_avd_ch4_land["Units"] = "Avoided cropland CH$_4$"
 
     # avoided CH4 and N2O emissions from avoided biomass decomposition
     biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")].copy(deep=True) # initial screening of emissions
@@ -692,12 +679,12 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
             lambda row: data_manipulation.ghg_ER(row, "GHG", str(i)), axis=1)
 
     # combine all direct sources of GHG emissions changes into a single df/graph
-    biochar_ghg_emissions = pd.concat([biochar_ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis, ag_avd_n2o_land, ag_avd_ch4_land])
+    biochar_ghg_emissions = pd.concat([biochar_ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis, ag_avd_n2o_land])
 
     # calculate net CO2 impact
     biochar_ghg_emissions = biochar_ghg_emissions.groupby('Version').sum().reset_index()
     biochar_ghg_emissions["Units"] = "Net Emissions (Mt CO$_2$-eq/yr)" # this unit is used to label the graph
-    biochar_ghg_emissions["SSP"] = ag_avd_ch4_land["SSP"].unique()[0]
+    biochar_ghg_emissions["SSP"] = ag_avd_n2o_land["SSP"].unique()[0]
 
     within_biochar = pd.concat([biochar_supply, biochar_price, biochar_ghg_emissions]).reset_index()
 
@@ -839,16 +826,30 @@ def main():
     """
     reference_SSP = ["SSP1"]  # the first SSP in the list is assumed to be the baseline
     reference_RCP = "baseline"
-    other_scenario = ["Baseline"] #, "HighBiocharCost","LowBiocharCost","HighBiocharYield", "LowBiocharYield",
-                      #"LowBiocharNutrients", "HighBiocharNutrients", "HighCropYield", "LowCropYield", "LowGCAMLandShare",
-                      #"HighGCAMLandShare", "LowGCAMManurePrice", "HighGCAMManurePrice"]  # the first scenario in the list is assumed to be the baseline
+    other_scenario = ["Baseline",
+               "HighBiocharCost",
+               "HighBiocharNUE",
+               #"HighBiocharNutrients",  # error
+               "HighBiocharSoilN2O",
+               "HighBiocharYield",
+               "HighCropYield",
+               "HighGCAMLandShare",
+               "HighGCAMManurePrice",
+               "LowBiocharNutrients",
+               "LowBiocharCost",
+               "LowBiocharNUE",
+               "LowBiocharSoilN2O",
+               "LowBiocharYield",
+               "LowCropYield",
+               "LowGCAMLandShare",
+               "LowGCAMManurePrice"]
     biochar_year = "2050"
-    #figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #cue_figure(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    cue_figure(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 
 if __name__ == '__main__':

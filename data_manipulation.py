@@ -693,7 +693,7 @@ def process_luc(land_use, scale_factor, base_year, biochar_year):
     return land_for_alluvial
 
 
-def get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked", only_first_scenario=True):
+def get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked", only_first_scenario=False):
     """
     method to get data from different csvs scattered across different scenario definitions. Useful for collating results
     across the sensitivity analyses
