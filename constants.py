@@ -4,13 +4,41 @@ class GCAMConstants:
     """
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
-    version = [["LowBiocharNutrients", "baseline"], ["HighCropYield", "baseline"], ["LowCropYield", "baseline"],
-               ["LowGCAMLandShare", "baseline"], ["HighGCAMLandShare", "baseline"], ["LowGCAMManurePrice", "baseline"],
-               ["HighGCAMManurePrice", "baseline"]]
-    GCAMDB_filenames = ["data/gcam_out/LowBiocharNutrients/baseline/ref.csv", "data/gcam_out/HighCropYield/baseline/ref.csv",
-                        "data/gcam_out/LowCropYield/baseline/ref.csv", "data/gcam_out/LowGCAMLandShare/baseline/ref.csv",
-                        "data/gcam_out/HighGCAMLandShare/baseline/ref.csv", "data/gcam_out/LowGCAMManurePrice/baseline/ref.csv",
-                        "data/gcam_out/HighGCAMManurePrice/baseline/ref.csv"]
+
+    version = [["Baseline", "baseline"],
+               ["HighBiocharCost", "baseline"],
+               ["HighBiocharNUE", "baseline"],
+               #["HighBiocharNutrients", "baseline"],  # error
+               ["HighBiocharSoilN2O", "baseline"],
+               ["HighBiocharYield", "baseline"],
+               ["HighCropYield", "baseline"],
+               ["HighGCAMLandShare", "baseline"],
+               ["HighGCAMManurePrice", "baseline"],
+               ["LowBiocharNutrients", "baseline"],
+               ["LowBiocharCost", "baseline"],
+               ["LowBiocharNUE", "baseline"],
+               ["LowBiocharSoilN2O", "baseline"],
+               ["LowBiocharYield", "baseline"],
+               ["LowCropYield", "baseline"],
+               ["LowGCAMLandShare", "baseline"],
+               ["LowGCAMManurePrice", "baseline"]]
+    GCAMDB_filenames = ["data/gcam_out/Baseline/baseline/ref.csv",
+                        "data/gcam_out/HighBiocharCost/baseline/ref.csv",
+                        "data/gcam_out/HighBiocharNUE/baseline/ref.csv",
+                        #"data/gcam_out/HighBiocharNutrients/baseline/ref.csv",  # error
+                        "data/gcam_out/HighBiocharSoilN2O/baseline/ref.csv",
+                        "data/gcam_out/HighBiocharYield/baseline/ref.csv",
+                        "data/gcam_out/HighCropYield/baseline/ref.csv",
+                        "data/gcam_out/HighGCAMLandShare/baseline/ref.csv",
+                        "data/gcam_out/HighGCAMManurePrice/baseline/ref.csv",
+                        "data/gcam_out/LowBiocharNutrients/baseline/ref.csv",
+                        "data/gcam_out/LowBiocharCost/baseline/ref.csv",
+                        "data/gcam_out/LowBiocharNUE/baseline/ref.csv",
+                        "data/gcam_out/LowBiocharSoilN2O/baseline/ref.csv",
+                        "data/gcam_out/LowBiocharYield/baseline/ref.csv",
+                        "data/gcam_out/LowCropYield/baseline/ref.csv",
+                        "data/gcam_out/LowGCAMLandShare/baseline/ref.csv",
+                        "data/gcam_out/LowGCAMManurePrice/baseline/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
