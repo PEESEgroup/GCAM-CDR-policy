@@ -821,6 +821,9 @@ def cue_figure(nonBaselineScenario, RCP, SSP, biochar_year):
 
 
 def P_rate_maps():
+    # TODO: add P values to A_ag_kgbioha...
+    # TODO: copy over full baseline
+    # TODO: fix outputs of 181 (A_ag_kgbioha...) to get maps for baseline, low nutrient, high nutrients - likely need to replace 2062, if not, full replace
     # TODO: P applied to soil as biochar in 2050 - either as maps or tables
     pass
 
