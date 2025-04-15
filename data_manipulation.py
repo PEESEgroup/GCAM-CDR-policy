@@ -1,6 +1,7 @@
 import numpy as np
 import constants as c
 import pandas as pd
+import scipy.stats as stats
 
 
 def flat_difference(old, new, columns):
@@ -848,3 +849,39 @@ def relabel_staple(row, column):
         return "Staples"
     else:
         return "Non-Staples"
+
+
+def get_CI(dataframe, products, alpha=0.95):
+    """
+    produce a confidence interval (defaults to 95%), returning the mean, median, and mode for each unique product in a column
+    :param dataframe: dataframe with all the necessary data
+    :param products: column of pandas dataf
+    :return: a dataframe containing the min, mean, and max for each product for all valid years
+    """
+    unique_products = dataframe[products].unique()
+    lmu = pd.DataFrame(columns=dataframe.columns)
+    for i in unique_products:
+        # get a dataframe just for this product
+        data = dataframe[dataframe[products] == i].copy(deep=True)
+
+        # copy 3 rows over to lmu
+        output_vals = data.head[3].copy(deep=True)
+        output_vals["Version"] = output_vals["Version"] + pd.Series(["Lower CI", " Mean", " Upper CI"])
+
+        # solve the CI for each year
+        for j in c.GCAMConstants.x:
+            np_data = np.array(data[j])  # get data for a particular year
+            sMu = np.mean(np_data)
+            sem = stats.sem(np_data)
+            n = len(np_data)
+            df = n - 1
+            lower, upper = stats.t.interval(alpha, df=df, loc=sMu, scale=sem)  # confidence interval with equal areas around the mean
+
+            # add lower, mean, upper to output dataframe
+            output_vals[j] = pd.Series[lower, sMu, upper]
+
+        # add lower level low mean upper dataframe to higher level one
+        lmu = pd.concat([lmu, output_vals])
+
+    # add the returned dataframe to the original frame as appended rows
+    return pd.concat([dataframe, lmu])
