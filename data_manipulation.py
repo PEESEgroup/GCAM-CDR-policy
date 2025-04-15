@@ -865,12 +865,12 @@ def get_CI(dataframe, products, alpha=0.95):
         data = dataframe[dataframe[products] == i].copy(deep=True)
 
         # copy 3 rows over to lmu
-        output_vals = data.head[3].copy(deep=True)
-        output_vals["Version"] = output_vals["Version"] + pd.Series(["Lower CI", " Mean", " Upper CI"])
+        output_vals = data.head(3).copy(deep=True)
+        output_vals["Version"] = ["Lower CI", "Mean", "Upper CI"]
 
         # solve the CI for each year
         for j in c.GCAMConstants.x:
-            np_data = np.array(data[j])  # get data for a particular year
+            np_data = data[str(j)].dropna().values  # get data for a particular year
             sMu = np.mean(np_data)
             sem = stats.sem(np_data)
             n = len(np_data)
@@ -878,7 +878,7 @@ def get_CI(dataframe, products, alpha=0.95):
             lower, upper = stats.t.interval(alpha, df=df, loc=sMu, scale=sem)  # confidence interval with equal areas around the mean
 
             # add lower, mean, upper to output dataframe
-            output_vals[j] = pd.Series[lower, sMu, upper]
+            output_vals[str(j)] = [lower, sMu, upper]
 
         # add lower level low mean upper dataframe to higher level one
         lmu = pd.concat([lmu, output_vals])

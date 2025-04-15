@@ -39,6 +39,8 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
     co2_seq_pyrolysis["Units"] = "Sequestered C in biochar"
     co2_avd_pyrolysis["Units"] = "Net pyrolysis CO$_2$"
 
+    co2_seq_pyrolysis = data_manipulation.get_CI(co2_seq_pyrolysis, "technology")
+
     # output non-grouped GHG impacts
     # TODO: calculate CI low, high, median values and report, in addition to all scenario data
     data_manipulation.drop_missing(co2_seq_pyrolysis).to_csv(
@@ -110,7 +112,8 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
         [biochar_ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis, ag_avd_n2o_land, flat_diff_luc])
 
     # calculate net CO2 impact
-    df_sum = biochar_ghg_emissions.groupby("Version").sum() # sum in new dataframe. It's fine that all other information is overwritten, as units are all Mt CO2-eq
+    #TODO: figure out units versus versions, etc.
+    df_sum = biochar_ghg_emissions.groupby("Version").sum().reset_index() # sum in new dataframe. It's fine that all other information is overwritten, as units are all Mt CO2-eq
     df_sum["Units"] = "Net Emissions Impact"  # this unit is used to label the graph
     df_sum["SSP"] = ag_avd_n2o_land["SSP"].unique()[0]
     biochar_ghg_emissions = pd.concat([biochar_ghg_emissions, df_sum])
