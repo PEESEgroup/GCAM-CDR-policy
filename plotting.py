@@ -433,7 +433,7 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname, RCP,
         fig.set_size_inches(16, 5.1)
     elif nrow * ncol == 20:
         fig.set_size_inches(16, 9)
-    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  fname + ".png", dpi=300)
+    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  fname + ".png", dpi=300)
     plt.show()
 
 
@@ -550,7 +550,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title, RC
     for i in range(nrow * ncol - counter):
         fig.delaxes(axs[int((counter + i) / ncol), int((counter + i) % ncol)])
 
-    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
+    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  title + ".png", dpi=300)
     plt.show()
 
 
@@ -740,7 +740,7 @@ def plot_stacked_bar_product(df, year, SSP, column, title, RCP, nonBaselineScena
             plt.gcf().set_size_inches(7, 8)
         else:
             plt.gcf().set_size_inches(12, 8)
-        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario) + "/" + title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + str(RCP) + "/"  + title + ".png", dpi=300)
         plt.show()
 
     except ValueError as e:
@@ -784,7 +784,7 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_co
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
         plt.show()
-        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + str(RCP) + "/"  +  title + ".png", dpi=300)
 
 
 def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, supply, RCP, nonBaselineScenario):
@@ -857,7 +857,7 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.5, right=.7, left=.15)
         plt.gcf().set_size_inches(12, 8)
-        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + str(RCP) + "/"  +  title + ".png", dpi=300)
         plt.show()
 
 
@@ -1019,7 +1019,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column, RCP, nonBa
                 )
 
             plt.gcf().set_size_inches(12, 12)
-            plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  str(item) + ".png", dpi=300)
+            plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  str(item) + ".png", dpi=300)
             plt.show()
 
 
@@ -1207,7 +1207,7 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply, R
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
-        plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  title + ".png", dpi=300)
         plt.show()
     else:
         colors, divisions = get_colors(1)
@@ -1257,7 +1257,7 @@ def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label
     plt.title(title)
     plt.legend(bbox_to_anchor=(1, 1))
     plt.subplots_adjust(bottom=0.4, right=.7)
-    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/" + str(nonBaselineScenario) + "/" +  title + ".png", dpi=300)
+    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  title + ".png", dpi=300)
     plt.show()
 
 
