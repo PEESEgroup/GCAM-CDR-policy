@@ -250,24 +250,33 @@ def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
     flat_diff_land["Units"] = "Land Use Change (thousand km$^2$)"
     global_land = data_manipulation.group(flat_diff_land, ["LandLeaf", "Version"])
     flat_diff_land = data_manipulation.group(flat_diff_land, ["GCAM", "LandLeaf", "Version"])
+    flat_diff_land["categorization"] = flat_diff_land["GCAM"] + flat_diff_land["LandLeaf"]
 
-    #TODO fix land plotting scenarios
-    plotting.plot_stacked_bar_product(flat_diff_land, str(biochar_year), SSP, "LandLeaf",
-                                      "land use change by region in " + str(biochar_year), RCP, nonBaselineScenario)
-    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
-    data_manipulation.drop_missing(global_land).to_csv(
+    CI_flat_diff_land = data_manipulation.get_CI(flat_diff_land, "categorization")
+    CI_global_land = data_manipulation.get_CI(global_land, "LandLeaf")
+
+    # get median data for each for plotting
+    CI_flat_diff_land_median = CI_flat_diff_land[CI_flat_diff_land["Version"] == "Median"]
+    CI_global_land_median = CI_global_land[CI_global_land["Version"] == "Median"]
+
+    plotting.plot_stacked_bar_product(CI_flat_diff_land_median, str(biochar_year), SSP, "LandLeaf",
+                                      "median land use change by region in " + str(biochar_year), RCP, nonBaselineScenario)
+    data_manipulation.drop_missing(CI_global_land).to_csv(
         "data/data_analysis/supplementary_tables/"  + str(RCP) + "/global_LUC.csv")
 
-    plotting.plot_stacked_bar_product(global_land, c.GCAMConstants.biochar_x, SSP, "LandLeaf",
-                                      "global land use change by year", RCP, nonBaselineScenario)
+    plotting.plot_stacked_bar_product(CI_global_land_median, c.GCAMConstants.biochar_x, SSP, "LandLeaf",
+                                      "median global land use change by year", RCP, nonBaselineScenario)
 
-    flat_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"],
+    perc_diff_land = data_manipulation.percent_of_total(released_land, pyrolysis_land, ["SSP", "LandLeaf", "GCAM"],
                                                         biochar_year)
-    flat_diff_land["Units"] = "Land Use Change (%)"
-    flat_diff_land['GCAM'] = flat_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    flat_diff_land["LandLeaf"] = flat_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
-    plotting.plot_stacked_bar_product(flat_diff_land, str(biochar_year), SSP, "LandLeaf",
-                                      "land use change by region in " + str(biochar_year), RCP, nonBaselineScenario)
+    perc_diff_land["Units"] = "Land Use Change (%)"
+    perc_diff_land['GCAM'] = perc_diff_land.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    perc_diff_land["LandLeaf"] = perc_diff_land.apply(lambda row: data_manipulation.relabel_land_use(row), axis=1)
+    perc_diff_land["categorization"] = perc_diff_land["GCAM"] + perc_diff_land["LandLeaf"]
+    CI_perc_diff_land = data_manipulation.get_CI(perc_diff_land, "categorization")
+    CI_perc_diff_land = CI_perc_diff_land[CI_perc_diff_land["Version"] == "Median"]
+    plotting.plot_stacked_bar_product(CI_perc_diff_land, str(biochar_year), SSP, "LandLeaf",
+                                      "median % land use change by region in " + str(biochar_year), RCP, nonBaselineScenario)
 
 
 def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -852,8 +861,8 @@ def main():
                "LowGCAMLandShare",
                "LowGCAMManurePrice"]
     biochar_year = "2050"
-    #figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    # figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    # figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)

@@ -89,9 +89,9 @@ def percent_of_total(old, new, columns, biochar_year):
     merged = old.merge(new, how="left", on=columns, suffixes=("_left", "_right"))
     df = pd.DataFrame()
 
-    for j in c.GCAMConstants.SSPs:
+    for j in merged["Version_right"].unique().tolist():
         for k in merged["GCAM"].unique().tolist():
-            merged_filter = merged[(merged['SSP'].isin([j])) & (merged['GCAM'].isin([k]))]  # filter by region
+            merged_filter = merged[(merged['Version_right'].isin([j])) & (merged['GCAM'].isin([k]))]  # filter by region
             for i in c.GCAMConstants.x:
                 sum_col = merged_filter[str(i) + "_left"].sum()
                 merged_filter = merged_filter.assign(
@@ -111,10 +111,9 @@ def percent_of_total(old, new, columns, biochar_year):
     df = df.drop(['Units_left'], axis=1)
     df = df.drop(['Units_right'], axis=1)
     df['Units'] = '%'
-    df['Version'] = "% diff of the total"
 
     # replace columns
-    df.columns = df.columns.str.replace("_left", '')
+    df.columns = df.columns.str.replace("_right", '')
     df = df[c.GCAMConstants.column_order]
 
     return df
