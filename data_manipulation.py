@@ -728,6 +728,7 @@ def drop_missing(dataframe):
     :param dataframe: dataframe with columns to be removed
     :return:
     """
+    dataframe = dataframe[c.GCAMConstants.csv_columns]
     return dataframe.loc[:, ~dataframe.apply(lambda col: col.astype(str).str.contains("missing")).any()]
 
 

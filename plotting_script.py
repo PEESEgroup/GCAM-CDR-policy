@@ -141,18 +141,18 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
     supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP, RCP=RCP,
                                                     source="masked")
     biochar_supply = supply[supply[['product']].isin(["biochar"]).any(axis=1)].copy(deep=True)
-    biochar_supply = data_manipulation.group(biochar_supply, ["product", "Version"])
+    biochar_supply = data_manipulation.group(biochar_supply, ["Version", "Units"])
+    biochar_supply["Units"] = "Mt Biochar"
 
     manure_supply = supply[
         supply[['product']].isin(["beef manure", "dairy manure", "goat manure", "pork manure", "poultry manure"]).any(
             axis=1)].copy(deep=True)
-    manure_supply = data_manipulation.group(manure_supply, ["product", "Version"])
+    manure_supply = data_manipulation.group(manure_supply, ["Version", "Units"])
+    manure_supply["Units"] = "Mt Manure Mix"
 
     # calculate "LCA" impacts of biochar by mass biochar and global mass feedstock mix
-    total_biochar = data_manipulation.group(biochar_supply, ["SSP"])
-    total_manure = data_manipulation.group(manure_supply, ["SSP"])
-    LCA_biochar = pd.merge(df_sum, total_biochar, on="SSP", suffixes=("", "_kg biochar"))
-    LCA_manure = pd.merge(df_sum, total_manure, on="SSP", suffixes=("", "_kg biochar"))
+    LCA_biochar = pd.merge(df_sum, biochar_supply, on="Version", suffixes=("", "_kg biochar"))
+    LCA_manure = pd.merge(df_sum, manure_supply, on="Version", suffixes=("", "_kg biochar"))
     for i in c.GCAMConstants.future_x:
         if np.isnan(LCA_biochar[str(i) + "_kg biochar"][0]):
             LCA_biochar[str(i)] = 0
@@ -167,8 +167,8 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
 
     LCA = pd.concat([biochar_supply, LCA_biochar, manure_supply, LCA_manure])
 
-    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
-    data_manipulation.drop_missing(LCA).to_csv(
+    out_LCA = data_manipulation.get_CI(LCA, "Units")
+    data_manipulation.drop_missing(out_LCA).to_csv(
         "data/data_analysis/supplementary_tables/"  + str(
             RCP) + "/biochar_manure_supply_GWP_kg_FU.csv")
 
@@ -184,7 +184,7 @@ def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
     """
     # biochar cropland application changes
     land_use = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP, RCP=RCP,
-                                                      source="masked")
+                                                      source="masked", only_first_scenario=True)# only take the first/baseline scenario
     # get land use type information
     land_use[["Crop", "Basin", "IRR_RFD", "MGMT"]] = land_use['LandLeaf'].str.split("_", expand=True)
     land_use["Crop"] = land_use.apply(lambda row: data_manipulation.relabel_land_crops(row, "Crop"), axis=1)
@@ -233,7 +233,6 @@ def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
         csvFile.write(region_management_type)
 
     # regional land use change
-    # TOdO: get data for all scenarios
     released_land = data_manipulation.get_sensitivity_data(["released"], "detailed_land_allocation", SSP, RCP=RCP,
                                                            source="original")
     pyrolysis_land = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP,
@@ -252,6 +251,7 @@ def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
     global_land = data_manipulation.group(flat_diff_land, ["LandLeaf", "Version"])
     flat_diff_land = data_manipulation.group(flat_diff_land, ["GCAM", "LandLeaf", "Version"])
 
+    #TODO fix land plotting scenarios
     plotting.plot_stacked_bar_product(flat_diff_land, str(biochar_year), SSP, "LandLeaf",
                                       "land use change by region in " + str(biochar_year), RCP, nonBaselineScenario)
     # TODO: calculate CI low, high, median values and report, in addition to all scenario data
@@ -852,7 +852,7 @@ def main():
                "LowGCAMLandShare",
                "LowGCAMManurePrice"]
     biochar_year = "2050"
-    figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
