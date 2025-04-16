@@ -873,7 +873,7 @@ def get_CI(dataframe, products, alpha=0.95):
 
         # copy 3 rows over to lmu
         output_vals = data.head(3).copy(deep=True)
-        output_vals["Version"] = ["Lower CI", "Mean", "Upper CI"]
+        output_vals["Version"] = ["Lower CI", "Median", "Upper CI"]
 
         # solve the CI for each year
         for j in c.GCAMConstants.x:
