@@ -13,7 +13,6 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year being analyzed in detail
     :return: N/A
     """
-    # TODO: get data from all 16 scenarios, and do calculations on a per-scenario basis
     # plotting CO2 sequestering
     co2_pyrolysis = data_manipulation.get_sensitivity_data(nonBaselineScenario,
                                                            "CO2_emissions_by_tech_excluding_resource_production",
@@ -39,21 +38,20 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
     co2_seq_pyrolysis["Units"] = "Sequestered C in biochar"
     co2_avd_pyrolysis["Units"] = "Net pyrolysis CO$_2$"
 
-    co2_seq_pyrolysis = data_manipulation.get_CI(co2_seq_pyrolysis, "technology")
+    out_co2_seq_pyrolysis = data_manipulation.get_CI(co2_seq_pyrolysis, "technology")
+    out_co2_avd_pyrolysis = data_manipulation.get_CI(co2_avd_pyrolysis, "technology")
 
     # output non-grouped GHG impacts
-    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
-    data_manipulation.drop_missing(co2_seq_pyrolysis).to_csv(
+    data_manipulation.drop_missing(out_co2_seq_pyrolysis).to_csv(
         "data/data_analysis/supplementary_tables/"  + str(
             RCP) + "/biochar_c_sequestration.csv")
-    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
-    data_manipulation.drop_missing(co2_avd_pyrolysis).to_csv(
+    data_manipulation.drop_missing(out_co2_avd_pyrolysis).to_csv(
         "data/data_analysis/supplementary_tables/"  + str(
             RCP) + "/biochar_c_avoidance.csv")
 
     # group data for plotting
-    co2_seq_pyrolysis = data_manipulation.group(co2_seq_pyrolysis, ["SSP", "Version"])
-    co2_avd_pyrolysis = data_manipulation.group(co2_avd_pyrolysis, ["SSP", "Version"])
+    co2_seq_pyrolysis = data_manipulation.group(co2_seq_pyrolysis, ["SSP", "Version", "Units"])
+    co2_avd_pyrolysis = data_manipulation.group(co2_avd_pyrolysis, ["SSP", "Version", "Units"])
 
     # avoided agricultural emissions from lands managed with biochar
     ghg_er = data_manipulation.get_sensitivity_data(nonBaselineScenario,
@@ -69,12 +67,19 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
             lambda row: data_manipulation.avd_soil_emissions(row, "GHG", str(i)), axis=1)
     ag_avd_n2o_land["Units"] = "Avoided cropland N$_2$O"
 
+    out_ag_avd_n2o_land = data_manipulation.get_CI(ag_avd_n2o_land, "GHG")
+
+    # output non-grouped GHG impacts
+    data_manipulation.drop_missing(out_ag_avd_n2o_land).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(
+            RCP) + "/biochar_soil_N2O_flux.csv")
+
     # avoided CH4 and N2O emissions from avoided biomass decomposition
     biochar_ghg_er = ghg_er[ghg_er['technology'].str.contains("biochar")].copy(deep=True)
     biochar_ghg_er['technology'] = biochar_ghg_er.apply(lambda row: data_manipulation.remove__(row, "technology"),
                                                         axis=1)
     biochar_ghg_er = biochar_ghg_er[biochar_ghg_er['technology'].str.contains("|".join(products))]  # removes LUT
-    biochar_ghg_er = data_manipulation.group(biochar_ghg_er, ["technology", "SSP", "Version", "GHG"])
+    biochar_ghg_er = data_manipulation.group(biochar_ghg_er, ["SSP", "Version", "GHG"])
 
     biochar_ghg_er["Units"] = biochar_ghg_er.apply(lambda row: "Avoided biomass decomposition N$_2$O" if row[
                                                                                                              "GHG"] == "N2O" else "Avoided biomass decomposition CH$_4$",
@@ -85,14 +90,11 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
         biochar_ghg_er[str(i)] = biochar_ghg_er.apply(
             lambda row: data_manipulation.ghg_ER(row, "GHG", str(i)), axis=1)
 
-    # print ungrouped data
-    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
-    data_manipulation.drop_missing(biochar_ghg_er).to_csv(
+    # print grouped data
+    out_biochar_ghg_er = data_manipulation.get_CI(biochar_ghg_er, "GHG")
+    data_manipulation.drop_missing(out_biochar_ghg_er).to_csv(
         "data/data_analysis/supplementary_tables/"  + str(
             RCP) + "/biochar_ghg_avoided_decomposition.csv")
-
-    # group data for final plotting
-    biochar_ghg_er = data_manipulation.group(biochar_ghg_er, ["SSP", "Version", "GHG"])
 
     # get luc emissions data
     released_luc = data_manipulation.get_sensitivity_data(["released"], "LUC_emissions_by_LUT", SSP, RCP=RCP,
@@ -107,12 +109,16 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
         flat_diff_luc[str(i)] = 3.664 * flat_diff_luc[str(i)]  # 3.664 converts C to CO2-eq
     flat_diff_luc["Units"] = "Change in LUC emissions"
 
+    out_flat_diff_luc = data_manipulation.get_CI(flat_diff_luc, "Units")
+    data_manipulation.drop_missing(out_flat_diff_luc).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(
+            RCP) + "/biochar_LUC_emissions.csv")
+
     # combine all direct sources of GHG emissions changes into a single df/graph
     biochar_ghg_emissions = pd.concat(
         [biochar_ghg_er, co2_seq_pyrolysis, co2_avd_pyrolysis, ag_avd_n2o_land, flat_diff_luc])
 
     # calculate net CO2 impact
-    #TODO: figure out units versus versions, etc.
     df_sum = biochar_ghg_emissions.groupby("Version").sum().reset_index() # sum in new dataframe. It's fine that all other information is overwritten, as units are all Mt CO2-eq
     df_sum["Units"] = "Net Emissions Impact"  # this unit is used to label the graph
     df_sum["SSP"] = ag_avd_n2o_land["SSP"].unique()[0]
@@ -120,17 +126,16 @@ def figure1(nonBaselineScenario, RCP, SSP, biochar_year):
     biochar_ghg_emissions["GHG_ER_type"] = biochar_ghg_emissions["Units"]
     biochar_ghg_emissions["Units"] = "GHG Emissions (Mt CO$_2$-eq/yr)"
 
+    # output values of avoided and sequestered ghg emissions from biochar
+    out_biochar_ghg_emissions = data_manipulation.get_CI(biochar_ghg_emissions, "GHG_ER_type")
+    data_manipulation.drop_missing(out_biochar_ghg_emissions).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(
+            RCP) + "/all_biochar_ghg_cdr_sources.csv")
+
     # plotting ghg emissions avoidance
-    #TODO: get median, min, max for each GHG accounting step
-    plotting.plot_line_by_product(biochar_ghg_emissions, biochar_ghg_emissions["GHG_ER_type"].unique(), "GHG_ER_type",
+    plotting.plot_line_by_product(out_biochar_ghg_emissions, out_biochar_ghg_emissions["GHG_ER_type"].unique(), "GHG_ER_type",
                                   [SSP[0]], "SSP",
                                   "ghg emissions changes in " + SSP[0], RCP, nonBaselineScenario)
-
-    # output values of avoided and sequestered ghg emissions from biochar
-    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
-    data_manipulation.drop_missing(biochar_ghg_emissions).to_csv(
-        "data/data_analysis/supplementary_tables/"  + str(
-            RCP) + "/biochar_direct_ghg_emissions.csv")
 
     # output values of biochar supply
     supply = data_manipulation.get_sensitivity_data(nonBaselineScenario, "supply_of_all_markets", SSP, RCP=RCP,
