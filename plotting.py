@@ -23,6 +23,56 @@ def world_data(data):
     return merged
 
 
+def basin_data(data, column, title):
+    """
+    merges the data to be plotted into a geopandas dataframe and selects relevant columns for plotting
+    :param data: the dataframe containing GCAM data to be plotted
+    :return: a pandas dataframe containing relevant year and column data
+    """
+    # read in data
+    data["GLU"] = data["GLU"].str.replace("GLU00", "").str.replace("GLU0", "").str.replace("GLU", "") # remove GLU codes and leading 0s
+    data["GLU"] = data["GLU"].astype("int64")
+    data["SSP"] = "SSP1"
+    basins = gpd.read_file(c.GCAMConstants.basin_map_loc)
+    n_products = len(data["GCAM_subsector"].unique())
+
+    # set up plot info
+    cmap = plt.colormaps.get_cmap('viridis')
+    normalizer = Normalize(min(data[column]), max(data[column]))
+    im = cm.ScalarMappable(norm=normalizer, cmap=cmap)
+
+    # for each crop in the subsector
+    for i in data["GCAM_subsector"].unique():
+        fig, axs = plt.subplots(1, 1, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
+        crop = data[data["GCAM_subsector"] == str(i)]
+        merged = pd.merge(basins, crop, left_on=["glu_id", "reg_id"], right_on=["GLU","GCAM_region_ID"], how='left')
+        merged = merged.replace(c.GCAMConstants.missing, np.nan)
+
+        subplot_title = title + " "  + str(i)
+        plot_world_on_axs(
+            map_plot=merged,
+            axs=axs,
+            cmap=cmap,
+            counter=0,
+            plot_title=subplot_title,
+            plotting_column=column,
+            ncol=1,
+            nrow=1,
+            normalizer=normalizer)
+        units = "kg/ha"
+
+        # update the figure with shared colorbar
+        lab = units
+        cax = fig.add_axes([0.08, 0.20, 0.02, 0.45])
+        fig.colorbar(im, cax=cax, shrink=0.5, orientation="vertical", label=lab)
+
+        # change figure size and dpi
+        fig.set_dpi(300)
+        plt.savefig("data/data_analysis/images/maps/" + subplot_title + ".png", dpi=300)
+        plt.show()
+        merged.drop("geometry",axis=1).to_csv("data/data_analysis/supplementary_tables/maps/" + subplot_title + ".csv")
+
+
 def get_subplot_dimensions(list_products):
     """
     returns the number of subplot dimensions based on the number of items being plotted

@@ -45,6 +45,7 @@ class GCAMConstants:
     #  This location should only need to be set once
     XML_DB_loc = "gcam/output/database_basexdb-"
     processed_map_loc = "data/maps/simplified_world_map.shp"
+    basin_map_loc = "data/maps/reg_glu_boundaries_moirai_combined_3p1_0p5arcmin.shp"
 
     # other relevant constants
     SSPs = ["SSP1", "SSP2", "SSP3", "SSP4", "SSP5"]

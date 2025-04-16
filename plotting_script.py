@@ -294,111 +294,125 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year being analyzed in detail
     :return: N/A
     """
-    # frequency of biochar prices
-    biochar_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP, RCP=RCP,
-                                                           source="masked")
-    biochar_price['product'] = biochar_price.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
-    biochar_price = biochar_price[biochar_price[['product']].isin(["biochar"]).any(axis=1)]
-    biochar_price["Units"] = "$/ton biochar"
-    for i in c.GCAMConstants.x:
-        biochar_price[str(i)] = biochar_price[str(i)] / .17 * 1000
-
-    biochar_price_plotting = biochar_price.melt(["GCAM", "product", "Version", "Units"],
-                                                [str(i) for i in c.GCAMConstants.biochar_x])
-    plotting.plot_regional_hist_avg(biochar_price_plotting, 'value', SSP, "count region+year+scenario combinations",
-                                    "histogram of price of biochar", "variable", "na", RCP, nonBaselineScenario)
-
-    # CI outputs
-    CI_biochar_price = data_manipulation.get_CI(biochar_price, "GCAM")
-    data_manipulation.drop_missing(CI_biochar_price).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/biochar_price.csv")
-
-    # manure prices and cost breakdown for plant operators
-    total_cost = data_manipulation.get_sensitivity_data(nonBaselineScenario, "costs_by_tech", SSP, RCP=RCP,
-                                                        source="masked")
-    unit_cost = data_manipulation.get_sensitivity_data(nonBaselineScenario, "costs_by_tech_and_input", SSP, RCP=RCP,
-                                                       source="masked")
-    feedstock_cost = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP, RCP=RCP,
-                                                            source="masked")
-
-    total_cost = total_cost[total_cost[['sector']].isin(['biochar']).any(axis=1)]
-    unit_cost = unit_cost[unit_cost[['sector']].isin(['biochar']).any(
-        axis=1)]  # don't need CI for unit costs - constants defined in input .csv - even sensitivity unit costs are fixed
-    feedstock_cost = feedstock_cost[feedstock_cost[['product']].isin(
-        ['beef manure', 'dairy manure', 'goat manure', 'pork manure', 'poultry manure']).any(axis=1)]
-
-    # update prices to 2024 USD
-    for i in c.GCAMConstants.x:
-        total_cost[str(i)] = total_cost[str(i)] / .17 * 1000
-        unit_cost[str(i)] = unit_cost[str(i)] / .17 * 1000
-        feedstock_cost.loc[feedstock_cost[str(i)] > 0.034, str(i)] = np.nan  # remove outlier prices > $200/ton manure in current prices
-        feedstock_cost[str(i)] = feedstock_cost[str(i)] / .17 * 1000
-
-    # update units
-    total_cost["Units"] = "$/ton biochar"
-    unit_cost["Units"] = "$/ton biochar"
-    feedstock_cost["Units"] = "$/ton manure"
-    total_cost["categorization"] = total_cost["GCAM"] + total_cost["technology"]
-    feedstock_cost["categorization"] = feedstock_cost["GCAM"] + feedstock_cost["product"]
-
-    CI_total_cost = data_manipulation.get_CI(total_cost, "categorization")
-    CI_feedstock_cost = data_manipulation.get_CI(feedstock_cost, "categorization")
-    data_manipulation.drop_missing(CI_total_cost).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/total_cost_pyrolysis.csv")
-    data_manipulation.drop_missing(unit_cost).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/unit_cost_pyrolysis.csv")
-    data_manipulation.drop_missing(CI_feedstock_cost).to_csv(
-        "data/data_analysis/supplementary_tables/" + str(RCP) + "/feedstock_cost_pyrolysis.csv")
-
-    feedstock_cost_plotting = feedstock_cost.melt(["GCAM", "product", "Version", "Units"], [biochar_year])
-    feedstock_cost_plotting = feedstock_cost_plotting.dropna()
-    plotting.plot_regional_hist_avg(feedstock_cost_plotting, 'value', SSP, "count region+scenario combinations",
-                                    "histogram of price of manures in 2050", "product", "na", RCP, nonBaselineScenario)
-
-    # profit rates
-    # get data
-    pyrolysis_profit_rate = data_manipulation.get_sensitivity_data(nonBaselineScenario, "profit_rate", SSP, RCP=RCP,
-                                                                   source="masked")
-    released_profit_rate = data_manipulation.get_sensitivity_data(["released"], "profit_rate", SSP, RCP=RCP,
-                                                                  source="original")
-    # change in profit to the farmer compared to baseline (hi mgmt type)
-    units = pyrolysis_profit_rate["Units"].unique()[0]
-    pyrolysis_profit_rate[["Crop", "basin", "rainfed", "mgmt"]] = pyrolysis_profit_rate['LandLeaf'].str.split('_',
-                                                                                                              expand=True)
-    released_profit_rate[["Crop", "basin", "rainfed", "mgmt"]] = released_profit_rate['LandLeaf'].str.split('_',
-                                                                                                            expand=True)
-    released_hi_profit = released_profit_rate[released_profit_rate[['mgmt']].isin(["hi"]).any(axis=1)].copy(
-        deep=True)
-    pyrolysis_biochar_profit = pyrolysis_profit_rate[
-        pyrolysis_profit_rate[['mgmt']].isin(["biochar"]).any(axis=1)].copy(
-        deep=True)
-    pyrolysis_diff_profit = pd.merge(released_hi_profit, pyrolysis_biochar_profit, how="left",
-                                     on=["GCAM", "SSP", "Crop", "basin", "rainfed"], suffixes=("_left", "_right"))
-    pyrolysis_diff_profit["Units"] = "Change in Profit Rate (%)"
-    pyrolysis_diff_profit['Crop'] = pyrolysis_diff_profit.apply(
-        lambda row: data_manipulation.relabel_land_crops(row, "Crop"), axis=1)
-    for i in c.GCAMConstants.x:
-        pyrolysis_diff_profit[str(i)] = 100 * (pyrolysis_diff_profit[str(i) + "_right"] - pyrolysis_diff_profit[
-            str(i) + "_left"]) / pyrolysis_diff_profit[str(i) + "_left"]
-
-    pyrolysis_diff_profit = pyrolysis_diff_profit.sort_values(by=biochar_year)
-    # drop rows where there is .nan in 2050
-    pyrolysis_diff_profit.dropna(subset=[biochar_year], inplace=True)
-    # drop rows where the profit rate is 0 for biochar - i.e. no crops are grown
-    pyrolysis_diff_profit = pyrolysis_diff_profit[pyrolysis_diff_profit[biochar_year + "_right"] != 0]
-    # drop outlier rows
-    pyrolysis_diff_profit = pyrolysis_diff_profit[
-        (-7e2 < pyrolysis_diff_profit[biochar_year]) & (pyrolysis_diff_profit[biochar_year] < 2e2)]
-
-    plotting.plot_regional_hist_avg(pyrolysis_diff_profit, biochar_year, ["SSP1"], "count crop-basin-irrigation-scenario",
-                                    "histogram of percentage profit rate changes at the crop level in " + biochar_year,
-                                    "Crop", "na", RCP, nonBaselineScenario)
+    # # frequency of biochar prices
+    # biochar_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP, RCP=RCP,
+    #                                                        source="masked")
+    # biochar_price['product'] = biochar_price.apply(lambda row: data_manipulation.remove__(row, "product"), axis=1)
+    # biochar_price = biochar_price[biochar_price[['product']].isin(["biochar"]).any(axis=1)]
+    # biochar_price["Units"] = "$/ton biochar"
+    # for i in c.GCAMConstants.x:
+    #     biochar_price[str(i)] = biochar_price[str(i)] / .17 * 1000
+    #
+    # biochar_price_plotting = biochar_price.melt(["GCAM", "product", "Version", "Units"],
+    #                                             [str(i) for i in c.GCAMConstants.biochar_x])
+    # plotting.plot_regional_hist_avg(biochar_price_plotting, 'value', SSP, "count region+year+scenario combinations",
+    #                                 "histogram of price of biochar", "variable", "na", RCP, nonBaselineScenario)
+    #
+    # # CI outputs
+    # CI_biochar_price = data_manipulation.get_CI(biochar_price, "GCAM")
+    # data_manipulation.drop_missing(CI_biochar_price).to_csv(
+    #     "data/data_analysis/supplementary_tables/" + str(RCP) + "/biochar_price.csv")
+    #
+    # # manure prices and cost breakdown for plant operators
+    # total_cost = data_manipulation.get_sensitivity_data(nonBaselineScenario, "costs_by_tech", SSP, RCP=RCP,
+    #                                                     source="masked")
+    # unit_cost = data_manipulation.get_sensitivity_data(nonBaselineScenario, "costs_by_tech_and_input", SSP, RCP=RCP,
+    #                                                    source="masked")
+    # feedstock_cost = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP, RCP=RCP,
+    #                                                         source="masked")
+    #
+    # total_cost = total_cost[total_cost[['sector']].isin(['biochar']).any(axis=1)]
+    # unit_cost = unit_cost[unit_cost[['sector']].isin(['biochar']).any(
+    #     axis=1)]  # don't need CI for unit costs - constants defined in input .csv - even sensitivity unit costs are fixed
+    # feedstock_cost = feedstock_cost[feedstock_cost[['product']].isin(
+    #     ['beef manure', 'dairy manure', 'goat manure', 'pork manure', 'poultry manure']).any(axis=1)]
+    #
+    # # update prices to 2024 USD
+    # for i in c.GCAMConstants.x:
+    #     total_cost[str(i)] = total_cost[str(i)] / .17 * 1000
+    #     unit_cost[str(i)] = unit_cost[str(i)] / .17 * 1000
+    #     feedstock_cost.loc[feedstock_cost[str(i)] > 0.034, str(i)] = np.nan  # remove outlier prices > $200/ton manure in current prices
+    #     feedstock_cost[str(i)] = feedstock_cost[str(i)] / .17 * 1000
+    #
+    # # update units
+    # total_cost["Units"] = "$/ton biochar"
+    # unit_cost["Units"] = "$/ton biochar"
+    # feedstock_cost["Units"] = "$/ton manure"
+    # total_cost["categorization"] = total_cost["GCAM"] + total_cost["technology"]
+    # feedstock_cost["categorization"] = feedstock_cost["GCAM"] + feedstock_cost["product"]
+    #
+    # CI_total_cost = data_manipulation.get_CI(total_cost, "categorization")
+    # CI_feedstock_cost = data_manipulation.get_CI(feedstock_cost, "categorization")
+    # data_manipulation.drop_missing(CI_total_cost).to_csv(
+    #     "data/data_analysis/supplementary_tables/" + str(RCP) + "/total_cost_pyrolysis.csv")
+    # data_manipulation.drop_missing(unit_cost).to_csv(
+    #     "data/data_analysis/supplementary_tables/" + str(RCP) + "/unit_cost_pyrolysis.csv")
+    # data_manipulation.drop_missing(CI_feedstock_cost).to_csv(
+    #     "data/data_analysis/supplementary_tables/" + str(RCP) + "/feedstock_cost_pyrolysis.csv")
+    #
+    # feedstock_cost_plotting = feedstock_cost.melt(["GCAM", "product", "Version", "Units"], [biochar_year])
+    # feedstock_cost_plotting = feedstock_cost_plotting.dropna()
+    # plotting.plot_regional_hist_avg(feedstock_cost_plotting, 'value', SSP, "count region+scenario combinations",
+    #                                 "histogram of price of manures in 2050", "product", "na", RCP, nonBaselineScenario)
+    #
+    # # profit rates
+    # # get data
+    # pyrolysis_profit_rate = data_manipulation.get_sensitivity_data(nonBaselineScenario, "profit_rate", SSP, RCP=RCP,
+    #                                                                source="masked")
+    # released_profit_rate = data_manipulation.get_sensitivity_data(["released"], "profit_rate", SSP, RCP=RCP,
+    #                                                               source="original")
+    # # change in profit to the farmer compared to baseline (hi mgmt type)
+    # units = pyrolysis_profit_rate["Units"].unique()[0]
+    # pyrolysis_profit_rate[["Crop", "basin", "rainfed", "mgmt"]] = pyrolysis_profit_rate['LandLeaf'].str.split('_',
+    #                                                                                                           expand=True)
+    # released_profit_rate[["Crop", "basin", "rainfed", "mgmt"]] = released_profit_rate['LandLeaf'].str.split('_',
+    #                                                                                                         expand=True)
+    # released_hi_profit = released_profit_rate[released_profit_rate[['mgmt']].isin(["hi"]).any(axis=1)].copy(
+    #     deep=True)
+    # pyrolysis_biochar_profit = pyrolysis_profit_rate[
+    #     pyrolysis_profit_rate[['mgmt']].isin(["biochar"]).any(axis=1)].copy(
+    #     deep=True)
+    # pyrolysis_diff_profit = pd.merge(released_hi_profit, pyrolysis_biochar_profit, how="left",
+    #                                  on=["GCAM", "SSP", "Crop", "basin", "rainfed"], suffixes=("_left", "_right"))
+    # pyrolysis_diff_profit["Units"] = "Change in Profit Rate (%)"
+    # pyrolysis_diff_profit['Crop'] = pyrolysis_diff_profit.apply(
+    #     lambda row: data_manipulation.relabel_land_crops(row, "Crop"), axis=1)
+    # for i in c.GCAMConstants.x:
+    #     pyrolysis_diff_profit[str(i)] = 100 * (pyrolysis_diff_profit[str(i) + "_right"] - pyrolysis_diff_profit[
+    #         str(i) + "_left"]) / pyrolysis_diff_profit[str(i) + "_left"]
+    #
+    # pyrolysis_diff_profit = pyrolysis_diff_profit.sort_values(by=biochar_year)
+    # # drop rows where there is .nan in 2050
+    # pyrolysis_diff_profit.dropna(subset=[biochar_year], inplace=True)
+    # # drop rows where the profit rate is 0 for biochar - i.e. no crops are grown
+    # pyrolysis_diff_profit = pyrolysis_diff_profit[pyrolysis_diff_profit[biochar_year + "_right"] != 0]
+    # # drop outlier rows
+    # pyrolysis_diff_profit = pyrolysis_diff_profit[
+    #     (-7e2 < pyrolysis_diff_profit[biochar_year]) & (pyrolysis_diff_profit[biochar_year] < 2e2)]
+    #
+    # plotting.plot_regional_hist_avg(pyrolysis_diff_profit, biochar_year, ["SSP1"], "count crop-basin-irrigation-scenario",
+    #                                 "histogram of percentage profit rate changes at the crop level in " + biochar_year,
+    #                                 "Crop", "na", RCP, nonBaselineScenario)
 
     # read in biochar application rates, and get the application rates
-    # TODO: rerun baseline scenario
-    biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_baseline.csv")
+    baseline_biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_baseline_yield_baseline.csv")
+    low_biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_baseline_yield_low.csv")
+    high_biochar_app_rate = pd.read_csv("gcam/input/gcamdata/inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_baseline_yield_high.csv")
+
+    outlier_cutoff = 15000  # kg/ha/yr
+    biochar_app_rate_baseline_no_outlier = baseline_biochar_app_rate[baseline_biochar_app_rate["kg_bio_ha"] < outlier_cutoff]
+    biochar_app_rate_low_no_outlier = low_biochar_app_rate[low_biochar_app_rate["kg_bio_ha"] < outlier_cutoff]
+    biochar_app_rate_high_no_outlier = high_biochar_app_rate[high_biochar_app_rate["kg_bio_ha"] < outlier_cutoff]
+    P_app_rate_no_outlier = baseline_biochar_app_rate[baseline_biochar_app_rate["kg_P_ha"] < 200]
+
+    # plotting maps/tables for each crop by GLU, etc
+    #plotting.basin_data(biochar_app_rate_baseline_no_outlier, "kg_bio_ha", "baseline/biochar application rate by")
+    #plotting.basin_data(biochar_app_rate_low_no_outlier, "kg_bio_ha", "low/biochar application rate by")
+    #plotting.basin_data(biochar_app_rate_high_no_outlier, "kg_bio_ha", "high/biochar application rate by")
+    #plotting.basin_data(P_app_rate_no_outlier, "kg_P_ha", "P/application rate by")
 
     # add extra data to dataframe to help downstream code
+    biochar_app_rate = baseline_biochar_app_rate.copy(deep=True)
     biochar_app_rate[biochar_year] = biochar_app_rate['kg_bio_ha']
     biochar_app_rate['GCAM'] = biochar_app_rate['region']
     biochar_app_rate['Units'] = 'kg biochar/ha/yr'
@@ -428,8 +442,6 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
                                     "histogram of outlier " + str(lower_cutoff) + "-" + str(outlier_cutoff)
                                     + " kg per ha removed biochar app rates", "technology", "na", RCP,
                                     nonBaselineScenario)
-
-    # TODO: plots for P and biochar app rate
 
     # global fertilizer reduction
     released_N = data_manipulation.get_sensitivity_data(["released"], "ammonia_production_by_tech", SSP, RCP=RCP,

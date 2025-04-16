@@ -1,0 +1,662 @@
+,key,glu_nm,reg_nm,glu_id,reg_id,Unnamed: 0,region,GCAM_region_ID,GCAM_commodity,GCAM_subsector,GLU,Irr_Rfd,kg_bio_ha,kg_P_ha,SSP
+0,1007,Pacific_and_Arctic_Coast,USA,7,1,,,,,,,,,,
+1,1023,Saskatchewan_Nelson,USA,23,1,74.0,USA,1.0,FodderHerb,FodderHerbC4,23.0,rfd,0.0,,SSP1
+2,1023,Saskatchewan_Nelson,USA,23,1,7355.0,USA,1.0,FodderHerb,FodderHerbC4,23.0,irr,0.0,,SSP1
+3,1027,Fraser,USA,27,1,75.0,USA,1.0,FodderHerb,FodderHerbC4,27.0,rfd,0.0,,SSP1
+4,1027,Fraser,USA,27,1,7356.0,USA,1.0,FodderHerb,FodderHerbC4,27.0,irr,0.0,,SSP1
+5,1096,Mexico_Northwest_Coast,USA,96,1,76.0,USA,1.0,FodderHerb,FodderHerbC4,96.0,rfd,0.0,,SSP1
+6,1096,Mexico_Northwest_Coast,USA,96,1,7357.0,USA,1.0,FodderHerb,FodderHerbC4,96.0,irr,0.0,,SSP1
+7,1101,Caribbean,USA,101,1,,,,,,,,,,
+8,1150,Micronesia,USA,150,1,,,,,,,,,,
+9,1217,California_River_Basin,USA,217,1,77.0,USA,1.0,FodderHerb,FodderHerbC4,217.0,rfd,0.0,,SSP1
+10,1217,California_River_Basin,USA,217,1,7358.0,USA,1.0,FodderHerb,FodderHerbC4,217.0,irr,0.0,,SSP1
+11,1218,Upper_Mississippi_Basin,USA,218,1,78.0,USA,1.0,FodderHerb,FodderHerbC4,218.0,rfd,0.0,,SSP1
+12,1218,Upper_Mississippi_Basin,USA,218,1,7359.0,USA,1.0,FodderHerb,FodderHerbC4,218.0,irr,0.0,,SSP1
+13,1219,Lower_Mississippi_River_Basin,USA,219,1,79.0,USA,1.0,FodderHerb,FodderHerbC4,219.0,rfd,0.0,,SSP1
+14,1219,Lower_Mississippi_River_Basin,USA,219,1,7360.0,USA,1.0,FodderHerb,FodderHerbC4,219.0,irr,0.0,,SSP1
+15,1220,Upper_Colorado_River_Basin,USA,220,1,80.0,USA,1.0,FodderHerb,FodderHerbC4,220.0,rfd,0.0,,SSP1
+16,1220,Upper_Colorado_River_Basin,USA,220,1,7361.0,USA,1.0,FodderHerb,FodderHerbC4,220.0,irr,0.0,,SSP1
+17,1221,Lower_Colorado_River_Basin,USA,221,1,81.0,USA,1.0,FodderHerb,FodderHerbC4,221.0,rfd,0.0,,SSP1
+18,1221,Lower_Colorado_River_Basin,USA,221,1,7362.0,USA,1.0,FodderHerb,FodderHerbC4,221.0,irr,0.0,,SSP1
+19,1222,Great_Basin,USA,222,1,82.0,USA,1.0,FodderHerb,FodderHerbC4,222.0,rfd,0.0,,SSP1
+20,1222,Great_Basin,USA,222,1,7363.0,USA,1.0,FodderHerb,FodderHerbC4,222.0,irr,0.0,,SSP1
+21,1223,Missouri_River_Basin,USA,223,1,83.0,USA,1.0,FodderHerb,FodderHerbC4,223.0,rfd,0.0,,SSP1
+22,1223,Missouri_River_Basin,USA,223,1,7364.0,USA,1.0,FodderHerb,FodderHerbC4,223.0,irr,0.0,,SSP1
+23,1224,Arkansas_White_Red_Basin,USA,224,1,84.0,USA,1.0,FodderHerb,FodderHerbC4,224.0,rfd,0.0,,SSP1
+24,1224,Arkansas_White_Red_Basin,USA,224,1,7365.0,USA,1.0,FodderHerb,FodderHerbC4,224.0,irr,0.0,,SSP1
+25,1225,Texas_Gulf_Coast_Basin,USA,225,1,85.0,USA,1.0,FodderHerb,FodderHerbC4,225.0,rfd,0.0,,SSP1
+26,1225,Texas_Gulf_Coast_Basin,USA,225,1,7366.0,USA,1.0,FodderHerb,FodderHerbC4,225.0,irr,0.0,,SSP1
+27,1226,South_Atlantic_Gulf_Basin,USA,226,1,86.0,USA,1.0,FodderHerb,FodderHerbC4,226.0,rfd,0.0,,SSP1
+28,1226,South_Atlantic_Gulf_Basin,USA,226,1,7367.0,USA,1.0,FodderHerb,FodderHerbC4,226.0,irr,0.0,,SSP1
+29,1227,Great_Lakes_Basin,USA,227,1,87.0,USA,1.0,FodderHerb,FodderHerbC4,227.0,rfd,0.0,,SSP1
+30,1227,Great_Lakes_Basin,USA,227,1,7368.0,USA,1.0,FodderHerb,FodderHerbC4,227.0,irr,0.0,,SSP1
+31,1228,Ohio_River_Basin,USA,228,1,88.0,USA,1.0,FodderHerb,FodderHerbC4,228.0,rfd,0.0,,SSP1
+32,1228,Ohio_River_Basin,USA,228,1,7369.0,USA,1.0,FodderHerb,FodderHerbC4,228.0,irr,0.0,,SSP1
+33,1229,Pacific_Northwest_Basin,USA,229,1,89.0,USA,1.0,FodderHerb,FodderHerbC4,229.0,rfd,0.0,,SSP1
+34,1229,Pacific_Northwest_Basin,USA,229,1,7370.0,USA,1.0,FodderHerb,FodderHerbC4,229.0,irr,0.0,,SSP1
+35,1230,Tennessee_River_Basin,USA,230,1,90.0,USA,1.0,FodderHerb,FodderHerbC4,230.0,rfd,0.0,,SSP1
+36,1230,Tennessee_River_Basin,USA,230,1,7371.0,USA,1.0,FodderHerb,FodderHerbC4,230.0,irr,0.0,,SSP1
+37,1231,Rio_Grande_River_Basin,USA,231,1,91.0,USA,1.0,FodderHerb,FodderHerbC4,231.0,rfd,0.0,,SSP1
+38,1231,Rio_Grande_River_Basin,USA,231,1,7372.0,USA,1.0,FodderHerb,FodderHerbC4,231.0,irr,0.0,,SSP1
+39,1232,New_England_Basin,USA,232,1,92.0,USA,1.0,FodderHerb,FodderHerbC4,232.0,rfd,0.0,,SSP1
+40,1232,New_England_Basin,USA,232,1,7373.0,USA,1.0,FodderHerb,FodderHerbC4,232.0,irr,0.0,,SSP1
+41,1233,Mid_Atlantic_Basin,USA,233,1,93.0,USA,1.0,FodderHerb,FodderHerbC4,233.0,rfd,0.0,,SSP1
+42,1233,Mid_Atlantic_Basin,USA,233,1,7374.0,USA,1.0,FodderHerb,FodderHerbC4,233.0,irr,0.0,,SSP1
+43,1234,Hawaii,USA,234,1,,,,,,,,,,
+44,2087,Nile,Africa_Eastern,87,2,6415.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,87.0,rfd,0.0,,SSP1
+45,2087,Nile,Africa_Eastern,87,2,13696.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,87.0,irr,0.0,,SSP1
+46,2100,Africa_Red_Sea_Gulf_of_Aden_Coast,Africa_Eastern,100,2,6416.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,100.0,rfd,0.0,,SSP1
+47,2100,Africa_Red_Sea_Gulf_of_Aden_Coast,Africa_Eastern,100,2,13697.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,100.0,irr,0.0,,SSP1
+48,2144,Africa_North_Interior,Africa_Eastern,144,2,6417.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,144.0,rfd,0.0,,SSP1
+49,2144,Africa_North_Interior,Africa_Eastern,144,2,13698.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,144.0,irr,0.0,,SSP1
+50,2151,Lake_Chad,Africa_Eastern,151,2,6418.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,151.0,rfd,0.0,,SSP1
+51,2151,Lake_Chad,Africa_Eastern,151,2,13699.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,151.0,irr,0.0,,SSP1
+52,2170,Shebelli_Juba,Africa_Eastern,170,2,6419.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,170.0,rfd,0.0,,SSP1
+53,2170,Shebelli_Juba,Africa_Eastern,170,2,13700.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,170.0,irr,0.0,,SSP1
+54,2171,Africa_East_Central_Coast,Africa_Eastern,171,2,6420.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,171.0,rfd,0.0,,SSP1
+55,2171,Africa_East_Central_Coast,Africa_Eastern,171,2,13701.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,171.0,irr,0.0,,SSP1
+56,2177,Madagascar,Africa_Eastern,177,2,6421.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,177.0,rfd,0.0,,SSP1
+57,2177,Madagascar,Africa_Eastern,177,2,13702.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,177.0,irr,0.0,,SSP1
+58,2179,Rift_Valley,Africa_Eastern,179,2,6422.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,179.0,rfd,0.0,,SSP1
+59,2179,Rift_Valley,Africa_Eastern,179,2,13703.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,179.0,irr,0.0,,SSP1
+60,2183,Congo,Africa_Eastern,183,2,6423.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,183.0,rfd,0.0,,SSP1
+61,2183,Congo,Africa_Eastern,183,2,13704.0,Africa_Eastern,2.0,FodderHerb,FodderHerbC4,183.0,irr,0.0,,SSP1
+62,3075,Mediterranean_Sea_East_Coast,Africa_Northern,75,3,,,,,,,,,,
+63,3080,Mediterranean_South_Coast,Africa_Northern,80,3,527.0,Africa_Northern,3.0,FodderHerb,FodderHerbC4,80.0,rfd,0.0,,SSP1
+64,3080,Mediterranean_South_Coast,Africa_Northern,80,3,7808.0,Africa_Northern,3.0,FodderHerb,FodderHerbC4,80.0,irr,0.0,,SSP1
+65,3086,Africa_North_West_Coast,Africa_Northern,86,3,,,,,,,,,,
+66,3087,Nile,Africa_Northern,87,3,,,,,,,,,,
+67,3095,Dead_Sea,Africa_Northern,95,3,,,,,,,,,,
+68,3098,Sinai_Peninsula,Africa_Northern,98,3,,,,,,,,,,
+69,3100,Africa_Red_Sea_Gulf_of_Aden_Coast,Africa_Northern,100,3,,,,,,,,,,
+70,3144,Africa_North_Interior,Africa_Northern,144,3,528.0,Africa_Northern,3.0,FodderHerb,FodderHerbC4,144.0,rfd,0.0,,SSP1
+71,3144,Africa_North_Interior,Africa_Northern,144,3,7809.0,Africa_Northern,3.0,FodderHerb,FodderHerbC4,144.0,irr,0.0,,SSP1
+72,3149,Niger,Africa_Northern,149,3,,,,,,,,,,
+73,3151,Lake_Chad,Africa_Northern,151,3,,,,,,,,,,
+74,4087,Nile,Africa_Southern,87,4,,,,,,,,,,
+75,4162,Gulf_of_Guinea,Africa_Southern,162,4,,,,,,,,,,
+76,4171,Africa_East_Central_Coast,Africa_Southern,171,4,,,,,,,,,,
+77,4179,Rift_Valley,Africa_Southern,179,4,,,,,,,,,,
+78,4182,Angola_Coast,Africa_Southern,182,4,,,,,,,,,,
+79,4183,Congo,Africa_Southern,183,4,,,,,,,,,,
+80,4188,Zambezi,Africa_Southern,188,4,,,,,,,,,,
+81,4190,Africa_Indian_Ocean_Coast,Africa_Southern,190,4,,,,,,,,,,
+82,4194,Orange,Africa_Southern,194,4,,,,,,,,,,
+83,4196,Namibia_Coast,Africa_Southern,196,4,,,,,,,,,,
+84,4197,Africa_South_Interior,Africa_Southern,197,4,,,,,,,,,,
+85,4198,South_Africa_South_Coast,Africa_Southern,198,4,,,,,,,,,,
+86,4199,Limpopo,Africa_Southern,199,4,,,,,,,,,,
+87,5086,Africa_North_West_Coast,Africa_Western,86,5,,,,,,,,,,
+88,5087,Nile,Africa_Western,87,5,,,,,,,,,,
+89,5142,Africa_West_Coast,Africa_Western,142,5,,,,,,,,,,
+90,5144,Africa_North_Interior,Africa_Western,144,5,,,,,,,,,,
+91,5149,Niger,Africa_Western,149,5,,,,,,,,,,
+92,5151,Lake_Chad,Africa_Western,151,5,,,,,,,,,,
+93,5152,Senegal,Africa_Western,152,5,,,,,,,,,,
+94,5160,Volta,Africa_Western,160,5,,,,,,,,,,
+95,5162,Gulf_of_Guinea,Africa_Western,162,5,,,,,,,,,,
+96,5183,Congo,Africa_Western,183,5,,,,,,,,,,
+97,5188,Zambezi,Africa_Western,188,5,,,,,,,,,,
+98,6175,Java_Timor,Australia_NZ,175,6,,,,,,,,,,
+99,6184,Australia_North_Coast,Australia_NZ,184,6,,,,,,,,,,
+100,6189,Australia_East_Coast,Australia_NZ,189,6,,,,,,,,,,
+101,6191,Australia_West_Coast,Australia_NZ,191,6,,,,,,,,,,
+102,6193,Australia_Interior,Australia_NZ,193,6,,,,,,,,,,
+103,6201,New_Zealand,Australia_NZ,201,6,1074.0,Australia_NZ,6.0,FodderHerb,FodderHerbC4,201.0,rfd,0.0,,SSP1
+104,6201,New_Zealand,Australia_NZ,201,6,8355.0,Australia_NZ,6.0,FodderHerb,FodderHerbC4,201.0,irr,0.0,,SSP1
+105,6202,Australia_South_Coast,Australia_NZ,202,6,,,,,,,,,,
+106,6208,Murray_Darling,Australia_NZ,208,6,,,,,,,,,,
+107,6211,Tasmania,Australia_NZ,211,6,,,,,,,,,,
+108,6216,Antarctica,Australia_NZ,216,6,,,,,,,,,,
+109,7156,Orinoco,Brazil,156,7,,,,,,,,,,
+110,7161,Northeast_South_America_South_Atlantic_Coast,Brazil,161,7,,,,,,,,,,
+111,7168,Amazon,Brazil,168,7,,,,,,,,,,
+112,7172,North_Brazil_South_Atlantic_Coast,Brazil,172,7,,,,,,,,,,
+113,7174,Tocantins,Brazil,174,7,,,,,,,,,,
+114,7186,East_Brazil_South_Atlantic_Coast,Brazil,186,7,,,,,,,,,,
+115,7187,Parnaiba,Brazil,187,7,,,,,,,,,,
+116,7192,Sao_Francisco,Brazil,192,7,,,,,,,,,,
+117,7195,Uruguay_Brazil_South_Atlantic_Coast,Brazil,195,7,,,,,,,,,,
+118,7206,La_Plata,Brazil,206,7,,,,,,,,,,
+119,8002,Northwest_Territories,Canada,2,8,1387.0,Canada,8.0,FodderHerb,FodderHerbC4,2.0,rfd,0.0,,SSP1
+120,8002,Northwest_Territories,Canada,2,8,8668.0,Canada,8.0,FodderHerb,FodderHerbC4,2.0,irr,0.0,,SSP1
+121,8007,Pacific_and_Arctic_Coast,Canada,7,8,1388.0,Canada,8.0,FodderHerb,FodderHerbC4,7.0,rfd,0.0,,SSP1
+122,8007,Pacific_and_Arctic_Coast,Canada,7,8,8669.0,Canada,8.0,FodderHerb,FodderHerbC4,7.0,irr,0.0,,SSP1
+123,8010,Mackenzie,Canada,10,8,1389.0,Canada,8.0,FodderHerb,FodderHerbC4,10.0,rfd,0.0,,SSP1
+124,8010,Mackenzie,Canada,10,8,8670.0,Canada,8.0,FodderHerb,FodderHerbC4,10.0,irr,0.0,,SSP1
+125,8015,Hudson_Bay_Coast,Canada,15,8,1390.0,Canada,8.0,FodderHerb,FodderHerbC4,15.0,rfd,0.0,,SSP1
+126,8015,Hudson_Bay_Coast,Canada,15,8,8671.0,Canada,8.0,FodderHerb,FodderHerbC4,15.0,irr,0.0,,SSP1
+127,8019,Atlantic_Ocean_Seaboard,Canada,19,8,1391.0,Canada,8.0,FodderHerb,FodderHerbC4,19.0,rfd,0.0,,SSP1
+128,8019,Atlantic_Ocean_Seaboard,Canada,19,8,8672.0,Canada,8.0,FodderHerb,FodderHerbC4,19.0,irr,0.0,,SSP1
+129,8023,Saskatchewan_Nelson,Canada,23,8,1392.0,Canada,8.0,FodderHerb,FodderHerbC4,23.0,rfd,0.0,,SSP1
+130,8023,Saskatchewan_Nelson,Canada,23,8,8673.0,Canada,8.0,FodderHerb,FodderHerbC4,23.0,irr,0.0,,SSP1
+131,8027,Fraser,Canada,27,8,1393.0,Canada,8.0,FodderHerb,FodderHerbC4,27.0,rfd,0.0,,SSP1
+132,8027,Fraser,Canada,27,8,8674.0,Canada,8.0,FodderHerb,FodderHerbC4,27.0,irr,0.0,,SSP1
+133,8034,Churchill,Canada,34,8,,,,,,,,,,
+134,8040,St_Lawrence,Canada,40,8,1394.0,Canada,8.0,FodderHerb,FodderHerbC4,40.0,rfd,0.0,,SSP1
+135,8040,St_Lawrence,Canada,40,8,8675.0,Canada,8.0,FodderHerb,FodderHerbC4,40.0,irr,0.0,,SSP1
+136,8223,Missouri_River_Basin,Canada,223,8,1395.0,Canada,8.0,FodderHerb,FodderHerbC4,223.0,rfd,0.0,,SSP1
+137,8223,Missouri_River_Basin,Canada,223,8,8676.0,Canada,8.0,FodderHerb,FodderHerbC4,223.0,irr,0.0,,SSP1
+138,8227,Great_Lakes_Basin,Canada,227,8,1396.0,Canada,8.0,FodderHerb,FodderHerbC4,227.0,rfd,0.0,,SSP1
+139,8227,Great_Lakes_Basin,Canada,227,8,8677.0,Canada,8.0,FodderHerb,FodderHerbC4,227.0,irr,0.0,,SSP1
+140,8229,Pacific_Northwest_Basin,Canada,229,8,1397.0,Canada,8.0,FodderHerb,FodderHerbC4,229.0,rfd,0.0,,SSP1
+141,8229,Pacific_Northwest_Basin,Canada,229,8,8678.0,Canada,8.0,FodderHerb,FodderHerbC4,229.0,irr,0.0,,SSP1
+142,8232,New_England_Basin,Canada,232,8,1398.0,Canada,8.0,FodderHerb,FodderHerbC4,232.0,rfd,0.0,,SSP1
+143,8232,New_England_Basin,Canada,232,8,8679.0,Canada,8.0,FodderHerb,FodderHerbC4,232.0,irr,0.0,,SSP1
+144,9101,Caribbean,Central America and Caribbean,101,9,6604.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,101.0,rfd,0.0,,SSP1
+145,9101,Caribbean,Central America and Caribbean,101,9,13885.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,101.0,irr,0.0,,SSP1
+146,9111,Yucatan_Peninsula,Central America and Caribbean,111,9,6605.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,111.0,rfd,0.0,,SSP1
+147,9111,Yucatan_Peninsula,Central America and Caribbean,111,9,13886.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,111.0,irr,0.0,,SSP1
+148,9133,Grijalva_Usumacinta,Central America and Caribbean,133,9,6606.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,133.0,rfd,0.0,,SSP1
+149,9133,Grijalva_Usumacinta,Central America and Caribbean,133,9,13887.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,133.0,irr,0.0,,SSP1
+150,9135,Southern_Central_America,Central America and Caribbean,135,9,6607.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,135.0,rfd,0.0,,SSP1
+151,9135,Southern_Central_America,Central America and Caribbean,135,9,13888.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,135.0,irr,0.0,,SSP1
+152,9143,Caribbean_Coast,Central America and Caribbean,143,9,6608.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,143.0,rfd,0.0,,SSP1
+153,9143,Caribbean_Coast,Central America and Caribbean,143,9,13889.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,143.0,irr,0.0,,SSP1
+154,9157,Colombia_Ecuador_Pacific_Coast,Central America and Caribbean,157,9,6609.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,157.0,rfd,0.0,,SSP1
+155,9157,Colombia_Ecuador_Pacific_Coast,Central America and Caribbean,157,9,13890.0,Central America and Caribbean,9.0,FodderHerb,FodderHerbC4,157.0,irr,0.0,,SSP1
+156,10018,Volga,Central Asia,18,10,1673.0,Central Asia,10.0,FodderHerb,FodderHerbC4,18.0,rfd,0.0,,SSP1
+157,10018,Volga,Central Asia,18,10,8954.0,Central Asia,10.0,FodderHerb,FodderHerbC4,18.0,irr,0.0,,SSP1
+158,10038,Ural,Central Asia,38,10,1674.0,Central Asia,10.0,FodderHerb,FodderHerbC4,38.0,rfd,0.0,,SSP1
+159,10038,Ural,Central Asia,38,10,8955.0,Central Asia,10.0,FodderHerb,FodderHerbC4,38.0,irr,0.0,,SSP1
+160,10042,Gobi_Interior,Central Asia,42,10,1675.0,Central Asia,10.0,FodderHerb,FodderHerbC4,42.0,rfd,0.0,,SSP1
+161,10042,Gobi_Interior,Central Asia,42,10,8956.0,Central Asia,10.0,FodderHerb,FodderHerbC4,42.0,irr,0.0,,SSP1
+162,10043,Amur,Central Asia,43,10,1676.0,Central Asia,10.0,FodderHerb,FodderHerbC4,43.0,rfd,0.0,,SSP1
+163,10043,Amur,Central Asia,43,10,8957.0,Central Asia,10.0,FodderHerb,FodderHerbC4,43.0,irr,0.0,,SSP1
+164,10045,Caspian_Sea_Coast,Central Asia,45,10,1677.0,Central Asia,10.0,FodderHerb,FodderHerbC4,45.0,rfd,0.0,,SSP1
+165,10045,Caspian_Sea_Coast,Central Asia,45,10,8958.0,Central Asia,10.0,FodderHerb,FodderHerbC4,45.0,irr,0.0,,SSP1
+166,10047,Black_Sea_North_Coast,Central Asia,47,10,,,,,,,,,,
+167,10048,Yenisey,Central Asia,48,10,1678.0,Central Asia,10.0,FodderHerb,FodderHerbC4,48.0,rfd,0.0,,SSP1
+168,10048,Yenisey,Central Asia,48,10,8959.0,Central Asia,10.0,FodderHerb,FodderHerbC4,48.0,irr,0.0,,SSP1
+169,10052,Caspian_Sea_East_Coast,Central Asia,52,10,1679.0,Central Asia,10.0,FodderHerb,FodderHerbC4,52.0,rfd,0.0,,SSP1
+170,10052,Caspian_Sea_East_Coast,Central Asia,52,10,8960.0,Central Asia,10.0,FodderHerb,FodderHerbC4,52.0,irr,0.0,,SSP1
+171,10056,Ob,Central Asia,56,10,1680.0,Central Asia,10.0,FodderHerb,FodderHerbC4,56.0,rfd,0.0,,SSP1
+172,10056,Ob,Central Asia,56,10,8961.0,Central Asia,10.0,FodderHerb,FodderHerbC4,56.0,irr,0.0,,SSP1
+173,10058,Amu_Darya,Central Asia,58,10,1681.0,Central Asia,10.0,FodderHerb,FodderHerbC4,58.0,rfd,0.0,,SSP1
+174,10058,Amu_Darya,Central Asia,58,10,8962.0,Central Asia,10.0,FodderHerb,FodderHerbC4,58.0,irr,0.0,,SSP1
+175,10068,Lake_Balkash,Central Asia,68,10,1682.0,Central Asia,10.0,FodderHerb,FodderHerbC4,68.0,rfd,0.0,,SSP1
+176,10068,Lake_Balkash,Central Asia,68,10,8963.0,Central Asia,10.0,FodderHerb,FodderHerbC4,68.0,irr,0.0,,SSP1
+177,10070,Black_Sea_South_Coast,Central Asia,70,10,1683.0,Central Asia,10.0,FodderHerb,FodderHerbC4,70.0,rfd,0.0,,SSP1
+178,10070,Black_Sea_South_Coast,Central Asia,70,10,8964.0,Central Asia,10.0,FodderHerb,FodderHerbC4,70.0,irr,0.0,,SSP1
+179,10072,Caspian_Sea_South_West_Coast,Central Asia,72,10,1684.0,Central Asia,10.0,FodderHerb,FodderHerbC4,72.0,rfd,0.0,,SSP1
+180,10072,Caspian_Sea_South_West_Coast,Central Asia,72,10,8965.0,Central Asia,10.0,FodderHerb,FodderHerbC4,72.0,irr,0.0,,SSP1
+181,10076,Syr_Darya,Central Asia,76,10,1685.0,Central Asia,10.0,FodderHerb,FodderHerbC4,76.0,rfd,0.0,,SSP1
+182,10076,Syr_Darya,Central Asia,76,10,8966.0,Central Asia,10.0,FodderHerb,FodderHerbC4,76.0,irr,0.0,,SSP1
+183,10085,Tarim_Interior,Central Asia,85,10,1686.0,Central Asia,10.0,FodderHerb,FodderHerbC4,85.0,rfd,0.0,,SSP1
+184,10085,Tarim_Interior,Central Asia,85,10,8967.0,Central Asia,10.0,FodderHerb,FodderHerbC4,85.0,irr,0.0,,SSP1
+185,11037,Russia_South_East_Coast,China,37,11,,,,,,,,,,
+186,11042,Gobi_Interior,China,42,11,,,,,,,,,,
+187,11043,Amur,China,43,11,,,,,,,,,,
+188,11056,Ob,China,56,11,,,,,,,,,,
+189,11058,Amu_Darya,China,58,11,,,,,,,,,,
+190,11066,Bo_Hai_Korean_Bay_North_Coast,China,66,11,,,,,,,,,,
+191,11068,Lake_Balkash,China,68,11,,,,,,,,,,
+192,11076,Syr_Darya,China,76,11,,,,,,,,,,
+193,11077,Ziya_He_Interior,China,77,11,,,,,,,,,,
+194,11078,China_Coast,China,78,11,,,,,,,,,,
+195,11079,Huang_He,China,79,11,,,,,,,,,,
+196,11085,Tarim_Interior,China,85,11,,,,,,,,,,
+197,11089,Indus,China,89,11,,,,,,,,,,
+198,11092,Plateau_of_Tibet_Interior,China,92,11,,,,,,,,,,
+199,11106,Yangtze,China,106,11,,,,,,,,,,
+200,11108,Xun_Jiang,China,108,11,,,,,,,,,,
+201,11109,Hong_(Red_River),China,109,11,,,,,,,,,,
+202,11110,Ganges_Bramaputra,China,110,11,,,,,,,,,,
+203,11112,South_China_Sea_Coast,China,112,11,,,,,,,,,,
+204,11124,Hainan,China,124,11,,,,,,,,,,
+205,11125,Mekong,China,125,11,,,,,,,,,,
+206,11127,Salween,China,127,11,,,,,,,,,,
+207,11137,Irrawaddy,China,137,11,,,,,,,,,,
+208,12020,Baltic_Sea_Coast,EU-12,20,12,2321.0,EU-12,12.0,FodderHerb,FodderHerbC4,20.0,rfd,0.0,,SSP1
+209,12020,Baltic_Sea_Coast,EU-12,20,12,9602.0,EU-12,12.0,FodderHerb,FodderHerbC4,20.0,irr,0.0,,SSP1
+210,12021,Denmark_Germany_Coast,EU-12,21,12,2322.0,EU-12,12.0,FodderHerb,FodderHerbC4,21.0,rfd,0.0,,SSP1
+211,12021,Denmark_Germany_Coast,EU-12,21,12,9603.0,EU-12,12.0,FodderHerb,FodderHerbC4,21.0,irr,0.0,,SSP1
+212,12022,Narva,EU-12,22,12,2323.0,EU-12,12.0,FodderHerb,FodderHerbC4,22.0,rfd,0.0,,SSP1
+213,12022,Narva,EU-12,22,12,9604.0,EU-12,12.0,FodderHerb,FodderHerbC4,22.0,irr,0.0,,SSP1
+214,12025,Daugava,EU-12,25,12,2324.0,EU-12,12.0,FodderHerb,FodderHerbC4,25.0,rfd,0.0,,SSP1
+215,12025,Daugava,EU-12,25,12,9605.0,EU-12,12.0,FodderHerb,FodderHerbC4,25.0,irr,0.0,,SSP1
+216,12029,Oder,EU-12,29,12,2325.0,EU-12,12.0,FodderHerb,FodderHerbC4,29.0,rfd,0.0,,SSP1
+217,12029,Oder,EU-12,29,12,9606.0,EU-12,12.0,FodderHerb,FodderHerbC4,29.0,irr,0.0,,SSP1
+218,12030,Wisla,EU-12,30,12,2326.0,EU-12,12.0,FodderHerb,FodderHerbC4,30.0,rfd,0.0,,SSP1
+219,12030,Wisla,EU-12,30,12,9607.0,EU-12,12.0,FodderHerb,FodderHerbC4,30.0,irr,0.0,,SSP1
+220,12031,Elbe,EU-12,31,12,2327.0,EU-12,12.0,FodderHerb,FodderHerbC4,31.0,rfd,0.0,,SSP1
+221,12031,Elbe,EU-12,31,12,9608.0,EU-12,12.0,FodderHerb,FodderHerbC4,31.0,irr,0.0,,SSP1
+222,12033,Poland_Coast,EU-12,33,12,2328.0,EU-12,12.0,FodderHerb,FodderHerbC4,33.0,rfd,0.0,,SSP1
+223,12033,Poland_Coast,EU-12,33,12,9609.0,EU-12,12.0,FodderHerb,FodderHerbC4,33.0,irr,0.0,,SSP1
+224,12035,Neman,EU-12,35,12,2329.0,EU-12,12.0,FodderHerb,FodderHerbC4,35.0,rfd,0.0,,SSP1
+225,12035,Neman,EU-12,35,12,9610.0,EU-12,12.0,FodderHerb,FodderHerbC4,35.0,irr,0.0,,SSP1
+226,12049,Dniester,EU-12,49,12,2330.0,EU-12,12.0,FodderHerb,FodderHerbC4,49.0,rfd,0.0,,SSP1
+227,12049,Dniester,EU-12,49,12,9611.0,EU-12,12.0,FodderHerb,FodderHerbC4,49.0,irr,0.0,,SSP1
+228,12054,Danube,EU-12,54,12,2331.0,EU-12,12.0,FodderHerb,FodderHerbC4,54.0,rfd,0.0,,SSP1
+229,12054,Danube,EU-12,54,12,9612.0,EU-12,12.0,FodderHerb,FodderHerbC4,54.0,irr,0.0,,SSP1
+230,12055,Adriatic_Sea_Greece_Black_Sea_Coast,EU-12,55,12,2332.0,EU-12,12.0,FodderHerb,FodderHerbC4,55.0,rfd,0.0,,SSP1
+231,12055,Adriatic_Sea_Greece_Black_Sea_Coast,EU-12,55,12,9613.0,EU-12,12.0,FodderHerb,FodderHerbC4,55.0,irr,0.0,,SSP1
+232,12063,Mediterranean_Sea_Islands,EU-12,63,12,,,,,,,,,,
+233,12075,Mediterranean_Sea_East_Coast,EU-12,75,12,2333.0,EU-12,12.0,FodderHerb,FodderHerbC4,75.0,rfd,0.0,,SSP1
+234,12075,Mediterranean_Sea_East_Coast,EU-12,75,12,9614.0,EU-12,12.0,FodderHerb,FodderHerbC4,75.0,irr,0.0,,SSP1
+235,13001,Arctic_Ocean_Islands,EU-15,1,13,,,,,,,,,,
+236,13008,Scandinavia_North_Coast,EU-15,8,13,,,,,,,,,,
+237,13012,Sweden,EU-15,12,13,2592.0,EU-15,13.0,FodderHerb,FodderHerbC4,12.0,rfd,0.0,,SSP1
+238,13012,Sweden,EU-15,12,13,9873.0,EU-15,13.0,FodderHerb,FodderHerbC4,12.0,irr,0.0,,SSP1
+239,13013,Finland,EU-15,13,13,,,,,,,,,,
+240,13016,Scotland,EU-15,16,13,2593.0,EU-15,13.0,FodderHerb,FodderHerbC4,16.0,rfd,0.0,,SSP1
+241,13016,Scotland,EU-15,16,13,9874.0,EU-15,13.0,FodderHerb,FodderHerbC4,16.0,irr,0.0,,SSP1
+242,13017,Neva,EU-15,17,13,,,,,,,,,,
+243,13019,Atlantic_Ocean_Seaboard,EU-15,19,13,,,,,,,,,,
+244,13021,Denmark_Germany_Coast,EU-15,21,13,2594.0,EU-15,13.0,FodderHerb,FodderHerbC4,21.0,rfd,0.0,,SSP1
+245,13021,Denmark_Germany_Coast,EU-15,21,13,9875.0,EU-15,13.0,FodderHerb,FodderHerbC4,21.0,irr,0.0,,SSP1
+246,13024,Ireland,EU-15,24,13,2595.0,EU-15,13.0,FodderHerb,FodderHerbC4,24.0,rfd,0.0,,SSP1
+247,13024,Ireland,EU-15,24,13,9876.0,EU-15,13.0,FodderHerb,FodderHerbC4,24.0,irr,0.0,,SSP1
+248,13026,England_and_Wales,EU-15,26,13,2596.0,EU-15,13.0,FodderHerb,FodderHerbC4,26.0,rfd,0.0,,SSP1
+249,13026,England_and_Wales,EU-15,26,13,9877.0,EU-15,13.0,FodderHerb,FodderHerbC4,26.0,irr,0.0,,SSP1
+250,13028,Ems_Weser,EU-15,28,13,2597.0,EU-15,13.0,FodderHerb,FodderHerbC4,28.0,rfd,0.0,,SSP1
+251,13028,Ems_Weser,EU-15,28,13,9878.0,EU-15,13.0,FodderHerb,FodderHerbC4,28.0,irr,0.0,,SSP1
+252,13029,Oder,EU-15,29,13,2598.0,EU-15,13.0,FodderHerb,FodderHerbC4,29.0,rfd,0.0,,SSP1
+253,13029,Oder,EU-15,29,13,9879.0,EU-15,13.0,FodderHerb,FodderHerbC4,29.0,irr,0.0,,SSP1
+254,13031,Elbe,EU-15,31,13,2599.0,EU-15,13.0,FodderHerb,FodderHerbC4,31.0,rfd,0.0,,SSP1
+255,13031,Elbe,EU-15,31,13,9880.0,EU-15,13.0,FodderHerb,FodderHerbC4,31.0,irr,0.0,,SSP1
+256,13032,Rhine,EU-15,32,13,2600.0,EU-15,13.0,FodderHerb,FodderHerbC4,32.0,rfd,0.0,,SSP1
+257,13032,Rhine,EU-15,32,13,9881.0,EU-15,13.0,FodderHerb,FodderHerbC4,32.0,irr,0.0,,SSP1
+258,13036,Scheldt,EU-15,36,13,2601.0,EU-15,13.0,FodderHerb,FodderHerbC4,36.0,rfd,0.0,,SSP1
+259,13036,Scheldt,EU-15,36,13,9882.0,EU-15,13.0,FodderHerb,FodderHerbC4,36.0,irr,0.0,,SSP1
+260,13041,France_West_Coast,EU-15,41,13,2602.0,EU-15,13.0,FodderHerb,FodderHerbC4,41.0,rfd,0.0,,SSP1
+261,13041,France_West_Coast,EU-15,41,13,9883.0,EU-15,13.0,FodderHerb,FodderHerbC4,41.0,irr,0.0,,SSP1
+262,13044,Loire,EU-15,44,13,2603.0,EU-15,13.0,FodderHerb,FodderHerbC4,44.0,rfd,0.0,,SSP1
+263,13044,Loire,EU-15,44,13,9884.0,EU-15,13.0,FodderHerb,FodderHerbC4,44.0,irr,0.0,,SSP1
+264,13046,Seine,EU-15,46,13,2604.0,EU-15,13.0,FodderHerb,FodderHerbC4,46.0,rfd,0.0,,SSP1
+265,13046,Seine,EU-15,46,13,9885.0,EU-15,13.0,FodderHerb,FodderHerbC4,46.0,irr,0.0,,SSP1
+266,13050,Italy_East_Coast,EU-15,50,13,2605.0,EU-15,13.0,FodderHerb,FodderHerbC4,50.0,rfd,0.0,,SSP1
+267,13050,Italy_East_Coast,EU-15,50,13,9886.0,EU-15,13.0,FodderHerb,FodderHerbC4,50.0,irr,0.0,,SSP1
+268,13054,Danube,EU-15,54,13,2606.0,EU-15,13.0,FodderHerb,FodderHerbC4,54.0,rfd,0.0,,SSP1
+269,13054,Danube,EU-15,54,13,9887.0,EU-15,13.0,FodderHerb,FodderHerbC4,54.0,irr,0.0,,SSP1
+270,13055,Adriatic_Sea_Greece_Black_Sea_Coast,EU-15,55,13,2607.0,EU-15,13.0,FodderHerb,FodderHerbC4,55.0,rfd,0.0,,SSP1
+271,13055,Adriatic_Sea_Greece_Black_Sea_Coast,EU-15,55,13,9888.0,EU-15,13.0,FodderHerb,FodderHerbC4,55.0,irr,0.0,,SSP1
+272,13057,Po,EU-15,57,13,2608.0,EU-15,13.0,FodderHerb,FodderHerbC4,57.0,rfd,0.0,,SSP1
+273,13057,Po,EU-15,57,13,9889.0,EU-15,13.0,FodderHerb,FodderHerbC4,57.0,irr,0.0,,SSP1
+274,13059,Italy_West_Coast,EU-15,59,13,2609.0,EU-15,13.0,FodderHerb,FodderHerbC4,59.0,rfd,0.0,,SSP1
+275,13059,Italy_West_Coast,EU-15,59,13,9890.0,EU-15,13.0,FodderHerb,FodderHerbC4,59.0,irr,0.0,,SSP1
+276,13060,Spain_Portugal_Atlantic_Coast,EU-15,60,13,2610.0,EU-15,13.0,FodderHerb,FodderHerbC4,60.0,rfd,0.0,,SSP1
+277,13060,Spain_Portugal_Atlantic_Coast,EU-15,60,13,9891.0,EU-15,13.0,FodderHerb,FodderHerbC4,60.0,irr,0.0,,SSP1
+278,13061,France_South_Coast,EU-15,61,13,2611.0,EU-15,13.0,FodderHerb,FodderHerbC4,61.0,rfd,0.0,,SSP1
+279,13061,France_South_Coast,EU-15,61,13,9892.0,EU-15,13.0,FodderHerb,FodderHerbC4,61.0,irr,0.0,,SSP1
+280,13062,Rh(ne,EU-15,62,13,2612.0,EU-15,13.0,FodderHerb,FodderHerbC4,62.0,rfd,0.0,,SSP1
+281,13062,Rh(ne,EU-15,62,13,9893.0,EU-15,13.0,FodderHerb,FodderHerbC4,62.0,irr,0.0,,SSP1
+282,13063,Mediterranean_Sea_Islands,EU-15,63,13,2613.0,EU-15,13.0,FodderHerb,FodderHerbC4,63.0,rfd,0.0,,SSP1
+283,13063,Mediterranean_Sea_Islands,EU-15,63,13,9894.0,EU-15,13.0,FodderHerb,FodderHerbC4,63.0,irr,0.0,,SSP1
+284,13064,Gironde,EU-15,64,13,2614.0,EU-15,13.0,FodderHerb,FodderHerbC4,64.0,rfd,0.0,,SSP1
+285,13064,Gironde,EU-15,64,13,9895.0,EU-15,13.0,FodderHerb,FodderHerbC4,64.0,irr,0.0,,SSP1
+286,13067,Spain_South_and_East_Coast,EU-15,67,13,2615.0,EU-15,13.0,FodderHerb,FodderHerbC4,67.0,rfd,0.0,,SSP1
+287,13067,Spain_South_and_East_Coast,EU-15,67,13,9896.0,EU-15,13.0,FodderHerb,FodderHerbC4,67.0,irr,0.0,,SSP1
+288,13069,Tiber,EU-15,69,13,2616.0,EU-15,13.0,FodderHerb,FodderHerbC4,69.0,rfd,0.0,,SSP1
+289,13069,Tiber,EU-15,69,13,9897.0,EU-15,13.0,FodderHerb,FodderHerbC4,69.0,irr,0.0,,SSP1
+290,13071,Tagus,EU-15,71,13,2617.0,EU-15,13.0,FodderHerb,FodderHerbC4,71.0,rfd,0.0,,SSP1
+291,13071,Tagus,EU-15,71,13,9898.0,EU-15,13.0,FodderHerb,FodderHerbC4,71.0,irr,0.0,,SSP1
+292,13073,Ebro,EU-15,73,13,2618.0,EU-15,13.0,FodderHerb,FodderHerbC4,73.0,rfd,0.0,,SSP1
+293,13073,Ebro,EU-15,73,13,9899.0,EU-15,13.0,FodderHerb,FodderHerbC4,73.0,irr,0.0,,SSP1
+294,13074,Douro,EU-15,74,13,2619.0,EU-15,13.0,FodderHerb,FodderHerbC4,74.0,rfd,0.0,,SSP1
+295,13074,Douro,EU-15,74,13,9900.0,EU-15,13.0,FodderHerb,FodderHerbC4,74.0,irr,0.0,,SSP1
+296,13075,Mediterranean_Sea_East_Coast,EU-15,75,13,,,,,,,,,,
+297,13080,Mediterranean_South_Coast,EU-15,80,13,,,,,,,,,,
+298,13081,Guadiana,EU-15,81,13,2620.0,EU-15,13.0,FodderHerb,FodderHerbC4,81.0,rfd,0.0,,SSP1
+299,13081,Guadiana,EU-15,81,13,9901.0,EU-15,13.0,FodderHerb,FodderHerbC4,81.0,irr,0.0,,SSP1
+300,13083,Guadalquivir,EU-15,83,13,2621.0,EU-15,13.0,FodderHerb,FodderHerbC4,83.0,rfd,0.0,,SSP1
+301,13083,Guadalquivir,EU-15,83,13,9902.0,EU-15,13.0,FodderHerb,FodderHerbC4,83.0,irr,0.0,,SSP1
+302,13086,Africa_North_West_Coast,EU-15,86,13,,,,,,,,,,
+303,13101,Caribbean,EU-15,101,13,,,,,,,,,,
+304,13155,India_South_Coast,EU-15,155,13,,,,,,,,,,
+305,13182,Angola_Coast,EU-15,182,13,,,,,,,,,,
+306,13185,South_Pacific_Islands,EU-15,185,13,,,,,,,,,,
+307,13215,South_Argentina_South_Atlantic_Coast,EU-15,215,13,,,,,,,,,,
+308,13216,Antarctica,EU-15,216,13,,,,,,,,,,
+309,14017,Neva,Europe_Eastern,17,14,3101.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,17.0,rfd,0.0,,SSP1
+310,14017,Neva,Europe_Eastern,17,14,10382.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,17.0,irr,0.0,,SSP1
+311,14025,Daugava,Europe_Eastern,25,14,3102.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,25.0,rfd,0.0,,SSP1
+312,14025,Daugava,Europe_Eastern,25,14,10383.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,25.0,irr,0.0,,SSP1
+313,14030,Wisla,Europe_Eastern,30,14,3103.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,30.0,rfd,0.0,,SSP1
+314,14030,Wisla,Europe_Eastern,30,14,10384.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,30.0,irr,0.0,,SSP1
+315,14035,Neman,Europe_Eastern,35,14,3104.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,35.0,rfd,0.0,,SSP1
+316,14035,Neman,Europe_Eastern,35,14,10385.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,35.0,irr,0.0,,SSP1
+317,14039,Dnieper,Europe_Eastern,39,14,3105.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,39.0,rfd,0.0,,SSP1
+318,14039,Dnieper,Europe_Eastern,39,14,10386.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,39.0,irr,0.0,,SSP1
+319,14047,Black_Sea_North_Coast,Europe_Eastern,47,14,3106.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,47.0,rfd,0.0,,SSP1
+320,14047,Black_Sea_North_Coast,Europe_Eastern,47,14,10387.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,47.0,irr,0.0,,SSP1
+321,14049,Dniester,Europe_Eastern,49,14,3107.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,49.0,rfd,0.0,,SSP1
+322,14049,Dniester,Europe_Eastern,49,14,10388.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,49.0,irr,0.0,,SSP1
+323,14053,Don,Europe_Eastern,53,14,3108.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,53.0,rfd,0.0,,SSP1
+324,14053,Don,Europe_Eastern,53,14,10389.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,53.0,irr,0.0,,SSP1
+325,14054,Danube,Europe_Eastern,54,14,3109.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,54.0,rfd,0.0,,SSP1
+326,14054,Danube,Europe_Eastern,54,14,10390.0,Europe_Eastern,14.0,FodderHerb,FodderHerbC4,54.0,irr,0.0,,SSP1
+327,15054,Danube,Europe_Non_EU,54,15,3246.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,54.0,rfd,0.0,,SSP1
+328,15054,Danube,Europe_Non_EU,54,15,10527.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,54.0,irr,0.0,,SSP1
+329,15055,Adriatic_Sea_Greece_Black_Sea_Coast,Europe_Non_EU,55,15,3247.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,55.0,rfd,0.0,,SSP1
+330,15055,Adriatic_Sea_Greece_Black_Sea_Coast,Europe_Non_EU,55,15,10528.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,55.0,irr,0.0,,SSP1
+331,15070,Black_Sea_South_Coast,Europe_Non_EU,70,15,3248.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,70.0,rfd,0.0,,SSP1
+332,15070,Black_Sea_South_Coast,Europe_Non_EU,70,15,10529.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,70.0,irr,0.0,,SSP1
+333,15072,Caspian_Sea_South_West_Coast,Europe_Non_EU,72,15,3249.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,72.0,rfd,0.0,,SSP1
+334,15072,Caspian_Sea_South_West_Coast,Europe_Non_EU,72,15,10530.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,72.0,irr,0.0,,SSP1
+335,15075,Mediterranean_Sea_East_Coast,Europe_Non_EU,75,15,3250.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,75.0,rfd,0.0,,SSP1
+336,15075,Mediterranean_Sea_East_Coast,Europe_Non_EU,75,15,10531.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,75.0,irr,0.0,,SSP1
+337,15084,Tigris_Euphrates,Europe_Non_EU,84,15,3251.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,84.0,rfd,0.0,,SSP1
+338,15084,Tigris_Euphrates,Europe_Non_EU,84,15,10532.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,84.0,irr,0.0,,SSP1
+339,15099,Eastern_Jordan_Syria,Europe_Non_EU,99,15,3252.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,99.0,rfd,0.0,,SSP1
+340,15099,Eastern_Jordan_Syria,Europe_Non_EU,99,15,10533.0,Europe_Non_EU,15.0,FodderHerb,FodderHerbC4,99.0,irr,0.0,,SSP1
+341,16001,Arctic_Ocean_Islands,European Free Trade Association,1,16,,,,,,,,,,
+342,16008,Scandinavia_North_Coast,European Free Trade Association,8,16,,,,,,,,,,
+343,16011,Iceland,European Free Trade Association,11,16,,,,,,,,,,
+344,16012,Sweden,European Free Trade Association,12,16,,,,,,,,,,
+345,16032,Rhine,European Free Trade Association,32,16,3376.0,European Free Trade Association,16.0,FodderHerb,FodderHerbC4,32.0,rfd,0.0,,SSP1
+346,16032,Rhine,European Free Trade Association,32,16,10657.0,European Free Trade Association,16.0,FodderHerb,FodderHerbC4,32.0,irr,0.0,,SSP1
+347,16054,Danube,European Free Trade Association,54,16,3377.0,European Free Trade Association,16.0,FodderHerb,FodderHerbC4,54.0,rfd,0.0,,SSP1
+348,16054,Danube,European Free Trade Association,54,16,10658.0,European Free Trade Association,16.0,FodderHerb,FodderHerbC4,54.0,irr,0.0,,SSP1
+349,16057,Po,European Free Trade Association,57,16,3378.0,European Free Trade Association,16.0,FodderHerb,FodderHerbC4,57.0,rfd,0.0,,SSP1
+350,16057,Po,European Free Trade Association,57,16,10659.0,European Free Trade Association,16.0,FodderHerb,FodderHerbC4,57.0,irr,0.0,,SSP1
+351,16062,Rh(ne,European Free Trade Association,62,16,3379.0,European Free Trade Association,16.0,FodderHerb,FodderHerbC4,62.0,rfd,0.0,,SSP1
+352,16062,Rh(ne,European Free Trade Association,62,16,10660.0,European Free Trade Association,16.0,FodderHerb,FodderHerbC4,62.0,irr,0.0,,SSP1
+353,17089,Indus,India,89,17,6904.0,India,17.0,FodderHerb,FodderHerbC4,89.0,rfd,0.0,,SSP1
+354,17089,Indus,India,89,17,14185.0,India,17.0,FodderHerb,FodderHerbC4,89.0,irr,0.0,,SSP1
+355,17107,Sabarmati,India,107,17,6905.0,India,17.0,FodderHerb,FodderHerbC4,107.0,rfd,0.0,,SSP1
+356,17107,Sabarmati,India,107,17,14186.0,India,17.0,FodderHerb,FodderHerbC4,107.0,irr,0.0,,SSP1
+357,17110,Ganges_Bramaputra,India,110,17,6906.0,India,17.0,FodderHerb,FodderHerbC4,110.0,rfd,0.0,,SSP1
+358,17110,Ganges_Bramaputra,India,110,17,14187.0,India,17.0,FodderHerb,FodderHerbC4,110.0,irr,0.0,,SSP1
+359,17113,Mahi,India,113,17,6907.0,India,17.0,FodderHerb,FodderHerbC4,113.0,rfd,0.0,,SSP1
+360,17113,Mahi,India,113,17,14188.0,India,17.0,FodderHerb,FodderHerbC4,113.0,irr,0.0,,SSP1
+361,17116,Bay_of_Bengal_North_East_Coast,India,116,17,6908.0,India,17.0,FodderHerb,FodderHerbC4,116.0,rfd,0.0,,SSP1
+362,17116,Bay_of_Bengal_North_East_Coast,India,116,17,14189.0,India,17.0,FodderHerb,FodderHerbC4,116.0,irr,0.0,,SSP1
+363,17117,Tapti,India,117,17,6909.0,India,17.0,FodderHerb,FodderHerbC4,117.0,rfd,0.0,,SSP1
+364,17117,Tapti,India,117,17,14190.0,India,17.0,FodderHerb,FodderHerbC4,117.0,irr,0.0,,SSP1
+365,17118,Yasai,India,118,17,6910.0,India,17.0,FodderHerb,FodderHerbC4,118.0,rfd,0.0,,SSP1
+366,17118,Yasai,India,118,17,14191.0,India,17.0,FodderHerb,FodderHerbC4,118.0,irr,0.0,,SSP1
+367,17120,Brahamani,India,120,17,6911.0,India,17.0,FodderHerb,FodderHerbC4,120.0,rfd,0.0,,SSP1
+368,17120,Brahamani,India,120,17,14192.0,India,17.0,FodderHerb,FodderHerbC4,120.0,irr,0.0,,SSP1
+369,17122,Mahandi,India,122,17,6912.0,India,17.0,FodderHerb,FodderHerbC4,122.0,rfd,0.0,,SSP1
+370,17122,Mahandi,India,122,17,14193.0,India,17.0,FodderHerb,FodderHerbC4,122.0,irr,0.0,,SSP1
+371,17123,Godavari,India,123,17,6913.0,India,17.0,FodderHerb,FodderHerbC4,123.0,rfd,0.0,,SSP1
+372,17123,Godavari,India,123,17,14194.0,India,17.0,FodderHerb,FodderHerbC4,123.0,irr,0.0,,SSP1
+373,17128,India_North_East_Coast,India,128,17,6914.0,India,17.0,FodderHerb,FodderHerbC4,128.0,rfd,0.0,,SSP1
+374,17128,India_North_East_Coast,India,128,17,14195.0,India,17.0,FodderHerb,FodderHerbC4,128.0,irr,0.0,,SSP1
+375,17129,India_West_Coast,India,129,17,6915.0,India,17.0,FodderHerb,FodderHerbC4,129.0,rfd,0.0,,SSP1
+376,17129,India_West_Coast,India,129,17,14196.0,India,17.0,FodderHerb,FodderHerbC4,129.0,irr,0.0,,SSP1
+377,17137,Irrawaddy,India,137,17,6916.0,India,17.0,FodderHerb,FodderHerbC4,137.0,rfd,0.0,,SSP1
+378,17137,Irrawaddy,India,137,17,14197.0,India,17.0,FodderHerb,FodderHerbC4,137.0,irr,0.0,,SSP1
+379,17140,Krishna,India,140,17,6917.0,India,17.0,FodderHerb,FodderHerbC4,140.0,rfd,0.0,,SSP1
+380,17140,Krishna,India,140,17,14198.0,India,17.0,FodderHerb,FodderHerbC4,140.0,irr,0.0,,SSP1
+381,17141,Andaman_Nicobar_Islands,India,141,17,,,,,,,,,,
+382,17145,India_East_Coast,India,145,17,6918.0,India,17.0,FodderHerb,FodderHerbC4,145.0,rfd,0.0,,SSP1
+383,17145,India_East_Coast,India,145,17,14199.0,India,17.0,FodderHerb,FodderHerbC4,145.0,irr,0.0,,SSP1
+384,17147,Pennar,India,147,17,6919.0,India,17.0,FodderHerb,FodderHerbC4,147.0,rfd,0.0,,SSP1
+385,17147,Pennar,India,147,17,14200.0,India,17.0,FodderHerb,FodderHerbC4,147.0,irr,0.0,,SSP1
+386,17153,Cauvery,India,153,17,6920.0,India,17.0,FodderHerb,FodderHerbC4,153.0,rfd,0.0,,SSP1
+387,17153,Cauvery,India,153,17,14201.0,India,17.0,FodderHerb,FodderHerbC4,153.0,irr,0.0,,SSP1
+388,17155,India_South_Coast,India,155,17,6921.0,India,17.0,FodderHerb,FodderHerbC4,155.0,rfd,0.0,,SSP1
+389,17155,India_South_Coast,India,155,17,14202.0,India,17.0,FodderHerb,FodderHerbC4,155.0,irr,0.0,,SSP1
+390,17235,Narmada,India,235,17,6922.0,India,17.0,FodderHerb,FodderHerbC4,235.0,rfd,0.0,,SSP1
+391,17235,Narmada,India,235,17,14203.0,India,17.0,FodderHerb,FodderHerbC4,235.0,irr,0.0,,SSP1
+392,18158,Palau_and_East_Indonesia,Indonesia,158,18,,,,,,,,,,
+393,18159,North_Borneo_Coast,Indonesia,159,18,,,,,,,,,,
+394,18163,Sumatra,Indonesia,163,18,,,,,,,,,,
+395,18164,Sulawesi,Indonesia,164,18,,,,,,,,,,
+396,18165,Kalimantan,Indonesia,165,18,,,,,,,,,,
+397,18167,Irian_Jaya_Coast,Indonesia,167,18,,,,,,,,,,
+398,18175,Java_Timor,Indonesia,175,18,,,,,,,,,,
+399,18178,Sepik,Indonesia,178,18,,,,,,,,,,
+400,18181,Fly,Indonesia,181,18,,,,,,,,,,
+401,19051,Japan,Japan,51,19,3977.0,Japan,19.0,FodderHerb,FodderHerbC4,51.0,rfd,0.0,,SSP1
+402,19051,Japan,Japan,51,19,11258.0,Japan,19.0,FodderHerb,FodderHerbC4,51.0,irr,0.0,,SSP1
+403,19103,Taiwan,Japan,103,19,3978.0,Japan,19.0,FodderHerb,FodderHerbC4,103.0,rfd,0.0,,SSP1
+404,19103,Taiwan,Japan,103,19,11259.0,Japan,19.0,FodderHerb,FodderHerbC4,103.0,irr,0.0,,SSP1
+405,20091,Baja_California,Mexico,91,20,4073.0,Mexico,20.0,FodderHerb,FodderHerbC4,91.0,rfd,0.0,,SSP1
+406,20091,Baja_California,Mexico,91,20,11354.0,Mexico,20.0,FodderHerb,FodderHerbC4,91.0,irr,0.0,,SSP1
+407,20096,Mexico_Northwest_Coast,Mexico,96,20,4074.0,Mexico,20.0,FodderHerb,FodderHerbC4,96.0,rfd,0.0,,SSP1
+408,20096,Mexico_Northwest_Coast,Mexico,96,20,11355.0,Mexico,20.0,FodderHerb,FodderHerbC4,96.0,irr,0.0,,SSP1
+409,20105,North_Gulf,Mexico,105,20,4075.0,Mexico,20.0,FodderHerb,FodderHerbC4,105.0,rfd,0.0,,SSP1
+410,20105,North_Gulf,Mexico,105,20,11356.0,Mexico,20.0,FodderHerb,FodderHerbC4,105.0,irr,0.0,,SSP1
+411,20111,Yucatan_Peninsula,Mexico,111,20,,,,,,,,,,
+412,20114,Mexico_Interior,Mexico,114,20,4076.0,Mexico,20.0,FodderHerb,FodderHerbC4,114.0,rfd,0.0,,SSP1
+413,20114,Mexico_Interior,Mexico,114,20,11357.0,Mexico,20.0,FodderHerb,FodderHerbC4,114.0,irr,0.0,,SSP1
+414,20115,Pacific_Central_Coast,Mexico,115,20,4077.0,Mexico,20.0,FodderHerb,FodderHerbC4,115.0,rfd,0.0,,SSP1
+415,20115,Pacific_Central_Coast,Mexico,115,20,11358.0,Mexico,20.0,FodderHerb,FodderHerbC4,115.0,irr,0.0,,SSP1
+416,20130,Papaloapan,Mexico,130,20,4078.0,Mexico,20.0,FodderHerb,FodderHerbC4,130.0,rfd,0.0,,SSP1
+417,20130,Papaloapan,Mexico,130,20,11359.0,Mexico,20.0,FodderHerb,FodderHerbC4,130.0,irr,0.0,,SSP1
+418,20131,Rfo_Lerma,Mexico,131,20,4079.0,Mexico,20.0,FodderHerb,FodderHerbC4,131.0,rfd,0.0,,SSP1
+419,20131,Rfo_Lerma,Mexico,131,20,11360.0,Mexico,20.0,FodderHerb,FodderHerbC4,131.0,irr,0.0,,SSP1
+420,20132,Rfo_Verde,Mexico,132,20,4080.0,Mexico,20.0,FodderHerb,FodderHerbC4,132.0,rfd,0.0,,SSP1
+421,20132,Rfo_Verde,Mexico,132,20,11361.0,Mexico,20.0,FodderHerb,FodderHerbC4,132.0,irr,0.0,,SSP1
+422,20133,Grijalva_Usumacinta,Mexico,133,20,,,,,,,,,,
+423,20134,Rfo_Balsas,Mexico,134,20,4081.0,Mexico,20.0,FodderHerb,FodderHerbC4,134.0,rfd,0.0,,SSP1
+424,20134,Rfo_Balsas,Mexico,134,20,11362.0,Mexico,20.0,FodderHerb,FodderHerbC4,134.0,irr,0.0,,SSP1
+425,20135,Southern_Central_America,Mexico,135,20,,,,,,,,,,
+426,20136,Isthmus_of_Tehuantepec,Mexico,136,20,4082.0,Mexico,20.0,FodderHerb,FodderHerbC4,136.0,rfd,0.0,,SSP1
+427,20136,Isthmus_of_Tehuantepec,Mexico,136,20,11363.0,Mexico,20.0,FodderHerb,FodderHerbC4,136.0,irr,0.0,,SSP1
+428,20217,California_River_Basin,Mexico,217,20,4083.0,Mexico,20.0,FodderHerb,FodderHerbC4,217.0,rfd,0.0,,SSP1
+429,20217,California_River_Basin,Mexico,217,20,11364.0,Mexico,20.0,FodderHerb,FodderHerbC4,217.0,irr,0.0,,SSP1
+430,20221,Lower_Colorado_River_Basin,Mexico,221,20,4084.0,Mexico,20.0,FodderHerb,FodderHerbC4,221.0,rfd,0.0,,SSP1
+431,20221,Lower_Colorado_River_Basin,Mexico,221,20,11365.0,Mexico,20.0,FodderHerb,FodderHerbC4,221.0,irr,0.0,,SSP1
+432,20231,Rio_Grande_River_Basin,Mexico,231,20,4085.0,Mexico,20.0,FodderHerb,FodderHerbC4,231.0,rfd,0.0,,SSP1
+433,20231,Rio_Grande_River_Basin,Mexico,231,20,11366.0,Mexico,20.0,FodderHerb,FodderHerbC4,231.0,irr,0.0,,SSP1
+434,21052,Caspian_Sea_East_Coast,Middle East,52,21,,,,,,,,,,
+435,21072,Caspian_Sea_South_West_Coast,Middle East,72,21,,,,,,,,,,
+436,21075,Mediterranean_Sea_East_Coast,Middle East,75,21,4402.0,Middle East,21.0,FodderHerb,FodderHerbC4,75.0,rfd,0.0,,SSP1
+437,21075,Mediterranean_Sea_East_Coast,Middle East,75,21,11683.0,Middle East,21.0,FodderHerb,FodderHerbC4,75.0,irr,0.0,,SSP1
+438,21082,Central_Iran,Middle East,82,21,,,,,,,,,,
+439,21084,Tigris_Euphrates,Middle East,84,21,4403.0,Middle East,21.0,FodderHerb,FodderHerbC4,84.0,rfd,0.0,,SSP1
+440,21084,Tigris_Euphrates,Middle East,84,21,11684.0,Middle East,21.0,FodderHerb,FodderHerbC4,84.0,irr,0.0,,SSP1
+441,21088,Persian_Gulf_Coast,Middle East,88,21,,,,,,,,,,
+442,21090,Farahrud,Middle East,90,21,,,,,,,,,,
+443,21093,Red_Sea_East_Coast,Middle East,93,21,4404.0,Middle East,21.0,FodderHerb,FodderHerbC4,93.0,rfd,0.0,,SSP1
+444,21093,Red_Sea_East_Coast,Middle East,93,21,11685.0,Middle East,21.0,FodderHerb,FodderHerbC4,93.0,irr,0.0,,SSP1
+445,21094,Arabian_Peninsula,Middle East,94,21,4405.0,Middle East,21.0,FodderHerb,FodderHerbC4,94.0,rfd,0.0,,SSP1
+446,21094,Arabian_Peninsula,Middle East,94,21,11686.0,Middle East,21.0,FodderHerb,FodderHerbC4,94.0,irr,0.0,,SSP1
+447,21095,Dead_Sea,Middle East,95,21,4406.0,Middle East,21.0,FodderHerb,FodderHerbC4,95.0,rfd,0.0,,SSP1
+448,21095,Dead_Sea,Middle East,95,21,11687.0,Middle East,21.0,FodderHerb,FodderHerbC4,95.0,irr,0.0,,SSP1
+449,21097,Helmand,Middle East,97,21,,,,,,,,,,
+450,21098,Sinai_Peninsula,Middle East,98,21,,,,,,,,,,
+451,21099,Eastern_Jordan_Syria,Middle East,99,21,4407.0,Middle East,21.0,FodderHerb,FodderHerbC4,99.0,rfd,0.0,,SSP1
+452,21099,Eastern_Jordan_Syria,Middle East,99,21,11688.0,Middle East,21.0,FodderHerb,FodderHerbC4,99.0,irr,0.0,,SSP1
+453,21100,Africa_Red_Sea_Gulf_of_Aden_Coast,Middle East,100,21,4408.0,Middle East,21.0,FodderHerb,FodderHerbC4,100.0,rfd,0.0,,SSP1
+454,21100,Africa_Red_Sea_Gulf_of_Aden_Coast,Middle East,100,21,11689.0,Middle East,21.0,FodderHerb,FodderHerbC4,100.0,irr,0.0,,SSP1
+455,21102,HamuniMashkel,Middle East,102,21,,,,,,,,,,
+456,21104,Arabian_Sea_Coast,Middle East,104,21,,,,,,,,,,
+457,22058,Amu_Darya,Pakistan,58,22,,,,,,,,,,
+458,22085,Tarim_Interior,Pakistan,85,22,,,,,,,,,,
+459,22089,Indus,Pakistan,89,22,7033.0,Pakistan,22.0,FodderHerb,FodderHerbC4,89.0,rfd,0.0,,SSP1
+460,22089,Indus,Pakistan,89,22,14314.0,Pakistan,22.0,FodderHerb,FodderHerbC4,89.0,irr,0.0,,SSP1
+461,22097,Helmand,Pakistan,97,22,7034.0,Pakistan,22.0,FodderHerb,FodderHerbC4,97.0,rfd,0.0,,SSP1
+462,22097,Helmand,Pakistan,97,22,14315.0,Pakistan,22.0,FodderHerb,FodderHerbC4,97.0,irr,0.0,,SSP1
+463,22102,HamuniMashkel,Pakistan,102,22,7035.0,Pakistan,22.0,FodderHerb,FodderHerbC4,102.0,rfd,0.0,,SSP1
+464,22102,HamuniMashkel,Pakistan,102,22,14316.0,Pakistan,22.0,FodderHerb,FodderHerbC4,102.0,irr,0.0,,SSP1
+465,22104,Arabian_Sea_Coast,Pakistan,104,22,7036.0,Pakistan,22.0,FodderHerb,FodderHerbC4,104.0,rfd,0.0,,SSP1
+466,22104,Arabian_Sea_Coast,Pakistan,104,22,14317.0,Pakistan,22.0,FodderHerb,FodderHerbC4,104.0,irr,0.0,,SSP1
+467,22107,Sabarmati,Pakistan,107,22,7037.0,Pakistan,22.0,FodderHerb,FodderHerbC4,107.0,rfd,0.0,,SSP1
+468,22107,Sabarmati,Pakistan,107,22,14318.0,Pakistan,22.0,FodderHerb,FodderHerbC4,107.0,irr,0.0,,SSP1
+469,23001,Arctic_Ocean_Islands,Russia,1,23,,,,,,,,,,
+470,23003,Siberia_North_Coast,Russia,3,23,,,,,,,,,,
+471,23004,Siberia_West_Coast,Russia,4,23,4841.0,Russia,23.0,FodderHerb,FodderHerbC4,4.0,rfd,0.0,,SSP1
+472,23004,Siberia_West_Coast,Russia,4,23,12122.0,Russia,23.0,FodderHerb,FodderHerbC4,4.0,irr,0.0,,SSP1
+473,23005,Kara_Sea_Coast,Russia,5,23,,,,,,,,,,
+474,23006,Lena,Russia,6,23,4842.0,Russia,23.0,FodderHerb,FodderHerbC4,6.0,rfd,0.0,,SSP1
+475,23006,Lena,Russia,6,23,12123.0,Russia,23.0,FodderHerb,FodderHerbC4,6.0,irr,0.0,,SSP1
+476,23008,Scandinavia_North_Coast,Russia,8,23,,,,,,,,,,
+477,23009,Russia_Barents_Sea_Coast,Russia,9,23,4843.0,Russia,23.0,FodderHerb,FodderHerbC4,9.0,rfd,0.0,,SSP1
+478,23009,Russia_Barents_Sea_Coast,Russia,9,23,12124.0,Russia,23.0,FodderHerb,FodderHerbC4,9.0,irr,0.0,,SSP1
+479,23013,Finland,Russia,13,23,4844.0,Russia,23.0,FodderHerb,FodderHerbC4,13.0,rfd,0.0,,SSP1
+480,23013,Finland,Russia,13,23,12125.0,Russia,23.0,FodderHerb,FodderHerbC4,13.0,irr,0.0,,SSP1
+481,23014,Northern_Dvina,Russia,14,23,4845.0,Russia,23.0,FodderHerb,FodderHerbC4,14.0,rfd,0.0,,SSP1
+482,23014,Northern_Dvina,Russia,14,23,12126.0,Russia,23.0,FodderHerb,FodderHerbC4,14.0,irr,0.0,,SSP1
+483,23017,Neva,Russia,17,23,4846.0,Russia,23.0,FodderHerb,FodderHerbC4,17.0,rfd,0.0,,SSP1
+484,23017,Neva,Russia,17,23,12127.0,Russia,23.0,FodderHerb,FodderHerbC4,17.0,irr,0.0,,SSP1
+485,23018,Volga,Russia,18,23,4847.0,Russia,23.0,FodderHerb,FodderHerbC4,18.0,rfd,0.0,,SSP1
+486,23018,Volga,Russia,18,23,12128.0,Russia,23.0,FodderHerb,FodderHerbC4,18.0,irr,0.0,,SSP1
+487,23020,Baltic_Sea_Coast,Russia,20,23,4848.0,Russia,23.0,FodderHerb,FodderHerbC4,20.0,rfd,0.0,,SSP1
+488,23020,Baltic_Sea_Coast,Russia,20,23,12129.0,Russia,23.0,FodderHerb,FodderHerbC4,20.0,irr,0.0,,SSP1
+489,23022,Narva,Russia,22,23,4849.0,Russia,23.0,FodderHerb,FodderHerbC4,22.0,rfd,0.0,,SSP1
+490,23022,Narva,Russia,22,23,12130.0,Russia,23.0,FodderHerb,FodderHerbC4,22.0,irr,0.0,,SSP1
+491,23025,Daugava,Russia,25,23,4850.0,Russia,23.0,FodderHerb,FodderHerbC4,25.0,rfd,0.0,,SSP1
+492,23025,Daugava,Russia,25,23,12131.0,Russia,23.0,FodderHerb,FodderHerbC4,25.0,irr,0.0,,SSP1
+493,23033,Poland_Coast,Russia,33,23,4851.0,Russia,23.0,FodderHerb,FodderHerbC4,33.0,rfd,0.0,,SSP1
+494,23033,Poland_Coast,Russia,33,23,12132.0,Russia,23.0,FodderHerb,FodderHerbC4,33.0,irr,0.0,,SSP1
+495,23035,Neman,Russia,35,23,4852.0,Russia,23.0,FodderHerb,FodderHerbC4,35.0,rfd,0.0,,SSP1
+496,23035,Neman,Russia,35,23,12133.0,Russia,23.0,FodderHerb,FodderHerbC4,35.0,irr,0.0,,SSP1
+497,23037,Russia_South_East_Coast,Russia,37,23,4853.0,Russia,23.0,FodderHerb,FodderHerbC4,37.0,rfd,0.0,,SSP1
+498,23037,Russia_South_East_Coast,Russia,37,23,12134.0,Russia,23.0,FodderHerb,FodderHerbC4,37.0,irr,0.0,,SSP1
+499,23038,Ural,Russia,38,23,4854.0,Russia,23.0,FodderHerb,FodderHerbC4,38.0,rfd,0.0,,SSP1
+500,23038,Ural,Russia,38,23,12135.0,Russia,23.0,FodderHerb,FodderHerbC4,38.0,irr,0.0,,SSP1
+501,23039,Dnieper,Russia,39,23,4855.0,Russia,23.0,FodderHerb,FodderHerbC4,39.0,rfd,0.0,,SSP1
+502,23039,Dnieper,Russia,39,23,12136.0,Russia,23.0,FodderHerb,FodderHerbC4,39.0,irr,0.0,,SSP1
+503,23042,Gobi_Interior,Russia,42,23,4856.0,Russia,23.0,FodderHerb,FodderHerbC4,42.0,rfd,0.0,,SSP1
+504,23042,Gobi_Interior,Russia,42,23,12137.0,Russia,23.0,FodderHerb,FodderHerbC4,42.0,irr,0.0,,SSP1
+505,23043,Amur,Russia,43,23,4857.0,Russia,23.0,FodderHerb,FodderHerbC4,43.0,rfd,0.0,,SSP1
+506,23043,Amur,Russia,43,23,12138.0,Russia,23.0,FodderHerb,FodderHerbC4,43.0,irr,0.0,,SSP1
+507,23045,Caspian_Sea_Coast,Russia,45,23,4858.0,Russia,23.0,FodderHerb,FodderHerbC4,45.0,rfd,0.0,,SSP1
+508,23045,Caspian_Sea_Coast,Russia,45,23,12139.0,Russia,23.0,FodderHerb,FodderHerbC4,45.0,irr,0.0,,SSP1
+509,23047,Black_Sea_North_Coast,Russia,47,23,4859.0,Russia,23.0,FodderHerb,FodderHerbC4,47.0,rfd,0.0,,SSP1
+510,23047,Black_Sea_North_Coast,Russia,47,23,12140.0,Russia,23.0,FodderHerb,FodderHerbC4,47.0,irr,0.0,,SSP1
+511,23048,Yenisey,Russia,48,23,4860.0,Russia,23.0,FodderHerb,FodderHerbC4,48.0,rfd,0.0,,SSP1
+512,23048,Yenisey,Russia,48,23,12141.0,Russia,23.0,FodderHerb,FodderHerbC4,48.0,irr,0.0,,SSP1
+513,23053,Don,Russia,53,23,4861.0,Russia,23.0,FodderHerb,FodderHerbC4,53.0,rfd,0.0,,SSP1
+514,23053,Don,Russia,53,23,12142.0,Russia,23.0,FodderHerb,FodderHerbC4,53.0,irr,0.0,,SSP1
+515,23056,Ob,Russia,56,23,4862.0,Russia,23.0,FodderHerb,FodderHerbC4,56.0,rfd,0.0,,SSP1
+516,23056,Ob,Russia,56,23,12143.0,Russia,23.0,FodderHerb,FodderHerbC4,56.0,irr,0.0,,SSP1
+517,23070,Black_Sea_South_Coast,Russia,70,23,,,,,,,,,,
+518,23072,Caspian_Sea_South_West_Coast,Russia,72,23,4863.0,Russia,23.0,FodderHerb,FodderHerbC4,72.0,rfd,0.0,,SSP1
+519,23072,Caspian_Sea_South_West_Coast,Russia,72,23,12144.0,Russia,23.0,FodderHerb,FodderHerbC4,72.0,irr,0.0,,SSP1
+520,23076,Syr_Darya,Russia,76,23,4864.0,Russia,23.0,FodderHerb,FodderHerbC4,76.0,rfd,0.0,,SSP1
+521,23076,Syr_Darya,Russia,76,23,12145.0,Russia,23.0,FodderHerb,FodderHerbC4,76.0,irr,0.0,,SSP1
+522,24194,Orange,South Africa,194,24,7168.0,South Africa,24.0,FodderHerb,FodderHerbC4,194.0,rfd,0.0,,SSP1
+523,24194,Orange,South Africa,194,24,14449.0,South Africa,24.0,FodderHerb,FodderHerbC4,194.0,irr,0.0,,SSP1
+524,24196,Namibia_Coast,South Africa,196,24,,,,,,,,,,
+525,24198,South_Africa_South_Coast,South Africa,198,24,7169.0,South Africa,24.0,FodderHerb,FodderHerbC4,198.0,rfd,0.0,,SSP1
+526,24198,South_Africa_South_Coast,South Africa,198,24,14450.0,South Africa,24.0,FodderHerb,FodderHerbC4,198.0,irr,0.0,,SSP1
+527,24199,Limpopo,South Africa,199,24,7170.0,South Africa,24.0,FodderHerb,FodderHerbC4,199.0,rfd,0.0,,SSP1
+528,24199,Limpopo,South Africa,199,24,14451.0,South Africa,24.0,FodderHerb,FodderHerbC4,199.0,irr,0.0,,SSP1
+529,24204,South_Africa_West_Coast,South Africa,204,24,7171.0,South Africa,24.0,FodderHerb,FodderHerbC4,204.0,rfd,0.0,,SSP1
+530,24204,South_Africa_West_Coast,South Africa,204,24,14452.0,South Africa,24.0,FodderHerb,FodderHerbC4,204.0,irr,0.0,,SSP1
+531,24216,Antarctica,South Africa,216,24,,,,,,,,,,
+532,25143,Caribbean_Coast,South America_Northern,143,25,,,,,,,,,,
+533,25156,Orinoco,South America_Northern,156,25,,,,,,,,,,
+534,25161,Northeast_South_America_South_Atlantic_Coast,South America_Northern,161,25,,,,,,,,,,
+535,25166,Magdalena,South America_Northern,166,25,,,,,,,,,,
+536,25168,Amazon,South America_Northern,168,25,,,,,,,,,,
+537,26157,Colombia_Ecuador_Pacific_Coast,South America_Southern,157,26,,,,,,,,,,
+538,26168,Amazon,South America_Southern,168,26,,,,,,,,,,
+539,26169,South_Chile_Pacific_Coast,South America_Southern,169,26,5354.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,169.0,rfd,0.0,,SSP1
+540,26169,South_Chile_Pacific_Coast,South America_Southern,169,26,12635.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,169.0,irr,0.0,,SSP1
+541,26180,Peru_Pacific_Coast,South America_Southern,180,26,,,,,,,,,,
+542,26185,South_Pacific_Islands,South America_Southern,185,26,,,,,,,,,,
+543,26195,Uruguay_Brazil_South_Atlantic_Coast,South America_Southern,195,26,,,,,,,,,,
+544,26200,La_Puna_Region,South America_Southern,200,26,5355.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,200.0,rfd,0.0,,SSP1
+545,26200,La_Puna_Region,South America_Southern,200,26,12636.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,200.0,irr,0.0,,SSP1
+546,26205,Salinas_Grandes,South America_Southern,205,26,,,,,,,,,,
+547,26206,La_Plata,South America_Southern,206,26,,,,,,,,,,
+548,26207,North_Chile_Pacific_Coast,South America_Southern,207,26,5356.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,207.0,rfd,0.0,,SSP1
+549,26207,North_Chile_Pacific_Coast,South America_Southern,207,26,12637.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,207.0,irr,0.0,,SSP1
+550,26212,South_America_Colorado,South America_Southern,212,26,,,,,,,,,,
+551,26213,Negro,South America_Southern,213,26,5357.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,213.0,rfd,0.0,,SSP1
+552,26213,Negro,South America_Southern,213,26,12638.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,213.0,irr,0.0,,SSP1
+553,26215,South_Argentina_South_Atlantic_Coast,South America_Southern,215,26,5358.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,215.0,rfd,0.0,,SSP1
+554,26215,South_Argentina_South_Atlantic_Coast,South America_Southern,215,26,12639.0,South America_Southern,26.0,FodderHerb,FodderHerbC4,215.0,irr,0.0,,SSP1
+555,27052,Caspian_Sea_East_Coast,South Asia,52,27,7196.0,South Asia,27.0,FodderHerb,FodderHerbC4,52.0,rfd,0.0,,SSP1
+556,27052,Caspian_Sea_East_Coast,South Asia,52,27,14477.0,South Asia,27.0,FodderHerb,FodderHerbC4,52.0,irr,0.0,,SSP1
+557,27058,Amu_Darya,South Asia,58,27,7197.0,South Asia,27.0,FodderHerb,FodderHerbC4,58.0,rfd,0.0,,SSP1
+558,27058,Amu_Darya,South Asia,58,27,14478.0,South Asia,27.0,FodderHerb,FodderHerbC4,58.0,irr,0.0,,SSP1
+559,27089,Indus,South Asia,89,27,7198.0,South Asia,27.0,FodderHerb,FodderHerbC4,89.0,rfd,0.0,,SSP1
+560,27089,Indus,South Asia,89,27,14479.0,South Asia,27.0,FodderHerb,FodderHerbC4,89.0,irr,0.0,,SSP1
+561,27090,Farahrud,South Asia,90,27,7199.0,South Asia,27.0,FodderHerb,FodderHerbC4,90.0,rfd,0.0,,SSP1
+562,27090,Farahrud,South Asia,90,27,14480.0,South Asia,27.0,FodderHerb,FodderHerbC4,90.0,irr,0.0,,SSP1
+563,27097,Helmand,South Asia,97,27,7200.0,South Asia,27.0,FodderHerb,FodderHerbC4,97.0,rfd,0.0,,SSP1
+564,27097,Helmand,South Asia,97,27,14481.0,South Asia,27.0,FodderHerb,FodderHerbC4,97.0,irr,0.0,,SSP1
+565,27102,HamuniMashkel,South Asia,102,27,7201.0,South Asia,27.0,FodderHerb,FodderHerbC4,102.0,rfd,0.0,,SSP1
+566,27102,HamuniMashkel,South Asia,102,27,14482.0,South Asia,27.0,FodderHerb,FodderHerbC4,102.0,irr,0.0,,SSP1
+567,27110,Ganges_Bramaputra,South Asia,110,27,7202.0,South Asia,27.0,FodderHerb,FodderHerbC4,110.0,rfd,0.0,,SSP1
+568,27110,Ganges_Bramaputra,South Asia,110,27,14483.0,South Asia,27.0,FodderHerb,FodderHerbC4,110.0,irr,0.0,,SSP1
+569,27116,Bay_of_Bengal_North_East_Coast,South Asia,116,27,7203.0,South Asia,27.0,FodderHerb,FodderHerbC4,116.0,rfd,0.0,,SSP1
+570,27116,Bay_of_Bengal_North_East_Coast,South Asia,116,27,14484.0,South Asia,27.0,FodderHerb,FodderHerbC4,116.0,irr,0.0,,SSP1
+571,27154,Sri_Lanka,South Asia,154,27,7204.0,South Asia,27.0,FodderHerb,FodderHerbC4,154.0,rfd,0.0,,SSP1
+572,27154,Sri_Lanka,South Asia,154,27,14485.0,South Asia,27.0,FodderHerb,FodderHerbC4,154.0,irr,0.0,,SSP1
+573,28065,North_and_South_Korea,South Korea,65,28,7215.0,South Korea,28.0,FodderHerb,FodderHerbC4,65.0,rfd,0.0,,SSP1
+574,28065,North_and_South_Korea,South Korea,65,28,14496.0,South Korea,28.0,FodderHerb,FodderHerbC4,65.0,irr,0.0,,SSP1
+575,29037,Russia_South_East_Coast,Southeast Asia,37,29,7221.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,37.0,rfd,0.0,,SSP1
+576,29037,Russia_South_East_Coast,Southeast Asia,37,29,14502.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,37.0,irr,0.0,,SSP1
+577,29065,North_and_South_Korea,Southeast Asia,65,29,7222.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,65.0,rfd,0.0,,SSP1
+578,29065,North_and_South_Korea,Southeast Asia,65,29,14503.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,65.0,irr,0.0,,SSP1
+579,29066,Bo_Hai_Korean_Bay_North_Coast,Southeast Asia,66,29,7223.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,66.0,rfd,0.0,,SSP1
+580,29066,Bo_Hai_Korean_Bay_North_Coast,Southeast Asia,66,29,14504.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,66.0,irr,0.0,,SSP1
+581,29108,Xun_Jiang,Southeast Asia,108,29,7224.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,108.0,rfd,0.0,,SSP1
+582,29108,Xun_Jiang,Southeast Asia,108,29,14505.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,108.0,irr,0.0,,SSP1
+583,29109,Hong_(Red_River),Southeast Asia,109,29,7225.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,109.0,rfd,0.0,,SSP1
+584,29109,Hong_(Red_River),Southeast Asia,109,29,14506.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,109.0,irr,0.0,,SSP1
+585,29110,Ganges_Bramaputra,Southeast Asia,110,29,7226.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,110.0,rfd,0.0,,SSP1
+586,29110,Ganges_Bramaputra,Southeast Asia,110,29,14507.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,110.0,irr,0.0,,SSP1
+587,29112,South_China_Sea_Coast,Southeast Asia,112,29,7227.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,112.0,rfd,0.0,,SSP1
+588,29112,South_China_Sea_Coast,Southeast Asia,112,29,14508.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,112.0,irr,0.0,,SSP1
+589,29116,Bay_of_Bengal_North_East_Coast,Southeast Asia,116,29,7228.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,116.0,rfd,0.0,,SSP1
+590,29116,Bay_of_Bengal_North_East_Coast,Southeast Asia,116,29,14509.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,116.0,irr,0.0,,SSP1
+591,29119,Philippines,Southeast Asia,119,29,7229.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,119.0,rfd,0.0,,SSP1
+592,29119,Philippines,Southeast Asia,119,29,14510.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,119.0,irr,0.0,,SSP1
+593,29121,North_Marina_Islands_and_Guam,Southeast Asia,121,29,,,,,,,,,,
+594,29125,Mekong,Southeast Asia,125,29,7230.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,125.0,rfd,0.0,,SSP1
+595,29125,Mekong,Southeast Asia,125,29,14511.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,125.0,irr,0.0,,SSP1
+596,29126,Viet_Nam_Coast,Southeast Asia,126,29,7231.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,126.0,rfd,0.0,,SSP1
+597,29126,Viet_Nam_Coast,Southeast Asia,126,29,14512.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,126.0,irr,0.0,,SSP1
+598,29127,Salween,Southeast Asia,127,29,7232.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,127.0,rfd,0.0,,SSP1
+599,29127,Salween,Southeast Asia,127,29,14513.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,127.0,irr,0.0,,SSP1
+600,29137,Irrawaddy,Southeast Asia,137,29,7233.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,137.0,rfd,0.0,,SSP1
+601,29137,Irrawaddy,Southeast Asia,137,29,14514.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,137.0,irr,0.0,,SSP1
+602,29138,Sittang,Southeast Asia,138,29,7234.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,138.0,rfd,0.0,,SSP1
+603,29138,Sittang,Southeast Asia,138,29,14515.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,138.0,irr,0.0,,SSP1
+604,29139,Peninsula_Malaysia,Southeast Asia,139,29,7235.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,139.0,rfd,0.0,,SSP1
+605,29139,Peninsula_Malaysia,Southeast Asia,139,29,14516.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,139.0,irr,0.0,,SSP1
+606,29146,Chao_Phraya,Southeast Asia,146,29,7236.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,146.0,rfd,0.0,,SSP1
+607,29146,Chao_Phraya,Southeast Asia,146,29,14517.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,146.0,irr,0.0,,SSP1
+608,29148,Gulf_of_Thailand_Coast,Southeast Asia,148,29,7237.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,148.0,rfd,0.0,,SSP1
+609,29148,Gulf_of_Thailand_Coast,Southeast Asia,148,29,14518.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,148.0,irr,0.0,,SSP1
+610,29150,Micronesia,Southeast Asia,150,29,,,,,,,,,,
+611,29158,Palau_and_East_Indonesia,Southeast Asia,158,29,7238.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,158.0,rfd,0.0,,SSP1
+612,29158,Palau_and_East_Indonesia,Southeast Asia,158,29,14519.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,158.0,irr,0.0,,SSP1
+613,29159,North_Borneo_Coast,Southeast Asia,159,29,7239.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,159.0,rfd,0.0,,SSP1
+614,29159,North_Borneo_Coast,Southeast Asia,159,29,14520.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,159.0,irr,0.0,,SSP1
+615,29163,Sumatra,Southeast Asia,163,29,,,,,,,,,,
+616,29165,Kalimantan,Southeast Asia,165,29,7240.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,165.0,rfd,0.0,,SSP1
+617,29165,Kalimantan,Southeast Asia,165,29,14521.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,165.0,irr,0.0,,SSP1
+618,29167,Irian_Jaya_Coast,Southeast Asia,167,29,7241.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,167.0,rfd,0.0,,SSP1
+619,29167,Irian_Jaya_Coast,Southeast Asia,167,29,14522.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,167.0,irr,0.0,,SSP1
+620,29173,Papua_New_Guinea_Coast,Southeast Asia,173,29,7242.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,173.0,rfd,0.0,,SSP1
+621,29173,Papua_New_Guinea_Coast,Southeast Asia,173,29,14523.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,173.0,irr,0.0,,SSP1
+622,29175,Java_Timor,Southeast Asia,175,29,7243.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,175.0,rfd,0.0,,SSP1
+623,29175,Java_Timor,Southeast Asia,175,29,14524.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,175.0,irr,0.0,,SSP1
+624,29176,Solomon_Islands,Southeast Asia,176,29,,,,,,,,,,
+625,29177,Madagascar,Southeast Asia,177,29,,,,,,,,,,
+626,29178,Sepik,Southeast Asia,178,29,7244.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,178.0,rfd,0.0,,SSP1
+627,29178,Sepik,Southeast Asia,178,29,14525.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,178.0,irr,0.0,,SSP1
+628,29181,Fly,Southeast Asia,181,29,7245.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,181.0,rfd,0.0,,SSP1
+629,29181,Fly,Southeast Asia,181,29,14526.0,Southeast Asia,29.0,FodderHerb,FodderHerbC4,181.0,irr,0.0,,SSP1
+630,29185,South_Pacific_Islands,Southeast Asia,185,29,,,,,,,,,,
+631,29189,Australia_East_Coast,Southeast Asia,189,29,,,,,,,,,,
+632,30078,China_Coast,Taiwan,78,30,,,,,,,,,,
+633,30103,Taiwan,Taiwan,103,30,,,,,,,,,,
+634,31169,South_Chile_Pacific_Coast,Argentina,169,31,6147.0,Argentina,31.0,FodderHerb,FodderHerbC4,169.0,rfd,0.0,,SSP1
+635,31169,South_Chile_Pacific_Coast,Argentina,169,31,13428.0,Argentina,31.0,FodderHerb,FodderHerbC4,169.0,irr,0.0,,SSP1
+636,31200,La_Puna_Region,Argentina,200,31,,,,,,,,,,
+637,31203,Mar_Chiquita,Argentina,203,31,6148.0,Argentina,31.0,FodderHerb,FodderHerbC4,203.0,rfd,0.0,,SSP1
+638,31203,Mar_Chiquita,Argentina,203,31,13429.0,Argentina,31.0,FodderHerb,FodderHerbC4,203.0,irr,0.0,,SSP1
+639,31205,Salinas_Grandes,Argentina,205,31,6149.0,Argentina,31.0,FodderHerb,FodderHerbC4,205.0,rfd,0.0,,SSP1
+640,31205,Salinas_Grandes,Argentina,205,31,13430.0,Argentina,31.0,FodderHerb,FodderHerbC4,205.0,irr,0.0,,SSP1
+641,31206,La_Plata,Argentina,206,31,6150.0,Argentina,31.0,FodderHerb,FodderHerbC4,206.0,rfd,0.0,,SSP1
+642,31206,La_Plata,Argentina,206,31,13431.0,Argentina,31.0,FodderHerb,FodderHerbC4,206.0,irr,0.0,,SSP1
+643,31207,North_Chile_Pacific_Coast,Argentina,207,31,,,,,,,,,,
+644,31209,Pampas_Region,Argentina,209,31,6151.0,Argentina,31.0,FodderHerb,FodderHerbC4,209.0,rfd,0.0,,SSP1
+645,31209,Pampas_Region,Argentina,209,31,13432.0,Argentina,31.0,FodderHerb,FodderHerbC4,209.0,irr,0.0,,SSP1
+646,31210,North_Argentina_South_Atlantic_Coast,Argentina,210,31,6152.0,Argentina,31.0,FodderHerb,FodderHerbC4,210.0,rfd,0.0,,SSP1
+647,31210,North_Argentina_South_Atlantic_Coast,Argentina,210,31,13433.0,Argentina,31.0,FodderHerb,FodderHerbC4,210.0,irr,0.0,,SSP1
+648,31212,South_America_Colorado,Argentina,212,31,6153.0,Argentina,31.0,FodderHerb,FodderHerbC4,212.0,rfd,0.0,,SSP1
+649,31212,South_America_Colorado,Argentina,212,31,13434.0,Argentina,31.0,FodderHerb,FodderHerbC4,212.0,irr,0.0,,SSP1
+650,31213,Negro,Argentina,213,31,6154.0,Argentina,31.0,FodderHerb,FodderHerbC4,213.0,rfd,0.0,,SSP1
+651,31213,Negro,Argentina,213,31,13435.0,Argentina,31.0,FodderHerb,FodderHerbC4,213.0,irr,0.0,,SSP1
+652,31214,Central_Patagonia_Highlands,Argentina,214,31,,,,,,,,,,
+653,31215,South_Argentina_South_Atlantic_Coast,Argentina,215,31,6155.0,Argentina,31.0,FodderHerb,FodderHerbC4,215.0,rfd,0.0,,SSP1
+654,31215,South_Argentina_South_Atlantic_Coast,Argentina,215,31,13436.0,Argentina,31.0,FodderHerb,FodderHerbC4,215.0,irr,0.0,,SSP1
+655,32135,Southern_Central_America,Colombia,135,32,,,,,,,,,,
+656,32143,Caribbean_Coast,Colombia,143,32,,,,,,,,,,
+657,32156,Orinoco,Colombia,156,32,,,,,,,,,,
+658,32157,Colombia_Ecuador_Pacific_Coast,Colombia,157,32,,,,,,,,,,
+659,32166,Magdalena,Colombia,166,32,,,,,,,,,,
+660,32168,Amazon,Colombia,168,32,,,,,,,,,,

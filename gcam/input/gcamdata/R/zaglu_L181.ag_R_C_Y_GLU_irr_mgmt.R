@@ -146,7 +146,7 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
     print(L181.ag_kgbioha_R_C_Y_GLU_irr_level)
 
     L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
-      write.csv('./inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_baseline_yield_low.csv')
+      write.csv('./inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_yield_various.csv')
 
     L181.ag_kgbioha_R_C_Y_GLU_irr_level %>% select(-kg_P_ha) -> L181.ag_kgbioha_R_C_Y_GLU_irr_level
 
