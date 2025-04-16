@@ -793,18 +793,25 @@ def avd_soil_emissions(row, product_column, modification_column):
     :param modification_column: the column with data to be changed
     :return: the amount of net C that is sequestered
     """
-    if row[product_column] in ["CH4_AGR"]:
-        temp = row[modification_column] / .9967  # counterfactual for full GHG emissions (parameter from ncomms spreadsheet)
-        temp = temp * (1-.9967) * -23  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
-        return temp
-    elif row[product_column] in ["N2O_AGR"]:
+    if row['Version'] == "HighBiocharSoilN2O":
         temp = row[
-                   modification_column] / .9750  # counterfactual for full GHG emissions (parameter from ncomms spreadsheet)
+                   modification_column] / .54  # counterfactual for full GHG emissions (parameter from ncomms spreadsheet)
         temp = temp * (
-                    1 - .9750) * -296  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
+                1 - .54) * -296  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
+        return temp
+    elif row['Version'] == "LowBiocharSoilN2O":
+        temp = row[
+                   modification_column] / 1.39  # counterfactual for full GHG emissions (parameter from ncomms spreadsheet)
+        temp = temp * (
+                1 - 1.39) * -296  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
         return temp
     else:
-        return 0
+        temp = row[
+                   modification_column] / .98  # counterfactual for full GHG emissions (parameter from ncomms spreadsheet)
+        temp = temp * (
+                    1 - .98) * -296  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
+        return temp
+
 
 
 def relabel_feeds(row):
@@ -856,7 +863,7 @@ def get_CI(dataframe, products, alpha=0.95):
     produce a confidence interval (defaults to 95%), returning the mean, median, and mode for each unique product in a column
     :param dataframe: dataframe with all the necessary data
     :param products: column of pandas dataf
-    :return: a dataframe containing the min, mean, and max for each product for all valid years
+    :return: a dataframe containing the min, median, and max for each product for all valid years
     """
     unique_products = dataframe[products].unique()
     lmu = pd.DataFrame(columns=dataframe.columns)
@@ -872,16 +879,17 @@ def get_CI(dataframe, products, alpha=0.95):
         for j in c.GCAMConstants.x:
             np_data = data[str(j)].dropna().values  # get data for a particular year
             sMu = np.mean(np_data)
+            median = np.median(np_data)
             sem = stats.sem(np_data)
             n = len(np_data)
             df = n - 1
             lower, upper = stats.t.interval(alpha, df=df, loc=sMu, scale=sem)  # confidence interval with equal areas around the mean
 
             # add lower, mean, upper to output dataframe
-            output_vals[str(j)] = [lower, sMu, upper]
+            output_vals[str(j)] = [lower, median, upper]
 
         # add lower level low mean upper dataframe to higher level one
         lmu = pd.concat([lmu, output_vals])
 
     # add the returned dataframe to the original frame as appended rows
-    return pd.concat([dataframe, lmu])
+    return lmu
