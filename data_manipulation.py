@@ -787,7 +787,7 @@ def ghg_ER(row, product_column, modification_column):
 
 def avd_soil_emissions(row, product_column, modification_column):
     """
-    calculates the avoided soil CH4 emissions from soil
+    calculates the avoided soil N2O emissions from biochar
     :param row: the row of the dataframe being changed
     :param product_column: the column containing the identifying product
     :param modification_column: the column with data to be changed
@@ -811,7 +811,6 @@ def avd_soil_emissions(row, product_column, modification_column):
         temp = temp * (
                     1 - .98) * -296  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
         return temp
-
 
 
 def relabel_feeds(row):

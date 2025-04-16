@@ -651,9 +651,14 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
                     # TODO: plot shaded regions
 
                     # get line of data to plot and plot it
-                    y_to_plot = y.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
+                    lower = y.values.tolist()[0][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
+                        c.GCAMConstants.biochar_x)]
+                    y_to_plot = y.values.tolist()[1][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
                         c.GCAMConstants.biochar_x)]  # only take the x values
+                    upper = y.values.tolist()[2][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
+                        c.GCAMConstants.biochar_x)]
                     plot_line_on_axs(c.GCAMConstants.biochar_x, y_to_plot, str(i), color, axs, nrow, ncol, counter)
+                    axs[0].fill_between(c.GCAMConstants.biochar_x, lower, upper, color=color, alpha = 0.2)
 
                     # get units
                     units = y['Units'].unique()[0]
