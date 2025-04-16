@@ -119,13 +119,15 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
     P_P2O5 = 2.2951
 
     # [kg K2O/kg K]*[kg K/ kg crop] / [kg K2O / kg biochar] = kg biochar/kg crop
+    # kg/biochar/kg crop * kg K2O/kg biochar * kg K/kg K2O = kg K/kg crop
     L181.ag_recPK_IO_R_C_Y_CLU_irr_biochar %>%
       left_join(L142.ag_Fert_IO_R_C_Y_GLU_biochar, by=c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU", "year")) %>%
-      mutate(kg_biochar_kg_crop_P_limit = K_K2O*kg_K_kg_crop/rep_K2O,# above dimensional analysis
-             kg_biochar_kg_crop_K_limit = P_P2O5*kg_P_kg_crop/rep_P2O5, # above dimensional analysis
+      mutate(kg_biochar_kg_crop_K_limit = K_K2O*kg_K_kg_crop/rep_K2O,# above dimensional analysis
+             kg_biochar_kg_crop_P_limit = P_P2O5*kg_P_kg_crop/rep_P2O5, # above dimensional analysis
              kg_biochar_kg_crop_limited_recommended = pmin(kg_biochar_kg_crop_K_limit, kg_biochar_kg_crop_P_limit),# choose whatever nutrient limits first
-             kg_biochar_kg_crop = pmax(kg_biochar_kg_crop_limited_recommended, kg_biochar_kg_crop_limited)) %>%  # choose the higher number between the recommended and the actual
-      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, kg_biochar_kg_crop) %>% distinct() ->
+             kg_biochar_kg_crop = pmax(kg_biochar_kg_crop_limited_recommended, kg_biochar_kg_crop_limited), # choose the higher number between the recommended and the actual
+             kg_P_kg_crop_biochar_limited = kg_biochar_kg_crop * rep_P2O5/P_P2O5) %>% # convert recommended biochar amount back to P amount
+      select(GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, kg_biochar_kg_crop, kg_P_kg_crop_biochar_limited) %>% distinct() ->
       L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU
 
     #calculate biochar application rates - this is calculated before the yield increases induced by biochar
@@ -135,16 +137,18 @@ module_aglu_L181.ag_R_C_Y_GLU_irr_mgmt <- function(command, ...) {
       left_join_error_no_match(GCAM_region_names, by=c("GCAM_region_ID")) %>%
       mutate(AgSupplySector = GCAM_commodity) %>%
       left_join(L181.ag_C_GLU_kgbiochar_kgcrop_R_C_Y_GLU, by = c("GCAM_region_ID", "GCAM_commodity", "GCAM_subsector", "GLU")) %>%
-      mutate(kg_bio_ha = value*kg_biochar_kg_crop*CONV_HA_M2) %>%
+      mutate(kg_bio_ha = value*kg_biochar_kg_crop*CONV_HA_M2,
+             kg_P_ha = value*kg_P_kg_crop_biochar_limited*CONV_HA_M2) %>%
       replace_na(list(kg_bio_ha = 0)) %>%
-      select(region, GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, kg_bio_ha)->
+      select(region, GCAM_region_ID, GCAM_commodity, GCAM_subsector, GLU, Irr_Rfd, kg_bio_ha, kg_P_ha)->
       L181.ag_kgbioha_R_C_Y_GLU_irr_level
 
     print(L181.ag_kgbioha_R_C_Y_GLU_irr_level)
 
-
     L181.ag_kgbioha_R_C_Y_GLU_irr_level %>%
-      write.csv('./inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_baseline_yield.csv')
+      write.csv('./inst/extdata/aglu/A_ag_kgbioha_R_C_Y_GLU_irr_level_baseline_yield_low.csv')
+
+    L181.ag_kgbioha_R_C_Y_GLU_irr_level %>% select(-kg_P_ha) -> L181.ag_kgbioha_R_C_Y_GLU_irr_level
 
     L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_level %>% filter(level!="biochar") ->
       L181.ag_EcYield_kgm2_R_C_Y_GLU_irr_lohi

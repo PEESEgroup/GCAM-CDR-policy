@@ -872,23 +872,25 @@ def get_CI(dataframe, products, alpha=0.95):
 
         # copy 3 rows over to lmu
         output_vals = data.head(3).copy(deep=True)
-        output_vals["Version"] = ["Lower CI", "Median", "Upper CI"]
 
-        # solve the CI for each year
-        for j in c.GCAMConstants.x:
-            np_data = data[str(j)].dropna().values  # get data for a particular year
-            sMu = np.mean(np_data)
-            median = np.median(np_data)
-            sem = stats.sem(np_data)
-            n = len(np_data)
-            df = n - 1
-            lower, upper = stats.t.interval(alpha, df=df, loc=sMu, scale=sem)  # confidence interval with equal areas around the mean
+        if len(output_vals) == 3:
+            output_vals["Version"] = ["Lower CI", "Median", "Upper CI"]
 
-            # add lower, mean, upper to output dataframe
-            output_vals[str(j)] = [lower, median, upper]
+            # solve the CI for each year
+            for j in c.GCAMConstants.x:
+                np_data = data[str(j)].dropna().values  # get data for a particular year
+                sMu = np.mean(np_data)
+                median = np.median(np_data)
+                sem = stats.sem(np_data)
+                n = len(np_data)
+                df = n - 1
+                lower, upper = stats.t.interval(alpha, df=df, loc=sMu, scale=sem)  # confidence interval with equal areas around the mean
 
-        # add lower level low mean upper dataframe to higher level one
-        lmu = pd.concat([lmu, output_vals])
+                # add lower, mean, upper to output dataframe
+                output_vals[str(j)] = [lower, median, upper]
+
+            # add lower level low mean upper dataframe to higher level one
+            lmu = pd.concat([lmu, output_vals])
 
     # add the returned dataframe to the original frame as appended rows
     return lmu

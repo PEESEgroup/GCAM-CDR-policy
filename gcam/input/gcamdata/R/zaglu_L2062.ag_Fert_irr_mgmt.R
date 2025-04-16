@@ -424,7 +424,7 @@ module_aglu_L2062.ag_Fert_irr_mgmt <- function(command, ...) {
     L2062.AgCoef_Fert_ag_irr_mgmt %>%
       left_join(L181.ag_kgbioha_R_C_Y_GLU_irr_level, by=c("region", "AgSupplySector", "AgSupplySubsector", "AgProductionTechnology")) %>%
       replace_na(list(kg_bio_ha = 0)) %>% # replace NA with 0 - will exclude based on logic in following line of code
-      mutate(coefficient = if_else(grepl("biochar", AgProductionTechnology) & (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE) & (minicam.energy.input == "N fertilizer"), coefficient*(1-0.58), coefficient)) %>%
+      mutate(coefficient = if_else(grepl("biochar", AgProductionTechnology) & (kg_bio_ha > aglu.BIOCHAR_LOWER_APP_RATE) & (minicam.energy.input == "N fertilizer"), coefficient*0.5, coefficient)) %>%
       select(-kg_bio_ha)->
       L2062.AgCoef_Fert_ag_irr_mgmt
 
