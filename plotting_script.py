@@ -538,47 +538,56 @@ def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year for biochar/carbon prices to be evaluated and plotted
     :return: N/A
     """
-    #TODO: increase text size for all figures
     # get calorie data
     released_Pcal = data_manipulation.get_sensitivity_data(["released"], "food_consumption_by_type_specific", SSP,
                                                            RCP=RCP, source="original")
     pyrolysis_Pcal = data_manipulation.get_sensitivity_data(nonBaselineScenario, "food_consumption_by_type_specific",
                                                             SSP, RCP=RCP, source="masked")
 
-    # flat_diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal,
-    #                                                    ["GCAM", "SSP", "subsector", "subsector.1",
-    #                                                     "technology"]).drop_duplicates()
-    # perc_diff_Pcal = data_manipulation.percent_difference(released_Pcal, pyrolysis_Pcal,
-    #                                                       ["GCAM", "SSP", "subsector", "subsector.1",
-    #                                                        "technology"]).drop_duplicates()
-    #
-    # # calculate difference
-    # flat_diff_Pcal['technology'] = flat_diff_Pcal.apply(
-    #     lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
-    # flat_diff_Pcal['GCAM'] = flat_diff_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
-    # perc_diff_Pcal['technology'] = perc_diff_Pcal.apply(
-    #     lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
-    # flat_diff_Pcal_plotting = flat_diff_Pcal[~flat_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
-    # perc_diff_Pcal_plotting = perc_diff_Pcal[~perc_diff_Pcal[['GCAM']].isin(["Global"]).any(axis=1)]
-    #
-    # # plotting graphs
-    # perc_diff_Pcal_plotting.loc[:,'Units'] = "change in Pcals consumed (%)"
-    # plotting.plot_regional_hist_avg(perc_diff_Pcal_plotting, biochar_year, SSP, "count region-foodstuff",
-    #                                 "Percent difference in Pcals consumed in pyrolysis and reference scenario in " + biochar_year,
-    #                                 "technology", "na", RCP, nonBaselineScenario)
-    #
-    # plotting.plot_regional_vertical_avg(flat_diff_Pcal_plotting, biochar_year, SSP,
-    #                                     "change in food demand (Pcal)",
-    #                                     "change in food demand in " + biochar_year + " in " + str(SSP[0]),
-    #                                     "technology", "", RCP, nonBaselineScenario)
-    # # at a higher level of aggregation
-    # flat_diff_Pcal_plotting = data_manipulation.group(flat_diff_Pcal_plotting, ["GCAM", "subsector"])
-    # flat_diff_Pcal_plotting['subsector'] = flat_diff_Pcal_plotting.apply(
-    #     lambda row: data_manipulation.relabel_food(row, "subsector"), axis=1)
-    # plotting.plot_regional_vertical_avg(flat_diff_Pcal_plotting, biochar_year, SSP,
-    #                                     "change in food demand (Pcal)",
-    #                                     "change in food demand in " + biochar_year + " in subsector " + str(SSP[0]),
-    #                                     "subsector", "", RCP, nonBaselineScenario)
+    flat_diff_Pcal = data_manipulation.flat_difference(released_Pcal, pyrolysis_Pcal,
+                                                       ["GCAM", "SSP", "subsector", "subsector.1",
+                                                        "technology"]).drop_duplicates()
+    perc_diff_Pcal = data_manipulation.percent_difference(released_Pcal, pyrolysis_Pcal,
+                                                          ["GCAM", "SSP", "subsector", "subsector.1",
+                                                           "technology"]).drop_duplicates()
+
+    # calculate difference
+    # at a higher level of aggregation
+    flat_diff_Pcal_plotting = data_manipulation.group(flat_diff_Pcal, ["GCAM", "subsector", "Version"])
+    flat_diff_Pcal_plotting['subsector'] = flat_diff_Pcal_plotting.apply(
+        lambda row: data_manipulation.relabel_food(row, "subsector"), axis=1)
+    flat_diff_Pcal_plotting['GCAM'] = flat_diff_Pcal_plotting.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    perc_diff_Pcal['technology'] = perc_diff_Pcal.apply(
+        lambda row: data_manipulation.relabel_food(row, "technology"), axis=1)
+    perc_diff_Pcal['GCAM'] = perc_diff_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
+    flat_diff_Pcal_plotting["categorization"] = flat_diff_Pcal_plotting["GCAM"] + flat_diff_Pcal_plotting["subsector"]
+    perc_diff_Pcal["categorization"] = perc_diff_Pcal["GCAM"] + perc_diff_Pcal["technology"]
+
+    # turn into CI data
+    flat_diff_Pcal_plotting = data_manipulation.get_CI(flat_diff_Pcal_plotting, "categorization")
+    CI_perc_diff_Pcal_plotting = data_manipulation.get_CI(perc_diff_Pcal, "categorization")
+
+    data_manipulation.drop_missing(flat_diff_Pcal_plotting).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(
+            RCP) + "/CI_change_in_pcals.csv")
+
+    data_manipulation.drop_missing(CI_perc_diff_Pcal_plotting).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(
+            RCP) + "/CI_perc_change_in_pcals.csv")
+
+    perc_diff_Pcal = perc_diff_Pcal[perc_diff_Pcal[biochar_year] < 4]
+    perc_diff_Pcal = perc_diff_Pcal[perc_diff_Pcal[biochar_year] > -4]
+
+    # plotting graphs
+    perc_diff_Pcal["Units"] = "Change in Pcals consumed compared to reference scenario (%)"
+    plotting.plot_regional_hist_avg(perc_diff_Pcal, biochar_year, SSP, "count region-scenario combinations",
+                                    "outlier removed Percent difference in Pcals consumed in pyrolysis and reference scenario in " + biochar_year,
+                                    "technology", "na", RCP, nonBaselineScenario)
+
+    plotting.plot_regional_vertical_avg(flat_diff_Pcal_plotting, biochar_year, SSP,
+                                        "change in food demand (Pcal)",
+                                        "change in food demand in " + biochar_year + " in subsector " + str(SSP[0]),
+                                        "subsector", "", RCP, nonBaselineScenario)
 
     # change in food prices
     # get data
@@ -606,9 +615,9 @@ def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
     pyrolysis_Pcal['GCAM'] = pyrolysis_Pcal.apply(lambda row: data_manipulation.relabel_region(row), axis=1)
 
     # merge together
-    released_Pcal_cost = pd.merge(released_staple_expenditure, released_Pcal, on=["GCAM", "input"],
+    released_Pcal_cost = pd.merge(released_staple_expenditure, released_Pcal, on=["GCAM", "input", "Version"],
                                   suffixes=("_cost", "_pcal"))
-    pyrolsis_Pcal_cost = pd.merge(pyrolysis_staple_expenditure, pyrolysis_Pcal, on=["GCAM", "input"],
+    pyrolsis_Pcal_cost = pd.merge(pyrolysis_staple_expenditure, pyrolysis_Pcal, on=["GCAM", "input", "Version"],
                                   suffixes=("_cost", "_pcal"))
 
     for i in c.GCAMConstants.x:
@@ -633,19 +642,21 @@ def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
     perc_diff_food_staple_income = data_manipulation.percent_difference(released_Pcal_cost,
                                                                         pyrolsis_Pcal_cost,
                                                                         ["GCAM", "input"])
+    flat_diff_food_staple_income["cat"] = flat_diff_food_staple_income["GCAM"] + flat_diff_food_staple_income["input"]
+    perc_diff_food_staple_income["cat"] = perc_diff_food_staple_income["GCAM"] + perc_diff_food_staple_income["input"]
 
-    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
-    data_manipulation.drop_missing(flat_diff_food_staple_income).to_csv(
+
+    CI_flat_diff_cost = data_manipulation.get_CI(flat_diff_food_staple_income, "cat")
+    CI_perc_diff_cost = data_manipulation.get_CI(perc_diff_food_staple_income, "cat")
+    data_manipulation.drop_missing(CI_flat_diff_cost).to_csv(
         "data/data_analysis/supplementary_tables/" + str(
             RCP) + "/change_in_food_prices.csv")
-    # TODO: calculate CI low, high, median values and report, in addition to all scenario data
-    data_manipulation.drop_missing(perc_diff_food_staple_income).to_csv(
+    data_manipulation.drop_missing(CI_perc_diff_cost).to_csv(
         "data/data_analysis/supplementary_tables/" + str(
             RCP) + "/percent_change_in_food_prices.csv")
 
     # plot results
-    # TODO: plot with CI stuff
-    plotting.plot_regional_vertical_avg(perc_diff_food_staple_income, biochar_year, SSP, "change in food prices (%)",
+    plotting.plot_regional_vertical_avg(CI_perc_diff_cost, biochar_year, SSP, "change in food prices (%)",
                                         "change in food prices in " + biochar_year + " in " + str(SSP[0]),
                                         "input", "", RCP, nonBaselineScenario)
 
@@ -905,7 +916,7 @@ def main():
     # figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
     # figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     # figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    # figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
     cue_figure(other_scenario, reference_RCP, reference_SSP, biochar_year)
 

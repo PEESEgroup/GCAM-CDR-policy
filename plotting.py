@@ -860,47 +860,22 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
     # plot for each SSP
     printing_str = ""
     for i in SSPs:
-        if supply == "":
-            dataframe = prices[prices['SSP'].str.contains(i)]
-            for idx, item in enumerate(dataframe[column].unique()):
-                df_price = dataframe.loc[dataframe[column] == str(item)]
-                # scatter points
-                global_avg = df_price[df_price[['GCAM']].isin(["Global"]).any(axis=1)]
-                df_price = df_price[~df_price[['GCAM']].isin(["Global"]).any(axis=1)]
+        dataframe = prices[prices['SSP'].str.contains(i)]
+        for idx, item in enumerate(dataframe[column].unique()):
+            df_price = dataframe.loc[dataframe[column] == str(item)]
 
-                plt.scatter(x=df_price["GCAM"], y=df_price[str(year)], color=colors[idx], label=str(item))
+            # scatter points
+            global_avg = df_price[df_price[['GCAM']].isin(["Global"]).any(axis=1)]
+            df_price = df_price[~df_price[['GCAM']].isin(["Global"]).any(axis=1)]
 
-                # averages
-                if global_avg.empty:
-                    plt.axhline(y=df_price[str(year)].mean(), color=colors[idx], linestyle='dashed')
-                else:
-                    plt.axhline(y=float(global_avg[str(year)]), color=colors[idx], linestyle='dashed')
-                printing_str = (printing_str + "average," + str(item) + "," + str(df_price[str(year)].mean()) + ", " +
-                                str(df_price["Units"].unique()[0] + "\n"))
+            df_lower = df_price[df_price["Version"] == "Lower CI"]
+            df_upper = df_price[df_price["Version"] == "Upper CI"]
+            df_median = df_price[df_price["Version"] == "Median"]
+            global_avg = global_avg[global_avg["Version"] == "Median"]
 
-            # output weighted averages
-            with open("data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(
-                    RCP) + "/weighted_averages" + title + ".csv", 'w') as csvFile:
-                csvFile.write(printing_str)
-        else:
-            dataframe = prices[prices['SSP'].str.contains(i)]
-            supply = supply[supply['SSP'].str.contains(i)]
-            for idx, item in enumerate(dataframe[column].unique()):
-                df_price = dataframe.loc[dataframe[column] == str(item)]
-                df_supply = supply.loc[supply[column] == str(item)]
-                # scatter points
-                plt.scatter(x=df_price["GCAM"], y=df_price[str(year)], color=colors[idx], label=str(item))
-
-                # averages
-                weighted_avg = pd.merge(df_price, df_supply, on=["GCAM"])
-                weighted_avg[str(year)] = weighted_avg[str(year) + "_x"] * weighted_avg[str(year) + "_y"]
-                plt.axhline(y=weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum(), color=colors[idx],
-                            linestyle='dashed')
-                printing_str = printing_str + "average," + str(item) + "," + str(weighted_avg[str(year)].sum() / weighted_avg[str(year) + "_y"].sum()) + ", " + str(weighted_avg["Units_left"].unique()[0] + "\n")
-
-            # output weighted averages
-            with open("data/data_analysis/supplementary_tables/" + str(nonBaselineScenario) + "/" + str(RCP) + "/weighted_averages" + title + ".csv", 'w') as csvFile:
-                csvFile.write(printing_str)
+            plt.scatter(x=df_median["GCAM"], y=df_median[str(year)], edgecolors=colors[idx], facecolors='none', label=str(item))
+            plt.scatter(x=df_lower["GCAM"], y=df_lower[str(year)], color=colors[idx], marker="*")
+            plt.scatter(x=df_upper["GCAM"], y=df_upper[str(year)], color=colors[idx], marker="x")
 
         # finalize plot
         plt.ylabel(y_label)
