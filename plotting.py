@@ -1152,7 +1152,7 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
     plt.ylim(-1, len(bars[column]))
     # plt.xlabel("change from released model in RCP " + str(RCP) + " (" + str(bars["Units"].unique()[0]) + ")")
     plt.subplots_adjust(left=.33, right=.98, bottom=.4)
-    plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(nonBaselineScenario[0]) + "/" + str(title) + ".png",
+    plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(title) + ".png",
                 dpi=300)
     plt.show()
 
