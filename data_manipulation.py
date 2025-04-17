@@ -721,14 +721,20 @@ def get_sensitivity_data(scenario_list, fname, SSPs, RCP="2p6", source="masked",
     return all_data
 
 
-def drop_missing(dataframe):
+def drop_missing(df, max_length=100):
     """
     drops columns that contain "missing" from the dataframe for cleaner output .csv files
-    :param dataframe: dataframe with columns to be removed
+    :param df: dataframe with columns to be removed
     :return:
     """
-    dataframe = dataframe[c.GCAMConstants.csv_columns]
-    return dataframe.loc[:, ~dataframe.apply(lambda col: col.astype(str).str.contains("missing")).any()]
+    columns_to_drop = []
+    for col in df.columns:
+        if df[col].dtype == 'object':  # Check if the column is of type string (object)
+            if any(df[col].astype(str).str.len() > max_length):
+                columns_to_drop.append(col)
+
+    df = df.drop(columns=columns_to_drop, axis=1)
+    return df
 
 
 def seq_C(row, product_column, modification_column):
