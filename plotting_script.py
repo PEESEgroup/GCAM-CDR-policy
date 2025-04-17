@@ -301,6 +301,9 @@ def figure3(nonBaselineScenario, RCP, SSP, biochar_year):
     biochar_supply = data_manipulation.group(biochar_supply, ["SSP", "Version"])
     biochar_supply["Units"] = "Supply of biochar (Mt)"
 
+    plotting.sensitivity(biochar_supply, RCP, nonBaselineScenario[0], biochar_year, "Units", "Version", nonBaselineScenario,
+                         title="biochar supply (Mt)")
+
     # frequency of biochar prices
     biochar_price = data_manipulation.get_sensitivity_data(nonBaselineScenario, "prices_of_all_markets", SSP, RCP=RCP,
                                                            source="masked")
@@ -791,11 +794,11 @@ def main():
                       "LowGCAMLandShare",
                       "LowGCAMManurePrice"]
     biochar_year = "2050"
-    # figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    # figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    # figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    # figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    # figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure6(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
 

@@ -1,5 +1,6 @@
 import geopandas as gpd
 import matplotlib.patches as patches
+import matplotlib.pyplot as plt
 from matplotlib.collections import PatchCollection
 import pandas as pd
 import os
@@ -1154,6 +1155,7 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
     plt.subplots_adjust(left=.33, right=.98, bottom=.4)
     plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(title) + ".png",
                 dpi=300)
+    plt.xlabel(title)
     plt.show()
 
 
