@@ -193,6 +193,31 @@ def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year being analyzed in detail
     :return: N/A
     """
+    # get CI for area of crop land with biochar application
+    CI_land_use = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP, RCP=RCP,
+                                                      source="masked",
+                                                      only_first_scenario=False)  # only take the first/baseline scenario
+
+    # get land use type information
+    CI_land_use[["Crop", "Basin", "IRR_RFD", "MGMT"]] = CI_land_use['LandLeaf'].str.split("_", expand=True)
+    CI_land_use["Crop"] = CI_land_use.apply(lambda row: data_manipulation.relabel_land_crops(row, "Crop"), axis=1)
+    # group land use by crop and management type
+    unit = CI_land_use.groupby(["Crop", "MGMT"]).first().reset_index()["Units"]
+    CI_land_use = CI_land_use.groupby(["Crop", "MGMT", "Version"]).sum(min_count=1)
+    CI_land_use = CI_land_use.reset_index()
+    CI_land_use['Units'] = unit
+    CI_land_use['MGMT'] = CI_land_use.apply(lambda row: data_manipulation.relabel_MGMT(row), axis=1)
+    CI_land_use["cat"] = CI_land_use["Crop"] + CI_land_use["MGMT"]
+
+    CI_land_use_global = CI_land_use.groupby(["MGMT", "Version"]).sum(min_count=1).reset_index() # group by management for global numbers
+    CI_land_use_crop = data_manipulation.get_CI(CI_land_use, "cat") # group by mgmt and crop for crop-specific numbers
+    CI_land_use_global = data_manipulation.get_CI(CI_land_use_global, "MGMT")
+    data_manipulation.drop_missing(CI_land_use_global).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/land_use_by_mgmt.csv")
+    data_manipulation.drop_missing(CI_land_use_crop).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(RCP) + "/land_use_by_mgmt_and_crop.csv")
+
+
     # biochar cropland application changes
     land_use = data_manipulation.get_sensitivity_data(nonBaselineScenario, "detailed_land_allocation", SSP, RCP=RCP,
                                                       source="masked",
@@ -237,8 +262,10 @@ def figure2(nonBaselineScenario, RCP, SSP, biochar_year):
             regional = land_for_alluvial[land_for_alluvial[['Region']].isin([gcam]).any(axis=1)]
             region_management_type = region_management_type + (str(usage) + ", " + str(gcam) + ", " +
                                                                str(len(regional[regional["Management"] == usage]) / len(
-                                                                   regional) * 100) + ",%\n")
+                                                                   regional) * 100) + ",%," +
+                                                               str(len(regional[regional["Management"] == usage])*scale_factor) + ",km2\n") # scale factor used to adjust units
     plotting.plot_alluvial(land_for_alluvial, biochar_year, base_year)
+
     # write out .csv data for different land management types
     with open("data/data_analysis/supplementary_tables/" + str(
             RCP) + "/regional_land_mgmt.csv", 'w') as csvFile:
@@ -522,7 +549,6 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     :param biochar_year: the year the biochar pathways are being evaluated
     :return: N/A
     """
-    # TODO: fix units for both
     # gather data and slice by product types
     released_supply = data_manipulation.get_sensitivity_data(["released"], "supply_of_all_markets", SSP, RCP=RCP,
                                                              source="original")
@@ -835,7 +861,7 @@ def main():
                       "LowGCAMManurePrice"]
     biochar_year = "2050"
     # figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    # figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
