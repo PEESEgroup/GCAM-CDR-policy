@@ -575,6 +575,9 @@ def figure4(nonBaselineScenario, RCP, SSP, biochar_year):
     perc_diff_feed_CI = data_manipulation.get_CI(perc_diff_feed, "categorization")
     perc_diff_animal_CI = data_manipulation.get_CI(perc_diff_animal, "categorization")
 
+    perc_diff_feed_CI["Units"] = "median change in feed supply compared to reference scenario (%)"
+    perc_diff_animal_CI["Units"] = "median change in\n herd size compared\n to reference scenario (%)"
+
     # plot figures on CI
     plotting.plot_world(perc_diff_feed_CI[perc_diff_feed_CI["Version"] == "Median"], perc_diff_feed_CI['product'].unique(), SSP, "product", "product", [biochar_year],
                         "CI for percentage change in animal feed by region in " + biochar_year, RCP, nonBaselineScenario)
@@ -877,10 +880,10 @@ def main():
                       "LowGCAMLandShare",
                       "LowGCAMManurePrice"]
     biochar_year = "2050"
-    # figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    #figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure6(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
