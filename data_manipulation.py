@@ -21,7 +21,7 @@ def flat_difference(old, new, columns):
         merged = merged.drop([str(i) + "_right"], axis=1)
 
     # update the version name
-    merged['Comparison'] = "change between " + merged.apply(lambda row: str_version(row), axis=1)
+    # merged['Comparison'] = "change between " + merged.apply(lambda row: str_version(row), axis=1)
 
     # fix the column names
     merged.columns = merged.columns.str.replace("_right", '')  # only label columns
@@ -50,7 +50,7 @@ def percent_difference(old, new, columns):
     merged = merged.drop(['Units_left'], axis=1)
     merged = merged.drop(['Units_right'], axis=1)
     merged['Units'] = '%'
-    merged['Comparison'] = "% change between " + merged.apply(lambda row: str_version(row), axis=1)
+    # merged['Comparison'] = "% change between " + merged.apply(lambda row: str_version(row), axis=1)
 
     # replace columns
     merged.columns = merged.columns.str.replace("_right", '')  # only label columns

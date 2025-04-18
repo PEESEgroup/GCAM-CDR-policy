@@ -643,6 +643,22 @@ def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
     flat_diff_Pcal_plotting = data_manipulation.get_CI(flat_diff_Pcal_plotting, "categorization")
     CI_perc_diff_Pcal_plotting = data_manipulation.get_CI(perc_diff_Pcal, "categorization")
 
+
+    released_Pcal_global = data_manipulation.group(released_Pcal, ["Version", "SSP"])
+    pyrolysis_Pcal_global = data_manipulation.group(pyrolysis_Pcal, ["Version", "SSP"])
+    flat_diff_Pcal_global = data_manipulation.flat_difference(released_Pcal_global, pyrolysis_Pcal_global, ["SSP"])
+    flat_diff_Pcal_global = data_manipulation.get_CI(flat_diff_Pcal_global, "SSP")
+    perc_diff_Pcal_global = data_manipulation.percent_difference(released_Pcal_global, pyrolysis_Pcal_global, ["SSP"])
+    perc_diff_Pcal_global = data_manipulation.get_CI(perc_diff_Pcal_global, "SSP")
+
+    data_manipulation.drop_missing(perc_diff_Pcal_global).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(
+            RCP) + "/global_CI_perc_change_in_pcals.csv")
+
+    data_manipulation.drop_missing(flat_diff_Pcal_global).to_csv(
+        "data/data_analysis/supplementary_tables/" + str(
+            RCP) + "/global_CI_change_in_pcals.csv")
+
     data_manipulation.drop_missing(flat_diff_Pcal_plotting).to_csv(
         "data/data_analysis/supplementary_tables/" + str(
             RCP) + "/CI_change_in_pcals.csv")
@@ -861,9 +877,9 @@ def main():
                       "LowGCAMManurePrice"]
     biochar_year = "2050"
     # figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
-    figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)
+    #figure4(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure5(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure6(other_scenario, reference_RCP, reference_SSP, biochar_year)
 
