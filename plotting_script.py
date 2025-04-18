@@ -721,8 +721,8 @@ def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
     # add global rows
     released_Pcal_cost.columns = released_Pcal_cost.columns.str.replace("_pcal", '')  # only label columns
     pyrolsis_Pcal_cost.columns = pyrolsis_Pcal_cost.columns.str.replace("_pcal", '')  # only label columns
-    released_Pcal_cost_global = released_Pcal_cost.groupby(["Version", 'input']).sum().reset_index().copy(deep=True)
-    pyrolsis_Pcal_cost_global = pyrolsis_Pcal_cost.groupby(["Version", 'input']).sum().reset_index().copy(deep=True)
+    released_Pcal_cost_global = released_Pcal_cost.groupby(["Version", 'input', "SSP"]).sum().reset_index().copy(deep=True)
+    pyrolsis_Pcal_cost_global = pyrolsis_Pcal_cost.groupby(["Version", 'input', "SSP"]).sum().reset_index().copy(deep=True)
     released_Pcal_cost_global["GCAM"] = "Global"
     pyrolsis_Pcal_cost_global["GCAM"] = "Global"
     released_Pcal_cost = pd.concat([released_Pcal_cost, released_Pcal_cost_global]).reset_index()
@@ -740,6 +740,7 @@ def figure5(nonBaselineScenario, RCP, SSP, biochar_year):
 
     CI_flat_diff_cost = data_manipulation.get_CI(flat_diff_food_staple_income, "cat")
     CI_perc_diff_cost = data_manipulation.get_CI(perc_diff_food_staple_income, "cat")
+
     data_manipulation.drop_missing(CI_flat_diff_cost).to_csv(
         "data/data_analysis/supplementary_tables/" + str(
             RCP) + "/change_in_food_prices.csv")
