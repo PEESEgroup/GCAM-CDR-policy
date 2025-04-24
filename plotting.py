@@ -49,7 +49,13 @@ def basin_data(data, column, title):
         merged = pd.merge(basins, crop, left_on=["glu_id", "reg_id"], right_on=["GLU","GCAM_region_ID"], how='left')
         merged = merged.replace(c.GCAMConstants.missing, np.nan)
 
-        subplot_title = title + " "  + str(i)
+        if str(i) == "SugarCropC4":
+            subplot_title = title + " "  + "Sugar Cane"
+        elif str(i) == "SugarCrop":
+            subplot_title = title + " " + "Sugar Beet and Sugar Crops"
+        else:
+            subplot_title = title + " "  + str(i)
+
         plot_world_on_axs(
             map_plot=merged,
             axs=axs,
