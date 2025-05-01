@@ -12,15 +12,16 @@ Global (32 GCAM regions)
 
 ## Files overview
 
-The root folder contains the Python scripts used in the study. There are nine Python scripts and two folders. Details of each file or folder is provided below:
+The root folder contains the Python scripts used in the study. There are ten Python scripts and three folders. Details of each file or folder is provided below:
 
-- data/: This folder contains four folders
+- data/: This folder contains three folders
   - data_analysis/: contains excel files for results calculations
-    - images/: contains images used to plot the data
+    - images/: contains images used in results plotting and in the supplemental information
+    - supplementary_tables/: contains supplementary data tables for biochar application rates
   - gcam_out/ contains the extracted data from the gcam xml db. 
     - /released/ contains the results from the reference version of the model. 
-    - /biochar/ contains the results from the pyrolysis versions of the model, with pyrolysis with land application modeled as an N fertilizer and bio-oil as a secondary output. 
-    - /test/ models bio-oil as primary output with no application of biochar 
+    - /<scenario-name>/ contains the results for each named scenario in the sensitivity analysis.  
+    - /test/ is a folder for analyzing results from unnamed scenarios as part of the development process
       - The next subfolder level for all 3 extracted models is the RCP pathway
         - /masked/ contains the masked data where years with model errors are removed from data analysis
         - /original/ contains the original data extracted from the GCAM database
@@ -28,8 +29,8 @@ The root folder contains the Python scripts used in the study. There are nine Py
         - mask_log.txt contains the list of errors found in the model output
   - maps/ contains map shapefiles for plotting
 - gcam/: contains the modified files in the GCAM model. These consist of modifications to R files and input .csv files. Due to their size, the xml config files are not included - instructions for generating them are given below. This is intended to supplement the v7.1 release, and does not contain all necessary files to run the GCAM model. Please install the GCAM model following the instructions in the installation section of this document.
+- gcam/input/biochar_land_R/: contains input data files modified for the various scenarios, as well as lists of parameters duplicated in the supplemental information.
 - xml/ contains a list of xml queries used to query the GCAM xml db. These only need to be modified if you have a different output folder name.
-- biochar_application_rate.py - for nutrient application rate calculations
 - check_IO_coef.py checks to ensure that primary and secondary output coefficients are valid to check post-hoc for modeling errors, and remove that data from any subsequent analysis
 - constants.py contains a list of constants for use in the project, including the locations for extracting data from the gcam xml db
 - data_manipulation.py contains common data manipulation functions for the project
@@ -39,7 +40,6 @@ The root folder contains the Python scripts used in the study. There are nine Py
 - process_GCAM_data.py splits the single .csv file returned from the gcam xml db and splits it by query
 - produce_regional_queries.py converts an .xml file with global queries for the gcam model and makes a query for every region. the gcam xml db does not disaggregate global queries by region
 - read_GCAM_DB.py reads data from the gcam xml db.
-- stats.py conducts statistics on price linkages between sectors. This code is not used in any of the publications.
 - supplementary_figures.py conducts additional analysis, much like plotting_script.py
 
 ## Requirements
@@ -47,20 +47,23 @@ The root folder contains the Python scripts used in the study. There are nine Py
 To run the codes in this repository, the following Python and core package versions must be installed:
 
     pandas~=2.2.1
-    statsmodels~=0.14.1
     geopandas~=0.14.3
     matplotlib~=3.8.3
-    scipy~=1.12.0
     numpy~=1.26.4
-    GCAM model version 7.0
+    plotly~=5.24.1
+
+    Python ~ 3.11
+    GCAM model version 7.1
 
 ## Installation Guide and Running a Demo
 
-The GCAM model was run on a HP Pavilion Desktop TP01-3xxx using Microsoft Windows 11 Home, with 64GB of RAM. A typical model run will take ~1 day to run when using the SSP pathways, or ~30 minutes otherwise. Model errors in intermediate steps are common.
+Recommended installation is from the zenodo link here: TBD.
+
+The GCAM model was run on a HP Pavilion Desktop TP01-3xxx using Microsoft Windows 11 Home, with 64GB of RAM. A typical model run will take ~30 minutes to run when using the SSP baseline pathways, expect errors or durations of ~1 day for other SSP/RCP pathways. Model errors in intermediate steps are common.
 
 Users are expected to be proficient in computer software, include the R and Python programming languages, as well as the structure of xml files.
 
-To reproduce the figures, run plotting_script.py. Feel free to use the existing data and methods as examples to draw new figures.
+To reproduce the figures in the main manuscript and all data files to produce the figures, run plotting_script.py. Feel free to use the existing data and methods as examples to draw new figures.
 
 To reproduce the GCAM model config xml files, download the GCAM model (http://jgcri.github.io/gcam-doc/index.html). Then, copy over the modified config files contained in this repository to the same location in the JCGRI GCAM project directory.
 
