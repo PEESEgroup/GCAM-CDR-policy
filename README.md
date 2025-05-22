@@ -1,7 +1,6 @@
 # Manure Pyrolysis IAM
 
-This study uses the Global Change Analysis Model (GCAM) integrated assessment model (IAM) to analyze the impact on food, energy, land use, and climate sectors from the introduction of pyrolysis of animal manures in 2050. The project has 2 folders:
-
+This study uses the Global Change Analysis Model (GCAM) integrated assessment model (IAM) to analyze the cost and CDR potential of various CDR technologies under many policy scenarios in the US from 2020 to 2050
     data
     gcam
     xml

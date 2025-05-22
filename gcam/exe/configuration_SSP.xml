@@ -2,7 +2,7 @@
 <Configuration>
 	<Files>
 		<Value name="xmlInputFileName">../input/gcamdata/xml/modeltime.xml</Value>
-		<Value name="BatchFileName">batch_SSP_SPA1.xml</Value>
+		<Value name="BatchFileName">batch_SSP_REF.xml</Value>
 		<Value name="policy-target-file">../input/policy/forcing_target_4p5.xml</Value>
 		<Value name="GHGInputFileName">../input/magicc/inputs/input_gases.emk</Value>
 		<Value write-output="1" append-scenario-name="0" name="xmldb-location">../output/database_basexdb</Value>
@@ -29,8 +29,6 @@
 	</Strings>
 	<Bools>
 		<Value name="CalibrationActive">1</Value>
-		<!-- Fixed GDP will calibrate to exogenous path -->
-		<Value name="FixedGDP-Path">1</Value>
 		<Value name="BatchMode">1</Value>
 		<Value name="find-path">0</Value>
 		<Value name="createCostCurve">0</Value>
@@ -39,7 +37,6 @@
 		<Value name="PrintValuesOnGraphs">1</Value>
 		<Value name="ShowNullPaths">0</Value>
 		<Value name="PrintPrices">1</Value>
-		<Value name="QuitFirstFailure">0</Value>
 	</Bools>
 	<Ints>
 		<Value name="numMarketsToFindSD">10</Value>

@@ -3,16 +3,10 @@
 # Units: NA
 # Description: Biomass unormalized ghost shares by year used to phase in biomass as a new crop/technology in future years.
 # Original source: Land_nesting_structure.xls
-# Column types: icn 
+# Column types: in 
 # ----------
-year,preference,ghost.share
-2020,High,0
-2025,High,0.01
-2035,High,0.035
-2050,High,0.075
-2100,High,0.075
-2020,Low,0
-2025,Low,0.01
-2035,Low,0.01
-2050,Low,0.02
-2100,Low,0.02
+year,ghost.share
+2020,0.03
+2025,0.06
+2035,0.15
+2100,0.15

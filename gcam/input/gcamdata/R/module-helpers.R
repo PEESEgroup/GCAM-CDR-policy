@@ -361,14 +361,10 @@ replace_GLU <- function(d, map, GLU_pattern = "^GLU[0-9]{3}$") {
 #'
 #' @param data = input data tibble to receive carbon info
 #' @param carbon_info_table = table with veg and soil carbon densities, and mature.age
-#' @param Min_Soil_C_at_Cropland If TRUE (default) using cropland soil carbon density as a minimum threshold in land policy
 #' @param matchvars =  a character vector for by = in left_join(data, carbon_info_table, by = ...)
-#'
 #' @return the original table with carbon density info added
 #' @importFrom dplyr left_join mutate rename
-add_carbon_info <- function( data, carbon_info_table,
-                             matchvars = c("region", "GLU", "Cdensity_LT" = "Land_Type"),
-                             Min_Soil_C_at_Cropland = TRUE) {
+add_carbon_info <- function( data, carbon_info_table, matchvars = c("region", "GLU", "Cdensity_LT" = "Land_Type")) {
 
   GCAM_region_names <- veg_c <- soil_c <- hist.veg.carbon.density <- hist.soil.carbon.density <-
     mature.age <- GCAM_region_ID <- NULL  # silence package check notes
@@ -390,32 +386,7 @@ add_carbon_info <- function( data, carbon_info_table,
            veg.carbon.density = hist.veg.carbon.density,
            soil.carbon.density = hist.soil.carbon.density,
            min.veg.carbon.density = aglu.MIN_VEG_CARBON_DENSITY,
-           min.soil.carbon.density = aglu.MIN_SOIL_CARBON_DENSITY) ->
-    data1
-
-  if (Min_Soil_C_at_Cropland == F) {
-
-    return(data1)
-
-  } else{
-
-    # Min_Soil_C_at_Cropland == TRUE so adding min C as cropland for soil
-    # when NA first using pasture data and then using Default_Cropland_Soil_C_Density
-    Default_Cropland_Soil_C_Density = 9
-
-    data1 %>%
-      left_join(
-        carbon_info_table %>%
-          filter(Land_Type %in% c("Cropland", "Pasture")) %>%
-          select(GCAM_region_ID, GLU, soil_c, Land_Type) %>%
-          spread(Land_Type, soil_c), by = c("GCAM_region_ID", "GLU")) %>%
-      mutate(min.soil.carbon.density = if_else(is.na(Cropland), Pasture, Cropland) ) %>%
-      replace_na(list(min.soil.carbon.density = Default_Cropland_Soil_C_Density)) ->
-      data2
-
-    return(data2)
-  }
-
+           min.soil.carbon.density = aglu.MIN_SOIL_CARBON_DENSITY)
 }
 
 #' reduce_mgd_carbon
@@ -423,12 +394,12 @@ add_carbon_info <- function( data, carbon_info_table,
 #' Reduce the carbon density of a managed land type from its unmanaged land
 #' type's carbon density using constant multipliers
 #'
-#' @param data Input data tibble to adjust carbon densities for
+#' @param data Unput data tibble to adjust carbon densities for
 #' @param LTfor Land_Type name to use for Forest land types
 #' @param LTpast Land_Type name to use for Pasture land types
 #' @return The original table with carbon density adjusted for the managed land types
 #' @importFrom dplyr mutate
-reduce_mgd_carbon <- function( data, LTfor = c(aglu.FOREST_NODE_NAMES), LTpast = "Pasture") {
+reduce_mgd_carbon <- function( data, LTfor = "Forest", LTpast = "Pasture") {
 
   Land_Type <- hist.veg.carbon.density <- veg.carbon.density <-
     hist.soil.carbon.density <- soil.carbon.density <- NULL # silence package check notes
@@ -438,10 +409,10 @@ reduce_mgd_carbon <- function( data, LTfor = c(aglu.FOREST_NODE_NAMES), LTpast =
            veg.carbon.density = if_else(Land_Type == LTpast, veg.carbon.density * aglu.CVEG_MULT_UNMGDPAST_MGDPAST, veg.carbon.density),
            hist.soil.carbon.density = if_else(Land_Type == LTpast, hist.soil.carbon.density * aglu.CSOIL_MULT_UNMGDPAST_MGDPAST, hist.soil.carbon.density),
            soil.carbon.density = if_else(Land_Type == LTpast, soil.carbon.density * aglu.CSOIL_MULT_UNMGDPAST_MGDPAST, soil.carbon.density),
-           hist.veg.carbon.density = if_else(Land_Type %in% LTfor, hist.veg.carbon.density * aglu.CVEG_MULT_UNMGDFOR_MGDFOR, hist.veg.carbon.density),
-           veg.carbon.density = if_else(Land_Type %in% LTfor, veg.carbon.density * aglu.CVEG_MULT_UNMGDFOR_MGDFOR, veg.carbon.density),
-           hist.soil.carbon.density = if_else(Land_Type %in% LTfor, hist.soil.carbon.density * aglu.CSOIL_MULT_UNMGDFOR_MGDFOR, hist.soil.carbon.density),
-           soil.carbon.density = if_else(Land_Type %in% LTfor, soil.carbon.density * aglu.CSOIL_MULT_UNMGDFOR_MGDFOR, soil.carbon.density))
+           hist.veg.carbon.density = if_else(Land_Type == LTfor, hist.veg.carbon.density * aglu.CVEG_MULT_UNMGDFOR_MGDFOR, hist.veg.carbon.density),
+           veg.carbon.density = if_else(Land_Type == LTfor, veg.carbon.density * aglu.CVEG_MULT_UNMGDFOR_MGDFOR, veg.carbon.density),
+           hist.soil.carbon.density = if_else(Land_Type == LTfor, hist.soil.carbon.density * aglu.CSOIL_MULT_UNMGDFOR_MGDFOR, hist.soil.carbon.density),
+           soil.carbon.density = if_else(Land_Type == LTfor, soil.carbon.density * aglu.CSOIL_MULT_UNMGDFOR_MGDFOR, soil.carbon.density))
 }
 
 
@@ -458,7 +429,7 @@ reduce_mgd_carbon <- function( data, LTfor = c(aglu.FOREST_NODE_NAMES), LTpast =
 #' @return A character vector of region names belonging to the specified income group.
 #' @importFrom dplyr filter mutate select
 get_ssp_regions <- function(pcGDP, reg_names, income_group,
-                            ssp_filter = "SSP4", year_filter = aglu.PCGDP_YEAR) {
+                            ssp_filter = "SSP4", year_filter = 2010) {
   assert_that(is_tibble(pcGDP))
   assert_that(is_tibble(reg_names))
   assert_that(is.character(income_group))
@@ -492,7 +463,7 @@ get_ssp_regions <- function(pcGDP, reg_names, income_group,
 #' Takes a wide format tibble with years as columns, coverts to long format, and
 #' ensures values are filled in for all \code{out_years} using the following rules:
 #'   - Linearly interpolated for missing values that have end points
-#'   - Extrapolated using an exponential decay function parameterized by the columns
+#'   - Extrapolated using an exponential decay function paramaterized by the columns
 #'     \code{improvement.rate} and \code{improvement.max} using the following formulation
 #'     \code{v_0*max+(v_0-v_0*max)*(1-rate)^(y-y_0)}
 #'   - For rows that specify a char value in the column \code{improvement.shadow.technology}
@@ -550,7 +521,7 @@ fill_exp_decay_extrapolate <- function(d, out_years) {
     select(-year, -value) %>%
     distinct() %>%
     repeat_add_columns(tibble(year=c(unique(c(d$year, out_years))))) %>%
-    left_join(d, by=names(.), relationship = "many-to-many") %>%
+    left_join(d, by=names(.)) %>%
     # for the purposes of interpolating (and later extrapolating) we would like
     # to just group by everything except year and value
     dplyr::group_by_at(dplyr::vars(-year, -value)) %>%
@@ -651,7 +622,7 @@ downscale_FAO_country <- function(data, country_name, dissolution_year, years = 
   ctry_years <- years[years < dissolution_year]
   yrs <- as.character(c(ctry_years, dissolution_year))
   data %>%
-    select(item, element, tidyr::all_of(yrs)) %>%
+    select(item, element, yrs) %>%
     group_by(item, element) %>%
     summarise_all(sum) %>%
     ungroup ->
@@ -667,247 +638,6 @@ downscale_FAO_country <- function(data, country_name, dissolution_year, years = 
                      paste(data_ratio[["item"]], data_ratio[["element"]])), newyrs]
   data_new[newyrs][is.na(data_new[newyrs])] <- 0
   data_new
-}
-
-
-
-#' Moving average
-#' @description function to calculate moving average
-#'
-#' @param x A data frame contain the variable for calculation
-#' @param periods An odd number of the periods in MA. The default is 5, i.e., 2 lags and 2 leads
-#' @param NA_RM If TRUE, remove NA in calculating mean, otherwise returning NA
-#'
-#' @return A data frame
-#' @export
-
-Moving_average <- function(x, periods = 5, NA_RM = TRUE){
-  if (periods == 1) {
-    return(x)
-  }
-
-  if ((periods %% 2) == 0) {
-    stop("Periods should be an odd value")
-  } else{
-
-    # (x +
-    #    Reduce(`+`, lapply(seq(1, (periods -1 )/2), function(a){lag(x, n = a)})) +
-    #    Reduce(`+`,lapply(seq(1, (periods -1 )/2), function(a){lead(x, n = a)}))
-    # )/periods
-
-
-    #new method to allow na.rm in mean calculation
-    c(lapply(seq((periods -1 )/2, 1), function(a){lag(x, n = a)}),
-      list(x),
-      lapply(seq(1, (periods -1 )/2), function(a){lead(x, n = a)})) %>% unlist %>%
-      matrix(ncol = periods) %>%
-      rowMeans(na.rm = NA_RM)
-
-  }
-}
-
-
-
-
-
-
-
-
-# Function to dissaggregate dissolved regions in historical years ----
-# copyed in gcamdata
-
-#' FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION
-#'
-#' @param .DF dataframe to disaggregate
-#' @param AFFECTED_AREA_CODE  FAO area codes for regions affected; first one should be pre-dissolved region (e.g., USSR) followed by post-dissolved regions.
-#' @param YEAR_DISSOLVE_DONE  First year after dissolution
-#' @param YEAR_AFTER_DISSOLVE_ACCOUNT Number of years of data after dissolution used for sharing historical data
-#'
-#' @return Disaggregated data for the historical period for of the dissolved region
-#'
-FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION <-
-  function(.DF,
-           AFFECTED_AREA_CODE, #first one should be dissolved area
-           YEAR_DISSOLVE_DONE,
-           # using 3 year data after dissolution for sharing
-           YEAR_AFTER_DISSOLVE_ACCOUNT = 3){
-
-    .DF %>%
-      # filter dissolved region related areas by their years
-      filter((area_code %in% AFFECTED_AREA_CODE[-1] & year >= YEAR_DISSOLVE_DONE)|
-               (area_code %in% AFFECTED_AREA_CODE[1] & year <= YEAR_DISSOLVE_DONE)) ->
-      .DF1
-
-    Number_of_Regions_After_Dissolution <- AFFECTED_AREA_CODE %>% length -1
-
-    .DF1 %>% filter(year < YEAR_DISSOLVE_DONE) %>%
-      select(-area_code, -area) %>%
-      right_join(
-        .DF1 %>% filter(year %in% c(YEAR_DISSOLVE_DONE:(YEAR_DISSOLVE_DONE + YEAR_AFTER_DISSOLVE_ACCOUNT))) %>%
-          dplyr::group_by_at(dplyr::vars(-year, -value)) %>%
-          replace_na(list(value = 0)) %>%
-          summarise(value = sum(value)) %>% ungroup() %>%
-          dplyr::group_by_at(dplyr::vars(-value, -area, -area_code)) %>%
-          mutate(Share = value/sum(value)) %>%
-          # using average share if data after dissolved does not exist
-          mutate(NODATA = if_else(sum(value) == 0, T, F)) %>%
-          mutate(Share = if_else(NODATA == T, 1/Number_of_Regions_After_Dissolution, Share)) %>%
-          ungroup() %>%select(-value, -NODATA),
-        by = names(.) %>% setdiff(c("year", "value", "area", "area_code"))
-      ) %>% mutate(value = value * Share) %>% select(-Share)
-
-  }
-
-
-#' FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION_ALL
-#'
-#' @param .DF
-#' @param SUDAN2012_BREAK If T break Sudan before 2012 based on 2013- 2016 data
-#' @param SUDAN2012_MERGE If T merge South Sudan into Sudan
-#'
-#' @return data with historical periods of dissolved region disaggregated to small pieces.
-
-FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION_ALL <- function(.DF,
-                                                       SUDAN2012_BREAK = F,
-                                                       SUDAN2012_MERGE = T){
-
-  assertthat::assert_that("area_code" %in% names(.DF),
-                          msg = "Date frame is required and need a col of area_code")
-
-  # Define area code based on FAO ----
-  # first one is dissolved area
-  # In 1991 USSR(228) collapsed into 15 countries
-  area_code_USSR = c(228, 1, 52, 57, 63, 73, 108, 113, 119, 126, 146, 185, 208, 213, 230, 235)
-  # first one is Russia
-
-  # In 1992 Yugoslav SFR dissolved into 5 countries
-  # Yugoslav SFR (248)
-  # Croatia (98)
-  # North Macedonia (154)
-  # Slovenia (198)
-  # Bosnia and Herzegovina (80)
-  # Serbia and Montenegro (186)
-  # In 2006 further broke into 2:
-  # Montenegro (273)
-  # Serbia (272)
-  # These regions will be merged for all years in data as most models aggregated them into a single region
-  area_code_Yugoslav <- c(248, 98, 154, 198, 80, 186)
-  area_code_SerbiaandMontenegro <- c(186, 273, 272)
-  # In 1999/2000 Belgium-Luxembourg (15) partitioned in 1999 to 255 (Belgium) and 256 (Luxembourg)
-  area_code_Belgium_Luxembourg <- c(15, 255, 256)
-  # In 1993 Czechoslovakia (51) to Czechia (167) and Slovakia (199)
-  area_code_Czechoslovakia <- c(51, 167, 199)
-  # In 2011 Sudan (former) (206) broke into South Sudan (277) and Sudan (276)
-  area_code_Sudan <- c(206, 276, 277)
-  # Ethiopia PDR (62) dissolved into Ethiopia (238) and Eritrea (178) in 1993
-  area_code_Ethiopia <- c(62, 238, 178)
-
-  .DF %>%
-    # remove Yugoslav by their years first and area_code_SerbiaandMontenegro later
-    filter(!(area_code %in% area_code_Yugoslav[1] )) %>%
-    bind_rows(FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION(.DF, area_code_Yugoslav, 1992, 3))->
-    .DF1
-
-
-  FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION(.DF1, area_code_USSR, 1992, 3) %>%
-    bind_rows(FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION(.DF1, area_code_SerbiaandMontenegro, 2006, 3)) %>%
-    bind_rows(FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION(.DF1, area_code_Belgium_Luxembourg, 2000, 3)) %>%
-    bind_rows(FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION(.DF1, area_code_Czechoslovakia, 1993, 3)) %>%
-    bind_rows(FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION(.DF1, area_code_Ethiopia, 1993, 3)) ->
-    DF_FAO_AREA_DISAGGREGATE_HIST
-
-  .DF1 %>%
-    # remove USSR by their years
-    filter(!(area_code %in% area_code_USSR[1])) %>%
-    # remove Serbia & Montenegro by their years
-    filter(!(area_code %in% area_code_SerbiaandMontenegro[1] )) %>%
-    # remove Belgium_Luxembourg by their years
-    filter(!(area_code %in% area_code_Belgium_Luxembourg[1])) %>%
-    # remove area_code_Czechoslovakia by their years
-    filter(!(area_code %in% area_code_Czechoslovakia[1] )) %>%
-    # remove area_code_Ethiopia by their years
-    filter(!(area_code %in% area_code_Ethiopia[1] )) %>%
-    bind_rows(DF_FAO_AREA_DISAGGREGATE_HIST) ->
-    .DF2
-
-  if (SUDAN2012_BREAK == T) {
-    .DF2 %>%
-      # remove area_code_Sudan by their years
-      filter(!(area_code %in% area_code_Sudan[1] )) %>%
-      bind_rows(FAO_AREA_DISAGGREGATE_HIST_DISSOLUTION(.DF1, area_code_Sudan, 2012, 3)) ->
-      .DF2
-  }
-
-  if (SUDAN2012_MERGE == T) {
-
-    .DF2 %>%
-      mutate(area_code = replace(area_code, area_code %in% area_code_Sudan, area_code_Sudan[1])) %>%
-      dplyr::group_by_at(dplyr::vars(-value, -area)) %>%
-      summarise(value = sum(value, na.rm = T), .groups = "drop") %>%
-      ungroup() %>%
-      # Get area back
-      left_join(.DF2 %>% distinct(area, area_code), by = "area_code") -> .DF2
-  }
-
-  return(.DF2)
-
-}
-
-#' Balance gross trade
-#' @description Scale gross export and import in all regions to make them equal at the world level.
-#'
-#' @param .DF An input dataframe with an element col including Import and Export
-#' @param .MIN_TRADE_PROD_RATIO Trade will be removed if world total export or import over production is smaller than .MIN_TRADE_PROD_RATIO, 0.01 default value
-#' @param .Reg_VAR Region variable name; default is area_code
-#' @param .GROUP_VAR Group variable; default is item_code and year
-#'
-#' @return The same dataframe with balanced world export and import.
-
-
-GROSS_TRADE_ADJUST <- function(.DF,
-                               .MIN_TRADE_PROD_RATIO = 0.01,
-                               .Reg_VAR = 'area_code',
-                               .GROUP_VAR = c("item_code", "year")){
-
-  element <- value <- Export <- Import <- Production <- ExportScaler <-
-    ImportScaler <-
-
-    # assert .DF structure
-    assertthat::assert_that(all(c("element", .GROUP_VAR) %in% names(.DF)))
-  assertthat::assert_that(dplyr::is.grouped_df(.DF) == F)
-  assertthat::assert_that(all(c("Import", "Export", "Production") %in%
-                                c(.DF %>% distinct(element) %>% pull)))
-
-  .DF %>%
-    # Join ExportScaler and ImportScaler
-    left_join(
-      .DF %>%
-        spread(element, value) %>%
-        dplyr::group_by_at(vars(dplyr::all_of(.GROUP_VAR))) %>%
-        # filter out items with zero world trade or production
-        # and replace na to zero later for scaler
-        replace_na(list(Export = 0, Import = 0, Production = 0)) %>%
-        filter(sum(Export) != 0, sum(Import) != 0, sum(Production) != 0) %>%
-        # world trade should be later than .MIN_TRADE_PROD_RATIO to have meaningful data
-        # depending on item group, .MIN_TRADE_PROD_RATIO can be set differently
-        filter(sum(Export) / sum(Production) > .MIN_TRADE_PROD_RATIO) %>%
-        filter(sum(Import) / sum(Production) > .MIN_TRADE_PROD_RATIO) %>%
-        # finally,
-        # use average gross trade value to calculate trade scaler
-        # the trade scalers will be applied to all regions
-        mutate(ExportScaler = (sum(Export) + sum(Import))/ 2 / sum(Export),
-               ImportScaler = (sum(Export) + sum(Import))/ 2 / sum(Import)) %>%
-        select(dplyr::all_of(c(.Reg_VAR, .GROUP_VAR)), ExportScaler, ImportScaler) %>%
-        ungroup(),
-      by = c(dplyr::all_of(c(.Reg_VAR, .GROUP_VAR)))) %>%
-    replace_na(list(ExportScaler = 0, ImportScaler = 0)) %>%
-    # If world export, import, or prod is 0, trade will be zero
-    mutate(value = case_when(
-      element %in% c("Export") ~ value * ExportScaler,
-      element %in% c("Import") ~ value * ImportScaler,
-      TRUE ~ value)) %>%
-    select(-ExportScaler, -ImportScaler)
-
 }
 
 
@@ -957,480 +687,4 @@ smooth_res_curve_approx_error <- function(curve.exponent, mid.price, base.price,
   error <- f_p - supply_points$supply
   crossprod(error, error)
 
-}
-
-
-#' NEI_to_GCAM
-#'
-#' Helper function to convert EPA National Emissions Inventory (NEI) emissions to GCAM emissions in GCAM-USA
-#' Used for emissions in several sectors
-#' This function allows the user to specify what GCAM sectors should be filtered from the NEI data, maps to GCAM
-#' fuels and pollutants, converts from TON to Tg, and aggregates emissions by state, sector, fuel, year, and pollutant.
-#' @param NEI_data Base tibble to start from (NEI data)
-#' @param CEDS_GCAM_fuel CEDS to GCAM fuel mapping file
-#' @param NEI_pollutant_mapping NEI to GCAM pollutant mapping file
-#' @param names Character vector indicating the column names of the returned tibble
-#' @importFrom assertthat assert_that
-#' @importFrom dplyr filter left_join rename mutate group_by select summarise_all ungroup
-#' @return tibble with corresponding GCAM sectors
-
-NEI_to_GCAM <- function(NEI_data, CEDS_GCAM_fuel, NEI_pollutant_mapping, names) {
-
-  # silence package check notes
-  GCAM_sector <- GCAM_fuel <- pollutant <- emissions <- state <- sector <-
-    fuel <- Non.CO2 <- year <- value <- NULL
-
-  assert_that(is_tibble(NEI_data))
-  assert_that(is_tibble(CEDS_GCAM_fuel))
-  assert_that(is_tibble(NEI_pollutant_mapping))
-  assert_that(is.character(names))
-  assert_that(has_name(NEI_data, "GCAM_sector"))
-  assert_that(has_name(CEDS_GCAM_fuel, "CEDS_Fuel"))
-  assert_that(has_name(NEI_pollutant_mapping, "NEI_pollutant"))
-
-  data_new <- NEI_data %>%
-    #subset relevant sectors
-    filter(GCAM_sector %in% names) %>%
-    # using left_join because original CEDS fuel in NEI has one called "Process", there's no GCAM fuel corresponding to that, so there will be NA values
-    # OK to omit, missing values will be dropped later
-    left_join(CEDS_GCAM_fuel, by = "CEDS_Fuel") %>%
-    rename(fuel = GCAM_fuel) %>%
-    na.omit %>%
-    rename(NEI_pollutant = pollutant) %>%
-    # Match on NEI pollutants, using left_join because missing values will be produced
-    # The original NEI include filterable PM2.5 and PM10, but here we only need primary ones
-    # OK to omit those filterables
-    left_join(NEI_pollutant_mapping, by = "NEI_pollutant") %>%
-    na.omit %>%
-    # Convert from short ton to thousand short tons and then to Tg
-    mutate(emissions = emissions / 1000 * CONV_TST_TG, unit = "Tg") %>%
-    # generate file tibble based on standard GCAM column names, sum emissions for the same state/sector/fuel/species
-    rename(sector = GCAM_sector) %>%
-    group_by(state, sector, fuel, year, Non.CO2) %>%
-    summarise(value = sum(emissions)) %>%
-    ungroup %>%
-    select(state, sector, fuel, Non.CO2, year, value)
-
-}
-
-
-compute_BC_OC <- function(df, BC_OC_assumptions) {
-  #There is no data for BC/OC in the base year, so use fractions of PM2.5 to calculate BC/OC emission factors.
-  #Compute BC/OC emission factors in the base year based on PM2.5 emission factors
-  #BC + OC is a sub-category of PM2.5, and in some cases most of PM2.5
-
-  #Note: BC/OC fractions are given for various level of sector, subsector, and stub.technology.
-  #All levels are not necessarily present for each
-
-  # silence package check notes
-  BC_fraction <- OC_fraction <- subsector.y <- subsector.x <- technology <-
-    BC_fraction_SST <- BC_fraction_ST <- BC_fraction_SS <- emiss.coef <-
-    OC_fraction_SST <- OC_fraction_ST <- OC_fraction_SS <- Non.CO2 <- NULL
-
-  assert_that(is_tibble(df))
-  assert_that(has_name(df, "Non.CO2"))
-
-  BC_df <- df %>%
-    filter(Non.CO2 == "PM2.5") %>%
-    # Cannot do left_join_error_no_match because there are some NA values that will be retained
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "subsector", "stub.technology" = "technology", "year")) %>%
-    mutate(BC_fraction_SST = BC_fraction) %>%
-    select(-BC_fraction, -OC_fraction) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "stub.technology" = "technology", "year")) %>%
-    mutate(BC_fraction_ST = BC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -subsector.y) %>%
-    rename(subsector = subsector.x) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "subsector", "year")) %>%
-    mutate(BC_fraction_SS = BC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -technology) %>%
-    #Hierarchy of values to be chosen:
-    #1. If all sector, subsector, and technology information is available
-    #2. If sector and technology information is available
-    #3. If sector and subsector information is available
-    mutate(BC_fraction = if_else(is.na(BC_fraction_SST) & is.na(BC_fraction_ST), BC_fraction_SS,
-                                 if_else(is.na(BC_fraction_SST), BC_fraction_ST, BC_fraction_SST)),
-           #Compute emissions coefficients for BC
-           emiss.coef = emiss.coef * BC_fraction,Non.CO2 = "BC") %>%
-    select(-BC_fraction, -BC_fraction_SST, -BC_fraction_ST, -BC_fraction_SS) %>%
-    distinct()
-
-  OC_df <- df %>%
-    filter(Non.CO2 == "PM2.5") %>%
-    # Cannot do left_join_error_no_match because there are some NA values that will be retained
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "subsector", "stub.technology" = "technology", "year")) %>%
-    mutate(OC_fraction_SST = OC_fraction) %>%
-    select(-BC_fraction, -OC_fraction) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "stub.technology" = "technology", "year")) %>%
-    mutate(OC_fraction_ST = OC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -subsector.y) %>%
-    rename(subsector = subsector.x) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "subsector", "year")) %>%
-    mutate(OC_fraction_SS = OC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -technology) %>%
-    #Hierarchy of values to be chosen:
-    #1. If all sector, subsector, and technology information is available
-    #2. If sector and technology information is available
-    #3. If sector and subsector information is available
-    mutate(OC_fraction = if_else(is.na(OC_fraction_SST) & is.na(OC_fraction_ST), OC_fraction_SS,
-                                 if_else(is.na(OC_fraction_SST), OC_fraction_ST, OC_fraction_SST)),
-           #Compute emissions coefficients for BC
-           emiss.coef = emiss.coef * OC_fraction, Non.CO2 = "OC") %>%
-    select(-OC_fraction, -OC_fraction_SST, -OC_fraction_ST, -OC_fraction_SS) %>%
-    distinct()
-
-  # Bind base year BC/OC fractions to other EFs
-  df <- bind_rows(df, BC_df, OC_df)
-  return (df)
-
-}
-
-#' compute_BC_OC_transport
-#'
-#' Helper function to compute BC and OC EFs from PM2.5 and a mapping file with BC OC fraction content by sector/tranSubsector/technology
-#' Used for emissions in the transportation sectors (onroad and nonroad)
-#' @param df tibble which contains PM2.5 data to be used to get BC and OC data
-#' @param BC_OC_assumptions tibble which contains BC and OC fractions
-#' @importFrom assertthat assert_that
-#' @importFrom dplyr filter left_join rename mutate group_by select summarise_all ungroup
-#' @return tibble with BC and OC rows added
-
-compute_BC_OC_transport <- function(df, BC_OC_assumptions) {
-  #This is specific for the transport sector, necessary due to different variable naming conventions.
-  #There is no data for BC/OC in the base year, so use fractions of PM2.5 to calculate BC/OC emission factors.
-  #Compute BC/OC emission factors in the base year based on PM2.5 emission factors
-  #BC + OC is a sub-category of PM2.5, and in some cases most of PM2.5
-
-  #Note: BC/OC fractions are given for various level of sector, tranSubsector, and stub.technology.
-  #All levels are not necessarily present for each
-
-  # silence package check notes
-  BC_fraction <- OC_fraction <- tranSubsector.y <- tranSubsector.x <- technology <-
-    BC_fraction_SST <- BC_fraction_ST <- BC_fraction_SS <- emiss.coef <-
-    OC_fraction_SST <- OC_fraction_ST <- OC_fraction_SS <- Non.CO2 <- NULL
-
-  assert_that(is_tibble(df))
-  assert_that(has_name(df, "Non.CO2"))
-
-  BC_df <- df %>%
-    filter(Non.CO2 == "PM2.5") %>%
-    # Cannot do left_join_error_no_match because there are some NA values that will be retained
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "tranSubsector", "stub.technology" = "technology", "year")) %>%
-    mutate(BC_fraction_SST = BC_fraction) %>%
-    select(-BC_fraction, -OC_fraction) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "stub.technology" = "technology", "year")) %>%
-    mutate(BC_fraction_ST = BC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -tranSubsector.y) %>%
-    rename(tranSubsector = tranSubsector.x) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "tranSubsector", "year")) %>%
-    mutate(BC_fraction_SS = BC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -technology) %>%
-    #Hierarchy of values to be chosen:
-    #1. If all sector, tranSubsector, and technology information is available
-    #2. If sector and technology information is available
-    #3. If sector and tranSubsector information is available
-    mutate(BC_fraction = if_else(is.na(BC_fraction_SST) & is.na(BC_fraction_ST), BC_fraction_SS,
-                                 if_else(is.na(BC_fraction_SST), BC_fraction_ST, BC_fraction_SST)),
-           #Compute emissions coefficients for BC
-           emiss.coef = emiss.coef * BC_fraction,Non.CO2 = "BC") %>%
-    select(-BC_fraction, -BC_fraction_SST, -BC_fraction_ST, -BC_fraction_SS) %>%
-    distinct()
-
-  OC_df <- df %>%
-    filter(Non.CO2 == "PM2.5") %>%
-    # Cannot do left_join_error_no_match because there are some NA values that will be retained
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "tranSubsector", "stub.technology" = "technology", "year")) %>%
-    mutate(OC_fraction_SST = OC_fraction) %>%
-    select(-BC_fraction, -OC_fraction) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "stub.technology" = "technology", "year")) %>%
-    mutate(OC_fraction_ST = OC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -tranSubsector.y) %>%
-    rename(tranSubsector = tranSubsector.x) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "tranSubsector", "year")) %>%
-    mutate(OC_fraction_SS = OC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -technology) %>%
-    #Hierarchy of values to be chosen:
-    #1. If all sector, tranSubsector, and technology information is available
-    #2. If sector and technology information is available
-    #3. If sector and tranSubsector information is available
-    mutate(OC_fraction = if_else(is.na(OC_fraction_SST) & is.na(OC_fraction_ST), OC_fraction_SS,
-                                 if_else(is.na(OC_fraction_SST), OC_fraction_ST, OC_fraction_SST)),
-           #Compute emissions coefficients for BC
-           emiss.coef = emiss.coef * OC_fraction, Non.CO2 = "OC") %>%
-    select(-OC_fraction, -OC_fraction_SST, -OC_fraction_ST, -OC_fraction_SS) %>%
-    distinct()
-
-  # Bind base year BC/OC fractions to other EFs
-  df <- bind_rows(df, BC_df, OC_df)
-  return (df)
-
-}
-
-#' compute_BC_OC_elc
-#'
-#' Helper function to compute BC and OC EFs from PM2.5 and a mapping file with BC OC fraction content by sector/subsector/technology
-#' Used for emissions in the electric sector
-#' @param df tibble which contains PM2.5 data to be used to get BC and OC data
-#' @param BC_OC_assumptions tibble which contains BC and OC fractions
-#' @importFrom assertthat assert_that
-#' @importFrom dplyr filter left_join rename mutate group_by select summarise_all ungroup
-#' @return tibble with BC and OC rows added
-#'
-compute_BC_OC_elc <- function(df, BC_OC_assumptions) {
-  #This is specific for the electric gen sector, necessary due to different variable naming conventions.
-  #There is no data for BC/OC in the base year, so use fractions of PM2.5 to calculate BC/OC emission factors.
-  #Compute BC/OC emission factors in the base year based on PM2.5 emission factors
-  #BC + OC is a sub-category of PM2.5, and in some cases most of PM2.5
-
-  #Note: BC/OC fractions are given for various level of sector, subsector, and stub.technology.
-  #All levels are not necessarily present for each
-
-  # silence package check notes
-  BC_fraction <- OC_fraction <- subsector.y <- subsector.x <- technology <-
-    BC_fraction_SST <- BC_fraction_ST <- BC_fraction_SS <- emiss.coef <-
-    OC_fraction_SST <- OC_fraction_ST <- OC_fraction_SS <- Non.CO2 <- NULL
-
-  assert_that(is_tibble(df))
-  assert_that(has_name(df, "Non.CO2"))
-
-  BC_df <- df %>%
-    filter(Non.CO2 == "PM2.5") %>%
-    # Cannot do left_join_error_no_match because there are some NA values that will be retained
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "subsector0" = "subsector", "stub.technology" = "technology", "year")) %>%
-    mutate(BC_fraction_SST = BC_fraction) %>%
-    select(-BC_fraction, -OC_fraction) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "stub.technology" = "technology", "year")) %>%
-    mutate(BC_fraction_ST = BC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -subsector.y) %>%
-    rename(subsector = subsector.x) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "subsector0" = "subsector", "year")) %>%
-    mutate(BC_fraction_SS = BC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -technology) %>%
-    #Hierarchy of values to be chosen:
-    #1. If all sector, subsector, and technology information is available
-    #2. If sector and technology information is available
-    #3. If sector and subsector information is available
-    mutate(BC_fraction = if_else(is.na(BC_fraction_SST) & is.na(BC_fraction_ST), BC_fraction_SS,
-                                 if_else(is.na(BC_fraction_SST), BC_fraction_ST, BC_fraction_SST)),
-           #Compute emissions coefficients for BC
-           emiss.coef = emiss.coef * BC_fraction,Non.CO2 = "BC") %>%
-    select(-BC_fraction, -BC_fraction_SST, -BC_fraction_ST, -BC_fraction_SS) %>%
-    distinct()
-
-  OC_df <- df %>%
-    filter(Non.CO2 == "PM2.5") %>%
-    # Cannot do left_join_error_no_match because there are some NA values that will be retained
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "subsector0" = "subsector", "stub.technology" = "technology", "year")) %>%
-    mutate(OC_fraction_SST = OC_fraction) %>%
-    select(-BC_fraction, -OC_fraction) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "stub.technology" = "technology", "year")) %>%
-    mutate(OC_fraction_ST = OC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -subsector.y) %>%
-    rename(subsector = subsector.x) %>%
-    left_join(BC_OC_assumptions,
-              by = c("supplysector" = "sector", "subsector0" = "subsector", "year")) %>%
-    mutate(OC_fraction_SS = OC_fraction) %>%
-    select(-BC_fraction, -OC_fraction, -technology) %>%
-    #Hierarchy of values to be chosen:
-    #1. If all sector, subsector, and technology information is available
-    #2. If sector and technology information is available
-    #3. If sector and subsector information is available
-    mutate(OC_fraction = if_else(is.na(OC_fraction_SST) & is.na(OC_fraction_ST), OC_fraction_SS,
-                                 if_else(is.na(OC_fraction_SST), OC_fraction_ST, OC_fraction_SST)),
-           #Compute emissions coefficients for BC
-           emiss.coef = emiss.coef * OC_fraction, Non.CO2 = "OC") %>%
-    select(-OC_fraction, -OC_fraction_SST, -OC_fraction_ST, -OC_fraction_SS) %>%
-    distinct()
-
-  # Bind base year BC/OC fractions to other EFs
-  df <- bind_rows(df, BC_df, OC_df)
-  return (df)
-
-}
-
-
-#' join.gdp.ts
-#'
-#' Join past GDP time series to future.
-#'
-#' When we have to join two GDP time series, we usually find that they don't
-#' match up at year of overlap (the "base year").  What we do in these cases is
-#' we compute, for the later time series, ratios of GDPs in the future years to
-#' those in the base year.  We then multiply the future ratios by the past base
-#' year value.  That future time series can then be grafted onto the past
-#' without leaving a seam.
-#'
-#' In practice, the past is often a single time series, while the future is
-#' often a collection of scenarios.  Therefore, we assume that the past time
-#' series has no scenario column.  If the future does not have a scenario
-#' column, it is given a dummy one, which is dropped before the new table is
-#' returned.  Note that we look for lower-case 'scenario' for this.
-#'
-#' The base year is calculated automatically.  It is the maximum of the years
-#' that overlap between the two data sets.
-#'
-#' We also have to know how to group the data for calculating the gdp ratios.
-#' Normally this will be either by country ('iso') or by GCAM region
-#' ('GCAM_region_ID').  The choice of which is passed in as the 'grouping'
-#' argument.
-#'
-#' Finally, although we have discussed this function in terms of joining two GDP
-#' time series, in the future time series we use only the ratios of GDP to base
-#' year GDP.  Therefore, any time series with the correct ratios will work.  For
-#' example, if we have a time series of growth rates, we can convert those to
-#' ratios using \code{\link[base]{cumprod}} and pass those ratios as the future
-#' time series.  For similar reasons, even if the two time series have different
-#' units (e.g., different dollar-years or PPP vs. MER), they can still be
-#' joined.  The units of the output time series will be the same as the units of
-#' \code{past}.
-#'
-#' @param past Tibble with the past time series (year, gdp, and grouping).
-#' @param future Tibble with the future data (year, gdp, scenario, and
-#' grouping).
-#' @param grouping Name of the grouping column (generally either 'iso' or
-#' 'GCAM_region_ID', but could be anything
-#' @return Time series with the past and future joined as described in details.
-join.gdp.ts <- function(past, future, grouping) {
-
-  year <- gdp <- base.gdp <- gdp.ratio <- . <- scenario <-
-    NULL                            # silence notes on package check.
-
-  if(! 'scenario' %in% names(future)) {
-    ## This saves us having to make a bunch of exceptions below when we
-    ## include 'scenario' among the columns to join by.
-    future$scenario <- 'scen'
-    drop.scenario <- TRUE
-  }
-  else {
-    drop.scenario <- FALSE
-  }
-
-  ## Find the base year
-  base.year <- max(intersect(past$year, future$year))
-  assert_that(is.finite(base.year))
-
-  ## Base year gdp from the future dataset
-  baseyear.future.gdp <- filter(future, year == base.year) %>%
-    rename(base.gdp = gdp) %>%
-    select(-year)
-
-  gdp.future.ratio <- filter(future, year > base.year) %>%
-    left_join_error_no_match(baseyear.future.gdp, by = c('scenario', grouping)) %>%
-    mutate(gdp.ratio = gdp / base.gdp) %>%
-    select('scenario', grouping, 'year', 'gdp.ratio')
-
-  ## add the scenario column to the past
-  gdp.past <- tidyr::crossing(past, scenario = unique(gdp.future.ratio[['scenario']]))
-  baseyear.past.gdp <- filter(gdp.past, year == base.year) %>%
-    rename(base.gdp = gdp) %>%
-    select(-year)
-
-  rslt <- left_join(baseyear.past.gdp, gdp.future.ratio,
-                    by = c('scenario', grouping)) %>%
-    mutate(gdp = base.gdp * gdp.ratio) %>%
-    select('scenario', grouping, 'year', 'gdp') %>%
-    bind_rows(gdp.past, .)
-
-  if(drop.scenario) {
-    select(rslt, -scenario)
-  }
-  else {
-    rslt
-  }
-}
-
-
-#' replace_outlier_EFs
-#'
-#' Helper function to replace emission factors (EFs) outside a threshold with a median EF
-#' Used for emission factors in several sectors
-#' @param df Base tibble to start from that contains EFs, and may include NAs
-#' @param to_group Character vector indicating the column names to group by.
-#' This relates to how specific the median will be, whether it is by sector, sector and subsector, etc.
-#' @param names Character vector indicating the column names of the returned tibble
-#' @param ef_col_name Name of the column containing emission factors
-#' @importFrom assertthat assert_that
-#' @importFrom dplyr filter anti_join rename mutate group_by_at select summarize ungroup bind_rows
-#' @return tibble with corresponding region, year, Non.CO2, GCAM sector, subsector, stub.technology, and modified EFs
-
-replace_outlier_EFs <- function(df, to_group, names, ef_col_name) {
-
-  # silence package check notes
-  region <- Non.CO2 <- year <- supplysector <- subsector0 <- subsector <- stub.technology <-
-    emiss.coef <- NULL
-
-  assert_that(is_tibble(df))
-  assert_that(is.character(to_group))
-  assert_that(is.character(names))
-  assert_that(is.character(ef_col_name))
-
-  # Generate median emissions factors
-  median.true <- df %>%
-    rename(emiss.coef = .data[[ef_col_name]]) %>%
-    # Remove NAs so as to not skew the median
-    filter(!is.na(emiss.coef)) %>%
-    dplyr::group_by_at(to_group) %>%
-    summarize(emiss.coef = median(emiss.coef)) %>%
-    ungroup() %>%
-    rename(medianEF = emiss.coef)
-
-  # Some year / pollutant / sector / subsector / tech are NA for all entries, and should be set to 0
-  median.skewed <- df %>%
-    rename(emiss.coef = .data[[ef_col_name]]) %>%
-    replace_na(list(emiss.coef = 0)) %>%
-    dplyr::group_by_at(to_group) %>%
-    summarize(emiss.coef = median(emiss.coef)) %>%
-    ungroup() %>%
-    rename(medianEF = emiss.coef)
-
-  # We want to join these tables so that only the entries not in median.true are retained from median.skewed
-  # These all have EFs of 0
-  median <- median.skewed %>%
-    anti_join(median.true, by=(to_group)) %>%
-    bind_rows(median.true)
-
-  # Find the standard deviation, which will be used to establish our outlier threshold
-  sd <- df %>%
-    rename(emiss.coef = .data[[ef_col_name]]) %>%
-    dplyr::mutate_if(is.numeric, ~ifelse(abs(.) == Inf,NA,.)) %>%
-    dplyr::group_by_at(to_group) %>%
-    mutate(sd = sd(emiss.coef, na.rm = TRUE)) %>%
-    ungroup() %>%
-    select(to_group, sd) %>%
-    distinct()
-
-  # Replace all emissions factors outside a threshold (two standard deviations higher than the median, three lower)
-  # or that are NAs with the median emissions factor for that year, non.CO2, and technology
-  # The output table in named "noBCOC" because in several cases where this is currently used, BC and OC EFs are added in at the next step.
-  noBCOC <- df %>%
-    rename(emiss.coef = .data[[ef_col_name]]) %>%
-    left_join_error_no_match(median, by=(to_group)) %>%
-    # we use a left_join here- LJENM results in an errors due to NAs from 1975
-    # TODO: alternatively, remove 1975 all together?
-    left_join(sd, by=(to_group)) %>%
-    # Replace EFs that are two standard deviation higher or three standard deviations lower than the median or are NA or Inf with the median
-    mutate(emiss.coef = if_else(emiss.coef > medianEF + (2 * sd) | emiss.coef < medianEF - (3 * sd),
-                                medianEF, emiss.coef),
-           emiss.coef = if_else(is.infinite(emiss.coef), medianEF, emiss.coef),
-           emiss.coef = if_else(is.na(emiss.coef), medianEF, emiss.coef)) %>%
-    rename({{ef_col_name}} := emiss.coef) %>%
-    select(all_of(names))
-
-  return (noBCOC)
 }

@@ -5,9 +5,4 @@
 # ----------
 supplysector,subsector,technology,apply.to,from.year,to.year,to.value,interpolation.function
 regional biomassOil,regional biomassOil,OilCrop,share-weight,final-calibration-year,end-year,,fixed
-regional biomassOil,regional biomassOil,OilPalm,share-weight,final-calibration-year,end-year,,fixed
-biochar,slow pyrolysis,poultry_biochar,share-weight,final-calibration-year,end-year,,fixed
-biochar,slow pyrolysis,pork_biochar,share-weight,final-calibration-year,end-year,,fixed
-biochar,slow pyrolysis,beef_biochar,share-weight,final-calibration-year,end-year,,fixed
-biochar,slow pyrolysis,dairy_biochar,share-weight,final-calibration-year,end-year,,fixed
-biochar,slow pyrolysis,goat_biochar,share-weight,final-calibration-year,end-year,,fixed
+regional biomassOil,regional biomassOil,PalmFruit,share-weight,final-calibration-year,end-year,,fixed
