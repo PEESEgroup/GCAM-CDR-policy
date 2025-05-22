@@ -23,7 +23,7 @@ SET PATH=%JAVA_HOME%\bin;%JAVA_HOME%\bin\server
 
 REM Run GCAM-CDR
 
-gcam-cdr.exe -C scenario-config/config_batch_SSP_SPA4_CDR.xml
+gcam-cdr.exe -C scenario-config/config_batch_SSP_SPA5_CDR.xml
 )
 
 pause

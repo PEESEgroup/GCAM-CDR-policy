@@ -54,5 +54,5 @@ if __name__ == '__main__':
     SSP_configs = ["batch_SSP_SPA1_CDR.xml", "batch_SSP_SPA23_CDR.xml",
                    "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml"]
 
-    with multiprocessing.Pool(processes=3) as pool:
+    with multiprocessing.Pool(processes=4) as pool:
         results = pool.map(main, SSP_configs)
