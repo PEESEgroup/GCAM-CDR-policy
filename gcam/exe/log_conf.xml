@@ -4,7 +4,7 @@
 	<Logger name="main_log" type="PlainTextLogger">
 		<FileName>logs/main_log.txt</FileName>
 		<printLogWarningLevel>0</printLogWarningLevel>
-		<minLogWarningLevel>0</minLogWarningLevel>
+		<minLogWarningLevel>1</minLogWarningLevel>
 		<minToScreenWarningLevel>1</minToScreenWarningLevel>
 		<headerMessage>{date}:{time}</headerMessage>
 	</Logger>
@@ -77,5 +77,11 @@
 		<minLogWarningLevel>0</minLogWarningLevel>
 		<minToScreenWarningLevel>3</minToScreenWarningLevel>
 		<headerMessage>{date}:{time}</headerMessage>
+	</Logger>
+	<Logger name="CDR_log" type="PlainTextLogger">
+		<FileName>logs/cdr-demand-log.txt</FileName>
+		<printLogWarningLevel>0</printLogWarningLevel>
+		<minLogWarningLevel>0</minLogWarningLevel>
+		<minToScreenWarningLevel>3</minToScreenWarningLevel>
 	</Logger>
 </LoggerFactory>
