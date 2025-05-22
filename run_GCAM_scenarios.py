@@ -1,54 +1,58 @@
 import xml.etree.cElementTree as ET
-from xml.dom import minidom
+import multiprocessing
 import subprocess
-import constants as c
 import os
 
 def main(batch_scenario_fname):
     """
     control program for running a GCAM scenario
     """
+    # change directory
+    os.chdir("./gcam/exe")
+
     # open the configuration .xml file
-    config_fname = "./gcam/exe/configuration_CDR.xml"
-    tag = 'Value name="BatchFileName"'
+    config_fname = "configuration_CDR.xml"
+    tag = 'Value'
     tree = ET.parse(config_fname)
     root = tree.getroot()
 
+    # change the text
     for element in root.findall(f".//{tag}"):
-        element.text = batch_scenario_fname
+        if element.attrib['name'] == "BatchFileName":
+            element.text = batch_scenario_fname
 
+    # write out the updated configuration file to a new file name
+    config_fname = "scenario-config/config_" + batch_scenario_fname
+
+    # write out file data
+    with open(config_fname, "w+") as f:
+        f.write("")
     tree.write(config_fname)
 
+    # run GCAM-CDR from the os
 
-    for i in range(len(c.GCAMConstants.version)):
-        # build a batch file for every database
-        filename = "xml/xmldb_batch_" + str(c.GCAMConstants.version[i][0]) + "_" + str(
-            c.GCAMConstants.version[i][1]) + ".xml"
-        print(filename)
-        out_dir, out_file = build_batch_query(c.GCAMConstants.version[i][0], c.GCAMConstants.version[i][1], filename)
+    # change the name of the config file in the .bat file
+    bat_fname = 'run-gcam-cdr_' + batch_scenario_fname.split(".")[0] + ".bat"
+    original_bat_fname = 'run-gcam-cdr.bat'
 
-        # create output directory
-        os.makedirs(out_dir, exist_ok=True)
-        with open(out_file, "w") as f:
-            f.write("foo")
+    lines = open(original_bat_fname, 'r').readlines()
 
-        # edit the batch file to include the right xml query file
-        # read the file into a list of lines
-        bat_file = "xml/launch_model_interface.bat"
-        lines = open(bat_file, 'r').readlines()
+    # now edit the appropriate line of the list of lines
+    new_last_line = ("gcam-cdr.exe -C " + config_fname)
+    lines[25] = new_last_line
 
-        # now edit the last line of the list of lines
-        new_last_line = ("java ModelInterface.InterfaceMain -b " + filename)
-        lines[-1] = new_last_line
+    print(lines[25])
 
-        print(lines[-1])
+    # now write the modified list back out to the file
+    open(bat_fname, 'w').writelines(lines)
 
-        # now write the modified list back out to the file
-        open(bat_file, 'w').writelines(lines)
-
-        # execute the batch query on the command line
-        subprocess.call([r'xml\launch_model_interface.bat'])
+    # change the name of the .bat file
+    subprocess.call([r'{}'.format(bat_fname)], creationflags = subprocess.CREATE_NEW_CONSOLE)
 
 
 if __name__ == '__main__':
-    main()
+    SSP_configs = ["batch_SSP_SPA1_CDR.xml", "batch_SSP_SPA23_CDR.xml",
+                   "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml"]
+
+    with multiprocessing.Pool(processes=3) as pool:
+        results = pool.map(main, SSP_configs)
