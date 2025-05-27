@@ -7,8 +7,9 @@ def main(batch_scenario_fname):
     """
     control program for running a GCAM scenario
     """
-    # change directory
-    os.chdir("./gcam/exe")
+    # change directory if not already in the \gcam\exe folder
+    if str(os.getcwd()).split("\\")[-1] != "exe":
+        os.chdir("./gcam/exe")
 
     # open the configuration .xml file
     config_fname = "configuration_CDR.xml"
@@ -51,8 +52,11 @@ def main(batch_scenario_fname):
 
 
 if __name__ == '__main__':
-    SSP_configs = ["batch_SSP_SPA1_CDR.xml", "batch_SSP_SPA23_CDR.xml",
-                   "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml"]
+    SSP_configs = ["batch_SSP_SPA1_CDR.xml", "batch_SSP_SPA2_CDR.xml", "batch_SSP_SPA3_CDR.xml",
+                   "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml", "configuration_core.xml",
+                   "configuration_CDR_ref.xml"]
 
-    with multiprocessing.Pool(processes=4) as pool:
+    # main("batch_SSP_SPA1_CDR.xml")
+
+    with multiprocessing.Pool(processes=3) as pool:
         results = pool.map(main, SSP_configs)

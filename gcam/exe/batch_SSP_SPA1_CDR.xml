@@ -3,7 +3,7 @@
 	<ComponentSet name="base">
 		<FileSet name="GCAM_"> 
                   <Value name = "climate">../input/gcamdata/xml/hector.xml</Value>
-                  <Value name = "socioeconomics">../input/gcamdata/xml/socioeconomics_gSSP2.xml</Value>
+                  <Value name = "socioeconomics">../input/gcamdata/xml/socioeconomics_gSSP1.xml</Value>
                   <Value name = "resources">../input/gcamdata/xml/resources.xml</Value>
                   <Value name = "energy_supply">../input/gcamdata/xml/en_supply.xml</Value>
                   <Value name = "energy_transformation">../input/gcamdata/xml/en_transformation.xml</Value>
@@ -13,9 +13,9 @@
                   <Value name = "hydrogen">../input/gcamdata/xml/hydrogen.xml</Value>
                   <Value name = "energy_distribution">../input/gcamdata/xml/en_distribution.xml</Value>
                   <Value name = "industry">../input/gcamdata/xml/industry.xml</Value>
-                  <Value name = "industry_income_elas">../input/gcamdata/xml/industry_incelas_gssp2.xml</Value>
+                  <Value name = "industry_income_elas">../input/gcamdata/xml/industry_incelas_gssp1.xml</Value>
                   <Value name = "cement">../input/gcamdata/xml/cement.xml</Value>
-                  <Value name = "cement_income_elas">../input/gcamdata/xml/cement_incelas_gssp2.xml</Value>
+                  <Value name = "cement_income_elas">../input/gcamdata/xml/cement_incelas_gssp1.xml</Value>
                   <Value name = "fertilizer_energy">../input/gcamdata/xml/en_Fert.xml</Value>
                   <Value name = "hddcdd">../input/gcamdata/xml/HDDCDD_constdd_no_GCM.xml</Value>
                   <Value name = "building">../input/gcamdata/xml/building_det.xml</Value>
@@ -25,7 +25,7 @@
 
                   <Value name = "ag_base">../input/gcamdata/xml/ag_For_Past_bio_base_IRR_MGMT.xml</Value>
                   <Value name = "ag_cost">../input/gcamdata/xml/ag_cost_IRR_MGMT.xml</Value>
-                  <Value name = "ag_prodchange">../input/gcamdata/xml/ag_prodchange_ref_IRR_MGMT.xml</Value>
+                  <Value name = "ag_prodchange">../input/gcamdata/xml/ag_prodchange_ssp1_IRR_MGMT.xml</Value>
                   <Value name = "residue_bio">../input/gcamdata/xml/resbio_input_IRR_MGMT.xml</Value>
                   <Value name = "animal">../input/gcamdata/xml/an_input.xml</Value>
                   <Value name = "fertilizer">../input/gcamdata/xml/ag_Fert_IRR_MGMT.xml</Value>
@@ -70,7 +70,7 @@
 
                   <!--Value name = "bio_feedstock_limit">../input/gcamdata/xml/liquids_limits.xml</Value>
                   <Value name = "bio_elec_w_feed_limit">../input/gcamdata/xml/water_elec_liquids_limits.xml</Value-->
-                  <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_gSSP2.xml</Value>
+                  <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP1.xml</Value>
                   <Value name = "wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>
                   <Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 
@@ -107,18 +107,10 @@
                   <!--Value name = "carbon_tax">../input/policy/carbon_tax_25_5.xml</Value-->
                   <!--Value name = "carbon_tax_nearterm">../input/policy/carbon_tax_0_nearterm.xml</Value-->
                   <!--Value name = "carbon_tax_link">../input/policy/2025_target_finder.xml</Value-->
-
 		</FileSet>
 	</ComponentSet>
 	<ComponentSet name="SSP Harmonized">
-		<FileSet name="SSP1">
-			<!-- SOCIOECONOMICS -->
-			<Value name="socioeconomics">../input/gcamdata/xml/socioeconomics_SSP1.xml</Value>
-			
-			<!-- INDUSTRY -->
-			<Value name="ind">../input/gcamdata/xml/industry_incelas_ssp1.xml</Value>		
-			<Value name="cement">../input/gcamdata/xml/cement_incelas_ssp1.xml</Value>
-			
+		<FileSet name="SSP1">	
 			<!-- TRANSPORTATION -->
 			<Value name="trn">../input/gcamdata/xml/transportation_UCD_SSP1.xml</Value>
 			
@@ -127,7 +119,7 @@
 			
 			<!-- AGLU -->
 			<Value name="aglu">../input/gcamdata/xml/food_SSP1.xml</Value>
-			<Value name="aglu">../input/gcamdata/xml/ag_prodchange_ssp1_IRR_MGMT.xml</Value>
+			<!--Value name="aglu">../input/gcamdata/xml/ag_prodchange_ssp1_IRR_MGMT.xml</Value-->
 			
 			<!-- WIND -->
 			<Value name="wind">../input/gcamdata/xml/wind_adv.xml</Value>
@@ -165,7 +157,7 @@
 			<Value name="weak_policy">../input/policy/spa14_tax.xml</Value>
 			<Value name="link">../input/policy/2025_target_finder.xml</Value>
 			<Value name="link">../input/policy/global_uct_spa1.xml</Value>
-            <Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP1.xml</Value>
+            <!--Value name = "bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_SSP1.xml</Value-->
 		</FileSet>
 	</ComponentSet>	
 	<runner-set name="policy-target-runner">
