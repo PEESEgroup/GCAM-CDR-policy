@@ -79,11 +79,19 @@ def main(batch_scenario_fname, batch=True):
 
 if __name__ == '__main__':
     SSP_configs = ["batch_SSP_SPA1_CDR.xml", "batch_SSP_SPA2_CDR.xml", "batch_SSP_SPA3_CDR.xml",
-                   "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml", "configuration_core.xml",
-                   "configuration_CDR_ref.xml"]
+                   "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml"]
+    default_configs = ["configuration_core.xml", "configuration_CDR_ref.xml"]
 
     main("configuration_core.xml", False)
     main("configuration_CDR_ref.xml", False)
 
-    with multiprocessing.Pool(processes=3) as pool:
+    for i in SSP_configs:
+        main(str(i))
+
+    for i in default_configs:
+        main(str(i), False)
+
+    ### PARALELLIZATION ###
+    # the worry is with parallelization is that restarts, etc. won't work right because multiple instances of GCAM will overwrite files
+    with multiprocessing.Pool(processes=1) as pool:
         results = pool.map(main, SSP_configs)
