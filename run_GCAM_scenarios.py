@@ -80,8 +80,9 @@ def main(batch_scenario_fname, batch=True):
 if __name__ == '__main__':
     SSP_configs = ["batch_SSP_SPA1_CDR.xml", "batch_SSP_SPA2_CDR.xml", "batch_SSP_SPA3_CDR.xml",
                    "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml"]
-    default_configs = ["configuration_core.xml", "configuration_CDR_ref.xml"]
+    default_configs = ["configuration_core.xml", "configuration_CDR_ref.xml", "configuration_CDR_policy_playground.xml"]
 
+    main("configuration_CDR_policy_playground.xml", False) # elastic setting
     main("configuration_core.xml", False)
     main("configuration_CDR_ref.xml", False)
 
