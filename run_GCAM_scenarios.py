@@ -82,6 +82,7 @@ if __name__ == '__main__':
                    "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml"]
     default_configs = ["configuration_core.xml", "configuration_CDR_ref.xml", "configuration_CDR_policy_playground.xml"]
 
+    main("configuration_usa.xml", False)
     main("configuration_CDR_policy_playground.xml", False) # elastic setting
     main("configuration_core.xml", False)
     main("configuration_CDR_ref.xml", False)

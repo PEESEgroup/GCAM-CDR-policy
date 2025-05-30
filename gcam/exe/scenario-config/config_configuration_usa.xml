@@ -5,7 +5,7 @@
 		<Value name="policy-target-file">../input/policy/forcing_target_4p5.xml</Value>
 		<Value name="GHGInputFileName">../input/magicc/inputs/input_gases.emk</Value>
 		<Value write-output="1" append-scenario-name="0" name="xmldb-location">../output/database_basexdb</Value>
-		<Value write-output="1" append-scenario-name="0" name="restart">./restart/restart</Value>
+		<Value write-output="0" append-scenario-name="0" name="restart">./restart/restart</Value>
 		<Value write-output="0" append-scenario-name="1" name="xmlDebugFileName">debug.xml</Value>
 		<Value write-output="1" append-scenario-name="0" name="climatFileName">gas.emk</Value>
 		<Value write-output="1" append-scenario-name="1" name="costCurvesOutputFileName">cost_curves.xml</Value>
@@ -16,8 +16,9 @@
 		<Value write-output="0" append-scenario-name="0" name="landAllocatorGraphName">LandAllocatorGraph.dot</Value>
 	</Files>
 	<ScenarioComponents>
-        <Value name="climate">../input/gcamdata/xml/hector.xml</Value>
+        <Value name="climate">../input/gcamdata/xml/no_climate_model.xml</Value>
 		<Value name="socioeconomics">../input/gcamdata/xml/socioeconomics_gSSP2.xml</Value>
+
 		<Value name="resources">../input/gcamdata/xml/resources.xml</Value>
 		<Value name="energy_supply">../input/gcamdata/xml/en_supply.xml</Value>
 		<Value name="energy_transformation">../input/gcamdata/xml/en_transformation.xml</Value>
@@ -69,62 +70,62 @@
 		<Value name="an_water">../input/gcamdata/xml/water_demand_livestock.xml</Value>
 		<Value name="municipal_water">../input/gcamdata/xml/water_demand_municipal.xml</Value>
 		<Value name="primary_ene_water">../input/gcamdata/xml/water_demand_primary.xml</Value>
-
-		<Value name="ind_urb_proc">../input/gcamdata/xml/ind_urb_processing_sectors.xml</Value>
-		<Value name="nonco2_energy">../input/gcamdata/xml/all_energy_emissions.xml</Value>
-		<Value name="nonco2_fgas">../input/gcamdata/xml/all_fgas_emissions.xml</Value>
-		<Value name="nonco2_unmgd">../input/gcamdata/xml/all_unmgd_emissions.xml</Value>
-		<Value name="nonco2_aglu">../input/gcamdata/xml/all_aglu_emissions_IRR_MGMT.xml</Value>
-		<Value name="nonco2_aglu_prot">../input/gcamdata/xml/all_protected_unmgd_emissions.xml</Value>
-
 		
-		<Value name="nonco2_energy">../input/gcamdata/xml/all_energy_emissions_MAC.xml</Value>
-		<Value name="nonco2_fgas">../input/gcamdata/xml/all_fgas_emissions_MAC.xml</Value>
-		<Value name="nonco2_aglu">../input/gcamdata/xml/all_aglu_emissions_IRR_MGMT_MAC.xml</Value>
-		<Value name="nonco2_proc">../input/gcamdata/xml/ind_urb_processing_sectors_MAC.xml</Value>
-
-		
+		<Value name="bio_feedstock_limit">../input/gcamdata/xml/liquids_limits.xml</Value>
+		<Value name="bio_elec_w_feed_limit">../input/gcamdata/xml/water_elec_liquids_limits.xml</Value>
 		<Value name="bio_neg_emiss_budget">../input/gcamdata/xml/negative_emissions_budget_gSSP2.xml</Value>
         <Value name="wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>
+
+
+		<Value name="socio_usa">../input/gcamdata/xml/socioeconomics_USA.xml</Value>
+		<Value name="resource_usa">../input/gcamdata/xml/resources_USA.xml</Value>
+		<Value name="Cstorage_usa">../input/gcamdata/xml/Cstorage_USA.xml</Value>
+		<Value name="prices_usa">../input/gcamdata/xml/en_prices_USA.xml</Value>
+		<Value name="en_transform_usa">../input/gcamdata/xml/en_transformation_USA.xml</Value>
+		
+		<Value name="elec_water_usa">../input/gcamdata/xml/elec_segments_water_USA.xml</Value>
+		<Value name="h2_usa">../input/gcamdata/xml/hydrogen_USA.xml</Value>
+		<Value name="elect_td_usa">../input/gcamdata/xml/electd_USA.xml</Value>
+		<Value name="trn_usa">../input/gcamdata/xml/transportation_USA_CORE.xml</Value>
+		<Value name="bld_usa">../input/gcamdata/xml/building_USA.xml</Value>
+		<Value name="dd_usa">../input/gcamdata/xml/HDDCDD_constdds_USA.xml</Value>
+		<Value name="ind_usa">../input/gcamdata/xml/industry_USA.xml</Value>
+		<Value name="ind_vintage_usa">../input/gcamdata/xml/industry_vintage_USA.xml</Value>
+		<Value name="cement_usa">../input/gcamdata/xml/cement_USA.xml</Value>
+		<Value name="fert_usa">../input/gcamdata/xml/Fert_USA.xml</Value>
+
+		
+		
+		<Value name="solar_usa">../input/gcamdata/xml/solar_reeds_USA.xml</Value>
+		<Value name="wind_usa">../input/gcamdata/xml/wind_reeds_USA.xml</Value>
+		<Value name="hydro_usa">../input/gcamdata/xml/elec_hydro_USA.xml</Value>
+		<Value name="nuc_usa">../input/gcamdata/xml/nuclear_USA.xml</Value>
+		<Value name="no_new_coal_usa">../input/gcamdata/xml/nonewcoal_USA.xml</Value>
+		<Value name="ITC_usa">../input/gcamdata/xml/elecS_costs_USA_itc.xml</Value>
+		<Value name="PTC_usa">../input/gcamdata/xml/elecS_costs_USA_ptc.xml</Value>
+
+		<Value name="liq_lim_usa">../input/gcamdata/xml/liquids_limits_USA.xml</Value>
+		<Value name="neg_emiss_usa">../input/gcamdata/xml/negative_emissions_budget_USA_gSSP2.xml</Value>
+		<Value name="USA_regional_bio">../input/gcamdata/xml/regional_biomass_USA.xml</Value>
+		
+		
+		<Value name="water_td_usa">../input/gcamdata/xml/water_td_USA.xml</Value>
+		<Value name="municipal_water_usa">../input/gcamdata/xml/water_demand_municipal_USA.xml</Value>
+		<Value name="ind_water_usa">../input/gcamdata/xml/water_demand_industry_USA.xml</Value>
+		
 		<Value name="solver">../input/solution/cal_broyden_config.xml</Value>
-
-		
-		<Value name="bioseparation">../input/gcamdata/xml/bio_sep_final_final_final27.xml</Value>
-		<Value name="bioenergy_water">../input/gcamdata/xml/electricity_water_coefs_bio.xml</Value>
-		<Value name="bioliquids_limits">../input/gcamdata/xml/bio_sep_liquids_limits.xml</Value>
-
-		
-		<Value name="cdr_supplysector">../input/gcamdata/xml/CDR.xml</Value>
-		<Value name="cdr_growth_limit">../input/gcamdata/xml/CDR_growth_limit.xml</Value>
-		<Value name="cdr_trade">../input/gcamdata/xml/CDR_traded.xml</Value>
-		<Value name="cdr_dac">../input/gcamdata/xml/DAC.xml</Value>
-		<Value name="waste_heat">../input/gcamdata/xml/waste_heat_endogenous.xml</Value>
-		<Value name="cdr_tew">../input/gcamdata/xml/TEW.xml</Value>
-		<Value name="cdr_tew_limit">../input/gcamdata/xml/limit_land.xml</Value>
-		<Value name="cdr_oew">../input/gcamdata/xml/OEW.xml</Value>
-		<Value name="cdr_oew_limit">../input/gcamdata/xml/OEW_shipping.xml</Value>
-		<Value name="cdr_nonenergy">../input/gcamdata/xml/CDR_costs.xml</Value>
-		<Value name="cdr_resources">../input/gcamdata/xml/resources_CDR.xml</Value>
-
-		
-		<Value name="beccs_integration">../input/gcamdata/xml/BECCS_integration.xml</Value>
 		
 		
-
-		
-		<Value name="CDR_demand">../input/policy/CDR/CDR_exo_5GtC.xml</Value>
 		
 		
 		
 		
 		
-		<Value name="carbon_tax">../input/policy/carbon_tax_25_5.xml</Value>
-		<Value name="carbon_tax_nearterm">../input/policy/carbon_tax_0_nearterm.xml</Value>
-		<Value name="carbon_tax_link">../input/policy/2025_target_finder.xml</Value>
+
 	</ScenarioComponents>
 	<Strings>
-		<Value name="scenarioName">GCAM-CDR</Value>
-		<Value name="debug-region">USA</Value>
+		<Value name="scenarioName">GCAM-USA_BioSep_Policy_Test</Value>
+		<Value name="debug-region">CA</Value>
 		<Value name="MAGICC-input-dir">../input/magicc/inputs</Value>
 		<Value name="MAGICC-output-dir">../output</Value>
 		<Value name="AbatedGasForCostCurves">CO2</Value>
@@ -148,10 +149,10 @@
 		<Value name="climateOutputInterval">5</Value>
 		<Value name="parallel-grain-size">50</Value>
 		<Value name="stop-period">-1</Value>
-		<Value name="stop-year">-1</Value>
+		<Value name="stop-year">2100</Value>
 		<Value name="restart-period">-1</Value>
 		<Value name="restart-year">-1</Value>
-		<Value name="max-parallelism">3</Value>
+		<Value name="max-parallelism">1</Value>
 	</Ints>
 	<Doubles>
 	</Doubles>
