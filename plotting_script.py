@@ -855,6 +855,15 @@ def figure6(nonBaselineScenario, RCP, SSP, biochar_year):
                          title="sensitivty analysis percentage change compared to reference scenario")
 
 
+def CDR_tech(nonBaselineScenario, RCP):
+    # frequency of biochar prices
+    CDR = data_manipulation.get_sensitivity_data(nonBaselineScenario, "CDR_by_tech", ["missing"], RCP=RCP,
+                                                           source="original")
+    CDR["Units"] = "Mt CDR"
+
+    plotting.plot_stacked_bar_product(CDR, '2050', ["missing"], "technology",
+                                    "CDR by state in 2050", "baseline", "test")
+
 def main():
     """
     Main method for scripts used to plot figures and information for the article
@@ -862,24 +871,9 @@ def main():
     """
     reference_SSP = ["SSP1"]  # the first SSP in the list is assumed to be the baseline
     reference_RCP = "baseline"
-    other_scenario = ["Baseline",
-                      "HighBiocharCost",
-                      "HighBiocharNUE",
-                      #"HighBiocharNutrients",  # error
-                      "HighBiocharSoilN2O",
-                      "HighBiocharYield",
-                      "HighCropYield",
-                      "HighGCAMLandShare",
-                      "HighGCAMManurePrice",
-                      "LowBiocharNutrients",
-                      "LowBiocharCost",
-                      "LowBiocharNUE",
-                      "LowBiocharSoilN2O",
-                      "LowBiocharYield",
-                      "LowCropYield",
-                      "LowGCAMLandShare",
-                      "LowGCAMManurePrice"]
+    other_scenario = ["test"]
     biochar_year = "2050"
+    CDR_tech(other_scenario, reference_RCP)
     figure1(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure2(other_scenario, reference_RCP, reference_SSP, biochar_year)
     figure3(other_scenario, reference_RCP, reference_SSP, biochar_year)

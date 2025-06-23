@@ -796,7 +796,7 @@ def plot_stacked_bar_product(df, year, SSP, column, title, RCP, nonBaselineScena
         plt.subplots_adjust(bottom=0.5, right=.7, left=.15)
         plt.xticks(rotation=60, ha='right')
         ymin, ymax = axs.get_ylim()
-        axs.set_ylim(-ymax, ymax)
+        axs.set_ylim(ymin, ymax)
         if title == "global land use change by year":
             plt.gcf().set_size_inches(7, 8)
         else:
