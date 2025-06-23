@@ -5,7 +5,7 @@
 		<Value name="BatchFileName">batch_ag.xml</Value>
 		<Value name="policy-target-file">../input/policy/forcing_target_4p5.xml</Value>
 		<Value name="GHGInputFileName">../input/magicc/inputs/input_gases.emk</Value>
-		<Value write-output="1" append-scenario-name="0" name="xmldb-location">../output/database_basexdb</Value>
+		<Value write-output="1" append-scenario-name="0" name="xmldb-location">D://database_test</Value>
 		<Value write-output="0" append-scenario-name="0" name="restart">./restart/restart</Value>
 		<Value write-output="0" append-scenario-name="1" name="xmlDebugFileName">debug.xml</Value>
 		<Value write-output="1" append-scenario-name="0" name="climatFileName">gas.emk</Value>
@@ -117,19 +117,17 @@
 		<Value name = "solver">../input/solution/cal_broyden_config.xml</Value>
 		
 		<!-- bioseparation -->
-		<!--Value name = "biosep_global">../input/gcamdata/xml/bio_sep_final_final_final27.xml</Value-->
-		<!-- These files don't exist
+		<Value name = "biosep_global">../input/gcamdata/xml/bio_sep_final_final_final27.xml</Value>
 		<Value name = "biosep_liquids">../input/gcamdata/xml/bio_sep_USA_liquids.xml</Value>
 		<Value name = "biosep_industry">../input/gcamdata/xml/bio_sep_USA_industry.xml</Value>
 		<Value name = "biosep_gas">../input/gcamdata/xml/bio_sep_USA_gas.xml</Value>
-		<Value name = "biosep_gas">../input/gcamdata/xml/bio_sep_USA_elec_segments.xml</Value> -->
+		<Value name = "biosep_gas">../input/gcamdata/xml/bio_sep_USA_elec_segments.xml</Value>
 		
 		<!-- Policy  -->
-		<!--
 		<Value name = "long-term-co2">../input/policy/carbon_tax_25_5.xml</Value>
 		<Value name = "co2-link">../input/policy/2025_target_finder.xml</Value>
 		<Value name = "nearterm_carbon_tax">../input/policy/carbon_tax_0_nearterm.xml</Value>
-		<Value name = "co2-link">../input/policy/states_policy_USA.xml</Value>-->
+		<Value name = "co2-link">../input/policy/states_policy_USA.xml</Value>
 
 	</ScenarioComponents>
 	<Strings>
@@ -158,7 +156,7 @@
 		<Value name="climateOutputInterval">5</Value>
 		<Value name="parallel-grain-size">50</Value>
 		<Value name="stop-period">-1</Value>
-		<Value name="stop-year">2100</Value>
+		<Value name="stop-year">2040</Value>
 		<Value name="restart-period">-1</Value>
 		<Value name="restart-year">-1</Value>
 		<Value name="max-parallelism">1</Value>

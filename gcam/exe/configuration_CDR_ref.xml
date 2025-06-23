@@ -97,7 +97,7 @@
 
 		<!-- CDR technology files -->
 		<Value name="cdr_supplysector">../input/gcamdata/xml/CDR.xml</Value>
-		<Value name="cdr_growth_limit">../input/gcamdata/xml/CDR_growth_limit.xml</Value><!-- Optional, but recommended. -->
+		<Value name="cdr_growth_limit">../input/gcamdata/xml/CDR_growth_limit.xml</Value><!-- Optional. -->
 		<Value name="cdr_trade">../input/gcamdata/xml/CDR_traded.xml</Value>
 		<Value name="cdr_dac">../input/gcamdata/xml/DAC.xml</Value>
 		<Value name="waste_heat">../input/gcamdata/xml/waste_heat_endogenous.xml</Value>
@@ -110,14 +110,13 @@
 
 		<!-- BECCS integration files -->
 		<Value name="beccs_integration">../input/gcamdata/xml/BECCS_integration.xml</Value>
-		<!-- Uncomment the following line when running a CO2/GHG constraint. -->
-		<!-- <Value name="ignore_beccs_in_constraint">../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml</Value> -->
+		<!-- uncomment the next line if you are using a CO2 constraint as an emissions policy -->
+		<!-- <Value name="beccs_countersubsidy">../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml</Value> -->
 
 		<!-- CDR demand: uncomment and adjust a policy to add CDR demand -->
-		<Value name="CDR_demand">../input/policy/CDR/CDR_exo_2GtC.xml</Value>
+		<!-- <Value name="CDR_demand">../input/policy/CDR/CDR_exo_2GtC.xml</Value> -->
 		<!-- <Value name="CDR_demand">../input/policy/CDR/CDR_elastic_demand.xml</Value> -->
 		<!-- <Value name="CDR_demand">../input/policy/CDR/CDR_offset_CO2.xml</Value> -->
-		<!-- <Value name="CDR_accumulate_demand">../input/policy/CDR_accumulate_demand_10pc.xml</Value> -->
 		
 		<!-- Emissions policies: adjust as desired -->
 		<Value name = "carbon_tax">../input/policy/carbon_tax_25_5.xml</Value>
@@ -125,7 +124,7 @@
 		<Value name = "carbon_tax_link">../input/policy/2025_target_finder.xml</Value>
 	</ScenarioComponents>
 	<Strings>
-		<Value name="scenarioName">GCAM-CDR</Value>
+		<Value name="scenarioName">CDR_Ref</Value>
 		<Value name="debug-region">USA</Value>
 		<Value name="MAGICC-input-dir">../input/magicc/inputs</Value>
 		<Value name="MAGICC-output-dir">../output</Value>
@@ -153,7 +152,7 @@
 		<Value name="stop-year">-1</Value>
 		<Value name="restart-period">-1</Value>
 		<Value name="restart-year">-1</Value>
-		<Value name="max-parallelism">3</Value>
+		<Value name="max-parallelism">-1</Value>
 	</Ints>
 	<Doubles>
 	</Doubles>
