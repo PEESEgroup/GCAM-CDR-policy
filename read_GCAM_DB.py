@@ -18,6 +18,7 @@ def build_batch_query(version, RCP, fname):
     dbviewer = ET.SubElement(root, "class", name="ModelInterface.ModelGUI2.DbViewer")
     command = ET.SubElement(dbviewer, "command", name="XMLDB Batch File")
 
+    ET.SubElement(command, "scenario", name="CDR_USA_CO2constraint")
     ET.SubElement(command, "scenario", name="GCAM_SSP1")
     ET.SubElement(command, "scenario", name="GCAM_SSP2")
     ET.SubElement(command, "scenario", name="GCAM_SSP3")

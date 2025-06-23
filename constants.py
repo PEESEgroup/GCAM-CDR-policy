@@ -5,57 +5,23 @@ class GCAMConstants:
     # TODO: check to ensure that the list of versions and their corresponding file names are the ones you want to
     #  process data for. The filename must be the same between the version and the GCAMDB_ filenames
 
-    version = [["Baseline", "baseline"],
-               ["HighBiocharCost", "baseline"],
-               ["HighBiocharNUE", "baseline"],
-               #["HighBiocharNutrients", "baseline"],  # error
-               ["HighBiocharSoilN2O", "baseline"],
-               ["HighBiocharYield", "baseline"],
-               ["HighCropYield", "baseline"],
-               ["HighGCAMLandShare", "baseline"],
-               ["HighGCAMManurePrice", "baseline"],
-               ["LowBiocharNutrients", "baseline"],
-               ["LowBiocharCost", "baseline"],
-               ["LowBiocharNUE", "baseline"],
-               ["LowBiocharSoilN2O", "baseline"],
-               ["LowBiocharYield", "baseline"],
-               ["LowCropYield", "baseline"],
-               ["LowGCAMLandShare", "baseline"],
-               ["LowGCAMManurePrice", "baseline"]]
-    GCAMDB_filenames = ["data/gcam_out/Baseline/baseline/ref.csv",
-                        "data/gcam_out/HighBiocharCost/baseline/ref.csv",
-                        "data/gcam_out/HighBiocharNUE/baseline/ref.csv",
-                        #"data/gcam_out/HighBiocharNutrients/baseline/ref.csv",  # error
-                        "data/gcam_out/HighBiocharSoilN2O/baseline/ref.csv",
-                        "data/gcam_out/HighBiocharYield/baseline/ref.csv",
-                        "data/gcam_out/HighCropYield/baseline/ref.csv",
-                        "data/gcam_out/HighGCAMLandShare/baseline/ref.csv",
-                        "data/gcam_out/HighGCAMManurePrice/baseline/ref.csv",
-                        "data/gcam_out/LowBiocharNutrients/baseline/ref.csv",
-                        "data/gcam_out/LowBiocharCost/baseline/ref.csv",
-                        "data/gcam_out/LowBiocharNUE/baseline/ref.csv",
-                        "data/gcam_out/LowBiocharSoilN2O/baseline/ref.csv",
-                        "data/gcam_out/LowBiocharYield/baseline/ref.csv",
-                        "data/gcam_out/LowCropYield/baseline/ref.csv",
-                        "data/gcam_out/LowGCAMLandShare/baseline/ref.csv",
-                        "data/gcam_out/LowGCAMManurePrice/baseline/ref.csv"]
+    version = [["test", "baseline"]]
+    GCAMDB_filenames = ["data/gcam_out/test/baseline/ref.csv"]
 
     # TODO: ensure that this strings points to the correct location of the gcam/output/* database
     #  directory names are of the form database_basexdb-<version-name>-<RCP>.
     #  This location should only need to be set once
     XML_DB_loc = "gcam/output/database_basexdb-"
+    # TODO: get US state map
     processed_map_loc = "data/maps/simplified_world_map.shp"
     basin_map_loc = "data/maps/reg_glu_boundaries_moirai_combined_3p1_0p5arcmin.shp"
 
     # other relevant constants
     SSPs = ["SSP1", "SSP2", "SSP3", "SSP4", "SSP5"]
     RCPs = ["6p0", "4p5", "3p7", "2p6", "1p9"]
-    GCAM_region = ["USA", "Africa_Eastern", "Africa_Northern", "Africa_Southern", "Africa_Western", "Australia_NZ",
-                   "Brazil", "Canada", "Central America and Caribbean", "Central Asia", "China", "EU-12", "EU-15",
-                   "Europe_Eastern", "Europe_Non_EU", "European Free Trade Association", "India", "Indonesia", "Japan",
-                   "Mexico", "Middle East", "Pakistan", "Russia", "South Africa", "South America_Northern",
-                   "South America_Southern", "South Asia", "South Korea", "Southeast Asia", "Taiwan", "Argentina",
-                   "Colombia"]
+    GCAM_region = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS",
+                   "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC",
+                   "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
     missing = "missing"
     column_order = ["1990", "2005", "2010", "2015", "2020", "2025", "2030", "2035", "2040", "2045", "2050", "2055",
                     "2060", "2065", "2070", "2075", "2080", "2085", "2090", "2095", "2100", 'SSP', 'Version',
