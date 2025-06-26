@@ -861,6 +861,9 @@ def CDR_tech(nonBaselineScenario, RCP):
                                                            source="original")
     CDR["Units"] = "Mt CDR"
 
+    plotting.plot_world_by_products(CDR, CDR["technology"].unique(), "technology", ["2050"], ["missing"],
+                                    "plotting CDR opportunities by state", RCP, nonBaselineScenario)
+
     plotting.plot_stacked_bar_product(CDR, '2050', ["missing"], "technology",
                                     "CDR by state in 2050", "baseline", "test")
 

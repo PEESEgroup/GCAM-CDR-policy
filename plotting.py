@@ -18,7 +18,7 @@ def world_data(data):
     :return: a pandas dataframe containing relevant year and column data
     """
     world = gpd.read_file(c.GCAMConstants.processed_map_loc)
-    merged = pd.merge(world, data, on="GCAM", how='left')
+    merged = pd.merge(world, data, left_on="STUSPS", right_on="GCAM", how='left')
     merged = merged.replace(c.GCAMConstants.missing, np.nan)
 
     return merged
