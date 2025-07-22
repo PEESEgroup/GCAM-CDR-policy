@@ -28,6 +28,8 @@ def execute_GCAM(baseline, batch, scenario, config_fname):
     # TODO: OEW_shipping: min price not recognized
     # TODO: water_td_USA: Hawaii doesn't exist
     # TODO: elect_USA: elect_td_bld doesn't exist
+    # TODO: coal ceiling doesn't have a matching input in the next period (2020)
+    # TODO: errors in all model periods
     # change directory if not already in the \gcam\exe folder
     if str(os.getcwd()).split("\\")[-1] != "exe":
         os.chdir("./gcam/exe/")
@@ -69,12 +71,18 @@ def execute_GCAM(baseline, batch, scenario, config_fname):
     # run the batch file
     subprocess.call([r'{}'.format(bat_fname)], creationflags=subprocess.CREATE_NEW_CONSOLE)
 
-
-def build_config_file(scenario_name, baseline):
     # reset cwd
     if str(os.getcwd()).split("\\")[-1] == "exe":
         os.chdir("./../../")
 
+
+def xmldb_ops(config_name):
+    # rename the output folder
+    os.rename("gcam/output/database_basexdb", "gcam/output/database_basexdb-"+str(config_name))
+    # copy the empty folder and rename
+
+
+def build_config_file(scenario_name, baseline):
     # look up relevant files by scenario name
     scenario = constants.GCAMConstants.scenario_names[scenario_name]
     originals = scenario["original"]
@@ -98,7 +106,7 @@ def build_config_file(scenario_name, baseline):
     return config_fname
 
 
-def default_config(baseline):
+def default_config(baseline, config_name):
     """
     baseline: scenario name for baseline exogenous CDR demand
     :param baseline:
@@ -310,7 +318,7 @@ def default_config(baseline):
     doubles = ET.SubElement(configuration, "Doubles")
 
     # <Strings>
-    ET.SubElement(strings, "Value", name="scenarioName").text = "CDR_USA_CO2constraint"
+    ET.SubElement(strings, "Value", name="scenarioName").text = config_name
     ET.SubElement(strings, "Value", name="debug-region").text = "CA"
     ET.SubElement(strings, "Value", name="MAGICC-input-dir").text = "../input/magicc/inputs"
     ET.SubElement(strings, "Value", name="MAGICC-output-dir").text = "../output"
