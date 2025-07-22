@@ -32,7 +32,7 @@ class GCAMConstants:
          2090, 2095, 2100]
     plotting_x = [2020, 2025, 2030, 2035, 2040, 2045, 2050]
 
-    scenario_names = {"exo_test": {
+    scenario_names = {"exoTest": {
                                     "original": ["policy/exo_test.xml"],
                                     "altered": []}
                       }

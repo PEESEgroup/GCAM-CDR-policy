@@ -3,7 +3,6 @@
         <region name="USA">
             <ghgpolicy name="CO2_LUC">
                 <market>USA</market>
-                <isFixedTax>1</isFixedTax>
                 <fixedTax year="2020">4.5</fixedTax>
                 <fixedTax year="2025">20</fixedTax>
                 <fixedTax year="2030">38.5</fixedTax>
