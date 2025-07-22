@@ -311,7 +311,7 @@ def default_config(baseline, config_name):
     elif baseline == "default":
         ET.SubElement(scenario, "Value",
                       name="long-term-co2").text = "../input/policy/LTS/LTS_global_CO2_constraint.xml"
-        # TODO: doesn't appear to do anything rn - error
+        # removed <isFixedTax> line to bring into alignment with spa5_tax
         ET.SubElement(scenario, "Value", name="LUC-link").text = "../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml"
         ET.SubElement(scenario, "Value", name="state-co2-link").text = "../input/policy/states_policy_USA.xml"
         ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
@@ -359,8 +359,8 @@ def default_config(baseline, config_name):
 if __name__ == '__main__':
     all_configs = []
     baseline_scenarios = []
-    current_configs = ["exo_test"]
-    current_baseline = ["default"]
+    current_configs = ["exoTest"]  # use camelCase
+    current_baseline = ["default"]  # use camelCase
 
     for i in current_configs:
         for j in current_baseline:
