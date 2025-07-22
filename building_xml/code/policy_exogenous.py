@@ -4,6 +4,7 @@ import utilities
 
 
 def build(input_filepath, output_filepath):
+    # TODO: rewrite LTS_global_CDR_demand as default exogenous scenarios
     data = utilities.open_csv(input_filepath, index=["region"])
 
     # high level
