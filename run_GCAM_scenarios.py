@@ -24,11 +24,15 @@ def main(scenario, baseline, batch=False):
 
 
 def execute_GCAM(baseline, batch, scenario, config_fname):
+    # TODO: severe error: geothermal in US is not related to other activies - investigate output
+    # TODO: OEW_shipping: min price not recognized
+    # TODO: water_td_USA: Hawaii doesn't exist
+    # TODO: elect_USA: elect_td_bld doesn't exist
     # change directory if not already in the \gcam\exe folder
     if str(os.getcwd()).split("\\")[-1] != "exe":
-        os.chdir("./gcam/exe")
+        os.chdir("./gcam/exe/")
     # change the name of the config file in the .bat file
-    bat_fname = 'run-gcam-cdr_' + baseline + "_" + scenario + ".bat"
+    bat_fname = 'run-gcam-cdr_' + scenario + "_" + baseline + ".bat"
     original_bat_fname = 'run-gcam-cdr.bat'
     lines = open(original_bat_fname, 'r').readlines()
 
@@ -67,6 +71,10 @@ def execute_GCAM(baseline, batch, scenario, config_fname):
 
 
 def build_config_file(scenario_name, baseline):
+    # reset cwd
+    if str(os.getcwd()).split("\\")[-1] == "exe":
+        os.chdir("./../../")
+
     # look up relevant files by scenario name
     scenario = constants.GCAMConstants.scenario_names[scenario_name]
     originals = scenario["original"]
@@ -84,8 +92,10 @@ def build_config_file(scenario_name, baseline):
     # write out xml
     xmlstr = minidom.parseString(ET.tostring(config, encoding="UTF-8", xml_declaration=True)).toprettyxml(
         indent="   ")
-    with open(constants.GCAMConstants.config_dir + "config_" + scenario_name + "_" + baseline + ".xml", "w+") as f:
+    config_fname = scenario_name + "_" + baseline + ".xml"
+    with open("./gcam/exe/" + config_fname, "w+") as f:
         f.write(xmlstr)
+    return config_fname
 
 
 def default_config(baseline):
@@ -288,15 +298,16 @@ def default_config(baseline):
     elif baseline == "default":
         ET.SubElement(scenario, "Value",
                       name="long-term-co2").text = "../input/policy/LTS/LTS_global_CO2_constraint.xml"
+        # TODO: doesn't appear to do anything rn - error
         ET.SubElement(scenario, "Value", name="LUC-link").text = "../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml"
         ET.SubElement(scenario, "Value", name="state-co2-link").text = "../input/policy/states_policy_USA.xml"
         ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
         ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
 
-    strings = ET.SubElement(files, "Strings")
-    bools = ET.SubElement(files, "Bools")
-    ints = ET.SubElement(files, "Ints")
-    doubles = ET.SubElement(files, "Doubles")
+    strings = ET.SubElement(configuration, "Strings")
+    bools = ET.SubElement(configuration, "Bools")
+    ints = ET.SubElement(configuration, "Ints")
+    doubles = ET.SubElement(configuration, "Doubles")
 
     # <Strings>
     ET.SubElement(strings, "Value", name="scenarioName").text = "CDR_USA_CO2constraint"
