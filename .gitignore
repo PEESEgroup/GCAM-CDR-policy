@@ -157,7 +157,14 @@ data/gcam_out/released/6p0/ref.csv
 /gcam/input/gcamdata/xml/resbio_input_IRR_MGMT.xml
 /gcam/input/gcamdata/xml/ag_water_input_IRR_MGMT.xml
 /gcam/input/gcamdata/xml/ag_Fert_IRR_MGMT.xml
+/gcam/input/gcamdata/xml/ag_cost_IRR_MGMT.xml
+/gcam/input/gcamdata/xml/ag_For_Past_bio_base_IRR_MGMT.xml
 /gcam/input/gcamdata/xml/all_aglu_emissions_IRR_MGMT_MAC.xml
+/gcam/input/gcamdata/xml/MACC_TC_SSP1.xml
+/gcam/input/gcamdata/xml/MACC_TC_SSP2.xml
+/gcam/input/gcamdata/xml/MACC_TC_SSP5.xml
+/gcam/input/gcamdata/xml/water_td.xml
+/gcam/input/gcamdata/xml/water_td_USA.xml
 gcam/libs/*
 gcam/exe/logs/*
 gcam/exe/restart/*
