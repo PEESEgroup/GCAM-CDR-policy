@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario name="coal-ceiling">
+   <output-meta-data>
+      <summary>Coal Constraint</summary>
+   </output-meta-data>
+   <world>
+      <region name="USA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+            <policyType>tax</policyType>
+            <constraint year="2025">1.5</constraint>
+            <constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+   </world>
+</scenario>

@@ -1,0 +1,1279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario>
+   <world>
+         <region name="USA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+            <policyType>tax</policyType>
+            <constraint year="2025">1.5</constraint>
+            <constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+       <region name="AK">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+	  </region>
+      <region name="AL">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="AR">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="AZ">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="CA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="CO">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="CT">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="DC">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="DE">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="FL">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="GA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="HI">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="IA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="ID">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="IL">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="IN">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="KS">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="KY">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="LA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="MA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="MD">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="ME">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="MI">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="MN">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="MO">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="MS">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="MT">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="NC">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="ND">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="NE">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="NH">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="NJ">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="NM">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="NV">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="NY">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="OH">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="OK">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="OR">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="PA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="RI">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="SC">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="SD">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="TN">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="TX">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="UT">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="VA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="VT">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="WA">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="WI">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="WV">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <region name="WY">
+         <policy-portfolio-standard name="coal-ceiling">
+            <market>USA</market>
+			<policyType>tax</policyType>
+			<constraint year="2025">1.5</constraint>
+			<constraint year="2030">0.1</constraint>
+            <constraint year="2035">0</constraint>
+            <constraint year="2040">0</constraint>
+            <constraint year="2045">0</constraint>
+            <constraint year="2050">0</constraint>
+            <constraint year="2055">0</constraint>
+            <constraint year="2060">0</constraint>
+         </policy-portfolio-standard>
+      </region>
+      <global-technology-database>
+        <location-info sector-name="baseload generation" subsector-name="coal_base_conv pul">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="baseload generation" subsector-name="coal_base_conv pul 1951-1955">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="baseload generation" subsector-name="coal_base_conv pul 1961-1965">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="baseload generation" subsector-name="coal_base_conv pul 1966-1970">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="baseload generation" subsector-name="coal_base_conv pul 1971-1975">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="baseload generation" subsector-name="coal_base_conv pul 1981-1985">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="baseload generation" subsector-name="coal_base_conv pul 1986-1990">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="baseload generation" subsector-name="coal_base_conv pul 1996-2000">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+        <location-info sector-name="intermediate generation" subsector-name="coal_int_conv pul">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="intermediate generation" subsector-name="coal_int_conv pul 1951-1955">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="intermediate generation" subsector-name="coal_int_conv pul 1961-1965">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="intermediate generation" subsector-name="coal_int_conv pul 1966-1970">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="intermediate generation" subsector-name="coal_int_conv pul 1971-1975">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="intermediate generation" subsector-name="coal_int_conv pul 1981-1985">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="intermediate generation" subsector-name="coal_int_conv pul 1986-1990">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="intermediate generation" subsector-name="coal_int_conv pul 1996-2000">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+        <location-info sector-name="subpeak generation" subsector-name="coal_subpeak_conv pul">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="subpeak generation" subsector-name="coal_subpeak_conv pul 1951-1955">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="subpeak generation" subsector-name="coal_subpeak_conv pul 1961-1965">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="subpeak generation" subsector-name="coal_subpeak_conv pul 1966-1970">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="subpeak generation" subsector-name="coal_subpeak_conv pul 1971-1975">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="subpeak generation" subsector-name="coal_subpeak_conv pul 1981-1985">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="subpeak generation" subsector-name="coal_subpeak_conv pul 1986-1990">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="subpeak generation" subsector-name="coal_subpeak_conv pul 1996-2000">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+        <location-info sector-name="peak generation" subsector-name="coal_peak_conv pul">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="peak generation" subsector-name="coal_peak_conv pul 1951-1955">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="peak generation" subsector-name="coal_peak_conv pul 1961-1965">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="peak generation" subsector-name="coal_peak_conv pul 1966-1970">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="peak generation" subsector-name="coal_peak_conv pul 1971-1975">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="peak generation" subsector-name="coal_peak_conv pul 1981-1985">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="peak generation" subsector-name="coal_peak_conv pul 1986-1990">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+		<location-info sector-name="peak generation" subsector-name="coal_peak_conv pul 1996-2000">
+			<technology name="coal (conv pul) (seawater)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (once through)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (recirculating)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (cooling pond)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+			<technology name="coal (conv pul) (dry cooling)">
+				<period year="2015"><input-tax name="coal-ceiling" /></period>
+			</technology>
+		</location-info>
+	  </global-technology-database>
+   </world>
+</scenario>

@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<scenario>
+   <world>
+      <region name="USA">
+         <CDR-final-demand name="CDR">
+            <demand-source name="exogenous">
+               <demand year="2025">U</demand>
+               <demand year="2025">S</demand>
+               <demand year="2025">A</demand>
+            </demand-source>
+         </CDR-final-demand>
+      </region>
+   </world>
+</scenario>
