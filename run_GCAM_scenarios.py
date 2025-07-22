@@ -280,24 +280,70 @@ def default_config(baseline):
     ET.SubElement(scenario, "Value", name = "beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
     ET.SubElement(scenario, "Value", name = "beccs_countersubsidy").text = "../input/policy/CDR/counteract_BECCS_subsidy_USA.xml"
 
+    # policy
+    # TODO: based on scenario names, update the inclusion of default values
+    # baseline includes coal phase out and states as part of the usa market
+    if baseline == "test":
+        ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
+    elif baseline == "default":
+        ET.SubElement(scenario, "Value",
+                      name="long-term-co2").text = "../input/policy/LTS/LTS_global_CO2_constraint.xml"
+        ET.SubElement(scenario, "Value", name="LUC-link").text = "../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml"
+        ET.SubElement(scenario, "Value", name="state-co2-link").text = "../input/policy/states_policy_USA.xml"
+        ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
+        ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
+
+    strings = ET.SubElement(files, "Strings")
+    bools = ET.SubElement(files, "Bools")
+    ints = ET.SubElement(files, "Ints")
+    doubles = ET.SubElement(files, "Doubles")
+    
+    # <Strings>
+    ET.SubElement(strings, "Value", name="scenarioName").text = "CDR_USA_CO2constraint"
+    ET.SubElement(strings, "Value", name="debug-region").text = "CA"
+    ET.SubElement(strings, "Value", name="MAGICC-input-dir").text = "../input/magicc/inputs"
+    ET.SubElement(strings, "Value", name="MAGICC-output-dir").text = "../output"
+    ET.SubElement(strings, "Value", name="AbatedGasForCostCurves").text = "CO2"
+    # 	</Strings>
+    # 	<Bools>
+    ET.SubElement(bools, "Value", name="CalibrationActive").text = 1
+    ET.SubElement(bools, "Value", name="BatchMode").text = 0
+    ET.SubElement(bools, "Value", name="find-path").text = 0
+    ET.SubElement(bools, "Value", name="createCostCurve").text = 0
+    ET.SubElement(bools, "Value", name="debugChecking").text = 0
+    ET.SubElement(bools, "Value", name="simulActive").text = 1
+    ET.SubElement(bools, "Value", name="PrintValuesOnGraphs").text = 1
+    ET.SubElement(bools, "Value", name="ShowNullPaths").text = 0
+    ET.SubElement(bools, "Value", name="PrintPrices").text = 1
+    # 	</Bools>
+    # 	<Ints>
+    ET.SubElement(ints, "Value", name="numMarketsToFindSD").text = 10
+    ET.SubElement(ints, "Value", name="numPointsForSD").text = 21
+    ET.SubElement(ints, "Value", name="numPointsForCO2CostCurve").text = 5
+    ET.SubElement(ints, "Value", name="carbon-output-start-year").text = 1705
+    ET.SubElement(ints, "Value", name="climateOutputInterval").text = 5
+    ET.SubElement(ints, "Value", name="parallel-grain-size").text = 50
+    ET.SubElement(ints, "Value", name="stop-period").text = -1
+    ET.SubElement(ints, "Value", name="stop-year").text = 2050
+    ET.SubElement(ints, "Value", name="restart-period").text = -1
+    ET.SubElement(ints, "Value", name="restart-year").text = -1
+    ET.SubElement(ints, "Value", name="max-parallelism").text = 3
+
 
 
 if __name__ == '__main__':
     all_configs = []
-    SSP_configs = ["batch_SSP_SPA1_CDR.xml", "batch_SSP_SPA2_CDR.xml", "batch_SSP_SPA3_CDR.xml",
-                   "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml"]
-    default_configs = ["configuration_core.xml", "configuration_CDR_ref.xml", "configuration_CDR_policy_playground.xml"]
+    baseline_scenarios = []
+    current_configs = ["exo_test"]
+    current_baseline = ["default"]
 
-    main("configuration_usa.xml", False)
-    main("configuration_CDR_policy_playground.xml", False) # elastic setting
-    main("configuration_core.xml", False)
-    main("configuration_CDR_ref.xml", False)
+    for i in current_configs:
+        for j in current_baseline:
+            main(str(i))
 
-    for i in SSP_configs:
-        main(str(i))
-
-    for i in default_configs:
-        main(str(i), False)
+    for i in all_configs:
+        for j in baseline_scenarios:
+            main(str(i))
 
     """
     ### PARALELLIZATION ###
