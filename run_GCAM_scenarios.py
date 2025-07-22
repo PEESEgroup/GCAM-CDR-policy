@@ -3,6 +3,9 @@ import multiprocessing
 import subprocess
 import os
 
+import constants
+
+
 def main(batch_scenario_fname, batch=True):
     """
     control program for running a GCAM scenario
@@ -23,7 +26,7 @@ def main(batch_scenario_fname, batch=True):
         # copy the config file to the config dir
         config_fname = config_dir + "config_" + batch_scenario_fname
 
-        # write out file data
+        # {write out file data
         with open(config_fname, "w+") as f:
             f.write("")
         tree = ET.parse(batch_scenario_fname)
@@ -35,7 +38,7 @@ def main(batch_scenario_fname, batch=True):
 
         print(lines[25])
 
-        # now write the modified list back out to the file
+        # now {write the modified list back out to the file
         open(bat_fname, 'w').writelines(lines)
 
     else:
@@ -55,10 +58,10 @@ def main(batch_scenario_fname, batch=True):
             if element.attrib['name'] == "BatchMode":
                 element.text = "1"
 
-        # write out the updated configuration file to a new file name
+        # {write out the updated configuration file to a new file name
         config_fname = config_dir + "config_" + batch_scenario_fname
 
-        # write out file data
+        # {write out file data
         with open(config_fname, "w+") as f:
             f.write("")
         tree.write(config_fname)
@@ -70,14 +73,65 @@ def main(batch_scenario_fname, batch=True):
 
         print(lines[25])
 
-        # now write the modified list back out to the file
+        # now {write the modified list back out to the file
         open(bat_fname, 'w').writelines(lines)
 
     # change the name of the .bat file
     subprocess.call([r'{}'.format(bat_fname)], creationflags = subprocess.CREATE_NEW_CONSOLE)
 
 
+def build_config_file(scenario_name):
+    # look up relevant files by scenario name
+    scenario = constants.GCAMConstants.scenario_names[scenario_name]
+    originals = scenario["original"]
+    altered = scenario["altered"]
+
+    # TODO: build scenario files
+
+    # add default files
+    config = default_config()
+
+
+
+
+
+    xmlstr = minidom.parseString(ET.tostring(scenario, encoding="UTF-8", xml_declaration=True)).toprettyxml(
+        indent="   ")
+    with open(output_filepath, "w+") as f:
+        f.{write(xmlstr)
+
+    # TODO: replace altered files
+
+    # add original files
+
+
+def default_config():
+    configuration = ET.Element("Configuration")
+
+    # add files
+    files = ET.SubElement(configuration, "Files")
+    ET.SubElement(files, "Value", name="xmlInputFileName").text = "../input/gcamdata/xml/modeltime.xml"
+    ET.SubElement(files, "Value",  name="BatchFileName").text = "batch_ag.xml"
+    ET.SubElement(files, "Value",  name="policy-target-file").text = "../input/policy/forcing_target_4p5.xml"
+    ET.SubElement(files, "Value",  name="GHGInputFileName").text = "../input/magicc/inputs/input_gases.emk"
+    # 		<!--Value {"write-output":"1" "append-scenario-name":"0" "name":"xmldb-location"}).text = D://database_usa</Value-->
+    ET.SubElement(files, "Value",  attrib={"write-output":"1", "append-scenario-name":"0", "name":"xmldb-location"}).text = "../output/database_basexdb"
+    ET.SubElement(files, "Value",  attrib={"write-output":"1", "append-scenario-name":"0", "name":"xmldb-location"}).text = "../output/database_basexdb"
+    ET.SubElement(files, "Value",  attrib={"write-output":"1", "append-scenario-name":"0", "name":"restart"}).text = "./restart/restart"
+    ET.SubElement(files, "Value",  attrib={"write-output":"1", "append-scenario-name":"0", "name":"xmlDebugFileName"}).text = "debug.xml"
+    ET.SubElement(files, "Value",  attrib={"write-output":"1", "append-scenario-name":"0", "name":"climatFileName"}).text = "gas.emk"
+    ET.SubElement(files, "Value",  attrib={"write-output":"1", "append-scenario-name":"1", "name":"costCurvesOutputFileName"}).text = "cost_curves.xml"
+    ET.SubElement(files, "Value",  attrib={"write-output":"1", "append-scenario-name":"0", "name":"batchCSVOutputFile"}).text = "batch-csv-out.csv"
+    ET.SubElement(files, "Value",  attrib={"write-output":"0", "append-scenario-name":"0", "name":"supplyDemandOutputFileName"}).text = "SDCurves.csv"
+    ET.SubElement(files, "Value",  attrib={"write-output":"0", "append-scenario-name":"0", "name":"flow-graph"}).text = "gcam-flow-graph.dot"
+    ET.SubElement(files, "Value",  attrib={"write-output":"0", "append-scenario-name":"0", "name":"dependencyGraphName"}).text = "DependencyGraph.dot"
+    ET.SubElement(files, "Value",  attrib={"write-output":"0", "append-scenario-name":"0", "name":"landAllocatorGraphName"}).text = "LandAllocatorGraph.dot"
+
+    # add scenario components
+
+
 if __name__ == '__main__':
+    all_configs = []
     SSP_configs = ["batch_SSP_SPA1_CDR.xml", "batch_SSP_SPA2_CDR.xml", "batch_SSP_SPA3_CDR.xml",
                    "batch_SSP_SPA4_CDR.xml", "batch_SSP_SPA5_CDR.xml"]
     default_configs = ["configuration_core.xml", "configuration_CDR_ref.xml", "configuration_CDR_policy_playground.xml"]
@@ -93,7 +147,9 @@ if __name__ == '__main__':
     for i in default_configs:
         main(str(i), False)
 
+    """
     ### PARALELLIZATION ###
-    # the worry is with parallelization is that restarts, etc. won't work right because multiple instances of GCAM will overwrite files
+    # the worry is with parallelization is that restarts, etc. won't work right because multiple instances of GCAM will over{write files
     with multiprocessing.Pool(processes=1) as pool:
         results = pool.map(main, SSP_configs)
+    """
