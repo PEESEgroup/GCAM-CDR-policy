@@ -91,7 +91,7 @@ def build_config_file(scenario_name, baseline):
     # TODO: build original and altered scenario files
 
     # add default files
-    config = default_config(baseline)
+    config = default_config(baseline, scenario_name + "_" + baseline)
 
     # TODO: replace altered files
 
@@ -121,8 +121,6 @@ def default_config(baseline, config_name):
     ET.SubElement(files, "Value", name="policy-target-file").text = "../input/policy/forcing_target_4p5.xml"
     ET.SubElement(files, "Value", name="GHGInputFileName").text = "../input/magicc/inputs/input_gases.emk"
     # 		<!--Value {"write-output":"1" "append-scenario-name":"0" "name":"xmldb-location"}).text = "D://database_usa</Value-->
-    ET.SubElement(files, "Value", attrib={"write-output": "1", "append-scenario-name": "0",
-                                          "name": "xmldb-location"}).text = "../output/database_basexdb"
     ET.SubElement(files, "Value", attrib={"write-output": "1", "append-scenario-name": "0",
                                           "name": "xmldb-location"}).text = "../output/database_basexdb"
     ET.SubElement(files, "Value", attrib={"write-output": "1", "append-scenario-name": "0",
