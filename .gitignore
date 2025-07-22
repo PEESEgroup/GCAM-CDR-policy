@@ -152,7 +152,12 @@ data/gcam_out/released/6p0/ref.csv
 /data/data_analysis/~$figure_drwagin.pptx
 /gcam/cvs/*
 /gcam/cvs/.gitattributes
-/gcam/input/gcamdata/xml/*
+/gcam/input/gcamdata/xml/all_aglu_emissions_IRR_MGMT.xml
+/gcam/input/gcamdata/xml/elec_segments_water_USA.xml
+/gcam/input/gcamdata/xml/resbio_input_IRR_MGMT.xml
+/gcam/input/gcamdata/xml/ag_water_input_IRR_MGMT.xml
+/gcam/input/gcamdata/xml/ag_Fert_IRR_MGMT.xml
+/gcam/input/gcamdata/xml/all_aglu_emissions_IRR_MGMT_MAC.xml
 gcam/libs/*
 gcam/exe/logs/*
 gcam/exe/restart/*

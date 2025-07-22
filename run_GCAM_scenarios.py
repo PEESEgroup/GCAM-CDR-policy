@@ -29,7 +29,7 @@ def main(scenario, baseline, batch=False):
 
 
 def execute_GCAM(baseline, batch, scenario, config_fname):
-    # TODO: severe error: geothermal in US is not related to other activies - investigate output
+    # TODO: severe error: geothermal in US is not related to other activies - undo delete-node in elec and elec_water???
     # TODO: OEW_shipping: min price not recognized
     # TODO: water_td_USA: Hawaii doesn't exist
     # TODO: elect_USA: elect_td_bld doesn't exist
