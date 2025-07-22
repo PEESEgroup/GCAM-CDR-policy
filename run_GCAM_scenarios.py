@@ -5,6 +5,8 @@ import subprocess
 import os
 import constants
 import shutil
+import process_GCAM_data
+import read_GCAM_DB
 
 
 def main(scenario, baseline, batch=False):
@@ -18,9 +20,11 @@ def main(scenario, baseline, batch=False):
     execute_GCAM(baseline, batch, scenario, config_fname)
 
     # process output
-    # TODO: write code to write out scenario output files to xml
-    # TODO: write code to copy scenario output files to specific directory
-    # TODO: read in output and queries
+    config_fname = config_fname.split(".")[0]
+    xmldb_ops(config_fname)
+    read_GCAM_DB.main(config_fname)
+    process_GCAM_data.main(config_fname)
+
     # TODO: verify output based on configuration files in scenario
 
 
@@ -79,7 +83,7 @@ def execute_GCAM(baseline, batch, scenario, config_fname):
 
 def xmldb_ops(config_name):
     # rename the output folder
-    os.rename("gcam/output/database_basexdb", "gcam/output/database_basexdb-"+str(config_name.split(".")[0]))
+    os.rename("gcam/output/database_basexdb", "gcam/output/database_basexdb-"+str(config_name))
 
     # copy the empty folder and rename
     shutil.copytree("gcam/output/database_empty", "gcam/output/database_basexdb")
@@ -357,8 +361,6 @@ if __name__ == '__main__':
     baseline_scenarios = []
     current_configs = ["exo_test"]
     current_baseline = ["default"]
-
-    xmldb_ops(current_configs[0])
 
     for i in current_configs:
         for j in current_baseline:
