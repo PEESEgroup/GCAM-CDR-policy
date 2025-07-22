@@ -17,8 +17,8 @@ def build(input_filepath, output_filepath):
         demand_source = ET.SubElement(CDR_final_demand, "demand-source", name="exogenous")
 
         # year specific data
-        for year in area:
-            ET.SubElement(demand_source, "demand", year="2025").text=str(year)
+        for year in data[area]:
+            ET.SubElement(demand_source, "demand", year=year).text = str(data[area][year])
 
     xmlstr = minidom.parseString(ET.tostring(scenario, encoding="UTF-8", xml_declaration=True)).toprettyxml(indent="   ")
     with open(output_filepath, "w+") as f:
