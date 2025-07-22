@@ -206,30 +206,29 @@ def apply_mask(row, year, SSP):
         return row[year]
 
 
-def main():
+def main(config_fname):
     """
     control block for this file
     :return: nothing, but writes out .csv files to a relative directory
     """
-    for i in c.GCAMConstants.GCAMDB_filenames:  # first time through process the original data
-        csvs = split_file(i)  # split file based on header rows
+    csvs = split_file(config_fname)  # split file based on header rows
 
-        # create directories if they don't already exist
-        dir_path = i.split("/")  # fix the filename
-        dir_path[-1] = "original/"
-        original_fname = "/".join(dir_path)
-        if not os.path.exists(original_fname):
-            os.makedirs(original_fname)
+    # create directories if they don't already exist
+    dir_path = config_fname.split("_")  # fix the filename
+    dir_path[-1] = "original/"
+    original_fname = "/".join(dir_path)
+    if not os.path.exists(original_fname):
+        os.makedirs(original_fname)
 
-        for item in csvs.items():  # for each file
-            df = process_file(item[1], i)  # preprocess the data
-            dir_path = i.split("/")  # fix the filename
-            dir_path[-1] = "original/" + str(item[0]) + ".csv"
-            new_fname = "/".join(dir_path)
-            new_fname = new_fname.replace(")", "").replace("(", "").replace("\\", "").replace(" ", "_").replace("b/t",
-                                                                                                                "between")
-            print(new_fname)
-            df.to_csv(new_fname, index=False)  # save the original file
+    for item in csvs.items():  # for each file
+        df = process_file(item[1], config_fname)  # preprocess the data
+        dir_path = config_fname.split("_")  # fix the filename
+        dir_path[-1] = "original/" + str(item[0]) + ".csv"
+        new_fname = "/".join(dir_path)
+        new_fname = new_fname.replace(")", "").replace("(", "").replace("\\", "").replace(" ", "_").replace("b/t",
+                                                                                                            "between")
+        print(new_fname)
+        df.to_csv(new_fname, index=False)  # save the original file
 
 
 if __name__ == '__main__':
