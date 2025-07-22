@@ -32,7 +32,7 @@ class GCAMConstants:
          2090, 2095, 2100]
     plotting_x = [2020, 2025, 2030, 2035, 2040, 2045, 2050]
 
-    config_dir = "scenario-config/"
+    config_dir = "./gcam/exe/scenario-config/"
     scenario_names = {"exo_test": {
                                     "original": ["policy/exo_test.xml"],
                                     "altered": []}

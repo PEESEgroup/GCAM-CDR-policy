@@ -11,10 +11,10 @@ def main(scenario, baseline, batch=False):
     control program for running a GCAM scenario
     """
     # generate config files
-    build_config_file(scenario, baseline)
+    config_fname = build_config_file(scenario, baseline)
 
     # execute GCAM files
-    execute_GCAM(baseline, batch, scenario)
+    execute_GCAM(baseline, batch, scenario, config_fname)
 
     # process output
     # TODO: write code to write out scenario output files to xml
@@ -23,7 +23,7 @@ def main(scenario, baseline, batch=False):
     # TODO: verify output based on configuration files in scenario
 
 
-def execute_GCAM(baseline, batch, scenario):
+def execute_GCAM(baseline, batch, scenario, config_fname):
     # change directory if not already in the \gcam\exe folder
     if str(os.getcwd()).split("\\")[-1] != "exe":
         os.chdir("./gcam/exe")
@@ -31,20 +31,8 @@ def execute_GCAM(baseline, batch, scenario):
     bat_fname = 'run-gcam-cdr_' + baseline + "_" + scenario + ".bat"
     original_bat_fname = 'run-gcam-cdr.bat'
     lines = open(original_bat_fname, 'r').readlines()
-    if not batch:
-        # copy the config file to the config dir
-        config_fname = constants.GCAMConstants.config_dir + "config_" + scenario
 
-        # use configuration file as-is
-        new_last_line = ("gcam-cdr.exe -C " + config_fname)
-        lines[25] = new_last_line
-
-        print(lines[25])
-
-        # now {write the modified list back out to the file
-        open(bat_fname, 'w').writelines(lines)
-
-    else:
+    if batch:
         # open the configuration .xml" file
         config_fname = "configuration_CDR.xml"
         tag = 'Value'
@@ -61,24 +49,20 @@ def execute_GCAM(baseline, batch, scenario):
             if element.attrib['name'] == "BatchMode":
                 element.text = "1"
 
-        # {write out the updated configuration file to a new file name
-        config_fname = constants.GCAMConstants.config_dir + "config_" + scenario
-
-        # {write out file data
+        # write out file data
         with open(config_fname, "w+") as f:
             f.write("")
         tree.write(config_fname)
 
-        # run GCAM-CDR from the os
-        # now edit the appropriate line of the list of lines
-        new_last_line = ("gcam-cdr.exe -C " + config_fname)
-        lines[25] = new_last_line
+    # run GCAM-CDR from the os
+    # now edit the appropriate line of the list of lines
+    new_last_line = ("gcam-cdr.exe -C " + config_fname)
+    lines[25] = new_last_line
 
-        print(lines[25])
+    # now write the modified list back out to the file
+    open(bat_fname, 'w').writelines(lines)
 
-        # now {write the modified list back out to the file
-        open(bat_fname, 'w').writelines(lines)
-    # change the name of the .bat file
+    # run the batch file
     subprocess.call([r'{}'.format(bat_fname)], creationflags=subprocess.CREATE_NEW_CONSOLE)
 
 
@@ -100,7 +84,7 @@ def build_config_file(scenario_name, baseline):
     # write out xml
     xmlstr = minidom.parseString(ET.tostring(config, encoding="UTF-8", xml_declaration=True)).toprettyxml(
         indent="   ")
-    with open(constants.GCAMConstants.config_dir + "config_" + scenario, "w+") as f:
+    with open(constants.GCAMConstants.config_dir + "config_" + scenario_name + "_" + baseline + ".xml", "w+") as f:
         f.write(xmlstr)
 
 
@@ -322,28 +306,28 @@ def default_config(baseline):
     ET.SubElement(strings, "Value", name="AbatedGasForCostCurves").text = "CO2"
     # 	</Strings>
     # 	<Bools>
-    ET.SubElement(bools, "Value", name="CalibrationActive").text = 1
-    ET.SubElement(bools, "Value", name="BatchMode").text = 0
-    ET.SubElement(bools, "Value", name="find-path").text = 0
-    ET.SubElement(bools, "Value", name="createCostCurve").text = 0
-    ET.SubElement(bools, "Value", name="debugChecking").text = 0
-    ET.SubElement(bools, "Value", name="simulActive").text = 1
-    ET.SubElement(bools, "Value", name="PrintValuesOnGraphs").text = 1
-    ET.SubElement(bools, "Value", name="ShowNullPaths").text = 0
-    ET.SubElement(bools, "Value", name="PrintPrices").text = 1
+    ET.SubElement(bools, "Value", name="CalibrationActive").text = "1"
+    ET.SubElement(bools, "Value", name="BatchMode").text = "0"
+    ET.SubElement(bools, "Value", name="find-path").text = "0"
+    ET.SubElement(bools, "Value", name="createCostCurve").text = "0"
+    ET.SubElement(bools, "Value", name="debugChecking").text = "0"
+    ET.SubElement(bools, "Value", name="simulActive").text = "1"
+    ET.SubElement(bools, "Value", name="PrintValuesOnGraphs").text = "1"
+    ET.SubElement(bools, "Value", name="ShowNullPaths").text = "0"
+    ET.SubElement(bools, "Value", name="PrintPrices").text = "1"
     # 	</Bools>
     # 	<Ints>
-    ET.SubElement(ints, "Value", name="numMarketsToFindSD").text = 10
-    ET.SubElement(ints, "Value", name="numPointsForSD").text = 21
-    ET.SubElement(ints, "Value", name="numPointsForCO2CostCurve").text = 5
-    ET.SubElement(ints, "Value", name="carbon-output-start-year").text = 1705
-    ET.SubElement(ints, "Value", name="climateOutputInterval").text = 5
-    ET.SubElement(ints, "Value", name="parallel-grain-size").text = 50
-    ET.SubElement(ints, "Value", name="stop-period").text = -1
-    ET.SubElement(ints, "Value", name="stop-year").text = 2050
-    ET.SubElement(ints, "Value", name="restart-period").text = -1
-    ET.SubElement(ints, "Value", name="restart-year").text = -1
-    ET.SubElement(ints, "Value", name="max-parallelism").text = 3
+    ET.SubElement(ints, "Value", name="numMarketsToFindSD").text = "10"
+    ET.SubElement(ints, "Value", name="numPointsForSD").text = "21"
+    ET.SubElement(ints, "Value", name="numPointsForCO2CostCurve").text = "5"
+    ET.SubElement(ints, "Value", name="carbon-output-start-year").text = "1705"
+    ET.SubElement(ints, "Value", name="climateOutputInterval").text = "5"
+    ET.SubElement(ints, "Value", name="parallel-grain-size").text = "50"
+    ET.SubElement(ints, "Value", name="stop-period").text = "-1"
+    ET.SubElement(ints, "Value", name="stop-year").text = "2050"
+    ET.SubElement(ints, "Value", name="restart-period").text = "-1"
+    ET.SubElement(ints, "Value", name="restart-year").text = "-1"
+    ET.SubElement(ints, "Value", name="max-parallelism").text = "3"
 
     return configuration
 
