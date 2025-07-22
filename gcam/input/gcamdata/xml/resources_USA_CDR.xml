@@ -1,0 +1,1727 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario>
+   <world>
+	  <region name="USA">
+		<unlimited-resource delete="1" name="solvent" />
+		<unlimited-resource delete="1" name="sorbent" />
+		<unlimited-resource delete="1" name="atmospheric_CO2" />
+		<unlimited-resource delete="1" name="silicate" />
+		<resource delete="1" name="waste_heat" />
+	  </region>
+      <region name="AK">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="AL">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="AR">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="AZ">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="CA">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="CO">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="CT">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="DE">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="FL">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="GA">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="IA">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="ID">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="IL">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="IN">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="KS">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="KY">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="LA">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="MA">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="MD">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="ME">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="MI">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="MN">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="MO">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="MS">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="MT">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="NC">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="ND">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="NE">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="NH">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="NJ">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="NM">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="NV">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="NY">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="OH">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="OK">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="OR">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="PA">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="RI">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="SC">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="SD">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="TN">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="TX">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="UT">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="VA">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="VT">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="WA">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="WI">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="WV">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+      <region name="WY">
+         <unlimited-resource name="solvent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="sorbent">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="atmospheric_CO2">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0</price>
+         </unlimited-resource>
+         <unlimited-resource name="silicate">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <unlimited-resource name="limestone">
+            <output-unit>Mt</output-unit>
+            <price-unit>1975$/kg</price-unit>
+            <market>global</market>
+            <price year="1975">0.001</price>
+         </unlimited-resource>
+         <PrimaryFuelCO2Coef name="solvent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="sorbent">1</PrimaryFuelCO2Coef>
+         <PrimaryFuelCO2Coef name="atmospheric_CO2">-1</PrimaryFuelCO2Coef>
+      </region>
+   </world>
+</scenario>

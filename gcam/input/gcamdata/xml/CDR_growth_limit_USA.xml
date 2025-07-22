@@ -1,0 +1,1802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CDR_growth_limit.xml
+	 
+	 This file constrains the growth of CDR. It imposes a
+	 gradually rising cap on output from CDR technologies,
+	 even if that means that they cannot collectively
+	 satisfy all of the demand for CDR. This prevents unrealistic
+	 amounts of CDR appearing out of nowhere. The approach is
+	 inspired by the approach used in GCAM 5.4 in the "CO2 removal"
+	 supply sector defined in dac_ssp2.xml and similar files.
+	 
+	 You may need to customize the parameters based on when CDR
+	 first appears in your scenario, how quickly you want it to
+	 allow it to grow, etc.
+	 
+	 Note that bioenergy with CCS (BECCS) technologies can, in
+	 principle, produce more output than the constraint in this
+	 file allows. This constraint, however, does limit the
+     amount of CDR for which BECCS technologies will get paid. 
+	 
+	 This version of the file is calibrated so that, assuming an 
+	 ambitious rate of growth of 15% per year, the mid-century output
+     of all CDR technologies is near the low end of the capacity
+     estimates for these technologies from (Fuss et al. 2018). -->
+<scenario>
+   <world>
+      <region name="USA">
+		<policy-portfolio-standard delete="1" name="CDR-growth-limiter" />
+	  </region>
+      <region name="AK">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<!-- You will need to set the global constraint
+					 in every region because of the way GCAM
+					 parses multiregion policy portfolio standards. 
+					 
+					 You might find it helpful to use a regular
+					 expression to update constraints in all regions
+					 at once, by replacing
+					 
+					 <constraint year="(2020)">.+?<
+					 
+					 with
+					 
+					 <constraint year="$1">1234<
+					 
+					 where you replace 2020 with the year whose
+					 constraint you are updated, and 1234 with the
+					 new constraint for that year. -->
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="AL">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="AR">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="AZ">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="CA">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="CO">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="CT">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="DE">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="FL">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="GA">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="HI">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="IA">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="ID">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="IL">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="IN">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="KS">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="KY">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="LA">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="MA">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="MD">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="ME">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="MI">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="MN">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="MO">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="MS">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+
+      <region name="MT">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="NC">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="ND">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="NE">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="NH">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="NJ">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="NM">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="NV">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="NY">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="OH">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="OK">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="OR">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="PA">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="RI">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="SC">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="SD">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="TN">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="TX">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="UT">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="VA">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="VT">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="WA">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="WI">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="WV">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+      <region name="WY">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+			<policy-portfolio-standard name="CDR-growth-limiter">
+				<market>USA</market>
+				<policyType>tax</policyType>
+				<max-price fillout="1" year="1975">100</max-price>
+				<price-unit>1975$/kg</price-unit>
+				<output-unit>Mt</output-unit>
+				<constraint year="2020">1</constraint>
+				<constraint year="2025">32.8125</constraint>
+				<constraint year="2030">65.625</constraint>
+				<constraint year="2035">131.25</constraint>
+				<constraint year="2040">262.5</constraint>
+				<constraint year="2045">525.0</constraint>
+				<constraint year="2050">1050.0</constraint>
+				<constraint year="2055">2100.0</constraint>
+				<constraint year="2060">4200.0</constraint>
+				<constraint year="2065">4200.0</constraint>
+				<constraint year="2070">4200.0</constraint>
+				<constraint year="2075">4200.0</constraint>
+				<constraint year="2080">4200.0</constraint>
+				<constraint year="2085">4200.0</constraint>
+				<constraint year="2090">4200.0</constraint>
+				<constraint year="2095">4200.0</constraint>
+				<constraint year="2100">4200.0</constraint>
+			</policy-portfolio-standard>
+	  </region>
+	  <!-- global-technology-database is not defined here because it is
+		   assumed that any scenario using this file also includes
+		   a CDR_growth_limit.xml file -->
+    </world>
+</scenario>

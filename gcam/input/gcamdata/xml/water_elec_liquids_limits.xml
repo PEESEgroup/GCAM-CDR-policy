@@ -1,0 +1,1674 @@
+<?xml version="1.0" encoding="UTF-8"?><scenario>
+    <world>
+        <global-technology-database>
+            <location-info sector-name="electricity" subsector-name="refined liquids">
+                <technology name="refined liquids (CC)">
+                    <period year="1975">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                </technology>
+                <technology name="refined liquids (steam/CT)">
+                    <period year="1975">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                </technology>
+                <technology name="refined liquids (CC CCS)">
+                    <period year="1975">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input delete="1" name="oil-credits"/>
+                    </period>
+                </technology>
+            </location-info>
+            <location-info sector-name="elec_refined liquids (CC)" subsector-name="refined liquids (CC)">
+                <technology name="refined liquids (CC) (once through)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.8018018018018</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.8018018018018</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.76056338028169</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.72413793103448</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.69204737732657</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.66389351081531</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6366612111293</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.61290322580645</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.59235668789809</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.57232704402516</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5552099533437</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.54083204930663</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.52671755725191</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.51285930408472</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5015015015015</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.4903129657228</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.48148148148148</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.47058823529412</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.46412884333821</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (CC) (seawater)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.8018018018018</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.8018018018018</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.76056338028169</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.72413793103448</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.69204737732657</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.66389351081531</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6366612111293</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.61290322580645</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.59235668789809</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.57232704402516</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5552099533437</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.54083204930663</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.52671755725191</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.51285930408472</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5015015015015</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.4903129657228</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.48148148148148</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.47058823529412</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.46412884333821</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (CC) (recirculating)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.8018018018018</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.8018018018018</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.76056338028169</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.72413793103448</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.69204737732657</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.66389351081531</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6366612111293</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.61290322580645</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.59235668789809</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.57232704402516</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5552099533437</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.54083204930663</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.52671755725191</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.51285930408472</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5015015015015</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.4903129657228</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.48148148148148</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.47058823529412</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.46412884333821</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (CC) (dry cooling)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.34741784037559</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.8018018018018</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.8018018018018</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.76056338028169</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.72413793103448</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.69204737732657</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.66389351081531</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6366612111293</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.61290322580645</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.59235668789809</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.57232704402516</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5552099533437</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.54083204930663</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.52671755725191</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.51285930408472</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5015015015015</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.4903129657228</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.48148148148148</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.47058823529412</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.46412884333821</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+            </location-info>
+            <location-info sector-name="elec_refined liquids (steam/CT)" subsector-name="refined liquids (steam/CT)">
+                <technology name="refined liquids (steam/CT) (once through)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>3.21543408360129</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.85714285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.68817204301075</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.63157894736842</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.57731958762887</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.53164556962025</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.48138957816377</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.44498777506112</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.40384615384615</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3696682464455</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.33644859813084</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3094688221709</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.27790432801822</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.25225225225225</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.23214285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.2075055187638</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.18818380743982</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.16919739696312</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.1505376344086</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (steam/CT) (seawater)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>3.21543408360129</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.85714285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.68817204301075</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.63157894736842</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.57731958762887</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.53164556962025</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.48138957816377</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.44498777506112</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.40384615384615</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3696682464455</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.33644859813084</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3094688221709</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.27790432801822</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.25225225225225</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.23214285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.2075055187638</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.18818380743982</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.16919739696312</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.1505376344086</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (steam/CT) (recirculating)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>3.21543408360129</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.85714285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.68817204301075</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.63157894736842</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.57731958762887</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.53164556962025</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.48138957816377</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.44498777506112</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.40384615384615</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3696682464455</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.33644859813084</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3094688221709</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.27790432801822</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.25225225225225</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.23214285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.2075055187638</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.18818380743982</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.16919739696312</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.1505376344086</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (steam/CT) (cooling pond)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>3.21543408360129</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.85714285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.68817204301075</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.63157894736842</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.57731958762887</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.53164556962025</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.48138957816377</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.44498777506112</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.40384615384615</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3696682464455</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.33644859813084</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3094688221709</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.27790432801822</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.25225225225225</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.23214285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.2075055187638</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.18818380743982</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.16919739696312</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.1505376344086</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (steam/CT) (dry cooling)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>3.21543408360129</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.85714285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.75482093663912</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.68817204301075</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.63157894736842</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.57731958762887</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.53164556962025</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.48138957816377</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.44498777506112</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.40384615384615</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3696682464455</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.33644859813084</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.3094688221709</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.27790432801822</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.25225225225225</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.23214285714286</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.2075055187638</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.18818380743982</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.16919739696312</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.1505376344086</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+            </location-info>
+            <location-info sector-name="elec_refined liquids (CC CCS)" subsector-name="refined liquids (CC CCS)">
+                <technology name="refined liquids (CC CCS) (once through)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.39234449760766</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.38095238095238</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.17391304347826</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.02839756592292</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.92307692307692</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.84162062615101</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.77935943060498</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.73010380622837</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.68918918918919</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.65562913907285</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6260162601626</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6025641025641</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.58227848101266</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.56494522691706</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.54798761609907</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.53374233128834</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5220700152207</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.51057401812689</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5015015015015</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (CC CCS) (seawater)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.39234449760766</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.38095238095238</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.17391304347826</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.02839756592292</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.92307692307692</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.84162062615101</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.77935943060498</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.73010380622837</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.68918918918919</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.65562913907285</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6260162601626</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6025641025641</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.58227848101266</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.56494522691706</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.54798761609907</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.53374233128834</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5220700152207</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.51057401812689</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5015015015015</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (CC CCS) (recirculating)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.39234449760766</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.38095238095238</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.17391304347826</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.02839756592292</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.92307692307692</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.84162062615101</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.77935943060498</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.73010380622837</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.68918918918919</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.65562913907285</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6260162601626</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6025641025641</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.58227848101266</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.56494522691706</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.54798761609907</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.53374233128834</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5220700152207</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.51057401812689</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5015015015015</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+                <technology name="refined liquids (CC CCS) (dry cooling)">
+                    <period year="1975">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="1990">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2005">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.77777777777778</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2010">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.39234449760766</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2015">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.38095238095238</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2020">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.17391304347826</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2025">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>2.02839756592292</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2030">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.92307692307692</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2035">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.84162062615101</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2040">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.77935943060498</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2045">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.73010380622837</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2050">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.68918918918919</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2055">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.65562913907285</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2060">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6260162601626</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2065">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.6025641025641</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2070">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.58227848101266</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2075">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.56494522691706</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2080">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.54798761609907</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2085">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.53374233128834</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2090">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5220700152207</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2095">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.51057401812689</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                    <period year="2100">
+                        <minicam-energy-input name="oil-credits">
+                            <coefficient>1.5015015015015</coefficient>
+                        </minicam-energy-input>
+                    </period>
+                </technology>
+            </location-info>
+        </global-technology-database>
+    </world>
+</scenario>

@@ -1,0 +1,2455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario>
+   <world>
+      <region name="AL">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>AL</market>
+            <price year="1975">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">2.531136794</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="AR">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>AR</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">4.577106468</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="AZ">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>AZ</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">2.144324924</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="CA">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>CA</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">8.582850775</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="CO">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>CO</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">10.96350128</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="CT">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>CT</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.077140476</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="DE">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>DE</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.195718654</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="FL">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>FL</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">14.66130366</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="GA">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>GA</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">2.942526174</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <!--region name="HI">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>HI</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.0774</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region-->
+      <region name="IA">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>IA</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">11.75286661</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="ID">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>ID</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">5.539252411</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="IL">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>IL</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">9.967609579</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="IN">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>IN</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">5.596306581</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="KS">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>KS</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">18.55648888</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="KY">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>KY</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">3.49898375</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="LA">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>LA</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">2.654214432</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="MA">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>MA</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.109115405</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="MD">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>MD</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.719815271</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="ME">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>ME</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.365880214</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="MI">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>MI</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">3.893033671</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="MN">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>MN</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">9.334586303</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="MO">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>MO</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">8.851758916</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="MS">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>MS</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">3.087072608</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="MT">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>MT</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">18.4395564</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="NC">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>NC</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">2.660437249</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="ND">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>ND</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">14.27270303</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="NE">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>NE</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">18.12423142</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="NH">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>NH</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.080942097</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="NJ">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>NJ</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.227437174</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.00001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="NM">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>NM</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">5.345857666</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="NV">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>NV</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">2.824077496</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="NY">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>NY</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">12.59165143</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="OH">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>OH</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">5.119467172</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="OK">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>OK</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">10.96541512</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="OR">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>OR</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">5.270631597</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="PA">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>PA</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">2.449099091</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="RI">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>RI</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.0150319</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="SC">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>SC</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">1.300619566</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="SD">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>SD</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">17.16836961</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="TN">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>TN</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">3.142751857</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="TX">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>TX</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">36.0259751</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="UT">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>UT</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">1.374564683</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="VA">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>VA</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">2.165406475</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="VT">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>VT</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.32602961</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="WA">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>WA</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">4.763246529</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="WI">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>WI</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">4.857676284</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="WV">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>WV</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">0.528962804</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+      <region name="WY">
+         <renewresource name="cropland_TEW">
+            <output-unit>Mha</output-unit>
+            <price-unit>1975$/ha</price-unit>
+            <market>WY</market>
+            <price year="2100">0.01</price>
+            <price year="1990">0.01</price>
+            <price year="2005">0.01</price>
+            <price year="2010">0.01</price>
+            <sub-renewable-resource name="cropland_TEW">
+               <maxSubResource fillout="1" year="1975">6.050869524</maxSubResource>
+               <grade name="grade 0">
+                  <available>0</available>
+                  <extractioncost>0.0001</extractioncost>
+               </grade>
+               <grade name="grade 1">
+                  <available>0.5</available>
+                  <extractioncost>0.1</extractioncost>
+               </grade>
+               <grade name="grade 2">
+                  <available>0.9</available>
+                  <extractioncost>0.99</extractioncost>
+               </grade>
+				<technology name="cropland_TEW">
+					<period year="1975"><share-weight>1</share-weight></period>
+					<period year="1990"><share-weight>1</share-weight></period>
+					<period year="2005"><share-weight>1</share-weight></period>
+					<period year="2010"><share-weight>1</share-weight></period>
+					<period year="2015"><share-weight>1</share-weight></period>
+					<period year="2020"><share-weight>1</share-weight></period>
+					<period year="2025"><share-weight>1</share-weight></period>
+					<period year="2030"><share-weight>1</share-weight></period>
+					<period year="2035"><share-weight>1</share-weight></period>
+					<period year="2040"><share-weight>1</share-weight></period>
+					<period year="2045"><share-weight>1</share-weight></period>
+					<period year="2050"><share-weight>1</share-weight></period>
+					<period year="2055"><share-weight>1</share-weight></period>
+					<period year="2060"><share-weight>1</share-weight></period>
+					<period year="2065"><share-weight>1</share-weight></period>
+					<period year="2070"><share-weight>1</share-weight></period>
+					<period year="2075"><share-weight>1</share-weight></period>
+					<period year="2080"><share-weight>1</share-weight></period>
+					<period year="2085"><share-weight>1</share-weight></period>
+					<period year="2090"><share-weight>1</share-weight></period>
+					<period year="2095"><share-weight>1</share-weight></period>
+					<period year="2100"><share-weight>1</share-weight></period>
+				</technology>
+         	</sub-renewable-resource>
+		 </renewresource>
+      </region>
+   </world>
+</scenario>

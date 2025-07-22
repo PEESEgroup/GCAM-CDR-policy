@@ -1,0 +1,1624 @@
+<?xml version="1.0" encoding="UTF-8"?><scenario>
+    <world>
+        <region name="USA">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded biomass">
+                <subsector name="Africa_Eastern traded biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+                <subsector name="Africa_Southern traded biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+                <subsector name="Africa_Western traded biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+                <subsector name="India traded biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+                <subsector name="Pakistan traded biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+                <subsector name="South Asia traded biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded corn">
+                <subsector name="Africa_Eastern traded corn">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded corn">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded corn">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded corn">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded corn">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded corn">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded fibercrop">
+                <subsector name="Africa_Eastern traded fibercrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded fibercrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded fibercrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded fibercrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded fibercrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded fibercrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded misccrop">
+                <subsector name="Africa_Eastern traded misccrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded misccrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded misccrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded misccrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded misccrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded misccrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded oilcrop">
+                <subsector name="Africa_Eastern traded oilcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded oilcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded oilcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded oilcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded oilcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded oilcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded othergrain">
+                <subsector name="Africa_Eastern traded othergrain">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded othergrain">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded othergrain">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded othergrain">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded othergrain">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded othergrain">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded palmfruit">
+                <subsector name="Africa_Eastern traded palmfruit">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded palmfruit">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded palmfruit">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded palmfruit">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded palmfruit">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded palmfruit">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded rice">
+                <subsector name="Africa_Eastern traded rice">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded rice">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded rice">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded rice">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded rice">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded rice">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded roottuber">
+                <subsector name="Africa_Eastern traded roottuber">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded roottuber">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded roottuber">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded roottuber">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded roottuber">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded roottuber">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded sugarcrop">
+                <subsector name="Africa_Eastern traded sugarcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded sugarcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded sugarcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded sugarcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded sugarcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded sugarcrop">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded wheat">
+                <subsector name="Africa_Eastern traded wheat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded wheat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded wheat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded wheat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded wheat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded wheat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded beef">
+                <subsector name="Africa_Eastern traded beef">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded beef">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded beef">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded beef">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded beef">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded beef">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded dairy">
+                <subsector name="Africa_Eastern traded dairy">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded dairy">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded dairy">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded dairy">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded dairy">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded dairy">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded pork">
+                <subsector name="Africa_Eastern traded pork">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded pork">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded pork">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded pork">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded pork">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded pork">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded poultry">
+                <subsector name="Africa_Eastern traded poultry">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded poultry">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded poultry">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded poultry">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded poultry">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded poultry">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded sheepgoat">
+                <subsector name="Africa_Eastern traded sheepgoat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded sheepgoat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded sheepgoat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded sheepgoat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded sheepgoat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded sheepgoat">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+            <supplysector name="traded forest">
+                <subsector name="Africa_Eastern traded forest">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Southern traded forest">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Africa_Western traded forest">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="India traded forest">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="Pakistan traded forest">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+                <subsector name="South Asia traded forest">
+                    <interpolation-rule apply-to="share-weight" from-year="2015" to-year="2150">
+                        <to-value>0</to-value>
+                        <interpolation-function name="linear"/>
+                    </interpolation-rule>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Africa_Northern">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Australia_NZ">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Brazil">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Canada">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Central America and Caribbean">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Central Asia">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="China">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="EU-12">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="EU-15">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Europe_Eastern">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Europe_Non_EU">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="European Free Trade Association">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Indonesia">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Japan">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Mexico">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Middle East">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Russia">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="South Africa">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="South America_Northern">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="South America_Southern">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="South Korea">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Southeast Asia">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Taiwan">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Argentina">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Colombia">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.5</share-weight>
+                </subsector>
+            </supplysector>
+        </region>
+        <region name="Africa_Eastern">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+            </supplysector>
+            <supplysector name="regional corn">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional fibercrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional misccrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional oilcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional othergrain">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional palmfruit">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional rice">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional roottuber">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sugarcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional wheat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional beef">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional dairy">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional pork">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional poultry">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sheepgoat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional forest">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>billion m3</output-unit>
+                <input-unit>billion m3</input-unit>
+                <price-unit>1975$/m3</price-unit>
+            </supplysector>
+        </region>
+        <region name="Africa_Southern">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+            </supplysector>
+            <supplysector name="regional corn">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional fibercrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional misccrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional oilcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional othergrain">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional palmfruit">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional rice">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional roottuber">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sugarcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional wheat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional beef">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional dairy">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional pork">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional poultry">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sheepgoat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional forest">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>billion m3</output-unit>
+                <input-unit>billion m3</input-unit>
+                <price-unit>1975$/m3</price-unit>
+            </supplysector>
+        </region>
+        <region name="Africa_Western">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+            </supplysector>
+            <supplysector name="regional corn">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional fibercrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional misccrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional oilcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional othergrain">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional palmfruit">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional rice">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional roottuber">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sugarcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional wheat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional beef">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional dairy">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional pork">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional poultry">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sheepgoat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional forest">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>billion m3</output-unit>
+                <input-unit>billion m3</input-unit>
+                <price-unit>1975$/m3</price-unit>
+            </supplysector>
+        </region>
+        <region name="India">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+            </supplysector>
+            <supplysector name="regional corn">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional fibercrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional misccrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional oilcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional othergrain">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional palmfruit">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional rice">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional roottuber">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sugarcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional wheat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional beef">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional dairy">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional pork">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional poultry">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sheepgoat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional forest">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>billion m3</output-unit>
+                <input-unit>billion m3</input-unit>
+                <price-unit>1975$/m3</price-unit>
+            </supplysector>
+        </region>
+        <region name="Pakistan">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+            </supplysector>
+            <supplysector name="regional corn">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional fibercrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional misccrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional oilcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional othergrain">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional palmfruit">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional rice">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional roottuber">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sugarcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional wheat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional beef">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional dairy">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional pork">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional poultry">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sheepgoat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional forest">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>billion m3</output-unit>
+                <input-unit>billion m3</input-unit>
+                <price-unit>1975$/m3</price-unit>
+            </supplysector>
+        </region>
+        <region name="South Asia">
+            <supplysector name="total biomass">
+                <subsector name="imported biomass">
+                    <share-weight fillout="1" year="2025">0.1</share-weight>
+                </subsector>
+            </supplysector>
+            <supplysector name="regional corn">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional fibercrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional misccrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional oilcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional othergrain">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional palmfruit">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional rice">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional roottuber">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sugarcrop">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional wheat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional beef">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional dairy">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional pork">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional poultry">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional sheepgoat">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>Mt</output-unit>
+                <input-unit>Mt</input-unit>
+                <price-unit>1975$/kg</price-unit>
+            </supplysector>
+            <supplysector name="regional forest">
+                <relative-cost-logit>
+                    <logit-exponent fillout="1" year="1975">-1.5</logit-exponent>
+                </relative-cost-logit>
+                <output-unit>billion m3</output-unit>
+                <input-unit>billion m3</input-unit>
+                <price-unit>1975$/m3</price-unit>
+            </supplysector>
+        </region>
+    </world>
+</scenario>

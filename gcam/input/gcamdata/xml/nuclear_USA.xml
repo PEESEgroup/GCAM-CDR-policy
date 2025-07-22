@@ -1,0 +1,1207 @@
+<?xml version="1.0" encoding="UTF-8"?><scenario>
+    <world>
+        <region name="AL">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.402822666836096</steepness>
+                                    <half-life>20.95943310361</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.402822666836096</steepness>
+                                    <half-life>20.95943310361</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.402822666836096</steepness>
+                                    <half-life>20.95943310361</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.402822666836096</steepness>
+                                    <half-life>20.95943310361</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="AR">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.724862529791587</steepness>
+                                    <half-life>20.0703587489696</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.724862529791587</steepness>
+                                    <half-life>20.0703587489696</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.724862529791587</steepness>
+                                    <half-life>20.0703587489696</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="AZ">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>4.8109375</steepness>
+                                    <half-life>32.96484375</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>4.8109375</steepness>
+                                    <half-life>32.96484375</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>4.8109375</steepness>
+                                    <half-life>32.96484375</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="CA">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>10</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.26849939886405</steepness>
+                                    <half-life>7.96353408508923</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>10</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.26849939886405</steepness>
+                                    <half-life>7.96353408508923</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>10</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.26849939886405</steepness>
+                                    <half-life>7.96353408508923</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>10</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.26849939886405</steepness>
+                                    <half-life>7.96353408508923</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="CT">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.171520541727756</steepness>
+                                    <half-life>26.9055868187525</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.171520541727756</steepness>
+                                    <half-life>26.9055868187525</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.171520541727756</steepness>
+                                    <half-life>26.9055868187525</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.171520541727756</steepness>
+                                    <half-life>26.9055868187525</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="FL">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.392954939728816</steepness>
+                                    <half-life>21.1222989850813</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.392954939728816</steepness>
+                                    <half-life>21.1222989850813</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.392954939728816</steepness>
+                                    <half-life>21.1222989850813</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.392954939728816</steepness>
+                                    <half-life>21.1222989850813</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="GA">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.198141788661934</steepness>
+                                    <half-life>27.7346050973704</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.198141788661934</steepness>
+                                    <half-life>27.7346050973704</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.198141788661934</steepness>
+                                    <half-life>27.7346050973704</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.198141788661934</steepness>
+                                    <half-life>27.7346050973704</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="IA">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.68700452495659</steepness>
+                                    <half-life>18.2315286931376</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.68700452495659</steepness>
+                                    <half-life>18.2315286931376</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.68700452495659</steepness>
+                                    <half-life>18.2315286931376</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="IL">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.113825651354018</steepness>
+                                    <half-life>21.4628352984707</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.113825651354018</steepness>
+                                    <half-life>21.4628352984707</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.113825651354018</steepness>
+                                    <half-life>21.4628352984707</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="KS">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>7.928125</steepness>
+                                    <half-life>28.40625</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>7.928125</steepness>
+                                    <half-life>28.40625</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>7.928125</steepness>
+                                    <half-life>28.40625</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="LA">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.8715905771154</steepness>
+                                    <half-life>29.9290547461833</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.8715905771154</steepness>
+                                    <half-life>29.9290547461833</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.8715905771154</steepness>
+                                    <half-life>29.9290547461833</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.8715905771154</steepness>
+                                    <half-life>29.9290547461833</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="MA">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>2.38999123111856</steepness>
+                                    <half-life>16.4108452812169</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>2.38999123111856</steepness>
+                                    <half-life>16.4108452812169</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>2.38999123111856</steepness>
+                                    <half-life>16.4108452812169</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>2.38999123111856</steepness>
+                                    <half-life>16.4108452812169</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="MD">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>3.10389062912826</steepness>
+                                    <half-life>20.0145187263348</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>3.10389062912826</steepness>
+                                    <half-life>20.0145187263348</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>3.10389062912826</steepness>
+                                    <half-life>20.0145187263348</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>3.10389062912826</steepness>
+                                    <half-life>20.0145187263348</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="MI">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.225432902549675</steepness>
+                                    <half-life>23.7356894450298</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.225432902549675</steepness>
+                                    <half-life>23.7356894450298</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.225432902549675</steepness>
+                                    <half-life>23.7356894450298</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="MN">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.99651128840545</steepness>
+                                    <half-life>16.3324958160312</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.99651128840545</steepness>
+                                    <half-life>16.3324958160312</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.99651128840545</steepness>
+                                    <half-life>16.3324958160312</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="MO">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="MS">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="NC">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.436265323057884</steepness>
+                                    <half-life>26.7232033194551</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.436265323057884</steepness>
+                                    <half-life>26.7232033194551</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.436265323057884</steepness>
+                                    <half-life>26.7232033194551</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.436265323057884</steepness>
+                                    <half-life>26.7232033194551</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="NE">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.05451484181922</steepness>
+                                    <half-life>15.825473375041</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.05451484181922</steepness>
+                                    <half-life>15.825473375041</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.05451484181922</steepness>
+                                    <half-life>15.825473375041</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="NH">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>4.8109375</steepness>
+                                    <half-life>32.96484375</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>4.8109375</steepness>
+                                    <half-life>32.96484375</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>4.8109375</steepness>
+                                    <half-life>32.96484375</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>4.8109375</steepness>
+                                    <half-life>32.96484375</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="NJ">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.231987903558152</steepness>
+                                    <half-life>25.3296436024724</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.231987903558152</steepness>
+                                    <half-life>25.3296436024724</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.231987903558152</steepness>
+                                    <half-life>25.3296436024724</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.231987903558152</steepness>
+                                    <half-life>25.3296436024724</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="NY">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.330069717258855</steepness>
+                                    <half-life>16.8144787580538</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.330069717258855</steepness>
+                                    <half-life>16.8144787580538</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.330069717258855</steepness>
+                                    <half-life>16.8144787580538</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.330069717258855</steepness>
+                                    <half-life>16.8144787580538</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="OH">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.278195150455649</steepness>
+                                    <half-life>27.495947059095</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.278195150455649</steepness>
+                                    <half-life>27.495947059095</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.278195150455649</steepness>
+                                    <half-life>27.495947059095</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="PA">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.238656490436783</steepness>
+                                    <half-life>25.8168568936288</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.238656490436783</steepness>
+                                    <half-life>25.8168568936288</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.238656490436783</steepness>
+                                    <half-life>25.8168568936288</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="SC">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.21355219934638</steepness>
+                                    <half-life>22.3064004383844</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.21355219934638</steepness>
+                                    <half-life>22.3064004383844</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.21355219934638</steepness>
+                                    <half-life>22.3064004383844</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>35</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.21355219934638</steepness>
+                                    <half-life>22.3064004383844</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="TN">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>50</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.221586298441612</steepness>
+                                    <half-life>33.2656710603545</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>50</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.221586298441612</steepness>
+                                    <half-life>33.2656710603545</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>50</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.221586298441612</steepness>
+                                    <half-life>33.2656710603545</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="TX">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>40</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>5.36520919799805</steepness>
+                                    <half-life>34.7735939025879</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>40</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>5.36520919799805</steepness>
+                                    <half-life>34.7735939025879</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>40</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>5.36520919799805</steepness>
+                                    <half-life>34.7735939025879</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>40</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>5.36520919799805</steepness>
+                                    <half-life>34.7735939025879</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="VA">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.833826483987867</steepness>
+                                    <half-life>20.175764246991</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.833826483987867</steepness>
+                                    <half-life>20.175764246991</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.833826483987867</steepness>
+                                    <half-life>20.175764246991</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>25</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>0.833826483987867</steepness>
+                                    <half-life>20.175764246991</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="WA">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (seawater)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>30</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>9.2875</steepness>
+                                    <half-life>28.125</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+        <region name="WI">
+            <supplysector name="base load generation">
+                <nesting-subsector name="nuclear">
+                    <subsector name="nuc_base_Gen II">
+                        <stub-technology name="Gen_II_LWR (once through)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.8334524679835</steepness>
+                                    <half-life>14.9195123658644</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (recirculating)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.8334524679835</steepness>
+                                    <half-life>14.9195123658644</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                        <stub-technology name="Gen_II_LWR (cooling pond)">
+                            <period year="2015">
+                                <lifetime>20</lifetime>
+                                <s-curve-shutdown-decider name="s-curve">
+                                    <steepness>1.8334524679835</steepness>
+                                    <half-life>14.9195123658644</half-life>
+                                </s-curve-shutdown-decider>
+                            </period>
+                        </stub-technology>
+                    </subsector>
+                </nesting-subsector>
+            </supplysector>
+        </region>
+    </world>
+</scenario>
