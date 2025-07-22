@@ -4,6 +4,7 @@ import multiprocessing
 import subprocess
 import os
 import constants
+import shutil
 
 
 def main(scenario, baseline, batch=False):
@@ -78,8 +79,10 @@ def execute_GCAM(baseline, batch, scenario, config_fname):
 
 def xmldb_ops(config_name):
     # rename the output folder
-    os.rename("gcam/output/database_basexdb", "gcam/output/database_basexdb-"+str(config_name))
+    os.rename("gcam/output/database_basexdb", "gcam/output/database_basexdb-"+str(config_name.split(".")[0]))
+
     # copy the empty folder and rename
+    shutil.copytree("gcam/output/database_empty", "gcam/output/database_basexdb")
 
 
 def build_config_file(scenario_name, baseline):
@@ -354,6 +357,8 @@ if __name__ == '__main__':
     baseline_scenarios = []
     current_configs = ["exo_test"]
     current_baseline = ["default"]
+
+    xmldb_ops(current_configs[0])
 
     for i in current_configs:
         for j in current_baseline:
