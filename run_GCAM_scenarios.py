@@ -7,6 +7,7 @@ import constants
 import shutil
 import process_GCAM_data
 import read_GCAM_DB
+import verification
 
 
 def main(scenario, baseline, batch=False):
@@ -24,8 +25,7 @@ def main(scenario, baseline, batch=False):
     xmldb_ops(config_fname)
     read_GCAM_DB.main(config_fname)
     process_GCAM_data.main(config_fname)
-
-    # TODO: verify output based on configuration files in scenario
+    verification.main(config_fname)
 
 
 def execute_GCAM(baseline, batch, scenario, config_fname):
@@ -315,7 +315,7 @@ def default_config(baseline, config_name):
                   name="beccs_countersubsidy").text = "../input/policy/CDR/counteract_BECCS_subsidy_USA.xml"
 
     # policy
-    # TODO: based on scenario names, update the inclusion of default values
+    # TODO: based on baseline names, update the inclusion of default values
     # baseline includes coal phase out and states as part of the usa market
     if baseline == "test":
         ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
