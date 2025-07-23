@@ -25,7 +25,7 @@ def split_file(fname):
     fpath = prefix+dir+suffix
 
     # create dir if it doesn't exist
-    os.makedirs(fpath, exist_ok=True)
+    os.makedirs(prefix+dir, exist_ok=True)
 
     # TODO: cannot create a file when that file already exists
 
@@ -107,6 +107,10 @@ def process_file(value, fname):
     """
     # get model version
     words = fname.split("/")
+    if len(words) <2:
+        print("invalid file")
+        return ""
+
     value['Version'] = words[2] + " " + words[3]
 
     # get GCAM market region information
@@ -233,6 +237,8 @@ def main(config_fname):
 
     for item in csvs.items():  # for each file
         df = process_file(item[1], config_fname)  # preprocess the data
+        if df == "":
+            return
         dir_path = config_fname.split("_")  # fix the filename
         dir_path[-1] = "original/" + str(item[0]) + ".csv"
         new_fname = "/".join(dir_path)

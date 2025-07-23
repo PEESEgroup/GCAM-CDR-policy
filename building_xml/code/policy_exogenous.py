@@ -57,6 +57,8 @@ def build(config):
         f.write(xmlstr)
     print("wrote file")
 
+    # TODO: return dict of output files created -see constants for example
+
 
 if __name__ == '__main__':
     config = utilities.build_from_scenario("exoTest")
