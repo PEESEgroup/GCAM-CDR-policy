@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<ModelInterfaceBatch>
+   <class name="ModelInterface.ModelGUI2.DbViewer">
+      <command name="XMLDB Batch File">
+         <scenario name="exoTest_default"/>
+         <queryFile>xml/query_list.xml</queryFile>
+         <outFile>data/gcam_out/exoTest/default/ref.csv</outFile>
+         <xmldbLocation>gcam/output/database_basexdb-exoTest_default</xmldbLocation>
+      </command>
+   </class>
+</ModelInterfaceBatch>

@@ -23,7 +23,7 @@ SET PATH=%JAVA_HOME%\bin;%JAVA_HOME%\bin\server
 
 REM Run GCAM-CDR
 
-gcam-cdr.exe -C exo_test_default.xml
+gcam-cdr.exe -C \scenario_config\exo_test_default.xml
 )
 
 pause

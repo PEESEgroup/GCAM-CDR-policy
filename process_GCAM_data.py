@@ -77,7 +77,7 @@ def split_file(fname):
             # add the GCAM region to the dataframe
             df = frames[item[0] + str(i)]
 
-            # add the GCAM region to the master datadframe
+            # add the GCAM region to the master dataframe
             append_df = pd.concat([append_df, df], ignore_index=True)
 
             # remove the old dataframe from the dictionary
@@ -232,4 +232,4 @@ def main(config_fname):
 
 
 if __name__ == '__main__':
-    main()
+    main("./data/gcam_out/exoTest/default/ref.csv")
