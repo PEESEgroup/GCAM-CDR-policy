@@ -81,8 +81,13 @@ def execute_GCAM(baseline, batch, scenario, config_fname):
 
 
 def xmldb_ops(config_name):
+    output_dir = "gcam/output/database_basexdb-"+str(config_name)
+    # delete existing output data folder (automatically overwrites data)
+    if os.path.isdir(output_dir):
+        shutil.rmtree(output_dir)
+
     # rename the output folder
-    os.rename("gcam/output/database_basexdb", "gcam/output/database_basexdb-"+str(config_name))
+    os.rename("gcam/output/database_basexdb", output_dir)
 
     # copy the empty folder and rename
     shutil.copytree("gcam/output/database_empty", "gcam/output/database_basexdb")
@@ -365,7 +370,7 @@ def default_config(baseline, config_name):
 if __name__ == '__main__':
     all_configs = []
     baseline_scenarios = []
-    current_configs = ["exoTest"]  # use camelCase
+    current_configs = ["alteredTest"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
     for i in current_configs:
