@@ -41,5 +41,10 @@ class GCAMConstants:
     """
     scenario_names = {"exoTest": {
                                     "original": ["../input/policy/exo_test.xml"],
-                                    "altered": [{}]}
+                                    "altered": [{}]},
+                    "alteredTest": {
+                        "original": ["../input/policy/exo_test.xml", "../input/policy/carbon_tax_10_5.xml"],
+                        "altered": [{"original": "../input/policy/LTS/coal_ceiling_GCAM-USA.xml", "altered": "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"},
+                                    {"original": "../input/policy/LTS/LTS_global_CDR_demand.xml", "altered": "../input/policy/LTS/LTS_global_CDR_demand.xml"}]
+                    }
                       }
