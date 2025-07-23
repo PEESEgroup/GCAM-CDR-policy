@@ -21,7 +21,7 @@ class XMLConfig:
 
         # set relevant region information
         if region == "USA":
-            self.region = constants.GCAMConstants.USA_region,
+            self.region = constants.GCAMConstants.USA_region
         elif region == "GCAM":
             self.region = constants.GCAMConstants.GCAM_region
         else:
