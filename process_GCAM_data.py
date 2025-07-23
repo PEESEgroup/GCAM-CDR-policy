@@ -18,7 +18,16 @@ def split_file(fname):
     row_counter = 0
     frames_key = ""
 
-    with open(fname) as f:
+    # convert scenario name into file path
+    dir = str(fname).replace("_", "/")
+    prefix = "./data/gcam_out/"
+    suffix = "/ref.csv"
+    fpath = prefix+dir+suffix
+
+    # create dir if it doesn't exist
+    os.makedirs(fpath, exist_ok=True)
+
+    with open(fpath) as f:
         csv_reader = csv.reader(f)
         for row in csv_reader:
             if len(row) == 1:  # all header rows have a length of 1
@@ -29,7 +38,7 @@ def split_file(fname):
     print(title_rows)
 
     # open the file a second time, this time reading chunks of data into dataframes based on locations identified above
-    with open(fname) as f:
+    with open(fpath) as f:
         for i in title_rows:
             if title_rows.index(i) + 1 == len(title_rows):
                 # if we reached the last chunk in the list, just grab whatever remains
