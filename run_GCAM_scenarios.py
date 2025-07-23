@@ -103,11 +103,11 @@ def build_config_file(scenario_name, baseline):
     config = default_config(baseline, scenario_name + "_" + baseline)
     scenario_components = config.find("ScenarioComponents")
 
-    # TODO: test these methods
     # replace altered files
     for file in altered:
         # remove original entry
-        scenario_components.remove(file["original"])
+        original_entry = config.find(".//Value[@name='" + file["attribute"] + "']")
+        scenario_components.remove(original_entry)
         # add altered entry with default name
         ET.SubElement(scenario_components, "Value", name=str(file["altered"]).split("/")[-1].split(".")[0]).text = file["altered"]
 

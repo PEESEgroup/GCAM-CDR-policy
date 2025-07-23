@@ -36,7 +36,7 @@ class GCAMConstants:
     """
         "scenario-name": {
                                     "original": [list of files],
-                                    "altered": [list of dicts {original: "", altered: ""}]}
+                                    "altered": [list of dicts {attribute: "", altered: ""}]}
                       }
     """
     scenario_names = {"exoTest": {
@@ -44,7 +44,7 @@ class GCAMConstants:
                                     "altered": [{}]},
                     "alteredTest": {
                         "original": ["../input/policy/exo_test.xml", "../input/policy/carbon_tax_10_5.xml"],
-                        "altered": [{"original": "../input/policy/LTS/coal_ceiling_GCAM-USA.xml", "altered": "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"},
-                                    {"original": "../input/policy/LTS/LTS_global_CDR_demand.xml", "altered": "../input/policy/LTS/LTS_global_CDR_demand.xml"}]
+                        "altered": [{"attribute": "coal-ceiling-usa", "altered": "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"},
+                                    {"attribute": "cdr_demand_usa", "altered": "../input/policy/LTS/LTS_global_CDR_demand.xml"}]
                     }
                       }
