@@ -23,6 +23,7 @@ def main(scenario, baseline, batch=False):
 
     # process output
     config_fname = config_fname.split(".")[0]
+
     xmldb_ops(config_fname)
     read_GCAM_DB.main(config_fname)
     process_GCAM_data.main(config_fname)

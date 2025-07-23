@@ -11,7 +11,7 @@ def build(config):
     output_filepath = config.output_dir + config.output_fname
 
     # extract relevant data
-    data = utilities.open_csv(input_filepath, index=["region"])
+    data = utilities.open_csv(input_filepath)
     linked_ghg_data = data["exo_linked_ghg"]
     demand = data["exo_demand"]
 
@@ -44,8 +44,10 @@ def build(config):
     xmlstr = minidom.parseString(ET.tostring(scenario, encoding="UTF-8", xml_declaration=True)).toprettyxml(indent="   ")
     with open(output_filepath, "w+") as f:
         f.write(xmlstr)
+    print("wrote file")
 
 
 if __name__ == '__main__':
-    config = build_xml_config.XMLConfig()
-    build(config)
+    config = utilities.build_from_scenario("exoTest")
+    for j in config:
+        build(j)
