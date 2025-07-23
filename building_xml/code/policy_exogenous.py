@@ -1,10 +1,11 @@
 import xml.etree.cElementTree as ET
 from xml.dom import minidom
 import utilities
+import build_xml_config
 
 
-def build(input_filepath, output_filepath):
-    # TODO: rewrite LTS_global_CDR_demand as default exogenous scenarios
+def build(config):
+    input_filepath = config.data_files
     data = utilities.open_csv(input_filepath, index=["region"])
 
     # high level
@@ -27,4 +28,5 @@ def build(input_filepath, output_filepath):
 
 
 if __name__ == '__main__':
-    build("./../inputs/test_exo.csv", "./../../gcam/input/policy/CDR/test_exo.xml")
+    config = build_xml_config.XMLConfig()
+    build(config)

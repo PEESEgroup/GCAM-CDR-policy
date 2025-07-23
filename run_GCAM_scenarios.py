@@ -8,6 +8,7 @@ import shutil
 import process_GCAM_data
 import read_GCAM_DB
 import verification
+from building_xml.code import utilities, policy_exogenous
 
 
 def main(scenario, baseline, batch=False):
@@ -98,6 +99,12 @@ def build_config_file(scenario_name, baseline):
     scenario = constants.GCAMConstants.scenario_names[scenario_name]
     originals = scenario["original"]
     altered = scenario["altered"]
+
+    # build required xml files from raw data
+    xml_files_to_build = utilities.build_from_scenario(scenario_name)
+    for i in xml_files_to_build:
+        if i.xml_build_type == "Exogenous":
+            policy_exogenous.build(i)
 
     # add default files
     config = default_config(baseline, scenario_name + "_" + baseline)
@@ -289,8 +296,6 @@ def default_config(baseline, config_name):
     ET.SubElement(scenario, "Value", name="cdr_nonenergy").text = "../input/gcamdata/xml/CDR_costs.xml"
     ET.SubElement(scenario, "Value", name="cdr_resources").text = "../input/gcamdata/xml/resources_CDR.xml"
 
-    ET.SubElement(scenario, "Value",
-                  name="beccs_integration_global").text = "../input/gcamdata/xml/BECCS_integration.xml"
 
     # <!-- CDR in USA -->
     ET.SubElement(scenario, "Value", name="cdr_usa").text = "../input/gcamdata/xml/CDR_USA.xml"
@@ -310,16 +315,12 @@ def default_config(baseline, config_name):
 
     # <!-- BECCS integration -->
     ET.SubElement(scenario, "Value",
-                  name="beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
-    ET.SubElement(scenario, "Value",
                   name="beccs_countersubsidy").text = "../input/policy/CDR/counteract_BECCS_subsidy_USA.xml"
 
     # policy
     # TODO: based on baseline names, update the inclusion of default values
     # baseline includes coal phase out and states as part of the usa market
     if baseline == "test":
-        ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
-    elif baseline == "default":
         ET.SubElement(scenario, "Value",
                       name="long-term-co2").text = "../input/policy/LTS/LTS_global_CO2_constraint.xml"
         # removed <isFixedTax> line to bring into alignment with spa5_tax
@@ -327,6 +328,15 @@ def default_config(baseline, config_name):
         ET.SubElement(scenario, "Value", name="state-co2-link").text = "../input/policy/states_policy_USA.xml"
         ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
         ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
+        ET.SubElement(scenario, "Value",
+                      name="beccs_integration_global").text = "../input/gcamdata/xml/BECCS_integration.xml"
+        ET.SubElement(scenario, "Value",
+                      name="beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
+    elif baseline == "default":
+        ET.SubElement(scenario, "Value",
+                      name="beccs_integration_global").text = "../input/gcamdata/xml/BECCS_integration.xml"
+        ET.SubElement(scenario, "Value",
+                      name="beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
 
     strings = ET.SubElement(configuration, "Strings")
     bools = ET.SubElement(configuration, "Bools")

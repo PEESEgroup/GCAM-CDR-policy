@@ -1,4 +1,5 @@
 import pandas as pd
+import build_xml_config
 
 
 def open_csv(fname, index):
@@ -12,3 +13,15 @@ def open_csv(fname, index):
     values = df.to_dict(orient="index")
     return values
 
+
+def build_from_scenario(scenario_name):
+    if scenario_name == "exoTest":
+        return \
+            [build_xml_config.XMLConfig(
+                data_files=["GCAM_EXO_CDR_demand.xml"],
+                xml_build_type="Exogenous"
+            ),
+                build_xml_config.XMLConfig(
+                    data_files=["USA_EXO_CDR_demand.xml"],
+                    xml_build_type="Exogenous"
+                )]
