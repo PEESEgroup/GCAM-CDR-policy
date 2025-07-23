@@ -94,14 +94,21 @@ def build_config_file(scenario_name, baseline):
     originals = scenario["original"]
     altered = scenario["altered"]
 
-    # TODO: build original and altered scenario files
-
     # add default files
     config = default_config(baseline, scenario_name + "_" + baseline)
+    scenario_components = config.find("ScenarioComponents")
 
-    # TODO: replace altered files
+    # TODO: test these methods
+    # replace altered files
+    for file in altered:
+        # remove original entry
+        scenario_components.remove(file["original"])
+        # add altered entry with default name
+        ET.SubElement(scenario_components, "Value", name=str(file["altered"]).split("/")[-1].split(".")[0]).text = file["altered"]
 
-    # TODO: add original files
+    # add original files
+    for file in originals:
+        ET.SubElement(scenario_components, "Value", name=str(file).split("/")[-1].split(".")[0]).text = file
 
     # write out xml
     xmlstr = minidom.parseString(ET.tostring(config, encoding="UTF-8", xml_declaration=True)).toprettyxml(
