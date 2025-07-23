@@ -28,11 +28,11 @@ def build(config):
     counter = 0
     for area in config.region:
         region = ET.SubElement(world, "region", name=str(area))
-        CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
-        demand_source = ET.SubElement(CDR_final_demand, "demand-source", name="exogenous")
 
         # year specific data - only needs to be entered once, unless it is state-specific
         if counter == 0:
+            CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
+            demand_source = ET.SubElement(CDR_final_demand, "demand-source", name="exogenous")
             for year in demand:
                 ET.SubElement(demand_source, "demand", year=str(year)).text = str(demand[year]["demand"])
 
@@ -40,9 +40,9 @@ def build(config):
         region_link = linked_ghg_data[area]
         link = ET.SubElement(region, "linked-ghg-policy", name="CO2_CDR")
         ET.SubElement(link, "price-adjust", fillout=str(region_link["price-adjust-fillout"]),
-                      year=region_link["price-adjust-start-year"]).text = str(region_link["price-adjust"])
+                      year=str(region_link["price-adjust-start-year"])).text = str(region_link["price-adjust"])
         ET.SubElement(link, "demand-adjust", fillout=str(region_link["demand-adjust-fillout"]),
-                      year=region_link["demand-adjust-start-year"]).text = str(region_link["demand-adjust"])
+                      year=str(region_link["demand-adjust-start-year"])).text = str(region_link["demand-adjust"])
         ET.SubElement(link, "market").text = str(region_link["market"])
         ET.SubElement(link, "linked-policy").text = str(region_link["linked-policy"])
         ET.SubElement(link, "price-unit").text = str(region_link["price-unit"])
