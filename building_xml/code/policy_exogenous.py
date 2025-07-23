@@ -1,13 +1,14 @@
+import os
 import xml.etree.cElementTree as ET
 from xml.dom import minidom
-import utilities
 import constants
-
+import utilities
 
 def build(config):
     # unpack the config object
     input_filepath = config.data_files
     output_filepath = config.output_dir + config.output_fname
+    print(output_filepath)
 
     # extract relevant data
     data = utilities.open_csv(input_filepath)

@@ -28,15 +28,16 @@ def build_from_scenario(scenario_name):
     if scenario_name == "exoTest":
         return \
             [build_xml_config.XMLConfig(
-                data_files={"exo_linked_ghg": "./../inputs/exo_linked_ghg_usa_base.csv",
-                            "exo_demand": "./../inputs/USA_EXO_CDR_demand.csv"},
+                data_files={"exo_linked_ghg": "./building_xml/inputs/exo_linked_ghg_usa_base.csv",
+                            "exo_demand": "./building_xml/inputs/USA_EXO_CDR_demand.csv"},
                 xml_build_type="Exogenous Policy",
                 output_fname="default_USA_CDR_demand.xml",
                 region="USA"
-            ),
+            )]
+        """,
                 build_xml_config.XMLConfig(
                     data_files=["GCAM_EXO_CDR_demand.csv"],
                     xml_build_type="Exogenous Policy",
                     output_fname="default_GCAM_CDR_demand.xml",
                     region="GCAM"
-                )]
+                )"""

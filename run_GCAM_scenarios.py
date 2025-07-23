@@ -8,7 +8,8 @@ import shutil
 import process_GCAM_data
 import read_GCAM_DB
 import verification
-from building_xml.code import utilities, policy_exogenous
+import utilities
+from building_xml.code import policy_exogenous
 
 
 def main(scenario, baseline, batch=False):
@@ -104,7 +105,7 @@ def build_config_file(scenario_name, baseline):
     # build required xml files from raw data
     xml_files_to_build = utilities.build_from_scenario(scenario_name)
     for i in xml_files_to_build:
-        if i.xml_build_type == "Exogenous":
+        if i.xml_build_type == "Exogenous Policy":
             policy_exogenous.build(i)
 
     # add default files
@@ -113,11 +114,12 @@ def build_config_file(scenario_name, baseline):
 
     # replace altered files
     for file in altered:
-        # remove original entry
-        original_entry = config.find(".//Value[@name='" + file["attribute"] + "']")
-        scenario_components.remove(original_entry)
-        # add altered entry with default name
-        ET.SubElement(scenario_components, "Value", name=str(file["altered"]).split("/")[-1].split(".")[0]).text = file["altered"]
+        if file["altered"] != "":
+            # remove original entry
+            original_entry = config.find(".//Value[@name='" + file["attribute"] + "']")
+            scenario_components.remove(original_entry)
+            # add altered entry with default name
+            ET.SubElement(scenario_components, "Value", name=str(file["altered"]).split("/")[-1].split(".")[0]).text = file["altered"]
 
     # add original files
     for file in originals:
@@ -381,7 +383,7 @@ def default_config(baseline, config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = []
-    current_configs = ["alteredTest"]  # use camelCase
+    current_configs = ["exoTest"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
     for i in current_configs:

@@ -45,6 +45,7 @@ class GCAMConstants:
                                     "altered": [list of dicts {attribute: "", altered: ""}]}
                       }
     """
+    # TODO: update scenario names to be in line with utilities.py
     scenario_names = {"exoTest": {
                                     "original": ["../input/policy/exo_test.xml"],
                                     "altered": [{"attribute": "", "altered": ""}]},
