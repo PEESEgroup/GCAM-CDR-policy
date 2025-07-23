@@ -29,12 +29,11 @@ def main(scenario, baseline, batch=False):
 
 
 def execute_GCAM(baseline, batch, scenario, config_fname):
-    # TODO: severe error: geothermal in US is not related to other activies - undo delete-node in elec and elec_water???
-    # TODO: OEW_shipping: min price not recognized
-    # TODO: water_td_USA: Hawaii doesn't exist
-    # TODO: elect_USA: elect_td_bld doesn't exist
+    # severe error: geothermal in US is not related to other activies just means that geothermal production is not
+    # aggregated at the country level - geothermal is produced at the state level
+    # TODO: ensure that the BECCS_integration and BECCS_integration_USA files use the same RES policy
+    # water_td_USA: Hawaii doesn't exist - no irr water existing in hawaii for some reason
     # TODO: coal ceiling doesn't have a matching input in the next period (2020)
-    # TODO: errors in all model periods
     # change directory if not already in the \gcam\exe folder
     if str(os.getcwd()).split("\\")[-1] != "exe":
         os.chdir("./gcam/exe/")

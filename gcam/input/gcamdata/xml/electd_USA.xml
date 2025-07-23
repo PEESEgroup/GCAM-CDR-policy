@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><scenario>
     <world>
         <region name="USA">
-            <supplysector delete="1" name="elect_td_bld"/>
             <supplysector delete="1" name="elect_td_ind"/>
             <supplysector delete="1" name="elect_td_trn"/>
         </region>
