@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<scenario>
+   <world>
+      <region name="USA">
+         <CDR-final-demand name="CDR">
+            <demand-source name="exogenous">
+               <demand year="2025">200</demand>
+               <demand year="2030">400</demand>
+               <demand year="2035">800</demand>
+               <demand year="2040">1600</demand>
+               <demand year="2045">3200</demand>
+               <demand year="2050">6400</demand>
+            </demand-source>
+         </CDR-final-demand>
+      </region>
+   </world>
+</scenario>

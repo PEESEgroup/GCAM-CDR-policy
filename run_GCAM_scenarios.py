@@ -368,7 +368,7 @@ def default_config(baseline, config_name):
 
 
 if __name__ == '__main__':
-    all_configs = []
+    all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = []
     current_configs = ["alteredTest"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
