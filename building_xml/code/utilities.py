@@ -8,10 +8,13 @@ def open_csv(fname, index):
     :param fname:
     :return:
     """
-    df = pd.read_csv(fname, skiprows=1)  # skip the top row: source
-    df = df.set_index(index)
-    values = df.to_dict(orient="index")
-    return values
+    info = {}
+    for i in fname:
+        df = pd.read_csv(fname, skiprows=1)  # skip the top row: source
+        df = df.set_index(index)
+        values = df.to_dict(orient="index")
+        info[str(i)] = values
+    return info
 
 
 def build_from_scenario(scenario_name):

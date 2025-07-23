@@ -5,7 +5,11 @@ import build_xml_config
 
 
 def build(config):
+    # unpack the config object
     input_filepath = config.data_files
+    output_filepath = config.output_dir + config.output_fname
+
+    # TODO: create new file
     data = utilities.open_csv(input_filepath, index=["region"])
 
     # high level
