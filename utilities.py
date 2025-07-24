@@ -33,11 +33,11 @@ def build_from_scenario(scenario_name):
                 xml_build_type="Exogenous Policy",
                 output_fname="default_USA_CDR_demand.xml",
                 region="USA"
-            )]
-        """,
+            ),
                 build_xml_config.XMLConfig(
-                    data_files=["GCAM_EXO_CDR_demand.csv"],
+                    data_files={"exo_linked_ghg": "./building_xml/inputs/exo_linked_ghg_gcam_base.csv",
+                                "exo_demand": "./building_xml/inputs/GCAM_EXO_CDR_demand.csv"},
                     xml_build_type="Exogenous Policy",
                     output_fname="default_GCAM_CDR_demand.xml",
                     region="GCAM"
-                )"""
+                )]
