@@ -4,7 +4,7 @@ import constants
 import utilities
 
 
-def build(config):
+def build(config, baseline=False):
     # unpack the config object
     input_filepath = config.data_files
     output_filepath = config.output_dir + config.output_fname
@@ -44,7 +44,14 @@ def build(config):
     print("wrote file")
 
     # return dict of output files created -see constants for example
-    return {"altered": "CDR-Demand", "filepath": config.config_dir + config.output_fname}
+    if baseline:
+        return {"build_file_type": "baseline",
+                "filepath": config.config_dir + config.output_fname,
+                "descriptor": "CDR-Demand"}
+    else:
+        return {"build_file_type": "altered",
+                "filepath": config.config_dir + config.output_fname,
+                "descriptor": "CDR-Demand"}
 
 
 def build_markets(linked_ghg_data):

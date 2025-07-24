@@ -38,20 +38,5 @@ class GCAMConstants:
          2090, 2095, 2100]
     plotting_x = [2025, 2030, 2035, 2040, 2045, 2050]
 
-    # data structure
-    """
-        "scenario-name": {
-                                    "original": [list of files],
-                                    "altered": [list of dicts {attribute: "", altered: ""}]}
-                      }
-    """
-    # TODO: update scenario names to be in line with utilities.py
-    scenario_names = {"exoTest": {
-                                    "original": ["../input/policy/exo_test.xml"],
-                                    "altered": [{"attribute": "", "altered": ""}]},
-                    "alteredTest": {
-                        "original": ["../input/policy/exo_test.xml", "../input/policy/carbon_tax_10_5.xml"],
-                        "altered": [{"attribute": "coal-ceiling-usa", "altered": "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"},
-                                    {"attribute": "cdr_demand_usa", "altered": "../input/policy/LTS/LTS_global_CDR_demand.xml"}]
-                    }
-                      }
+    scenario_names = ["exoTest"]
+    baseline_names = ["default"]

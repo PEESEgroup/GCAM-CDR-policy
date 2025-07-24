@@ -98,32 +98,48 @@ def xmldb_ops(config_name):
 
 def build_config_file(scenario_name, baseline):
     # look up relevant files by scenario name
-    scenario = constants.GCAMConstants.scenario_names[scenario_name]
-    originals = scenario["original"]
-    altered = scenario["altered"]
+    files = []
+    original = []
+    altered = []
+    baseline_files = []
 
     # build required xml files from raw data
+    # TODO: find a method to build baseline files (may not need to be from .csv files, but at least add the names to the tree
     xml_files_to_build = utilities.build_from_scenario(scenario_name)
-    for i in xml_files_to_build:
-        if i.xml_build_type == "CDR Policy":
-            build_CDR_demand.build(i)
+    for k in xml_files_to_build:
+        if k.xml_build_type == "CDR Policy":
+            files.append(build_CDR_demand.build(k))
+        # TODO add more build types here
+
+    # find out which files are new and which are altered
+    for x in files:
+        if "original" in x["build_file_type"]:
+            original.append(x)
+        if "altered" in x["build_file_type"]:
+            altered.append(x)
+        if "baseline" in x["build_file_type"]:
+            baseline_files.append(x)
 
     # add default files
-    config = default_config(baseline, scenario_name + "_" + baseline)
+    config = default_config(scenario_name + "_" + baseline)
     scenario_components = config.find("ScenarioComponents")
+
+    # TODO: add baseline files
+    for file in baseline_files:
+        ET.SubElement(scenario_components, "Value", name=file["Descriptor"]).text = file["filepath"]
 
     # replace altered files
     for file in altered:
         if file["altered"] != "":
             # remove original entry
-            original_entry = config.find(".//Value[@name='" + file["attribute"] + "']")
+            original_entry = config.find(".//Value[@name='" + file["Descriptor"] + "']")
             scenario_components.remove(original_entry)
             # add altered entry with default name
-            ET.SubElement(scenario_components, "Value", name=str(file["altered"]).split("/")[-1].split(".")[0]).text = file["altered"]
+            ET.SubElement(scenario_components, "Value", name=file["Descriptor"]).text = file["filepath"]
 
     # add original files
-    for file in originals:
-        ET.SubElement(scenario_components, "Value", name=str(file).split("/")[-1].split(".")[0]).text = file
+    for file in original:
+        ET.SubElement(scenario_components, "Value", name=file["Descriptor"]).text = file["filepath"]
 
     # write out xml
     xmlstr = minidom.parseString(ET.tostring(config, encoding="UTF-8", xml_declaration=True)).toprettyxml(
@@ -134,7 +150,7 @@ def build_config_file(scenario_name, baseline):
     return config_fname
 
 
-def default_config(baseline, config_name):
+def default_config(config_name):
     """
     baseline: scenario name for baseline exogenous CDR demand
     :param baseline:
@@ -321,25 +337,18 @@ def default_config(baseline, config_name):
                   name="beccs_countersubsidy").text = "../input/policy/CDR/counteract_BECCS_subsidy_USA.xml"
 
     # policy
-    # TODO: based on baseline names, update the inclusion of default values
-    # baseline includes coal phase out and states as part of the usa market
-    if baseline == "test":
-        ET.SubElement(scenario, "Value",
-                      name="long-term-co2").text = "../input/policy/LTS/LTS_global_CO2_constraint.xml"
-        # removed <isFixedTax> line to bring into alignment with spa5_tax
-        ET.SubElement(scenario, "Value", name="LUC-link").text = "../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml"
-        ET.SubElement(scenario, "Value", name="state-co2-link").text = "../input/policy/states_policy_USA.xml"
-        ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
-        ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
-        ET.SubElement(scenario, "Value",
-                      name="beccs_integration_global").text = "../input/gcamdata/xml/BECCS_integration.xml"
-        ET.SubElement(scenario, "Value",
-                      name="beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
-    elif baseline == "default":
-        ET.SubElement(scenario, "Value",
-                      name="beccs_integration_global").text = "../input/gcamdata/xml/BECCS_integration.xml"
-        ET.SubElement(scenario, "Value",
-                      name="beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
+    # TODO: remove these 7 baseline scenario files and build them elsewhere
+    ET.SubElement(scenario, "Value",
+                  name="long-term-co2").text = "../input/policy/LTS/LTS_global_CO2_constraint.xml"
+    # removed <isFixedTax> line to bring into alignment with spa5_tax
+    ET.SubElement(scenario, "Value", name="LUC-link").text = "../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml"
+    ET.SubElement(scenario, "Value", name="state-co2-link").text = "../input/policy/states_policy_USA.xml"
+    ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
+    ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
+    ET.SubElement(scenario, "Value",
+                  name="beccs_integration_global").text = "../input/gcamdata/xml/BECCS_integration.xml"
+    ET.SubElement(scenario, "Value",
+                  name="beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
 
     strings = ET.SubElement(configuration, "Strings")
     bools = ET.SubElement(configuration, "Bools")
@@ -382,7 +391,7 @@ def default_config(baseline, config_name):
 
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
-    baseline_scenarios = []
+    baseline_scenarios = constants.GCAMConstants.baseline_names
     current_configs = ["exoTest"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
