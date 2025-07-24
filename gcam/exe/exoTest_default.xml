@@ -134,9 +134,13 @@
       <Value name="cdr_nonenergy">../input/gcamdata/xml/CDR_costs_USA.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_USA_CDR.xml</Value>
       <Value name="beccs_countersubsidy">../input/policy/CDR/counteract_BECCS_subsidy_USA.xml</Value>
+      <Value name="long-term-co2">../input/policy/LTS/LTS_global_CO2_constraint.xml</Value>
+      <Value name="LUC-link">../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml</Value>
+      <Value name="state-co2-link">../input/policy/states_policy_USA.xml</Value>
+      <Value name="coal-ceiling-usa">../input/policy/LTS/coal_ceiling_GCAM-USA.xml</Value>
       <Value name="beccs_integration_global">../input/gcamdata/xml/BECCS_integration.xml</Value>
       <Value name="beccs_integration_usa">../input/gcamdata/xml/BECCS_integration_USA.xml</Value>
-      <Value name="exo_test">../input/policy/exo_test.xml</Value>
+      <Value name="cdr_demand_usa">../input/policy/LTS/LTS_global_CDR_demand.xml</Value>
    </ScenarioComponents>
    <Strings>
       <Value name="scenarioName">exoTest_default</Value>

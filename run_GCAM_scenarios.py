@@ -104,7 +104,6 @@ def build_config_file(scenario_name, baseline):
     baseline_files = []
 
     # build required xml files from raw data
-    # TODO: find a method to build baseline files (may not need to be from .csv files, but at least add the names to the tree
     xml_files_to_build = utilities.build_from_scenario(scenario_name)
     for k in xml_files_to_build:
         if k.xml_build_type == "CDR Policy":
@@ -117,6 +116,7 @@ def build_config_file(scenario_name, baseline):
             original.append(x)
         if "altered" in x["build_file_type"]:
             altered.append(x)
+        # TODO: find a method to build baseline files (may not need to be from .csv files, but at least add the names to the tree
         if "baseline" in x["build_file_type"]:
             baseline_files.append(x)
 
@@ -126,20 +126,19 @@ def build_config_file(scenario_name, baseline):
 
     # TODO: add baseline files
     for file in baseline_files:
-        ET.SubElement(scenario_components, "Value", name=file["Descriptor"]).text = file["filepath"]
+        ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]
 
     # replace altered files
     for file in altered:
-        if file["altered"] != "":
-            # remove original entry
-            original_entry = config.find(".//Value[@name='" + file["Descriptor"] + "']")
-            scenario_components.remove(original_entry)
-            # add altered entry with default name
-            ET.SubElement(scenario_components, "Value", name=file["Descriptor"]).text = file["filepath"]
+        # remove original entry
+        original_entry = config.find(".//Value[@name='" + file["descriptor"] + "']")
+        scenario_components.remove(original_entry)
+        # add altered entry with default name
+        ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]
 
     # add original files
     for file in original:
-        ET.SubElement(scenario_components, "Value", name=file["Descriptor"]).text = file["filepath"]
+        ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]
 
     # write out xml
     xmlstr = minidom.parseString(ET.tostring(config, encoding="UTF-8", xml_declaration=True)).toprettyxml(

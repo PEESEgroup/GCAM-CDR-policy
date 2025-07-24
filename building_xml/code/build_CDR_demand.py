@@ -1,6 +1,5 @@
 import xml.etree.cElementTree as ET
 from xml.dom import minidom
-import constants
 import utilities
 
 
@@ -51,7 +50,7 @@ def build(config, baseline=False):
     else:
         return {"build_file_type": "altered",
                 "filepath": config.config_dir + config.output_fname,
-                "descriptor": "CDR-Demand"}
+                "descriptor": "cdr_demand_usa"}
 
 
 def build_markets(linked_ghg_data):
