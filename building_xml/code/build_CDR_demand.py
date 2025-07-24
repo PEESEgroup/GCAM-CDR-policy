@@ -7,7 +7,6 @@ def build(config, baseline=False):
     # unpack the config object
     input_filepath = config.data_files
     output_filepath = config.output_dir + config.output_fname
-    print(output_filepath)
 
     exo_demand = ""
     elastic_demand = ""
