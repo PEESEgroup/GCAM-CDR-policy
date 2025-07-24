@@ -9,7 +9,7 @@ import process_GCAM_data
 import read_GCAM_DB
 import verification
 import utilities
-from building_xml.code import policy_exogenous
+from building_xml.code import build_CDR_demand
 
 
 def main(scenario, baseline, batch=False):
@@ -105,8 +105,8 @@ def build_config_file(scenario_name, baseline):
     # build required xml files from raw data
     xml_files_to_build = utilities.build_from_scenario(scenario_name)
     for i in xml_files_to_build:
-        if i.xml_build_type == "Exogenous Policy":
-            policy_exogenous.build(i)
+        if i.xml_build_type == "CDR Policy":
+            build_CDR_demand.build(i)
 
     # add default files
     config = default_config(baseline, scenario_name + "_" + baseline)

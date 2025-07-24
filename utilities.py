@@ -1,5 +1,6 @@
 import pandas as pd
 import build_xml_config
+import csv
 
 
 def open_csv(fname, **kwargs):
@@ -10,13 +11,18 @@ def open_csv(fname, **kwargs):
     """
     info = {}
     for i in fname:
-        df = pd.read_csv(fname[i], skiprows=1)  # skip the top row because it is the source information
+        with open(fname[i], mode='r', newline='') as file:
+            csv_reader = csv.reader(file)
+            next(csv_reader)
+            index_num = int(next(csv_reader)[1])
+        df = pd.read_csv(fname[i], skiprows=2)  # skip the top row because it is the source information
 
         # reset the index for eventual dict conversion - default is first column
         if "index" in kwargs:
             df = df.set_index(kwargs["index"])
         else:
-            df = df.set_index(df.columns[0])
+            index = [df.columns[i] for i in range(index_num)]
+            df = df.set_index(index)
         values = df.to_dict(orient="index")
 
         # add data to the dictionary

@@ -1,4 +1,3 @@
-import os
 import xml.etree.cElementTree as ET
 from xml.dom import minidom
 import constants
@@ -54,13 +53,12 @@ def build_markets(linked_ghg_data):
     world = ET.SubElement(scenario, "world")
 
     # CDR-demand by default does not include the USA as a region
-    if config.region == constants.GCAMConstants.USA_region:
-        region = ET.SubElement(world, "region", name="USA")
-        supply_sector = ET.SubElement(region, "supplysector", name="CDR_traded")
-        ET.SubElement(supply_sector, "subsector", delete="1", name="CDR_USA")
+    region = ET.SubElement(world, "region", name="USA")
+    supply_sector = ET.SubElement(region, "supplysector", name="CDR_traded")
+    ET.SubElement(supply_sector, "subsector", delete="1", name="CDR_USA")
 
     # region specific data
-    for area in config.region:
+    for area in linked_ghg_data:
         region = ET.SubElement(world, "region", name=str(area))
 
         # linked ghg policy
@@ -83,11 +81,14 @@ def add_exo_demand(scenario, demand):
     if demand == "":
         return scenario
 
-    #TODO: find region from scenario that matches demand market name
-    CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
-    demand_source = ET.SubElement(CDR_final_demand, "demand-source", name="exogenous")
-    for year in demand:
-        ET.SubElement(demand_source, "demand", year=str(year)).text = str(demand[year]["demand"])
+    for year, r in demand:
+        # find region from scenario that matches the region name
+        region = scenario.find(".//region[@name='" + r + "']")
+        CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
+        demand_source = ET.SubElement(CDR_final_demand, "demand-source", name="exogenous")
+        ET.SubElement(demand_source, "demand", year=str(year)).text = str(demand[(year, r)]["demand"])
+
+    return scenario
 
 
 def add_elastic_demand(scenario, demand):
@@ -95,17 +96,23 @@ def add_elastic_demand(scenario, demand):
     if demand == "":
         return scenario
 
+    return scenario
+
 
 def add_offset_demand(scenario, demand):
     # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
 
+    return scenario
+
 
 def add_accumulated_demand(scenario, demand):
     # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
+
+    return scenario
 
 
 if __name__ == '__main__':
