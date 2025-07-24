@@ -15,8 +15,10 @@ class XMLConfig:
         # set output directory path
         if "policy" in str(xml_build_type).lower():
             self.output_dir = "./gcam/input/policy/"
+            self.config_dir = "../input/policy/"
         else:
             self.output_dir = ""
+            self.config_dir = ""
 
         # set relevant region information
         for key, value in kwargs:

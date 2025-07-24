@@ -29,18 +29,23 @@ def build(config):
     if "acc_demand" in data:
         acc_demand = data["acc_demand"]
 
+    #TODO: combine multiple sources of exogenous demand
+
+    # build remainder of the file
     scenario = build_markets(linked_ghg_data)
     scenario = add_exo_demand(scenario, exo_demand)
     scenario = add_elastic_demand(scenario, elastic_demand)
     scenario = add_offset_demand(scenario, offset_demand)
     scenario = add_accumulated_demand(scenario, acc_demand)
 
+    # write file out
     xmlstr = minidom.parseString(ET.tostring(scenario, encoding="UTF-8", xml_declaration=True)).toprettyxml(indent="   ")
     with open(output_filepath, "w+") as f:
         f.write(xmlstr)
     print("wrote file")
 
-    # TODO: return dict of output files created -see constants for example
+    # return dict of output files created -see constants for example
+    return {"altered": "CDR-Demand", "filepath": config.config_dir + config.output_fname}
 
 
 def build_markets(linked_ghg_data):
@@ -74,8 +79,11 @@ def build_markets(linked_ghg_data):
 
 
 def add_exo_demand(scenario, demand):
+    # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
+
+    #TODO: find region from scenario that matches demand market name
     CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
     demand_source = ET.SubElement(CDR_final_demand, "demand-source", name="exogenous")
     for year in demand:
@@ -83,16 +91,19 @@ def add_exo_demand(scenario, demand):
 
 
 def add_elastic_demand(scenario, demand):
+    # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
 
 
 def add_offset_demand(scenario, demand):
+    # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
 
 
 def add_accumulated_demand(scenario, demand):
+    # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
 
