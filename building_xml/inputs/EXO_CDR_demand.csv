@@ -1,15 +1,15 @@
-source,GCAM default,
-index cols,2,
-year,region,demand
-2025,AL,8.86
-2030,AL,17.72
-2035,AL,35.44
-2040,AL,70.88
-2045,AL,141.76
-2050,AL,141.76
-2025,Canada,430
-2030,Canada,430
-2035,Canada,430
-2040,Canada,430
-2045,Canada,430
-2050,Canada,430
+source,GCAM default,,
+index cols,2,,
+year,region,demand,name
+2025,AL,8.86,exogenous
+2030,AL,17.72,exogenous
+2035,AL,35.44,exogenous
+2040,AL,70.88,exogenous
+2045,AL,141.76,exogenous
+2050,AL,141.76,exogenous
+2025,Canada,430,base-demand
+2030,Canada,430,base-demand
+2035,Canada,430,base-demand
+2040,Canada,430,base-demand
+2045,Canada,430,base-demand
+2050,Canada,430,base-demand

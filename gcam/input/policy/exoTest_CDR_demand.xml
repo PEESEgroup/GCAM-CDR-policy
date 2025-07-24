@@ -606,34 +606,39 @@
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
          <CDR-final-demand name="CDR">
-            <demand-source name="exogenous">
+            <demand-source name="base-demand">
                <demand year="2025">430.0</demand>
             </demand-source>
          </CDR-final-demand>
          <CDR-final-demand name="CDR">
-            <demand-source name="exogenous">
+            <demand-source name="base-demand">
                <demand year="2030">430.0</demand>
             </demand-source>
          </CDR-final-demand>
          <CDR-final-demand name="CDR">
-            <demand-source name="exogenous">
+            <demand-source name="base-demand">
                <demand year="2035">430.0</demand>
             </demand-source>
          </CDR-final-demand>
          <CDR-final-demand name="CDR">
-            <demand-source name="exogenous">
+            <demand-source name="base-demand">
                <demand year="2040">430.0</demand>
             </demand-source>
          </CDR-final-demand>
          <CDR-final-demand name="CDR">
-            <demand-source name="exogenous">
+            <demand-source name="base-demand">
                <demand year="2045">430.0</demand>
             </demand-source>
          </CDR-final-demand>
          <CDR-final-demand name="CDR">
-            <demand-source name="exogenous">
+            <demand-source name="base-demand">
                <demand year="2050">430.0</demand>
             </demand-source>
+         </CDR-final-demand>
+         <CDR-final-demand name="CDR">
+            <elastic-demand-source name="elastic">
+               <max-demand>1000</max-demand>
+            </elastic-demand-source>
          </CDR-final-demand>
       </region>
       <region name="Central America and Caribbean">

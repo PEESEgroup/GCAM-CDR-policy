@@ -1,84 +1,84 @@
-﻿source:,default GCAM,,,,,,,,,,
-index cols,1,,,,,,,,,,
-region,price-adjust,demand-adjust,market,linked-policy,price-unit,output-unit,price-adjust-fillout,price-adjust-start-year,demand-adjust-fillout,demand-adjust-start-year,name
-AL,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-AK,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-AZ,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-AR,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-CA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-CO,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-CT,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-DE,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-FL,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-GA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-HI,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-ID,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-IL,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-IN,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-IA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-KS,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-KY,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-LA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-ME,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-MD,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-MA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-MI,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-MN,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-MS,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-MO,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-MT,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-NE,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-NV,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-NH,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-NJ,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-NM,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-NY,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-NC,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-ND,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-OH,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-OK,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-OR,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-PA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-RI,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-SC,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-SD,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-TN,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-TX,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-UT,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-VT,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-VA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-WA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-WV,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-WI,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-WY,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975,exogenous
-Africa_Eastern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Africa_Northern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Africa_Southern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Africa_Western,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Australia_NZ,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Brazil,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Canada,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Central America and Caribbean,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Central Asia,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-China,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Europe_Eastern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-EU-12,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-EU-15,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Europe_Non_EU,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-European Free Trade Association,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-India,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Indonesia,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Japan,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Mexico,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Middle East,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Pakistan,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Russia,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-South Africa,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-South America_Northern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-South America_Southern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-South Asia,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-South Korea,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Southeast Asia,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Taiwan,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Argentina,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
-Colombia,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975,base demand
+﻿source:,default GCAM,,,,,,,,,
+index cols,1,,,,,,,,,
+region,price-adjust,demand-adjust,market,linked-policy,price-unit,output-unit,price-adjust-fillout,price-adjust-start-year,demand-adjust-fillout,demand-adjust-start-year
+AL,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+AK,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+AZ,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+AR,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+CA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+CO,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+CT,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+DE,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+FL,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+GA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+HI,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+ID,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+IL,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+IN,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+IA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+KS,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+KY,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+LA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+ME,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+MD,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+MA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+MI,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+MN,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+MS,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+MO,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+MT,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+NE,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+NV,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+NH,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+NJ,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+NM,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+NY,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+NC,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+ND,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+OH,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+OK,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+OR,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+PA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+RI,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+SC,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+SD,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+TN,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+TX,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+UT,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+VT,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+VA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+WA,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+WV,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+WI,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+WY,0,1,USA,CO2,1990$/tC,MtC,1,1975,1,1975
+Africa_Eastern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Africa_Northern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Africa_Southern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Africa_Western,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Australia_NZ,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Brazil,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975
+Canada,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975
+Central America and Caribbean,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Central Asia,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+China,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975
+Europe_Eastern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+EU-12,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975
+EU-15,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975
+Europe_Non_EU,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+European Free Trade Association,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+India,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Indonesia,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Japan,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975
+Mexico,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Middle East,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Pakistan,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Russia,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+South Africa,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975
+South America_Northern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+South America_Southern,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+South Asia,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+South Korea,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975
+Southeast Asia,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Taiwan,0,1,NZ_Coalition,CO2,1990$/tC,MtC,1,1975,1,1975
+Argentina,0,1,Early_adopter,CO2,1990$/tC,MtC,1,1975,1,1975
+Colombia,0,1,Late_Adopter,CO2,1990$/tC,MtC,1,1975,1,1975
