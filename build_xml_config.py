@@ -7,7 +7,6 @@ class XMLConfig:
             data_files,
             xml_build_type,
             output_fname,
-            region,
             **kwargs):
         self.xml_build_type = xml_build_type
         self.data_files = data_files
@@ -20,14 +19,12 @@ class XMLConfig:
             self.output_dir = ""
 
         # set relevant region information
-        if region == "USA":
-            self.region = constants.GCAMConstants.USA_region
-        elif region == "GCAM":
-            self.region = constants.GCAMConstants.GCAM_region
-        else:
-            self.region = region
-
         for key, value in kwargs:
-            if key == "test":
-                self.temp = ""
+            if key == "region":
+                if value == "USA":
+                    self.region = constants.GCAMConstants.USA_region
+                elif value == "GCAM":
+                    self.region = constants.GCAMConstants.GCAM_region
+                else:
+                    self.region = value
 

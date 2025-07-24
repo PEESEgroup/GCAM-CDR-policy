@@ -11,13 +11,29 @@ def build(config):
     output_filepath = config.output_dir + config.output_fname
     print(output_filepath)
 
+    exo_demand = ""
+    elastic_demand = ""
+    offset_demand = ""
+    acc_demand = ""
+
     # extract relevant data
     data = utilities.open_csv(input_filepath)
-    linked_ghg_data = data["exo_linked_ghg"]
-    demand = data["exo_demand"]
+    linked_ghg_data = data["linked_ghg_markets"]
 
-    build_markets()
-    add_demand()
+    if "exo_demand" in data:
+        exo_demand = data["exo_demand"]
+    if "elastic_demand" in data:
+        elastic_demand = data["elastic_demand"]
+    if "offset_demand" in data:
+        offset_demand = data["offset_demand"]
+    if "acc_demand" in data:
+        acc_demand = data["acc_demand"]
+
+    scenario = build_markets(linked_ghg_data)
+    scenario = add_exo_demand(scenario, exo_demand)
+    scenario = add_elastic_demand(scenario, elastic_demand)
+    scenario = add_offset_demand(scenario, offset_demand)
+    scenario = add_accumulated_demand(scenario, acc_demand)
 
     xmlstr = minidom.parseString(ET.tostring(scenario, encoding="UTF-8", xml_declaration=True)).toprettyxml(indent="   ")
     with open(output_filepath, "w+") as f:
@@ -27,12 +43,12 @@ def build(config):
     # TODO: return dict of output files created -see constants for example
 
 
-def build_markets(config):
+def build_markets(linked_ghg_data):
     # high level
     scenario = ET.Element("scenario")
     world = ET.SubElement(scenario, "world")
 
-    # if this is the GCAM-USA region, delete USA supply sector
+    # CDR-demand by default does not include the USA as a region
     if config.region == constants.GCAMConstants.USA_region:
         region = ET.SubElement(world, "region", name="USA")
         supply_sector = ET.SubElement(region, "supplysector", name="CDR_traded")
@@ -54,29 +70,31 @@ def build_markets(config):
         ET.SubElement(link, "price-unit").text = str(region_link["price-unit"])
         ET.SubElement(link, "output-unit").text = str(region_link["output-unit"])
 
+    return scenario
 
 
-
-
-
-
-def add_exo_demand():
+def add_exo_demand(scenario, demand):
+    if demand == "":
+        return scenario
     CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
     demand_source = ET.SubElement(CDR_final_demand, "demand-source", name="exogenous")
     for year in demand:
         ET.SubElement(demand_source, "demand", year=str(year)).text = str(demand[year]["demand"])
 
 
-def add_elastic_demand():
-    pass
+def add_elastic_demand(scenario, demand):
+    if demand == "":
+        return scenario
 
 
-def add_offset_demand():
-    pass
+def add_offset_demand(scenario, demand):
+    if demand == "":
+        return scenario
 
 
-def add_accumulated_demand():
-    pass
+def add_accumulated_demand(scenario, demand):
+    if demand == "":
+        return scenario
 
 
 if __name__ == '__main__':
