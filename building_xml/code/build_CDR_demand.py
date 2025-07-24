@@ -91,7 +91,7 @@ def add_exo_demand(scenario, demand):
         # find region from scenario that matches the region name
         region = scenario.find(".//region[@name='" + r + "']")
         CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
-        demand_source = ET.SubElement(CDR_final_demand, "demand-source", name="exogenous")
+        demand_source = ET.SubElement(CDR_final_demand, "demand-source", name=str(demand[(year, r)]["name"]))
         ET.SubElement(demand_source, "demand", year=str(year)).text = str(demand[(year, r)]["demand"])
 
     return scenario
@@ -101,6 +101,13 @@ def add_elastic_demand(scenario, demand):
     # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
+
+    for r in demand:
+        # find region from scenario that matches the region name
+        region = scenario.find(".//region[@name='" + r + "']")
+        CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
+        demand_source = ET.SubElement(CDR_final_demand, "elastic-demand-source", name="elastic")
+        ET.SubElement(demand_source, "max-demand").text = str(demand[r]["max-demand"])
 
     return scenario
 

@@ -292,6 +292,12 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="adv_nuclear").text = "../input/gcamdata/xml/nuclear_adv.xml"
     ET.SubElement(scenario, "Value", name="adv_EV").text = "../input/gcamdata/xml/transportation_USA_highEV.xml"
 
+    # TODO: build these baseline files elsewhere
+    ET.SubElement(scenario, "Value",
+                  name="beccs_integration_global").text = "../input/gcamdata/xml/BECCS_integration.xml"
+    ET.SubElement(scenario, "Value",
+                  name="beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
+
     # <!-- bioseparation -->
     ET.SubElement(scenario, "Value",
                   name="biosep_global").text = "../input/gcamdata/xml/bio_sep_final_final_final27.xml"
@@ -336,7 +342,7 @@ def default_config(config_name):
                   name="beccs_countersubsidy").text = "../input/policy/CDR/counteract_BECCS_subsidy_USA.xml"
 
     # policy
-    # TODO: remove these 7 baseline scenario files and build them elsewhere
+    # TODO: remove these 5 baseline scenario files and build them elsewhere
     ET.SubElement(scenario, "Value",
                   name="long-term-co2").text = "../input/policy/LTS/LTS_global_CO2_constraint.xml"
     # removed <isFixedTax> line to bring into alignment with spa5_tax
@@ -344,10 +350,6 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="state-co2-link").text = "../input/policy/states_policy_USA.xml"
     ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
-    ET.SubElement(scenario, "Value",
-                  name="beccs_integration_global").text = "../input/gcamdata/xml/BECCS_integration.xml"
-    ET.SubElement(scenario, "Value",
-                  name="beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
 
     strings = ET.SubElement(configuration, "Strings")
     bools = ET.SubElement(configuration, "Bools")
