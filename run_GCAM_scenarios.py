@@ -9,7 +9,7 @@ import process_GCAM_data
 import read_GCAM_DB
 import verification
 import utilities
-from building_xml.code import build_CDR_demand
+from building_xml.code import build_CDR_demand, build_BECCS_integration
 
 
 def main(scenario, baseline, batch=False):
@@ -107,6 +107,8 @@ def build_config_file(scenario_name, baseline):
     for k in xml_files_to_build:
         if k.xml_build_type == "CDR Policy":
             files.append(build_CDR_demand.build(k))
+        if k.xml_build_type == "BECCS RES":
+            files.append(build_BECCS_integration.build(k))
         # TODO add more build types here
 
     # find out which files are new and which are altered
@@ -382,7 +384,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["exoTest"]  # use camelCase
+    current_configs = ["BECCSRESTest"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
     for i in current_configs:
