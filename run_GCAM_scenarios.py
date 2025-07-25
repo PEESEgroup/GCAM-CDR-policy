@@ -127,7 +127,14 @@ def build_config_file(scenario_name, baseline):
 
     # TODO: add baseline files
     for file in baseline_files:
-        ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]
+        # if it is a policy, put it at the end, otherwise, put it in the middle:
+        if "policy" in str(file["descriptor"]).lower():
+            ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]
+        else:
+            # after cdr_resources
+            element = ET.Element("Value", name=file["descriptor"])
+            element.text = file["filepath"]
+            scenario_components.insert(106, element)
 
     # replace altered files
     for file in altered:
@@ -339,8 +346,8 @@ def default_config(config_name):
     # removed <isFixedTax> line to bring into alignment with spa5_tax
     ET.SubElement(scenario, "Value", name="LUC-link").text = "../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml"
     ET.SubElement(scenario, "Value", name="state-co2-link").text = "../input/policy/states_policy_USA.xml"
-    ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
-    ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
+    # ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
+    # ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
 
     strings = ET.SubElement(configuration, "Strings")
     bools = ET.SubElement(configuration, "Bools")
@@ -384,16 +391,18 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["BECCSRESTest"]  # use camelCase
+    current_configs = ["exoTest", "BECCSRESTest"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
     for i in current_configs:
         for j in current_baseline:
             main(str(i), str(j))
 
+    """
     for i in all_configs:
         for j in baseline_scenarios:
             main(str(i), str(j))
+    """
 
     """
     ### PARALELLIZATION ###
