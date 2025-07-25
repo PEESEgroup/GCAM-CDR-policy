@@ -3,7 +3,7 @@ from xml.dom import minidom
 import xml.etree.cElementTree as ET
 
 
-def build_BECCS_integration(config, baseline=False):
+def build_BECCS_integration(config, baseline=True):
     # unpack the config object
     input_filepath = config.data_files
     output_filepath = config.output_dir + config.output_fname
@@ -63,8 +63,8 @@ def build_RES(file):
                       year=str(region_link["min-price-year"])).text = str(region_link["min-price"])
         ET.SubElement(policy_portfolio_standard, "max-price", fillout=str(region_link["max-price-fillout"]),
                       year=str(region_link["max-price-year"])).text = str(region_link["max-price"])
-        ET.SubElement(policy_portfolio_standard, "constraint", fillout=str(region_link["constraint"]),
-                      year=str(region_link["constraint"])).text = str(region_link["constraint"])
+        ET.SubElement(policy_portfolio_standard, "constraint", fillout=str(region_link["constraint-fillout"]),
+                      year=str(region_link["constraint-year"])).text = str(region_link["constraint"])
 
         # ghg policy
         ghg_policy = ET.SubElement(region, "ghgpolicy", name=region_link["ghgpolicy"])
@@ -80,7 +80,7 @@ def build_RES(file):
 
 
 def build_tech(scenario, file):
-    world = scenario.find(".//region")
+    world = scenario.find(".//world")
     global_tech = ET.SubElement(world, "global-technology-database")
     location = ET.SubElement(global_tech, "location-info", {"sector-name": "CDR_regional", "subsector-name": "CDR"})
     technology = ET.SubElement(location, "technology", name="BECCS")
@@ -88,7 +88,7 @@ def build_tech(scenario, file):
     for year in file:
         link = file[year]
         period = ET.SubElement(technology, "period", year=str(year))
-        ET.SubElement(year, "share-weight").text = link["shareweight"]
+        ET.SubElement(period, "share-weight").text = str(link["shareweight"])
         minicam = ET.SubElement(period, "minicam-energy-input", name=link["minicam-energy-input"])
         ET.SubElement(minicam, "coefficient").text = str(link["coefficient"])
 

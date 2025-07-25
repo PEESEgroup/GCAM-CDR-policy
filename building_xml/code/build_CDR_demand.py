@@ -3,7 +3,7 @@ from xml.dom import minidom
 import utilities
 
 
-def build(config, baseline=False):
+def build(config, baseline=True):
     # unpack the config object
     input_filepath = config.data_files
     output_filepath = config.output_dir + config.output_fname

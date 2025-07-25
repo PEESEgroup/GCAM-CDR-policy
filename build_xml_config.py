@@ -17,8 +17,8 @@ class XMLConfig:
             self.output_dir = "./gcam/input/policy/"
             self.config_dir = "../input/policy/"
         else:
-            self.output_dir = ""
-            self.config_dir = ""
+            self.output_dir = "./gcam/input/gcamdata/xml/"
+            self.config_dir = "../input/gcamdata/xml/"
 
         # set relevant region information
         for key, value in kwargs:
