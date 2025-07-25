@@ -28,7 +28,8 @@ def build_BECCS_integration(config, baseline=False):
     scenario = build_countersubsidy(scenario, countersubsidy)
 
     # write file out
-    xmlstr = minidom.parseString(ET.tostring(scenario, encoding="UTF-8", xml_declaration=True)).toprettyxml(indent="   ")
+    xmlstr = minidom.parseString(ET.tostring(scenario, encoding="UTF-8", xml_declaration=True)).toprettyxml(
+        indent="   ")
     with open(output_filepath, "w+") as f:
         f.write(xmlstr)
     print("wrote file")
@@ -43,6 +44,7 @@ def build_BECCS_integration(config, baseline=False):
                 "filepath": config.config_dir + config.output_fname,
                 "descriptor": "BECCS-integration"}
 
+
 def build_RES(file):
     # high level
     scenario = ET.Element("scenario")
@@ -53,16 +55,21 @@ def build_RES(file):
 
         # policy portfolio standard
         region_link = file[area]
-        policy_portfolio_standard = ET.SubElement(region, "policy-portfolio-standard", name=region_link["policy-portfolio-standard"])
+        policy_portfolio_standard = ET.SubElement(region, "policy-portfolio-standard",
+                                                  name=region_link["policy-portfolio-standard"])
         ET.SubElement(policy_portfolio_standard, "policyType").text = "RES"
         ET.SubElement(policy_portfolio_standard, "market").text = region_link["market"]
-        ET.SubElement(policy_portfolio_standard, "min-price", fillout=str(region_link["min-price-fillout"]), year=str(region_link["min-price-year"])).text = str(region_link["min-price"])
-        ET.SubElement(policy_portfolio_standard, "max-price", fillout=str(region_link["max-price-fillout"]), year=str(region_link["max-price-year"])).text = str(region_link["max-price"])
-        ET.SubElement(policy_portfolio_standard, "constraint", fillout=str(region_link["constraint"]), year=str(region_link["constraint"])).text = str(region_link["constraint"])
+        ET.SubElement(policy_portfolio_standard, "min-price", fillout=str(region_link["min-price-fillout"]),
+                      year=str(region_link["min-price-year"])).text = str(region_link["min-price"])
+        ET.SubElement(policy_portfolio_standard, "max-price", fillout=str(region_link["max-price-fillout"]),
+                      year=str(region_link["max-price-year"])).text = str(region_link["max-price"])
+        ET.SubElement(policy_portfolio_standard, "constraint", fillout=str(region_link["constraint"]),
+                      year=str(region_link["constraint"])).text = str(region_link["constraint"])
 
         # ghg policy
         ghg_policy = ET.SubElement(region, "ghgpolicy", name=region_link["ghgpolicy"])
-        ET.SubElement(ghg_policy, "fixedTax", year=str(region_link["fixedTax-year"]), fillout=str(region_link["fixedTax-fillout"])).text = str(region_link["fixedTax"])
+        ET.SubElement(ghg_policy, "fixedTax", year=str(region_link["fixedTax-year"]),
+                      fillout=str(region_link["fixedTax-fillout"])).text = str(region_link["fixedTax"])
 
         # sectors
         supply_sector = ET.SubElement(region, "supplysector", name=region_link["supplysector"])
@@ -73,7 +80,20 @@ def build_RES(file):
 
 
 def build_tech(scenario, file):
-    pass
+    world = scenario.find(".//region")
+    global_tech = ET.SubElement(world, "global-technology-database")
+    location = ET.SubElement(global_tech, "location-info", {"sector-name": "CDR_regional", "subsector-name": "CDR"})
+    technology = ET.SubElement(location, name="BECCS")
+
+    for year in file:
+        link = file[str(year)]
+        period = ET.SubElement(technology, "period", year=str(year))
+        ET.SubElement(year, "share-weight").text = link["shareweight"]
+        minicam = ET.SubElement(period, "minicam-energy-input", name=link["minicam-energy-input"])
+        ET.SubElement(minicam, "coefficient").text = str(link["coefficient"])
+
+    return scenario
+
 
 def build_countersubsidy(scenario, file):
     pass
