@@ -86,7 +86,7 @@ def build_tech(scenario, file):
     technology = ET.SubElement(location, "technology", name="BECCS")
 
     for year in file:
-        link = file[str(year)]
+        link = file[year]
         period = ET.SubElement(technology, "period", year=str(year))
         ET.SubElement(year, "share-weight").text = link["shareweight"]
         minicam = ET.SubElement(period, "minicam-energy-input", name=link["minicam-energy-input"])
@@ -96,4 +96,18 @@ def build_tech(scenario, file):
 
 
 def build_countersubsidy(scenario, file):
+    global_tech = scenario.find(".//global-technology-database")
+
+    for col_sector, col_subsector, technology, year in file:
+        link = file[(col_sector, col_subsector, technology, year)]
+        location = ET.SubElement(global_tech, "location-info",
+                                 {"sector-name": col_sector, "subsector-name": col_subsector})
+        tech = ET.SubElement(location, "technology", name=technology)
+        period = ET.SubElement(tech, "period", year=str(year))
+        res_sec = ET.SubElement(period, "res-secondary-output", name=link["res-secondary-output"])
+        ET.SubElement(res_sec, "output-ratio").text = str(link["output-ratio"])
+        ET.SubElement(res_sec, "pMultiplier").text = str(link["pMultiplier"])
+        ctax = ET.SubElement(period, "ctax-input", name=link["ctax-input"])
+        ET.SubElement(ctax, "fuel-C-coef").text = str(link["fuel-C-coef"])
+
     return scenario
