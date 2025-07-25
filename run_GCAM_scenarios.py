@@ -34,7 +34,6 @@ def main(scenario, baseline, batch=False):
 def execute_GCAM(baseline, batch, scenario, config_fname):
     # severe error: geothermal in US is not related to other activies just means that geothermal production is not
     # aggregated at the country level - geothermal is produced at the state level
-    # TODO: ensure that the BECCS_integration and BECCS_integration_USA files use the same RES policy
     # water_td_USA: Hawaii doesn't exist - no irr water existing in hawaii for some reason
     # TODO: coal ceiling doesn't have a matching input in the next period (2020)
     # change directory if not already in the \gcam\exe folder
@@ -292,12 +291,6 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="adv_nuclear").text = "../input/gcamdata/xml/nuclear_adv.xml"
     ET.SubElement(scenario, "Value", name="adv_EV").text = "../input/gcamdata/xml/transportation_USA_highEV.xml"
 
-    # TODO: build these baseline files elsewhere
-    ET.SubElement(scenario, "Value",
-                  name="beccs_integration_global").text = "../input/gcamdata/xml/BECCS_integration.xml"
-    ET.SubElement(scenario, "Value",
-                  name="beccs_integration_usa").text = "../input/gcamdata/xml/BECCS_integration_USA.xml"
-
     # <!-- bioseparation -->
     ET.SubElement(scenario, "Value",
                   name="biosep_global").text = "../input/gcamdata/xml/bio_sep_final_final_final27.xml"
@@ -336,10 +329,6 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="cdr_oae_shipping_usa").text = "../input/gcamdata/xml/OEW_shipping_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_nonenergy").text = "../input/gcamdata/xml/CDR_costs_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_resources").text = "../input/gcamdata/xml/resources_USA_CDR.xml"
-
-    # <!-- BECCS integration -->
-    ET.SubElement(scenario, "Value",
-                  name="beccs_countersubsidy").text = "../input/policy/CDR/counteract_BECCS_subsidy_USA.xml"
 
     # policy
     # TODO: remove these 5 baseline scenario files and build them elsewhere

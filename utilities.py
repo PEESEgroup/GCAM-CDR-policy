@@ -39,3 +39,19 @@ def build_from_scenario(scenario_name):
             xml_build_type="CDR Policy",
             output_fname="exoTest_CDR_demand.xml"
         )]
+    if scenario_name == "BECCSRESTest":
+        return [build_xml_config.XMLConfig(
+            data_files={"RES": "./building_xml/inputs/BECCS_RES_base.csv",
+                        "tech": "./building_xml/inputs/BECCS_tech_base.csv",
+                        "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+            xml_build_type="BECCS RES",
+            output_fname="BECCSRESTest_BECCSIntegration.xml"
+        ),
+            build_xml_config.XMLConfig(
+                data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
+                            "exo_demand": "./building_xml/inputs/EXO_CDR_demand.csv",
+                            "elastic_demand": "./building_xml/inputs/Elastic_CDR_demand.csv"},
+                xml_build_type="CDR Policy",
+                output_fname="exoTest_CDR_demand.xml"
+            )
+        ]
