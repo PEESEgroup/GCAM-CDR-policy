@@ -7,14 +7,6 @@
          </supplysector>
       </region>
       <region name="AL">
-         <linked-ghg-policy name="CO2_CDR">
-            <price-adjust fillout="1" year="1975">0</price-adjust>
-            <demand-adjust fillout="1" year="1975">1</demand-adjust>
-            <market>USA</market>
-            <linked-policy>CO2</linked-policy>
-            <price-unit>1990$/tC</price-unit>
-            <output-unit>MtC</output-unit>
-         </linked-ghg-policy>
          <CDR-final-demand name="CDR">
             <demand-source name="exogenous">
                <demand year="2025">8.86</demand>
@@ -45,6 +37,14 @@
                <demand year="2050">141.76</demand>
             </demand-source>
          </CDR-final-demand>
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
       </region>
       <region name="AK">
          <linked-ghg-policy name="CO2_CDR">
@@ -97,6 +97,16 @@
          </linked-ghg-policy>
       </region>
       <region name="CT">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="DC">
          <linked-ghg-policy name="CO2_CDR">
             <price-adjust fillout="1" year="1975">0</price-adjust>
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
@@ -597,6 +607,11 @@
          </linked-ghg-policy>
       </region>
       <region name="Canada">
+         <CDR-final-demand name="CDR">
+            <elastic-demand-source name="elastic">
+               <max-demand>1000</max-demand>
+            </elastic-demand-source>
+         </CDR-final-demand>
          <linked-ghg-policy name="CO2_CDR">
             <price-adjust fillout="1" year="1975">0</price-adjust>
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
@@ -634,11 +649,6 @@
             <demand-source name="base-demand">
                <demand year="2050">430.0</demand>
             </demand-source>
-         </CDR-final-demand>
-         <CDR-final-demand name="CDR">
-            <elastic-demand-source name="elastic">
-               <max-demand>1000</max-demand>
-            </elastic-demand-source>
          </CDR-final-demand>
       </region>
       <region name="Central America and Caribbean">

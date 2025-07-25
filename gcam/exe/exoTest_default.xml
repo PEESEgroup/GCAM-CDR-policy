@@ -136,7 +136,7 @@
       <Value name="long-term-co2">../input/policy/LTS/LTS_global_CO2_constraint.xml</Value>
       <Value name="LUC-link">../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml</Value>
       <Value name="state-co2-link">../input/policy/states_policy_USA.xml</Value>
-      <Value name="CDR-Demand">../input/policy/exoTest_CDR_demand.xml</Value>
+      <Value name="CDR-Demand-Policy">../input/policy/exoTest_CDR_demand.xml</Value>
    </ScenarioComponents>
    <Strings>
       <Value name="scenarioName">exoTest_default</Value>

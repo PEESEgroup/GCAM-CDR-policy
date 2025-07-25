@@ -125,7 +125,7 @@ def build_config_file(scenario_name, baseline):
     config = default_config(scenario_name + "_" + baseline)
     scenario_components = config.find("ScenarioComponents")
 
-    # TODO: add baseline files
+    # add baseline files
     for file in baseline_files:
         # if it is a policy, put it at the end, otherwise, put it in the middle:
         if "policy" in str(file["descriptor"]).lower():
@@ -134,7 +134,7 @@ def build_config_file(scenario_name, baseline):
             # after cdr_resources
             element = ET.Element("Value", name=file["descriptor"])
             element.text = file["filepath"]
-            scenario_components.insert(106, element)
+            scenario_components.insert(102, element)
 
     # replace altered files
     for file in altered:
@@ -391,7 +391,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["exoTest", "BECCSRESTest"]  # use camelCase
+    current_configs = ["BECCSRESTest"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
     for i in current_configs:

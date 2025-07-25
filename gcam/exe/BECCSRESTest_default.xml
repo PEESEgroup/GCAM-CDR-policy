@@ -119,12 +119,11 @@
       <Value name="cdr_oae_shipping">../input/gcamdata/xml/OEW_shipping.xml</Value>
       <Value name="cdr_nonenergy">../input/gcamdata/xml/CDR_costs.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_CDR.xml</Value>
+      <Value name="BECCS-integration">../input/gcamdata/xml/BECCSRESTest_BECCSIntegration.xml</Value>
       <Value name="cdr_usa">../input/gcamdata/xml/CDR_USA.xml</Value>
       <Value name="growth_limit">../input/gcamdata/xml/CDR_growth_limit_USA.xml</Value>
       <Value name="cdr_trade_usa">../input/gcamdata/xml/CDR_traded_USA.xml</Value>
       <Value name="cdr_dac_usa">../input/gcamdata/xml/DAC_USA.xml</Value>
-      <Value name="CDR-Demand">../input/policy/exoTest_CDR_demand.xml</Value>
-      <Value name="BECCS-integration">../input/gcamdata/xml/BECCSRESTest_BECCSIntegration.xml</Value>
       <Value name="waste_heat_usa">../input/gcamdata/xml/waste_heat_endogenous_USA.xml</Value>
       <Value name="cdr_tew_usa">../input/gcamdata/xml/TEW_USA.xml</Value>
       <Value name="cdr_tew_resources">../input/gcamdata/xml/TEW_USA_resource.xml</Value>
@@ -138,6 +137,7 @@
       <Value name="long-term-co2">../input/policy/LTS/LTS_global_CO2_constraint.xml</Value>
       <Value name="LUC-link">../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml</Value>
       <Value name="state-co2-link">../input/policy/states_policy_USA.xml</Value>
+      <Value name="CDR-Demand-Policy">../input/policy/exoTest_CDR_demand.xml</Value>
    </ScenarioComponents>
    <Strings>
       <Value name="scenarioName">BECCSRESTest_default</Value>
