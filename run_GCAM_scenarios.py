@@ -17,7 +17,7 @@ def main(scenario, baseline, batch=False):
     control program for running a GCAM scenario
     """
     # generate config files
-    config_fname = build_config_file(scenario, baseline)
+    config_fname, files = build_config_file(scenario, baseline)
 
     # execute GCAM files
     execute_GCAM(baseline, batch, scenario, config_fname)
@@ -28,7 +28,7 @@ def main(scenario, baseline, batch=False):
     xmldb_ops(config_fname)
     read_GCAM_DB.main(config_fname)
     process_GCAM_data.main(config_fname)
-    verification.main(config_fname)
+    verification.main(files)
 
 
 def execute_GCAM(baseline, batch, scenario, config_fname):
@@ -146,7 +146,7 @@ def build_config_file(scenario_name, baseline):
     config_fname = scenario_name + "_" + baseline + ".xml"
     with open("./gcam/exe/" + config_fname, "w+") as f:
         f.write(xmlstr)
-    return config_fname
+    return config_fname, files
 
 
 def default_config(config_name):

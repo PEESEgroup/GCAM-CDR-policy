@@ -5,6 +5,7 @@ import constants as c
 from itertools import islice
 import os
 
+
 def split_file(fname):
     """
     splits a single GCAM csv file into seperate csv files, 1 for each query
@@ -106,12 +107,7 @@ def process_file(value, fname):
     :return: a standardized dataframe
     """
     # get model version
-    words = fname.split("/")
-    if len(words) <2:
-        print("invalid file")
-        return ""
-
-    value['Version'] = words[2] + " " + words[3]
+    value['Version'] = fname
 
     # get GCAM market region information
     if 'market' in value.columns:
@@ -229,19 +225,19 @@ def main(config_fname):
     csvs = split_file(config_fname)  # split file based on header rows
 
     # create directories if they don't already exist
-    dir_path = config_fname.split("_")  # fix the filename
-    dir_path[-1] = "original/"
-    original_fname = "/".join(dir_path)
+    # convert scenario name into file path
+    dir = str(config_fname).replace("_", "/")
+    prefix = "./data/gcam_out/"
+    suffix = ".csv"
+    original_fname = prefix + dir
     if not os.path.exists(original_fname):
         os.makedirs(original_fname)
 
     for item in csvs.items():  # for each file
         df = process_file(item[1], config_fname)  # preprocess the data
-        if df == "":
+        if df.empty:
             return
-        dir_path = config_fname.split("_")  # fix the filename
-        dir_path[-1] = "original/" + str(item[0]) + ".csv"
-        new_fname = "/".join(dir_path)
+        new_fname = prefix + dir + "/" + str(item[0]) + suffix
         new_fname = new_fname.replace(")", "").replace("(", "").replace("\\", "").replace(" ", "_").replace("b/t",
                                                                                                             "between")
         print(new_fname)
@@ -249,4 +245,4 @@ def main(config_fname):
 
 
 if __name__ == '__main__':
-    main("./data/gcam_out/exoTest/default/ref.csv")
+    main("exoTest_default")
