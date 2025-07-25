@@ -1,0 +1,150 @@
+source,GCAM default,,,,,,,
+index cols,3,,,,,,,
+sector-name,subsector-name,technology,year,res-secondary-output,output-ratio,pMultiplier,ctax-input,fuel-C-coef
+biorefining,biomass liquids,FT biofuels CCS level 1,2020,BECCS,22.38354,1,BECCS_countersubsidy,22.38354
+biorefining,biomass liquids,FT biofuels CCS level 1,2025,BECCS,22.1124275,1,BECCS_countersubsidy,22.1124275
+biorefining,biomass liquids,FT biofuels CCS level 1,2030,BECCS,21.841315,1,BECCS_countersubsidy,21.841315
+biorefining,biomass liquids,FT biofuels CCS level 1,2035,BECCS,21.5702025,1,BECCS_countersubsidy,21.5702025
+biorefining,biomass liquids,FT biofuels CCS level 1,2040,BECCS,21.29909,1,BECCS_countersubsidy,21.29909
+biorefining,biomass liquids,FT biofuels CCS level 1,2045,BECCS,21.0279775,1,BECCS_countersubsidy,21.0279775
+biorefining,biomass liquids,FT biofuels CCS level 1,2050,BECCS,20.756865,1,BECCS_countersubsidy,20.756865
+biorefining,biomass liquids,FT biofuels CCS level 2,2020,BECCS,27.0099,1,BECCS_countersubsidy,27.0099
+biorefining,biomass liquids,FT biofuels CCS level 2,2025,BECCS,26.694225,1,BECCS_countersubsidy,26.694225
+biorefining,biomass liquids,FT biofuels CCS level 2,2030,BECCS,26.37855,1,BECCS_countersubsidy,26.37855
+biorefining,biomass liquids,FT biofuels CCS level 2,2035,BECCS,26.062875,1,BECCS_countersubsidy,26.062875
+biorefining,biomass liquids,FT biofuels CCS level 2,2040,BECCS,25.7472,1,BECCS_countersubsidy,25.7472
+biorefining,biomass liquids,FT biofuels CCS level 2,2045,BECCS,25.431525,1,BECCS_countersubsidy,25.431525
+biorefining,biomass liquids,FT biofuels CCS level 2,2050,BECCS,25.11585,1,BECCS_countersubsidy,25.11585
+biorefining,biomass liquids,cellulosic ethanol CCS level 1,2020,BECCS,7.69522,1,BECCS_countersubsidy,7.69522
+biorefining,biomass liquids,cellulosic ethanol CCS level 1,2025,BECCS,7.58421625,1,BECCS_countersubsidy,7.58421625
+biorefining,biomass liquids,cellulosic ethanol CCS level 1,2030,BECCS,7.4732125,1,BECCS_countersubsidy,7.4732125
+biorefining,biomass liquids,cellulosic ethanol CCS level 1,2035,BECCS,7.36220875,1,BECCS_countersubsidy,7.36220875
+biorefining,biomass liquids,cellulosic ethanol CCS level 1,2040,BECCS,7.251205,1,BECCS_countersubsidy,7.251205
+biorefining,biomass liquids,cellulosic ethanol CCS level 1,2045,BECCS,7.14020125,1,BECCS_countersubsidy,7.14020125
+biorefining,biomass liquids,cellulosic ethanol CCS level 1,2050,BECCS,7.0291975,1,BECCS_countersubsidy,7.0291975
+biorefining,biomass liquids,cellulosic ethanol CCS level 2,2020,BECCS,29.2041,1,BECCS_countersubsidy,29.2041
+biorefining,biomass liquids,cellulosic ethanol CCS level 2,2025,BECCS,28.79656875,1,BECCS_countersubsidy,28.79656875
+biorefining,biomass liquids,cellulosic ethanol CCS level 2,2030,BECCS,28.3890375,1,BECCS_countersubsidy,28.3890375
+biorefining,biomass liquids,cellulosic ethanol CCS level 2,2035,BECCS,27.98150625,1,BECCS_countersubsidy,27.98150625
+biorefining,biomass liquids,cellulosic ethanol CCS level 2,2040,BECCS,27.573975,1,BECCS_countersubsidy,27.573975
+biorefining,biomass liquids,cellulosic ethanol CCS level 2,2045,BECCS,27.16644375,1,BECCS_countersubsidy,27.16644375
+biorefining,biomass liquids,cellulosic ethanol CCS level 2,2050,BECCS,26.7589125,1,BECCS_countersubsidy,26.7589125
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (dry cooling),2020,BECCS,25.30928916,1,BECCS_countersubsidy,25.30928916
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (dry cooling),2025,BECCS,24.11770514,1,BECCS_countersubsidy,24.11770514
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (dry cooling),2030,BECCS,23.0371628,1,BECCS_countersubsidy,23.0371628
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (dry cooling),2035,BECCS,22.45977638,1,BECCS_countersubsidy,22.45977638
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (dry cooling),2040,BECCS,22.03297188,1,BECCS_countersubsidy,22.03297188
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (dry cooling),2045,BECCS,21.49294806,1,BECCS_countersubsidy,21.49294806
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (dry cooling),2050,BECCS,21.28505263,1,BECCS_countersubsidy,21.28505263
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (once through),2020,BECCS,24.0438247,1,BECCS_countersubsidy,24.0438247
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (once through),2025,BECCS,22.91181989,1,BECCS_countersubsidy,22.91181989
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (once through),2030,BECCS,21.88530466,1,BECCS_countersubsidy,21.88530466
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (once through),2035,BECCS,21.33678756,1,BECCS_countersubsidy,21.33678756
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (once through),2040,BECCS,20.93132328,1,BECCS_countersubsidy,20.93132328
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (once through),2045,BECCS,20.41830065,1,BECCS_countersubsidy,20.41830065
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (once through),2050,BECCS,20.2208,1,BECCS_countersubsidy,20.2208
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (recirculating),2020,BECCS,24.0438247,1,BECCS_countersubsidy,24.0438247
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (recirculating),2025,BECCS,22.91181989,1,BECCS_countersubsidy,22.91181989
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (recirculating),2030,BECCS,21.88530466,1,BECCS_countersubsidy,21.88530466
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (recirculating),2035,BECCS,21.33678756,1,BECCS_countersubsidy,21.33678756
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (recirculating),2040,BECCS,20.93132328,1,BECCS_countersubsidy,20.93132328
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (recirculating),2045,BECCS,20.41830065,1,BECCS_countersubsidy,20.41830065
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (recirculating),2050,BECCS,20.2208,1,BECCS_countersubsidy,20.2208
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (seawater),2020,BECCS,24.0438247,1,BECCS_countersubsidy,24.0438247
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (seawater),2025,BECCS,22.91181989,1,BECCS_countersubsidy,22.91181989
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (seawater),2030,BECCS,21.88530466,1,BECCS_countersubsidy,21.88530466
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (seawater),2035,BECCS,21.33678756,1,BECCS_countersubsidy,21.33678756
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (seawater),2040,BECCS,20.93132328,1,BECCS_countersubsidy,20.93132328
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (seawater),2045,BECCS,20.41830065,1,BECCS_countersubsidy,20.41830065
+elec_gas (CC CCS),biogas (CC CCS),biogas (CC CCS) (seawater),2050,BECCS,20.2208,1,BECCS_countersubsidy,20.2208
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (dry cooling),2020,BECCS,37.55212442,1,BECCS_countersubsidy,37.55212442
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (dry cooling),2025,BECCS,35.13496613,1,BECCS_countersubsidy,35.13496613
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (dry cooling),2030,BECCS,33.10290652,1,BECCS_countersubsidy,33.10290652
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (dry cooling),2035,BECCS,31.93856527,1,BECCS_countersubsidy,31.93856527
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (dry cooling),2040,BECCS,31.08868061,1,BECCS_countersubsidy,31.08868061
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (dry cooling),2045,BECCS,30.15911873,1,BECCS_countersubsidy,30.15911873
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (dry cooling),2050,BECCS,29.71214444,1,BECCS_countersubsidy,29.71214444
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (once through),2020,BECCS,35.6745182,1,BECCS_countersubsidy,35.6745182
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (once through),2025,BECCS,33.37821782,1,BECCS_countersubsidy,33.37821782
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (once through),2030,BECCS,31.44776119,1,BECCS_countersubsidy,31.44776119
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (once through),2035,BECCS,30.34163701,1,BECCS_countersubsidy,30.34163701
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (once through),2040,BECCS,29.53424658,1,BECCS_countersubsidy,29.53424658
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (once through),2045,BECCS,28.65116279,1,BECCS_countersubsidy,28.65116279
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (once through),2050,BECCS,28.22653722,1,BECCS_countersubsidy,28.22653722
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (recirculating),2020,BECCS,35.6745182,1,BECCS_countersubsidy,35.6745182
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (recirculating),2025,BECCS,33.37821782,1,BECCS_countersubsidy,33.37821782
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (recirculating),2030,BECCS,31.44776119,1,BECCS_countersubsidy,31.44776119
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (recirculating),2035,BECCS,30.34163701,1,BECCS_countersubsidy,30.34163701
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (recirculating),2040,BECCS,29.53424658,1,BECCS_countersubsidy,29.53424658
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (recirculating),2045,BECCS,28.65116279,1,BECCS_countersubsidy,28.65116279
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (recirculating),2050,BECCS,28.22653722,1,BECCS_countersubsidy,28.22653722
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (seawater),2020,BECCS,35.6745182,1,BECCS_countersubsidy,35.6745182
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (seawater),2025,BECCS,33.37821782,1,BECCS_countersubsidy,33.37821782
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (seawater),2030,BECCS,31.44776119,1,BECCS_countersubsidy,31.44776119
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (seawater),2035,BECCS,30.34163701,1,BECCS_countersubsidy,30.34163701
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (seawater),2040,BECCS,29.53424658,1,BECCS_countersubsidy,29.53424658
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (seawater),2045,BECCS,28.65116279,1,BECCS_countersubsidy,28.65116279
+elec_refined liquids (CC CCS),refined bioliquids (CC CCS),refined bioliquids (CC CCS) (seawater),2050,BECCS,28.22653722,1,BECCS_countersubsidy,28.22653722
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (once through),2020,BECCS,85,1,BECCS_countersubsidy,85
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (once through),2025,BECCS,76.96498054,1,BECCS_countersubsidy,76.96498054
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (once through),2030,BECCS,70.64285714,1,BECCS_countersubsidy,70.64285714
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (once through),2035,BECCS,66.7,1,BECCS_countersubsidy,66.7
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (once through),2040,BECCS,64.05063291,1,BECCS_countersubsidy,64.05063291
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (once through),2045,BECCS,61.33333333,1,BECCS_countersubsidy,61.33333333
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (once through),2050,BECCS,59.85380117,1,BECCS_countersubsidy,59.85380117
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (seawater),2020,BECCS,85,1,BECCS_countersubsidy,85
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (seawater),2025,BECCS,76.96498054,1,BECCS_countersubsidy,76.96498054
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (seawater),2030,BECCS,70.64285714,1,BECCS_countersubsidy,70.64285714
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (seawater),2035,BECCS,66.7,1,BECCS_countersubsidy,66.7
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (seawater),2040,BECCS,64.05063291,1,BECCS_countersubsidy,64.05063291
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (seawater),2045,BECCS,61.33333333,1,BECCS_countersubsidy,61.33333333
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (seawater),2050,BECCS,59.85380117,1,BECCS_countersubsidy,59.85380117
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (recirculating),2020,BECCS,85,1,BECCS_countersubsidy,85
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (recirculating),2025,BECCS,76.96498054,1,BECCS_countersubsidy,76.96498054
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (recirculating),2030,BECCS,70.64285714,1,BECCS_countersubsidy,70.64285714
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (recirculating),2035,BECCS,66.7,1,BECCS_countersubsidy,66.7
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (recirculating),2040,BECCS,64.05063291,1,BECCS_countersubsidy,64.05063291
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (recirculating),2045,BECCS,61.33333333,1,BECCS_countersubsidy,61.33333333
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (recirculating),2050,BECCS,59.85380117,1,BECCS_countersubsidy,59.85380117
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (dry cooling),2020,BECCS,89.47368421,1,BECCS_countersubsidy,89.47368421
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (dry cooling),2025,BECCS,81.01576899,1,BECCS_countersubsidy,81.01576899
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (dry cooling),2030,BECCS,74.36090226,1,BECCS_countersubsidy,74.36090226
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (dry cooling),2035,BECCS,70.21052632,1,BECCS_countersubsidy,70.21052632
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (dry cooling),2040,BECCS,67.42171885,1,BECCS_countersubsidy,67.42171885
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (dry cooling),2045,BECCS,64.56140351,1,BECCS_countersubsidy,64.56140351
+elec_biomass (conv VVS),biomass (conv CCS),biomass (conv CCS) (dry cooling),2050,BECCS,63.00400123,1,BECCS_countersubsidy,63.00400123
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (once through),2020,BECCS,66.27118644,1,BECCS_countersubsidy,66.27118644
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (once through),2025,BECCS,61.42857143,1,BECCS_countersubsidy,61.42857143
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (once through),2030,BECCS,57.16763006,1,BECCS_countersubsidy,57.16763006
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (once through),2035,BECCS,54.67213115,1,BECCS_countersubsidy,54.67213115
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (once through),2040,BECCS,52.845953,1,BECCS_countersubsidy,52.845953
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (once through),2045,BECCS,50.85427136,1,BECCS_countersubsidy,50.85427136
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (once through),2050,BECCS,49.92682927,1,BECCS_countersubsidy,49.92682927
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (seawater),2020,BECCS,66.27118644,1,BECCS_countersubsidy,66.27118644
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (seawater),2025,BECCS,61.42857143,1,BECCS_countersubsidy,61.42857143
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (seawater),2030,BECCS,57.16763006,1,BECCS_countersubsidy,57.16763006
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (seawater),2035,BECCS,54.67213115,1,BECCS_countersubsidy,54.67213115
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (seawater),2040,BECCS,52.845953,1,BECCS_countersubsidy,52.845953
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (seawater),2045,BECCS,50.85427136,1,BECCS_countersubsidy,50.85427136
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (seawater),2050,BECCS,49.92682927,1,BECCS_countersubsidy,49.92682927
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (recirculating),2020,BECCS,66.27118644,1,BECCS_countersubsidy,66.27118644
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (recirculating),2025,BECCS,61.42857143,1,BECCS_countersubsidy,61.42857143
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (recirculating),2030,BECCS,57.16763006,1,BECCS_countersubsidy,57.16763006
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (recirculating),2035,BECCS,54.67213115,1,BECCS_countersubsidy,54.67213115
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (recirculating),2040,BECCS,52.845953,1,BECCS_countersubsidy,52.845953
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (recirculating),2045,BECCS,50.85427136,1,BECCS_countersubsidy,50.85427136
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (recirculating),2050,BECCS,49.92682927,1,BECCS_countersubsidy,49.92682927
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (dry cooling),2020,BECCS,69.75914362,1,BECCS_countersubsidy,69.75914362
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (dry cooling),2025,BECCS,64.66165414,1,BECCS_countersubsidy,64.66165414
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (dry cooling),2030,BECCS,60.17645269,1,BECCS_countersubsidy,60.17645269
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (dry cooling),2035,BECCS,57.54961173,1,BECCS_countersubsidy,57.54961173
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (dry cooling),2040,BECCS,55.62731895,1,BECCS_countersubsidy,55.62731895
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (dry cooling),2045,BECCS,53.53081195,1,BECCS_countersubsidy,53.53081195
+elec_biomass (IGCC CCS),biomass (IGCC CCS),biomass (IGCC CCS) (dry cooling),2050,BECCS,52.55455712,1,BECCS_countersubsidy,52.55455712
+H2 central production,biomass,biomass to H2 CCS,2020,BECCS,46.40798,1,BECCS_countersubsidy,46.40798
+H2 central production,biomass,biomass to H2 CCS,2025,BECCS,45.89912,1,BECCS_countersubsidy,45.89912
+H2 central production,biomass,biomass to H2 CCS,2030,BECCS,46,1,BECCS_countersubsidy,46
+H2 central production,biomass,biomass to H2 CCS,2035,BECCS,45.50538,1,BECCS_countersubsidy,45.50538
+H2 central production,biomass,biomass to H2 CCS,2040,BECCS,45.021218,1,BECCS_countersubsidy,45.021218
+H2 central production,biomass,biomass to H2 CCS,2045,BECCS,45.03158,1,BECCS_countersubsidy,45.03158
+H2 central production,biomass,biomass to H2 CCS,2050,BECCS,45.03158,1,BECCS_countersubsidy,45.03158
