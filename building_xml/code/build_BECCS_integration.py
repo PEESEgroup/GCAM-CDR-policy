@@ -83,7 +83,7 @@ def build_tech(scenario, file):
     world = scenario.find(".//region")
     global_tech = ET.SubElement(world, "global-technology-database")
     location = ET.SubElement(global_tech, "location-info", {"sector-name": "CDR_regional", "subsector-name": "CDR"})
-    technology = ET.SubElement(location, name="BECCS")
+    technology = ET.SubElement(location, "technology", name="BECCS")
 
     for year in file:
         link = file[str(year)]
@@ -96,4 +96,4 @@ def build_tech(scenario, file):
 
 
 def build_countersubsidy(scenario, file):
-    pass
+    return scenario

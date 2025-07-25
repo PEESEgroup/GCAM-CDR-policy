@@ -108,7 +108,7 @@ def build_config_file(scenario_name, baseline):
         if k.xml_build_type == "CDR Policy":
             files.append(build_CDR_demand.build(k))
         if k.xml_build_type == "BECCS RES":
-            files.append(build_BECCS_integration.build(k))
+            files.append(build_BECCS_integration.build_BECCS_integration(k))
         # TODO add more build types here
 
     # find out which files are new and which are altered
