@@ -21,12 +21,13 @@ def build(config, baseline=True):
         exo_demand = data["exo_demand"]
     if "elastic_demand" in data:
         elastic_demand = data["elastic_demand"]
+    # TODO: add config files for these types of demand
     if "offset_demand" in data:
         offset_demand = data["offset_demand"]
     if "acc_demand" in data:
         acc_demand = data["acc_demand"]
 
-    #TODO: combine multiple sources of exogenous demand
+    # TODO: combine multiple sources of exogenous demand
 
     # build remainder of the file
     scenario = build_markets(linked_ghg_data)

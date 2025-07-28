@@ -341,13 +341,9 @@ def default_config(config_name):
 
     # policy
     # TODO: remove these 5 baseline scenario files and build them elsewhere
-    ET.SubElement(scenario, "Value",
-                  name="long-term-co2").text = "../input/policy/LTS/LTS_global_CO2_constraint.xml"
     # removed <isFixedTax> line to bring into alignment with spa5_tax
+    # TODO: build LUC file
     ET.SubElement(scenario, "Value", name="LUC-link").text = "../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml"
-    ET.SubElement(scenario, "Value", name="state-co2-link").text = "../input/policy/states_policy_USA.xml"
-    # ET.SubElement(scenario, "Value", name="coal-ceiling-usa").text = "../input/policy/LTS/coal_ceiling_GCAM-USA.xml"
-    # ET.SubElement(scenario, "Value", name="cdr_demand_usa").text = "../input/policy/LTS/LTS_global_CDR_demand.xml"
 
     strings = ET.SubElement(configuration, "Strings")
     bools = ET.SubElement(configuration, "Bools")

@@ -52,6 +52,12 @@ def build_from_scenario(scenario_name):
                             "exo_demand": "./building_xml/inputs/EXO_CDR_demand.csv",
                             "elastic_demand": "./building_xml/inputs/Elastic_CDR_demand.csv"},
                 xml_build_type="CDR Policy",
-                output_fname="exoTest_CDR_demand.xml"
+                output_fname="BECCSRESTest_CDRDemand.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
+                            "ghg_constraint": "./building_xml/inputs/GHG_constraint.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="BECCSRESTest_GHGConstraint.xml"
             )
         ]
