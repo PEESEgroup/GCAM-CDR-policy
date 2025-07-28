@@ -119,7 +119,6 @@ def build_config_file(scenario_name, baseline):
             original.append(x)
         if "altered" in x["build_file_type"]:
             altered.append(x)
-        # TODO: find a method to build baseline files (may not need to be from .csv files, but at least add the names to the tree
         if "baseline" in x["build_file_type"]:
             baseline_files.append(x)
 
@@ -341,11 +340,7 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="cdr_nonenergy").text = "../input/gcamdata/xml/CDR_costs_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_resources").text = "../input/gcamdata/xml/resources_USA_CDR.xml"
 
-    # policy
-    # TODO: remove these 5 baseline scenario files and build them elsewhere
-    # removed <isFixedTax> line to bring into alignment with spa5_tax
-    # TODO: build LUC file
-    ET.SubElement(scenario, "Value", name="LUC-link").text = "../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml"
+    # policy is automatically handled elsewhere in the configuration process
 
     strings = ET.SubElement(configuration, "Strings")
     bools = ET.SubElement(configuration, "Bools")

@@ -46,19 +46,20 @@ def build_from_scenario(scenario_name):
                         "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
             xml_build_type="BECCS RES",
             output_fname="BECCSRESTest_BECCSIntegration.xml"
-        ),
+            ),
+            # important to build links before CDR demand
+            build_xml_config.XMLConfig(
+                data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
+                            "ghg_constraint": "./building_xml/inputs/GHG_constraint.csv",
+                            "ghg_tax": "./building_xml/inputs/GHG_tax.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="BECCSRESTest_GHGPolicies.xml"
+            ),
             build_xml_config.XMLConfig(
                 data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
                             "exo_demand": "./building_xml/inputs/EXO_CDR_demand.csv",
                             "elastic_demand": "./building_xml/inputs/Elastic_CDR_demand.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="BECCSRESTest_CDRDemand.xml"
-            ),
-            build_xml_config.XMLConfig(
-                data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
-                            "ghg_constraint": "./building_xml/inputs/GHG_constraint.csv",
-                            "ghg_tax": "./building_xml/inputs/GHG_tax.csv"},
-                xml_build_type="GHG constraint",
-                output_fname="BECCSRESTest_GHGConstraint.xml"
             )
         ]

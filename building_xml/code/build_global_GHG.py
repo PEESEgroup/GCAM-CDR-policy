@@ -38,11 +38,11 @@ def build_GHG(config, baseline=True):
     if baseline:
         return {"build_file_type": "baseline",
                 "filepath": config.config_dir + config.output_fname,
-                "descriptor": "GHG-constraint policy"}
+                "descriptor": "GHG emissions policy"}
     else:
         return {"build_file_type": "altered",
                 "filepath": config.config_dir + config.output_fname,
-                "descriptor": "GHG-constraint policy"}
+                "descriptor": "GHG emissions policy"}
 
 
 def build_ghg_policy(file):

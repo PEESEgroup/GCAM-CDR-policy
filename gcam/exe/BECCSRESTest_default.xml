@@ -119,7 +119,6 @@
       <Value name="cdr_oae_shipping">../input/gcamdata/xml/OEW_shipping.xml</Value>
       <Value name="cdr_nonenergy">../input/gcamdata/xml/CDR_costs.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_CDR.xml</Value>
-      <Value name="GHG-constraint">../input/gcamdata/xml/BECCSRESTest_GHGConstraint.xml</Value>
       <Value name="BECCS-integration">../input/gcamdata/xml/BECCSRESTest_BECCSIntegration.xml</Value>
       <Value name="cdr_usa">../input/gcamdata/xml/CDR_USA.xml</Value>
       <Value name="growth_limit">../input/gcamdata/xml/CDR_growth_limit_USA.xml</Value>
@@ -135,7 +134,7 @@
       <Value name="cdr_oae_shipping_usa">../input/gcamdata/xml/OEW_shipping_USA.xml</Value>
       <Value name="cdr_nonenergy">../input/gcamdata/xml/CDR_costs_USA.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_USA_CDR.xml</Value>
-      <Value name="LUC-link">../input/policy/LTS/LUC_carbon_tax_protect10_med7.xml</Value>
+      <Value name="GHG emissions policy">../input/gcamdata/xml/BECCSRESTest_GHGPolicies.xml</Value>
       <Value name="CDR-Demand-Policy">../input/policy/BECCSRESTest_CDRDemand.xml</Value>
    </ScenarioComponents>
    <Strings>
