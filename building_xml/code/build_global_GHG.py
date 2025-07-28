@@ -18,12 +18,13 @@ def build_GHG(config, baseline=True):
         linked_ghg_data = data["linked_ghg_markets"]
     if "ghg_constraint" in data:
         constraint = data["ghg_constraint"]
-
-    # TODO: add LUC tax???
+    if "ghg_tax" in data:
+        tax = data["ghg_tax"]
 
     # build remainder of the file
     scenario = build_ghg_policy(linked_ghg_data)
     scenario = emissions_constraint(scenario, constraint)
+    scenario = emissions_tax(scenario, tax)
 
     # write file out
     xmlstr = minidom.parseString(ET.tostring(scenario, encoding="UTF-8", xml_declaration=True)).toprettyxml(
@@ -60,10 +61,20 @@ def build_ghg_policy(file):
 
 
 def emissions_constraint(scenario, file):
-    for year, r in file:
+    for year, r, ghg in file:
         # find region from scenario that matches the region name
         region = scenario.find(".//region[@name='" + r + "']")
-        ghg_policy = region.find(".//ghgpolicy")
-        ET.SubElement(ghg_policy, "constraint", year=str(year)).text = str(file[(year, r)]["constraint"])
+        ghg_policy = region.find(".//ghgpolicy[@name='" + ghg + "']")
+        ET.SubElement(ghg_policy, "constraint", year=str(year)).text = str(file[(year, r, ghg)]["constraint"])
+
+    return scenario
+
+
+def emissions_tax(scenario, file):
+    for year, r, ghg in file:
+        # find region from scenario that matches the region name
+        region = scenario.find(".//region[@name='" + r + "']")
+        ghg_policy = region.find(".//ghgpolicy[@name='" + ghg + "']")
+        ET.SubElement(ghg_policy, "fixedTax", year=str(year)).text = str(file[(year, r, ghg)]["fixedTax"])
 
     return scenario
