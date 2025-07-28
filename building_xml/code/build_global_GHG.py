@@ -10,6 +10,7 @@ def build_GHG(config, baseline=True):
 
     linked_ghg_data = ""
     constraint = ""
+    tax = ""
 
     # extract relevant data
     data = utilities.open_csv(input_filepath)
@@ -54,8 +55,10 @@ def build_ghg_policy(file):
 
         # policy portfolio standard
         region_link = file[area]
-        policy = ET.SubElement(region, "ghgpolicy", name=region_link["linked-policy"])
-        ET.SubElement(policy, "market").text = region_link["market"]
+        policy = str(region_link["linked-policy"]).split(";")
+        for p in policy:
+            policy = ET.SubElement(region, "ghgpolicy", name=p)
+            ET.SubElement(policy, "market").text = region_link["market"]
 
     return scenario
 

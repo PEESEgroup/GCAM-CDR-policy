@@ -75,7 +75,9 @@ def build_markets(linked_ghg_data):
         ET.SubElement(link, "demand-adjust", fillout=str(region_link["demand-adjust-fillout"]),
                       year=str(region_link["demand-adjust-start-year"])).text = str(region_link["demand-adjust"])
         ET.SubElement(link, "market").text = str(region_link["market"])
-        ET.SubElement(link, "linked-policy").text = str(region_link["linked-policy"])
+        policy = str(region_link["linked-policy"]).split(";")
+        for p in policy:
+            ET.SubElement(link, "linked-policy").text = str(p)
         ET.SubElement(link, "price-unit").text = str(region_link["price-unit"])
         ET.SubElement(link, "output-unit").text = str(region_link["output-unit"])
 
