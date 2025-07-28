@@ -17,7 +17,9 @@ def build_GHG(config, baseline=True):
     if "linked_ghg_markets" in data:
         linked_ghg_data = data["linked_ghg_markets"]
     if "ghg_constraint" in data:
-        constraint = data["constraint"]
+        constraint = data["ghg_constraint"]
+
+    # TODO: add LUC tax???
 
     # build remainder of the file
     scenario = build_ghg_policy(linked_ghg_data)
@@ -34,11 +36,11 @@ def build_GHG(config, baseline=True):
     if baseline:
         return {"build_file_type": "baseline",
                 "filepath": config.config_dir + config.output_fname,
-                "descriptor": "GHG-constraint"}
+                "descriptor": "GHG-constraint policy"}
     else:
         return {"build_file_type": "altered",
                 "filepath": config.config_dir + config.output_fname,
-                "descriptor": "GHG-constraint"}
+                "descriptor": "GHG-constraint policy"}
 
 
 def build_ghg_policy(file):

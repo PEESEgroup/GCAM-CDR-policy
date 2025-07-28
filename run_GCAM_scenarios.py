@@ -9,7 +9,7 @@ import process_GCAM_data
 import read_GCAM_DB
 import verification
 import utilities
-from building_xml.code import build_CDR_demand, build_BECCS_integration
+from building_xml.code import build_CDR_demand, build_BECCS_integration, build_global_GHG
 
 
 def main(scenario, baseline, batch=False):
@@ -109,6 +109,8 @@ def build_config_file(scenario_name, baseline):
             files.append(build_CDR_demand.build(k))
         if k.xml_build_type == "BECCS RES":
             files.append(build_BECCS_integration.build_BECCS_integration(k))
+        if k.xml_build_type == "GHG constraint":
+            files.append(build_global_GHG.build_GHG(k))
         # TODO add more build types here
 
     # find out which files are new and which are altered
