@@ -16,7 +16,7 @@ def build_BECCS_integration(config, baseline=True):
     data = utilities.open_csv(input_filepath)
 
     if "RES" in data:
-        RES = data["RES"]
+        RES = data["RES_markets"]
     if "tech" in data:
         tech = data["tech"]
     if "countersubsidy" in data:

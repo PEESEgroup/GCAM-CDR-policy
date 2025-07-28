@@ -17,9 +17,9 @@ def build(config, baseline=True):
     data = utilities.open_csv(input_filepath)
     linked_ghg_data = data["linked_ghg_markets"]
 
-    if "exo_demand" in data:
+    if "exo_CDR_demand" in data:
         exo_demand = data["exo_demand"]
-    if "elastic_demand" in data:
+    if "elastic_CDR_demand" in data:
         elastic_demand = data["elastic_demand"]
     # TODO: add config files for these types of demand
     if "offset_demand" in data:

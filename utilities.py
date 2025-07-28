@@ -33,7 +33,7 @@ def open_csv(fname, **kwargs):
 def build_from_scenario(scenario_name):
     if scenario_name == "BECCSRESTest":
         return [build_xml_config.XMLConfig(
-            data_files={"RES": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+            data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                         "tech": "./building_xml/inputs/BECCS_tech_base.csv",
                         "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
             xml_build_type="BECCS RES",
@@ -49,8 +49,8 @@ def build_from_scenario(scenario_name):
             ),
             build_xml_config.XMLConfig(
                 data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
-                            "exo_demand": "./building_xml/inputs/EXO_CDR_demand_verify.csv",
-                            "elastic_demand": "./building_xml/inputs/Elastic_CDR_demand_verify.csv"},
+                            "exo_CDR_demand": "./building_xml/inputs/EXO_CDR_demand_verify.csv",
+                            "elastic_CDR_demand": "./building_xml/inputs/Elastic_CDR_demand_verify.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="BECCSRESTest_CDRDemand.xml"
             )

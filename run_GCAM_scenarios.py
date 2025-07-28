@@ -35,7 +35,7 @@ def execute_GCAM(baseline, batch, scenario, config_fname):
     # severe error: geothermal in US is not related to other activies just means that geothermal production is not
     # aggregated at the country level - geothermal is produced at the state level
     # water_td_USA: Hawaii doesn't exist - no irr water existing in hawaii for some reason
-    # TODO: coal ceiling doesn't have a matching input in the next period (2020)
+
     # change directory if not already in the \gcam\exe folder
     if str(os.getcwd()).split("\\")[-1] != "exe":
         os.chdir("./gcam/exe/")
