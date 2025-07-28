@@ -31,17 +31,9 @@ def open_csv(fname, **kwargs):
 
 
 def build_from_scenario(scenario_name):
-    if scenario_name == "exoTest":
-        return [build_xml_config.XMLConfig(
-            data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
-                        "exo_demand": "./building_xml/inputs/EXO_CDR_demand.csv",
-                        "elastic_demand": "./building_xml/inputs/Elastic_CDR_demand.csv"},
-            xml_build_type="CDR Policy",
-            output_fname="exoTest_CDR_demand.xml"
-        )]
     if scenario_name == "BECCSRESTest":
         return [build_xml_config.XMLConfig(
-            data_files={"RES": "./building_xml/inputs/BECCS_RES_base.csv",
+            data_files={"RES": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                         "tech": "./building_xml/inputs/BECCS_tech_base.csv",
                         "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
             xml_build_type="BECCS RES",
@@ -50,15 +42,15 @@ def build_from_scenario(scenario_name):
             # important to build links before CDR demand
             build_xml_config.XMLConfig(
                 data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
-                            "ghg_constraint": "./building_xml/inputs/GHG_constraint.csv",
-                            "ghg_tax": "./building_xml/inputs/GHG_tax.csv"},
+                            "ghg_constraint": "./building_xml/inputs/GHG_constraint_verify.csv",
+                            "ghg_tax": "./building_xml/inputs/GHG_tax_verify.csv"},
                 xml_build_type="GHG constraint",
                 output_fname="BECCSRESTest_GHGPolicies.xml"
             ),
             build_xml_config.XMLConfig(
                 data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
-                            "exo_demand": "./building_xml/inputs/EXO_CDR_demand.csv",
-                            "elastic_demand": "./building_xml/inputs/Elastic_CDR_demand.csv"},
+                            "exo_demand": "./building_xml/inputs/EXO_CDR_demand_verify.csv",
+                            "elastic_demand": "./building_xml/inputs/Elastic_CDR_demand_verify.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="BECCSRESTest_CDRDemand.xml"
             )
