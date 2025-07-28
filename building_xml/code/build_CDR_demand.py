@@ -17,10 +17,10 @@ def build(config, baseline=True):
     data = utilities.open_csv(input_filepath)
     linked_ghg_data = data["linked_ghg_markets"]
 
-    if "exo_CDR_demand" in data:
-        exo_demand = data["exo_demand"]
-    if "elastic_CDR_demand" in data:
-        elastic_demand = data["elastic_demand"]
+    if "exo_CDR_demand_verify" in data:
+        exo_demand = data["exo_CDR_demand_verify"]
+    if "elastic_CDR_demand_verify" in data:
+        elastic_demand = data["elastic_CDR_demand_verify"]
     # TODO: add config files for these types of demand
     if "offset_demand" in data:
         offset_demand = data["offset_demand"]
@@ -106,6 +106,8 @@ def add_elastic_demand(scenario, demand):
     # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
+
+    # TODO: explicitly list out default parameters for elastic policies
 
     for r in demand:
         # find region from scenario that matches the region name

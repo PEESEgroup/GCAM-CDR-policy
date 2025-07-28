@@ -17,10 +17,10 @@ def build_GHG(config, baseline=True):
 
     if "linked_ghg_markets" in data:
         linked_ghg_data = data["linked_ghg_markets"]
-    if "ghg_constraint" in data:
-        constraint = data["ghg_constraint"]
-    if "ghg_tax" in data:
-        tax = data["ghg_tax"]
+    if "ghg_constraint_verify" in data:
+        constraint = data["ghg_constraint_verify"]
+    if "ghg_tax_verify" in data:
+        tax = data["ghg_tax_verify"]
 
     # build remainder of the file
     scenario = build_ghg_policy(linked_ghg_data)
