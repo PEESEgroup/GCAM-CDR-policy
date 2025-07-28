@@ -1,40 +1,42 @@
 import pandas as pd
-
 import utilities
 
 
-def main(scenario_name, config_fname):
+def main(scenario_name):
     # get a list of files that need verification
     xml_files_to_build = utilities.build_from_scenario(scenario_name)
     files_to_verify = {}
-    dir = str(config_fname).replace("_", "/")
+
+    # location of output data
+    directory = str(scenario_name).replace("_", "/")
     prefix = "./data/gcam_out/"
-    fpath = prefix+dir
+    fpath = prefix + directory
+
+    # don't do data analysis on years with errors
+    error_years = []
 
     # TODO: may need to group certain types of files (i.e. CDR demand) together
     for file in xml_files_to_build:
-        for key, value in file.data_files:
-            if "verify" in str(value).lower():
-                files_to_verify[key] = value
+        data = utilities.open_csv(file.data_files)
+        for key in data:
+            if "verify" in key:
+                # TODO: replace with pd.read_csv
+                ground_truth = pd.DataFrame.from_dict(data[key]).transpose().reset_index()
+                if "exo_CDR_demand" in key:
+                    pass
+                if "elastic_CDR_demand" in key:
+                    pass
+                if "RES_markets" in key:
+                    pass
+                if "ghg_constraint" in key:
+                    pass
+                if "ghg_tax" in key:
+                    # query co2 prices
+                    results = pd.read_csv(fpath+"/CO2_prices.csv")
+                    error_years.extend(verify_ghg_tax(ground_truth, results))
+                # TODO: add more file types
 
-    # for each file to verify, open the original .csv file and extract relevant data
-    for key, value in files_to_verify:
-        ground_truth = utilities.open_csv(value)
-        # TODO: convert from dict to pd dataframe
-
-        if key == "exo_CDR_demand":
-            pass
-        if key == "elastic_CDR_demand":
-            pass
-        if key == "RES_markets":
-            pass
-        if key == "ghg_constraint":
-            pass
-        if key == "ghg_tax":
-            # TODO: query CO2 results
-            results = pd.read_csv(fpath+"CO2_prices.csv")
-            verify_ghg_tax(ground_truth, results)
-        # TODO: add more file types
+    # TODO: update output .csv files based on years with errors
 
 
 def verify_ghg_tax(ground_truth, results):
@@ -44,4 +46,4 @@ def verify_ghg_tax(ground_truth, results):
 
 
 if __name__ == '__main__':
-    main("alteredTest_default")
+    main("BECCSRESTest_default")
