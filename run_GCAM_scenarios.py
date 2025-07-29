@@ -124,6 +124,7 @@ def build_config_file(scenario_name, baseline):
 
     # add baseline files
     for file in baseline_files:
+        # TODO: CDR growth rate policy
         # if it is a policy, put it at the end, otherwise, put it in the middle:
         if "policy" in str(file["descriptor"]).lower():
             ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]

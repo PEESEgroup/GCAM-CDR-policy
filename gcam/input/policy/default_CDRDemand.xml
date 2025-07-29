@@ -42,7 +42,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -53,7 +52,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -64,7 +62,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -75,7 +72,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -86,7 +82,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -97,7 +92,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -108,18 +102,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
-            <price-unit>1990$/tC</price-unit>
-            <output-unit>MtC</output-unit>
-         </linked-ghg-policy>
-      </region>
-      <region name="DC">
-         <linked-ghg-policy name="CO2_CDR">
-            <price-adjust fillout="1" year="1975">0</price-adjust>
-            <demand-adjust fillout="1" year="1975">1</demand-adjust>
-            <market>USA</market>
-            <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -130,7 +112,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -141,7 +122,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -152,7 +132,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -163,7 +142,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -174,7 +152,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -185,7 +162,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -196,7 +172,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -207,7 +182,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -218,7 +192,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -229,7 +202,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -240,7 +212,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -251,7 +222,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -262,7 +232,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -273,7 +242,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -284,7 +252,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -295,7 +262,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -306,7 +272,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -317,7 +282,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -328,7 +292,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -339,7 +302,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -350,7 +312,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -361,7 +322,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -372,7 +332,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -383,7 +342,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -394,7 +352,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -405,7 +362,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -416,7 +372,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -427,7 +382,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -438,7 +392,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -449,7 +402,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -460,7 +412,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -471,7 +422,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -482,7 +432,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -493,7 +442,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -504,7 +452,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -515,7 +462,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -526,7 +472,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -537,7 +482,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -548,7 +492,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -559,7 +502,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -570,7 +512,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -581,7 +522,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
@@ -592,7 +532,6 @@
             <demand-adjust fillout="1" year="1975">1</demand-adjust>
             <market>USA</market>
             <linked-policy>CO2</linked-policy>
-            <linked-policy>CO2_LUC</linked-policy>
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>

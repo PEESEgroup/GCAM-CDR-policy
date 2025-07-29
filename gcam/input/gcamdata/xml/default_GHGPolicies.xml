@@ -12,22 +12,9 @@
             <constraint year="2045">394.9875815</constraint>
             <constraint year="2050">-0.30641437</constraint>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-            <fixedTax year="2020">4.5</fixedTax>
-            <fixedTax year="2025">20.0</fixedTax>
-            <fixedTax year="2030">38.5</fixedTax>
-            <fixedTax year="2035">109.5</fixedTax>
-            <fixedTax year="2040">152.0</fixedTax>
-            <fixedTax year="2045">200.0</fixedTax>
-            <fixedTax year="2050">280.0</fixedTax>
-         </ghgpolicy>
       </region>
       <region name="AK">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -35,15 +22,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="AR">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -51,15 +32,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="CO">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -67,23 +42,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
-      </region>
-      <region name="DC">
-         <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="DE">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -91,15 +52,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="GA">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -107,15 +62,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="ID">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -123,15 +72,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="IN">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -139,15 +82,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="KS">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -155,15 +92,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="LA">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -171,15 +102,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="MD">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -187,15 +112,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="MI">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -203,15 +122,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="MS">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -219,15 +132,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="MT">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -235,15 +142,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="NV">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -251,15 +152,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="NJ">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -267,15 +162,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="NY">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -283,15 +172,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="ND">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -299,15 +182,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="OK">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -315,15 +192,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="PA">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -331,15 +202,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="SC">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -347,15 +212,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="TN">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -363,15 +222,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="UT">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -379,15 +232,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="VA">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -395,15 +242,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="WV">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
@@ -411,15 +252,9 @@
          <ghgpolicy name="CO2">
             <market>USA</market>
          </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
-            <market>USA</market>
-         </ghgpolicy>
       </region>
       <region name="WY">
          <ghgpolicy name="CO2">
-            <market>USA</market>
-         </ghgpolicy>
-         <ghgpolicy name="CO2_LUC">
             <market>USA</market>
          </ghgpolicy>
       </region>
