@@ -1,5 +1,6 @@
 import pandas as pd
 import utilities
+import constants
 
 
 def main(scenario_name):
@@ -43,11 +44,17 @@ def verify_ghg_tax(ground_truth, results):
     years_with_error = []
     ground_truth = ground_truth.transpose()
     ground_truth.columns = ground_truth.iloc[0]
+    ground_truth.columns = ground_truth.columns.astype(str)
     ground_truth["GCAM"] = ground_truth.iloc[1].unique()[0]
     ground_truth["product"] = ground_truth.iloc[2].unique()[0]
     ground_truth = pd.DataFrame(ground_truth.iloc[3]).transpose()
 
-    # compare 
+    # compare ground truths with results
+    df = pd.merge(ground_truth, results, "left", ["GCAM", "product"], suffixes=("_left", "_right"))
+    for i in constants.GCAMConstants.plotting_x:
+        df[str(i)] = df[str(i) + "_left"] - df[str(i) + "_right"]
+        if df[str(i)].sum() != 0:
+            years_with_error.append(str(i))
 
     return years_with_error
 
