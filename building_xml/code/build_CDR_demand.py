@@ -107,8 +107,6 @@ def add_elastic_demand(scenario, demand):
     if demand == "":
         return scenario
 
-    # TODO: explicitly list out default parameters for elastic policies
-
     for r in demand:
         # find region from scenario that matches the region name
         region = scenario.find(".//region[@name='" + r + "']")
@@ -116,6 +114,9 @@ def add_elastic_demand(scenario, demand):
         region.insert(0, CDR_final_demand)
         demand_source = ET.SubElement(CDR_final_demand, "elastic-demand-source", name="elastic")
         ET.SubElement(demand_source, "max-demand").text = str(demand[r]["max-demand"])
+        ET.SubElement(demand_source, "steepness").text = str(demand[r]["steepness"])
+        ET.SubElement(demand_source, "midpoint").text = str(demand[r]["midpoint"])
+        ET.SubElement(demand_source, "min-price").text = str(demand[r]["min-price"])
 
     return scenario
 

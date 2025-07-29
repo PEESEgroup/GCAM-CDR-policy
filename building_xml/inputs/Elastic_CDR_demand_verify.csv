@@ -1,4 +1,4 @@
-source,GCAM default
-index cols,1
-region,max-demand
-Canada,1000
+source,GCAM default,,,
+index cols,1,,,
+region,max-demand,steepness,midpoint,min-price
+Canada,1000,0.005,500,0
