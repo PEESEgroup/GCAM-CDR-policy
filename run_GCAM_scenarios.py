@@ -394,7 +394,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["BECCSRESTest"]  # use camelCase
+    current_configs = ["test"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
     for i in current_configs:
