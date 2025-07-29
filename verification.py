@@ -16,21 +16,20 @@ def main(scenario_name):
     error_years = []
 
     # TODO: may need to group certain types of files (i.e. CDR demand) together
-    for file in xml_files_to_build:
-        data = utilities.open_csv(file.data_files)
-        for key in data:
-            if "verify" in key:
-                # TODO: replace with pd.read_csv
-                ground_truth = pd.DataFrame.from_dict(data[key]).transpose().reset_index()
-                if "exo_CDR_demand" in key:
+    for xml in xml_files_to_build:
+        for file in xml.data_files:
+            csv = xml.data_files[file]
+            if "verify" in file:
+                ground_truth = pd.read_csv(csv, skiprows=2)
+                if "exo_CDR_demand" in file:
                     pass
-                if "elastic_CDR_demand" in key:
+                if "elastic_CDR_demand" in file:
                     pass
-                if "RES_markets" in key:
+                if "RES_markets" in file:
                     pass
-                if "ghg_constraint" in key:
+                if "ghg_constraint" in file:
                     pass
-                if "ghg_tax" in key:
+                if "ghg_tax" in file:
                     # query co2 prices
                     results = pd.read_csv(fpath+"/CO2_prices.csv")
                     error_years.extend(verify_ghg_tax(ground_truth, results))
@@ -40,10 +39,18 @@ def main(scenario_name):
 
 
 def verify_ghg_tax(ground_truth, results):
-    # TODO: compare ground_truth with the results and identify if any of the years have an error
+    # update ground truth to the results data format
     years_with_error = []
+    ground_truth = ground_truth.transpose()
+    ground_truth.columns = ground_truth.iloc[0]
+    ground_truth["GCAM"] = ground_truth.iloc[1].unique()[0]
+    ground_truth["product"] = ground_truth.iloc[2].unique()[0]
+    ground_truth = pd.DataFrame(ground_truth.iloc[3]).transpose()
+
+    # compare 
+
     return years_with_error
 
 
 if __name__ == '__main__':
-    main("BECCSRESTest_default")
+    main("exoTest_default")
