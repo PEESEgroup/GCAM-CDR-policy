@@ -171,6 +171,9 @@ def label_market_as_region(row):
     for j in c.GCAMConstants.GCAM_region:
         if j in row['market']:
             return j
+    for j in c.GCAMConstants.USA_region:
+        if j in row['market']:
+            return j
     return c.GCAMConstants.missing
 
 
@@ -181,8 +184,11 @@ def label_market_as_product(row):
     :return: the key market, or a default value if it is not a key market
     """
     for j in c.GCAMConstants.GCAM_region:
-        if j in row['market']:
-            return row['market'].replace(j, '')
+        if str(row['market']).startswith(j):
+            return row['market'].replace(j, '', 1)
+    for j in c.GCAMConstants.USA_region:
+        if str(row['market']).startswith(j):
+            return row['market'].replace(j, '', 1)
     return c.GCAMConstants.missing
 
 
@@ -193,6 +199,7 @@ def masking(dataframe, mask):
     :param mask: list of SSP-year pairs with model errors
     :return: dataframe with relabled rows
     """
+    # TODO: update later
     for i in mask:
         year = str(i[1])
         SSP = str(i[0])
@@ -204,6 +211,7 @@ def masking(dataframe, mask):
 
 
 def apply_mask(row, year, SSP):
+    # TODO: update later
     """
     For a given row, apply a mask if SSP in row matches SSP with error
     :param row: a row from a pd dataframe
