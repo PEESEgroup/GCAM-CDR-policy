@@ -31,7 +31,7 @@ def open_csv(fname, **kwargs):
 
 
 def build_from_scenario(scenario_name):
-    if "BECCSRESTest" in scenario_name:
+    if "default" in scenario_name:
         return [build_xml_config.XMLConfig(
             data_files={"RES_markets_verify": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                         "tech": "./building_xml/inputs/BECCS_tech_base.csv",
@@ -55,3 +55,5 @@ def build_from_scenario(scenario_name):
                 output_fname="BECCSRESTest_CDRDemand.xml"
             )
         ]
+    else:
+        return None
