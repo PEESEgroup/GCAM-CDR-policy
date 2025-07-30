@@ -1,32 +1,39 @@
-<aQuery>
-    <region name="Global"/>
-    <emissionsQueryBuilder title="CO2 emissions by tech">
-        <axis1 name="technology">technology</axis1>
-        <axis2 name="Year">emissions</axis2>
-        <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//
-        CO2/emissions/node()</xPath>
-        <comments/>
-    </emissionsQueryBuilder>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
-    <emissionsQueryBuilder title="CO2 sequestration by tech">
-        <axis1 name="subsector">subsector</axis1>
-        <axis2 name="Year">emissions-sequestered</axis2>
-        <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//
-    CO2/emissions-sequestered/node()</xPath>
-        <comments/>
-    </emissionsQueryBuilder>
-</aQuery>
-<aQuery>
-    <region name="Global"/>
-        <supplyDemandQuery title="CDR by tech">
-        <axis1 name="technology">technology</axis1>
-        <axis2 name="Year">physical-output[@vintage]</axis2>
-        <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/
-                *[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/
-                *[@type='output']/physical-output/node()</xPath>
-        <comments>Excludes unsatisfied CDR demand</comments>
-    </supplyDemandQuery>
-</aQuery>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<queries>
+    <aQuery>
+        <region name="Global"/>
+        <marketQuery title="prices of all markets">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true()]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+    </aQuery>
+    <aQuery>
+        <region name="Global"/>
+        <marketQuery title="supply of all markets">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true()]/supply/node()</xPath>
+            <comments/>
+        </marketQuery>
+    </aQuery>
+    <aQuery>
+        <region name="Global"/>
+            <marketQuery title="CO2 prices">
+                <axis1 name="market">market</axis1>
+                <axis2 name="Year">market</axis2>
+                <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and contains(@name,'CO2')]/price/node()</xPath>
+                <comments/>
+            </marketQuery>
+    </aQuery>
+    <aQuery>
+        <region name = "Global"/>
+        <supplyDemandQuery title="CDR costs by tech">
+            <axis1 name="subsector">subsector</axis1>
+            <axis2 name="Year">cost</axis2>
+            <xPath buildList="true" dataName="cost" group="false" sumAll="false">*[@type='sector' and (@name='DAC' or @name='OEW' or @name='TEW')]/*[@type='subsector']/*[@type='technology']/cost/text()</xPath>
+            <comments>BECCS technologies are not included</comments>
+        </supplyDemandQuery>
+    </aQuery>
+</queries>
