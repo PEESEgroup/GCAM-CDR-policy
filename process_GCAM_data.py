@@ -56,9 +56,6 @@ def split_file(fname):
             else:
                 key = line_chunk[0].rstrip()
                 col = line_chunk[1].split(",")
-                # insert a new column into the list because when the data_list is broken into strings,
-                # it breaks the scenario column into 2
-                col.insert(1, "date")
                 col[-1] = "newline_lmao"  # renaming last column because \n is a terrible column name
 
                 # processing the data
@@ -68,6 +65,11 @@ def split_file(fname):
                 # add data to dataframe
                 if "depth" in data_list[0][5]:
                     col.insert(5, "depth")
+                # insert a new column into the list because when the data_list is broken into strings,
+                # it breaks the scenario column into 2
+                if "=" in data_list[0][1]:
+                    col.insert(1, "date")
+
                 df = pd.DataFrame(data_list, columns=col)
                 df = df.dropna()
 

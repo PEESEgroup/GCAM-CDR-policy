@@ -59,25 +59,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="USA"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -103,25 +86,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Africa_Eastern"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -147,25 +113,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Africa_Northern"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -191,25 +140,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Africa_Southern"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -235,25 +167,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Africa_Western"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -279,25 +194,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Australia_NZ"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -323,25 +221,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Brazil"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -367,25 +248,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Canada"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -411,25 +275,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Central America and Caribbean"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -455,25 +302,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Central Asia"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -499,25 +329,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="China"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -543,25 +356,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="EU-12"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -587,25 +383,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="EU-15"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -631,25 +410,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Europe_Eastern"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -675,25 +437,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Europe_Non_EU"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -719,25 +464,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="European Free Trade Association"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -763,25 +491,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="India"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -807,25 +518,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Indonesia"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -851,25 +545,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Japan"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -895,25 +572,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Mexico"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -939,25 +599,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Middle East"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -983,25 +626,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Pakistan"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1027,25 +653,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Russia"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1071,25 +680,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="South Africa"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1115,25 +707,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="South America_Northern"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1159,25 +734,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="South America_Southern"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1203,25 +761,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="South Asia"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1247,25 +788,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="South Korea"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1291,25 +815,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Southeast Asia"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1335,25 +842,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Taiwan"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1379,25 +869,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Argentina"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1423,25 +896,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Colombia"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1467,25 +923,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="AL"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1511,25 +950,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="AK"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1555,25 +977,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="AZ"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1599,25 +1004,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="AR"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1643,25 +1031,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="CA"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1687,25 +1058,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="CO"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1731,25 +1085,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="CT"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1775,25 +1112,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="DE"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1819,25 +1139,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="DC"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1863,25 +1166,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="FL"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1907,25 +1193,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="GA"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1951,25 +1220,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="HI"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -1995,25 +1247,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="ID"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2039,25 +1274,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="IL"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2083,25 +1301,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="IN"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2127,25 +1328,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="IA"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2171,25 +1355,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="KS"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2215,25 +1382,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="KY"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2259,25 +1409,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="LA"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2303,25 +1436,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="ME"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2347,25 +1463,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="MD"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2391,25 +1490,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="MA"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2435,25 +1517,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="MI"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2479,25 +1544,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="MN"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2523,25 +1571,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="MS"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2567,25 +1598,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="MO"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2611,25 +1625,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="MT"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2655,25 +1652,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="NE"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2699,25 +1679,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="NV"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2743,25 +1706,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="NH"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2787,25 +1733,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="NJ"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2831,25 +1760,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="NM"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2875,25 +1787,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="NY"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2919,25 +1814,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="NC"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -2963,25 +1841,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="ND"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3007,25 +1868,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="OH"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3051,25 +1895,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="OK"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3095,25 +1922,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="OR"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3139,25 +1949,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="PA"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3183,25 +1976,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="RI"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3227,25 +2003,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="SC"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3271,25 +2030,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="SD"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3315,25 +2057,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="TN"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3359,25 +2084,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="TX"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3403,25 +2111,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="UT"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3447,25 +2138,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="VT"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3491,25 +2165,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="VA"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3535,25 +2192,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="WA"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3579,25 +2219,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="WV"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3623,25 +2246,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="WI"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3667,25 +2273,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="WY"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3711,25 +2300,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="California grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3755,25 +2327,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Texas grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3799,25 +2354,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Southwest grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3843,25 +2381,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Central East grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3887,25 +2408,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Central Northeast grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3931,25 +2435,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Central Southwest grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -3975,25 +2462,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Mid-Atlantic grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -4019,25 +2489,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Northwest grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -4063,25 +2516,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Southeast grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -4107,25 +2543,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Central Northwest grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -4151,25 +2570,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="New York grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -4195,25 +2597,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="New England grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -4239,25 +2624,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Alaska grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
@@ -4283,25 +2651,8 @@
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
          <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology' and not(@name='unsatisfied CDR demand')]/*[@type='output']/physical-output/node()</xPath>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
-      </supplyDemandQuery>
-   </aQuery>
-   <aQuery>
-      <region name="Hawaii grid"/>
-      <supplyDemandQuery title="CDR vs unsatisfied demand, by region">
-         <axis1 name="sector">technology</axis1>
-         <axis2 name="Year">physical-output[@vintage]</axis2>
-         <xPath buildList="true" dataName="output" group="true" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector' (:collapse:)]/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
-         <comments/>
-         <labelRewriteList append-values="false">
-            <level name="technology">
-               <rewrite from="OEW" to="CDR"/>
-               <rewrite from="BECCS" to="CDR"/>
-               <rewrite from="DAC" to="CDR"/>
-               <rewrite from="TEW" to="CDR"/>
-            </level>
-         </labelRewriteList>
       </supplyDemandQuery>
    </aQuery>
 </queries>
