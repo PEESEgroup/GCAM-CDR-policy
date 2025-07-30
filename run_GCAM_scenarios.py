@@ -6,6 +6,7 @@ import os
 import constants
 import shutil
 import process_GCAM_data
+import produce_regional_queries
 import read_GCAM_DB
 import verification
 import utilities
@@ -23,12 +24,14 @@ def main(scenario, baseline, batch=False):
     # generate config files
     config_fname = build_config_file(scenario, baseline)
 
+    # generate query files
+    produce_regional_queries.main()
+
     # execute GCAM files
     execute_GCAM(baseline, batch, scenario, config_fname)
 
     # process output
     config_fname = config_fname.split(".")[0]
-
     xmldb_ops(config_fname)
     read_GCAM_DB.main(config_fname)
     process_GCAM_data.main(config_fname)
