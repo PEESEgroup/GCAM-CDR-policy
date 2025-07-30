@@ -22,7 +22,7 @@ def build(config, baseline=True):
 
     # extract relevant data
     data = utilities.open_csv(input_filepath)
-    linked_ghg_data = data["linked_ghg_markets"]
+    linked_ghg_data = data["linked_ghg_CDR_markets_verify"]
 
     if "exo_CDR_demand_verify" in data:
         exo_demand = data["exo_CDR_demand_verify"]
