@@ -137,9 +137,9 @@ def build_config_file(scenario_name, baseline):
 
     # find out which files are new and which are altered
     for x in scenario_files:
-        if "original" in x["build_file_type"]:
+        if "original" in x.build_file_type:
             original.append(x)
-        if "altered" in x["build_file_type"]:
+        if "altered" in x.build_file_type:
             altered.append(x)
 
     # add default files
@@ -149,25 +149,25 @@ def build_config_file(scenario_name, baseline):
     # add baseline files
     for file in baseline_files:
         # if it is a policy, put it at the end, otherwise, put it in the middle:
-        if "policy" in str(file["descriptor"]).lower():
-            ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]
+        if "policy" in str(file.descriptor).lower():
+            ET.SubElement(scenario_components, "Value", name=file.descriptor).text = file.filepath
         else:
             # after cdr_resources
-            element = ET.Element("Value", name=file["descriptor"])
-            element.text = file["filepath"]
+            element = ET.Element("Value", name=file.descriptor)
+            element.text = file.filepath
             scenario_components.insert(102, element)
 
     # replace altered files
     for file in altered:
         # remove original entry
-        original_entry = config.find(".//Value[@name='" + file["descriptor"] + "']")
+        original_entry = config.find(".//Value[@name='" + file.descriptor + "']")
         scenario_components.remove(original_entry)
         # add altered entry with default name
-        ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]
+        ET.SubElement(scenario_components, "Value", name=file.descriptor).text = file.filepath
 
     # add original files
     for file in original:
-        ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]
+        ET.SubElement(scenario_components, "Value", name=file.descriptor).text = file.filepath
 
     # write out xml
     xmlstr = minidom.parseString(ET.tostring(config, encoding="UTF-8", xml_declaration=True)).toprettyxml(
