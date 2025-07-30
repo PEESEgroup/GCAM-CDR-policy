@@ -323,9 +323,9 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="biosep_gas").text = "../input/gcamdata/xml/bio_sep_USA_elec_segments.xml"
 
     # <!-- add primary CDR -->
-    # TODO: remove CDR growth limit
+    # remove CDR growth limit because we want all demand to be satisfied, and are setting exogenous demand
     ET.SubElement(scenario, "Value", name="cdr_rampup").text = "../input/gcamdata/xml/CDR.xml"
-    ET.SubElement(scenario, "Value", name="growth_limit").text = "../input/gcamdata/xml/CDR_growth_limit.xml"
+    # ET.SubElement(scenario, "Value", name="growth_limit").text = "../input/gcamdata/xml/CDR_growth_limit.xml"
     ET.SubElement(scenario, "Value", name="cdr_trade").text = "../input/gcamdata/xml/CDR_traded.xml"
     ET.SubElement(scenario, "Value", name="cdr_dac").text = "../input/gcamdata/xml/DAC.xml"
     ET.SubElement(scenario, "Value", name="waste_heat").text = "../input/gcamdata/xml/waste_heat_endogenous.xml"
@@ -339,7 +339,7 @@ def default_config(config_name):
 
     # <!-- CDR in USA -->
     ET.SubElement(scenario, "Value", name="cdr_usa").text = "../input/gcamdata/xml/CDR_USA.xml"
-    ET.SubElement(scenario, "Value", name="growth_limit").text = "../input/gcamdata/xml/CDR_growth_limit_USA.xml"
+    # ET.SubElement(scenario, "Value", name="growth_limit").text = "../input/gcamdata/xml/CDR_growth_limit_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_trade_usa").text = "../input/gcamdata/xml/CDR_traded_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_dac_usa").text = "../input/gcamdata/xml/DAC_USA.xml"
     ET.SubElement(scenario, "Value", name="waste_heat_usa").text = "../input/gcamdata/xml/waste_heat_endogenous_USA.xml"
