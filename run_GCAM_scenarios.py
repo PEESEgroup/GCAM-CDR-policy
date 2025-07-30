@@ -14,7 +14,11 @@ from building_xml.code import build_CDR_demand, build_BECCS_integration, build_g
 
 def main(scenario, baseline, batch=False):
     """
-    control program for running a GCAM scenario
+    control program for setting up, running, validating, and analyzing the GCAM scenario
+    :param scenario: scenario name
+    :param baseline: baseline name
+    :param batch: if this is a batch GCAM config file
+    :return: N/A
     """
     # generate config files
     config_fname = build_config_file(scenario, baseline)
@@ -32,6 +36,14 @@ def main(scenario, baseline, batch=False):
 
 
 def execute_GCAM(baseline, batch, scenario, config_fname):
+    """
+    run gcam using custom configuration on the command line
+    :param baseline: baseline name
+    :param batch: if this is a batch file
+    :param scenario: scenario name
+    :param config_fname: combination of the scenario and baseline name
+    :return: N/A
+    """
     # severe error: geothermal in US is not related to other activies just means that geothermal production is not
     # aggregated at the country level - geothermal is produced at the state level
     # water_td_USA: Hawaii doesn't exist - no irr water existing in hawaii for some reason
@@ -45,7 +57,7 @@ def execute_GCAM(baseline, batch, scenario, config_fname):
     lines = open(original_bat_fname, 'r').readlines()
 
     if batch:
-        # open the configuration .xml" file
+        # open the configuration .xml file
         config_fname = "configuration_CDR.xml"
         tag = 'Value'
         tree = ET.parse(config_fname)
@@ -83,7 +95,13 @@ def execute_GCAM(baseline, batch, scenario, config_fname):
 
 
 def xmldb_ops(config_name):
-    output_dir = "gcam/output/database_basexdb-"+str(config_name)
+    """
+    manage output xmldb by renaming output directory and copying and empty directory and renaming it to the
+    default output
+    :param config_name: scenario name
+    :return: N/A
+    """
+    output_dir = "gcam/output/database_basexdb-" + str(config_name)
     # delete existing output data folder (automatically overwrites data)
     if os.path.isdir(output_dir):
         shutil.rmtree(output_dir)
@@ -96,6 +114,12 @@ def xmldb_ops(config_name):
 
 
 def build_config_file(scenario_name, baseline):
+    """
+    Build the main configuration file for GCAM
+    :param scenario_name: the scenario name
+    :param baseline: the baseline name
+    :return: filename of the configuration file
+    """
     # look up relevant files by scenario name
     original = []
     altered = []
@@ -155,6 +179,11 @@ def build_config_file(scenario_name, baseline):
 
 
 def build_files(xml_files_to_build):
+    """
+    build xml files based on the configuration type
+    :param xml_files_to_build: a list of xml config objects to be built
+    :return: a list of files that were built
+    """
     files = []
     for k in xml_files_to_build:
         if k.xml_build_type == "CDR Policy":
@@ -171,7 +200,7 @@ def build_files(xml_files_to_build):
 def default_config(config_name):
     """
     baseline: scenario name for baseline exogenous CDR demand
-    :param baseline:
+    :param config_name: scenario name
     :return:
     """
     configuration = ET.Element("Configuration")
@@ -265,7 +294,8 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="bio_feedstock_limit").text = "../input/gcamdata/xml/liquids_limits.xml"
     ET.SubElement(scenario, "Value",
                   name="bio_elec_w_feed_limit").text = "../input/gcamdata/xml/water_elec_liquids_limits.xml"
-    #<!-- ET.SubElement(scenario, "Value", name = "bio_neg_emiss_budget").text = "../input/gcamdata/xml/negative_emissions_budget_gSSP2.xml" -->
+    # <!-- ET.SubElement(scenario, "Value", name = "bio_neg_emiss_budget").text =
+    #   "../input/gcamdata/xml/negative_emissions_budget_gSSP2.xml" -->
     ET.SubElement(scenario, "Value", name="wind_update").text = "../input/gcamdata/xml/onshore_wind.xml"
 
     ET.SubElement(scenario, "Value", name="socio_usa").text = "../input/gcamdata/xml/socioeconomics_USA.xml"
@@ -273,7 +303,7 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="Cstorage_usa").text = "../input/gcamdata/xml/Cstorage_USA.xml"
     ET.SubElement(scenario, "Value", name="prices_usa").text = "../input/gcamdata/xml/en_prices_USA.xml"
     ET.SubElement(scenario, "Value", name="en_transform_usa").text = "../input/gcamdata/xml/en_transformation_USA.xml"
-    #<!--Value name = "elec_usa").text = "../input/gcamdata/xml/elec_segments_USA.xml"</Value-->
+    # <!--Value name = "elec_usa").text = "../input/gcamdata/xml/elec_segments_USA.xml"</Value-->
     ET.SubElement(scenario, "Value", name="elec_water_usa").text = "../input/gcamdata/xml/elec_segments_water_USA.xml"
     ET.SubElement(scenario, "Value", name="h2_usa").text = "../input/gcamdata/xml/hydrogen_USA.xml"
     ET.SubElement(scenario, "Value", name="elect_td_usa").text = "../input/gcamdata/xml/electd_USA.xml"
@@ -285,7 +315,7 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="cement_usa").text = "../input/gcamdata/xml/cement_USA.xml"
     ET.SubElement(scenario, "Value", name="fert_usa").text = "../input/gcamdata/xml/Fert_USA.xml"
 
-    #<!-- NEW NESTING STRUCTURE -->
+    # <!-- NEW NESTING STRUCTURE -->
     ET.SubElement(scenario, "Value", name="solar_usa").text = "../input/gcamdata/xml/solar_reeds_USA.xml"
     ET.SubElement(scenario, "Value", name="wind_usa").text = "../input/gcamdata/xml/wind_reeds_USA.xml"
     ET.SubElement(scenario, "Value", name="hydro_usa").text = "../input/gcamdata/xml/elec_hydro_USA.xml"
@@ -297,14 +327,14 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="liq_lim_usa").text = "../input/gcamdata/xml/liquids_limits_USA.xml"
     ET.SubElement(scenario, "Value", name="USA_regional_bio").text = "../input/gcamdata/xml/regional_biomass_USA.xml"
 
-    #<!--WATER DATA-->
+    # <!--WATER DATA-->
     ET.SubElement(scenario, "Value", name="water_td_usa").text = "../input/gcamdata/xml/water_td_USA.xml"
     ET.SubElement(scenario, "Value",
                   name="municipal_water_usa").text = "../input/gcamdata/xml/water_demand_municipal_USA.xml"
     ET.SubElement(scenario, "Value", name="ind_water_usa").text = "../input/gcamdata/xml/water_demand_industry_USA.xml"
     ET.SubElement(scenario, "Value", name="solver").text = "../input/solution/cal_broyden_config.xml"
 
-    #<!-- accelerate decarbonization -->
+    # <!-- accelerate decarbonization -->
     ET.SubElement(scenario, "Value", name="adv_geothermal").text = "../input/gcamdata/xml/geo_adv.xml"
     ET.SubElement(scenario, "Value", name="adv_solar").text = "../input/gcamdata/xml/solar_adv.xml"
     ET.SubElement(scenario, "Value", name="adv_wind").text = "../input/gcamdata/xml/wind_adv.xml"
@@ -333,7 +363,6 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="cdr_oae_shipping").text = "../input/gcamdata/xml/OEW_shipping.xml"
     ET.SubElement(scenario, "Value", name="cdr_nonenergy").text = "../input/gcamdata/xml/CDR_costs.xml"
     ET.SubElement(scenario, "Value", name="cdr_resources").text = "../input/gcamdata/xml/resources_CDR.xml"
-
 
     # <!-- CDR in USA -->
     ET.SubElement(scenario, "Value", name="cdr_usa").text = "../input/gcamdata/xml/CDR_USA.xml"
@@ -398,7 +427,7 @@ if __name__ == '__main__':
     current_configs = ["test"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
-    with multiprocessing.Pool(processes=4) as pool:
+    with multiprocessing.Pool(processes=3) as pool:
         result = pool.starmap(main, ((i, j) for i in current_configs for j in current_baseline))
 
     """

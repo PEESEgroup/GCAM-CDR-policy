@@ -4,6 +4,11 @@ import constants
 
 
 def main(scenario_name):
+    """
+    verify GCAM model outputs
+    :param scenario_name: name of the scenario for verification
+    :return: N/A
+    """
     # get a list of files that need verification
     xml_files_to_build = utilities.build_from_scenario(scenario_name)
     files_to_verify = {}
@@ -40,6 +45,12 @@ def main(scenario_name):
 
 
 def verify_ghg_tax(ground_truth, results):
+    """
+    verify ghg tax values
+    :param ground_truth: the values in the input file
+    :param results: the values in the GCAM model output
+    :return: a list of years in which an error was detected
+    """
     # update ground truth to the results data format
     years_with_error = []
     ground_truth = ground_truth.transpose()
@@ -55,6 +66,7 @@ def verify_ghg_tax(ground_truth, results):
         df[str(i)] = df[str(i) + "_left"] - df[str(i) + "_right"]
         if df[str(i)].sum() != 0:
             years_with_error.append(str(i))
+            # TODO: add print statement and log to a file somewhere
 
     return years_with_error
 

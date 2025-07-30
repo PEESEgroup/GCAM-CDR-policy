@@ -1,9 +1,16 @@
+import build_xml_config
 import utilities
 from xml.dom import minidom
 import xml.etree.cElementTree as ET
 
 
 def build_GHG(config, baseline=True):
+    """
+    build the configuration file for ghg emissions constraints and taxes
+    :param config: xml config object
+    :param baseline: boolean if this is a baseline file or an altered one
+    :return: XMLOutput object containing relevant file types
+    """
     # unpack the config object
     input_filepath = config.data_files
     output_filepath = config.output_dir + config.output_fname
@@ -36,13 +43,9 @@ def build_GHG(config, baseline=True):
 
     # return dict of output files created -see constants for example
     if baseline:
-        return {"build_file_type": "baseline",
-                "filepath": config.config_dir + config.output_fname,
-                "descriptor": "GHG emissions policy"}
+        return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "GHG emissions policy")
     else:
-        return {"build_file_type": "altered",
-                "filepath": config.config_dir + config.output_fname,
-                "descriptor": "GHG emissions policy"}
+        return build_xml_config.XMLOutput("altered", config.config_dir + config.output_fname, "GHG emissions policy")
 
 
 def build_ghg_policy(file):

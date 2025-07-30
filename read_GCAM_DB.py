@@ -10,7 +10,6 @@ def build_batch_query(xml_fname, config_fname):
     Builds a batch query file with all the necessary things.
     :param xml_fname: filename of the xml file
     :param config_fname: the policy scenario and baseline information
-    :param RCP: the RCP pathway used for the model version
     :return: directory path and file name of output file to be created if not already exist
     """
     root = ET.Element("ModelInterfaceBatch")
@@ -35,6 +34,7 @@ def build_batch_query(xml_fname, config_fname):
 def main(config_fname):
     """
     control program for querying GCAM databases
+    :param config_fname configuration name for the scenario/baseline combination
     """
     # build a batch file for every database
     filename = "xml/xmldb_batch_" + str(config_fname) + ".xml"

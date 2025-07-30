@@ -146,7 +146,6 @@ def process_file(value, fname):
     return value[c.GCAMConstants.column_order]
 
 
-
 def label_market_as_region(row):
     """
     labels each row with regional information extracted from the market column

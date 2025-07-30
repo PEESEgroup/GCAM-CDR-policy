@@ -1,9 +1,16 @@
 import xml.etree.cElementTree as ET
 from xml.dom import minidom
+import build_xml_config
 import utilities
 
 
 def build(config, baseline=True):
+    """
+    build CDR demand configuration files
+    :param config: configuration object
+    :param baseline: boolean if it is a baseline scenario
+    :return: XMLOutput object
+    """
     # unpack the config object
     input_filepath = config.data_files
     output_filepath = config.output_dir + config.output_fname
@@ -21,10 +28,9 @@ def build(config, baseline=True):
         exo_demand = data["exo_CDR_demand_verify"]
     if "elastic_CDR_demand_verify" in data:
         elastic_demand = data["elastic_CDR_demand_verify"]
-    # TODO: add config files for these types of demand
     if "offset_demand" in data:
         offset_demand = data["offset_CDR_demand_verify"]
-    if "acc_demand" in data:
+    if "acc_demand" in data:  # don't think there will ever be a source of accumulated demand but the structure is here
         acc_demand = data["acc_CDR_demand_verify"]
 
     # TODO: combine multiple sources of exogenous demand
@@ -44,16 +50,17 @@ def build(config, baseline=True):
 
     # return dict of output files created -see constants for example
     if baseline:
-        return {"build_file_type": "baseline",
-                "filepath": config.config_dir + config.output_fname,
-                "descriptor": "CDR-Demand-Policy"}
+        return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "CDR-Demand-Policy")
     else:
-        return {"build_file_type": "altered",
-                "filepath": config.config_dir + config.output_fname,
-                "descriptor": "cdr_demand_usa"}
+        return build_xml_config.XMLOutput("altered", config.config_dir + config.output_fname, "CDR-Demand-Policy")
 
 
 def build_markets(linked_ghg_data):
+    """
+    build the linked ghg markets
+    :param linked_ghg_data: input file
+    :return: root node of the ET
+    """
     # high level
     scenario = ET.Element("scenario")
     world = ET.SubElement(scenario, "world")
@@ -85,6 +92,12 @@ def build_markets(linked_ghg_data):
 
 
 def add_exo_demand(scenario, demand):
+    """
+    add exogenous CDR demand
+    :param scenario: root node of the ET
+    :param demand: input data file
+    :return: root node of the ET
+    """
     # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
@@ -103,6 +116,12 @@ def add_exo_demand(scenario, demand):
 
 
 def add_elastic_demand(scenario, demand):
+    """
+    add elastic CDR demand
+    :param scenario: root node of the ET
+    :param demand: input data file
+    :return: root node of the ET
+    """
     # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
@@ -122,6 +141,12 @@ def add_elastic_demand(scenario, demand):
 
 
 def add_offset_demand(scenario, demand):
+    """
+    add offset CDR demand
+    :param scenario: root node of the ET
+    :param demand: input data file
+    :return: root node of the ET
+    """
     # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
@@ -139,6 +164,12 @@ def add_offset_demand(scenario, demand):
 
 
 def add_accumulated_demand(scenario, demand):
+    """
+    add accumulated demand
+    :param scenario: root node of the ET
+    :param demand: data file
+    :return: root node of the ET
+    """
     # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario

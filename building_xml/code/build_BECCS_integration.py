@@ -1,9 +1,16 @@
+import build_xml_config
 import utilities
 from xml.dom import minidom
 import xml.etree.cElementTree as ET
 
 
 def build_BECCS_integration(config, baseline=True):
+    """
+    build the BECCS integration policy configuration file
+    :param config: configuration file
+    :param baseline: if this is a baseline file
+    :return: dictionary of output information
+    """
     # unpack the config object
     input_filepath = config.data_files
     output_filepath = config.output_dir + config.output_fname
@@ -36,16 +43,17 @@ def build_BECCS_integration(config, baseline=True):
 
     # return dict of output files created -see constants for example
     if baseline:
-        return {"build_file_type": "baseline",
-                "filepath": config.config_dir + config.output_fname,
-                "descriptor": "BECCS-integration"}
+        return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "BECCS-integration")
     else:
-        return {"build_file_type": "altered",
-                "filepath": config.config_dir + config.output_fname,
-                "descriptor": "BECCS-integration"}
+        return build_xml_config.XMLOutput("altered", config.config_dir + config.output_fname, "BECCS-integration")
 
 
 def build_RES(file):
+    """
+    build the RES policy portfolio standrad
+    :param file: input data file
+    :return: root of the xml tree
+    """
     # high level
     scenario = ET.Element("scenario")
     world = ET.SubElement(scenario, "world")
@@ -80,6 +88,12 @@ def build_RES(file):
 
 
 def build_tech(scenario, file):
+    """
+    build the global technology database portion on the BECCS integration file
+    :param scenario: root node of the ET
+    :param file: input data
+    :return: root node of the ET
+    """
     world = scenario.find(".//world")
     global_tech = ET.SubElement(world, "global-technology-database")
     location = ET.SubElement(global_tech, "location-info", {"sector-name": "CDR_regional", "subsector-name": "CDR"})
@@ -96,6 +110,12 @@ def build_tech(scenario, file):
 
 
 def build_countersubsidy(scenario, file):
+    """
+    builds the BECCS countersubisidy as defined in GCAM-CDR
+    :param scenario: root node of the ET
+    :param file: input data file
+    :return: root node of the ET
+    """
     global_tech = scenario.find(".//global-technology-database")
 
     for col_sector, col_subsector, technology, year in file:

@@ -30,3 +30,10 @@ class XMLConfig:
                 else:
                     self.region = value
 
+
+class XMLOutput:
+    def __init__(self, build_file_type, filepath, descriptor):
+        self.build_file_type = build_file_type
+        self.filepath = filepath
+        self.descriptor = descriptor
+
