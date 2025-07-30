@@ -23,9 +23,9 @@ def build(config, baseline=True):
         elastic_demand = data["elastic_CDR_demand_verify"]
     # TODO: add config files for these types of demand
     if "offset_demand" in data:
-        offset_demand = data["offset_demand"]
+        offset_demand = data["offset_CDR_demand_verify"]
     if "acc_demand" in data:
-        acc_demand = data["acc_demand"]
+        acc_demand = data["acc_CDR_demand_verify"]
 
     # TODO: combine multiple sources of exogenous demand
 
@@ -125,6 +125,15 @@ def add_offset_demand(scenario, demand):
     # if there is no demand of this type to add, don't add it
     if demand == "":
         return scenario
+
+    for r, year in demand:
+        region = scenario.find(".//region[@name='" + r + "']")
+        CDR_final_demand = ET.Element("CDR-final-demand", name="CDR")
+        region.insert(0, CDR_final_demand)
+        demand_source = ET.SubElement(CDR_final_demand, "offset-demand-source", name="offset")
+        ET.SubElement(demand_source, "offset-fraction", year=str(demand[(r, year)])).text = str(demand[(r, year)]["offset-fraction"])
+        ET.SubElement(demand_source, "market-name").text = str(demand[(r, year)]["market-name"])
+        ET.SubElement(demand_source, "max-offset").text = str(demand[(r, year)]["max-offset"])
 
     return scenario
 
