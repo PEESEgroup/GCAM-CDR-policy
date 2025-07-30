@@ -41,8 +41,8 @@ def build_from_scenario(scenario_name):
             ),
             # important to build links before CDR demand
             build_xml_config.XMLConfig(
-                data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv",
-                            "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify.csv"},
+                data_files={"linked_ghg_markets": "./building_xml/inputs/linked_ghg_base.csv"},
+                           #  "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify.csv"},
                             # "ghg_tax_verify": "./building_xml/inputs/GHG_tax_verify.csv"},
                 xml_build_type="GHG constraint",
                 output_fname="default_GHGPolicies.xml"

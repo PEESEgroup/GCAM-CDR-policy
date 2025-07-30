@@ -111,6 +111,8 @@ def build_config_file(scenario_name, baseline):
     else:
         scenario_files = build_files(xml_scenario_files)
 
+    # TODO: check cdr-demand log and check for errors in validation
+
     # find out which files are new and which are altered
     for x in scenario_files:
         if "original" in x["build_file_type"]:
@@ -124,7 +126,6 @@ def build_config_file(scenario_name, baseline):
 
     # add baseline files
     for file in baseline_files:
-        # TODO: CDR growth rate policy
         # if it is a policy, put it at the end, otherwise, put it in the middle:
         if "policy" in str(file["descriptor"]).lower():
             ET.SubElement(scenario_components, "Value", name=file["descriptor"]).text = file["filepath"]
@@ -322,6 +323,7 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="biosep_gas").text = "../input/gcamdata/xml/bio_sep_USA_elec_segments.xml"
 
     # <!-- add primary CDR -->
+    # TODO: remove CDR growth limit
     ET.SubElement(scenario, "Value", name="cdr_rampup").text = "../input/gcamdata/xml/CDR.xml"
     ET.SubElement(scenario, "Value", name="growth_limit").text = "../input/gcamdata/xml/CDR_growth_limit.xml"
     ET.SubElement(scenario, "Value", name="cdr_trade").text = "../input/gcamdata/xml/CDR_traded.xml"

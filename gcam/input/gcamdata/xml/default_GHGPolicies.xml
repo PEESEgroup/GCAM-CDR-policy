@@ -4,13 +4,6 @@
       <region name="AL">
          <ghgpolicy name="CO2">
             <market>USA</market>
-            <constraint year="2020">1544.740276</constraint>
-            <constraint year="2025">1239.453597</constraint>
-            <constraint year="2030">1008.482158</constraint>
-            <constraint year="2035">768.9432496</constraint>
-            <constraint year="2040">613.1002521</constraint>
-            <constraint year="2045">394.9875815</constraint>
-            <constraint year="2050">-0.30641437</constraint>
          </ghgpolicy>
       </region>
       <region name="AK">
@@ -260,177 +253,157 @@
       </region>
       <region name="Africa_Eastern">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="Africa_Northern">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="Africa_Southern">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="Africa_Western">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="Australia_NZ">
          <ghgpolicy name="CO2">
-            <market>Australia_NZ</market>
-            <constraint year="2020">1852.307217</constraint>
-            <constraint year="2025">1807.011352</constraint>
-            <constraint year="2030">2067.236245</constraint>
-            <constraint year="2035">2405.982467</constraint>
-            <constraint year="2040">2581.312176</constraint>
-            <constraint year="2045">2844.388337</constraint>
-            <constraint year="2050">3363.110641</constraint>
+            <market>Early_adopter</market>
          </ghgpolicy>
       </region>
       <region name="Brazil">
          <ghgpolicy name="CO2">
-            <market>Canada</market>
+            <market>NZ_Coalition</market>
          </ghgpolicy>
       </region>
       <region name="Canada">
          <ghgpolicy name="CO2">
-            <market>Canada</market>
-            <constraint year="2020">6261.129961</constraint>
-            <constraint year="2025">5732.417349</constraint>
-            <constraint year="2030">5769.148136</constraint>
-            <constraint year="2035">5059.390589</constraint>
-            <constraint year="2040">4438.127079</constraint>
-            <constraint year="2045">3665.650452</constraint>
-            <constraint year="2050">2459.71398</constraint>
+            <market>NZ_Coalition</market>
          </ghgpolicy>
       </region>
       <region name="Central America and Caribbean">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="Central Asia">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="China">
          <ghgpolicy name="CO2">
-            <market>Canada</market>
+            <market>NZ_Coalition</market>
          </ghgpolicy>
       </region>
       <region name="Europe_Eastern">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="EU-12">
          <ghgpolicy name="CO2">
-            <market>Canada</market>
+            <market>NZ_Coalition</market>
          </ghgpolicy>
       </region>
       <region name="EU-15">
          <ghgpolicy name="CO2">
-            <market>Canada</market>
+            <market>NZ_Coalition</market>
          </ghgpolicy>
       </region>
       <region name="Europe_Non_EU">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
-            <constraint year="2025">1948.758067</constraint>
-            <constraint year="2030">2052.950233</constraint>
-            <constraint year="2035">2547.788808</constraint>
-            <constraint year="2040">2768.725447</constraint>
-            <constraint year="2045">3120.228425</constraint>
-            <constraint year="2050">3800.91969</constraint>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="European Free Trade Association">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="India">
          <ghgpolicy name="CO2">
-            <market>Australia_NZ</market>
+            <market>Early_adopter</market>
          </ghgpolicy>
       </region>
       <region name="Indonesia">
          <ghgpolicy name="CO2">
-            <market>Australia_NZ</market>
+            <market>Early_adopter</market>
          </ghgpolicy>
       </region>
       <region name="Japan">
          <ghgpolicy name="CO2">
-            <market>Canada</market>
+            <market>NZ_Coalition</market>
          </ghgpolicy>
       </region>
       <region name="Mexico">
          <ghgpolicy name="CO2">
-            <market>Australia_NZ</market>
+            <market>Early_adopter</market>
          </ghgpolicy>
       </region>
       <region name="Middle East">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="Pakistan">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="Russia">
          <ghgpolicy name="CO2">
-            <market>Australia_NZ</market>
+            <market>Early_adopter</market>
          </ghgpolicy>
       </region>
       <region name="South Africa">
          <ghgpolicy name="CO2">
-            <market>Canada</market>
+            <market>NZ_Coalition</market>
          </ghgpolicy>
       </region>
       <region name="South America_Northern">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="South America_Southern">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="South Asia">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="South Korea">
          <ghgpolicy name="CO2">
-            <market>Canada</market>
+            <market>NZ_Coalition</market>
          </ghgpolicy>
       </region>
       <region name="Southeast Asia">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
       <region name="Taiwan">
          <ghgpolicy name="CO2">
-            <market>Canada</market>
+            <market>NZ_Coalition</market>
          </ghgpolicy>
       </region>
       <region name="Argentina">
          <ghgpolicy name="CO2">
-            <market>Australia_NZ</market>
+            <market>Early_adopter</market>
          </ghgpolicy>
       </region>
       <region name="Colombia">
          <ghgpolicy name="CO2">
-            <market>Europe_Non_EU</market>
+            <market>Late_Adopter</market>
          </ghgpolicy>
       </region>
    </world>
