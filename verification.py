@@ -21,27 +21,78 @@ def main(scenario_name):
     # don't do data analysis on years with errors
     error_years = []
 
-    # TODO: may need to group certain types of files (i.e. CDR demand) together
+    # group certain types of files (i.e. CDR demand) together
+    csvs = {}
+    CDR = {}
     for xml in xml_files_to_build:
         for file in xml.data_files:
             csv = xml.data_files[file]
             if "verify" in file:
-                ground_truth = pd.read_csv(csv, skiprows=2)
-                if "exo_CDR_demand" in file:
-                    pass
-                if "elastic_CDR_demand" in file:
-                    pass
-                if "RES_markets" in file:
-                    pass
-                if "ghg_constraint" in file:
-                    pass
-                if "ghg_tax" in file:
-                    # query co2 prices
-                    results = pd.read_csv(fpath+"/CO2_prices.csv")
-                    error_years.extend(verify_ghg_tax(ground_truth, results))
+                if "CDR" in file:
+                    CDR[file] = csv
+                else:
+                    csvs[file] = csv
+
+    verify_cdr(CDR, fpath)
+
+    for csv in csvs:
+        ground_truth = pd.read_csv(csvs[csv], skiprows=2)
+        if "RES_markets" in csv:
+            pass
+        if "ghg_constraint" in csv:
+            pass
+        if "ghg_tax" in csv:
+            # query co2 prices
+            results = pd.read_csv(fpath+"/CO2_prices.csv")
+            error_years.extend(verify_ghg_tax(ground_truth, results))
                 # TODO: add more file types
 
     # TODO: update output .csv files based on years with errors
+
+
+def verify_cdr(CDR, fpath):
+    """
+    verify ghg tax values
+    :param CDR: a list of files necessary to validate CDR output
+    :return: a list of years in which an error was detected
+    """
+    results = pd.read_csv(fpath + "/CDR_by_tech.csv")
+    years_with_error = []
+    exo_ground_truth = pd.DataFrame()
+    elastic_ground_truth = pd.DataFrame()
+    links_ground_truth = pd.DataFrame()
+
+    # split up CDR dictionary
+    for i in CDR:
+        if "exo_CDR" in i:
+            exo_ground_truth = pd.read_csv(CDR[i], skiprows=2)
+        if "elastic_CDR" in i:
+            elastic_ground_truth = pd.read_csv(CDR[i], skiprows=2)
+        if "linked_ghg_CDR" in i:
+            links_ground_truth = pd.read_csv(CDR[i], skiprows=2)
+
+    # if there is exogenous demand, verify it
+    if not exo_ground_truth.empty:
+        config_regions = exo_ground_truth['region'].unique()
+        gt_dfs = {}
+
+        # sort GCAM regions by linkage file
+        if not links_ground_truth.empty:
+            region_market = links_ground_truth[["region", "market"]]
+
+            # TODO: drop unsatisfied CDR demand
+            # TODO: add market information to the results
+            # TODO: group by market and sector
+
+        # compare ground truths with results
+        df = pd.merge(ground_truth, results, "left", ["GCAM", "product"], suffixes=("_left", "_right"))
+        for i in constants.GCAMConstants.plotting_x:
+            df[str(i)] = df[str(i) + "_left"] - df[str(i) + "_right"]
+            if df[str(i)].sum() != 0:
+                years_with_error.append(str(i))
+                # TODO: add print statement and log to a file somewhere
+
+    return years_with_error
 
 
 def verify_ghg_tax(ground_truth, results):
@@ -71,5 +122,10 @@ def verify_ghg_tax(ground_truth, results):
     return years_with_error
 
 
+def log(year, reason):
+    pass
+
+
+
 if __name__ == '__main__':
-    main("exoTest_default")
+    main("test_default")

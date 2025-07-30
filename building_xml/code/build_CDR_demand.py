@@ -176,8 +176,11 @@ def add_offset_demand(scenario, demand):
 
     for r, year in demand:
         region = scenario.find(".//region[@name='" + r + "']")
-        CDR_final_demand = ET.Element("CDR-final-demand", name="CDR")
-        region.insert(0, CDR_final_demand)
+        # check if the cdr final demand exists
+        CDR_final_demand = region.find(".//CDR-final-demand")
+        if CDR_final_demand is None:
+            CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
+
         demand_source = ET.SubElement(CDR_final_demand, "offset-demand-source", name="offset")
         ET.SubElement(demand_source, "offset-fraction", year=str(demand[(r, year)])).text = str(demand[(r, year)]["offset-fraction"])
         ET.SubElement(demand_source, "market-name").text = str(demand[(r, year)]["market-name"])
