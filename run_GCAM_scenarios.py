@@ -111,8 +111,6 @@ def build_config_file(scenario_name, baseline):
     else:
         scenario_files = build_files(xml_scenario_files)
 
-    # TODO: check cdr-demand log and check for errors in validation
-
     # find out which files are new and which are altered
     for x in scenario_files:
         if "original" in x["build_file_type"]:
@@ -400,19 +398,10 @@ if __name__ == '__main__':
     current_configs = ["test"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
-    for i in current_configs:
-        for j in current_baseline:
-            main(str(i), str(j))
+    with multiprocessing.Pool(processes=4) as pool:
+        result = pool.starmap(main, ((i, j) for i in current_configs for j in current_baseline))
 
     """
-    for i in all_configs:
-        for j in baseline_scenarios:
-            main(str(i), str(j))
-    """
-
-    """
-    ### PARALELLIZATION ###
-    # the worry is with parallelization is that restarts, etc. won't work right because multiple instances of GCAM will over{write files
-    with multiprocessing.Pool(processes=1) as pool:
-        results = pool.map(main, SSP_configs)
+    with multiprocessing.Pool(processes=4) as pool:
+        result = pool.starmap(main, ((i, j) for i in all_configs for j in baseline_scenarios))
     """
