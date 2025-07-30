@@ -430,6 +430,11 @@ if __name__ == '__main__':
     current_configs = ["test"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
+    # for debugging
+    for i in current_configs:
+        for j in current_baseline:
+            main(i, j)
+
     with multiprocessing.Pool(processes=3) as pool:
         result = pool.starmap(main, ((i, j) for i in current_configs for j in current_baseline))
 

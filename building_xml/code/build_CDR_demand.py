@@ -102,15 +102,35 @@ def add_exo_demand(scenario, demand):
     if demand == "":
         return scenario
 
-    counter = 0
+    # get unique regions and years
+    unique_regions = []
+    unique_years = []
     for year, r in demand:
-        # find region from scenario that matches the region name
+        unique_regions.append(r)
+        unique_years.append(year)
+    unique_regions = list(set(unique_regions))
+    unique_years = list(set(unique_years))
+    unique_years.sort()
+
+    demand_source = ""
+    # if CDR-final-demand doesn't exist, add it in
+    for r in unique_regions:
         region = scenario.find(".//region[@name='" + r + "']")
-        CDR_final_demand = ET.Element("CDR-final-demand", name="CDR")
-        region.insert(counter, CDR_final_demand)
-        demand_source = ET.SubElement(CDR_final_demand, "demand-source", name=str(demand[(year, r)]["name"]))
-        ET.SubElement(demand_source, "demand", year=str(year)).text = str(demand[(year, r)]["demand"])
-        counter += 1
+        # check if the cdr final demand exists
+        CDR_final_demand = region.find(".//CDR-final-demand")
+        if CDR_final_demand is None:
+            CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
+
+        # add demand source tag in once
+        for year in unique_years:
+            if (year, r) in demand:
+                if CDR_final_demand.find(".//demand-source") is None:
+                    demand_source = ET.SubElement(CDR_final_demand, "demand-source", name=str(demand[(year, r)]["name"]))
+
+        # add demand in once for each year
+        for year in unique_years:
+            if (year, r) in demand:
+                ET.SubElement(demand_source, "demand", year=str(year)).text = str(demand[(year, r)]["demand"])
 
     return scenario
 
@@ -129,8 +149,11 @@ def add_elastic_demand(scenario, demand):
     for r in demand:
         # find region from scenario that matches the region name
         region = scenario.find(".//region[@name='" + r + "']")
-        CDR_final_demand = ET.Element("CDR-final-demand", name="CDR")
-        region.insert(0, CDR_final_demand)
+        # check if the cdr final demand exists
+        CDR_final_demand = region.find(".//CDR-final-demand")
+        if CDR_final_demand is None:
+            CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
+
         demand_source = ET.SubElement(CDR_final_demand, "elastic-demand-source", name="elastic")
         ET.SubElement(demand_source, "max-demand").text = str(demand[r]["max-demand"])
         ET.SubElement(demand_source, "steepness").text = str(demand[r]["steepness"])
@@ -178,6 +201,6 @@ def add_accumulated_demand(scenario, demand):
 
 
 if __name__ == '__main__':
-    config = utilities.build_from_scenario("exoTest")
+    config = utilities.build_from_scenario("default")
     for j in config:
         build(j)
