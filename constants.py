@@ -17,6 +17,9 @@ class GCAMConstants:
     USA_region = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS",
                   "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC",
                   "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+    grid_region = ["California grid", "Texas grid", "Southwest grid", "Central East grid", "Central Northeast grid",
+                   "Central Southwest grid", "Mid-Atlantic grid", "Northwest grid", "Southeast grid",
+                   "Central Northwest grid", "New York grid", "New England grid", "Alaska grid", "Hawaii grid"]
     missing = "missing"
     column_order = ["1990", "2005", "2020", "2025", "2030", "2035", "2040", "2045", "2050", "scenario", "baseline",
                     "GCAM", "sector", "subsector", "technology", "output", "concentration", "input",
