@@ -109,7 +109,6 @@
       <Value name="biosep_gas">../input/gcamdata/xml/bio_sep_USA_gas.xml</Value>
       <Value name="biosep_gas">../input/gcamdata/xml/bio_sep_USA_elec_segments.xml</Value>
       <Value name="cdr_rampup">../input/gcamdata/xml/CDR.xml</Value>
-      <Value name="growth_limit">../input/gcamdata/xml/CDR_growth_limit.xml</Value>
       <Value name="cdr_trade">../input/gcamdata/xml/CDR_traded.xml</Value>
       <Value name="cdr_dac">../input/gcamdata/xml/DAC.xml</Value>
       <Value name="waste_heat">../input/gcamdata/xml/waste_heat_endogenous.xml</Value>
@@ -119,9 +118,8 @@
       <Value name="cdr_oae_shipping">../input/gcamdata/xml/OEW_shipping.xml</Value>
       <Value name="cdr_nonenergy">../input/gcamdata/xml/CDR_costs.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_CDR.xml</Value>
-      <Value name="BECCS-integration">../input/gcamdata/xml/default_BECCSIntegration.xml</Value>
       <Value name="cdr_usa">../input/gcamdata/xml/CDR_USA.xml</Value>
-      <Value name="growth_limit">../input/gcamdata/xml/CDR_growth_limit_USA.xml</Value>
+      <Value name="BECCS-integration">../input/gcamdata/xml/default_BECCSIntegration.xml</Value>
       <Value name="cdr_trade_usa">../input/gcamdata/xml/CDR_traded_USA.xml</Value>
       <Value name="cdr_dac_usa">../input/gcamdata/xml/DAC_USA.xml</Value>
       <Value name="waste_heat_usa">../input/gcamdata/xml/waste_heat_endogenous_USA.xml</Value>
