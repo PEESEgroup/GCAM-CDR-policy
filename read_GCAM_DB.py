@@ -36,35 +36,34 @@ def main(config_fname):
     """
     control program for querying GCAM databases
     """
-    for i in range(len(c.GCAMConstants.version)):
-        # build a batch file for every database
-        filename = "xml/xmldb_batch_" + str(config_fname) + ".xml"
-        print(filename)
-        out_dir, out_file = build_batch_query(filename, config_fname)
+    # build a batch file for every database
+    filename = "xml/xmldb_batch_" + str(config_fname) + ".xml"
+    print(filename)
+    out_dir, out_file = build_batch_query(filename, config_fname)
 
-        # create output directory
-        os.makedirs(out_dir, exist_ok=True)
-        with open(out_file, "w") as f:
-            f.write("foo")
+    # create output directory
+    os.makedirs(out_dir, exist_ok=True)
+    with open(out_file, "w") as f:
+        f.write("foo")
 
-        # edit the batch file to include the right xml query file
-        # read the file into a list of lines
-        bat_file = "xml/launch_model_interface.bat"
-        lines = open(bat_file, 'r').readlines()
+    # edit the batch file to include the right xml query file
+    # read the file into a list of lines
+    bat_file = "xml/launch_model_interface.bat"
+    lines = open(bat_file, 'r').readlines()
 
-        # now edit the last line of the list of lines
-        new_last_line = ("java ModelInterface.InterfaceMain -b " + filename)
-        lines[-1] = new_last_line
+    # now edit the last line of the list of lines
+    new_last_line = ("java ModelInterface.InterfaceMain -b " + filename)
+    lines[-1] = new_last_line
 
-        print(lines[-1])
+    print(lines[-1])
 
-        # now write the modified list back out to the file
-        open(bat_file, 'w').writelines(lines)
+    # now write the modified list back out to the file
+    open(bat_file, 'w').writelines(lines)
 
-        # execute the batch query on the command line
-        subprocess.call([r'xml\launch_model_interface.bat'])
+    # execute the batch query on the command line
+    subprocess.call([r'xml\launch_model_interface.bat'])
 
 
 if __name__ == '__main__':
-    main("exo_test")
+    main("test_default")
 

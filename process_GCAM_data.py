@@ -107,7 +107,9 @@ def process_file(value, fname):
     :return: a standardized dataframe
     """
     # get model version
-    value['Version'] = fname
+    config = fname.split("_")
+    value['scenario'] = config[0]
+    value["baseline"] = config[1]
 
     # get GCAM market region information
     if 'market' in value.columns:
@@ -119,12 +121,6 @@ def process_file(value, fname):
         else:
             value['GCAM'] = c.GCAMConstants.missing
         value['product'] = c.GCAMConstants.missing
-
-    # get SSP information
-    if 'scenario' in value.columns:
-        value['SSP'] = value.apply(lambda row: label_ssp(row), axis=1)
-    else:
-        value['SSP'] = c.GCAMConstants.missing
 
     # get sector, subsector, technology information, and make missing where possible
     if 'sector' not in value.columns:
@@ -149,17 +145,6 @@ def process_file(value, fname):
     # reorder columns
     return value[c.GCAMConstants.column_order]
 
-
-def label_ssp(row):
-    """
-    labels each row with SSP informtion extracted from the scenario column
-    :param row: a row in a dataframe
-    :return: the SSP number as "SSP#", or a default value if it is not a valid SSP number
-    """
-    for i in c.GCAMConstants.SSPs:
-        if i in row['scenario']:
-            return i
-    return c.GCAMConstants.missing
 
 
 def label_market_as_region(row):
@@ -253,4 +238,4 @@ def main(config_fname):
 
 
 if __name__ == '__main__':
-    main("exoTest_default")
+    main("test_default")

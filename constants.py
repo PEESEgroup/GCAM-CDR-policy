@@ -18,8 +18,8 @@ class GCAMConstants:
                    "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC",
                    "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
     missing = "missing"
-    column_order = ["1990", "2005", "2020", "2025", "2030", "2035", "2040", "2045", "2050", 'SSP',
-                    'Version', "GCAM", "sector", "subsector", "technology", "output", "concentration", "input",
+    column_order = ["1990", "2005", "2020", "2025", "2030", "2035", "2040", "2045", "2050", "scenario", "baseline",
+                    "GCAM", "sector", "subsector", "technology", "output", "concentration", "input",
                     "product", "fuel", "LandLeaf", "GHG", "Units"]
     csv_columns = ["1990", "2005", "2010", "2015", "2020", "2025", "2030", "2035", "2040", "2045", "2050", "2055",
                     "2060", "2065", "2070", "2075", "2080", "2085", "2090", "2095", "2100", 'Version', "Units"]
