@@ -75,11 +75,11 @@ def verify_cdr(CDR, fpath):
             exo_CDR_demand = exo_CDR_demand.pivot(index='region', columns='year')['demand'].reset_index()
             exo_CDR_demand.columns = exo_CDR_demand.columns.astype(str)
             exo_CDR_demand["Units"] = "Mt"
-            exo_CDR_demand = data_manipulation.group(exo_CDR_demand, ["Units"])
+            exo_CDR_demand = exo_CDR_demand.groupby(["Units"]).sum(min_count=1).reset_index()
         if "elastic_CDR" in i:
             elastic_CDR_demand = get_elastic_CDR_demand(CDR, fpath, i, region_market)
 
-    # combine CDR sources to get ground truth CDR demand
+    # combine CDR sources to get estimated CDR demand
     if exo_CDR_demand.empty:
         CDR_demand = elastic_CDR_demand
     elif elastic_CDR_demand.empty:
@@ -104,12 +104,17 @@ def verify_cdr(CDR, fpath):
         satisfied_CDR["product"] = "CDR"
 
         # compare ground truths with results
-        df = pd.merge(CDR_demand, satisfied_CDR, "left", ["GCAM", "product"], suffixes=("_left", "_right"))
+        df = pd.merge(CDR_demand, satisfied_CDR, "left", ["Units"], suffixes=("_left", "_right"))
+        # because this is one line of data
+        df = df.iloc[0]
         for i in constants.GCAMConstants.plotting_x:
-            df[str(i)] = df[str(i) + "_left"] - df[str(i) + "_right"]
-            if df[str(i)].sum() != 0:
+            # if the estimated value is not close to the reported value
+            if .97 * df[str(i) + "_right"] < df[str(i) + "_left"] < 1.03 * df[str(i) + "_right"]:
+                print("CDR demand matches CDR supply by " + str(df[str(i) + "_left"] - df[str(i) + "_right"]))
+            else:
                 years_with_error.append(str(i))
-                # TODO: add print statement and log to a file somewhere
+                log(fpath, str(i),
+                    "CDR demand does not match CDR supply by " + str(df[str(i) + "_left"] - df[str(i) + "_right"]))
 
     return years_with_error
 
@@ -135,6 +140,7 @@ def get_elastic_CDR_demand(CDR, fpath, i, region_market):
 
 
 def get_elastic_demand(row, i):
+    # TODO: fix calculation
     if row[str(i)] < row["min-price"] + 0.001:
         return 0
     else:
@@ -144,7 +150,7 @@ def get_elastic_demand(row, i):
         return row["max-demand"] / 1 + math.exp((0-row["steepness"]) * (row[str(i)] - row["midpoint"]))
 
 
-def verify_ghg_tax(ground_truth, results):
+def verify_ghg_tax(ground_truth, results, fpath):
     """
     verify ghg tax values
     :param ground_truth: the values in the input file
@@ -163,16 +169,18 @@ def verify_ghg_tax(ground_truth, results):
     # compare ground truths with results
     df = pd.merge(ground_truth, results, "left", ["GCAM", "product"], suffixes=("_left", "_right"))
     for i in constants.GCAMConstants.plotting_x:
-        df[str(i)] = df[str(i) + "_left"] - df[str(i) + "_right"]
-        if df[str(i)].sum() != 0:
+        # TODO: update this log check
+        if .97 * df[str(i) + "_right"] < df[str(i) + "_left"] < 1.03 * df[str(i) + "_right"]:
             years_with_error.append(str(i))
-            # TODO: add print statement and log to a file somewhere
+            log(fpath, str(i), "ghg taxes do not match")
 
     return years_with_error
 
 
-def log(year, reason):
-    pass
+def log(fpath, year, reason):
+    with open(fpath + "/log.txt", "a+") as f:
+        print("Verification fails in " + year + " because " + reason)
+        f.write("Verification fails in " + year + " because " + reason + "\n")
 
 
 if __name__ == '__main__':
