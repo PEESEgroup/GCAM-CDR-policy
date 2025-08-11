@@ -58,6 +58,7 @@ def verify_cdr(CDR, fpath):
     :param CDR: a list of files necessary to validate CDR output
     :return: a list of years in which an error was detected
     """
+    # TODO: why does CDR by tech only include info for the US states??? - might have to change results .csv - check model_interface
     results = pd.read_csv(fpath + "/CDR_by_tech.csv")
     years_with_error = []
     exo_CDR_demand = pd.DataFrame()
