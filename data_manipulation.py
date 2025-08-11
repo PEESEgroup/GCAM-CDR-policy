@@ -127,11 +127,13 @@ def group(df, columns):
     :return: a dataframe with grouped entries
     """
     unit = df.groupby(columns).first().reset_index()["Units"]
-    version = df.groupby(columns).first().reset_index()["Version"]
+    scenario = df.groupby(columns).first().reset_index()["scenario"]
+    baseline = df.groupby(columns).first().reset_index()["baseline"]
     df = df.groupby(columns).sum(min_count=1)
     df = df.reset_index()
     df['Units'] = unit
-    df['Version'] = version
+    df['scenario'] = scenario
+    df['baseline'] = baseline
     df = df[c.GCAMConstants.column_order]
     return df
 
