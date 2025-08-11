@@ -127,10 +127,11 @@ def group(df, columns):
     :return: a dataframe with grouped entries
     """
     unit = df.groupby(columns).first().reset_index()["Units"]
+    version = df.groupby(columns).first().reset_index()["Version"]
     df = df.groupby(columns).sum(min_count=1)
     df = df.reset_index()
     df['Units'] = unit
-    df['SSP'] = df.apply(lambda row: relabel_SSP(row), axis=1)
+    df['Version'] = version
     df = df[c.GCAMConstants.column_order]
     return df
 
