@@ -4,6 +4,7 @@ import csv
 import constants as c
 from itertools import islice
 import os
+import glob
 
 
 def split_file(fname):
@@ -182,37 +183,31 @@ def label_market_as_product(row):
     return c.GCAMConstants.missing
 
 
-def masking(dataframe, mask):
+def masking(config_fname, mask):
     """
     masks errors in input data with np.nan
-    :param dataframe: dataframe to be masked
-    :param mask: list of SSP-year pairs with model errors
-    :return: dataframe with relabled rows
+    :param config_fname: dataframe to be masked
+    :param mask: list of years with model errors
+    :return: N/A
     """
-    # TODO: update later
-    for i in mask:
-        year = str(i[1])
-        SSP = str(i[0])
-        # if SSP is not in the dataframe, then there's no need to do the computations to apply the mask
-        length_SSP = dataframe[dataframe[['SSP']].isin([SSP]).any(axis=1)]
-        if len(length_SSP) > 0:
-            dataframe.loc[:, str(i[1])] = dataframe.apply(lambda row: apply_mask(row, year, SSP), axis=1)
-    return dataframe
+    # get list of files in the config fname directory
+    directory = str(config_fname).replace("_", "/")
+    prefix = "./data/gcam_out/"
+    fpath = prefix + directory + "/*.csv"
+    # Use glob.glob to find all files matching the pattern
+    csv_files = glob.glob(fpath)
 
-
-def apply_mask(row, year, SSP):
-    # TODO: update later
-    """
-    For a given row, apply a mask if SSP in row matches SSP with error
-    :param row: a row from a pd dataframe
-    :param year: the year to be masked
-    :param SSP: the SSP to be masked
-    :return: np.nan if the SSP matches, otherwise preserve original value
-    """
-    if row["SSP"] == SSP:
-        return np.nan
-    else:
-        return row[year]
+    # update values in the csv and write to sub folder
+    for j in csv_files:
+        fname = j.split("\\")[1]
+        if fname != "ref.csv":
+            dataframe = pd.read_csv(str(j))
+            for i in mask:
+                dataframe[str(i)] = np.nan
+            # make directory and write out
+            if not os.path.exists(prefix + directory + "/masked/"):
+                os.makedirs(prefix + directory + "/masked/")
+            dataframe.to_csv(prefix + directory + "/masked/" + fname)
 
 
 def main(config_fname):

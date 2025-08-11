@@ -1,6 +1,7 @@
 import pandas as pd
 import math
 import data_manipulation
+import process_GCAM_data
 import utilities
 import constants
 
@@ -38,7 +39,7 @@ def main(scenario_name):
                 else:
                     csvs[file] = csv
 
-    verify_cdr(CDR, fpath)
+    error_years.extend(verify_cdr(CDR, fpath))
 
     for csv in csvs:
         ground_truth = pd.read_csv(csvs[csv], skiprows=2)
@@ -52,7 +53,8 @@ def main(scenario_name):
             error_years.extend(verify_ghg_tax(ground_truth, results))
                 # TODO: add more file types
 
-    # TODO: update output .csv files based on years with errors
+    # update output .csv files based on years with errors
+    process_GCAM_data.masking(scenario_name, error_years)
 
 
 def verify_cdr(CDR, fpath):
