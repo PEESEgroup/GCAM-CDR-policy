@@ -58,7 +58,6 @@ def verify_cdr(CDR, fpath):
     :param CDR: a list of files necessary to validate CDR output
     :return: a list of years in which an error was detected
     """
-    # TODO: why does CDR by tech only include info for the US states??? - might have to change results .csv - check model_interface
     results = pd.read_csv(fpath + "/CDR_by_tech.csv")
     years_with_error = []
     exo_CDR_demand = pd.DataFrame()
@@ -86,7 +85,10 @@ def verify_cdr(CDR, fpath):
     elif elastic_CDR_demand.empty:
         CDR_demand = exo_CDR_demand
     else:
-        CDR_demand = pd.merge(exo_CDR_demand, elastic_CDR_demand)
+        elastic_CDR_demand["Units"] = "Mt"
+        CDR_demand = pd.merge(exo_CDR_demand, elastic_CDR_demand, on=["Units"], suffixes=("_left", "_right"))
+        for i in constants.GCAMConstants.plotting_x:
+            CDR_demand[str(i)] = CDR_demand[str(i) + "_left"] + CDR_demand[str(i) + "_right"]
 
     # process ground truth CDR numbers
     if not links_ground_truth.empty:
@@ -107,7 +109,7 @@ def verify_cdr(CDR, fpath):
         # compare ground truths with results
         df = pd.merge(CDR_demand, satisfied_CDR, "left", ["Units"], suffixes=("_left", "_right"))
         # because this is one line of data
-        df = df.iloc[0]
+        df = df.iloc[0:]
         for i in constants.GCAMConstants.plotting_x:
             # if the estimated value is not close to the reported value
             if .97 * df[str(i) + "_right"] < df[str(i) + "_left"] < 1.03 * df[str(i) + "_right"]:
@@ -133,7 +135,7 @@ def get_elastic_CDR_demand(CDR, fpath, i, region_market):
     elastic_ground_truth = elastic_ground_truth[elastic_ground_truth["product"] == "CO2"]
     elastic_ground_truth.columns = elastic_ground_truth.columns.astype(str)
     # calculate elastic ground truth
-    # TODO: finish verifying elastic ground truth data
+
     for j in constants.GCAMConstants.plotting_x:
         elastic_ground_truth[str(j)] = elastic_ground_truth.apply(lambda row: get_elastic_demand(row, str(j)),
                                                                   axis=1)
@@ -147,8 +149,9 @@ def get_elastic_demand(row, i):
     else:
         print((0-row["steepness"]))
         print((row[str(i)] - row["midpoint"]))
+        print((0 - row["steepness"]) * (row[str(i)] - row["midpoint"]))
         print(1 + math.exp((0-row["steepness"]) * (row[str(i)] - row["midpoint"])))
-        return row["max-demand"] / 1 + math.exp((0-row["steepness"]) * (row[str(i)] - row["midpoint"]))
+        return row["max-demand"] / (1 + math.exp((0-row["steepness"]) * (row[str(i)] - row["midpoint"])))
 
 
 def verify_ghg_tax(ground_truth, results, fpath):
