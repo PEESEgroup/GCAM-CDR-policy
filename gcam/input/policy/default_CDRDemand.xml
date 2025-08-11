@@ -17,6 +17,7 @@
          </linked-ghg-policy>
          <CDR-final-demand name="CDR">
             <demand-source name="exogenous">
+               <require-c-price>0</require-c-price>
                <demand year="2025">8.86</demand>
                <demand year="2030">17.72</demand>
                <demand year="2035">35.44</demand>
@@ -587,6 +588,7 @@
          </linked-ghg-policy>
          <CDR-final-demand name="CDR">
             <demand-source name="base-demand">
+               <require-c-price>0</require-c-price>
                <demand year="2025">430.0</demand>
                <demand year="2030">430.0</demand>
                <demand year="2035">430.0</demand>
@@ -594,6 +596,12 @@
                <demand year="2045">430.0</demand>
                <demand year="2050">430.0</demand>
             </demand-source>
+            <elastic-demand-source name="elastic">
+               <max-demand>10000</max-demand>
+               <steepness>0.005</steepness>
+               <midpoint>500</midpoint>
+               <min-price>0</min-price>
+            </elastic-demand-source>
          </CDR-final-demand>
       </region>
       <region name="Central America and Caribbean">

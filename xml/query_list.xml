@@ -37,6 +37,33 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Global"/>
+      <emissionsQueryBuilder title="CO2 emissions by tech">
+         <axis1 name="technology">technology</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
+      <region name="Global"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
+      <region name="Global"/>
+      <supplyDemandQuery title="CDR by tech">
+         <axis1 name="technology">technology</axis1>
+         <axis2 name="Year">physical-output[@vintage]</axis2>
+         <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
+         <comments>Excludes unsatisfied CDR demand</comments>
+      </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
       <region name="USA"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
