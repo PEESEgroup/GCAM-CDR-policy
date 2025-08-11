@@ -5337,8 +5337,8 @@
 209.828,295.027,403.74,428.478,454.072,470.597,486.065,502.433,519.022,test,default,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,km^3
 1.34596,1.35467,1.59984,1.72017,1.82107,1.96077,2.03443,2.11276,2.18167,test,default,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,km^3
 3.41628,3.6389,3.89873,4.08282,4.20614,4.39299,4.45263,4.52606,4.56482,test,default,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,km^3
-0.0,0.0,0.0,0.0,10000.0,11000.0,12000.0,13000.0,14000.0,test,default,CO,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,MTC
-0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,test,default,CO,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,MtC
+0.0,0.0,0.0,0.0,10000.0,11000.0,12000.0,13000.0,14000.0,test,default,Global,missing,missing,missing,missing,missing,missing,CO2,missing,missing,missing,MTC
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,test,default,Global,missing,missing,missing,missing,missing,missing,CO2_CDR,missing,missing,missing,MtC
 8.61138,10.9669,16.0418,16.5829,16.8645,17.0668,16.9648,16.7624,16.5234,test,default,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,km^3
 19.3784,29.6322,40.6455,42.129,42.8498,43.0394,42.4355,41.5063,40.4256,test,default,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,km^3
 14.3842,19.6802,26.2705,27.638,29.2404,31.1621,31.098,30.159,29.8915,test,default,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,km^3

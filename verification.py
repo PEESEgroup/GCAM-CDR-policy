@@ -1,4 +1,6 @@
 import pandas as pd
+import math
+import data_manipulation
 import utilities
 import constants
 
@@ -61,6 +63,7 @@ def verify_cdr(CDR, fpath):
     exo_ground_truth = pd.DataFrame()
     elastic_ground_truth = pd.DataFrame()
     links_ground_truth = pd.DataFrame()
+    region_market = pd.DataFrame()
 
     # split up CDR dictionary
     for i in CDR:
@@ -70,6 +73,25 @@ def verify_cdr(CDR, fpath):
             elastic_ground_truth = pd.read_csv(CDR[i], skiprows=2)
         if "linked_ghg_CDR" in i:
             links_ground_truth = pd.read_csv(CDR[i], skiprows=2)
+            region_market = links_ground_truth[["region", "market"]]
+
+    # read in carbon prices
+    carbon_prices = pd.read_csv(fpath + "/CO2_prices.csv")
+
+    # merge carbon prices into elastic demand df
+    elastic_ground_truth = pd.merge(elastic_ground_truth, region_market, "left", left_on="region", right_on="region")
+    elastic_ground_truth = pd.merge(elastic_ground_truth, carbon_prices, "left", left_on="market", right_on="GCAM")
+
+    # only look at actual carbon prices
+    elastic_ground_truth = elastic_ground_truth[elastic_ground_truth["product"] == "CO2"]
+    elastic_ground_truth.columns = elastic_ground_truth.columns.astype(str)
+
+    # calculate elastic ground truth
+    for i in constants.GCAMConstants.plotting_x:
+        elastic_ground_truth[str(i)] = elastic_ground_truth.apply(lambda row: get_elastic_demand(row), axis=1)
+
+    # TODO: combine ground truth CDR demand
+    ground_truth = pd.merge(exo_ground_truth, elastic_ground_truth)
 
     # if there is exogenous demand, verify it
     if not exo_ground_truth.empty:
@@ -78,14 +100,22 @@ def verify_cdr(CDR, fpath):
 
         # sort GCAM regions by linkage file
         if not links_ground_truth.empty:
-            region_market = links_ground_truth[["region", "market"]]
+            # move unsatisfied CDR demand to its own output .csv file
+            unsatisfied_CDR = results[results["subsector"] == "unsatisfiedDemand"]
+            satisfied_CDR = results[results["subsector"] != "unsatisfiedDemand"]
+            unsatisfied_CDR.to_csv(fpath + "/unsatisfied_CDR_demand.csv")
 
-            # TODO: drop unsatisfied CDR demand
-            # TODO: add market information to the results
-            # TODO: group by market and sector
+            # add market information to the results
+            satisfied_CDR = pd.merge(satisfied_CDR, region_market, "left", left_on="GCAM", right_on="region")
+
+            # group by market and technology
+            data_manipulation.group(satisfied_CDR, ["GCAM"]).to_csv(fpath + "/satisfied_CDR_demand_by_region.csv")
+            data_manipulation.group(satisfied_CDR, ["technology"]).to_csv(fpath + "/satisfied_CDR_demand_by_tech.csv")
+            satisfied_CDR = data_manipulation.group(satisfied_CDR, ["market"])
+            satisfied_CDR["product"] = "CDR"
 
         # compare ground truths with results
-        df = pd.merge(ground_truth, results, "left", ["GCAM", "product"], suffixes=("_left", "_right"))
+        df = pd.merge(ground_truth, satisfied_CDR, "left", ["GCAM", "product"], suffixes=("_left", "_right"))
         for i in constants.GCAMConstants.plotting_x:
             df[str(i)] = df[str(i) + "_left"] - df[str(i) + "_right"]
             if df[str(i)].sum() != 0:
@@ -93,6 +123,13 @@ def verify_cdr(CDR, fpath):
                 # TODO: add print statement and log to a file somewhere
 
     return years_with_error
+
+
+def get_elastic_demand(row, i):
+    if row[str(i)] < row["min-price"]:
+        return 0
+    else:
+        return row["max_demand"] / math.exp(row["steepness"] * (row[str(i)] - row["midpoint"]))
 
 
 def verify_ghg_tax(ground_truth, results):
