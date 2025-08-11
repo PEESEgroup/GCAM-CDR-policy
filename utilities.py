@@ -52,8 +52,8 @@ def build_from_scenario(scenario_name):
             ),
             build_xml_config.XMLConfig(
                 data_files={"linked_ghg_CDR_markets_verify": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify.csv"},
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify.csv"},
+                            # "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand.xml"
             )
