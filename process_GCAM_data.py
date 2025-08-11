@@ -154,6 +154,8 @@ def label_market_as_region(row):
     :param row: a row in the datafame
     :return: the GCAM region name, or a default value if it is not a region name
     """
+    if "Global" in row['market']:
+        return "Global"
     for j in c.GCAMConstants.GCAM_region:
         if j in row['market']:
             return j
@@ -169,6 +171,8 @@ def label_market_as_product(row):
     :param row: a row in the dataframe
     :return: the key market, or a default value if it is not a key market
     """
+    if str(row['market']).startswith("Global"):
+        return row['market'].replace("Global", '', 1)
     for j in c.GCAMConstants.GCAM_region:
         if str(row['market']).startswith(j):
             return row['market'].replace(j, '', 1)
