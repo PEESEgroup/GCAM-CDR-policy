@@ -187,59 +187,53 @@ def plot_world_by_SSP(dataframe, products, column, year, SSP, title, RCP, nonBas
                 print(e)
 
 
-def plot_world_by_products(dataframe, products, column, year, SSP, title, RCP, nonBaselineScenario):
+def plot_world_by_products(dataframe, column, year, title, nonBaselineScenario):
     """
     For each SSP, plots all relevant products
-    :param SSP: the SSP scenario for the plot
     :param year: The year of data to be plotted
     :param dataframe: dataframe containing the data to be plotted
-    :param products: the data to be plotted
     :param column: the column for which the data is to be filtered
     :param title: the title for the plot
-    :param RCP: the RCP pathway on which the scenarios are evaluated
     :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: shows the relevant plot
     """
     for j in year:
-        for k in SSP:
-            try:
-                counter = 0
-                units = "N/A"
-                # get plot information
-                axs, cmap, fig, im, ncol, normalizer, nrow = create_subplots(
+        try:
+            counter = 0
+            units = "N/A"
+            # get plot information
+            products = dataframe[column].unique()
+            axs, cmap, fig, im, ncol, normalizer, nrow = create_subplots(
+                dataframe=dataframe,
+                inner_loop_set=products,
+                products=products,
+                year=[j],
+                title=title)
+
+            # iterate through all subplots
+            for i in products:
+                subplot_title = str(i)
+                units = get_df_to_plot(
                     dataframe=dataframe,
-                    inner_loop_set=products,
-                    products=products,
-                    year=[j],
-                    SSP=[k],
-                    product_column=column,
-                    title=title)
+                    ncol=ncol,
+                    nrow=nrow,
+                    fig=fig,
+                    axs=axs,
+                    cmap=cmap,
+                    normalizer=normalizer,
+                    counter=counter,
+                    column=column,
+                    products=i,
+                    years=j,
+                    subplot_title=subplot_title)
+                counter = counter + 1
 
-                # iterate through all subplots
-                for i in products:
-                    subplot_title = str(i)
-                    units = get_df_to_plot(
-                        dataframe=dataframe,
-                        ncol=ncol,
-                        nrow=nrow,
-                        fig=fig,
-                        axs=axs,
-                        cmap=cmap,
-                        normalizer=normalizer,
-                        counter=counter,
-                        column=column,
-                        products=i,
-                        SSPs=k,
-                        years=j,
-                        subplot_title=subplot_title)
-                    counter = counter + 1
-
-                # update the figure with shared colorbar
-                dl = len(products)
-                lab = units
-                add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title, RCP, nonBaselineScenario)
-            except ValueError as e:
-                print(e)
+            # update the figure with shared colorbar
+            dl = len(products)
+            lab = units
+            add_colorbar_and_plot(axs, dl, fig, im, lab, ncol, nrow, title, nonBaselineScenario)
+        except ValueError as e:
+            print(e)
 
 
 def axs_params(ax, plot_title):
@@ -313,8 +307,7 @@ def plot_world_by_years(dataframe, products, column, year, SSP, title, RCP, nonB
                 print(e)
 
 
-def get_df_to_plot(dataframe, ncol, nrow, fig, axs, cmap, normalizer, counter, column, products, SSPs, years,
-                   subplot_title):
+def get_df_to_plot(dataframe, ncol, nrow, fig, axs, cmap, normalizer, counter, column, products, years, subplot_title):
     """
     This method filters data and prepare it for plotting
     :param dataframe: the data being plotted
@@ -327,14 +320,12 @@ def get_df_to_plot(dataframe, ncol, nrow, fig, axs, cmap, normalizer, counter, c
     :param counter: the plot counter
     :param column: the column on which the products are located
     :param products: the products being plotted
-    :param SSPs: the SSPs being plotted
     :param years: the years being plotted
     :param subplot_title: the title for the subplot
     :return: unit label for the subplot
     """
     if column != "":
         filter_data = dataframe[dataframe[[column]].isin([products]).any(axis=1)]
-        filter_data = filter_data[filter_data[['SSP']].isin([SSPs]).any(axis=1)]
     else:
         filter_data = dataframe
 
@@ -406,12 +397,10 @@ def plot_world_on_axs(map_plot, axs, cmap, counter, plot_title, plotting_column,
         axs_params(axs[int(counter / ncol), int(counter % ncol)], plot_title)
 
 
-def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_column, title):
+def create_subplots(dataframe, inner_loop_set, products, year, title):
     """
     Creates the boilerplate subplots and colorbars
     :param inner_loop_set: the list of products being iterated over for the different subplots
-    :param SSP: The SSP of the scenario
-    :param product_column: The column on which the different products being graphed vary
     :param dataframe: the dataframe being evaluated
     :param products: the list of products being evaluated
     :param year: the year in which the data is plotted
@@ -436,7 +425,7 @@ def create_subplots(dataframe, inner_loop_set, products, year, SSP, product_colu
     return axs, cmap, fig, im, ncol, normalizer, nrow
 
 
-def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname, RCP, nonBaselineScenario):
+def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname, nonBaselineScenario):
     """
     Adds the colorbar to the graph and produces output
     :param axs: matplotlib axes
@@ -447,7 +436,6 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname, RCP,
     :param ncol: number of rows of axes
     :param nrow: number of columns of axes
     :param fname: filename for output image
-    :param RCP: the RCP pathway on which the scenarios are evaluated
     :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: plotted figure
     """
@@ -490,7 +478,7 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname, RCP,
         fig.set_size_inches(16, 5.1)
     elif nrow * ncol == 20:
         fig.set_size_inches(16, 9)
-    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  fname + ".png", dpi=300)
+    plt.savefig("data/data_analysis/images/" + nonBaselineScenario.replace("_", "/") + "/" + fname + ".png", dpi=300)
     plt.show()
 
 
@@ -753,15 +741,13 @@ def get_colors(num_versions):
     return [matplotlib.colors.rgb2hex(c) for c in cmap.colors], num_sub_colors
 
 
-def plot_stacked_bar_product(df, year, SSP, column, title, RCP, nonBaselineScenario):
+def plot_stacked_bar_product(df, year, column, title, nonBaselineScenario):
     """
     Plots a stacked bar graph
     :param df: dataframe
-    :param year: list of year to be plotted
-    :param SSP: list of SSPs to be plotted
+    :param year: list of years to be plotted
     :param column: column in the df to be plotted
     :param title: title for the plot
-    :param RCP: the RCP pathway on which the scenarios are evaluated
     :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
@@ -772,9 +758,8 @@ def plot_stacked_bar_product(df, year, SSP, column, title, RCP, nonBaselineScena
         colors, num_colors = get_colors(1)
 
         # format table
-        plot_df = df[df[['SSP']].isin(SSP).any(axis=1)]
         if not isinstance(year, list):
-            plot_df = plot_df.loc[:, [year, 'SSP', 'GCAM', column]]
+            plot_df = df.loc[:, [year, 'GCAM', column]]
             plot_df = plot_df.pivot(index='GCAM', columns=column, values=year)
             plot_df = plot_df.loc[:, (plot_df != 0).any(axis=0)]
             # add a column to df for sorting, then remove it
@@ -784,7 +769,7 @@ def plot_stacked_bar_product(df, year, SSP, column, title, RCP, nonBaselineScena
             # plot stacked bar chart
             plot_df.plot(kind="bar", stacked=True, color=colors, ax=axs)
         else:
-            plot_df = pd.melt(plot_df, id_vars=['LandLeaf'], value_vars=[str(j) for j in year])
+            plot_df = pd.melt(df, id_vars=['LandLeaf'], value_vars=[str(j) for j in year])
             plot_df = plot_df.pivot(index="variable", columns="LandLeaf", values="value")
             # plot stacked bar chart
             plot_df.plot(kind="bar", stacked=True, color=colors, ax=axs)
@@ -795,13 +780,11 @@ def plot_stacked_bar_product(df, year, SSP, column, title, RCP, nonBaselineScena
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.5, right=.7, left=.15)
         plt.xticks(rotation=60, ha='right')
-        ymin, ymax = axs.get_ylim()
-        axs.set_ylim(ymin, ymax)
         if title == "global land use change by year":
             plt.gcf().set_size_inches(7, 8)
         else:
             plt.gcf().set_size_inches(12, 8)
-        plt.savefig("data/data_analysis/images/" + str(RCP) + "/"  + title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + nonBaselineScenario + "/"  + title + ".png", dpi=300)
         plt.show()
 
     except ValueError as e:

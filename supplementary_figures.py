@@ -1,3 +1,6 @@
+import os
+
+import constants
 import plotting
 import data_manipulation
 import constants as c
@@ -9,6 +12,8 @@ def main(config_fname, reference_year):
     Main method for scripts used to plot figures and information for the article
     :return: N/A
     """
+    config_fname = config_fname.replace("_", "/")
+    os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     CDR_tech(config_fname, reference_year)
 
 
@@ -1338,15 +1343,18 @@ def figure6(nonBaselineScenario, RCP, SSP, biochar_year):
 
 
 def CDR_tech(config_fname, year):
-    # frequency of biochar prices
-    CDR = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech")
-    CDR["Units"] = "Mt CDR"
+    # data processing
+    CDR = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech", "unmasked")
+    CDR = CDR[CDR[['GCAM']].isin(constants.GCAMConstants.USA_region).any(axis=1)]
+    CDR = CDR[CDR['technology'] != "unsatisfied CDR demand"]
 
-    plotting.plot_world_by_products(CDR, CDR["technology"].unique(), "technology", ["2050"], ["missing"],
-                                    "plotting CDR opportunities by state", "RCP", config_fname)
+    # stacked bar plot
+    plotting.plot_stacked_bar_product(CDR, year, "technology", "CDR by technology in " + str(year), config_fname)
 
-    plotting.plot_stacked_bar_product(CDR, '2050', ["missing"], "technology",
-                                    "CDR by state in 2050", "baseline", "test")
+    # choropleth map
+    plotting.plot_world_by_products(CDR, "technology", [year], "plotting estimated CDR supply by technology in " + str(year),
+                                    config_fname)
+
 
 
 if __name__ == '__main__':
