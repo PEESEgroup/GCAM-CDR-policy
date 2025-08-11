@@ -13,12 +13,15 @@ def main(scenario_name):
     """
     # get a list of files that need verification
     xml_files_to_build = utilities.build_from_scenario(scenario_name)
-    files_to_verify = {}
 
     # location of output data
     directory = str(scenario_name).replace("_", "/")
     prefix = "./data/gcam_out/"
     fpath = prefix + directory
+
+    # clear log file
+    with open(fpath + "/log.txt", "w+") as f:
+        f.write("")
 
     # don't do data analysis on years with errors
     error_years = []
@@ -86,13 +89,14 @@ def verify_cdr(CDR, fpath):
         CDR_demand = exo_CDR_demand
     else:
         elastic_CDR_demand["Units"] = "Mt"
-        CDR_demand = pd.merge(exo_CDR_demand, elastic_CDR_demand, on=["Units"], suffixes=("_left", "_right"))
+        CDR_demand = pd.merge(exo_CDR_demand, elastic_CDR_demand, on=["Units"], suffixes=("_l", "_r"))
         for i in constants.GCAMConstants.plotting_x:
-            CDR_demand[str(i)] = CDR_demand[str(i) + "_left"] + CDR_demand[str(i) + "_right"]
+            CDR_demand[str(i)] = CDR_demand[str(i) + "_l"] + CDR_demand[str(i) + "_r"]
 
     # process ground truth CDR numbers
     if not links_ground_truth.empty:
         # move unsatisfied CDR demand to its own output .csv file
+        results = results[results["GCAM"] != "Global"]
         unsatisfied_CDR = results[results["subsector"] == "unsatisfiedDemand"]
         satisfied_CDR = results[results["subsector"] != "unsatisfiedDemand"]
         unsatisfied_CDR.to_csv(fpath + "/unsatisfied_CDR_demand.csv")
@@ -103,13 +107,13 @@ def verify_cdr(CDR, fpath):
         # group by market and technology
         data_manipulation.group(satisfied_CDR, ["GCAM"]).to_csv(fpath + "/satisfied_CDR_demand_by_region.csv")
         data_manipulation.group(satisfied_CDR, ["technology"]).to_csv(fpath + "/satisfied_CDR_demand_by_tech.csv")
-        satisfied_CDR = data_manipulation.group(satisfied_CDR, ["market"])
+        satisfied_CDR = data_manipulation.group(satisfied_CDR, ["scenario", "baseline"])
         satisfied_CDR["product"] = "CDR"
 
         # compare ground truths with results
         df = pd.merge(CDR_demand, satisfied_CDR, "left", ["Units"], suffixes=("_left", "_right"))
         # because this is one line of data
-        df = df.iloc[0:]
+        df = df.iloc[0]
         for i in constants.GCAMConstants.plotting_x:
             # if the estimated value is not close to the reported value
             if .97 * df[str(i) + "_right"] < df[str(i) + "_left"] < 1.03 * df[str(i) + "_right"]:
@@ -147,10 +151,6 @@ def get_elastic_demand(row, i):
     if row[str(i)] < row["min-price"] + 0.001:
         return 0
     else:
-        print((0-row["steepness"]))
-        print((row[str(i)] - row["midpoint"]))
-        print((0 - row["steepness"]) * (row[str(i)] - row["midpoint"]))
-        print(1 + math.exp((0-row["steepness"]) * (row[str(i)] - row["midpoint"])))
         return row["max-demand"] / (1 + math.exp((0-row["steepness"]) * (row[str(i)] - row["midpoint"])))
 
 
