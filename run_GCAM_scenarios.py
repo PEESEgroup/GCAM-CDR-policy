@@ -354,7 +354,6 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="biosep_gas").text = "../input/gcamdata/xml/bio_sep_USA_elec_segments.xml"
 
     # <!-- add primary CDR -->
-    # TODO: set arbitrarily high CDR growth limit because we want all demand to be satisfied, and are setting exogenous demand
     ET.SubElement(scenario, "Value", name="cdr_rampup").text = "../input/gcamdata/xml/CDR.xml"
     ET.SubElement(scenario, "Value", name="growth_limit").text = "../input/gcamdata/xml/CDR_growth_limit.xml"
     ET.SubElement(scenario, "Value", name="cdr_trade").text = "../input/gcamdata/xml/CDR_traded.xml"

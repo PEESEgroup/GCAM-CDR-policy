@@ -126,6 +126,8 @@ def add_exo_demand(scenario, demand):
             if (year, r) in demand:
                 if CDR_final_demand.find(".//demand-source") is None:
                     demand_source = ET.SubElement(CDR_final_demand, "demand-source", name=str(demand[(year, r)]["name"]))
+                    # add require-c-price tag in once
+                    ET.SubElement(demand_source, "require-c-price").text = str(demand[(year, r)]["require-c-price"])
 
         # add demand in once for each year
         for year in unique_years:

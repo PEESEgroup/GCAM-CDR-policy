@@ -97,7 +97,7 @@ def verify_cdr(CDR, fpath):
     ground_truth = pd.merge(exo_ground_truth, elastic_ground_truth)
 
     # if there is CDR demand, verify it
-    if not exo_ground_truth.empty:
+    if not ground_truth.empty:
         # sort GCAM regions by linkage file
         if not links_ground_truth.empty:
             # move unsatisfied CDR demand to its own output .csv file
