@@ -149,7 +149,7 @@ def get_elastic_CDR_demand(CDR, fpath, i, region_market):
 
 
 def get_elastic_demand(row, i):
-    # TODO: fix calculation
+    # s-curve calculation
     if row[str(i)] < row["min-price"] + 0.001:
         return 0
     else:
@@ -161,6 +161,7 @@ def verify_ghg_tax(ground_truth, results, fpath):
     verify ghg tax values
     :param ground_truth: the values in the input file
     :param results: the values in the GCAM model output
+    :param fpath: filepath used to verify outputs
     :return: a list of years in which an error was detected
     """
     # update ground truth to the results data format
@@ -184,6 +185,7 @@ def verify_ghg_tax(ground_truth, results, fpath):
 
 
 def log(fpath, year, reason):
+    # open log file and add reason for masking a year
     with open(fpath + "/log.txt", "a+") as f:
         print("Verification fails in " + year + " because " + reason)
         f.write("Verification fails in " + year + " because " + reason + "\n")

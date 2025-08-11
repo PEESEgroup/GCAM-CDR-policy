@@ -29,8 +29,6 @@ def split_file(fname):
     # create dir if it doesn't exist
     os.makedirs(prefix+dir, exist_ok=True)
 
-    # TODO: cannot create a file when that file already exists
-
     with open(fpath) as f:
         csv_reader = csv.reader(f)
         for row in csv_reader:

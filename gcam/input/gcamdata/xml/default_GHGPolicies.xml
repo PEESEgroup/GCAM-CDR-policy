@@ -291,13 +291,12 @@
       <region name="Canada">
          <ghgpolicy name="CO2">
             <market>Global</market>
-            <constraint year="2020">13000</constraint>
-            <constraint year="2025">12000</constraint>
-            <constraint year="2030">11000</constraint>
-            <constraint year="2035">10000</constraint>
-            <constraint year="2040">9000</constraint>
-            <constraint year="2045">8000</constraint>
-            <constraint year="2050">7000</constraint>
+            <constraint year="2025">10000</constraint>
+            <constraint year="2030">9000</constraint>
+            <constraint year="2035">8000</constraint>
+            <constraint year="2040">7000</constraint>
+            <constraint year="2045">6000</constraint>
+            <constraint year="2050">5000</constraint>
          </ghgpolicy>
       </region>
       <region name="Central America and Caribbean">
