@@ -134,6 +134,7 @@
       <Value name="cdr_oae_shipping_usa">../input/gcamdata/xml/OEW_shipping_USA.xml</Value>
       <Value name="cdr_nonenergy">../input/gcamdata/xml/CDR_costs_USA.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_USA_CDR.xml</Value>
+      <Value name="ignore_beccs">../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml</Value>
       <Value name="GHG emissions policy">../input/gcamdata/xml/default_GHGPolicies.xml</Value>
       <Value name="CDR-Demand-Policy">../input/policy/default_CDRDemand.xml</Value>
    </ScenarioComponents>

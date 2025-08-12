@@ -383,7 +383,7 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="cdr_oae_shipping_usa").text = "../input/gcamdata/xml/OEW_shipping_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_nonenergy").text = "../input/gcamdata/xml/CDR_costs_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_resources").text = "../input/gcamdata/xml/resources_USA_CDR.xml"
-    ET.SubElement(scenario, "Value", name="ignore beccs").text = "../input/gcamdata/policy/CDR/ignore_BECCS_in_CO2_constraint.xml"
+    ET.SubElement(scenario, "Value", name="ignore_beccs").text = "../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml"
 
     # policy is automatically handled elsewhere in the configuration process
 
