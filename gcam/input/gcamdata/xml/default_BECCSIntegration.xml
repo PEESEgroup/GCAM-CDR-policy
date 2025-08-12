@@ -6,7 +6,7 @@
             <policyType>RES</policyType>
             <market>USA</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -23,7 +23,7 @@
             <policyType>RES</policyType>
             <market>AL</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -40,7 +40,7 @@
             <policyType>RES</policyType>
             <market>AK</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -57,7 +57,7 @@
             <policyType>RES</policyType>
             <market>AZ</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -74,7 +74,7 @@
             <policyType>RES</policyType>
             <market>AR</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -91,7 +91,7 @@
             <policyType>RES</policyType>
             <market>CA</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -108,7 +108,7 @@
             <policyType>RES</policyType>
             <market>CO</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -125,7 +125,7 @@
             <policyType>RES</policyType>
             <market>CT</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -142,7 +142,7 @@
             <policyType>RES</policyType>
             <market>DE</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -159,7 +159,7 @@
             <policyType>RES</policyType>
             <market>FL</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -176,7 +176,7 @@
             <policyType>RES</policyType>
             <market>GA</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -193,7 +193,7 @@
             <policyType>RES</policyType>
             <market>HI</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -210,7 +210,7 @@
             <policyType>RES</policyType>
             <market>ID</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -227,7 +227,7 @@
             <policyType>RES</policyType>
             <market>IL</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -244,7 +244,7 @@
             <policyType>RES</policyType>
             <market>IN</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -261,7 +261,7 @@
             <policyType>RES</policyType>
             <market>IA</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -278,7 +278,7 @@
             <policyType>RES</policyType>
             <market>KS</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -295,7 +295,7 @@
             <policyType>RES</policyType>
             <market>KY</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -312,7 +312,7 @@
             <policyType>RES</policyType>
             <market>LA</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -329,7 +329,7 @@
             <policyType>RES</policyType>
             <market>ME</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -346,7 +346,7 @@
             <policyType>RES</policyType>
             <market>MD</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -363,7 +363,7 @@
             <policyType>RES</policyType>
             <market>MA</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -380,7 +380,7 @@
             <policyType>RES</policyType>
             <market>MI</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -397,7 +397,7 @@
             <policyType>RES</policyType>
             <market>MN</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -414,7 +414,7 @@
             <policyType>RES</policyType>
             <market>MS</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -431,7 +431,7 @@
             <policyType>RES</policyType>
             <market>MO</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -448,7 +448,7 @@
             <policyType>RES</policyType>
             <market>MT</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -465,7 +465,7 @@
             <policyType>RES</policyType>
             <market>NE</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -482,7 +482,7 @@
             <policyType>RES</policyType>
             <market>NV</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -499,7 +499,7 @@
             <policyType>RES</policyType>
             <market>NH</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -516,7 +516,7 @@
             <policyType>RES</policyType>
             <market>NJ</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -533,7 +533,7 @@
             <policyType>RES</policyType>
             <market>NM</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -550,7 +550,7 @@
             <policyType>RES</policyType>
             <market>NY</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -567,7 +567,7 @@
             <policyType>RES</policyType>
             <market>NC</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -584,7 +584,7 @@
             <policyType>RES</policyType>
             <market>ND</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -601,7 +601,7 @@
             <policyType>RES</policyType>
             <market>OH</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -618,7 +618,7 @@
             <policyType>RES</policyType>
             <market>OK</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -635,7 +635,7 @@
             <policyType>RES</policyType>
             <market>OR</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -652,7 +652,7 @@
             <policyType>RES</policyType>
             <market>PA</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -669,7 +669,7 @@
             <policyType>RES</policyType>
             <market>RI</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -686,7 +686,7 @@
             <policyType>RES</policyType>
             <market>SC</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -703,7 +703,7 @@
             <policyType>RES</policyType>
             <market>SD</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -720,7 +720,7 @@
             <policyType>RES</policyType>
             <market>TN</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -737,7 +737,7 @@
             <policyType>RES</policyType>
             <market>TX</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -754,7 +754,7 @@
             <policyType>RES</policyType>
             <market>UT</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -771,7 +771,7 @@
             <policyType>RES</policyType>
             <market>VT</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -788,7 +788,7 @@
             <policyType>RES</policyType>
             <market>VA</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -805,7 +805,7 @@
             <policyType>RES</policyType>
             <market>WA</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -822,7 +822,7 @@
             <policyType>RES</policyType>
             <market>WV</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -839,7 +839,7 @@
             <policyType>RES</policyType>
             <market>WI</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -856,7 +856,7 @@
             <policyType>RES</policyType>
             <market>WY</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -873,7 +873,7 @@
             <policyType>RES</policyType>
             <market>Africa_Eastern</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -890,7 +890,7 @@
             <policyType>RES</policyType>
             <market>Africa_Northern</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -907,7 +907,7 @@
             <policyType>RES</policyType>
             <market>Africa_Southern</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -924,7 +924,7 @@
             <policyType>RES</policyType>
             <market>Africa_Western</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -941,7 +941,7 @@
             <policyType>RES</policyType>
             <market>Australia_NZ</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -958,7 +958,7 @@
             <policyType>RES</policyType>
             <market>Brazil</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -975,7 +975,7 @@
             <policyType>RES</policyType>
             <market>Canada</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -992,7 +992,7 @@
             <policyType>RES</policyType>
             <market>Central America and Caribbean</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1009,7 +1009,7 @@
             <policyType>RES</policyType>
             <market>Central Asia</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1026,7 +1026,7 @@
             <policyType>RES</policyType>
             <market>China</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1043,7 +1043,7 @@
             <policyType>RES</policyType>
             <market>Europe_Eastern</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1060,7 +1060,7 @@
             <policyType>RES</policyType>
             <market>EU-12</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1077,7 +1077,7 @@
             <policyType>RES</policyType>
             <market>EU-15</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1094,7 +1094,7 @@
             <policyType>RES</policyType>
             <market>Europe_Non_EU</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1111,7 +1111,7 @@
             <policyType>RES</policyType>
             <market>European Free Trade Association</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1128,7 +1128,7 @@
             <policyType>RES</policyType>
             <market>India</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1145,7 +1145,7 @@
             <policyType>RES</policyType>
             <market>Indonesia</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1162,7 +1162,7 @@
             <policyType>RES</policyType>
             <market>Japan</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1179,7 +1179,7 @@
             <policyType>RES</policyType>
             <market>Mexico</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1196,7 +1196,7 @@
             <policyType>RES</policyType>
             <market>Middle East</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1213,7 +1213,7 @@
             <policyType>RES</policyType>
             <market>Pakistan</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1230,7 +1230,7 @@
             <policyType>RES</policyType>
             <market>Russia</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1247,7 +1247,7 @@
             <policyType>RES</policyType>
             <market>South Africa</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1264,7 +1264,7 @@
             <policyType>RES</policyType>
             <market>South America_Northern</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1281,7 +1281,7 @@
             <policyType>RES</policyType>
             <market>South America_Southern</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1298,7 +1298,7 @@
             <policyType>RES</policyType>
             <market>South Asia</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1315,7 +1315,7 @@
             <policyType>RES</policyType>
             <market>South Korea</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1332,7 +1332,7 @@
             <policyType>RES</policyType>
             <market>Southeast Asia</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1349,7 +1349,7 @@
             <policyType>RES</policyType>
             <market>Taiwan</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1366,7 +1366,7 @@
             <policyType>RES</policyType>
             <market>Argentina</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
@@ -1383,7 +1383,7 @@
             <policyType>RES</policyType>
             <market>Colombia</market>
             <min-price fillout="1" year="1975">0.1</min-price>
-            <max-price fillout="1" year="1975">1</max-price>
+            <max-price fillout="0.2" year="1975">1</max-price>
             <constraint fillout="1" year="2020">0</constraint>
          </policy-portfolio-standard>
          <ghgpolicy name="BECCS_countersubsidy">
