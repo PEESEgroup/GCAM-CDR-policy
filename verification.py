@@ -44,7 +44,7 @@ def main(scenario_name):
     for csv in csvs:
         ground_truth = pd.read_csv(csvs[csv], skiprows=2)
         if "RES_markets" in csv:
-            pass
+            error_years.extend(verify_beccs(csvs[csv], fpath))
         if "ghg_constraint" in csv:
             pass
         if "ghg_tax" in csv:
@@ -55,6 +55,26 @@ def main(scenario_name):
 
     # update output .csv files based on years with errors
     process_GCAM_data.masking(scenario_name, error_years)
+
+
+def verify_beccs(csv, fpath):
+    # process results
+    results = pd.read_csv(fpath + "/prices_of_all_markets.csv")
+    results = results[results["product"] == "BECCS"]
+    ground_truth = pd.read_csv(csv, skiprows=2)
+    years_with_error = []
+
+    # merge results and ground truth
+    merge = pd.merge(results, ground_truth, "left", left_on="GCAM", right_on="region")
+    for i in constants.GCAMConstants.plotting_x:
+        # check that minimum price is satisfied
+        merge[str(i)] = merge[str(i)] - merge["min-price"]
+        if not (merge[str(i)] >= -1e-4).all():
+            years_with_error.append(str(i))
+            errors = merge[merge[str(i)] <= -1e-4]
+            log(fpath, str(i),"BECCS is lower than minimum price in the following regions: " + str(errors["GCAM"].unique()))
+
+    return years_with_error
 
 
 def verify_cdr(CDR, fpath):
