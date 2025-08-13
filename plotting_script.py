@@ -39,7 +39,7 @@ def policy_cost(config_fname, year):
                          suffixes=("_supply", "_price"))
     dataframe = dataframe[dataframe["GCAM"].isin(c.GCAMConstants.USA_region)]
     plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
-                            "policy cost by technology and state", config_fname)
+                            "price of CDR by technology and state", config_fname)
 
     # calculate the total cost and plot
     for i in c.GCAMConstants.plotting_x:

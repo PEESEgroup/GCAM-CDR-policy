@@ -1324,17 +1324,23 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
     # get subplot size
     nrow, ncol = get_subplot_dimensions(year)
     # make plots
-    fig, axs = plt.subplots(ncol, nrow)
+    fig, axs = plt.subplots(ncol, nrow, sharex=False, sharey=False, constrained_layout=True)
     colors, num = get_colors(1)
     mapping = {df[color].unique()[i]: colors[i] for i in range(len(df[color].unique()))}
     df['colors'] = df[color].map(mapping)
 
     counter = 0
-    current_x = 0
     for i in year:
         try:
             df = df.sort_values(by=str(i) + y)
+            unique_labels = {}
+            current_x = 0
             for index, col_width in df[str(i) + x].items():
+                if df.loc[index, color] in unique_labels:
+                    addLabel = False
+                else:
+                    unique_labels[df.loc[index, color]] = "done"
+                    addLabel = True
                 axs[int(counter / nrow), int(counter % nrow)].bar(
                     x=current_x + col_width / 2,  # Center the bar within its width
                     height=df.loc[index, str(i)+y],
@@ -1342,10 +1348,14 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
                     bottom=0,
                     color=df.loc[index, "colors"],
                     linewidth=0.5,
-                    label=df.loc[index, color]
+                    label=df.loc[index, color] if addLabel else "_"
                 )
                 axs[int(counter / nrow), int(counter % nrow)].set_ylim(0, 1.05*df[str(i)+y].max())
                 axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
+                axs[int(counter / nrow), int(counter % nrow)].set_xlabel(df["Units"+x].unique()[0])
+                axs[int(counter / nrow), int(counter % nrow)].set_ylabel(df["Units"+y].unique()[0])
+                axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
+                axs[int(counter / nrow), int(counter % nrow)].legend()
                 current_x += col_width
             counter += 1
         except KeyError as e:
@@ -1354,10 +1364,7 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
     # finalize plot
     if counter < ncol*nrow:
         fig.delaxes(axs[int(counter / nrow), int(counter % nrow)])
-    fig.supxlabel(df["Units"+x].unique()[0])
-    fig.supylabel(df["Units"+y].unique()[0])
-    fig.title(title)
-    plt.legend()
+    plt.suptitle(title)
     plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
     df.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" + title + ".csv")
     plt.show()
