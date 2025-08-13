@@ -31,4 +31,13 @@
             <comments>Excludes unsatisfied CDR demand</comments>
         </supplyDemandQuery>
     </aQuery>
+    <aQuery>
+        <region name="Global"/>
+        <marketQuery title="prices of all CDR markets">
+            <axis1 name="market">market</axis1>
+            <axis2 name="Year">market</axis2>
+            <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+            <comments/>
+        </marketQuery>
+    </aQuery>
 </queries>

@@ -64,6 +64,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="USA"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Africa_Eastern"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -89,6 +98,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Africa_Eastern"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Africa_Northern"/>
@@ -118,6 +136,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Africa_Northern"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Africa_Southern"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -143,6 +170,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Africa_Southern"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Africa_Western"/>
@@ -172,6 +208,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Africa_Western"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Australia_NZ"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -197,6 +242,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Australia_NZ"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Brazil"/>
@@ -226,6 +280,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Brazil"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Canada"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -251,6 +314,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Canada"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Central America and Caribbean"/>
@@ -280,6 +352,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Central America and Caribbean"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Central Asia"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -305,6 +386,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Central Asia"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="China"/>
@@ -334,6 +424,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="China"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="EU-12"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -359,6 +458,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="EU-12"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="EU-15"/>
@@ -388,6 +496,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="EU-15"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Europe_Eastern"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -413,6 +530,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Europe_Eastern"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Europe_Non_EU"/>
@@ -442,6 +568,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Europe_Non_EU"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="European Free Trade Association"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -467,6 +602,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="European Free Trade Association"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="India"/>
@@ -496,6 +640,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="India"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Indonesia"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -521,6 +674,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Indonesia"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Japan"/>
@@ -550,6 +712,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Japan"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Mexico"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -575,6 +746,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Mexico"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Middle East"/>
@@ -604,6 +784,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Middle East"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Pakistan"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -629,6 +818,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Pakistan"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Russia"/>
@@ -658,6 +856,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Russia"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="South Africa"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -683,6 +890,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="South Africa"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="South America_Northern"/>
@@ -712,6 +928,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="South America_Northern"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="South America_Southern"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -737,6 +962,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="South America_Southern"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="South Asia"/>
@@ -766,6 +1000,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="South Asia"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="South Korea"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -791,6 +1034,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="South Korea"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Southeast Asia"/>
@@ -820,6 +1072,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Southeast Asia"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Taiwan"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -845,6 +1106,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Taiwan"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Argentina"/>
@@ -874,6 +1144,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Argentina"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Colombia"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -899,6 +1178,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Colombia"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="AL"/>
@@ -928,6 +1216,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="AL"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="AK"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -953,6 +1250,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="AK"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="AZ"/>
@@ -982,6 +1288,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="AZ"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="AR"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1007,6 +1322,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="AR"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="CA"/>
@@ -1036,6 +1360,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="CA"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="CO"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1061,6 +1394,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="CO"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="CT"/>
@@ -1090,6 +1432,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="CT"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="DE"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1115,6 +1466,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="DE"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="DC"/>
@@ -1144,6 +1504,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="DC"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="FL"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1169,6 +1538,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="FL"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="GA"/>
@@ -1198,6 +1576,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="GA"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="HI"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1223,6 +1610,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="HI"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="ID"/>
@@ -1252,6 +1648,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="ID"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="IL"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1277,6 +1682,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="IL"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="IN"/>
@@ -1306,6 +1720,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="IN"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="IA"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1331,6 +1754,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="IA"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="KS"/>
@@ -1360,6 +1792,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="KS"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="KY"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1385,6 +1826,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="KY"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="LA"/>
@@ -1414,6 +1864,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="LA"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="ME"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1439,6 +1898,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="ME"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="MD"/>
@@ -1468,6 +1936,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="MD"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="MA"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1493,6 +1970,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="MA"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="MI"/>
@@ -1522,6 +2008,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="MI"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="MN"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1547,6 +2042,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="MN"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="MS"/>
@@ -1576,6 +2080,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="MS"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="MO"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1601,6 +2114,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="MO"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="MT"/>
@@ -1630,6 +2152,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="MT"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="NE"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1655,6 +2186,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="NE"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="NV"/>
@@ -1684,6 +2224,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="NV"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="NH"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1709,6 +2258,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="NH"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="NJ"/>
@@ -1738,6 +2296,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="NJ"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="NM"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1763,6 +2330,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="NM"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="NY"/>
@@ -1792,6 +2368,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="NY"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="NC"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1817,6 +2402,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="NC"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="ND"/>
@@ -1846,6 +2440,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="ND"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="OH"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1871,6 +2474,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="OH"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="OK"/>
@@ -1900,6 +2512,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="OK"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="OR"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1925,6 +2546,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="OR"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="PA"/>
@@ -1954,6 +2584,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="PA"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="RI"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -1979,6 +2618,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="RI"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="SC"/>
@@ -2008,6 +2656,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="SC"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="SD"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2033,6 +2690,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="SD"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="TN"/>
@@ -2062,6 +2728,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="TN"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="TX"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2087,6 +2762,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="TX"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="UT"/>
@@ -2116,6 +2800,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="UT"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="VT"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2141,6 +2834,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="VT"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="VA"/>
@@ -2170,6 +2872,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="VA"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="WA"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2195,6 +2906,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="WA"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="WV"/>
@@ -2224,6 +2944,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="WV"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="WI"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2249,6 +2978,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="WI"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="WY"/>
@@ -2278,6 +3016,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="WY"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="California grid"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2303,6 +3050,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="California grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Texas grid"/>
@@ -2332,6 +3088,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Texas grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Southwest grid"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2357,6 +3122,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Southwest grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Central East grid"/>
@@ -2386,6 +3160,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Central East grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Central Northeast grid"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2411,6 +3194,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Central Northeast grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Central Southwest grid"/>
@@ -2440,6 +3232,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Central Southwest grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Mid-Atlantic grid"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2465,6 +3266,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Mid-Atlantic grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Northwest grid"/>
@@ -2494,6 +3304,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Northwest grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Southeast grid"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2519,6 +3338,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Southeast grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="Central Northwest grid"/>
@@ -2548,6 +3376,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Central Northwest grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="New York grid"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2573,6 +3410,15 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="New York grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
    <aQuery>
       <region name="New England grid"/>
@@ -2602,6 +3448,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="New England grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Alaska grid"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2629,6 +3484,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Alaska grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
+   </aQuery>
+   <aQuery>
       <region name="Hawaii grid"/>
       <emissionsQueryBuilder title="CO2 emissions by tech">
          <axis1 name="technology">technology</axis1>
@@ -2654,5 +3518,14 @@
          <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' and @name='CDR_regional']/*[@type='subsector']/*[@type='technology']/*[@type='output']/physical-output/node()</xPath>
          <comments>Excludes unsatisfied CDR demand</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Hawaii grid"/>
+      <marketQuery title="prices of all CDR markets">
+         <axis1 name="market">market</axis1>
+         <axis2 name="Year">market</axis2>
+         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+         <comments/>
+      </marketQuery>
    </aQuery>
 </queries>
