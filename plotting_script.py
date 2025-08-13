@@ -32,7 +32,7 @@ def policy_cost(config_fname, year):
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on= ["product", "GCAM"],
                          suffixes=("_supply", "_price"))
 
-    plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product", "policy cost by technology and state in " + str(i))
+    plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price", "policy cost by technology and state in " + str(i))
 
     # calculate the total cost and plot
     for i in c.GCAMConstants.plotting_x:

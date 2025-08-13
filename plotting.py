@@ -31,7 +31,8 @@ def basin_data(data, column, title):
     :return: a pandas dataframe containing relevant year and column data
     """
     # read in data
-    data["GLU"] = data["GLU"].str.replace("GLU00", "").str.replace("GLU0", "").str.replace("GLU", "") # remove GLU codes and leading 0s
+    data["GLU"] = data["GLU"].str.replace("GLU00", "").str.replace("GLU0", "").str.replace("GLU",
+                                                                                           "")  # remove GLU codes and leading 0s
     data["GLU"] = data["GLU"].astype("int64")
     data["SSP"] = "SSP1"
     basins = gpd.read_file(c.GCAMConstants.basin_map_loc)
@@ -46,15 +47,15 @@ def basin_data(data, column, title):
     for i in data["GCAM_subsector"].unique():
         fig, axs = plt.subplots(1, 1, sharex='all', sharey='all', gridspec_kw={'wspace': 0.2, 'hspace': 0.2})
         crop = data[data["GCAM_subsector"] == str(i)]
-        merged = pd.merge(basins, crop, left_on=["glu_id", "reg_id"], right_on=["GLU","GCAM_region_ID"], how='left')
+        merged = pd.merge(basins, crop, left_on=["glu_id", "reg_id"], right_on=["GLU", "GCAM_region_ID"], how='left')
         merged = merged.replace(c.GCAMConstants.missing, np.nan)
 
         if str(i) == "SugarCropC4":
-            subplot_title = title + " "  + "Sugar Cane"
+            subplot_title = title + " " + "Sugar Cane"
         elif str(i) == "SugarCrop":
             subplot_title = title + " " + "Sugar Beet and Sugar Crops"
         else:
-            subplot_title = title + " "  + str(i)
+            subplot_title = title + " " + str(i)
 
         plot_world_on_axs(
             map_plot=merged,
@@ -77,7 +78,7 @@ def basin_data(data, column, title):
         fig.set_dpi(300)
         plt.savefig("data/data_analysis/images/maps/" + subplot_title + ".png", dpi=300)
         plt.show()
-        merged.drop("geometry",axis=1).to_csv("data/data_analysis/supplementary_tables/maps/" + subplot_title + ".csv")
+        merged.drop("geometry", axis=1).to_csv("data/data_analysis/supplementary_tables/maps/" + subplot_title + ".csv")
 
 
 def get_subplot_dimensions(list_products):
@@ -421,7 +422,7 @@ def create_subplots(dataframe, inner_loop_set, products, year, title):
     fig.suptitle(title)
     normalizer = Normalize(min(df[str(i)].min() for i in year), max(df[str(i)].max() for i in year))
     im = cm.ScalarMappable(norm=normalizer, cmap=cmap)
-    plt.xticks(range(min([int(y) for y in year]), max([int(y) for y in year])+1, 5))
+    plt.xticks(range(min([int(y) for y in year]), max([int(y) for y in year]) + 1, 5))
     return axs, cmap, fig, im, ncol, normalizer, nrow
 
 
@@ -595,7 +596,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title, RC
     for i in range(nrow * ncol - counter):
         fig.delaxes(axs[int((counter + i) / ncol), int((counter + i) % ncol)])
 
-    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  title + ".png", dpi=300)
+    plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + title + ".png", dpi=300)
     plt.show()
 
 
@@ -701,7 +702,7 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
                     upper = y.values.tolist()[2][c.GCAMConstants.skip_years:c.GCAMConstants.skip_years + len(
                         c.GCAMConstants.biochar_x)]
                     plot_line_on_axs(c.GCAMConstants.biochar_x, y_to_plot, str(i), color, axs, nrow, ncol, counter)
-                    axs.fill_between(c.GCAMConstants.biochar_x, lower, upper, color=color, alpha = 0.2)
+                    axs.fill_between(c.GCAMConstants.biochar_x, lower, upper, color=color, alpha=0.2)
 
                     # get units
                     units = y['Units'].unique()[0]
@@ -709,7 +710,7 @@ def plot_line_by_product(dataframe, products, column, SSP, differentiator, title
                     color_counter = color_counter + 1
 
             counter = counter + 1
-        axs.set_ylim(top = 400)
+        axs.set_ylim(top=400)
         finalize_line_plot(fig, h, l, axs, nrow, ncol, counter, title, RCP, nonBaselineScenario)
 
     except ValueError as e:
@@ -784,14 +785,15 @@ def plot_stacked_bar_product(df, year, column, title, nonBaselineScenario):
             plt.gcf().set_size_inches(7, 8)
         else:
             plt.gcf().set_size_inches(12, 8)
-        plt.savefig("data/data_analysis/images/" + nonBaselineScenario + "/"  + title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + nonBaselineScenario + "/" + title + ".png", dpi=300)
         plt.show()
 
     except ValueError as e:
         print(e)
 
 
-def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_column, x_label, RCP, nonBaselineScenario):
+def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_column, x_label, RCP,
+                           nonBaselineScenario):
     """
     Plots regional data in a categorical scatterplot
     :param dataframe: data being plotted
@@ -828,7 +830,7 @@ def plot_regional_vertical(dataframe, year, SSPs, y_label, title, x_column, y_co
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
         plt.show()
-        plt.savefig("data/data_analysis/images/" + str(RCP) + "/"  +  title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + title + ".png", dpi=300)
 
 
 def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, supply, RCP, nonBaselineScenario):
@@ -864,7 +866,8 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
             df_median = df_price[df_price["Version"] == "Median"]
             global_avg = global_avg[global_avg["Version"] == "Median"]
 
-            plt.scatter(x=df_median["GCAM"], y=df_median[str(year)], edgecolors=colors[idx], facecolors='none', label=str(item))
+            plt.scatter(x=df_median["GCAM"], y=df_median[str(year)], edgecolors=colors[idx], facecolors='none',
+                        label=str(item))
             plt.scatter(x=df_lower["GCAM"], y=df_lower[str(year)], color=colors[idx], marker="*")
             plt.scatter(x=df_upper["GCAM"], y=df_upper[str(year)], color=colors[idx], marker="x")
 
@@ -876,7 +879,7 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.5, right=.7, left=.15)
         plt.gcf().set_size_inches(12, 8)
-        plt.savefig("data/data_analysis/images/" + str(RCP) + "/"  +  title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + title + ".png", dpi=300)
         plt.show()
 
 
@@ -1038,7 +1041,7 @@ def plot_regional_rose(dataframe, year, SSPs, y_label, title, column, RCP, nonBa
                 )
 
             plt.gcf().set_size_inches(12, 12)
-            plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  str(item) + ".png", dpi=300)
+            plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + str(item) + ".png", dpi=300)
             plt.show()
 
 
@@ -1094,8 +1097,9 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
     normalizer = Normalize(-max(min_low, max_high), max(min_low, max_high))
 
     # Plot the bars, one by one
-    for y, low, value, base, low_Version, high_Version in zip(ys, bars["low"], bars["length"], bars["base"], bars["low_Version"],
-                                                      bars["high_Version"]):
+    for y, low, value, base, low_Version, high_Version in zip(ys, bars["low"], bars["length"], bars["base"],
+                                                              bars["low_Version"],
+                                                              bars["high_Version"]):
         # The width of the 'low' and 'high' pieces
         low_width = base - low
         high_width = low + value - base
@@ -1120,15 +1124,15 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
         ax.add_collection(pc)
 
         # Display the Version as text next to the low and high bars
-        x = base - low_width - (bars["high"].max()-bars["low"].min())/ 200
-        plt.text(x, y-0.12, str(low_Version), va='center', ha='right', fontsize='small')
-        x = base + high_width + (bars["high"].max()-bars["low"].min())/ 200
-        plt.text(x, y+0.12, str(high_Version), va='center', ha='left', fontsize='small')
+        x = base - low_width - (bars["high"].max() - bars["low"].min()) / 200
+        plt.text(x, y - 0.12, str(low_Version), va='center', ha='right', fontsize='small')
+        x = base + high_width + (bars["high"].max() - bars["low"].min()) / 200
+        plt.text(x, y + 0.12, str(high_Version), va='center', ha='left', fontsize='small')
 
         # Draw a vertical line down the middle for each segment where the baseline isn't 0
         if base != 0:
             plt.vlines(base, color='black', ymin=ymin, ymax=ymax)
-            plt.text(base, y +1.4*v_offset, str(base_version), va='center', ha='center', fontsize='small')
+            plt.text(base, y + 1.4 * v_offset, str(base_version), va='center', ha='center', fontsize='small')
 
     # if there is still a need for a singular baseline
     plt.axvline(baseline_value, color='#cccccc')
@@ -1139,7 +1143,8 @@ def sensitivity(dataframe, RCP, base_version, year, column, Version, nonBaseline
     plt.yticks(ys, bars[column])
 
     # Set the portion of the x- and y-axes to show
-    plt.xlim(bars["low"].min() - (bars["high"].max()-bars["low"].min())/ 7, bars["high"].max() + (bars["high"].max()-bars["low"].min())/ 7)
+    plt.xlim(bars["low"].min() - (bars["high"].max() - bars["low"].min()) / 7,
+             bars["high"].max() + (bars["high"].max() - bars["low"].min()) / 7)
     plt.ylim(-1, len(bars[column]))
     # plt.xlabel("change from released model in RCP " + str(RCP) + " (" + str(bars["Units"].unique()[0]) + ")")
     plt.subplots_adjust(left=.33, right=.98, bottom=.4)
@@ -1227,7 +1232,7 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply, R
         plt.title(title)
         plt.legend(bbox_to_anchor=(1, 1))
         plt.subplots_adjust(bottom=0.4, right=.7)
-        plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + title + ".png", dpi=300)
         plt.show()
     else:
         colors, divisions = get_colors(1)
@@ -1236,7 +1241,8 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply, R
             for k in SSPs:
                 dataframe = prices[prices['SSP'].str.contains(k)]
                 supply = supply[supply['SSP'].str.contains(k)]
-                plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year, RCP, nonBaselineScenario)
+                plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year, RCP,
+                                           nonBaselineScenario)
         else:
             plot_weighted_average_hist(colors, column, prices, supply, title, y_label, year, RCP, nonBaselineScenario)
 
@@ -1277,7 +1283,7 @@ def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label
     plt.title(title)
     plt.legend(bbox_to_anchor=(1, 1))
     plt.subplots_adjust(bottom=0.4, right=.7)
-    plt.savefig("data/data_analysis/images/"  + str(RCP) + "/"  +  title + ".png", dpi=300)
+    plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + title + ".png", dpi=300)
     plt.show()
 
 
@@ -1292,7 +1298,7 @@ def plot_alluvial(df, biochar_year, base_year):
     df["color"] = df.apply(lambda row: data_manipulation.mgmt_to_color(row), axis=1)
     fig = px.parallel_categories(df, dimensions=[base_year, biochar_year, "Management", "Region"],
                                  labels={"Region": "Region in " + str(biochar_year),
-                                         str(base_year): "Crops in "+ str(base_year),
+                                         str(base_year): "Crops in " + str(base_year),
                                          str(biochar_year): "Crops in " + str(biochar_year),
                                          "Management": "Management Type in " + str(biochar_year)},
                                  color=df["color"], width=1920)
@@ -1305,19 +1311,44 @@ def plot_alluvial(df, biochar_year, base_year):
 
 def plot_marimekko(df, year, x, y, color, title):
     # update the columns of the dataframe and make it much smaller
-    cols = [str(i)+x for i in year].extend([str(i)+y for i in year])
-    cols = cols.extend([color, "GCAM"])
+    cols = [str(i) + x for i in year]
+    cols.extend([str(i) + y for i in year])
+    cols.extend([color, "GCAM", "Units"+x, "Units"+y])
     df = df[cols]
 
+    # drop columns that only have nan
+    df = df.dropna(how='all', axis=1)
+    # drop rows that have nan
+    df = df.dropna()
+
     # get subplot size
-    nrow, ncol = get_subplot_dimensions(["plot", "sidebar"])
-    # make plots and color scheme
+    nrow, ncol = get_subplot_dimensions(year)
+    # make plots
     fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2}, width_ratios=[12, 1])
+    colors = get_colors(len(df[color].unique()))
 
+    counter = 0
+    current_x = 0
     for i in year:
+        temp = df[str(i) + x].items()
+        for col_name, col_width in df[str(i) + x].items():
+            bottom = 0
+            for j, (row_name, row_percentage) in enumerate(df[col_name].items()):
+                axs[counter / ncol, counter % ncol].bar(
+                    x=current_x + col_width / 2,  # Center the bar within its width
+                    height=row_percentage,
+                    width=col_width,
+                    bottom=bottom,
+                    color=colors(i),
+                    edgecolor='white',
+                    linewidth=0.5,
+                    label=row_name if current_x == 0 else ""  # Label only for the first column
+                )
+                bottom += row_percentage
+            current_x += col_width
+        axs[int(counter / ncol), int(counter % ncol)]
         df = df.sort_values(by=str(i) + y)
-
-
+        counter += 1
 
 
 def compare_marimekko():
