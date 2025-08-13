@@ -24,13 +24,15 @@ def policy_cost(config_fname, year):
 
     # build and write out scenario policy cost
     supply = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech")
+    supply["Units"] = "Mt $CO_{2}$-eq"
     price = data_manipulation.get_sensitivity_data([config_fname], "prices_of_all_markets")
 
-    # update the price to $2025USD/t C  from $1975USD/kg C
-    price["Units"] = "2025$/t C"
+    # update the price to $2025USD/t C  from $1975USD/kg C - then to a CO@-eq basis
+    price["Units"] = "2025USD/t $CO_{2}$-eq"
     for i in c.GCAMConstants.plotting_x:
         # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=197501&year2=202501
-        price[str(i)] = price[str(i)] * 6.10 * 1000
+        price[str(i)] = price[str(i)] * 6.10 * 1000 / 44 * 12  # $/C * C/CO2 molar ratios
+        supply[str(i)] = supply[str(i)] / 12 * 44  # C to CO2
 
     # merge dataframes and constrain to US regions
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on= ["product", "GCAM"],

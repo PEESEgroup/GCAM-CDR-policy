@@ -338,7 +338,7 @@ def get_df_to_plot(dataframe, ncol, nrow, fig, axs, cmap, normalizer, counter, c
             else:
                 fig.delaxes(axs[counter])
         else:
-            fig.delaxes(axs[int(counter / ncol), int(counter % ncol)])
+            fig.delaxes(axs[int(counter % nrow), int(counter / nrow)])
     else:
         map_to_plot = world_data(filter_data)
         plot_world_on_axs(
@@ -384,18 +384,18 @@ def plot_world_on_axs(map_plot, axs, cmap, counter, plot_title, plotting_column,
             map_plot.plot(
                 column=str(plotting_column),
                 missing_kwds=dict(color='grey', label='No Data'),
-                ax=axs[int(counter / ncol)],
+                ax=axs[int(counter % nrow)],
                 cmap=cmap,
                 norm=normalizer)
-            axs_params(axs[int(counter / ncol)], plot_title)
+            axs_params(axs[int(counter % nrow)], plot_title)
     else:
         map_plot.plot(
             column=str(plotting_column),
             missing_kwds=dict(color='grey', label='No Data'),
-            ax=axs[int(counter / ncol), int(counter % ncol)],
+            ax=axs[int(counter % nrow), int(counter / nrow)],
             cmap=cmap,
             norm=normalizer)
-        axs_params(axs[int(counter / ncol), int(counter % ncol)], plot_title)
+        axs_params(axs[int(counter % nrow), int(counter / nrow)], plot_title)
 
 
 def create_subplots(dataframe, inner_loop_set, products, year, title):
@@ -442,19 +442,19 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname, nonB
     """
     del_axes_counter = 0
     for i in range(nrow * ncol - datalength):
-        fig.delaxes(axs[int((datalength + i) / ncol), int((datalength + i) % ncol)])
+        fig.delaxes(axs[int((datalength + i) % nrow), int((datalength + i) / nrow)])
         del_axes_counter = del_axes_counter + 1
     if nrow * ncol > datalength:
         if del_axes_counter == 3:
             axins1 = inset_axes(
-                axs[int((datalength + 1) / ncol), int((datalength + 1) % ncol)],
+                axs[int((datalength + 1) % nrow), int((datalength + 1) / nrow)],
                 width=str(100 * del_axes_counter) + "%",  # width: 50% of parent_bbox width
                 height="10%",  # height: 5%
                 loc="center",
             )
         else:
             axins1 = inset_axes(
-                axs[int(datalength / ncol), int(datalength % ncol)],
+                axs[int(datalength % nrow), int(datalength / nrow)],
                 width=str(100 * del_axes_counter) + "%",  # width: 50% of parent_bbox width
                 height="10%",  # height: 5%
                 loc="center",
@@ -594,7 +594,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title, RC
 
     # remove unnecessary axes
     for i in range(nrow * ncol - counter):
-        fig.delaxes(axs[int((counter + i) / ncol), int((counter + i) % ncol)])
+        fig.delaxes(axs[int((counter + i) % nrow), int((counter + i) / nrow)])
 
     plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + title + ".png", dpi=300)
     plt.show()
@@ -617,9 +617,9 @@ def plot_line_on_axs(x, y, lab, color, axs, nrow, ncol, counter):
         if nrow == 1:
             axs.plot(x, y, label=lab, color=color)
         else:
-            axs[int(counter / ncol)].plot(x, y, label=lab, color=color)
+            axs[int(counter % nrow)].plot(x, y, label=lab, color=color)
     else:
-        axs[int(counter / ncol), int(counter % ncol)].plot(x, y, label=lab, color=color)
+        axs[int(counter % nrow), int(counter / nrow)].plot(x, y, label=lab, color=color)
 
 
 def finalize_line_subplot(axs, ylabel, title, ncol, nrow, counter):
@@ -641,15 +641,15 @@ def finalize_line_subplot(axs, ylabel, title, ncol, nrow, counter):
             handles, labels = axs.get_legend_handles_labels()
             labels, handles = zip(*sorted(zip(labels, handles), key=lambda t: t[0]))
         else:
-            axs[int(counter / ncol)].set_ylabel(ylabel)
-            axs[int(counter / ncol)].set_xlabel("Year")
-            axs[int(counter / ncol)].set_title(title)
+            axs[int(counter % nrow)].set_ylabel(ylabel)
+            axs[int(counter % nrow)].set_xlabel("Year")
+            axs[int(counter % nrow)].set_title(title)
             handles, labels = axs[0].get_legend_handles_labels()
             labels, handles = zip(*sorted(zip(labels, handles), key=lambda t: t[0]))
     else:
-        axs[int(counter / ncol), int(counter % ncol)].set_ylabel(ylabel)
-        axs[int(counter / ncol), int(counter % ncol)].set_title(title)
-        axs[int(counter / ncol), int(counter % ncol)].set_xlabel("Year")
+        axs[int(counter % nrow), int(counter / nrow)].set_ylabel(ylabel)
+        axs[int(counter % nrow), int(counter / nrow)].set_title(title)
+        axs[int(counter % nrow), int(counter / nrow)].set_xlabel("Year")
         handles, labels = axs[0, 0].get_legend_handles_labels()
         labels, handles = zip(*sorted(zip(labels, handles), key=lambda t: t[0]))
 
@@ -1324,7 +1324,7 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
     # get subplot size
     nrow, ncol = get_subplot_dimensions(year)
     # make plots
-    fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2}, width_ratios=[12, 1])
+    fig, axs = plt.subplots(ncol, nrow)
     colors, num = get_colors(1)
     mapping = {df[color].unique()[i]: colors[i] for i in range(len(df[color].unique()))}
     df['colors'] = df[color].map(mapping)
@@ -1335,28 +1335,29 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
         try:
             df = df.sort_values(by=str(i) + y)
             for index, col_width in df[str(i) + x].items():
-                axs[int(counter % ncol), int(counter / ncol)].bar(
+                axs[int(counter / nrow), int(counter % nrow)].bar(
                     x=current_x + col_width / 2,  # Center the bar within its width
                     height=df.loc[index, str(i)+y],
                     width=col_width,
                     bottom=0,
                     color=df.loc[index, "colors"],
-                    edgecolor='white',
                     linewidth=0.5,
-                    label=df.loc[index, "GCAM"]
+                    label=df.loc[index, color]
                 )
+                axs[int(counter / nrow), int(counter % nrow)].set_ylim(0, 1.05*df[str(i)+y].max())
+                axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
                 current_x += col_width
             counter += 1
         except KeyError as e:
             print(e)
 
     # finalize plot
-    plt.ylabel(df["Units"+x].unique()[0])
-    plt.xlabel(df["Units"+y].unique()[0])
-    plt.xticks(rotation=60, ha='right')
-    plt.title(title)
+    if counter < ncol*nrow:
+        fig.delaxes(axs[int(counter / nrow), int(counter % nrow)])
+    fig.supxlabel(df["Units"+x].unique()[0])
+    fig.supylabel(df["Units"+y].unique()[0])
+    fig.title(title)
     plt.legend()
-    plt.subplots_adjust(bottom=0.4, right=.7)
     plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
     df.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" + title + ".csv")
     plt.show()
