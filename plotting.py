@@ -1304,7 +1304,20 @@ def plot_alluvial(df, biochar_year, base_year):
 
 
 def plot_marimekko(df, year, x, y, color, title):
-    pass
+    # update the columns of the dataframe and make it much smaller
+    cols = [str(i)+x for i in year].extend([str(i)+y for i in year])
+    cols = cols.extend([color, "GCAM"])
+    df = df[cols]
+
+    # get subplot size
+    nrow, ncol = get_subplot_dimensions(["plot", "sidebar"])
+    # make plots and color scheme
+    fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2}, width_ratios=[12, 1])
+
+    for i in year:
+        df = df.sort_values(by=str(i) + y)
+
+
 
 
 def compare_marimekko():

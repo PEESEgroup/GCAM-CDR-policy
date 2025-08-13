@@ -32,11 +32,13 @@ def policy_cost(config_fname, year):
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on= ["product", "GCAM"],
                          suffixes=("_supply", "_price"))
 
-    # calculate the total cost
+    plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product", "policy cost by technology and state in " + str(i))
+
+    # calculate the total cost and plot
     for i in c.GCAMConstants.plotting_x:
         dataframe[str(i) + "_total-cost"] = dataframe[str(i) + "_supply"] * dataframe[str(i) + "_price"]
+        dataframe["Units"] = "Million 2025$USD/yr"
 
-    plotting.plot_marimekko(dataframe, year, "total policy cost by technology and state")
     plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "technology", "policy cost by year", config_fname)
 
     if scenario == baseline:
