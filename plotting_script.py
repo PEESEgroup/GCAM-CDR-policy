@@ -18,17 +18,28 @@ def policy_cost(config_fname):
     # check if it is a baseline scenario
     baseline = config_fname.split("_")[0]
     scenario = config_fname.split("_")[1]
-    if scenario == baseline:
-        # TODO build and write out baseline scenario
-        supply = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech")
-        price = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech")
-    else:
-        # TODO build and write out scenario policy cost, and compare to default
-        pass
 
+    # build and write out scenario policy cost
+    supply = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech")
+    price = data_manipulation.get_sensitivity_data([config_fname], "prices_of_all_markets")
+    dataframe = pd.merge(supply, price, "left", on=["technology", "GCAM"], suffixes=("_supply", "_demand"))
+    marimekko(dataframe)
+
+    if scenario == baseline:
+        # this is a baseline scenario and no additional work needs to be done
+        pass
+    else:
+        compare_marimekko()
+
+        # and compare to default
+
+
+def compare_marimekko():
+    pass
 
 def marimekko(df):
     pass
 
+
 if __name__ == '__main__':
-    main("default_test", "2050")
+    main("test_default", "2050")
