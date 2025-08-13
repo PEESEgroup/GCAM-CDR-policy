@@ -130,8 +130,14 @@ def build_config_file(scenario_name, baseline):
     altered = []
 
     # build required xml files from raw data
-    xml_baseline_files = utilities.build_from_scenario(baseline)
-    xml_scenario_files = utilities.build_from_scenario(scenario_name)
+    if scenario_name == baseline:
+        # prevents duplication of scenario files when baseline scenario
+        xml_baseline_files = utilities.build_from_scenario(baseline)
+        xml_scenario_files = None
+    else:
+        xml_baseline_files = utilities.build_from_scenario(baseline)
+        xml_scenario_files = utilities.build_from_scenario(scenario_name)
+
     baseline_files = build_files(xml_baseline_files)
 
     # there might be no scenario files
@@ -429,8 +435,10 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["test"]  # use camelCase
+    current_configs = ["default"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
+
+    # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
     for i in current_configs:
