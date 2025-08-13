@@ -22,6 +22,8 @@ def build_BECCS_integration(config, baseline=True):
     # extract relevant data
     data = utilities.open_csv(input_filepath)
 
+    # min-price is the lowest price of the subsidy to BECCS markets from CDR
+    # max-price doesn't appear to do anything....
     if "RES_markets_verify" in data:
         RES = data["RES_markets_verify"]
     if "tech" in data:
