@@ -1,3 +1,5 @@
+import os
+
 import plotting
 import data_manipulation
 import constants as c
@@ -11,6 +13,7 @@ def main(config_fname, reference_year):
     Main method for scripts used to plot figures and information for the article
     :return: N/A
     """
+    os.makedirs("data/data_analysis/supplementary_tables/" + config_fname.replace("_", "/"), exist_ok=True)
     policy_cost(config_fname, reference_year)
 
 
@@ -29,10 +32,12 @@ def policy_cost(config_fname, year):
         # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=197501&year2=202501
         price[str(i)] = price[str(i)] * 6.10 * 1000
 
+    # merge dataframes and constrain to US regions
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on= ["product", "GCAM"],
                          suffixes=("_supply", "_price"))
-
-    plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price", "policy cost by technology and state in " + str(i))
+    dataframe = dataframe[dataframe["GCAM"].isin(c.GCAMConstants.USA_region)]
+    plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
+                            "policy cost by technology and state", config_fname)
 
     # calculate the total cost and plot
     for i in c.GCAMConstants.plotting_x:

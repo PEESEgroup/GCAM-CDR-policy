@@ -1309,7 +1309,7 @@ def plot_alluvial(df, biochar_year, base_year):
     fig.show()
 
 
-def plot_marimekko(df, year, x, y, color, title):
+def plot_marimekko(df, year, x, y, color, title, config_fname):
     # update the columns of the dataframe and make it much smaller
     cols = [str(i) + x for i in year]
     cols.extend([str(i) + y for i in year])
@@ -1325,31 +1325,41 @@ def plot_marimekko(df, year, x, y, color, title):
     nrow, ncol = get_subplot_dimensions(year)
     # make plots
     fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2}, width_ratios=[12, 1])
-    colors = get_colors(len(df[color].unique()))
+    colors, num = get_colors(1)
+    mapping = {df[color].unique()[i]: colors[i] for i in range(len(df[color].unique()))}
+    df['colors'] = df[color].map(mapping)
 
     counter = 0
     current_x = 0
     for i in year:
-        temp = df[str(i) + x].items()
-        for col_name, col_width in df[str(i) + x].items():
-            bottom = 0
-            for j, (row_name, row_percentage) in enumerate(df[col_name].items()):
-                axs[counter / ncol, counter % ncol].bar(
+        try:
+            df = df.sort_values(by=str(i) + y)
+            for index, col_width in df[str(i) + x].items():
+                axs[int(counter % ncol), int(counter / ncol)].bar(
                     x=current_x + col_width / 2,  # Center the bar within its width
-                    height=row_percentage,
+                    height=df.loc[index, str(i)+y],
                     width=col_width,
-                    bottom=bottom,
-                    color=colors(i),
+                    bottom=0,
+                    color=df.loc[index, "colors"],
                     edgecolor='white',
                     linewidth=0.5,
-                    label=row_name if current_x == 0 else ""  # Label only for the first column
+                    label=df.loc[index, "GCAM"]
                 )
-                bottom += row_percentage
-            current_x += col_width
-        axs[int(counter / ncol), int(counter % ncol)]
-        df = df.sort_values(by=str(i) + y)
-        counter += 1
+                current_x += col_width
+            counter += 1
+        except KeyError as e:
+            print(e)
 
+    # finalize plot
+    plt.ylabel(df["Units"+x].unique()[0])
+    plt.xlabel(df["Units"+y].unique()[0])
+    plt.xticks(rotation=60, ha='right')
+    plt.title(title)
+    plt.legend()
+    plt.subplots_adjust(bottom=0.4, right=.7)
+    plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
+    df.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" + title + ".csv")
+    plt.show()
 
 def compare_marimekko():
     pass
