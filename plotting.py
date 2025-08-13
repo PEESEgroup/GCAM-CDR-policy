@@ -1301,3 +1301,11 @@ def plot_alluvial(df, biochar_year, base_year):
                       font_size=20
                       )
     fig.show()
+
+
+def plot_marimekko(df, year, x, y, color, title):
+    pass
+
+
+def compare_marimekko():
+    pass
