@@ -44,7 +44,7 @@ def policy_cost(config_fname, year):
     # and compare costs to default
     if scenario != baseline:
         baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/"+baseline+"/"+baseline+"/price of CDR by technology and state.csv")
-        plotting.compare_marimekko(scenario_df, baseline_df)
+        plotting.compare_marimekko(scenario_df, baseline_df, config_fname)
 
     # calculate the total cost and plot
     for i in c.GCAMConstants.plotting_x:

@@ -1372,7 +1372,12 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
     return df
 
 
-def compare_marimekko(scenario_df, baseline_df):
+def compare_marimekko(scenario_df, baseline_df, config_fname):
+    nrow, ncol = get_subplot_dimensions(c.GCAMConstants.plotting_x)
+    # make plots
+    fig, axs = plt.subplots(ncol, nrow, sharex=False, sharey=False, constrained_layout=True)
+    colors, num = get_colors(1)
+    counter = 0
     for i in c.GCAMConstants.plotting_x:
         try:
             # get cumulative values, and lower and upper bounds
@@ -1385,10 +1390,10 @@ def compare_marimekko(scenario_df, baseline_df):
 
             if max(baseline_df[str(i) + "_upper"]) > max(scenario_df[str(i) + "_upper"]):
                 x = np.linspace(baseline_df[str(i) + "_lower"].min(),
-                                             baseline_df[str(i) + "_upper"].max(), 1000)
+                                             baseline_df[str(i) + "_upper"].max(), 10000)
             else:
                 x = np.linspace(scenario_df[str(i) + "_lower"].min(),
-                                scenario_df[str(i) + "_upper"].max(), 1000)
+                                scenario_df[str(i) + "_upper"].max(), 10000)
 
             # create the piecewise functions
             scenario_conditions = []
@@ -1408,12 +1413,20 @@ def compare_marimekko(scenario_df, baseline_df):
             baseline_y = np.piecewise(x, baseline_conditions, baseline_values)
 
             # TODO: refactor so that all comparisons are on the same plot
-            marimekko_diff(x, scenario_y, baseline_y)
+            marimekko_diff(x, scenario_y, baseline_y,axs, counter, nrow, colors, i)
+            counter +=1
         except KeyError as e:
             print(e)
 
+    if counter < ncol * nrow:
+        fig.delaxes(axs[int(counter / nrow), int(counter % nrow)])
+    title = "comparison in price and quantity of scenario from baseline"
+    plt.suptitle(title)
+    plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
+    plt.show()
 
-def marimekko_diff(x, scenario_y, baseline_y):
+
+def marimekko_diff(x, scenario_y, baseline_y, axs, counter, nrow, colors, year):
     df = pd.DataFrame(x)
     df.columns = ["x"]
     df["scenario_y"] = scenario_y
@@ -1422,27 +1435,39 @@ def marimekko_diff(x, scenario_y, baseline_y):
     df["width"] = df["x"].max()/len(df["x"])
     df["condition"] = df.apply(lambda row: marimekko_condition(row), axis=1)
 
-    fig, ax = plt.subplots()
-    ax.plot(df['x'], df['diff'])
+    # add in the colors
+
+    rect = Rectangle((0, 0), 0, 0, color=colors[0], alpha=0.6, label="reduced supply")
+    axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
+    rect = Rectangle((0, 0), 0, 0, color=colors[1], alpha=0.6, label="increased supply")
+    axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
+    rect = Rectangle((0, 0), 0, 0, color=colors[2], alpha=0.6, label="increased cost")
+    axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
+    rect = Rectangle((0, 0), 0, 0, color=colors[3], alpha=0.6, label="decreased cost")
+    axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
 
     # Iterate and add patches based on a condition in the 'condition' column
     for index, row in df.iterrows():
         if row['condition'] == "reduced supply":
             # (x,y) coordinates of the bottom-left corner, width, height
-            rect = Rectangle((row['x'], 0), row["width"], df["diff"].max(), color='grey', alpha=0.05)
-            ax.add_patch(rect)
+            rect = Rectangle((row['x'], 0), row["width"], df["diff"].max(), color=colors[0], alpha=0.03)
+            axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
         if row['condition'] == "increased supply":
-            rect = Rectangle((row['x'], 0), row["width"], df["diff"].min(), color='blue', alpha=0.01)
-            ax.add_patch(rect)
+            rect = Rectangle((row['x'], 0), row["width"], df["diff"].min(), color=colors[1], alpha=0.03)
+            axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
         if row['condition'] == "increased cost":
-            rect = Rectangle((row['x'], 0), row["width"], row["diff"], color='red', alpha=0.01)
-            ax.add_patch(rect)
+            rect = Rectangle((row['x'], 0), row["width"], row["diff"], color=colors[2], alpha=0.03)
+            axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
         if row['condition'] == "decreased cost":
-            rect = Rectangle((row['x'], 0), row["width"],  row["diff"], color='green', alpha=0.01)
-            ax.add_patch(rect)
-
-    # TODO: add a legend for the patches
-    plt.show()
+            rect = Rectangle((row['x'], 0), row["width"],  row["diff"], color=colors[3], alpha=0.03)
+            axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
+    # add a legend for patches
+    axs[int(counter / nrow), int(counter % nrow)].set_title(str(year))
+    axs[int(counter / nrow), int(counter % nrow)].set_xlim((df["x"].min()*1.01, df["x"].max()*1.01))
+    axs[int(counter / nrow), int(counter % nrow)].set_ylim((df["diff"].min()*1.01, df["diff"].max()*1.01))
+    axs[int(counter / nrow), int(counter % nrow)].set_xlabel("Mt CO$_2$-eq")
+    axs[int(counter / nrow), int(counter % nrow)].set_ylabel("2025USD/t CO$_2$-eq")
+    axs[int(counter / nrow), int(counter % nrow)].legend()
 
 
 def marimekko_condition(row):
