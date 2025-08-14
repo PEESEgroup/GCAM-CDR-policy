@@ -1,6 +1,7 @@
 import geopandas as gpd
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.collections import PatchCollection
 import pandas as pd
 import os
@@ -1378,45 +1379,90 @@ def compare_marimekko(scenario_df, baseline_df):
             scenario_df = scenario_df.sort_values(by=str(i) + "_price")
             scenario_df[str(i) + "_upper"] = scenario_df[str(i) + "_supply"].cumsum()
             scenario_df[str(i) + "_lower"] = scenario_df[str(i) + "_upper"] - scenario_df[str(i) + "_supply"]
-
-            # create the piecewise function
-            scenario_piecewise = np.linspace(scenario_df[str(i) + "_lower"].min(),
-                                             scenario_df[str(i) + "_upper"].max(), 10000)
-            scenario_conditions = []
-            for index, row in scenario_df.iterrows():
-                scenario_conditions.append(
-                    (row[str(i) + "_lower"] <= scenario_piecewise) & (scenario_piecewise < row[str(i) + "_upper"]))
-
-            scenario_values = scenario_df[str(i) + "_price"].values
-            scenario_y = np.piecewise(scenario_piecewise, scenario_conditions, scenario_values)
-
-            # get cumulative values, and lower and upper bounds
             baseline_df = baseline_df.sort_values(by=str(i) + "_price")
             baseline_df[str(i) + "_upper"] = baseline_df[str(i) + "_supply"].cumsum()
             baseline_df[str(i) + "_lower"] = baseline_df[str(i) + "_upper"] - baseline_df[str(i) + "_supply"]
 
-            # create the piecewise function
-            baseline_piecewise = np.linspace(baseline_df[str(i) + "_lower"].min(),
-                                             baseline_df[str(i) + "_upper"].max(), 10000)
+            if max(baseline_df[str(i) + "_upper"]) > max(scenario_df[str(i) + "_upper"]):
+                x = np.linspace(baseline_df[str(i) + "_lower"].min(),
+                                             baseline_df[str(i) + "_upper"].max(), 1000)
+            else:
+                x = np.linspace(scenario_df[str(i) + "_lower"].min(),
+                                scenario_df[str(i) + "_upper"].max(), 1000)
+
+            # create the piecewise functions
+            scenario_conditions = []
+            for index, row in scenario_df.iterrows():
+                scenario_conditions.append(
+                    (row[str(i) + "_lower"] <= x) & (x < row[str(i) + "_upper"]))
+
+            scenario_values = scenario_df[str(i) + "_price"].values
+            scenario_y = np.piecewise(x, scenario_conditions, scenario_values)
+
             baseline_conditions = []
             for index, row in baseline_df.iterrows():
                 baseline_conditions.append(
-                    (row[str(i) + "_lower"] <= baseline_piecewise) & (baseline_piecewise < row[str(i) + "_upper"]))
+                    (row[str(i) + "_lower"] <= x) & (x < row[str(i) + "_upper"]))
 
             baseline_values = baseline_df[str(i) + "_price"].values
-            baseline_y = np.piecewise(baseline_piecewise, baseline_conditions, baseline_values)
+            baseline_y = np.piecewise(x, baseline_conditions, baseline_values)
 
-            if max(baseline_piecewise) > max(scenario_piecewise):
-                marimekko_less_supply()
-            else:
-                marimekko_more_supply()
+            # TODO: refactor so that all comparisons are on the same plot
+            marimekko_diff(x, scenario_y, baseline_y)
         except KeyError as e:
             print(e)
 
 
-def marimekko_less_supply():
-    pass
+def marimekko_diff(x, scenario_y, baseline_y):
+    df = pd.DataFrame(x)
+    df.columns = ["x"]
+    df["scenario_y"] = scenario_y
+    df["baseline_y"] = baseline_y
+    df["diff"] = df.apply(lambda row: marimekko_diff_line(row), axis=1)
+    df["width"] = df["x"].max()/len(df["x"])
+    df["condition"] = df.apply(lambda row: marimekko_condition(row), axis=1)
+
+    fig, ax = plt.subplots()
+    ax.plot(df['x'], df['diff'])
+
+    # Iterate and add patches based on a condition in the 'condition' column
+    for index, row in df.iterrows():
+        if row['condition'] == "reduced supply":
+            # (x,y) coordinates of the bottom-left corner, width, height
+            rect = Rectangle((row['x'], 0), row["width"], df["diff"].max(), color='grey', alpha=0.05)
+            ax.add_patch(rect)
+        if row['condition'] == "increased supply":
+            rect = Rectangle((row['x'], 0), row["width"], df["diff"].min(), color='blue', alpha=0.01)
+            ax.add_patch(rect)
+        if row['condition'] == "increased cost":
+            rect = Rectangle((row['x'], 0), row["width"], row["diff"], color='red', alpha=0.01)
+            ax.add_patch(rect)
+        if row['condition'] == "decreased cost":
+            rect = Rectangle((row['x'], 0), row["width"],  row["diff"], color='green', alpha=0.01)
+            ax.add_patch(rect)
+
+    # TODO: add a legend for the patches
+    plt.show()
 
 
-def marimekko_more_supply():
-    pass
+def marimekko_condition(row):
+    if row["scenario_y"] == 0:
+        # this means that there is baseline y
+        return "reduced supply"
+    if row["baseline_y"] == 0:
+        # this means that there is scenario y
+        return "increased supply"
+    if row["diff"] > 0:
+        # this means that the scenario is more expensive
+        return "increased cost"
+    else:
+        return "decreased cost"
+
+
+def marimekko_diff_line(row):
+    if row["scenario_y"] == 0:
+        return np.nan
+    elif row["baseline_y"] == 0:
+        return np.nan
+    else:
+        return row["scenario_y"] - row["baseline_y"]
