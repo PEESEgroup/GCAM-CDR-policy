@@ -771,8 +771,8 @@ def plot_stacked_bar_product(df, year, column, title, nonBaselineScenario):
             # plot stacked bar chart
             plot_df.plot(kind="bar", stacked=True, color=colors, ax=axs)
         else:
-            plot_df = pd.melt(df, id_vars=['LandLeaf'], value_vars=[str(j) for j in year])
-            plot_df = plot_df.pivot(index="variable", columns="LandLeaf", values="value")
+            plot_df = pd.melt(df, id_vars=[column], value_vars=[str(j) for j in year])
+            plot_df = plot_df.pivot(index="variable", columns=column, values="value")
             # plot stacked bar chart
             plot_df.plot(kind="bar", stacked=True, color=colors, ax=axs)
 
@@ -786,7 +786,7 @@ def plot_stacked_bar_product(df, year, column, title, nonBaselineScenario):
             plt.gcf().set_size_inches(7, 8)
         else:
             plt.gcf().set_size_inches(12, 8)
-        plt.savefig("data/data_analysis/images/" + nonBaselineScenario + "/" + title + ".png", dpi=300)
+        plt.savefig("data/data_analysis/images/" + nonBaselineScenario.replace("_", "/") + "/" + title + ".png", dpi=300)
         plt.show()
 
     except ValueError as e:
