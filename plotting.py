@@ -1368,6 +1368,24 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
     plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
     df.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" + title + ".csv")
     plt.show()
+    return df
 
-def compare_marimekko():
-    pass
+
+def compare_marimekko(scenario_df, baseline_df):
+    for i in c.GCAMConstants.plotting_x:
+        # get cumulative values
+        scenario_df = scenario_df.sort_values(by=str(i) + "_supply")
+        scenario_df[str(i)] = scenario_df[str(i) + "_supply"].cumsum()
+
+        baseline_df = baseline_df.sort_values(by=str(i) + "_supply")
+        baseline_df[str(i)] = baseline_df[str(i) + "_supply"].cumsum()
+
+        # create the piecewise function
+        scenario_piecewise = np.linspace(scenario_df[str(i)].min(), scenario_df[str(i)].max(), 10000)
+        print(scenario_df[str(i)].items())
+        scenario_conditions = [j < scenario_piecewise < j for j in scenario_df[str(i)].items()]
+        scenario_values = [scenario_df.loc[i] for j in scenario_df[str(i)].items()]
+
+    df = pd.merge(scenario_df, baseline_df, "left", on=["GCAM", "product_price"])
+
+

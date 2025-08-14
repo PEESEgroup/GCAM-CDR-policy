@@ -38,22 +38,21 @@ def policy_cost(config_fname, year):
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on= ["product", "GCAM"],
                          suffixes=("_supply", "_price"))
     dataframe = dataframe[dataframe["GCAM"].isin(c.GCAMConstants.USA_region)]
-    plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
+    scenario_df = plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
                             "price of CDR by technology and state", config_fname)
 
     # calculate the total cost and plot
     for i in c.GCAMConstants.plotting_x:
-        dataframe[str(i) + "_total-cost"] = dataframe[str(i) + "_supply"] * dataframe[str(i) + "_price"]
+        dataframe[str(i)] = dataframe[str(i) + "_supply"] * dataframe[str(i) + "_price"]
+        dataframe = data_manipulation.group(dataframe, ["product_price"])
         dataframe["Units"] = "Million 2025$USD/yr"
 
     plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "technology", "policy cost by year", config_fname)
 
-    if scenario == baseline:
-        # this is a baseline scenario and no additional work needs to be done
-        pass
-    else:
-        # and compare to default
-        plotting.compare_marimekko()
+    # and compare costs to default
+    if scenario != baseline:
+        baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/"+baseline+"/"+baseline+"/price of CDR by technology and state.csv")
+        plotting.compare_marimekko(scenario_df, baseline_df)
 
 
 if __name__ == '__main__':
