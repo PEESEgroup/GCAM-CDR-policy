@@ -19,8 +19,8 @@ def main(config_fname, reference_year):
 
 def policy_cost(config_fname, year):
     # check if it is a baseline scenario
-    baseline = config_fname.split("_")[0]
-    scenario = config_fname.split("_")[1]
+    baseline = config_fname.split("_")[1]
+    scenario = config_fname.split("_")[0]
 
     # build and write out scenario policy cost
     supply = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech")
@@ -41,6 +41,11 @@ def policy_cost(config_fname, year):
     scenario_df = plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
                             "price of CDR by technology and state", config_fname)
 
+    # and compare costs to default
+    if scenario != baseline:
+        baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/"+baseline+"/"+baseline+"/price of CDR by technology and state.csv")
+        plotting.compare_marimekko(scenario_df, baseline_df)
+
     # calculate the total cost and plot
     for i in c.GCAMConstants.plotting_x:
         dataframe[str(i)] = dataframe[str(i) + "_supply"] * dataframe[str(i) + "_price"]
@@ -49,10 +54,7 @@ def policy_cost(config_fname, year):
 
     plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "technology", "policy cost by year", config_fname)
 
-    # and compare costs to default
-    if scenario != baseline:
-        baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/"+baseline+"/"+baseline+"/price of CDR by technology and state.csv")
-        plotting.compare_marimekko(scenario_df, baseline_df)
+
 
 
 if __name__ == '__main__':

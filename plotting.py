@@ -1313,7 +1313,7 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
     # update the columns of the dataframe and make it much smaller
     cols = [str(i) + x for i in year]
     cols.extend([str(i) + y for i in year])
-    cols.extend([color, "GCAM", "Units"+x, "Units"+y])
+    cols.extend([color, "GCAM", "Units" + x, "Units" + y])
     df = df[cols]
 
     # drop columns that only have nan
@@ -1343,17 +1343,17 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
                     addLabel = True
                 axs[int(counter / nrow), int(counter % nrow)].bar(
                     x=current_x + col_width / 2,  # Center the bar within its width
-                    height=df.loc[index, str(i)+y],
+                    height=df.loc[index, str(i) + y],
                     width=col_width,
                     bottom=0,
                     color=df.loc[index, "colors"],
                     linewidth=0.5,
                     label=df.loc[index, color] if addLabel else "_"
                 )
-                axs[int(counter / nrow), int(counter % nrow)].set_ylim(0, 1.05*df[str(i)+y].max())
+                axs[int(counter / nrow), int(counter % nrow)].set_ylim(0, 1.05 * df[str(i) + y].max())
                 axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
-                axs[int(counter / nrow), int(counter % nrow)].set_xlabel(df["Units"+x].unique()[0])
-                axs[int(counter / nrow), int(counter % nrow)].set_ylabel(df["Units"+y].unique()[0])
+                axs[int(counter / nrow), int(counter % nrow)].set_xlabel(df["Units" + x].unique()[0])
+                axs[int(counter / nrow), int(counter % nrow)].set_ylabel(df["Units" + y].unique()[0])
                 axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
                 axs[int(counter / nrow), int(counter % nrow)].legend()
                 current_x += col_width
@@ -1362,7 +1362,7 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
             print(e)
 
     # finalize plot
-    if counter < ncol*nrow:
+    if counter < ncol * nrow:
         fig.delaxes(axs[int(counter / nrow), int(counter % nrow)])
     plt.suptitle(title)
     plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
@@ -1373,19 +1373,50 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
 
 def compare_marimekko(scenario_df, baseline_df):
     for i in c.GCAMConstants.plotting_x:
-        # get cumulative values
-        scenario_df = scenario_df.sort_values(by=str(i) + "_supply")
-        scenario_df[str(i)] = scenario_df[str(i) + "_supply"].cumsum()
+        try:
+            # get cumulative values, and lower and upper bounds
+            scenario_df = scenario_df.sort_values(by=str(i) + "_price")
+            scenario_df[str(i) + "_upper"] = scenario_df[str(i) + "_supply"].cumsum()
+            scenario_df[str(i) + "_lower"] = scenario_df[str(i) + "_upper"] - scenario_df[str(i) + "_supply"]
 
-        baseline_df = baseline_df.sort_values(by=str(i) + "_supply")
-        baseline_df[str(i)] = baseline_df[str(i) + "_supply"].cumsum()
+            # create the piecewise function
+            scenario_piecewise = np.linspace(scenario_df[str(i) + "_lower"].min(),
+                                             scenario_df[str(i) + "_upper"].max(), 10000)
+            scenario_conditions = []
+            for index, row in scenario_df.iterrows():
+                scenario_conditions.append(
+                    (row[str(i) + "_lower"] <= scenario_piecewise) & (scenario_piecewise < row[str(i) + "_upper"]))
 
-        # create the piecewise function
-        scenario_piecewise = np.linspace(scenario_df[str(i)].min(), scenario_df[str(i)].max(), 10000)
-        print(scenario_df[str(i)].items())
-        scenario_conditions = [j < scenario_piecewise < j for j in scenario_df[str(i)].items()]
-        scenario_values = [scenario_df.loc[i] for j in scenario_df[str(i)].items()]
+            scenario_values = scenario_df[str(i) + "_price"].values
+            scenario_y = np.piecewise(scenario_piecewise, scenario_conditions, scenario_values)
 
-    df = pd.merge(scenario_df, baseline_df, "left", on=["GCAM", "product_price"])
+            # get cumulative values, and lower and upper bounds
+            baseline_df = baseline_df.sort_values(by=str(i) + "_price")
+            baseline_df[str(i) + "_upper"] = baseline_df[str(i) + "_supply"].cumsum()
+            baseline_df[str(i) + "_lower"] = baseline_df[str(i) + "_upper"] - baseline_df[str(i) + "_supply"]
+
+            # create the piecewise function
+            baseline_piecewise = np.linspace(baseline_df[str(i) + "_lower"].min(),
+                                             baseline_df[str(i) + "_upper"].max(), 10000)
+            baseline_conditions = []
+            for index, row in baseline_df.iterrows():
+                baseline_conditions.append(
+                    (row[str(i) + "_lower"] <= baseline_piecewise) & (baseline_piecewise < row[str(i) + "_upper"]))
+
+            baseline_values = baseline_df[str(i) + "_price"].values
+            baseline_y = np.piecewise(baseline_piecewise, baseline_conditions, baseline_values)
+
+            if max(baseline_piecewise) > max(scenario_piecewise):
+                marimekko_less_supply()
+            else:
+                marimekko_more_supply()
+        except KeyError as e:
+            print(e)
 
 
+def marimekko_less_supply():
+    pass
+
+
+def marimekko_more_supply():
+    pass
