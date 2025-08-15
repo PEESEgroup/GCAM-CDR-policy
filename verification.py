@@ -30,15 +30,20 @@ def main(scenario_name):
     # group certain types of files (i.e. CDR demand) together
     csvs = {}
     CDR = {}
+    region_market = pd.DataFrame()
     for xml in xml_files_to_build:
         for file in xml.data_files:
             csv = xml.data_files[file]
             if "verify" in file:
                 if "CDR" in file:
                     CDR[file] = csv
+                    if "linked_ghg_CDR" in file:
+                        links_ground_truth = pd.read_csv(CDR[file], skiprows=2)
+                        region_market = links_ground_truth[["region", "market"]]
                 else:
                     csvs[file] = csv
 
+    # verify CDR demand
     error_years.extend(verify_cdr(CDR, fpath))
 
     for csv in csvs:
@@ -46,15 +51,44 @@ def main(scenario_name):
         if "RES_markets" in csv:
             error_years.extend(verify_beccs(csvs[csv], fpath))
         if "ghg_constraint" in csv:
-            pass
+            error_years.extend(verify_ghg_constraint(ground_truth, region_market, fpath))
         if "ghg_tax" in csv:
             # query co2 prices
             results = pd.read_csv(fpath+"/CO2_prices.csv")
-            error_years.extend(verify_ghg_tax(ground_truth, results))
+            error_years.extend(verify_ghg_tax(ground_truth, results, fpath))
                 # TODO: add more file types
 
     # update output .csv files based on years with errors
     process_GCAM_data.masking(scenario_name, error_years)
+
+
+def verify_ghg_constraint(ground_truth, regions_map, fpath):
+    years_with_error = []
+    results = pd.read_csv(fpath + "/CO2_emissions_by_tech.csv")
+
+    # reformat ground truth
+    ground_truth = ground_truth.pivot(index='market', columns='year')['constraint'].reset_index()
+    ground_truth.columns = ground_truth.columns.astype(str)
+    ground_truth["Units"] = "Mt"
+
+    # categorize by market
+    results = pd.merge(results, regions_map, "left", left_on="GCAM", right_on="region")
+    results = results.groupby(["market", "scenario", "baseline", "Units"]).sum(min_count=1)
+
+    # merge dataframes
+    comparison = pd.merge(ground_truth, results, "left", on="market", suffixes=("_g", "_r"))
+
+    for index, row in comparison.iterrows():
+        df = comparison.iloc[index]
+        for i in constants.GCAMConstants.plotting_x:
+            # if the estimated value is not close to the reported value
+            if .99 * df[str(i) + "_r"] < df[str(i) + "_g"]:
+                print("GHG constraint for " + df["market"] + " matches the constraint " + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
+            else:
+                years_with_error.append(str(i))
+                log(fpath, str(i),
+                    "GHG constraint for " + df["market"] + " matches the constraint " + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
+    return years_with_error
 
 
 def verify_beccs(csv, fpath):

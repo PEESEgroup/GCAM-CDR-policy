@@ -40,13 +40,13 @@ def policy_cost(config_fname, year):
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on= ["product", "GCAM"],
                          suffixes=("_supply", "_price"))
     dataframe = dataframe[dataframe["GCAM"].isin(c.GCAMConstants.USA_region)]
-    """scenario_df = plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
+    scenario_df = plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
                             "price of CDR by technology and state", config_fname)
 
     # and compare costs to default
     if scenario != baseline:
         baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/"+baseline+"/"+baseline+"/price of CDR by technology and state.csv")
-        plotting.compare_marimekko(scenario_df, baseline_df, config_fname)"""
+        plotting.compare_marimekko(scenario_df, baseline_df, config_fname)
 
     # calculate the total cost and plot
     for i in c.GCAMConstants.plotting_x:

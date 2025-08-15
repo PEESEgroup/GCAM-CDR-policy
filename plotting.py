@@ -1412,7 +1412,6 @@ def compare_marimekko(scenario_df, baseline_df, config_fname):
             baseline_values = baseline_df[str(i) + "_price"].values
             baseline_y = np.piecewise(x, baseline_conditions, baseline_values)
 
-            # TODO: refactor so that all comparisons are on the same plot
             marimekko_diff(x, scenario_y, baseline_y,axs, counter, nrow, colors, i)
             counter +=1
         except KeyError as e:
@@ -1420,7 +1419,7 @@ def compare_marimekko(scenario_df, baseline_df, config_fname):
 
     if counter < ncol * nrow:
         fig.delaxes(axs[int(counter / nrow), int(counter % nrow)])
-    title = "comparison in price and quantity of scenario from baseline"
+    title = "change in price and quantity of CDR in comparison to the baseline"
     plt.suptitle(title)
     plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
     plt.show()
@@ -1436,7 +1435,6 @@ def marimekko_diff(x, scenario_y, baseline_y, axs, counter, nrow, colors, year):
     df["condition"] = df.apply(lambda row: marimekko_condition(row), axis=1)
 
     # add in the colors
-
     rect = Rectangle((0, 0), 0, 0, color=colors[0], alpha=0.6, label="reduced supply")
     axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
     rect = Rectangle((0, 0), 0, 0, color=colors[1], alpha=0.6, label="increased supply")
@@ -1461,12 +1459,13 @@ def marimekko_diff(x, scenario_y, baseline_y, axs, counter, nrow, colors, year):
         if row['condition'] == "decreased cost":
             rect = Rectangle((row['x'], 0), row["width"],  row["diff"], color=colors[3], alpha=0.03)
             axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
+
     # add a legend for patches
     axs[int(counter / nrow), int(counter % nrow)].set_title(str(year))
     axs[int(counter / nrow), int(counter % nrow)].set_xlim((df["x"].min()*1.01, df["x"].max()*1.01))
     axs[int(counter / nrow), int(counter % nrow)].set_ylim((df["diff"].min()*1.01, df["diff"].max()*1.01))
     axs[int(counter / nrow), int(counter % nrow)].set_xlabel("Mt CO$_2$-eq")
-    axs[int(counter / nrow), int(counter % nrow)].set_ylabel("2025USD/t CO$_2$-eq")
+    axs[int(counter / nrow), int(counter % nrow)].set_ylabel("difference in 2025USD/t CO$_2$-eq")
     axs[int(counter / nrow), int(counter % nrow)].legend()
 
 
