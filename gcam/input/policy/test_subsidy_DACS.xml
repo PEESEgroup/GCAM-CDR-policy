@@ -4,29 +4,29 @@
       <region name="AL">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -40,29 +40,29 @@
       <region name="AK">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -76,29 +76,29 @@
       <region name="AZ">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -112,29 +112,29 @@
       <region name="AR">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -148,29 +148,29 @@
       <region name="CA">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -184,29 +184,29 @@
       <region name="CO">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -220,29 +220,29 @@
       <region name="CT">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -256,29 +256,29 @@
       <region name="DE">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -292,29 +292,29 @@
       <region name="FL">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -328,29 +328,29 @@
       <region name="GA">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -364,29 +364,29 @@
       <region name="HI">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -400,29 +400,29 @@
       <region name="ID">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -436,29 +436,29 @@
       <region name="IL">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -472,29 +472,29 @@
       <region name="IN">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -508,29 +508,29 @@
       <region name="IA">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -544,29 +544,29 @@
       <region name="KS">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -580,29 +580,29 @@
       <region name="KY">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -616,29 +616,29 @@
       <region name="LA">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -652,29 +652,29 @@
       <region name="ME">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -688,29 +688,29 @@
       <region name="MD">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -724,29 +724,29 @@
       <region name="MA">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -760,29 +760,29 @@
       <region name="MI">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -796,29 +796,29 @@
       <region name="MN">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -832,29 +832,29 @@
       <region name="MS">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -868,29 +868,29 @@
       <region name="MO">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -904,29 +904,29 @@
       <region name="MT">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -940,29 +940,29 @@
       <region name="NE">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -976,29 +976,29 @@
       <region name="NV">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1012,29 +1012,29 @@
       <region name="NH">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1048,29 +1048,29 @@
       <region name="NJ">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1084,29 +1084,29 @@
       <region name="NM">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1120,29 +1120,29 @@
       <region name="NY">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1156,29 +1156,29 @@
       <region name="NC">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1192,29 +1192,29 @@
       <region name="ND">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1228,29 +1228,29 @@
       <region name="OH">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1264,29 +1264,29 @@
       <region name="OK">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1300,29 +1300,29 @@
       <region name="OR">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1336,29 +1336,29 @@
       <region name="PA">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1372,29 +1372,29 @@
       <region name="RI">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1408,29 +1408,29 @@
       <region name="SC">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1444,29 +1444,29 @@
       <region name="SD">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1480,29 +1480,29 @@
       <region name="TN">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1516,29 +1516,29 @@
       <region name="TX">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1552,29 +1552,29 @@
       <region name="UT">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1588,29 +1588,29 @@
       <region name="VT">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1624,29 +1624,29 @@
       <region name="VA">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1660,29 +1660,29 @@
       <region name="WA">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1696,29 +1696,29 @@
       <region name="WV">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1732,29 +1732,29 @@
       <region name="WI">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
@@ -1768,29 +1768,29 @@
       <region name="WY">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
-               <technology name="DACS">
+               <technology name="DAC">
                   <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                   <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
+                     <input-subsidy name="DAC_subsidy"/>
                   </period>
                </technology>
             </subsector>
          </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
+         <policy-portfolio-standard name="DAC_subsidy">
             <policyType>subsidy</policyType>
             <market>USA</market>
             <fixedTax year="2025">40</fixedTax>
