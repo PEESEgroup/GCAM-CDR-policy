@@ -75,9 +75,10 @@ def build_subsidies(file):
 
         # add in the tax data
         for r, year, sector, subsector, tech in subsidy:
-            if r == area:  # if the regions match
+            if str(year) not in seen:  # if the regions match
                 year_sub = subsidy[r, year, sector, subsector, tech]
                 ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"])
+                seen[str(year)] = 0
 
 
 
