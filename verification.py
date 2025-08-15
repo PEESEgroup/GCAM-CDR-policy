@@ -30,7 +30,7 @@ def main(scenario_name):
     # group certain types of files (i.e. CDR demand) together
     csvs = {}
     CDR = {}
-    region_market = pd.DataFrame()
+    links = {}
     for xml in xml_files_to_build:
         for file in xml.data_files:
             csv = xml.data_files[file]
@@ -39,8 +39,11 @@ def main(scenario_name):
                     CDR[file] = csv
                     if "linked_ghg_CDR" in file:
                         links_ground_truth = pd.read_csv(CDR[file], skiprows=2)
-                        region_market = links_ground_truth[["region", "market"]]
+                        links["region_market"] = links_ground_truth[["region", "market"]]
                 else:
+                    if "link" in file:
+                        links_ground_truth = pd.read_csv(CDR[file], skiprows=2)
+                        links[file] = links_ground_truth[["region", "market"]]
                     csvs[file] = csv
 
     # verify CDR demand
@@ -51,15 +54,42 @@ def main(scenario_name):
         if "RES_markets" in csv:
             error_years.extend(verify_beccs(csvs[csv], fpath))
         if "ghg_constraint" in csv:
-            error_years.extend(verify_ghg_constraint(ground_truth, region_market, fpath))
+            error_years.extend(verify_ghg_constraint(ground_truth, links["region_market"], fpath))
         if "ghg_tax" in csv:
             # query co2 prices
             results = pd.read_csv(fpath+"/CO2_prices.csv")
             error_years.extend(verify_ghg_tax(ground_truth, results, fpath))
+        if "subsidy" in csv:
+            error_years.extend(verify_subsidy(ground_truth, csv, links, fpath))
                 # TODO: add more file types
 
     # update output .csv files based on years with errors
     process_GCAM_data.masking(scenario_name, error_years)
+
+
+def verify_subsidy(ground_truth, csv, links, fpath):
+    # format results
+    product = csv["technology"].unique()[0]+"_subsidy"
+    results = pd.read_csv(fpath + "/prices_of_all_markets.csv")
+    results = results[results["product"] == product]
+    years_with_error = []
+
+    # format ground truth
+    ground_truth = ground_truth.pivot(index='market', columns='year')['fixedTax'].reset_index()
+    ground_truth.columns = ground_truth.columns.astype(str)
+    ground_truth["Units"] = "Mt"
+    ground_truth = pd.merge(ground_truth, links, "left", left_on="region", right_on="GCAM", suffixes=("_l", "_r"))
+
+    # merge results and ground truth
+    merge = pd.merge(results, ground_truth, "left", left_on="GCAM", right_on="region")
+    for i in constants.GCAMConstants.plotting_x:
+        # check that minimum price is satisfied
+        merge[str(i)] = merge[str(i)+"_l"] - merge[str(i)+"_r"]
+        if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
+            years_with_error.append(str(i))
+            log(fpath, str(i), "Subsidy for " + str(product) + " is incorrect in " + str(i))
+
+    return years_with_error
 
 
 def verify_ghg_constraint(ground_truth, regions_map, fpath):
@@ -249,4 +279,4 @@ def log(fpath, year, reason):
 
 
 if __name__ == '__main__':
-    main("test_default")
+    main("testsubsidy_default")
