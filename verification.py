@@ -79,10 +79,9 @@ def verify_subsidy(ground_truth, links, fpath):
     ground_truth = ground_truth.pivot(index='market', columns='year')['fixedTax'].reset_index()
     ground_truth.columns = ground_truth.columns.astype(str)
     ground_truth["Units"] = "Mt"
-    ground_truth = pd.merge(ground_truth, link, "left", left_on="region", right_on="GCAM", suffixes=("_l", "_r"))
 
     # merge results and ground truth
-    merge = pd.merge(results, ground_truth, "left", left_on="GCAM", right_on="region")
+    merge = pd.merge(results, ground_truth, "left", left_on="GCAM", right_on="market", suffixes=("_l", "_r"))
     for i in constants.GCAMConstants.plotting_x:
         # check that minimum price is satisfied
         merge[str(i)] = merge[str(i)+"_l"] - merge[str(i)+"_r"]
