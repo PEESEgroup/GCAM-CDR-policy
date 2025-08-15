@@ -77,9 +77,11 @@ def build_subsidies(file):
         for r, year, sector, subsector, tech in subsidy:
             if str(year) not in seen:  # if the regions match
                 year_sub = subsidy[r, year, sector, subsector, tech]
-                ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"])
+                if tech in ["BECCS", "DAC", "TEW", "OEW"]:
+                    # convert from $2025 USD/t CO2-eq to $1975/kg C
+                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"]/1000/6.1*44/12)
+                else:
+                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"])
                 seen[str(year)] = 0
-
-
 
     return scenario
