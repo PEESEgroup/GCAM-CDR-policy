@@ -361,42 +361,6 @@
             <fixedTax year="2050">40</fixedTax>
          </policy-portfolio-standard>
       </region>
-      <region name="HI">
-         <supplysector name="CDR_regional">
-            <subsector name="CDR">
-               <technology name="DAC">
-                  <period year="2025">
-                     <input-subsidy name="DAC_subsidy"/>
-                  </period>
-                  <period year="2030">
-                     <input-subsidy name="DAC_subsidy"/>
-                  </period>
-                  <period year="2035">
-                     <input-subsidy name="DAC_subsidy"/>
-                  </period>
-                  <period year="2040">
-                     <input-subsidy name="DAC_subsidy"/>
-                  </period>
-                  <period year="2045">
-                     <input-subsidy name="DAC_subsidy"/>
-                  </period>
-                  <period year="2050">
-                     <input-subsidy name="DAC_subsidy"/>
-                  </period>
-               </technology>
-            </subsector>
-         </supplysector>
-         <policy-portfolio-standard name="DAC_subsidy">
-            <policyType>subsidy</policyType>
-            <market>USA</market>
-            <fixedTax year="2025">40</fixedTax>
-            <fixedTax year="2030">40</fixedTax>
-            <fixedTax year="2035">40</fixedTax>
-            <fixedTax year="2040">40</fixedTax>
-            <fixedTax year="2045">40</fixedTax>
-            <fixedTax year="2050">40</fixedTax>
-         </policy-portfolio-standard>
-      </region>
       <region name="ID">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
