@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<ModelInterfaceBatch>
+   <class name="ModelInterface.ModelGUI2.DbViewer">
+      <command name="XMLDB Batch File">
+         <scenario name="testsubsidy_default"/>
+         <queryFile>xml/query_list.xml</queryFile>
+         <outFile>data/gcam_out/testsubsidy/default/ref.csv</outFile>
+         <xmldbLocation>gcam/output/database_basexdb-testsubsidy_default</xmldbLocation>
+      </command>
+   </class>
+</ModelInterfaceBatch>

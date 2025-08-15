@@ -138,20 +138,22 @@ def build_config_file(scenario_name, baseline):
         xml_baseline_files = utilities.build_from_scenario(baseline)
         xml_scenario_files = utilities.build_from_scenario(scenario_name)
 
-    baseline_files = build_files(xml_baseline_files)
+    baseline_files = build_files(xml_baseline_files, baseline=True)
 
     # there might be no scenario files
     if xml_scenario_files is None:
         scenario_files = []
     else:
-        scenario_files = build_files(xml_scenario_files)
+        scenario_files = build_files(xml_scenario_files, baseline=False)
 
     # find out which files are new and which are altered
     for x in scenario_files:
-        if "original" in x.build_file_type:
+        if "original" == str(x.build_file_type):
             original.append(x)
-        if "altered" in x.build_file_type:
+        elif "altered" == str(x.build_file_type):
             altered.append(x)
+        else:
+            print("wrong file type", str(x.build_file_type))
 
     # add default files
     config = default_config(scenario_name + "_" + baseline)
@@ -189,7 +191,7 @@ def build_config_file(scenario_name, baseline):
     return config_fname
 
 
-def build_files(xml_files_to_build):
+def build_files(xml_files_to_build, baseline):
     """
     build xml files based on the configuration type
     :param xml_files_to_build: a list of xml config objects to be built
@@ -198,13 +200,13 @@ def build_files(xml_files_to_build):
     files = []
     for k in xml_files_to_build:
         if k.xml_build_type == "CDR Policy":
-            files.append(build_CDR_demand.build(k))
+            files.append(build_CDR_demand.build(k, baseline))
         if k.xml_build_type == "BECCS RES":
-            files.append(build_BECCS_integration.build_BECCS_integration(k))
+            files.append(build_BECCS_integration.build_BECCS_integration(k, baseline))
         if k.xml_build_type == "GHG constraint":
-            files.append(build_global_GHG.build_GHG(k))
-        if k.xml_build_type == "subsidy":
-            files.append(build_subsidy.build_subsidy(k))
+            files.append(build_global_GHG.build_GHG(k, baseline))
+        if k.xml_build_type == "subsidy Policy":
+            files.append(build_subsidy.build_subsidy(k, baseline))
         # TODO add more build types here
 
     return files

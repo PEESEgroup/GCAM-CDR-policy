@@ -1,4 +1,3 @@
-import pandas as pd
 import build_xml_config
 import utilities
 from xml.dom import minidom
@@ -41,6 +40,11 @@ def build_subsidies(file):
     markets = file["subsidy"]
     subsidy = file["subsidy_amount"]
 
+    # fix subsidy name
+    sub_name = "subsidy"
+    for r, year, sector, subsector, tech in subsidy:
+        sub_name = tech + "_subsidy"
+
     # high level
     scenario = ET.Element("scenario")
     world = ET.SubElement(scenario, "world")
@@ -50,20 +54,23 @@ def build_subsidies(file):
 
         # policy portfolio standard
         region_link = markets[area]
-        policy_portfolio_standard = ET.SubElement(region, "policy-portfolio-standard",
-                                                  name=region_link["policy-portfolio-standard"])
+        policy_portfolio_standard = ET.SubElement(region, "policy-portfolio-standard", name=sub_name)
         ET.SubElement(policy_portfolio_standard, "policyType").text = "subsidy"
         ET.SubElement(policy_portfolio_standard, "market").text = region_link["market"]
 
         # add in the tax data
-        for region, year, sector, subsector, tech in subsidy:
-            if region == area:  # if the regions match
-                year_sub = subsidy[region, year, sector, subsector, tech]
+        for r, year, sector, subsector, tech in subsidy:
+            if r == area:  # if the regions match
+                year_sub = subsidy[r, year, sector, subsector, tech]
                 ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"])
 
-        # sectors
-        supply_sector = ET.SubElement(region, "supplysector", name=region_link["supplysector"])
-        subsector = ET.SubElement(supply_sector, "subsector", name=region_link["subsector"])
-        ET.SubElement(subsector, "stub-technology", name=region_link["stub-technology"])
+        # add technologies the subsidies apply to
+        seen = {}
+        for r, year, sector, ss, tech in subsidy:
+            if r + sector + ss + tech not in seen:
+                supply_sector = ET.SubElement(region, "supplysector", name=sector)
+                subsector = ET.SubElement(supply_sector, "subsector", name=ss)
+                ET.SubElement(subsector, "stub-technology", name=tech)
+                seen[r + sector + ss + tech] = 0
 
     return scenario

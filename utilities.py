@@ -58,8 +58,15 @@ def build_from_scenario(scenario_name):
         ]
     elif "testsubsidy" in scenario_name:
         return [build_xml_config.XMLConfig(
-            data_files={"subsidy": "./building_xml/inputs/testsubsidy_verify.csv",
-                        "subsidy_amount": "./building_xml/inputs/subsidy_amount_verify.csv"},
+            data_files={"subsidy": "./building_xml/inputs/testsubsidy_links.csv",
+                        "subsidy_amount": "./building_xml/inputs/subsidy_DACS_verify.csv"},
             xml_build_type="subsidy Policy",
-            output_fname="test_subsidy.xml"
-        )]
+            output_fname="test_subsidy_DACS.xml"
+        ),
+            build_xml_config.XMLConfig(
+                data_files={"subsidy": "./building_xml/inputs/testsubsidy_links.csv",
+                            "subsidy_amount": "./building_xml/inputs/subsidy_TEW_verify.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="test_subsidy_TEW.xml"
+            )
+        ]
