@@ -13,7 +13,10 @@ def main(scenario_name):
     :return: N/A
     """
     # get a list of files that need verification
-    xml_files_to_build = utilities.build_from_scenario(scenario_name)
+    files = scenario_name.split("_")
+    xml_files_to_build = []
+    for i in files:
+        xml_files_to_build.extend(utilities.build_from_scenario(str(i)))
 
     # location of output data
     directory = str(scenario_name).replace("_", "/")
@@ -37,39 +40,37 @@ def main(scenario_name):
             if "verify" in file:
                 if "CDR" in file:
                     CDR[file] = csv
-                    if "linked_ghg_CDR" in file:
-                        links_ground_truth = pd.read_csv(CDR[file], skiprows=2)
-                        links["region_market"] = links_ground_truth[["region", "market"]]
                 else:
-                    if "link" in file:
-                        links_ground_truth = pd.read_csv(CDR[file], skiprows=2)
-                        links[file] = links_ground_truth[["region", "market"]]
                     csvs[file] = csv
+            if "link" in file:
+                links_ground_truth = pd.read_csv(csv, skiprows=2)
+                links[file] = links_ground_truth[["region", "market"]]
 
     # verify CDR demand
-    error_years.extend(verify_cdr(CDR, fpath))
+    error_years.extend(verify_cdr(CDR, links, fpath))
 
     for csv in csvs:
         ground_truth = pd.read_csv(csvs[csv], skiprows=2)
         if "RES_markets" in csv:
             error_years.extend(verify_beccs(csvs[csv], fpath))
         if "ghg_constraint" in csv:
-            error_years.extend(verify_ghg_constraint(ground_truth, links["region_market"], fpath))
+            error_years.extend(verify_ghg_constraint(ground_truth, links["ghg_CDR_market_link"], fpath))
         if "ghg_tax" in csv:
             # query co2 prices
             results = pd.read_csv(fpath+"/CO2_prices.csv")
             error_years.extend(verify_ghg_tax(ground_truth, results, fpath))
         if "subsidy" in csv:
-            error_years.extend(verify_subsidy(ground_truth, csv, links, fpath))
-                # TODO: add more file types
+            error_years.extend(verify_subsidy(ground_truth, links, fpath))
+        # TODO: add more file types
 
     # update output .csv files based on years with errors
     process_GCAM_data.masking(scenario_name, error_years)
 
 
-def verify_subsidy(ground_truth, csv, links, fpath):
+def verify_subsidy(ground_truth, links, fpath):
     # format results
-    product = csv["technology"].unique()[0]+"_subsidy"
+    product = ground_truth["stub-technology"].unique()[0] + "_subsidy"
+    link = links[product+"_link"]
     results = pd.read_csv(fpath + "/prices_of_all_markets.csv")
     results = results[results["product"] == product]
     years_with_error = []
@@ -78,7 +79,7 @@ def verify_subsidy(ground_truth, csv, links, fpath):
     ground_truth = ground_truth.pivot(index='market', columns='year')['fixedTax'].reset_index()
     ground_truth.columns = ground_truth.columns.astype(str)
     ground_truth["Units"] = "Mt"
-    ground_truth = pd.merge(ground_truth, links, "left", left_on="region", right_on="GCAM", suffixes=("_l", "_r"))
+    ground_truth = pd.merge(ground_truth, link, "left", left_on="region", right_on="GCAM", suffixes=("_l", "_r"))
 
     # merge results and ground truth
     merge = pd.merge(results, ground_truth, "left", left_on="GCAM", right_on="region")
@@ -144,7 +145,7 @@ def verify_beccs(csv, fpath):
     return years_with_error
 
 
-def verify_cdr(CDR, fpath):
+def verify_cdr(CDR, links, fpath):
     """
     verify ghg tax values
     :param CDR: a list of files necessary to validate CDR output
@@ -154,14 +155,10 @@ def verify_cdr(CDR, fpath):
     years_with_error = []
     exo_CDR_demand = pd.DataFrame()
     elastic_CDR_demand = pd.DataFrame()
-    links_ground_truth = pd.DataFrame()
-    region_market = pd.DataFrame()
+    region_market = links["ghg_CDR_market_link"]
 
     # split up CDR dictionary
     for i in CDR:
-        if "linked_ghg_CDR" in i:
-            links_ground_truth = pd.read_csv(CDR[i], skiprows=2)
-            region_market = links_ground_truth[["region", "market"]]
         if "exo_CDR" in i:
             exo_CDR_demand = pd.read_csv(CDR[i], skiprows=2)
             exo_CDR_demand = exo_CDR_demand.pivot(index='region', columns='year')['demand'].reset_index()
@@ -183,7 +180,7 @@ def verify_cdr(CDR, fpath):
             CDR_demand[str(i)] = CDR_demand[str(i) + "_l"] + CDR_demand[str(i) + "_r"]
 
     # process ground truth CDR numbers
-    if not links_ground_truth.empty:
+    if not region_market.empty:
         # move unsatisfied CDR demand to its own output .csv file
         results = results[results["GCAM"] != "Global"]
         unsatisfied_CDR = results[results["subsector"] == "unsatisfiedDemand"]

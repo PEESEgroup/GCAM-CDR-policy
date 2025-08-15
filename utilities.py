@@ -42,14 +42,14 @@ def build_from_scenario(scenario_name):
             ),
             # important to build links before CDR demand
             build_xml_config.XMLConfig(
-                data_files={"linked_ghg_CDR_markets_verify": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
                             "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify.csv"},
                             # "ghg_tax_verify": "./building_xml/inputs/GHG_tax_verify.csv"},
                 xml_build_type="GHG constraint",
                 output_fname="default_GHGPolicies.xml"
             ),
             build_xml_config.XMLConfig(
-                data_files={"linked_ghg_CDR_markets_verify": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
                             "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify.csv"},
                 xml_build_type="CDR Policy",
@@ -58,14 +58,15 @@ def build_from_scenario(scenario_name):
         ]
     elif "testsubsidy" in scenario_name:
         return [build_xml_config.XMLConfig(
-            data_files={"DAC_subsidy_links": "./building_xml/inputs/DAC_links.csv",
-                        "subsidy_amount": "./building_xml/inputs/subsidy_DACS_verify.csv"},
+            # <tech>_subsidy_link
+            data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
+                        "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_DACS_verify.csv"},
             xml_build_type="subsidy Policy",
             output_fname="test_subsidy_DACS.xml"
         ),
             build_xml_config.XMLConfig(
-                data_files={"TEW_subsidy_links": "./building_xml/inputs/TEW_links.csv",
-                            "subsidy_amount": "./building_xml/inputs/subsidy_TEW_verify.csv"},
+                data_files={"TEW_subsidy_link": "./building_xml/inputs/TEW_links.csv",
+                            "TEW_subsidy_amount_verify": "./building_xml/inputs/subsidy_TEW_verify.csv"},
                 xml_build_type="subsidy Policy",
                 output_fname="test_subsidy_TEW.xml"
             )
