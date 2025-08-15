@@ -1,42 +1,6 @@
 <?xml version="1.0" ?>
 <scenario>
    <world>
-      <region name="USA">
-         <supplysector name="CDR_regional">
-            <subsector name="CDR">
-               <technology name="DACS">
-                  <period year="2025">
-                     <input-subsidy name="DACS_subsidy"/>
-                  </period>
-                  <period year="2030">
-                     <input-subsidy name="DACS_subsidy"/>
-                  </period>
-                  <period year="2035">
-                     <input-subsidy name="DACS_subsidy"/>
-                  </period>
-                  <period year="2040">
-                     <input-subsidy name="DACS_subsidy"/>
-                  </period>
-                  <period year="2045">
-                     <input-subsidy name="DACS_subsidy"/>
-                  </period>
-                  <period year="2050">
-                     <input-subsidy name="DACS_subsidy"/>
-                  </period>
-               </technology>
-            </subsector>
-         </supplysector>
-         <policy-portfolio-standard name="DACS_subsidy">
-            <policyType>subsidy</policyType>
-            <market>USA</market>
-            <fixedTax year="2025">40</fixedTax>
-            <fixedTax year="2030">40</fixedTax>
-            <fixedTax year="2035">40</fixedTax>
-            <fixedTax year="2040">40</fixedTax>
-            <fixedTax year="2045">40</fixedTax>
-            <fixedTax year="2050">40</fixedTax>
-         </policy-portfolio-standard>
-      </region>
       <region name="AL">
          <supplysector name="CDR_regional">
             <subsector name="CDR">
