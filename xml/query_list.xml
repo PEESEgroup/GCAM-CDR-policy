@@ -65,12 +65,12 @@
    </aQuery>
    <aQuery>
       <region name="USA"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Africa_Eastern"/>
@@ -101,12 +101,12 @@
    </aQuery>
    <aQuery>
       <region name="Africa_Eastern"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Africa_Northern"/>
@@ -137,12 +137,12 @@
    </aQuery>
    <aQuery>
       <region name="Africa_Northern"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Africa_Southern"/>
@@ -173,12 +173,12 @@
    </aQuery>
    <aQuery>
       <region name="Africa_Southern"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Africa_Western"/>
@@ -209,12 +209,12 @@
    </aQuery>
    <aQuery>
       <region name="Africa_Western"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Australia_NZ"/>
@@ -245,12 +245,12 @@
    </aQuery>
    <aQuery>
       <region name="Australia_NZ"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Brazil"/>
@@ -281,12 +281,12 @@
    </aQuery>
    <aQuery>
       <region name="Brazil"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Canada"/>
@@ -317,12 +317,12 @@
    </aQuery>
    <aQuery>
       <region name="Canada"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central America and Caribbean"/>
@@ -353,12 +353,12 @@
    </aQuery>
    <aQuery>
       <region name="Central America and Caribbean"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central Asia"/>
@@ -389,12 +389,12 @@
    </aQuery>
    <aQuery>
       <region name="Central Asia"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="China"/>
@@ -425,12 +425,12 @@
    </aQuery>
    <aQuery>
       <region name="China"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="EU-12"/>
@@ -461,12 +461,12 @@
    </aQuery>
    <aQuery>
       <region name="EU-12"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="EU-15"/>
@@ -497,12 +497,12 @@
    </aQuery>
    <aQuery>
       <region name="EU-15"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Europe_Eastern"/>
@@ -533,12 +533,12 @@
    </aQuery>
    <aQuery>
       <region name="Europe_Eastern"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Europe_Non_EU"/>
@@ -569,12 +569,12 @@
    </aQuery>
    <aQuery>
       <region name="Europe_Non_EU"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="European Free Trade Association"/>
@@ -605,12 +605,12 @@
    </aQuery>
    <aQuery>
       <region name="European Free Trade Association"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="India"/>
@@ -641,12 +641,12 @@
    </aQuery>
    <aQuery>
       <region name="India"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Indonesia"/>
@@ -677,12 +677,12 @@
    </aQuery>
    <aQuery>
       <region name="Indonesia"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Japan"/>
@@ -713,12 +713,12 @@
    </aQuery>
    <aQuery>
       <region name="Japan"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Mexico"/>
@@ -749,12 +749,12 @@
    </aQuery>
    <aQuery>
       <region name="Mexico"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Middle East"/>
@@ -785,12 +785,12 @@
    </aQuery>
    <aQuery>
       <region name="Middle East"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Pakistan"/>
@@ -821,12 +821,12 @@
    </aQuery>
    <aQuery>
       <region name="Pakistan"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Russia"/>
@@ -857,12 +857,12 @@
    </aQuery>
    <aQuery>
       <region name="Russia"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="South Africa"/>
@@ -893,12 +893,12 @@
    </aQuery>
    <aQuery>
       <region name="South Africa"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="South America_Northern"/>
@@ -929,12 +929,12 @@
    </aQuery>
    <aQuery>
       <region name="South America_Northern"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="South America_Southern"/>
@@ -965,12 +965,12 @@
    </aQuery>
    <aQuery>
       <region name="South America_Southern"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="South Asia"/>
@@ -1001,12 +1001,12 @@
    </aQuery>
    <aQuery>
       <region name="South Asia"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="South Korea"/>
@@ -1037,12 +1037,12 @@
    </aQuery>
    <aQuery>
       <region name="South Korea"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Southeast Asia"/>
@@ -1073,12 +1073,12 @@
    </aQuery>
    <aQuery>
       <region name="Southeast Asia"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Taiwan"/>
@@ -1109,12 +1109,12 @@
    </aQuery>
    <aQuery>
       <region name="Taiwan"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Argentina"/>
@@ -1145,12 +1145,12 @@
    </aQuery>
    <aQuery>
       <region name="Argentina"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Colombia"/>
@@ -1181,12 +1181,12 @@
    </aQuery>
    <aQuery>
       <region name="Colombia"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="AL"/>
@@ -1217,12 +1217,12 @@
    </aQuery>
    <aQuery>
       <region name="AL"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="AK"/>
@@ -1253,12 +1253,12 @@
    </aQuery>
    <aQuery>
       <region name="AK"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="AZ"/>
@@ -1289,12 +1289,12 @@
    </aQuery>
    <aQuery>
       <region name="AZ"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="AR"/>
@@ -1325,12 +1325,12 @@
    </aQuery>
    <aQuery>
       <region name="AR"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="CA"/>
@@ -1361,12 +1361,12 @@
    </aQuery>
    <aQuery>
       <region name="CA"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="CO"/>
@@ -1397,12 +1397,12 @@
    </aQuery>
    <aQuery>
       <region name="CO"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="CT"/>
@@ -1433,12 +1433,12 @@
    </aQuery>
    <aQuery>
       <region name="CT"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="DE"/>
@@ -1469,12 +1469,12 @@
    </aQuery>
    <aQuery>
       <region name="DE"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="DC"/>
@@ -1505,12 +1505,12 @@
    </aQuery>
    <aQuery>
       <region name="DC"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="FL"/>
@@ -1541,12 +1541,12 @@
    </aQuery>
    <aQuery>
       <region name="FL"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="GA"/>
@@ -1577,12 +1577,12 @@
    </aQuery>
    <aQuery>
       <region name="GA"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="HI"/>
@@ -1613,12 +1613,12 @@
    </aQuery>
    <aQuery>
       <region name="HI"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="ID"/>
@@ -1649,12 +1649,12 @@
    </aQuery>
    <aQuery>
       <region name="ID"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="IL"/>
@@ -1685,12 +1685,12 @@
    </aQuery>
    <aQuery>
       <region name="IL"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="IN"/>
@@ -1721,12 +1721,12 @@
    </aQuery>
    <aQuery>
       <region name="IN"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="IA"/>
@@ -1757,12 +1757,12 @@
    </aQuery>
    <aQuery>
       <region name="IA"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="KS"/>
@@ -1793,12 +1793,12 @@
    </aQuery>
    <aQuery>
       <region name="KS"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="KY"/>
@@ -1829,12 +1829,12 @@
    </aQuery>
    <aQuery>
       <region name="KY"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="LA"/>
@@ -1865,12 +1865,12 @@
    </aQuery>
    <aQuery>
       <region name="LA"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="ME"/>
@@ -1901,12 +1901,12 @@
    </aQuery>
    <aQuery>
       <region name="ME"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MD"/>
@@ -1937,12 +1937,12 @@
    </aQuery>
    <aQuery>
       <region name="MD"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MA"/>
@@ -1973,12 +1973,12 @@
    </aQuery>
    <aQuery>
       <region name="MA"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MI"/>
@@ -2009,12 +2009,12 @@
    </aQuery>
    <aQuery>
       <region name="MI"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MN"/>
@@ -2045,12 +2045,12 @@
    </aQuery>
    <aQuery>
       <region name="MN"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MS"/>
@@ -2081,12 +2081,12 @@
    </aQuery>
    <aQuery>
       <region name="MS"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MO"/>
@@ -2117,12 +2117,12 @@
    </aQuery>
    <aQuery>
       <region name="MO"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MT"/>
@@ -2153,12 +2153,12 @@
    </aQuery>
    <aQuery>
       <region name="MT"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NE"/>
@@ -2189,12 +2189,12 @@
    </aQuery>
    <aQuery>
       <region name="NE"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NV"/>
@@ -2225,12 +2225,12 @@
    </aQuery>
    <aQuery>
       <region name="NV"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NH"/>
@@ -2261,12 +2261,12 @@
    </aQuery>
    <aQuery>
       <region name="NH"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NJ"/>
@@ -2297,12 +2297,12 @@
    </aQuery>
    <aQuery>
       <region name="NJ"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NM"/>
@@ -2333,12 +2333,12 @@
    </aQuery>
    <aQuery>
       <region name="NM"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NY"/>
@@ -2369,12 +2369,12 @@
    </aQuery>
    <aQuery>
       <region name="NY"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NC"/>
@@ -2405,12 +2405,12 @@
    </aQuery>
    <aQuery>
       <region name="NC"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="ND"/>
@@ -2441,12 +2441,12 @@
    </aQuery>
    <aQuery>
       <region name="ND"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="OH"/>
@@ -2477,12 +2477,12 @@
    </aQuery>
    <aQuery>
       <region name="OH"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="OK"/>
@@ -2513,12 +2513,12 @@
    </aQuery>
    <aQuery>
       <region name="OK"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="OR"/>
@@ -2549,12 +2549,12 @@
    </aQuery>
    <aQuery>
       <region name="OR"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="PA"/>
@@ -2585,12 +2585,12 @@
    </aQuery>
    <aQuery>
       <region name="PA"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="RI"/>
@@ -2621,12 +2621,12 @@
    </aQuery>
    <aQuery>
       <region name="RI"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="SC"/>
@@ -2657,12 +2657,12 @@
    </aQuery>
    <aQuery>
       <region name="SC"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="SD"/>
@@ -2693,12 +2693,12 @@
    </aQuery>
    <aQuery>
       <region name="SD"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="TN"/>
@@ -2729,12 +2729,12 @@
    </aQuery>
    <aQuery>
       <region name="TN"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="TX"/>
@@ -2765,12 +2765,12 @@
    </aQuery>
    <aQuery>
       <region name="TX"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="UT"/>
@@ -2801,12 +2801,12 @@
    </aQuery>
    <aQuery>
       <region name="UT"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="VT"/>
@@ -2837,12 +2837,12 @@
    </aQuery>
    <aQuery>
       <region name="VT"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="VA"/>
@@ -2873,12 +2873,12 @@
    </aQuery>
    <aQuery>
       <region name="VA"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="WA"/>
@@ -2909,12 +2909,12 @@
    </aQuery>
    <aQuery>
       <region name="WA"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="WV"/>
@@ -2945,12 +2945,12 @@
    </aQuery>
    <aQuery>
       <region name="WV"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="WI"/>
@@ -2981,12 +2981,12 @@
    </aQuery>
    <aQuery>
       <region name="WI"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="WY"/>
@@ -3017,12 +3017,12 @@
    </aQuery>
    <aQuery>
       <region name="WY"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="California grid"/>
@@ -3053,12 +3053,12 @@
    </aQuery>
    <aQuery>
       <region name="California grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Texas grid"/>
@@ -3089,12 +3089,12 @@
    </aQuery>
    <aQuery>
       <region name="Texas grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Southwest grid"/>
@@ -3125,12 +3125,12 @@
    </aQuery>
    <aQuery>
       <region name="Southwest grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central East grid"/>
@@ -3161,12 +3161,12 @@
    </aQuery>
    <aQuery>
       <region name="Central East grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central Northeast grid"/>
@@ -3197,12 +3197,12 @@
    </aQuery>
    <aQuery>
       <region name="Central Northeast grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central Southwest grid"/>
@@ -3233,12 +3233,12 @@
    </aQuery>
    <aQuery>
       <region name="Central Southwest grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Mid-Atlantic grid"/>
@@ -3269,12 +3269,12 @@
    </aQuery>
    <aQuery>
       <region name="Mid-Atlantic grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Northwest grid"/>
@@ -3305,12 +3305,12 @@
    </aQuery>
    <aQuery>
       <region name="Northwest grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Southeast grid"/>
@@ -3341,12 +3341,12 @@
    </aQuery>
    <aQuery>
       <region name="Southeast grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central Northwest grid"/>
@@ -3377,12 +3377,12 @@
    </aQuery>
    <aQuery>
       <region name="Central Northwest grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="New York grid"/>
@@ -3413,12 +3413,12 @@
    </aQuery>
    <aQuery>
       <region name="New York grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="New England grid"/>
@@ -3449,12 +3449,12 @@
    </aQuery>
    <aQuery>
       <region name="New England grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Alaska grid"/>
@@ -3485,12 +3485,12 @@
    </aQuery>
    <aQuery>
       <region name="Alaska grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Hawaii grid"/>
@@ -3521,11 +3521,11 @@
    </aQuery>
    <aQuery>
       <region name="Hawaii grid"/>
-      <marketQuery title="prices of all CDR markets">
-         <axis1 name="market">market</axis1>
-         <axis2 name="Year">market</axis2>
-         <xPath buildList="true" dataName="price" group="false" sumAll="false">Marketplace/market[true() and (contains(@name,'CDR') or contains(@name,'BECCS')) and (not(contains(@name,'BECCS_countersubsidy')) and not(contains(@name,'CDR-growth-limiter')))]/price/node()</xPath>
+      <emissionsQueryBuilder title="CO2 emissions by sector">
+         <axis1 name="sector">sector</axis1>
+         <axis2 name="Year">emissions</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type='sector']//CO2/emissions/node()</xPath>
          <comments/>
-      </marketQuery>
+      </emissionsQueryBuilder>
    </aQuery>
 </queries>

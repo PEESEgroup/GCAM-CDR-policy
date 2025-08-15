@@ -64,16 +64,19 @@ def main(scenario_name):
 
 def verify_ghg_constraint(ground_truth, regions_map, fpath):
     years_with_error = []
-    results = pd.read_csv(fpath + "/CO2_emissions_by_tech.csv")
+    results = pd.read_csv(fpath + "/CO2_emissions_by_sector.csv")
 
     # reformat ground truth
     ground_truth = ground_truth.pivot(index='market', columns='year')['constraint'].reset_index()
     ground_truth.columns = ground_truth.columns.astype(str)
     ground_truth["Units"] = "Mt"
 
+    # regional CDR does not count toward C pricing, but it does count towards emissions in the economy
+
     # categorize by market
     results = pd.merge(results, regions_map, "left", left_on="GCAM", right_on="region")
-    results = results.groupby(["market", "scenario", "baseline", "Units"]).sum(min_count=1)
+    ground_truth = pd.merge(ground_truth, regions_map, "left", left_on="market", right_on="region", suffixes=("_x", ""))
+    results = results.groupby(["market", "scenario", "baseline", "Units"]).sum(min_count=1).reset_index()
 
     # merge dataframes
     comparison = pd.merge(ground_truth, results, "left", on="market", suffixes=("_g", "_r"))
@@ -83,11 +86,11 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
         for i in constants.GCAMConstants.plotting_x:
             # if the estimated value is not close to the reported value
             if .99 * df[str(i) + "_r"] < df[str(i) + "_g"]:
-                print("GHG constraint for " + df["market"] + " matches the constraint " + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
+                print("GHG constraint for " + df["market"] + " in " + str(i) + " meets the constraint by " + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
             else:
                 years_with_error.append(str(i))
                 log(fpath, str(i),
-                    "GHG constraint for " + df["market"] + " matches the constraint " + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
+                    "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by" + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
     return years_with_error
 
 
