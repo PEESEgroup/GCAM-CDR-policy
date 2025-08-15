@@ -90,7 +90,7 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
             else:
                 years_with_error.append(str(i))
                 log(fpath, str(i),
-                    "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by" + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
+                    "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by" + str(df[str(i) + "_r"] - df[str(i) + "_g"]))
     return years_with_error
 
 

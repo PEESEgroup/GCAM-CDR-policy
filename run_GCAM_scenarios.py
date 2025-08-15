@@ -11,7 +11,7 @@ import read_GCAM_DB
 import verification
 import utilities
 import supplementary_figures
-from building_xml.code import build_CDR_demand, build_BECCS_integration, build_global_GHG
+from building_xml.code import build_CDR_demand, build_BECCS_integration, build_global_GHG, build_subsidy
 
 
 def main(scenario, baseline, batch=False):
@@ -203,6 +203,8 @@ def build_files(xml_files_to_build):
             files.append(build_BECCS_integration.build_BECCS_integration(k))
         if k.xml_build_type == "GHG constraint":
             files.append(build_global_GHG.build_GHG(k))
+        if k.xml_build_type == "subsidy":
+            files.append(build_subsidy.build_subsidy(k))
         # TODO add more build types here
 
     return files
@@ -435,7 +437,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["default"]  # use camelCase
+    current_configs = ["testsubsidy"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
     # the scenario and baseline name should match for any baseline scenario

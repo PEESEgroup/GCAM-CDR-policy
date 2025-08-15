@@ -56,5 +56,10 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand.xml"
             )
         ]
-    else:
-        return None
+    elif "testsubsidy" in scenario_name:
+        return [build_xml_config.XMLConfig(
+            data_files={"subsidy": "./building_xml/inputs/testsubsidy_verify.csv",
+                        "subsidy_amount": "./building_xml/inputs/subsidy_amount_verify.csv"},
+            xml_build_type="subsidy Policy",
+            output_fname="test_subsidy.xml"
+        )]
