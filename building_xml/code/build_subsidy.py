@@ -52,6 +52,21 @@ def build_subsidies(file):
     for area in markets:
         region = ET.SubElement(world, "region", name=str(area))
 
+        # add technologies the subsidies apply to
+        seen = {}
+        for r, year, sector, ss, tech in subsidy:
+            if r + sector + ss + tech not in seen:
+                supply_sector = ET.SubElement(region, "supplysector", name=sector)
+                subsector = ET.SubElement(supply_sector, "subsector", name=ss)
+                technology = ET.SubElement(subsector, "technology", name=tech)
+                period = ET.SubElement(technology, "period", year=str(year))
+                ET.SubElement(period, "input-subsidy", name=sub_name)
+                seen[r + sector + ss + tech] = 0
+            else:
+                # technology should be referenced before
+                period = ET.SubElement(technology, "period", year=str(year))
+                ET.SubElement(period, "input-subsidy", name=sub_name)
+
         # policy portfolio standard
         region_link = markets[area]
         policy_portfolio_standard = ET.SubElement(region, "policy-portfolio-standard", name=sub_name)
@@ -64,13 +79,6 @@ def build_subsidies(file):
                 year_sub = subsidy[r, year, sector, subsector, tech]
                 ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"])
 
-        # add technologies the subsidies apply to
-        seen = {}
-        for r, year, sector, ss, tech in subsidy:
-            if r + sector + ss + tech not in seen:
-                supply_sector = ET.SubElement(region, "supplysector", name=sector)
-                subsector = ET.SubElement(supply_sector, "subsector", name=ss)
-                ET.SubElement(subsector, "stub-technology", name=tech)
-                seen[r + sector + ss + tech] = 0
+
 
     return scenario
