@@ -37,8 +37,13 @@ def build_subsidy(config, baseline=True):
 
 def build_subsidies(file):
     # merge dataframes
-    markets = file["subsidy"]
-    subsidy = file["subsidy_amount"]
+    markets = {}
+    subsidy = {}
+    for key, value in file.items():
+        if "link" in key:
+            markets = file[key]
+        if "amount" in key:
+            subsidy = file[key]
 
     # fix subsidy name
     sub_name = "subsidy"

@@ -22,8 +22,8 @@ def build_GHG(config, baseline=True):
     # extract relevant data
     data = utilities.open_csv(input_filepath)
 
-    if "linked_ghg_CDR_markets_verify" in data:
-        linked_ghg_data = data["linked_ghg_CDR_markets_verify"]
+    if "ghg_CDR_market_link" in data:
+        linked_ghg_data = data["ghg_CDR_market_link"]
     if "ghg_constraint_verify" in data:
         constraint = data["ghg_constraint_verify"]
     if "ghg_tax_verify" in data:
