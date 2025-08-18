@@ -178,7 +178,7 @@ def label_market_as_product(row):
     for j in c.GCAMConstants.USA_region:
         if str(row['market']).startswith(j):
             return row['market'].replace(j, '', 1)
-    return c.GCAMConstants.missing
+    return row['market']
 
 
 def masking(config_fname, mask):
@@ -236,4 +236,4 @@ def main(config_fname):
 
 
 if __name__ == '__main__':
-    main("test_default")
+    main("testsubsidy_default")
