@@ -69,6 +69,11 @@ def CDR_cost(config_fname, year):
     # merge price data into the subsidy dataframe
     subsidy_df = pd.merge(subsidy_df, price, "left", on=["GCAM", "product"])
 
+    # update columns of df to prepare for merger
+    subsidy_df["GCAM"] = subsidy_df["region"]  # update GCAM to region information
+    subsidy_df[['product', 'technology']] = subsidy_df['product'].str.split(' ', expand=True)
+    price = pd.concat([price, subsidy_df])
+
     # update the price to $2025USD/t C  from $1975USD/kg C - then to a CO@-eq basis
     price["Units"] = "2025USD/t CO$_{2}$-eq"
     for i in c.GCAMConstants.plotting_x:
@@ -80,26 +85,30 @@ def CDR_cost(config_fname, year):
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on=["product", "GCAM"],
                          suffixes=("_supply", "_price"))
     dataframe = dataframe[dataframe["GCAM"].isin(c.GCAMConstants.USA_region)]
-    scenario_df = plotting.plot_marimekko(dataframe, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
+    """    mari_df = dataframe[dataframe["technology_price"] != "subsidy"]
+    scenario_df = plotting.plot_marimekko(mari_df, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
                             "price of CDR by technology and state", config_fname)
 
     # and compare tech costs to default
     if scenario != baseline:
         baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/"+baseline+"/"+baseline+"/price of CDR by technology and state.csv")
-        plotting.compare_marimekko(scenario_df, baseline_df, config_fname)
+        plotting.compare_marimekko(scenario_df, baseline_df, config_fname)"""
 
     # calculate the total cost and plot
     for i in c.GCAMConstants.plotting_x:
         # "Mt $CO_{2}$-eq"  "2025USD/t $CO_{2}$-eq" factor of a million is added to dollars
         dataframe[str(i)] = dataframe[str(i) + "_supply"] * dataframe[str(i) + "_price"]
     # sum by technology
-    dataframe = dataframe.groupby(["product_price"]).sum(min_count=1)
+    dataframe = dataframe.groupby(["product_price", "technology_price"]).sum(min_count=1)
     dataframe = dataframe.reset_index()
     dataframe["Units"] = "Million 2025$USD/yr"
     dataframe['scenario'] = scenario
     dataframe['baseline'] = baseline
+    dataframe['product'] = dataframe.apply(lambda row: row["product_price"] + " " + row["technology_price"] if row["technology_price"] != "missing" else row["product_price"], axis=1)
 
-    plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product_price", "policy cost by year", config_fname)
+    plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year", config_fname)
+
+    # TODO: compare this bar plot with default one
     dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                      "/policy cost by technology.csv")
 
