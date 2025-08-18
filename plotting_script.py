@@ -4,6 +4,8 @@ import data_manipulation
 import constants as c
 import pandas as pd
 
+import utilities
+
 
 def main(config_fname, reference_year):
     """
@@ -43,6 +45,30 @@ def CDR_cost(config_fname, year):
     price = data_manipulation.get_sensitivity_data([config_fname], "prices_of_all_markets")
     price["product"] = price.apply(lambda row: data_manipulation.price_subsidy(row), axis=1)
 
+    # match subsidy market to the states
+    # get the subsidy files
+    files = config_fname.split("/")
+    xml_files_to_build = []
+    for i in files:
+        xml_files_to_build.extend(utilities.build_from_scenario(str(i)))
+    subsidy_df = pd.DataFrame()
+
+    # get subsidy links and calculate subsidy name
+    for xml in xml_files_to_build:
+        for file in xml.data_files:
+            csv = xml.data_files[file]
+            if "link" in file:
+                if "subsidy" in file:
+                    links_ground_truth = pd.read_csv(csv, skiprows=2)
+                    links_ground_truth = links_ground_truth[["region", "market"]]
+                    links_ground_truth["GCAM"] = links_ground_truth["market"]
+                    subsidy_name = file.split("_")
+                    links_ground_truth["product"] = subsidy_name[0] + " " + subsidy_name[1]
+                    subsidy_df = pd.concat([subsidy_df, links_ground_truth])
+
+    # merge price data into the subsidy dataframe
+    subsidy_df = pd.merge(subsidy_df, price, "left", on=["GCAM", "product"])
+
     # update the price to $2025USD/t C  from $1975USD/kg C - then to a CO@-eq basis
     price["Units"] = "2025USD/t CO$_{2}$-eq"
     for i in c.GCAMConstants.plotting_x:
@@ -79,4 +105,4 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    main("test_default", "2050")
+    main("testsubsidy_default", "2050")

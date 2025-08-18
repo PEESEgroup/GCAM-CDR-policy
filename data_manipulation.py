@@ -907,7 +907,11 @@ def get_CI(dataframe, products, alpha=0.95):
 
 def price_subsidy(row):
     if "_subsidy" in row["product"]:
+        count = row["product"].count("_")
         sub_name = row["product"].split("_")
-        return sub_name[1] + " " + sub_name[2]
+        if count == 2:
+            return sub_name[1] + " " + sub_name[2]
+        elif count == 1:
+            return sub_name[0] + " " + sub_name[1]
     else:
         return row["product"]

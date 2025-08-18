@@ -83,8 +83,8 @@ def verify_subsidy(ground_truth, links, fpath):
     # merge results and ground truth
     merge = pd.merge(results, ground_truth, "left", left_on="GCAM", right_on="market", suffixes=("_l", "_r"))
     for i in constants.GCAMConstants.plotting_x:
-        # check that minimum price is satisfied
-        merge[str(i)] = merge[str(i)+"_l"] - merge[str(i)+"_r"]
+        # check that minimum price is satisfied with converted units
+        merge[str(i)] = merge[str(i)+"_l"] - (merge[str(i)+"_r"] / (6.10 * 1000 / 44 * 12))
         if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
             years_with_error.append(str(i))
             log(fpath, str(i), "Subsidy for " + str(product) + " is incorrect in " + str(i))
