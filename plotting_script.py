@@ -67,12 +67,13 @@ def CDR_cost(config_fname, year):
                     subsidy_df = pd.concat([subsidy_df, links_ground_truth])
 
     # merge price data into the subsidy dataframe
-    subsidy_df = pd.merge(subsidy_df, price, "left", on=["GCAM", "product"])
+    if not subsidy_df.empty:
+        subsidy_df = pd.merge(subsidy_df, price, "left", on=["GCAM", "product"])
 
-    # update columns of df to prepare for merger
-    subsidy_df["GCAM"] = subsidy_df["region"]  # update GCAM to region information
-    subsidy_df[['product', 'technology']] = subsidy_df['product'].str.split(' ', expand=True)
-    price = pd.concat([price, subsidy_df])
+        # update columns of df to prepare for merger
+        subsidy_df["GCAM"] = subsidy_df["region"]  # update GCAM to region information
+        subsidy_df[['product', 'technology']] = subsidy_df['product'].str.split(' ', expand=True)
+        price = pd.concat([price, subsidy_df])
 
     # update the price to $2025USD/t C  from $1975USD/kg C - then to a CO@-eq basis
     price["Units"] = "2025USD/t CO$_{2}$-eq"
@@ -108,10 +109,18 @@ def CDR_cost(config_fname, year):
 
     plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year", config_fname)
 
-    # TODO: compare this bar plot with default one
+    # compare this bar plot with default one (if this is not a default scenario)
+    if baseline != scenario:
+        cost_diff = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
+                         "/policy cost by technology.csv")
+        cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "GCAM", "Units"], suffixes=("_old", "_new"))
+        for i in c.GCAMConstants.plotting_x:
+            cost_diff[str(i)] = cost_diff[str(i)+"_new"] - cost_diff[str(i)+"_old"]
+        plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product", "change in policy cost by year", config_fname)
+
     dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                      "/policy cost by technology.csv")
 
 
 if __name__ == '__main__':
-    main("testsubsidy_default", "2050")
+    main("default_default", "2050")
