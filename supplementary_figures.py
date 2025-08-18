@@ -1342,20 +1342,5 @@ def figure6(nonBaselineScenario, RCP, SSP, biochar_year):
                          title="sensitivty analysis percentage change compared to reference scenario")
 
 
-def CDR_tech(config_fname, year):
-    # data processing
-    CDR = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech", "unmasked")
-    CDR = CDR[CDR[['GCAM']].isin(constants.GCAMConstants.USA_region).any(axis=1)]
-    CDR = CDR[CDR['technology'] != "unsatisfied CDR demand"]
-
-    # stacked bar plot
-    plotting.plot_stacked_bar_product(CDR, year, "technology", "CDR by technology in " + str(year), config_fname)
-
-    # choropleth map
-    plotting.plot_world_by_products(CDR, "technology", [year], "plotting estimated CDR supply by technology in " + str(year),
-                                    config_fname)
-
-
-
 if __name__ == '__main__':
     main("test_default", "2050")

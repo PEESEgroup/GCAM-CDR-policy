@@ -10,7 +10,7 @@ import produce_regional_queries
 import read_GCAM_DB
 import verification
 import utilities
-import supplementary_figures
+import plotting_script
 from building_xml.code import build_CDR_demand, build_BECCS_integration, build_global_GHG, build_subsidy
 
 
@@ -37,7 +37,7 @@ def main(scenario, baseline, batch=False):
     read_GCAM_DB.main(config_fname)
     process_GCAM_data.main(config_fname)
     verification.main(config_fname)
-    supplementary_figures.main(config_fname, "2050")
+    plotting_script.main(config_fname, "2050")
 
 
 def execute_GCAM(baseline, batch, scenario, config_fname):

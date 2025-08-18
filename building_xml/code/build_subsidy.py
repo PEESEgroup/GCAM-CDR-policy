@@ -48,7 +48,7 @@ def build_subsidies(file):
     # fix subsidy name
     sub_name = "subsidy"
     for r, year, sector, subsector, tech in subsidy:
-        sub_name = tech + "_subsidy"
+        sub_name = "_" + tech + "_subsidy"
 
     # high level
     scenario = ET.Element("scenario")

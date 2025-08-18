@@ -903,3 +903,11 @@ def get_CI(dataframe, products, alpha=0.95):
 
     # add the returned dataframe to the original frame as appended rows
     return lmu
+
+
+def price_subsidy(row):
+    if "_subsidy" in row["product"]:
+        sub_name = row["product"].split("_")
+        return sub_name[1] + " " + sub_name[2]
+    else:
+        return row["product"]
