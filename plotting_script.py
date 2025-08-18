@@ -108,19 +108,26 @@ def CDR_cost(config_fname, year):
     dataframe['product'] = dataframe.apply(lambda row: row["product_price"] + " " + row["technology_price"] if row["technology_price"] != "missing" else row["product_price"], axis=1)
 
     plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year", config_fname)
+    dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                     "/policy cost by technology.csv")
 
     # compare this bar plot with default one (if this is not a default scenario)
     if baseline != scenario:
         cost_diff = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
                          "/policy cost by technology.csv")
-        cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "GCAM", "Units"], suffixes=("_old", "_new"))
+        cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "GCAM", "Units", "baseline"], suffixes=("_old", "_new"))
         for i in c.GCAMConstants.plotting_x:
-            cost_diff[str(i)] = cost_diff[str(i)+"_new"] - cost_diff[str(i)+"_old"]
+            cost_diff[str(i)] = cost_diff[str(i)+"_new"].fillna(0) - cost_diff[str(i)+"_old"].fillna(0)
         plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product", "change in policy cost by year", config_fname)
 
-    dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                     "/policy cost by technology.csv")
+        # add a total row
+        cols = ["2025", "2030", "2035", "2040", "2045", "2050", "product", "scenario_new", "baseline", "Units"]
+        cost_diff = cost_diff[cols]
+        total = pd.DataFrame(cost_diff.sum(numeric_only=True)).T
+        cost_diff = pd.concat([cost_diff, total])
+        cost_diff.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                         "/change in policy cost by technology.csv")
 
 
 if __name__ == '__main__':
-    main("default_default", "2050")
+    main("testsubsidy_default", "2050")
