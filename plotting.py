@@ -1463,7 +1463,7 @@ def marimekko_diff(x, scenario_y, baseline_y, axs, counter, nrow, colors, year):
     # add a legend for patches
     axs[int(counter / nrow), int(counter % nrow)].set_title(str(year))
     axs[int(counter / nrow), int(counter % nrow)].set_xlim((df["x"].min()*1.01, df["x"].max()*1.01))
-    axs[int(counter / nrow), int(counter % nrow)].set_ylim((df["diff"].min()*1.01, df["diff"].max()*1.01))
+    axs[int(counter / nrow), int(counter % nrow)].set_ylim(min(0, (df["diff"].min()*1.01), max(0, df["diff"].max()*1.01)))
     axs[int(counter / nrow), int(counter % nrow)].set_xlabel("Mt CO$_2$-eq")
     axs[int(counter / nrow), int(counter % nrow)].set_ylabel("difference in 2025USD/t CO$_2$-eq")
     axs[int(counter / nrow), int(counter % nrow)].legend()
