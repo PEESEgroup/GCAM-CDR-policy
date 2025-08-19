@@ -56,8 +56,8 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand.xml"
             ),
             build_xml_config.XMLConfig(
-                data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_links.csv",
-                            "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_verify.csv"},
+                data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                            "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated.xml"
             )

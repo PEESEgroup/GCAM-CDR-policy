@@ -32,61 +32,30 @@ def build_tech_costs(config, baseline=True):
     if baseline:
         return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "CDR_tech_non-input_costs")
     else:
-        return build_xml_config.XMLOutput("original", config.config_dir + config.output_fname, "CDR_tech_non-input_costs")
+        return build_xml_config.XMLOutput("altered", config.config_dir + config.output_fname, "CDR_tech_non-input_costs")
 
 
 def build_non_input_tech_costs(file):
     # merge dataframes
-    markets = {}
-    subsidy = {}
+    links = {}
+    costs = {}
     for key, value in file.items():
         if "link" in key:
-            markets = file[key]
-        if "amount" in key:
-            subsidy = file[key]
-
-    # fix subsidy name
-    sub_name = "subsidy"
-    for r, year, sector, subsector, tech in subsidy:
-        sub_name = "_" + tech + "_subsidy"
+            links = file[key]
+        if "verify" in key:
+            costs = file[key]
 
     # high level
     scenario = ET.Element("scenario")
     world = ET.SubElement(scenario, "world")
+    gtb = ET.SubElement(world, "global-technology-database")
 
-    for area in markets:
-        region = ET.SubElement(world, "region", name=str(area))
-
-        # add technologies the subsidies apply to
-        seen = {}
-        for r, year, sector, ss, tech in subsidy:
-            if r + sector + ss + tech not in seen:
-                supply_sector = ET.SubElement(region, "supplysector", name=sector)
-                subsector = ET.SubElement(supply_sector, "subsector", name=ss)
-                technology = ET.SubElement(subsector, "technology", name=tech)
-                period = ET.SubElement(technology, "period", year=str(year))
-                ET.SubElement(period, "input-subsidy", name=sub_name)
-                seen[r + sector + ss + tech] = 0
-            else:
-                # technology should be referenced before
-                period = ET.SubElement(technology, "period", year=str(year))
-                ET.SubElement(period, "input-subsidy", name=sub_name)
-
-        # policy portfolio standard
-        region_link = markets[area]
-        policy_portfolio_standard = ET.SubElement(region, "policy-portfolio-standard", name=sub_name)
-        ET.SubElement(policy_portfolio_standard, "policyType").text = "subsidy"
-        ET.SubElement(policy_portfolio_standard, "market").text = region_link["market"]
-
-        # add in the tax data
-        for r, year, sector, subsector, tech in subsidy:
-            if str(year) not in seen:  # if the regions match
-                year_sub = subsidy[r, year, sector, subsector, tech]
-                if tech in ["BECCS", "DAC", "TEW", "OEW"]:
-                    # convert from $2025 USD/t CO2-eq to $1975/kg C
-                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"]/1000/6.1*44/12)
-                else:
-                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"])
-                seen[str(year)] = 0
+    for sector, subsector, tech in links:
+        location = ET.SubElement(gtb, "location-info", {"sector-name": sector, "subsector-name": subsector})
+        technology = ET.SubElement(location, "technology", name=tech)
+        for year in costs:
+            period = ET.SubElement(technology, "period", year=str(year))
+            minicam = ET.SubElement(period, "minicam-non-energy-input", name="non-energy")
+            ET.SubElement(minicam, "input-cost").text = str(costs[year][tech])
 
     return scenario

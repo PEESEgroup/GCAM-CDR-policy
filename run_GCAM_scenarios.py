@@ -379,7 +379,6 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="cdr_ew_limit").text = "../input/gcamdata/xml/limit_land.xml"
     ET.SubElement(scenario, "Value", name="cdr_oae").text = "../input/gcamdata/xml/OEW.xml"
     ET.SubElement(scenario, "Value", name="cdr_oae_shipping").text = "../input/gcamdata/xml/OEW_shipping.xml"
-    ET.SubElement(scenario, "Value", name="cdr_nonenergy").text = "../input/gcamdata/xml/CDR_costs.xml"
     ET.SubElement(scenario, "Value", name="cdr_resources").text = "../input/gcamdata/xml/resources_CDR.xml"
 
     # <!-- CDR in USA -->
@@ -395,7 +394,6 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="cdr_oae_usa").text = "../input/gcamdata/xml/OEW_USA_lime_semilocal.xml"
     ET.SubElement(scenario, "Value", name="cdr_lime_usa").text = "../input/gcamdata/xml/lime_USA_localized.xml"
     ET.SubElement(scenario, "Value", name="cdr_oae_shipping_usa").text = "../input/gcamdata/xml/OEW_shipping_USA.xml"
-    ET.SubElement(scenario, "Value", name="cdr_nonenergy").text = "../input/gcamdata/xml/CDR_costs_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_resources").text = "../input/gcamdata/xml/resources_USA_CDR.xml"
     ET.SubElement(scenario, "Value", name="ignore_beccs").text = "../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml"
 
