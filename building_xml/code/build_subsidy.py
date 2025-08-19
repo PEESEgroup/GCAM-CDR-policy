@@ -1,4 +1,5 @@
 import build_xml_config
+import constants
 import utilities
 from xml.dom import minidom
 import xml.etree.cElementTree as ET
@@ -84,7 +85,7 @@ def build_subsidies(file):
                 year_sub = subsidy[r, year, sector, subsector, tech]
                 if tech in ["BECCS", "DAC", "TEW", "OEW"]:
                     # convert from $2025 USD/t CO2-eq to $1975/kg C
-                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"]/1000/6.1*44/12)
+                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
                 else:
                     ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"])
                 seen[str(year)] = 0

@@ -1,4 +1,5 @@
 import build_xml_config
+import constants
 import utilities
 from xml.dom import minidom
 import xml.etree.cElementTree as ET
@@ -56,6 +57,6 @@ def build_non_input_tech_costs(file):
         for year in costs:
             period = ET.SubElement(technology, "period", year=str(year))
             minicam = ET.SubElement(period, "minicam-non-energy-input", name="non-energy")
-            ET.SubElement(minicam, "input-cost").text = str(costs[year][tech] /1000/6.1*44/12)
+            ET.SubElement(minicam, "input-cost").text = str(costs[year][tech] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
 
     return scenario

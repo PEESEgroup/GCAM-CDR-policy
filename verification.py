@@ -85,7 +85,7 @@ def verify_non_input_tech_costs(ground_truth, links, fpath):
     merge = pd.merge(results, ground_truth, "inner", on="technology", suffixes=("_l", "_r"))
     for i in constants.GCAMConstants.plotting_x:
         # check that minimum price is satisfied with converted units
-        merge[str(i)] = merge[str(i) + "_l"] - merge[str(i) + "_r"]
+        merge[str(i)] = merge[str(i) + "_l"] / merge[str(i) + "_r"]
         if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
             years_with_error.append(str(i))
             log(fpath, str(i), "Non-input energy costs are invalid")
