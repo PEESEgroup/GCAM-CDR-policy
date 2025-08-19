@@ -65,5 +65,5 @@ def main(config_fname):
 
 
 if __name__ == '__main__':
-    main("test_default")
+    main("testsubsidy_default")
 

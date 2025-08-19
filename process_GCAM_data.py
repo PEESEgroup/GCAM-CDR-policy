@@ -72,14 +72,14 @@ def split_file(fname):
                 df = pd.DataFrame(data_list, columns=col)
                 df = df.dropna()
 
-                # add dataframe to dictionary
-                # if the key already exists, ensure that they key is unique
-                if key in names.keys():
-                    frames_key = key + str(names[key])
-                    names[key] = names[key] + 1
-                else:
-                    names[key] = 1
-                    frames_key = key + "0"
+            # add dataframe to dictionary
+            # if the key already exists, ensure that they key is unique
+            if key in names.keys():
+                frames_key = key + str(names[key])
+                names[key] = names[key] + 1
+            else:
+                names[key] = 1
+                frames_key = key + "0"
             frames[frames_key] = df
 
     # combine files with multiple parts
