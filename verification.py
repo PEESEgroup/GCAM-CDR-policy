@@ -72,7 +72,6 @@ def main(scenario_name):
 
 def verify_non_input_tech_costs(ground_truth, links, fpath):
     # format results
-    link = links["CDR_non-input_tech_link"]
     results = pd.read_csv(fpath + "/costs_by_tech_and_input.csv")
     years_with_error = []
 
@@ -80,15 +79,17 @@ def verify_non_input_tech_costs(ground_truth, links, fpath):
     for i in constants.GCAMConstants.plotting_x:
         ground_truth[str(i)] = ground_truth[str(i)] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC
     ground_truth["Units"] = "1975$/kg C"
+    results = results[results["input"] == "non-energy"]
 
     # merge results and ground truth
     merge = pd.merge(results, ground_truth, "inner", on="technology", suffixes=("_l", "_r"))
     for i in constants.GCAMConstants.plotting_x:
         # check that minimum price is satisfied with converted units
-        merge[str(i)] = merge[str(i) + "_l"] / merge[str(i) + "_r"]
+        merge[str(i)] = merge[str(i) + "_l"] - merge[str(i) + "_r"]
         if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
+            errors = merge[~((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4))]
             years_with_error.append(str(i))
-            log(fpath, str(i), "Non-input energy costs are invalid")
+            log(fpath, str(i), "Non-input energy costs are invalid for " + str(errors["sector"].unique()))
 
     return years_with_error
 
