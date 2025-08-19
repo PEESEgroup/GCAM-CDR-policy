@@ -364,6 +364,7 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="biosep_industry").text = "../input/gcamdata/xml/bio_sep_USA_industry.xml"
     ET.SubElement(scenario, "Value", name="biosep_gas").text = "../input/gcamdata/xml/bio_sep_USA_gas.xml"
     ET.SubElement(scenario, "Value", name="biosep_gas").text = "../input/gcamdata/xml/bio_sep_USA_elec_segments.xml"
+    ET.SubElement(scenario, "Value", name="bio_water_usage").text = "../input/gcamdata/xml/electricity_water_coefs_bio.xml"
 
     # <!-- add primary CDR -->
     ET.SubElement(scenario, "Value", name="cdr_rampup").text = "../input/gcamdata/xml/CDR.xml"
