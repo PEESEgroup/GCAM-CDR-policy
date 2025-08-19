@@ -56,6 +56,6 @@ def build_non_input_tech_costs(file):
         for year in costs:
             period = ET.SubElement(technology, "period", year=str(year))
             minicam = ET.SubElement(period, "minicam-non-energy-input", name="non-energy")
-            ET.SubElement(minicam, "input-cost").text = str(costs[year][tech])
+            ET.SubElement(minicam, "input-cost").text = str(costs[year][tech] /1000/6.1*44/12)
 
     return scenario

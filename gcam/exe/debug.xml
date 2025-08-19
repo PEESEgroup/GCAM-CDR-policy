@@ -1,4 +1,4 @@
-<scenario name="testsubsidy_default" date="2025-19-8T12:54:13-04:00">
+<scenario name="testsubsidy_default" date="2025-19-8T12:56:42-04:00">
 	<modeltime>
 		<start-year time-step="15">1975</start-year>
 		<final-calibration-year>2015</final-calibration-year>
@@ -3506,7 +3506,7 @@
 				<solved_Market_Flag>0</solved_Market_Flag>
 				<MarketGoodOrFuel>TEW</MarketGoodOrFuel>
 				<MarketRegion>CA</MarketRegion>
-				<price>24.7242</price>
+				<price>24.6418</price>
 				<demand>0</demand>
 				<supply>0</supply>
 				<ContainedRegion>CA</ContainedRegion>
@@ -42993,7 +42993,7 @@
 					<share-weight>0</share-weight>
 					<relative-cost-logit>
 						<logit-exponent>-3</logit-exponent>
-						<base-value>24.7242</base-value>
+						<base-value>24.6418</base-value>
 						<parsed-base-value>0</parsed-base-value>
 					</relative-cost-logit>
 					<fuelprefElasticity>0</fuelprefElasticity>
@@ -43131,7 +43131,7 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>24.7242</cost>
+						<cost>24.6418</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-energy-input name="atmospheric_CO2">
 							<coefficient>1</coefficient>
@@ -43446,7 +43446,7 @@
 				<use-trial-market>0</use-trial-market>
 				<relative-cost-logit>
 					<logit-exponent>-3</logit-exponent>
-					<base-value>24.7242</base-value>
+					<base-value>24.6418</base-value>
 					<parsed-base-value>0</parsed-base-value>
 				</relative-cost-logit>
 				<output>0</output>
@@ -43457,7 +43457,7 @@
 					<share-weight>1</share-weight>
 					<relative-cost-logit>
 						<logit-exponent>-12</logit-exponent>
-						<base-value>132.636</base-value>
+						<base-value>132.554</base-value>
 						<parsed-base-value>0</parsed-base-value>
 					</relative-cost-logit>
 					<fuelprefElasticity>0</fuelprefElasticity>
@@ -43470,12 +43470,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>24.6757</cost>
+						<cost>24.5932</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0824175</input-cost>
+							<input-cost>0</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0824175</adjusted-cost>
+							<adjusted-cost>0</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="cropland_TEW">
@@ -43523,12 +43523,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>24.6905</cost>
+						<cost>24.608</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0824175</input-cost>
+							<input-cost>0</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0824175</adjusted-cost>
+							<adjusted-cost>0</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="cropland_TEW">
@@ -43576,12 +43576,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>24.6933</cost>
+						<cost>24.6109</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0824175</input-cost>
+							<input-cost>0</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0824175</adjusted-cost>
+							<adjusted-cost>0</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="cropland_TEW">
@@ -43629,12 +43629,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>24.7084</cost>
+						<cost>24.626</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0824175</input-cost>
+							<input-cost>0</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0824175</adjusted-cost>
+							<adjusted-cost>0</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="cropland_TEW">
@@ -43682,12 +43682,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>132.636</cost>
+						<cost>132.554</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0824175</input-cost>
+							<input-cost>0</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0824175</adjusted-cost>
+							<adjusted-cost>0</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="cropland_TEW">
@@ -43735,12 +43735,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>24.7345</cost>
+						<cost>24.6521</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0824175</input-cost>
+							<input-cost>0</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0824175</adjusted-cost>
+							<adjusted-cost>0</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="cropland_TEW">
@@ -43788,12 +43788,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>24.7634</cost>
+						<cost>24.681</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0824175</input-cost>
+							<input-cost>0</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0824175</adjusted-cost>
+							<adjusted-cost>0</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="cropland_TEW">
@@ -43841,12 +43841,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>24.7768</cost>
+						<cost>24.6944</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0824175</input-cost>
+							<input-cost>0</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0824175</adjusted-cost>
+							<adjusted-cost>0</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="cropland_TEW">
@@ -43898,7 +43898,7 @@
 				<use-trial-market>0</use-trial-market>
 				<relative-cost-logit>
 					<logit-exponent>-3</logit-exponent>
-					<base-value>0.0949047</base-value>
+					<base-value>0.0950278</base-value>
 					<parsed-base-value>0</parsed-base-value>
 				</relative-cost-logit>
 				<output>0</output>
@@ -43909,7 +43909,7 @@
 					<share-weight>0</share-weight>
 					<relative-cost-logit>
 						<logit-exponent>-9</logit-exponent>
-						<base-value>0.148214</base-value>
+						<base-value>0.148324</base-value>
 						<parsed-base-value>0</parsed-base-value>
 					</relative-cost-logit>
 					<fuelprefElasticity>0</fuelprefElasticity>
@@ -43922,12 +43922,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.106928</cost>
+						<cost>0.107038</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
@@ -43975,12 +43975,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.0901065</cost>
+						<cost>0.0902165</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
@@ -44028,12 +44028,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.146569</cost>
+						<cost>0.146679</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
@@ -44081,12 +44081,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.131585</cost>
+						<cost>0.131695</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
@@ -44134,12 +44134,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.133524</cost>
+						<cost>0.133634</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
@@ -44177,12 +44177,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.107972</cost>
+						<cost>0.108082</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
@@ -44230,12 +44230,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.115498</cost>
+						<cost>0.115608</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
@@ -44283,12 +44283,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.117628</cost>
+						<cost>0.117738</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
@@ -44336,12 +44336,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.143187</cost>
+						<cost>0.143297</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
@@ -44389,12 +44389,12 @@
 						<fixedOutput>-1</fixedOutput>
 						<lifetime>15</lifetime>
 						<alpha-zero>1</alpha-zero>
-						<cost>0.148214</cost>
+						<cost>0.148324</cost>
 						<pMultiplier>1</pMultiplier>
 						<minicam-non-energy-input name="non-energy">
-							<input-cost>0.0682</input-cost>
+							<input-cost>0.06831</input-cost>
 							<tech-change>0</tech-change>
-							<adjusted-cost>0.0682</adjusted-cost>
+							<adjusted-cost>0.06831</adjusted-cost>
 							<adjusted-coef>1</adjusted-coef>
 						</minicam-non-energy-input>
 						<minicam-energy-input name="lime">
