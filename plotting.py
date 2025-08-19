@@ -1311,6 +1311,17 @@ def plot_alluvial(df, biochar_year, base_year):
 
 
 def plot_marimekko(df, year, x, y, color, title, config_fname):
+    """
+    makes a marimekko plot
+    :param df: df to be plotted
+    :param year: year to be plotted
+    :param x: x values
+    :param y: y values
+    :param color: color
+    :param title: subplot title
+    :param config_fname: information for storing results
+    :return: N/A
+    """
     # update the columns of the dataframe and make it much smaller
     cols = [str(i) + x for i in year]
     cols.extend([str(i) + y for i in year])
@@ -1373,6 +1384,13 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
 
 
 def compare_marimekko(scenario_df, baseline_df, config_fname):
+    """
+    compare two marimekko plots
+    :param scenario_df: dataframe containing price and supply data for the scenario
+    :param baseline_df: dataframe containing price and supply data for the baseline
+    :param config_fname: configuration filename to keep track of model outputs
+    :return: N/A
+    """
     nrow, ncol = get_subplot_dimensions(c.GCAMConstants.plotting_x)
     # make plots
     fig, axs = plt.subplots(ncol, nrow, sharex=False, sharey=False, constrained_layout=True)
@@ -1426,6 +1444,18 @@ def compare_marimekko(scenario_df, baseline_df, config_fname):
 
 
 def marimekko_diff(x, scenario_y, baseline_y, axs, counter, nrow, colors, year):
+    """
+    calculates the difference between two marimekko plots
+    :param x: x axis
+    :param scenario_y: prices of cdr in the scenario
+    :param baseline_y: prices of cdr in the baseline
+    :param axs: axis to be plotted on
+    :param counter: counter to keep track of current axis
+    :param nrow: parameter to keep track of current axis
+    :param colors: keep consistent colors
+    :param year: year being plotted
+    :return: N/A
+    """
     df = pd.DataFrame(x)
     df.columns = ["x"]
     df["scenario_y"] = scenario_y
@@ -1470,6 +1500,11 @@ def marimekko_diff(x, scenario_y, baseline_y, axs, counter, nrow, colors, year):
 
 
 def marimekko_condition(row):
+    """
+    identifies how supply and price differ compared to other plots
+    :param row: row of a pandas dataframe
+    :return: one of four categories
+    """
     if row["scenario_y"] == 0:
         # this means that there is baseline y
         return "reduced supply"
@@ -1484,6 +1519,11 @@ def marimekko_condition(row):
 
 
 def marimekko_diff_line(row):
+    """
+    calculate the difference between the two marimekko plots
+    :param row: row of a pandas dataframe
+    :return: difference between the two, or np.nan if the cost of CDR is 0 (no cdr available)
+    """
     if row["scenario_y"] == 0:
         return np.nan
     elif row["baseline_y"] == 0:

@@ -6,7 +6,7 @@ import xml.etree.cElementTree as ET
 
 def build_BECCS_integration(config, baseline=True):
     """
-    build the BECCS integration policy configuration file
+    build the BECCS integration policy configuration file from .csv files
     :param config: configuration file
     :param baseline: if this is a baseline file
     :return: dictionary of output information

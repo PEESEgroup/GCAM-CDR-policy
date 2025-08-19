@@ -196,6 +196,7 @@ def build_files(xml_files_to_build, baseline):
     """
     build xml files based on the configuration type
     :param xml_files_to_build: a list of xml config objects to be built
+    :param baseline: portion of config name (scenario or baseline) to use to build xml config files
     :return: a list of files that were built
     """
     files = []
@@ -441,7 +442,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["testsubsidy"]  # use camelCase
+    current_configs = ["testsubsidy", "default"]  # use camelCase
     current_baseline = ["default"]  # use camelCase
 
     # the scenario and baseline name should match for any baseline scenario
@@ -453,8 +454,3 @@ if __name__ == '__main__':
 
     with multiprocessing.Pool(processes=3) as pool:
         result = pool.starmap(main, ((i, j) for i in current_configs for j in current_baseline))
-
-    """
-    with multiprocessing.Pool(processes=4) as pool:
-        result = pool.starmap(main, ((i, j) for i in all_configs for j in baseline_scenarios))
-    """

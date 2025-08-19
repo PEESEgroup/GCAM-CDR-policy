@@ -71,6 +71,13 @@ def main(scenario_name):
 
 
 def verify_non_input_tech_costs(ground_truth, links, fpath):
+    """
+    verifies the data for the non-input costs for CDR technologies
+    :param ground_truth: data used for configuration
+    :param links: links between markets and ground truths
+    :param fpath: link to the directory where output data is stored
+    :return: list of years that have errors
+    """
     # format results
     results = pd.read_csv(fpath + "/costs_by_tech_and_input.csv")
     years_with_error = []
@@ -95,6 +102,13 @@ def verify_non_input_tech_costs(ground_truth, links, fpath):
 
 
 def verify_subsidy(ground_truth, links, fpath):
+    """
+    verifies the presences of subsidies on technologies
+    :param ground_truth: data in the config files
+    :param links: links of ground truth data to technologies
+    :param fpath: filepath of gcam output data
+    :return: list of years with error
+    """
     # format results
     product = ground_truth["stub-technology"].unique()[0] + "_subsidy"
     link = links[product+"_link"]
@@ -120,6 +134,13 @@ def verify_subsidy(ground_truth, links, fpath):
 
 
 def verify_ghg_constraint(ground_truth, regions_map, fpath):
+    """
+    verifies ghg constraints
+    :param ground_truth: the data used in the gcam config file
+    :param regions_map: maps regions to gcam emissions markets
+    :param fpath: location of the output data in the directory
+    :return: list of years with errors
+    """
     years_with_error = []
     results = pd.read_csv(fpath + "/CO2_emissions_by_sector.csv")
 
@@ -152,6 +173,12 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
 
 
 def verify_beccs(csv, fpath):
+    """
+    verifies the minimum price of beccs technologies
+    :param csv: csv filepath containing the location of the ground truth data
+    :param fpath: filepath to the output data
+    :return: list of years with errors
+    """
     # process results
     results = pd.read_csv(fpath + "/prices_of_all_markets.csv")
     results = results[results["product"] == "BECCS"]
@@ -175,6 +202,8 @@ def verify_cdr(CDR, links, fpath):
     """
     verify ghg tax values
     :param CDR: a list of files necessary to validate CDR output
+    :param links: a dictionary of links between config data and gcam technologies and locations
+    :param fpath: location to the output data in the directory
     :return: a list of years in which an error was detected
     """
     results = pd.read_csv(fpath + "/CDR_by_tech.csv")
@@ -244,6 +273,14 @@ def verify_cdr(CDR, links, fpath):
 
 
 def get_elastic_CDR_demand(CDR, fpath, i, region_market):
+    """
+    get information pertaining to the elastic cdr demand based on the carbon prices and formulat
+    :param CDR: dict containing cdr config information
+    :param fpath: location to gcam output data directory
+    :param i: key for cdr dict
+    :param region_market: link between cdr markets and regions
+    :return: dataframe containing the elastic cdr demand
+    """
     elastic_ground_truth = pd.read_csv(CDR[i], skiprows=2)
     # read in carbon prices
     carbon_prices = pd.read_csv(fpath + "/CO2_prices.csv")
@@ -300,6 +337,13 @@ def verify_ghg_tax(ground_truth, results, fpath):
 
 
 def log(fpath, year, reason):
+    """
+    log errors to the error log
+    :param fpath: fpath to output data
+    :param year: year in which an error occured
+    :param reason: reason for the error occuring as calculated in the verification
+    :return: N/A
+    """
     # open log file and add reason for masking a year
     with open(fpath + "/log.txt", "a+") as f:
         print("Verification fails in " + year + " because " + reason)

@@ -7,7 +7,7 @@ import xml.etree.cElementTree as ET
 
 def build_tech_costs(config, baseline=True):
     """
-    build the BECCS integration policy configuration file
+    build the tech cost policy configuration file from .csv files
     :param config: configuration file
     :param baseline: if this is a baseline file
     :return: dictionary of output information
@@ -37,6 +37,11 @@ def build_tech_costs(config, baseline=True):
 
 
 def build_non_input_tech_costs(file):
+    """
+    add the non-input tech costs to a xml file from scenario files
+    :param file: file containing parameters for the tech costs
+    :return: root node of the xml file
+    """
     # merge dataframes
     links = {}
     costs = {}

@@ -37,6 +37,11 @@ def build_subsidy(config, baseline=True):
 
 
 def build_subsidies(file):
+    """
+    add subsidies to a policy file
+    :param file: a dict containing pertinent information to the creation of the xml file
+    :return: the root of the xml node
+    """
     # merge dataframes
     markets = {}
     subsidy = {}

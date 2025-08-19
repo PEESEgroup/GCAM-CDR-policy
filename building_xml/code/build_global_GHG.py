@@ -49,6 +49,11 @@ def build_GHG(config, baseline=True):
 
 
 def build_ghg_policy(file):
+    """
+    build the ghg emissions policy
+    :param file: dictionary containing relevant ghg information
+    :return: ET tree root
+    """
     # high level
     scenario = ET.Element("scenario")
     world = ET.SubElement(scenario, "world")
@@ -67,6 +72,12 @@ def build_ghg_policy(file):
 
 
 def emissions_constraint(scenario, file):
+    """
+    add a ghg emissions constraing to the file
+    :param scenario: root of the xml tree
+    :param file: file containing ghg emissions constraint information
+    :return: root of the xml tree
+    """
     for year, r, ghg in file:
         # find region from scenario that matches the region name
         region = scenario.find(".//region[@name='" + r + "']")
@@ -77,6 +88,12 @@ def emissions_constraint(scenario, file):
 
 
 def emissions_tax(scenario, file):
+    """
+    adds an emissions tax policy to certain regions
+    :param scenario: the root of the xml tree
+    :param file: the dict which contains information for ghg emissions tax policies
+    :return: root of the xml tree
+    """
     for year, r, ghg in file:
         # find region from scenario that matches the region name
         region = scenario.find(".//region[@name='" + r + "']")

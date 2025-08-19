@@ -9,6 +9,8 @@ import utilities
 def main(config_fname, reference_year):
     """
     Main method for scripts used to plot figures and information for the article
+    :param config_fname: used to store information on where to save plots and tables
+    :param reference_year: year to analyze outputs
     :return: N/A
     """
     config_fname = config_fname.replace("_", "/")
@@ -19,6 +21,12 @@ def main(config_fname, reference_year):
 
 
 def CDR_tech(config_fname, year):
+    """
+    plot CDR information by region and technology in bar and map
+    :param config_fname: where to store output data
+    :param year: year being analyzed
+    :return: N/A
+    """
     # data processing
     CDR = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech", "unmasked")
     CDR = CDR[CDR[['GCAM']].isin(c.GCAMConstants.USA_region).any(axis=1)]
@@ -33,6 +41,12 @@ def CDR_tech(config_fname, year):
 
 
 def CDR_cost(config_fname, year):
+    """
+    plot CDR costs (and policy costs from subsidies and R&D investment
+    :param config_fname: retains information about where to save data
+    :param year: year being analyzed
+    :return: N/A
+    """
     # check if it is a baseline scenario
     baseline = config_fname.split("/")[1]
     scenario = config_fname.split("/")[0]
