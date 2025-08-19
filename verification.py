@@ -44,7 +44,10 @@ def main(scenario_name):
                     csvs[file] = csv
             if "link" in file:
                 links_ground_truth = pd.read_csv(csv, skiprows=2)
-                links[file] = links_ground_truth[["region", "market"]]
+                if "sector" in links_ground_truth.columns:
+                    links[file] = links_ground_truth
+                else:
+                    links[file] = links_ground_truth[["region", "market"]]
 
     # verify CDR demand
     error_years.extend(verify_cdr(CDR, links, fpath))
@@ -61,8 +64,6 @@ def main(scenario_name):
             error_years.extend(verify_ghg_tax(ground_truth, results, fpath))
         if "subsidy" in csv:
             error_years.extend(verify_subsidy(ground_truth, links, fpath))
-        if "CDR_non-input_tech_costs" in csv:
-            error_years.extend(verify_non_input_tech_costs(ground_truth, links, fpath))
         # TODO: add more file types
 
     # update output .csv files based on years with errors
@@ -70,8 +71,26 @@ def main(scenario_name):
 
 
 def verify_non_input_tech_costs(ground_truth, links, fpath):
-    #TODO: complete this method
-    return []
+    # format results
+    link = links["CDR_non-input_tech_link"]
+    results = pd.read_csv(fpath + "/costs_by_tech_and_input.csv")
+    years_with_error = []
+
+    # format ground truth
+    for i in constants.GCAMConstants.plotting_x:
+        ground_truth[str(i)] = ground_truth[str(i)] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC
+    ground_truth["Units"] = "1975$/kg C"
+
+    # merge results and ground truth
+    merge = pd.merge(results, ground_truth, "inner", on="technology", suffixes=("_l", "_r"))
+    for i in constants.GCAMConstants.plotting_x:
+        # check that minimum price is satisfied with converted units
+        merge[str(i)] = merge[str(i) + "_l"] - merge[str(i) + "_r"]
+        if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
+            years_with_error.append(str(i))
+            log(fpath, str(i), "Non-input energy costs are invalid")
+
+    return years_with_error
 
 
 def verify_subsidy(ground_truth, links, fpath):
@@ -91,7 +110,7 @@ def verify_subsidy(ground_truth, links, fpath):
     merge = pd.merge(results, ground_truth, "left", left_on="GCAM", right_on="market", suffixes=("_l", "_r"))
     for i in constants.GCAMConstants.plotting_x:
         # check that minimum price is satisfied with converted units
-        merge[str(i)] = merge[str(i)+"_l"] - (merge[str(i)+"_r"] / (6.10 * 1000 / 44 * 12))
+        merge[str(i)] = merge[str(i)+"_l"] - (merge[str(i)+"_r"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
         if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
             years_with_error.append(str(i))
             log(fpath, str(i), "Subsidy for " + str(product) + " is incorrect in " + str(i))
@@ -173,6 +192,11 @@ def verify_cdr(CDR, links, fpath):
             exo_CDR_demand = exo_CDR_demand.groupby(["Units"]).sum(min_count=1).reset_index()
         if "elastic_CDR" in i:
             elastic_CDR_demand = get_elastic_CDR_demand(CDR, fpath, i, region_market)
+        if "CDR_non-input_tech_costs" in i:
+            ground_truth = pd.read_csv(CDR[i], skiprows=2).T
+            ground_truth.columns = ground_truth.iloc[0].astype(int).astype(str)
+            ground_truth = ground_truth[1:].reset_index().rename(columns={'index': 'technology'})
+            years_with_error.extend(verify_non_input_tech_costs(ground_truth, links, fpath))
 
     # combine CDR sources to get estimated CDR demand
     if exo_CDR_demand.empty:

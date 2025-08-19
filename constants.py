@@ -33,3 +33,5 @@ class GCAMConstants:
 
     scenario_names = ["exoTest"]
     baseline_names = ["default"]
+
+    USD2025_tCO2_to_1975_kgC = 1 / 6.1 / 1000 * 44 / 12
