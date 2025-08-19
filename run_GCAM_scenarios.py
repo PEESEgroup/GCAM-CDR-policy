@@ -11,7 +11,8 @@ import read_GCAM_DB
 import verification
 import utilities
 import plotting_script
-from building_xml.code import build_CDR_demand, build_BECCS_integration, build_global_GHG, build_subsidy
+from building_xml.code import build_CDR_demand, build_BECCS_integration, build_global_GHG, build_subsidy, \
+    build_tech_costs
 
 
 def main(scenario, baseline, batch=False):
@@ -207,6 +208,8 @@ def build_files(xml_files_to_build, baseline):
             files.append(build_global_GHG.build_GHG(k, baseline))
         if k.xml_build_type == "subsidy Policy":
             files.append(build_subsidy.build_subsidy(k, baseline))
+        if k.xml_build_type == "tech_non-input_costs":
+            files.append(build_tech_costs.build_tech_costs(k, baseline))
         # TODO add more build types here
 
     return files

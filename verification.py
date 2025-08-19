@@ -61,10 +61,17 @@ def main(scenario_name):
             error_years.extend(verify_ghg_tax(ground_truth, results, fpath))
         if "subsidy" in csv:
             error_years.extend(verify_subsidy(ground_truth, links, fpath))
+        if "CDR_non-input_tech_costs" in csv:
+            error_years.extend(verify_non_input_tech_costs(ground_truth, links, fpath))
         # TODO: add more file types
 
     # update output .csv files based on years with errors
     process_GCAM_data.masking(scenario_name, error_years)
+
+
+def verify_non_input_tech_costs(ground_truth, links, fpath):
+    #TODO: complete this method
+    return []
 
 
 def verify_subsidy(ground_truth, links, fpath):

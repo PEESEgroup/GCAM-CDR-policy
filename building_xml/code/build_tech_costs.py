@@ -4,7 +4,7 @@ from xml.dom import minidom
 import xml.etree.cElementTree as ET
 
 
-def build_subsidy(config, baseline=True):
+def build_tech_costs(config, baseline=True):
     """
     build the BECCS integration policy configuration file
     :param config: configuration file
@@ -19,7 +19,7 @@ def build_subsidy(config, baseline=True):
     data = utilities.open_csv(input_filepath)
 
     # build remainder of the file
-    scenario = build_subsidies(data)
+    scenario = build_non_input_tech_costs(data)
 
     # write file out
     xmlstr = minidom.parseString(ET.tostring(scenario, encoding="UTF-8", xml_declaration=True)).toprettyxml(
@@ -30,12 +30,12 @@ def build_subsidy(config, baseline=True):
 
     # return dict of output files created -see constants for example
     if baseline:
-        return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "subsidies")
+        return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "CDR_tech_non-input_costs")
     else:
-        return build_xml_config.XMLOutput("original", config.config_dir + config.output_fname, "subsidies")
+        return build_xml_config.XMLOutput("original", config.config_dir + config.output_fname, "CDR_tech_non-input_costs")
 
 
-def build_subsidies(file):
+def build_non_input_tech_costs(file):
     # merge dataframes
     markets = {}
     subsidy = {}
