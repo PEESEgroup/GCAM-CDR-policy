@@ -75,5 +75,10 @@ def build_from_scenario(scenario_name):
                             "TEW_subsidy_amount_verify": "./building_xml/inputs/subsidy_TEW_verify.csv"},
                 xml_build_type="subsidy Policy",
                 output_fname="test_subsidy_TEW.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"exogenous_investment": "./building_xml/inputs/exogenous_subsector_investment.csv"},
+                xml_build_type="exogenous investment",
+                output_fname=""
             )
         ]

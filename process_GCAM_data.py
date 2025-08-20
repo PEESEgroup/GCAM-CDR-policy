@@ -6,6 +6,8 @@ from itertools import islice
 import os
 import glob
 
+import utilities
+
 
 def split_file(fname):
     """
@@ -233,6 +235,19 @@ def main(config_fname):
                                                                                                             "between")
         print(new_fname)
         df.to_csv(new_fname, index=False)  # save the original file
+
+    # open, copy, and reformat input .csv files into the output directory
+    xml = []
+    for i in config_fname.split("_"):
+        xml.extend(utilities.build_from_scenario(i))
+
+    for x in xml:
+        if x.xml_build_type == "exogenous investment":
+            df = pd.read_csv(x.data_files["exogenous_investment"], skiprows = 2).T
+            df.columns = df.iloc[0].astype(int).astype(str)
+            df = df[1:].reset_index().rename(columns={'index': 'subsector'})
+            df["Units"] = "Million 2025$USD"
+            df.to_csv(prefix+dir+"/"+x.data_files["exogenous_investment"].split("/")[-1])
 
 
 if __name__ == '__main__':
