@@ -1,4 +1,5 @@
 import build_xml_config
+import constants
 import utilities
 from xml.dom import minidom
 import xml.etree.cElementTree as ET
@@ -82,7 +83,7 @@ def emissions_constraint(scenario, file):
         # find region from scenario that matches the region name
         region = scenario.find(".//region[@name='" + r + "']")
         ghg_policy = region.find(".//ghgpolicy[@name='" + ghg + "']")
-        ET.SubElement(ghg_policy, "constraint", year=str(year)).text = str(file[(year, r, ghg)]["constraint"])
+        ET.SubElement(ghg_policy, "constraint", year=str(year)).text = str(file[(year, r, ghg)]["constraint"]*constants.GCAMConstants.CO2_to_C)
 
     return scenario
 
