@@ -4,13 +4,13 @@
       <region name="AL">
          <ghgpolicy name="CO2">
             <market>USA</market>
-            <constraint year="2020">1300</constraint>
-            <constraint year="2025">1150</constraint>
-            <constraint year="2030">1000</constraint>
-            <constraint year="2035">800</constraint>
-            <constraint year="2040">600</constraint>
-            <constraint year="2045">400</constraint>
-            <constraint year="2050">0</constraint>
+            <constraint year="2020">899.9999999999999</constraint>
+            <constraint year="2025">859.090909090909</constraint>
+            <constraint year="2030">681.8181818181818</constraint>
+            <constraint year="2035">452.7272727272727</constraint>
+            <constraint year="2040">354.5454545454545</constraint>
+            <constraint year="2045">218.18181818181816</constraint>
+            <constraint year="2050">0.0</constraint>
          </ghgpolicy>
       </region>
       <region name="AK">
@@ -291,12 +291,12 @@
       <region name="Canada">
          <ghgpolicy name="CO2">
             <market>Global</market>
-            <constraint year="2025">10000</constraint>
-            <constraint year="2030">9000</constraint>
-            <constraint year="2035">8000</constraint>
-            <constraint year="2040">7000</constraint>
-            <constraint year="2045">6000</constraint>
-            <constraint year="2050">5000</constraint>
+            <constraint year="2025">11475.81818181818</constraint>
+            <constraint year="2030">11151.0</constraint>
+            <constraint year="2035">10256.863636363636</constraint>
+            <constraint year="2040">9362.727272727272</constraint>
+            <constraint year="2045">8693.318181818182</constraint>
+            <constraint year="2050">8023.90909090909</constraint>
          </ghgpolicy>
       </region>
       <region name="Central America and Caribbean">

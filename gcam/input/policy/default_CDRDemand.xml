@@ -18,12 +18,12 @@
          <CDR-final-demand name="CDR">
             <demand-source name="exogenous">
                <require-c-price>0</require-c-price>
-               <demand year="2025">5</demand>
-               <demand year="2030">13</demand>
-               <demand year="2035">34</demand>
-               <demand year="2040">91</demand>
-               <demand year="2045">239</demand>
-               <demand year="2050">630</demand>
+               <demand year="2025">4.090909090909091</demand>
+               <demand year="2030">9.0</demand>
+               <demand year="2035">20.18181818181818</demand>
+               <demand year="2040">52.090909090909086</demand>
+               <demand year="2045">119.72727272727272</demand>
+               <demand year="2050">245.45454545454544</demand>
             </demand-source>
          </CDR-final-demand>
       </region>
@@ -587,20 +587,11 @@
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
          <CDR-final-demand name="CDR">
-            <demand-source name="base-demand">
-               <require-c-price>0</require-c-price>
-               <demand year="2025">25</demand>
-               <demand year="2030">50</demand>
-               <demand year="2035">100</demand>
-               <demand year="2040">200</demand>
-               <demand year="2045">400</demand>
-               <demand year="2050">800</demand>
-            </demand-source>
             <elastic-demand-source name="elastic">
-               <max-demand>5000</max-demand>
-               <steepness>0.007</steepness>
-               <midpoint>500</midpoint>
-               <min-price>0</min-price>
+               <max-demand>4110.818181818181</max-demand>
+               <steepness>0.0036765</steepness>
+               <midpoint>1412.276157965194</midpoint>
+               <min-price>0.0</min-price>
             </elastic-demand-source>
          </CDR-final-demand>
       </region>
