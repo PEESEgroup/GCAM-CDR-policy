@@ -475,11 +475,13 @@ def add_colorbar_and_plot(axs, datalength, fig, im, lab, ncol, nrow, fname, nonB
     # change figure size and dpi
     fig.set_dpi(300)
     if nrow * ncol == 6:
-        fig.set_size_inches(12, 4)
+        plt.gcf().set_size_inches(6, 6)
     elif nrow * ncol == 8:
-        fig.set_size_inches(16, 5.1)
+        plt.gcf().set_size_inches(16, 5.1)
     elif nrow * ncol == 20:
-        fig.set_size_inches(16, 9)
+        plt.gcf().set_size_inches(16, 9)
+    else:
+        plt.gcf().set_size_inches(6, 6)
     plt.savefig("data/data_analysis/images/" + nonBaselineScenario.replace("_", "/") + "/" + fname + ".png", dpi=300)
     plt.show()
 
@@ -780,12 +782,12 @@ def plot_stacked_bar_product(df, year, column, title, nonBaselineScenario):
         axs.set_title(title)
         axs.set_ylabel(df["Units"].unique()[0])
         plt.legend(bbox_to_anchor=(1, 1))
-        plt.subplots_adjust(bottom=0.5, right=.7, left=.15)
+        plt.subplots_adjust(bottom=0.15, right=.85, left=.15)
         plt.xticks(rotation=60, ha='right')
         if title == "global land use change by year":
             plt.gcf().set_size_inches(7, 8)
         else:
-            plt.gcf().set_size_inches(12, 8)
+            plt.gcf().set_size_inches(12, 6)
         plt.savefig("data/data_analysis/images/" + nonBaselineScenario.replace("_", "/") + "/" + title + ".png", dpi=300)
         plt.show()
 
@@ -1377,6 +1379,7 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
     if counter < ncol * nrow:
         fig.delaxes(axs[int(counter / nrow), int(counter % nrow)])
     plt.suptitle(title)
+    plt.gcf().set_size_inches(8, 10)
     plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
     df.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" + title + ".csv")
     plt.show()
@@ -1439,6 +1442,7 @@ def compare_marimekko(scenario_df, baseline_df, config_fname):
         fig.delaxes(axs[int(counter / nrow), int(counter % nrow)])
     title = "change in price and quantity of CDR in comparison to the baseline"
     plt.suptitle(title)
+    plt.gcf().set_size_inches(8, 10)
     plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
     plt.show()
 
