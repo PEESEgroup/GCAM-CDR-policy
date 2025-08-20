@@ -251,4 +251,4 @@ def main(config_fname):
 
 
 if __name__ == '__main__':
-    main("testsubsidy_default")
+    main("default_default")

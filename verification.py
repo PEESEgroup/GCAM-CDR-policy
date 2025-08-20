@@ -221,7 +221,10 @@ def verify_cdr(CDR, links, fpath):
             exo_CDR_demand = pd.read_csv(CDR[i], skiprows=2)
             exo_CDR_demand = exo_CDR_demand.pivot(index='region', columns='year')['demand'].reset_index()
             exo_CDR_demand.columns = exo_CDR_demand.columns.astype(str)
-            exo_CDR_demand["Units"] = "Mt"
+            for j in constants.GCAMConstants.plotting_x:
+                # convert from CO2-eq to C
+                exo_CDR_demand[str(j)] = exo_CDR_demand[str(j)] * constants.GCAMConstants.CO2_to_C
+            exo_CDR_demand["Units"] = "Mt C"
             exo_CDR_demand = exo_CDR_demand.groupby(["Units"]).sum(min_count=1).reset_index()
         if "elastic_CDR" in i:
             elastic_CDR_demand = get_elastic_CDR_demand(CDR, fpath, i, region_market)
@@ -237,10 +240,11 @@ def verify_cdr(CDR, links, fpath):
     elif elastic_CDR_demand.empty:
         CDR_demand = exo_CDR_demand
     else:
-        elastic_CDR_demand["Units"] = "Mt"
+        elastic_CDR_demand["Units"] = "Mt C"
         CDR_demand = pd.merge(exo_CDR_demand, elastic_CDR_demand, on=["Units"], suffixes=("_l", "_r"))
         for i in constants.GCAMConstants.plotting_x:
             CDR_demand[str(i)] = CDR_demand[str(i) + "_l"] + CDR_demand[str(i) + "_r"]
+    CDR_demand["product"] = "CDR"
 
     # process ground truth CDR numbers
     if not region_market.empty:
@@ -260,13 +264,10 @@ def verify_cdr(CDR, links, fpath):
         satisfied_CDR["product"] = "CDR"
 
         # compare ground truths with results
-        df = pd.merge(CDR_demand, satisfied_CDR, "left", ["Units"], suffixes=("_left", "_right"))
+        df = pd.merge(CDR_demand, satisfied_CDR, "left", ["product"], suffixes=("_left", "_right"))
         # because this is one line of data
         df = df.iloc[0]
         for i in constants.GCAMConstants.plotting_x:
-            # convert from CO2-eq to C
-            df[str(i) + "_left"] = df[str(i) + "_left"] * constants.GCAMConstants.CO2_to_C
-
             # if the estimated value is not close to the reported value
             if .97 * df[str(i) + "_right"] < df[str(i) + "_left"] < 1.03 * df[str(i) + "_right"]:
                 print("CDR demand matches CDR supply by " + str(df[str(i) + "_left"] - df[str(i) + "_right"]))
