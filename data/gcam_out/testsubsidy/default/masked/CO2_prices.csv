@@ -1,6 +1,6 @@
 ,1990,2005,2020,2025,2030,2035,2040,2045,2050,scenario,baseline,GCAM,sector,subsector,technology,output,concentration,input,product,fuel,LandLeaf,GHG,Units
-0,0.0,0.0,0.0,,58.1758,,183.535,217.087,240.79,testsubsidy,default,Global,missing,missing,missing,missing,missing,missing,CO2,missing,missing,missing,1990$/tC
-1,0.0,0.0,0.0,,0.0,,0.0,0.0,0.0,testsubsidy,default,Global,missing,missing,missing,missing,missing,missing,CO2_CDR,missing,missing,missing,1990$/tC
-2,0.0,0.0,95.012,,232.329,,416.054,406.254,343.009,testsubsidy,default,USA,missing,missing,missing,missing,missing,missing,CO2,missing,missing,missing,1990$/tC
-3,0.0,0.0,0.0,,0.0,,0.0,0.0,0.0,testsubsidy,default,USA,missing,missing,missing,missing,missing,missing,CO2_CDR,missing,missing,missing,1990$/tC
-4,0.0,0.0,0.0,,0.0,,0.0,0.0,0.0,testsubsidy,default,CO,missing,missing,missing,missing,missing,missing,globalatmospheric_CO2,missing,missing,missing,1975$/kg
+0,0.0,0.0,0.0,,,,,,,testsubsidy,default,Global,missing,missing,missing,missing,missing,missing,CO2,missing,missing,missing,1990$/tC
+1,0.0,0.0,0.0,,,,,,,testsubsidy,default,Global,missing,missing,missing,missing,missing,missing,CO2_CDR,missing,missing,missing,1990$/tC
+2,0.0,0.0,94.3087,,,,,,,testsubsidy,default,USA,missing,missing,missing,missing,missing,missing,CO2,missing,missing,missing,1990$/tC
+3,0.0,0.0,0.0,,,,,,,testsubsidy,default,USA,missing,missing,missing,missing,missing,missing,CO2_CDR,missing,missing,missing,1990$/tC
+4,0.0,0.0,0.0,,,,,,,testsubsidy,default,CO,missing,missing,missing,missing,missing,missing,globalatmospheric_CO2,missing,missing,missing,1975$/kg

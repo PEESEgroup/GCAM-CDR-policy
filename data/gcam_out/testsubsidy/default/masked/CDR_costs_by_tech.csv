@@ -1,62 +1,62 @@
 ,1990,2005,2020,2025,2030,2035,2040,2045,2050,scenario,baseline,GCAM,sector,subsector,technology,output,concentration,input,product,fuel,LandLeaf,GHG,Units
-0,31.957591000000008,31.941437,33.047781,,26.894697000000004,,25.030581,24.684252,24.639477000000017,testsubsidy,default,Global,DAC,DAC,DAC_solvent (oxy CCS),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-1,31.987571000000003,31.685770000000023,31.921321999999986,,22.49610899999999,,22.631916999999987,27.539175,33.89360499999999,testsubsidy,default,Global,DAC,DAC,DAC_sorbent (oxy CCS),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-2,3.884809999999999,3.952811000000001,4.301454,,4.061802999999999,,4.314464,4.594379,5.761124,testsubsidy,default,Global,OEW,lime,ocean liming,missing,missing,missing,missing,missing,missing,missing,1975$/kg
-3,0.167524,0.169866,0.195161,,0.25092,,0.25991,0.267547,0.305059,testsubsidy,default,Global,OEW,lime,ocean liming (AK lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-4,1.9737032,1.9743557,2.6161800000000004,,2.492818,,2.6206930000000006,2.75443,3.383162,testsubsidy,default,Global,OEW,lime,ocean liming (AL lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-5,1.167286,1.1800609999999998,1.5207730000000002,,1.45703,,1.5328290000000002,1.6056979999999998,1.953009,testsubsidy,default,Global,OEW,lime,ocean liming (AR lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-6,0.2502843999999999,0.261318,0.343762,,0.329269,,0.345947,0.362262,0.439849,testsubsidy,default,Global,OEW,lime,ocean liming (AZ lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-7,0.3442347999999999,0.3651631,0.479244,,0.456828,,0.482,0.507428,0.6260140000000001,testsubsidy,default,Global,OEW,lime,ocean liming (CA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-8,0.266082,0.281659,0.34464,,0.335126,,0.3554389999999999,0.369709,0.441713,testsubsidy,default,Global,OEW,lime,ocean liming (CO lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-9,0.0877881,0.0885535,0.13258,,0.121731,,0.127911,0.138097,0.181742,testsubsidy,default,Global,OEW,lime,ocean liming (CT lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-10,1.6431816,1.6396172,2.247389,,2.0928848,,2.1987915,2.345981,3.009924,testsubsidy,default,Global,OEW,lime,ocean liming (DE lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-11,1.6216644000000002,1.6360616,2.165776,,2.0704463,,2.1774991000000004,2.283892,2.78873,testsubsidy,default,Global,OEW,lime,ocean liming (FL lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-12,2.0975054,2.1054998,2.792995,,2.6600870000000003,,2.794684,2.937514,3.607564,testsubsidy,default,Global,OEW,lime,ocean liming (GA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-13,0.960383,0.989784,1.327767,,1.285854,,1.350228,1.403769,1.665626,testsubsidy,default,Global,OEW,lime,ocean liming (IA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-14,0.348329,0.368792,0.467067,,0.4454369999999999,,0.470869,0.495381,0.6117110000000001,testsubsidy,default,Global,OEW,lime,ocean liming (ID lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-15,2.3402639,2.3594916,3.2111300000000003,,3.097755,,3.245935,3.380351,4.028366,testsubsidy,default,Global,OEW,lime,ocean liming (IL lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-16,2.6312473000000005,2.6477437,3.5234470000000004,,3.381199,,3.5490119999999994,3.710563000000001,4.48202,testsubsidy,default,Global,OEW,lime,ocean liming (IN lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-17,0.640713,0.6662669999999999,0.8654649999999999,,0.830924,,0.873611,0.913736,1.105771,testsubsidy,default,Global,OEW,lime,ocean liming (KS lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-18,2.559614,2.57079,3.4349959999999995,,3.2855910000000006,,3.448398,3.613008,4.392547,testsubsidy,default,Global,OEW,lime,ocean liming (KY lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-19,1.1024588,1.1080889,1.4391600000000002,,1.367829,,1.438318,1.5144190000000002,1.870307,testsubsidy,default,Global,OEW,lime,ocean liming (LA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-20,1.5632056000000003,1.5583931999999998,2.279338,,2.137746,,2.245219,2.388949,3.019759,testsubsidy,default,Global,OEW,lime,ocean liming (MA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-21,2.0041331,2.010036700000001,2.739934,,2.578524,,2.706343,2.86658,3.599477999999999,testsubsidy,default,Global,OEW,lime,ocean liming (MD lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-22,1.3460337,1.3445971,1.972548,,1.867076,,1.958653,2.070174,2.565927,testsubsidy,default,Global,OEW,lime,ocean liming (ME lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-23,1.9077396,1.8990336,2.555456,,2.4550459999999994,,2.571981,2.68529,3.226176,testsubsidy,default,Global,OEW,lime,ocean liming (MI lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-24,0.110084,0.110596,0.148516,,0.138835,,0.145457,0.15467,0.196242,testsubsidy,default,Global,OEW,lime,ocean liming (MN lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-25,1.527436,1.550149,2.1222920000000003,,2.051555,,2.1491100000000003,2.2350410000000003,2.6514330000000004,testsubsidy,default,Global,OEW,lime,ocean liming (MO lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-26,1.7375732999999998,1.7403802000000002,2.330687,,2.2243250000000003,,2.3372390000000003,2.453577,3.0019410000000004,testsubsidy,default,Global,OEW,lime,ocean liming (MS lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-27,0.228635,0.241898,0.310352,,0.294794,,0.310887,0.327682,0.406479,testsubsidy,default,Global,OEW,lime,ocean liming (MT lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-28,2.2277788000000003,2.2411190000000003,2.975747000000001,,2.8162216,,2.9588320999999995,3.123235,3.884585,testsubsidy,default,Global,OEW,lime,ocean liming (NC lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-29,0.140539,0.141472,0.187617,,0.179803,,0.187742,0.19613,0.235573,testsubsidy,default,Global,OEW,lime,ocean liming (ND lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-30,0.687426,0.7187070000000001,0.932372,,0.902746,,0.948957,0.987088,1.1737840000000002,testsubsidy,default,Global,OEW,lime,ocean liming (NE lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-31,1.5612987999999997,1.5552136,2.25582,,2.131873,,2.237951,2.3685460000000003,2.9480070000000005,testsubsidy,default,Global,OEW,lime,ocean liming (NH lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-32,1.5190005,1.5164129000000002,2.099322,,1.9508759,,2.047577,2.187117,2.813628,testsubsidy,default,Global,OEW,lime,ocean liming (NJ lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-33,0.365156,0.391269,0.495629,,0.490388,,0.49353,0.484078,0.463657,testsubsidy,default,Global,OEW,lime,ocean liming (NM lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-34,0.343923,0.364417,0.461975,,0.439632,,0.464543,0.489341,0.606452,testsubsidy,default,Global,OEW,lime,ocean liming (NV lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-35,1.6445486,1.6391668,2.3333760000000003,,2.195483,,2.30007,2.435668,3.0516270000000003,testsubsidy,default,Global,OEW,lime,ocean liming (NY lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-36,2.3703647999999995,2.3798152,3.1838560000000005,,3.036596999999999,,3.187499,3.346186,4.092811,testsubsidy,default,Global,OEW,lime,ocean liming (OH lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-37,0.6549870000000001,0.6642410000000001,0.865618,,0.8288320000000001,,0.8699189999999999,0.911,1.105569,testsubsidy,default,Global,OEW,lime,ocean liming (OK lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-38,0.2853854,0.2961458999999999,0.3873759999999999,,0.359176,,0.379841,0.4072049999999999,0.530999,testsubsidy,default,Global,OEW,lime,ocean liming (OR lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-39,2.0151323000000003,2.0216128,2.751676,,2.591418,,2.720036,2.8797749999999995,3.611359,testsubsidy,default,Global,OEW,lime,ocean liming (PA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-40,0.0850529,0.085677,0.128939,,0.117915,,0.123973,0.134235,0.178078,testsubsidy,default,Global,OEW,lime,ocean liming (RI lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-41,2.2942538000000003,2.3029744999999995,3.0672940000000004,,2.9114893,,3.05676,3.219495,3.976586,testsubsidy,default,Global,OEW,lime,ocean liming (SC lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-42,0.143644,0.144619,0.191603,,0.183979,,0.192053,0.200356,0.239582,testsubsidy,default,Global,OEW,lime,ocean liming (SD lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-43,2.262296,2.277547,3.007394,,2.8704279999999995,,3.015543,3.165163,3.870371,testsubsidy,default,Global,OEW,lime,ocean liming (TN lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-44,0.4822927999999999,0.5029106,0.627938,,0.598295,,0.630969,0.6638850000000001,0.819637,testsubsidy,default,Global,OEW,lime,ocean liming (TX lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-45,0.362135,0.385325,0.484852,,0.4644819999999999,,0.490827,0.514775,0.629653,testsubsidy,default,Global,OEW,lime,ocean liming (UT lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-46,2.1857605,2.1986287,2.9140300000000003,,2.751886,,2.892641,3.0582139999999995,3.822555,testsubsidy,default,Global,OEW,lime,ocean liming (VA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-47,1.4427236,1.4398853000000005,2.091475,,1.975556,,2.073348,2.194695,2.7332460000000003,testsubsidy,default,Global,OEW,lime,ocean liming (VT lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-48,0.311646,0.3251022,0.422014,,0.396572,,0.419216,0.445407,0.5661039999999999,testsubsidy,default,Global,OEW,lime,ocean liming (WA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-49,2.4369051,2.4364234,3.3276609999999995,,3.215746,,3.364914,3.498626,4.144961,testsubsidy,default,Global,OEW,lime,ocean liming (WI lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-50,2.1845766000000006,2.2009852,2.9487290000000006,,2.786663,,2.9271350000000007,3.092243,3.855647,testsubsidy,default,Global,OEW,lime,ocean liming (WV lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-51,0.3884859999999999,0.415133,0.509119,,0.491794,,0.5203,0.5428810000000001,0.6542370000000001,testsubsidy,default,Global,OEW,lime,ocean liming (WY lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-52,8.715633,8.641635,8.886733,,11.659004,,14.496712999999998,16.209691,17.924940000000003,testsubsidy,default,Global,TEW,TEW,TEW,missing,missing,missing,missing,missing,missing,missing,1975$/kg
-53,55.90747999999999,49.556423,44.81106,,46.47373,,53.128839000000006,62.800590000000014,80.61616000000001,testsubsidy,default,Global,TEW,TEW,TEW (California basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-54,59.92645000000002,51.64092,43.31748100000001,,45.105053000000005,,53.89496,63.92922,81.24600000000001,testsubsidy,default,Global,TEW,TEW,TEW (Central Northeast basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-55,46.73726199999999,41.693919999999984,41.130419,,40.768976,,48.394041,58.75763500000001,76.9313,testsubsidy,default,Global,TEW,TEW,TEW (Central Southwest basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-56,59.00226000000001,53.4226,47.81605700000001,,47.80422600000001,,56.24744999999999,66.68331,84.96907000000002,testsubsidy,default,Global,TEW,TEW,TEW (Mid-Atlantic basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-57,54.66895,51.27161000000002,49.018226,,49.840416000000005,,58.62226000000002,68.70673,87.02837,testsubsidy,default,Global,TEW,TEW,TEW (New England basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-58,60.58670000000001,48.89006100000001,42.463125,,42.78321799999999,,49.35518399999999,59.167152000000016,76.98040999999998,testsubsidy,default,Global,TEW,TEW,TEW (Northwest basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-59,57.707080000000005,46.429480000000005,42.426319,,42.75271000000001,,50.11843399999999,59.58571800000001,77.94146,testsubsidy,default,Global,TEW,TEW,TEW (Southwest basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
-60,49.12903100000001,43.23830499999999,42.31698099999999,,43.183843,,51.756395,61.442000000000014,79.74092000000003,testsubsidy,default,Global,TEW,TEW,TEW (Texas basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+0,31.957624,31.94146799999999,33.02749500000001,,,,,,,testsubsidy,default,Global,DAC,DAC,DAC_solvent (oxy CCS),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+1,31.987612000000023,31.685811000000022,31.910023,,,,,,,testsubsidy,default,Global,DAC,DAC,DAC_sorbent (oxy CCS),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+2,3.8848149999999992,3.952813,4.301451,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming,missing,missing,missing,missing,missing,missing,missing,1975$/kg
+3,0.167634,0.169976,0.195236,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (AK lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+4,1.9754632,1.9761157,2.617764,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (AL lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+5,1.168276,1.181051,1.521629,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (AR lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+6,0.2505043999999999,0.261538,0.343954,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (AZ lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+7,0.3445648,0.3654931,0.479537,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (CA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+8,0.266302,0.281879,0.344802,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (CO lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+9,0.0878981,0.0886635,0.132699,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (CT lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+10,1.6449416,1.6413772000000004,2.2491539999999994,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (DE lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+11,1.6230944,1.6374916,2.167024,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (FL lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+12,2.0993754,2.1073698,2.7946910000000003,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (GA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+13,0.961153,0.990554,1.3283809999999998,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (IA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+14,0.348659,0.369122,0.4673549999999999,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (ID lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+15,2.3421339,2.3613616,3.212695,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (IL lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+16,2.6334473,2.6499437,3.525341000000001,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (IN lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+17,0.641263,0.666817,0.8659310000000001,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (KS lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+18,2.561814,2.5729900000000003,3.436934,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (KY lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+19,1.1034488,1.1090789,1.440063,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (LA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+20,1.5648555999999998,1.5600432,2.280989,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (MA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+21,2.0061131,2.0120167,2.7418430000000003,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (MD lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+22,1.3473537,1.3459171000000003,1.973821,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (ME lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+23,1.9092796,1.9005736,2.556787,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (MI lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+24,0.110194,0.110706,0.148627,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (MN lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+25,1.528646,1.551359,2.1232870000000004,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (MO lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+26,1.7391133,1.7419202,2.332064,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (MS lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+27,0.228855,0.242118,0.310551,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (MT lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+28,2.2298688,2.243209,2.9777049999999994,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (NC lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+29,0.140649,0.141582,0.187716,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (ND lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+30,0.6879759999999999,0.719257,0.932809,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (NE lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+31,1.5628387999999998,1.5567536,2.257311,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (NH lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+32,1.5206505,1.5180629,2.101002,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (NJ lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+33,0.365486,0.391599,0.495879,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (NM lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+34,0.344253,0.364747,0.462267,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (NV lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+35,1.6461986,1.6408168,2.334991,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (NY lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+36,2.3724548000000008,2.3819052,3.1857320000000007,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (OH lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+37,0.6555369999999999,0.664791,0.866099,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (OK lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+38,0.2857154,0.2964759,0.387704,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (OR lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+39,2.0171123,2.0235928000000003,2.7535810000000005,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (PA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+40,0.0851629,0.085787,0.129058,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (RI lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+41,2.2963438,2.3050645000000003,3.0692319999999995,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (SC lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+42,0.143754,0.144729,0.191701,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (SD lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+43,2.264276,2.2795270000000003,3.009164,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (TN lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+44,0.4827327999999999,0.5033506,0.628322,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (TX lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+45,0.362465,0.3856549999999999,0.4851329999999999,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (UT lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+46,2.1878505,2.2007187,2.916006999999999,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (VA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+47,1.4441536,1.4413153,2.092864,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (VT lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+48,0.311976,0.3254322,0.422326,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (WA lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+49,2.4387751,2.4382934,3.329215,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (WI lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+50,2.1866666,2.2030752,2.950695,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (WV lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+51,0.3888159999999999,0.4154629999999999,0.5093799999999999,,,,,,,testsubsidy,default,Global,OEW,lime,ocean liming (WY lime),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+52,8.715641,8.641641,8.886736999999998,,,,,,,testsubsidy,default,Global,TEW,TEW,TEW,missing,missing,missing,missing,missing,missing,missing,1975$/kg
+53,55.90748999999999,45.600383999999984,44.78441899999999,,,,,,,testsubsidy,default,Global,TEW,TEW,TEW (California basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+54,59.92648000000001,47.68487700000002,43.272825,,,,,,,testsubsidy,default,Global,TEW,TEW,TEW (Central Northeast basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+55,46.73727099999999,37.737875,41.121828,,,,,,,testsubsidy,default,Global,TEW,TEW,TEW (Central Southwest basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+56,59.00226000000001,49.466584000000005,47.146697,,,,,,,testsubsidy,default,Global,TEW,TEW,TEW (Mid-Atlantic basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+57,54.66895,47.31559799999998,48.994078,,,,,,,testsubsidy,default,Global,TEW,TEW,TEW (New England basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+58,60.58673,44.93401999999999,42.430862000000005,,,,,,,testsubsidy,default,Global,TEW,TEW,TEW (Northwest basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+59,57.70709000000001,42.473433,42.39147,,,,,,,testsubsidy,default,Global,TEW,TEW,TEW (Southwest basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg
+60,49.129041000000015,39.282264,42.302400000000006,,,,,,,testsubsidy,default,Global,TEW,TEW,TEW (Texas basalt),missing,missing,missing,missing,missing,missing,missing,1975$/kg

@@ -96,6 +96,7 @@ def verify_non_input_tech_costs(ground_truth, links, fpath):
         if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
             errors = merge[~((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4))]
             years_with_error.append(str(i))
+            #TODO: find out what is going on with OEW lime prices
             log(fpath, str(i), "Non-input energy costs are invalid for " + str(errors["sector"].unique()))
 
     return years_with_error
@@ -351,4 +352,4 @@ def log(fpath, year, reason):
 
 
 if __name__ == '__main__':
-    main("testsubsidy_default")
+    main("default_default")
