@@ -119,6 +119,12 @@ def CDR_cost(config_fname, year):
     dataframe['baseline'] = baseline
     dataframe['product'] = dataframe.apply(lambda row: row["product_price"] + " " + row["technology_price"] if row["technology_price"] != "missing" else row["product_price"], axis=1)
 
+    # add exogenous policy costs to the CDR cost dataframes
+    if os.path.exists("./data/gcam_out/" + config_fname + "/exogenous_subsector_investment" + ".csv"):
+        investments = data_manipulation.get_sensitivity_data([config_fname], "exogenous_subsector_investment", source="not")
+        investments["product"] = "Investment in " + investments["subsector"]
+        dataframe = pd.concat([dataframe, investments])
+
     plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year", config_fname)
     dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                      "/policy cost by technology.csv")

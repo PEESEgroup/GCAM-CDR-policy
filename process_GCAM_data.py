@@ -247,7 +247,7 @@ def main(config_fname):
             df.columns = df.iloc[0].astype(int).astype(str)
             df = df[1:].reset_index().rename(columns={'index': 'subsector'})
             df["Units"] = "Million 2025$USD"
-            df.to_csv(prefix+dir+"/"+x.data_files["exogenous_investment"].split("/")[-1])
+            df.to_csv(prefix+dir+"/"+ "exogenous_subsector_investment" + suffix)
 
 
 if __name__ == '__main__':
