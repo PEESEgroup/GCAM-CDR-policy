@@ -1,6 +1,7 @@
 import xml.etree.cElementTree as ET
 from xml.dom import minidom
 import build_xml_config
+import constants
 import utilities
 
 
@@ -132,7 +133,7 @@ def add_exo_demand(scenario, demand):
         # add demand in once for each year
         for year in unique_years:
             if (year, r) in demand:
-                ET.SubElement(demand_source, "demand", year=str(year)).text = str(demand[(year, r)]["demand"])
+                ET.SubElement(demand_source, "demand", year=str(year)).text = str(demand[(year, r)]["demand"] * constants.GCAMConstants.CO2_to_C)
 
     return scenario
 
@@ -157,10 +158,10 @@ def add_elastic_demand(scenario, demand):
             CDR_final_demand = ET.SubElement(region, "CDR-final-demand", name="CDR")
 
         demand_source = ET.SubElement(CDR_final_demand, "elastic-demand-source", name="elastic")
-        ET.SubElement(demand_source, "max-demand").text = str(demand[r]["max-demand"])
+        ET.SubElement(demand_source, "max-demand").text = str(demand[r]["max-demand"] * constants.GCAMConstants.CO2_to_C)
         ET.SubElement(demand_source, "steepness").text = str(demand[r]["steepness"])
-        ET.SubElement(demand_source, "midpoint").text = str(demand[r]["midpoint"])
-        ET.SubElement(demand_source, "min-price").text = str(demand[r]["min-price"])
+        ET.SubElement(demand_source, "midpoint").text = str(demand[r]["midpoint"] * constants.GCAMConstants.USD2025_tCO2_to_1990_tC)
+        ET.SubElement(demand_source, "min-price").text = str(demand[r]["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1990_tC)
 
     return scenario
 

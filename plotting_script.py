@@ -92,7 +92,7 @@ def CDR_cost(config_fname, year):
     for i in c.GCAMConstants.plotting_x:
         # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=197501&year2=202501
         price[str(i)] = price[str(i)] / c.GCAMConstants.USD2025_tCO2_to_1975_kgC  # $/C * C/CO2 molar ratios
-        supply[str(i)] = supply[str(i)] / 12 * 44  # C to CO2
+        supply[str(i)] = supply[str(i)] / c.GCAMConstants.CO2_to_C  # C to CO2
 
     # merge dataframes and constrain to US regions
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on=["product", "GCAM"],

@@ -262,6 +262,9 @@ def verify_cdr(CDR, links, fpath):
         # because this is one line of data
         df = df.iloc[0]
         for i in constants.GCAMConstants.plotting_x:
+            # convert from CO2-eq to C
+            df[str(i) + "_left"] = df[str(i) + "_left"] * constants.GCAMConstants.CO2_to_C
+
             # if the estimated value is not close to the reported value
             if .97 * df[str(i) + "_right"] < df[str(i) + "_left"] < 1.03 * df[str(i) + "_right"]:
                 print("CDR demand matches CDR supply by " + str(df[str(i) + "_left"] - df[str(i) + "_right"]))
@@ -303,10 +306,10 @@ def get_elastic_CDR_demand(CDR, fpath, i, region_market):
 
 def get_elastic_demand(row, i):
     # s-curve calculation
-    if row[str(i)] < row["min-price"] + 0.001:
+    if row[str(i)] < row["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1990_tC + 0.001:
         return 0
     else:
-        return row["max-demand"] / (1 + math.exp((0-row["steepness"]) * (row[str(i)] - row["midpoint"])))
+        return row["max-demand"] * constants.GCAMConstants.CO2_to_C / (1 + math.exp((0-row["steepness"]) * (row[str(i)] - (row["midpoint"]* constants.GCAMConstants.USD2025_tCO2_to_1990_tC))))
 
 
 def verify_ghg_tax(ground_truth, results, fpath):
