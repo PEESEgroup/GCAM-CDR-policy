@@ -161,7 +161,7 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
     comparison = pd.merge(ground_truth, results, "left", on="market", suffixes=("_g", "_r"))
 
     for index, row in comparison.iterrows():
-        df = comparison.iloc[index]
+        df = comparison.iloc[index].copy(deep=True)
         for i in constants.GCAMConstants.plotting_x:
             # unit conversion
             df[str(i) + "_g"] = df[str(i) + "_g"] * constants.GCAMConstants.CO2_to_C
@@ -358,4 +358,4 @@ def log(fpath, year, reason):
 
 
 if __name__ == '__main__':
-    main("default_default")
+    main("default_ndc")

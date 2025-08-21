@@ -112,3 +112,5 @@ def build_from_scenario(scenario_name):
                 output_fname=""
             )
         ]
+    else:
+        return []

@@ -442,8 +442,8 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["default", "testsubsidy"]  # use camelCase
-    current_baseline = ["ndc", "paris"]  # use camelCase
+    current_configs = ["ndc", "testsubsidy"]  # use camelCase
+    current_baseline = ["ndc"]  # use camelCase
 
     # the scenario and baseline name should match for any baseline scenario
 

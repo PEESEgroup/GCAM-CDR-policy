@@ -148,4 +148,4 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    main("testsubsidy_default", "2050")
+    main("default_ndc", "2050")
