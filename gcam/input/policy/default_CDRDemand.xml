@@ -588,9 +588,9 @@
          </linked-ghg-policy>
          <CDR-final-demand name="CDR">
             <elastic-demand-source name="elastic">
-               <max-demand>4110.818181818181</max-demand>
-               <steepness>0.0036765</steepness>
-               <midpoint>1412.276157965194</midpoint>
+               <max-demand>3835.6363636363635</max-demand>
+               <steepness>0.025688</steepness>
+               <midpoint>210.6529451137885</midpoint>
                <min-price>0.0</min-price>
             </elastic-demand-source>
          </CDR-final-demand>
