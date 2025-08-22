@@ -1,85 +1,85 @@
-﻿source:,default GCAM,,,,,,,,,,,,,,,,,
-index cols,1,,,,,,,,,,,,,,,,,
-region,policy-portfolio-standard,market,min-price,min-price-fillout,min-price-year,max-price,max-price-fillout,max-price-year,constraint,constraint-fillout,constraint-year,ghgpolicy,fixedTax-year,fixedTax-fillout,fixedTax,supplysector,subsector,stub-technology
-USA,BECCS,USA,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-AL,BECCS,AL,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-AK,BECCS,AK,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-AZ,BECCS,AZ,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-AR,BECCS,AR,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-CA,BECCS,CA,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-CO,BECCS,CO,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-CT,BECCS,CT,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-DE,BECCS,DE,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-FL,BECCS,FL,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-GA,BECCS,GA,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-HI,BECCS,HI,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-ID,BECCS,ID,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-IL,BECCS,IL,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-IN,BECCS,IN,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-IA,BECCS,IA,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-KS,BECCS,KS,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-KY,BECCS,KY,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-LA,BECCS,LA,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-ME,BECCS,ME,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-MD,BECCS,MD,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-MA,BECCS,MA,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-MI,BECCS,MI,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-MN,BECCS,MN,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-MS,BECCS,MS,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-MO,BECCS,MO,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-MT,BECCS,MT,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-NE,BECCS,NE,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-NV,BECCS,NV,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-NH,BECCS,NH,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-NJ,BECCS,NJ,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-NM,BECCS,NM,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-NY,BECCS,NY,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-NC,BECCS,NC,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-ND,BECCS,ND,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-OH,BECCS,OH,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-OK,BECCS,OK,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-OR,BECCS,OR,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-PA,BECCS,PA,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-RI,BECCS,RI,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-SC,BECCS,SC,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-SD,BECCS,SD,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-TN,BECCS,TN,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-TX,BECCS,TX,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-UT,BECCS,UT,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-VT,BECCS,VT,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-VA,BECCS,VA,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-WA,BECCS,WA,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-WV,BECCS,WV,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-WI,BECCS,WI,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-WY,BECCS,WY,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Africa_Eastern,BECCS,Africa_Eastern,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Africa_Northern,BECCS,Africa_Northern,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Africa_Southern,BECCS,Africa_Southern,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Africa_Western,BECCS,Africa_Western,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Australia_NZ,BECCS,Australia_NZ,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Brazil,BECCS,Brazil,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Canada,BECCS,Canada,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Central America and Caribbean,BECCS,Central America and Caribbean,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Central Asia,BECCS,Central Asia,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-China,BECCS,China,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Europe_Eastern,BECCS,Europe_Eastern,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-EU-12,BECCS,EU-12,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-EU-15,BECCS,EU-15,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Europe_Non_EU,BECCS,Europe_Non_EU,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-European Free Trade Association,BECCS,European Free Trade Association,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-India,BECCS,India,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Indonesia,BECCS,Indonesia,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Japan,BECCS,Japan,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Mexico,BECCS,Mexico,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Middle East,BECCS,Middle East,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Pakistan,BECCS,Pakistan,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Russia,BECCS,Russia,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-South Africa,BECCS,South Africa,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-South America_Northern,BECCS,South America_Northern,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-South America_Southern,BECCS,South America_Southern,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-South Asia,BECCS,South Asia,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-South Korea,BECCS,South Korea,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Southeast Asia,BECCS,Southeast Asia,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Taiwan,BECCS,Taiwan,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Argentina,BECCS,Argentina,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
-Colombia,BECCS,Colombia,0.01,1,1975,0.2,1,1975,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+﻿source:,default GCAM,,,,,,,,,,,
+index cols,1,,,,,,,,,,,
+region,policy-portfolio-standard,market,constraint,constraint-fillout,constraint-year,ghgpolicy,fixedTax-year,fixedTax-fillout,fixedTax,supplysector,subsector,stub-technology
+USA,BECCS,USA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+AL,BECCS,AL,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+AK,BECCS,AK,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+AZ,BECCS,AZ,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+AR,BECCS,AR,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+CA,BECCS,CA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+CO,BECCS,CO,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+CT,BECCS,CT,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+DE,BECCS,DE,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+FL,BECCS,FL,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+GA,BECCS,GA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+HI,BECCS,HI,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+ID,BECCS,ID,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+IL,BECCS,IL,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+IN,BECCS,IN,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+IA,BECCS,IA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+KS,BECCS,KS,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+KY,BECCS,KY,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+LA,BECCS,LA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+ME,BECCS,ME,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+MD,BECCS,MD,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+MA,BECCS,MA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+MI,BECCS,MI,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+MN,BECCS,MN,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+MS,BECCS,MS,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+MO,BECCS,MO,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+MT,BECCS,MT,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+NE,BECCS,NE,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+NV,BECCS,NV,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+NH,BECCS,NH,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+NJ,BECCS,NJ,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+NM,BECCS,NM,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+NY,BECCS,NY,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+NC,BECCS,NC,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+ND,BECCS,ND,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+OH,BECCS,OH,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+OK,BECCS,OK,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+OR,BECCS,OR,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+PA,BECCS,PA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+RI,BECCS,RI,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+SC,BECCS,SC,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+SD,BECCS,SD,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+TN,BECCS,TN,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+TX,BECCS,TX,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+UT,BECCS,UT,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+VT,BECCS,VT,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+VA,BECCS,VA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+WA,BECCS,WA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+WV,BECCS,WV,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+WI,BECCS,WI,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+WY,BECCS,WY,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Africa_Eastern,BECCS,Africa_Eastern,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Africa_Northern,BECCS,Africa_Northern,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Africa_Southern,BECCS,Africa_Southern,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Africa_Western,BECCS,Africa_Western,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Australia_NZ,BECCS,Australia_NZ,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Brazil,BECCS,Brazil,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Canada,BECCS,Canada,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Central America and Caribbean,BECCS,Central America and Caribbean,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Central Asia,BECCS,Central Asia,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+China,BECCS,China,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Europe_Eastern,BECCS,Europe_Eastern,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+EU-12,BECCS,EU-12,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+EU-15,BECCS,EU-15,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Europe_Non_EU,BECCS,Europe_Non_EU,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+European Free Trade Association,BECCS,European Free Trade Association,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+India,BECCS,India,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Indonesia,BECCS,Indonesia,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Japan,BECCS,Japan,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Mexico,BECCS,Mexico,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Middle East,BECCS,Middle East,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Pakistan,BECCS,Pakistan,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Russia,BECCS,Russia,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+South Africa,BECCS,South Africa,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+South America_Northern,BECCS,South America_Northern,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+South America_Southern,BECCS,South America_Southern,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+South Asia,BECCS,South Asia,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+South Korea,BECCS,South Korea,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Southeast Asia,BECCS,Southeast Asia,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Taiwan,BECCS,Taiwan,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Argentina,BECCS,Argentina,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
+Colombia,BECCS,Colombia,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
