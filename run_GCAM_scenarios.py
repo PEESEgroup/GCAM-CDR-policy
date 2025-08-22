@@ -442,15 +442,15 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["paris", "testsubsidy"]  # use camelCase
-    current_baseline = ["paris"]  # use camelCase
+    current_configs = ["nothing_nothing", "low_low", "high_high"]  # use camelCase
 
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
-    for i in current_configs:
-        for j in current_baseline:
-            main(i, j)
+    for key in current_configs:
+        i = key.split("_")[0]
+        j = key.split("_")[1]
+        main(i, j)
 
     with multiprocessing.Pool(processes=3) as pool:
         result = pool.starmap(main, ((i, j) for i in current_configs for j in current_baseline))
