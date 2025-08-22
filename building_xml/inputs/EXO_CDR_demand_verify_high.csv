@@ -1,0 +1,9 @@
+source,GCAM default,Units,Mt CO2-eq,
+index cols,2,,,
+year,region,demand,name,require-c-price
+2025,AL,13.5,exogenous,0
+2030,AL,34.63261353,exogenous,0
+2035,AL,88.84577186,exogenous,0
+2040,AL,227.9230579,exogenous,0
+2045,AL,584.7089761,exogenous,0
+2050,AL,1500,exogenous,0
