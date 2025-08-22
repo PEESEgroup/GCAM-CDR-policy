@@ -38,7 +38,7 @@ def build_from_scenario(scenario_name):
                         "tech": "./building_xml/inputs/BECCS_tech_base.csv",
                         "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
             xml_build_type="BECCS RES",
-            output_fname="default_BECCSIntegration.xml"
+            output_fname="default_BECCSIntegration_ndc.xml"
             ),
             # important to build links before CDR demand
             build_xml_config.XMLConfig(
@@ -46,20 +46,20 @@ def build_from_scenario(scenario_name):
                             "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify_34.csv"},
                             # "ghg_tax_verify": "./building_xml/inputs/GHG_tax_verify.csv"},
                 xml_build_type="GHG constraint",
-                output_fname="default_GHGPolicies.xml"
+                output_fname="default_GHGPolicies_ndc.xml"
             ),
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
                             "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_3419.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_34.csv"},
                 xml_build_type="CDR Policy",
-                output_fname="default_CDRDemand.xml"
+                output_fname="default_CDRDemand_ndc.xml"
             ),
             build_xml_config.XMLConfig(
                 data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
                             "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
-                output_fname="CDR_Costs_Calculated.xml"
+                output_fname="CDR_Costs_Calculated_ndc.xml"
             )
         ]
     elif "paris" in scenario_name:
@@ -68,7 +68,7 @@ def build_from_scenario(scenario_name):
                         "tech": "./building_xml/inputs/BECCS_tech_base.csv",
                         "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
             xml_build_type="BECCS RES",
-            output_fname="default_BECCSIntegration.xml"
+            output_fname="default_BECCSIntegration_paris.xml"
             ),
             # important to build links before CDR demand
             build_xml_config.XMLConfig(
@@ -76,20 +76,20 @@ def build_from_scenario(scenario_name):
                             "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify_19.csv"},
                             # "ghg_tax_verify": "./building_xml/inputs/GHG_tax_verify.csv"},
                 xml_build_type="GHG constraint",
-                output_fname="default_GHGPolicies.xml"
+                output_fname="default_GHGPolicies_paris.xml"
             ),
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
                             "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_3419.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
-                output_fname="default_CDRDemand.xml"
+                output_fname="default_CDRDemand_paris.xml"
             ),
             build_xml_config.XMLConfig(
                 data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
                             "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
-                output_fname="CDR_Costs_Calculated.xml"
+                output_fname="CDR_Costs_Calculated_paris.xml"
             )
         ]
     elif "testsubsidy" in scenario_name:
