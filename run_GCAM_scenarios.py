@@ -442,8 +442,10 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["nothing_nothing", "low_low", "high_high"]  # use camelCase
-
+    current_configs = ["high_high"]  # use camelCase
+    # "nothing_nothing" has an error in 2025
+    # "low_low" has an error in 2035
+    # TODO: subsidy should have an input in all time periods
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
@@ -452,5 +454,6 @@ if __name__ == '__main__':
         j = key.split("_")[1]
         main(i, j)
 
-    with multiprocessing.Pool(processes=3) as pool:
-        result = pool.starmap(main, ((i, j) for i in current_configs for j in current_baseline))
+
+    # with multiprocessing.Pool(processes=3) as pool:
+    #     result = pool.starmap(main, ((i, j) for i in current_configs for j in current_baseline))

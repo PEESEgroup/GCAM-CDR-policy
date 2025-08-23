@@ -31,9 +31,9 @@ def build_subsidy(config, baseline=True):
 
     # return dict of output files created -see constants for example
     if baseline:
-        return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "subsidies")
+        return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "subsidy policy")
     else:
-        return build_xml_config.XMLOutput("original", config.config_dir + config.output_fname, "subsidies")
+        return build_xml_config.XMLOutput("original", config.config_dir + config.output_fname, "subsidy policy")
 
 
 def build_subsidies(file):
