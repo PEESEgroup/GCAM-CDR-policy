@@ -1,4 +1,5 @@
 import build_xml_config
+import constants
 import utilities
 from xml.dom import minidom
 import xml.etree.cElementTree as ET
@@ -106,7 +107,7 @@ def build_tech(scenario, file):
 
         # find all policy portfolio standards
         for policy_portfolio_standard in scenario.findall(".//policy-portfolio-standard"):
-            ET.SubElement(policy_portfolio_standard, "min-price", fillout=str(0), year=str(year)).text = str(link["min-price"])
+            ET.SubElement(policy_portfolio_standard, "min-price", fillout=str(0), year=str(year)).text = str(link["min-price"]*constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
 
     return scenario
 

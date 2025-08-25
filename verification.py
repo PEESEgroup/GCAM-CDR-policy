@@ -181,7 +181,7 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
                 else:
                     years_with_error.append(str(i))
                     log(fpath, str(i),
-                        "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by" + str(df[str(i) + "_r"] - df[str(i) + "_g"]))
+                        "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by " + str(df[str(i) + "_r"] - df[str(i) + "_g"]))
     return years_with_error
 
 
@@ -196,13 +196,15 @@ def verify_beccs(csv, fpath):
     results = pd.read_csv(fpath + "/prices_of_all_markets.csv")
     results = results[results["product"] == "BECCS"]
     ground_truth = pd.read_csv(csv, skiprows=2)
+    ground_truth = ground_truth.pivot(index='minicam-energy-input', columns='year')['min-price'].reset_index()
+    ground_truth.columns = ground_truth.columns.astype(str)
     years_with_error = []
 
     # merge results and ground truth
-    merge = pd.merge(results, ground_truth, "left", left_on="GCAM", right_on="region")
+    merge = pd.merge(results, ground_truth, "left", left_on="product", right_on="minicam-energy-input", suffixes = ("_left", "_right"))
     for i in constants.GCAMConstants.plotting_x:
         # check that minimum price is satisfied
-        merge[str(i)] = merge[str(i)] - merge["min-price"]
+        merge[str(i)] = merge[str(i)+"_left"] - merge[str(i)+"_right"]*constants.GCAMConstants.USD2025_tCO2_to_1975_kgC
         if not (merge[str(i)] >= -1e-4).all():
             years_with_error.append(str(i))
             errors = merge[merge[str(i)] <= -1e-4]
@@ -353,7 +355,7 @@ def verify_ghg_tax(ground_truth, results, fpath):
     return years_with_error
 
 
-def log(fpath, year, reason):
+def log(fpath, year, reason, success=False):
     """
     log errors to the error log
     :param fpath: fpath to output data
@@ -363,8 +365,12 @@ def log(fpath, year, reason):
     """
     # open log file and add reason for masking a year
     with open(fpath + "/log.txt", "a+") as f:
-        print("Verification fails in " + year + " because " + reason)
-        f.write("Verification fails in " + year + " because " + reason + "\n")
+        if success:
+            print("Verification succeeds in " + year + " because " + reason)
+            f.write("Verification succeeds in " + year + " because " + reason + "\n")
+        else:
+            print("Verification fails in " + year + " because " + reason)
+            f.write("Verification fails in " + year + " because " + reason + "\n")
 
 
 if __name__ == '__main__':
