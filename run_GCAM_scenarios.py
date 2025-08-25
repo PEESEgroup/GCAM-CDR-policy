@@ -169,7 +169,7 @@ def build_config_file(scenario_name, baseline):
             # after cdr_resources
             element = ET.Element("Value", name=file.descriptor)
             element.text = file.filepath
-            scenario_components.insert(102, element)
+            scenario_components.insert(110, element)
 
     # replace altered files
     for file in altered:
