@@ -169,7 +169,7 @@ def build_config_file(scenario_name, baseline):
             # after cdr_resources
             element = ET.Element("Value", name=file.descriptor)
             element.text = file.filepath
-            scenario_components.insert(110, element)
+            scenario_components.insert(100, element)
 
     # replace altered files
     for file in altered:
@@ -442,7 +442,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["nothing_nothing", "high_high", "low_low"]  # use camelCase
+    current_configs = ["high_high", "low_low"]  # use camelCase
     # "low_low" has an error in 2035
     # the scenario and baseline name should match for any baseline scenario
 
