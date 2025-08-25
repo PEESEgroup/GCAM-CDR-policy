@@ -1,10 +1,11 @@
-source,REMIND SSP-3.4 and GCAM-USA results (https://www.sciencedirect.com/science/article/pii/S2666278723000119#sec0023) SI SM1.3 and SM1.5,,
+source,REMIND SSP-3.4 and lower bound of US projected CO2 emissions (https://www.epa.gov/system/files/documents/2025-01/2024-btr-summary.pdf) - p.14,,
 index cols,3,,
 year,market,ghgpolicy,constraint
-2030,AL,CO2,2619
-2035,AL,CO2,1854.5
-2040,AL,CO2,1090
-2045,AL,CO2,545
+2025,AL,CO2,4282
+2030,AL,CO2,3390
+2035,AL,CO2,2926
+2040,AL,CO2,2651
+2045,AL,CO2,1325.5
 2050,AL,CO2,0
 2025,Canada,CO2,42078
 2030,Canada,CO2,40887
