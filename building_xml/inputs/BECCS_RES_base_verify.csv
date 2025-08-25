@@ -1,6 +1,7 @@
 ﻿source:,default GCAM,,,,,,,,,,,
 index cols,1,,,,,,,,,,,
 region,policy-portfolio-standard,market,constraint,constraint-fillout,constraint-year,ghgpolicy,fixedTax-year,fixedTax-fillout,fixedTax,supplysector,subsector,stub-technology
+USA,BECCS,USA,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
 AL,BECCS,AL,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
 AK,BECCS,AK,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS
 AZ,BECCS,AZ,0,1,2020,BECCS_countersubsidy,2020,1,1,CDR_regional,CDR,BECCS

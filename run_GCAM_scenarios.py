@@ -372,7 +372,7 @@ def default_config(config_name):
 
     # <!-- add primary CDR -->
     ET.SubElement(scenario, "Value", name="cdr_rampup").text = "../input/gcamdata/xml/CDR.xml"
-    # ET.SubElement(scenario, "Value", name="cdr_discrete_choice").text = "../input/gcamdata/xml/CDR_discrete_choice.xml"
+    ET.SubElement(scenario, "Value", name="cdr_discrete_choice").text = "../input/gcamdata/xml/CDR_discrete_choice.xml"
     ET.SubElement(scenario, "Value", name="cdr_trade").text = "../input/gcamdata/xml/CDR_traded.xml"
     ET.SubElement(scenario, "Value", name="cdr_dac").text = "../input/gcamdata/xml/DAC.xml"
     ET.SubElement(scenario, "Value", name="waste_heat").text = "../input/gcamdata/xml/waste_heat_endogenous.xml"

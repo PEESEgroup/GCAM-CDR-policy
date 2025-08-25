@@ -110,6 +110,7 @@
       <Value name="biosep_gas">../input/gcamdata/xml/bio_sep_USA_elec_segments.xml</Value>
       <Value name="bio_water_usage">../input/gcamdata/xml/electricity_water_coefs_bio.xml</Value>
       <Value name="cdr_rampup">../input/gcamdata/xml/CDR.xml</Value>
+      <Value name="cdr_discrete_choice">../input/gcamdata/xml/CDR_discrete_choice.xml</Value>
       <Value name="cdr_trade">../input/gcamdata/xml/CDR_traded.xml</Value>
       <Value name="cdr_dac">../input/gcamdata/xml/DAC.xml</Value>
       <Value name="waste_heat">../input/gcamdata/xml/waste_heat_endogenous.xml</Value>
@@ -126,9 +127,9 @@
       <Value name="cdr_tew_resources">../input/gcamdata/xml/TEW_USA_resource.xml</Value>
       <Value name="cdr_tew_silicate">../input/gcamdata/xml/silicate_resource_USA.xml</Value>
       <Value name="cdr_ew_limit">../input/gcamdata/xml/limit_land_USA.xml</Value>
-      <Value name="cdr_oae_usa">../input/gcamdata/xml/OEW_USA_lime_semilocal.xml</Value>
       <Value name="CDR_tech_non-input_costs">../input/gcamdata/xml/CDR_Costs_Calculated_nothing.xml</Value>
       <Value name="BECCS-integration">../input/gcamdata/xml/default_BECCSIntegration_nothing.xml</Value>
+      <Value name="cdr_oae_usa">../input/gcamdata/xml/OEW_USA_lime_semilocal.xml</Value>
       <Value name="cdr_lime_usa">../input/gcamdata/xml/lime_USA_localized.xml</Value>
       <Value name="cdr_oae_shipping_usa">../input/gcamdata/xml/OEW_shipping_USA.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_USA_CDR.xml</Value>
