@@ -57,14 +57,16 @@ def main(scenario_name):
         ground_truth = pd.read_csv(csvs[csv], skiprows=2)
         if "RES_tech" in csv:
             error_years.extend(verify_beccs(csvs[csv], fpath))
-        if "ghg_constraint" in csv:
+        elif "ghg_constraint" in csv:
             error_years.extend(verify_ghg_constraint(ground_truth, links["ghg_CDR_market_link"], fpath))
-        if "ghg_tax" in csv:
+        elif "ghg_tax" in csv:
             # query co2 prices
             results = pd.read_csv(fpath+"/CO2_prices.csv")
             error_years.extend(verify_ghg_tax(ground_truth, results, fpath))
-        if "subsidy" in csv:
+        elif "subsidy" in csv:
             error_years.extend(verify_subsidy(ground_truth, links, fpath))
+        else:
+            print(csv + " was not verified")
         # TODO: add more file types
 
     # update output .csv files based on years with errors
@@ -165,16 +167,17 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
         df = comparison.iloc[index].copy(deep=True)
         for i in constants.GCAMConstants.plotting_x:
             # unit conversion
-            if df[str(i) + "_g"] == np.nan:
-                print("GHG market has no constraint in " + str(i))
-            df[str(i) + "_g"] = df[str(i) + "_g"] * constants.GCAMConstants.CO2_to_C
-            # if the estimated value is not close to the reported value
-            if .99 * df[str(i) + "_r"] < df[str(i) + "_g"]:
-                print("GHG constraint for " + df["market"] + " in " + str(i) + " meets the constraint by " + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
+            if np.isnan(df[str(i) + "_g"]):
+                print("GHG market has no constraint in " + str(i) + " in " + df["market"])
             else:
-                years_with_error.append(str(i))
-                log(fpath, str(i),
-                    "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by" + str(df[str(i) + "_r"] - df[str(i) + "_g"]))
+                df[str(i) + "_g"] = df[str(i) + "_g"] * constants.GCAMConstants.CO2_to_C
+                # if the estimated value is not close to the reported value
+                if .99 * df[str(i) + "_r"] < df[str(i) + "_g"]:
+                    print("GHG constraint for " + df["market"] + " in " + str(i) + " meets the constraint by " + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
+                else:
+                    years_with_error.append(str(i))
+                    log(fpath, str(i),
+                        "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by" + str(df[str(i) + "_r"] - df[str(i) + "_g"]))
     return years_with_error
 
 

@@ -24,10 +24,10 @@ def build_BECCS_integration(config, baseline=True):
 
     # min-price is the lowest price of the subsidy to BECCS markets from CDR
     # max-price doesn't appear to do anything....
-    if "RES_markets_verify" in data:
-        RES = data["RES_markets_verify"]
-    if "RES_tech" in data:
-        tech = data["RES_tech"]
+    if "RES_markets" in data:
+        RES = data["RES_markets"]
+    if "RES_tech_verify" in data:
+        tech = data["RES_tech_verify"]
     if "countersubsidy" in data:
         countersubsidy = data["countersubsidy"]
 
