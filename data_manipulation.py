@@ -915,3 +915,10 @@ def price_subsidy(row):
             return sub_name[0] + " " + sub_name[1]
     else:
         return row["product"]
+
+
+def remove_price_supply_outliers(year, row, suffix):
+    if row[str(year) + "_supply"] < 0.001:
+        return np.nan
+    else:
+        return row[str(year) + suffix]

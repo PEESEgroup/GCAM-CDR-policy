@@ -1332,8 +1332,6 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
 
     # drop columns that only have nan
     df = df.dropna(how='all', axis=1)
-    # drop rows that have nan
-    df = df.dropna()
 
     # get subplot size
     nrow, ncol = get_subplot_dimensions(year)

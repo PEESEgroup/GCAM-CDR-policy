@@ -91,13 +91,19 @@ def CDR_cost(config_fname, year):
     price["Units"] = "2025USD/t CO$_{2}$-eq"
     for i in c.GCAMConstants.plotting_x:
         # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=197501&year2=202501
-        price[str(i)] = price[str(i)] / c.GCAMConstants.USD2025_tCO2_to_1975_kgC  # $/C * C/CO2 molar ratios
-        supply[str(i)] = supply[str(i)] / c.GCAMConstants.CO2_to_C  # C to CO2
+        price[str(i)] = price[str(i)] / c.GCAMConstants.USD2025_tCO2_to_1975_kgC
+        supply[str(i)] = supply[str(i)] / c.GCAMConstants.CO2_to_C
 
     # merge dataframes and constrain to US regions
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on=["product", "GCAM"],
                          suffixes=("_supply", "_price"))
     dataframe = dataframe[dataframe["GCAM"].isin(c.GCAMConstants.USA_region)]
+    dataframe = dataframe[~dataframe["subsector_supply"].isin(["unsatisfiedDemand"])]
+
+    # if there is supply less than 0.0001 Mt CDR for a given tech and state, set supply and price to np.nan
+    for i in c.GCAMConstants.plotting_x:
+        dataframe[str(i) + "_price"] = dataframe.apply(lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_price"), axis=1)
+        dataframe[str(i) + "_supply"] = dataframe.apply(lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_supply"), axis=1)
     mari_df = dataframe[dataframe["technology_price"] != "subsidy"]
     scenario_df = plotting.plot_marimekko(mari_df, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
                             "sorted price and supply of CDR by technology", config_fname)
