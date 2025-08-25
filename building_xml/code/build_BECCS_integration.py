@@ -108,6 +108,8 @@ def build_tech(scenario, file):
         # find all policy portfolio standards
         for policy_portfolio_standard in scenario.findall(".//policy-portfolio-standard"):
             ET.SubElement(policy_portfolio_standard, "min-price", fillout=str(0), year=str(year)).text = str(link["min-price"]*constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
+            ET.SubElement(policy_portfolio_standard, "max-price", fillout=str(0), year=str(year)).text = str(
+                link["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC*2)
 
     return scenario
 
