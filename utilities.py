@@ -55,8 +55,8 @@ def build_from_scenario(scenario_name):
                 output_fname="45Q_DACS_nothing.xml"
             ),
             build_xml_config.XMLConfig(
-            data_files={"RES_markets_verify": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                        "tech": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+            data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                        "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                         "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
             xml_build_type="BECCS RES",
             output_fname="default_BECCSIntegration_nothing.xml"
@@ -91,8 +91,8 @@ def build_from_scenario(scenario_name):
                 output_fname="45Q_DACS_low.xml"
             ),
             build_xml_config.XMLConfig(
-            data_files={"RES_markets_verify": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                        "tech": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+            data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                        "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                         "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
             xml_build_type="BECCS RES",
             output_fname="default_BECCSIntegration_low.xml"
