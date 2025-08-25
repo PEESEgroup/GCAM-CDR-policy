@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scenario>
    <world>
-      <region name="USA">
-		<policy-portfolio-standard delete="1" name="CDR-growth-limiter" />
-	  </region>
       <region name="AK">
 		  <supplysector name="CDR_regional">
 			<subsector name="unsatisfiedDemand">

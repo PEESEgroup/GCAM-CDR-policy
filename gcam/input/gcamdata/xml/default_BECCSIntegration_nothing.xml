@@ -1,65 +1,6 @@
 <?xml version="1.0" ?>
 <scenario>
    <world>
-      <region name="USA">
-         <policy-portfolio-standard name="BECCS">
-            <policyType>RES</policyType>
-            <market>USA</market>
-            <constraint fillout="1" year="2020">0</constraint>
-            <min-price fillout="0" year="1975">0.13945355191256834</min-price>
-            <max-price fillout="0" year="1975">0.27890710382513667</max-price>
-            <min-price fillout="0" year="1990">0.13945355191256834</min-price>
-            <max-price fillout="0" year="1990">0.27890710382513667</max-price>
-            <min-price fillout="0" year="2005">0.13945355191256834</min-price>
-            <max-price fillout="0" year="2005">0.27890710382513667</max-price>
-            <min-price fillout="0" year="2010">0.13945355191256834</min-price>
-            <max-price fillout="0" year="2010">0.27890710382513667</max-price>
-            <min-price fillout="0" year="2015">0.13945355191256834</min-price>
-            <max-price fillout="0" year="2015">0.27890710382513667</max-price>
-            <min-price fillout="0" year="2020">0.13945355191256834</min-price>
-            <max-price fillout="0" year="2020">0.27890710382513667</max-price>
-            <min-price fillout="0" year="2025">0.13945355191256834</min-price>
-            <max-price fillout="0" year="2025">0.27890710382513667</max-price>
-            <min-price fillout="0" year="2030">0.12743169398907106</min-price>
-            <max-price fillout="0" year="2030">0.2548633879781421</max-price>
-            <min-price fillout="0" year="2035">0.11644620310928963</min-price>
-            <max-price fillout="0" year="2035">0.23289240621857926</max-price>
-            <min-price fillout="0" year="2040">0.10640773733333335</min-price>
-            <max-price fillout="0" year="2040">0.2128154746666667</max-price>
-            <min-price fillout="0" year="2045">0.09723465652459018</min-price>
-            <max-price fillout="0" year="2045">0.19446931304918036</max-price>
-            <min-price fillout="0" year="2050">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2050">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2055">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2055">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2060">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2060">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2065">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2065">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2070">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2070">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2075">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2075">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2080">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2080">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2085">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2085">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2090">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2090">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2095">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2095">0.1777047171256831</max-price>
-            <min-price fillout="0" year="2100">0.08885235856284154</min-price>
-            <max-price fillout="0" year="2100">0.1777047171256831</max-price>
-         </policy-portfolio-standard>
-         <ghgpolicy name="BECCS_countersubsidy">
-            <fixedTax year="2020" fillout="1">1</fixedTax>
-         </ghgpolicy>
-         <supplysector name="CDR_regional">
-            <subsector name="CDR">
-               <stub-technology name="BECCS"/>
-            </subsector>
-         </supplysector>
-      </region>
       <region name="AL">
          <policy-portfolio-standard name="BECCS">
             <policyType>RES</policyType>

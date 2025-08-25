@@ -372,7 +372,7 @@ def default_config(config_name):
 
     # <!-- add primary CDR -->
     ET.SubElement(scenario, "Value", name="cdr_rampup").text = "../input/gcamdata/xml/CDR.xml"
-    ET.SubElement(scenario, "Value", name="cdr_discrete_choice").text = "../input/gcamdata/xml/CDR_discrete_choice.xml"
+    # ET.SubElement(scenario, "Value", name="cdr_discrete_choice").text = "../input/gcamdata/xml/CDR_discrete_choice.xml"
     ET.SubElement(scenario, "Value", name="cdr_trade").text = "../input/gcamdata/xml/CDR_traded.xml"
     ET.SubElement(scenario, "Value", name="cdr_dac").text = "../input/gcamdata/xml/DAC.xml"
     ET.SubElement(scenario, "Value", name="waste_heat").text = "../input/gcamdata/xml/waste_heat_endogenous.xml"
@@ -384,7 +384,7 @@ def default_config(config_name):
 
     # <!-- CDR in USA -->
     ET.SubElement(scenario, "Value", name="cdr_usa").text = "../input/gcamdata/xml/CDR_USA.xml"
-    ET.SubElement(scenario, "Value", name="growth_limit").text = "../input/gcamdata/xml/CDR_discrete_choice_USA.xml"
+    # ET.SubElement(scenario, "Value", name="growth_limit").text = "../input/gcamdata/xml/CDR_discrete_choice_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_trade_usa").text = "../input/gcamdata/xml/CDR_traded_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_dac_usa").text = "../input/gcamdata/xml/DAC_USA.xml"
     ET.SubElement(scenario, "Value", name="waste_heat_usa").text = "../input/gcamdata/xml/waste_heat_endogenous_USA.xml"
