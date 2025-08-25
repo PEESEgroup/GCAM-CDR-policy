@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario>
+   <world>
+      <region name="USA">
+         <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+	  </region>
+      <region name="Africa_Eastern">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+	  </region>
+      <region name="Africa_Northern">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+	  </region>
+      <region name="Africa_Southern">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Africa_Western">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Australia_NZ">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Brazil">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Canada">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Central America and Caribbean">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Central Asia">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="China">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="EU-12">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="EU-15">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Europe_Eastern">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Europe_Non_EU">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="European Free Trade Association">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="India">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Indonesia">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Japan">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Mexico">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Middle East">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Pakistan">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Russia">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="South Africa">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="South America_Northern">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="South America_Southern">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="South Asia">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="South Korea">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Southeast Asia">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Taiwan">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Argentina">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <region name="Colombia">
+		  <supplysector name="CDR_regional">
+			<subsector name="unsatisfiedDemand">
+				<relative-cost-logit>
+					<logit-exponent fillout="1" year="1975">-3</logit-exponent>
+				</relative-cost-logit>
+				<share-weight fillout="1" year="1975">1</share-weight>
+				<stub-technology name="unsatisfied CDR demand" />
+			</subsector>
+		</supplysector>
+
+	  </region>
+      <global-technology-database>
+		 <location-info sector-name="CDR_regional" subsector-name="unsatisfiedDemand">
+		     <technology name="unsatisfied CDR demand">
+                    <period year="1975">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="1990">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2005">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2010">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2015">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2020">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2025">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2030">
+						<share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2035">
+						<share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2040">
+						<share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2045">
+						<share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2050">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2055">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2060">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2065">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2070">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2075">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2080">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2085">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2090">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2095">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                    <period year="2100">
+                        <share-weight>1</share-weight>
+                        <CO2 name="CO2"/>
+                        <minicam-non-energy-input name="non-energy">
+                            <input-cost>11.1111</input-cost>
+                        </minicam-non-energy-input>
+                    </period>
+                </technology>
+		 </location-info>
+		 <location-info sector-name="CDR_regional" subsector-name="CDR">
+            <technology name="DAC">
+               <period year="1975">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="1990">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2005">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2010">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2015">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2020">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2025">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2030">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2035">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2040">
+			       <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2045">
+			      <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2050">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2055">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2060">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2065">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2070">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2075">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2080">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2085">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2090">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2095">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2100">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+            </technology>
+            <technology name="OEW">
+               <period year="1975">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="1990">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2005">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2010">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2015">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2020">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2025">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2030">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2035">
+			     <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2040">
+			     <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2045">
+			     <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2050">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2055">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2060">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2065">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2070">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2075">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2080">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2085">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2090">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2095">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2100">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+            </technology>
+            <technology name="TEW">
+               <period year="1975">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="1990">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2005">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2010">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2015">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2020">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2025">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2030">
+			      <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2035">
+			      <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2040">
+			      <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2045">
+			      <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2050">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2055">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2060">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2065">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2070">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2075">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2080">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2085">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2090">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2095">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2100">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+            </technology>
+            <technology name="BECCS">
+               <period year="1975">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="1990">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2005">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2010">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2015">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2020">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2025">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2030">
+			      <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2035">
+			      <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2040">
+			      <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2045">
+			      <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2050">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2055">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2060">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2065">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2070">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2075">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2080">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2085">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2090">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2095">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+               <period year="2100">
+				  <input-tax name="CDR-growth-limiter" />
+			   </period>
+            </technology>
+		 </location-info>
+	  </global-technology-database>
+   </world>
+</scenario>
