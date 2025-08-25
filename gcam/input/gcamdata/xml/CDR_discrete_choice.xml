@@ -16,9 +16,6 @@
                </absolute-cost-logit>
                <share-weight fillout="1" year="1975">0</share-weight>
 			   <share-weight fillout="1" year="2020">1</share-weight>
-               <stub-technology name="DAC" />
-			   <stub-technology name="OEW" />
-			   <stub-technology name="TEW" />
 			</subsector>
          </supplysector>
 	</region>
