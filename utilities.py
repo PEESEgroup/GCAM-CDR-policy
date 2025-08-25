@@ -128,7 +128,7 @@ def build_from_scenario(scenario_name):
             ),
             build_xml_config.XMLConfig(
             data_files={"RES_markets_verify": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                        "tech": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                        "RES_tech": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                         "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
             xml_build_type="BECCS RES",
             output_fname="default_BECCSIntegration_high.xml"

@@ -442,7 +442,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["high_high"]  # use camelCase
+    current_configs = ["nothing_nothing", "high_high"]  # use camelCase
     # "nothing_nothing" has an error in 2025
     # "low_low" has an error in 2035
     # TODO: subsidy should have an input in all time periods

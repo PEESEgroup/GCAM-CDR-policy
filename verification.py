@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import math
 import data_manipulation
 import process_GCAM_data
@@ -54,7 +55,7 @@ def main(scenario_name):
 
     for csv in csvs:
         ground_truth = pd.read_csv(csvs[csv], skiprows=2)
-        if "RES_markets" in csv:
+        if "RES_tech" in csv:
             error_years.extend(verify_beccs(csvs[csv], fpath))
         if "ghg_constraint" in csv:
             error_years.extend(verify_ghg_constraint(ground_truth, links["ghg_CDR_market_link"], fpath))
@@ -164,6 +165,8 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
         df = comparison.iloc[index].copy(deep=True)
         for i in constants.GCAMConstants.plotting_x:
             # unit conversion
+            if df[str(i) + "_g"] == np.nan:
+                print("GHG market has no constraint in " + str(i))
             df[str(i) + "_g"] = df[str(i) + "_g"] * constants.GCAMConstants.CO2_to_C
             # if the estimated value is not close to the reported value
             if .99 * df[str(i) + "_r"] < df[str(i) + "_g"]:
@@ -358,4 +361,4 @@ def log(fpath, year, reason):
 
 
 if __name__ == '__main__':
-    main("default_ndc")
+    main("high_high")

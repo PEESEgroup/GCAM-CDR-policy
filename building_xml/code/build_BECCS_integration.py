@@ -26,8 +26,8 @@ def build_BECCS_integration(config, baseline=True):
     # max-price doesn't appear to do anything....
     if "RES_markets_verify" in data:
         RES = data["RES_markets_verify"]
-    if "tech" in data:
-        tech = data["tech"]
+    if "RES_tech" in data:
+        tech = data["RES_tech"]
     if "countersubsidy" in data:
         countersubsidy = data["countersubsidy"]
 
