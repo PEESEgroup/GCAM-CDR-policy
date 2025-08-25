@@ -13,6 +13,8 @@ def main(scenario_name):
     :param scenario_name: name of the scenario for verification
     :return: N/A
     """
+    # TODO: ditch USA BECCS?
+
     # get a list of files that need verification
     files = scenario_name.split("_")
     xml_files_to_build = []
@@ -57,18 +59,18 @@ def main(scenario_name):
         ground_truth = pd.read_csv(csvs[csv], skiprows=2)
         if "RES_tech" in csv:
             error_years.extend(verify_beccs(csvs[csv], fpath))
-            log(fpath, "all years", csv + " was verified")
+            log(fpath, "all years", csv + " was verified", success=True)
         elif "ghg_constraint" in csv:
             error_years.extend(verify_ghg_constraint(ground_truth, links["ghg_CDR_market_link"], fpath))
-            log(fpath, "all years", csv + " was verified")
+            log(fpath, "all years", csv + " was verified", success=True)
         elif "ghg_tax" in csv:
             # query co2 prices
             results = pd.read_csv(fpath+"/CO2_prices.csv")
             error_years.extend(verify_ghg_tax(ground_truth, results, fpath))
-            log(fpath, "all years", csv + " was verified")
+            log(fpath, "all years", csv + " was verified", success=True)
         elif "subsidy" in csv:
             error_years.extend(verify_subsidy(ground_truth, links, fpath))
-            log(fpath, "all years", csv + " was verified")
+            log(fpath, "all years", csv + " was verified", success=True)
         else:
             log(fpath, "all years", csv + " was not verified")
         # TODO: add more file types
