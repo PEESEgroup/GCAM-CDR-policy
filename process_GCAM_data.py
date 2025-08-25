@@ -155,15 +155,15 @@ def label_market_as_region(row):
     :param row: a row in the datafame
     :return: the GCAM region name, or a default value if it is not a region name
     """
-    if "Global" in row['market']:
+    if str(row['market']).startswith("Global"):
         return "Global"
     for j in c.GCAMConstants.GCAM_region:
-        if j in row['market']:
+        if str(row['market']).startswith(j):
             return j
     for j in c.GCAMConstants.USA_region:
-        if j in row['market']:
+        if str(row['market']).startswith(j):
             return j
-    return c.GCAMConstants.missing
+    return row['market']
 
 
 def label_market_as_product(row):
@@ -251,4 +251,4 @@ def main(config_fname):
 
 
 if __name__ == '__main__':
-    main("default_ndc")
+    main("nothing_nothing")
