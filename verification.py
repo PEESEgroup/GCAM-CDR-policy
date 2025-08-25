@@ -57,16 +57,20 @@ def main(scenario_name):
         ground_truth = pd.read_csv(csvs[csv], skiprows=2)
         if "RES_tech" in csv:
             error_years.extend(verify_beccs(csvs[csv], fpath))
+            log(fpath, "all years", csv + " was verified")
         elif "ghg_constraint" in csv:
             error_years.extend(verify_ghg_constraint(ground_truth, links["ghg_CDR_market_link"], fpath))
+            log(fpath, "all years", csv + " was verified")
         elif "ghg_tax" in csv:
             # query co2 prices
             results = pd.read_csv(fpath+"/CO2_prices.csv")
             error_years.extend(verify_ghg_tax(ground_truth, results, fpath))
+            log(fpath, "all years", csv + " was verified")
         elif "subsidy" in csv:
             error_years.extend(verify_subsidy(ground_truth, links, fpath))
+            log(fpath, "all years", csv + " was verified")
         else:
-            print(csv + " was not verified")
+            log(fpath, "all years", csv + " was not verified")
         # TODO: add more file types
 
     # update output .csv files based on years with errors
