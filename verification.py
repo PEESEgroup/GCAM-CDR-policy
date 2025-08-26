@@ -13,8 +13,6 @@ def main(scenario_name):
     :param scenario_name: name of the scenario for verification
     :return: N/A
     """
-    # TODO: ditch USA BECCS?
-
     # get a list of files that need verification
     files = scenario_name.split("_")
     xml_files_to_build = []
@@ -105,7 +103,6 @@ def verify_non_input_tech_costs(ground_truth, links, fpath):
         if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
             errors = merge[~((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4))]
             years_with_error.append(str(i))
-            #TODO: find out what is going on with OEW lime prices
             log(fpath, str(i), "Non-input energy costs are invalid for " + str(errors["sector"].unique()))
 
     return years_with_error

@@ -100,7 +100,7 @@ def CDR_cost(config_fname, year):
     dataframe = dataframe[dataframe["GCAM"].isin(c.GCAMConstants.USA_region)]
     dataframe = dataframe[~dataframe["subsector_supply"].isin(["unsatisfiedDemand"])]
 
-    # if there is supply less than 0.0001 Mt CDR for a given tech and state, set supply and price to np.nan
+    # if there is supply less than 0.01 Mt CDR for a given tech and state, set supply and price to np.nan
     for i in c.GCAMConstants.plotting_x:
         dataframe[str(i) + "_price"] = dataframe.apply(lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_price"), axis=1)
         dataframe[str(i) + "_supply"] = dataframe.apply(lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_supply"), axis=1)

@@ -36,12 +36,6 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify_nothing.csv"},
-                xml_build_type="GHG constraint",
-                output_fname="default_GHGPolicies_nothing.xml"
-            ),
-            build_xml_config.XMLConfig(
-                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
                             "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_nothing.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_34.csv"},
                 xml_build_type="CDR Policy",
