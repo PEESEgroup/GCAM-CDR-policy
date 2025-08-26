@@ -1,0 +1,6 @@
+Verification fails in 2025 because CDR demand does not match CDR supply by -17.053953929501816
+Verification fails in 2025 because GHG constraint for USA in 2025 fails the constraint by 174.08384464182154
+Verification fails in 2035 because GHG constraint for Global in 2035 fails the constraint by 176.91883952992066
+Verification succeeds in all years because ghg_constraint_verify was verified
+Verification succeeds in all years because DAC_subsidy_amount_verify was verified
+Verification succeeds in all years because RES_tech_verify was verified
