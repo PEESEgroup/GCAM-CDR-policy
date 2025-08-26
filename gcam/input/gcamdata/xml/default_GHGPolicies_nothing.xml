@@ -4,6 +4,12 @@
       <region name="AL">
          <ghgpolicy name="CO2">
             <market>USA</market>
+            <constraint year="2025">1636.3636363636363</constraint>
+            <constraint year="2030">1636.3636363636363</constraint>
+            <constraint year="2035">1636.3636363636363</constraint>
+            <constraint year="2040">1636.3636363636363</constraint>
+            <constraint year="2045">1636.3636363636363</constraint>
+            <constraint year="2050">1636.3636363636363</constraint>
          </ghgpolicy>
       </region>
       <region name="AK">
