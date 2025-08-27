@@ -94,7 +94,7 @@ def build_RES(file):
             sub_abs = ET.SubElement(subsector, "absolute-cost-logit")
             ET.SubElement(sub_abs, "logit-exponent", fillout="1", year="1975").text= "-3"
             ET.SubElement(subsector, "share-weight", fillout="1", year="1975").text="0"
-            ET.SubElement(subsector, "share-weight", fillout="1", year="2020").text = "1"
+            #ET.SubElement(subsector, "share-weight", fillout="1", year="2020").text = "1"
 
         ET.SubElement(subsector, "stub-technology", name=region_link["stub-technology"])
 
