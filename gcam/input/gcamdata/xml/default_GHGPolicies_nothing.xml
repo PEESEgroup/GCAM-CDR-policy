@@ -1,6 +1,11 @@
 <?xml version="1.0" ?>
 <scenario>
    <world>
+      <region name="USA">
+         <ghgpolicy name="CO2">
+            <market>USA</market>
+         </ghgpolicy>
+      </region>
       <region name="AL">
          <ghgpolicy name="CO2">
             <market>USA</market>

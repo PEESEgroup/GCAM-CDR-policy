@@ -6,6 +6,16 @@
             <subsector delete="1" name="CDR_USA"/>
          </supplysector>
       </region>
+      <region name="USA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
       <region name="AL">
          <linked-ghg-policy name="CO2_CDR">
             <price-adjust fillout="1" year="1975">0</price-adjust>
