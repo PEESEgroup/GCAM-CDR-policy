@@ -120,7 +120,7 @@
         <solution-tolerance good="USABECCS" region="USA" period="10">0.6</solution-tolerance>
         <solution-tolerance good="USABECCS" region="USA" period="11">0.6</solution-tolerance>
         <solution-tolerance good="USABECCS" region="USA" period="12">0.6</solution-tolerance>
-
+        <solution-tolerance good="DniesterR_water withdrawals" region="DniesterR" period="10">0.06</solution-tolerance>
 
         <!-- applies to all regions since region attribute is not included -->
         <max-price-change fillout="1" market-type="Trial-Value" period="1">10</max-price-change>
