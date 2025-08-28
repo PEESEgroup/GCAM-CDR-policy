@@ -55,18 +55,7 @@
             <fixedTax year="2020" fillout="1">1</fixedTax>
          </ghgpolicy>
          <supplysector name="CDR_regional">
-            <absolute-cost-logit>
-               <logit-exponent fillout="1" year="1975">-12</logit-exponent>
-            </absolute-cost-logit>
-            <output-unit>Mt</output-unit>
-            <input-unit>Ej or Mt</input-unit>
-            <price-unit>1975$/kg</price-unit>
-            <keyword final-energy="CDR_output"/>
             <subsector name="CDR">
-               <absolute-cost-logit>
-                  <logit-exponent fillout="1" year="1975">-3</logit-exponent>
-               </absolute-cost-logit>
-               <share-weight fillout="1" year="1975">0</share-weight>
                <stub-technology name="BECCS"/>
             </subsector>
          </supplysector>
