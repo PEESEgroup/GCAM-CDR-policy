@@ -13,6 +13,7 @@
 				<share-weight fillout="1" year="1975">0</share-weight>
 				<technology name="CDR_USA">
 				   <period year="1975">
+					  <minicam-energy-input delete="1" name="CDR_regional" />
 					  <minicam-energy-input name="CDR_USA_traded">
 						<coefficient>1</coefficient>
 						<market-name>USA</market-name>
@@ -20,6 +21,7 @@
 					  </minicam-energy-input>
 				   </period>
 				   <period year="1990">
+					  <minicam-energy-input delete="1" name="CDR_regional" />
 					  <minicam-energy-input name="CDR_USA_traded">
 						<coefficient>1</coefficient>
 						<market-name>USA</market-name>
