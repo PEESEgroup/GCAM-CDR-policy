@@ -80,21 +80,21 @@ def build_RES(file):
 
         # sectors
         supply_sector = ET.SubElement(region, "supplysector", name=region_link["supplysector"])
-        if area == "USA":
-            # because BECCS is special
-            absolute = ET.SubElement(supply_sector, "absolute-cost-logit")
-            ET.SubElement(absolute, "logit-exponent", fillout="1", year="1975").text = "-12"
-            ET.SubElement(supply_sector, "output-unit").text = "Mt"
-            ET.SubElement(supply_sector, "input-unit").text = "Ej or Mt"
-            ET.SubElement(supply_sector, "price-unit").text = "1975$/kg"
-            ET.SubElement(supply_sector, "keyword", {"final-energy":"CDR_output"})
+        # if area == "USA":
+        #     # because BECCS is special
+        #     absolute = ET.SubElement(supply_sector, "absolute-cost-logit")
+        #     ET.SubElement(absolute, "logit-exponent", fillout="1", year="1975").text = "-12"
+        #     ET.SubElement(supply_sector, "output-unit").text = "Mt"
+        #     ET.SubElement(supply_sector, "input-unit").text = "Ej or Mt"
+        #     ET.SubElement(supply_sector, "price-unit").text = "1975$/kg"
+        #     ET.SubElement(supply_sector, "keyword", {"final-energy":"CDR_output"})
 
         subsector = ET.SubElement(supply_sector, "subsector", name=region_link["subsector"])
-        if area == "USA":
-            sub_abs = ET.SubElement(subsector, "absolute-cost-logit")
-            ET.SubElement(sub_abs, "logit-exponent", fillout="1", year="1975").text= "-3"
-            ET.SubElement(subsector, "share-weight", fillout="1", year="1975").text="0"
-            #ET.SubElement(subsector, "share-weight", fillout="1", year="2020").text = "1"
+        # if area == "USA":
+        #     sub_abs = ET.SubElement(subsector, "absolute-cost-logit")
+        #     ET.SubElement(sub_abs, "logit-exponent", fillout="1", year="1975").text= "-3"
+        #     ET.SubElement(subsector, "share-weight", fillout="1", year="1975").text="0"
+        #     #ET.SubElement(subsector, "share-weight", fillout="1", year="2020").text = "1"
 
         ET.SubElement(subsector, "stub-technology", name=region_link["stub-technology"])
 

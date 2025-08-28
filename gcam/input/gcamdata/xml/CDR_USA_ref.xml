@@ -5,41 +5,6 @@
 		<supplysector delete="1" name="CDR"/>
 		<supplysector delete="1" name="CDR_regional"/>
 	  </region>
-     <region name="USA">
-         <supplysector name="CDR">
-            <relative-cost-logit>
-               <logit-exponent fillout="1" year="1975">-3</logit-exponent>
-            </relative-cost-logit>
-            <output-unit>Mt</output-unit>
-            <input-unit>EJ or Mt</input-unit>
-            <price-unit>1975$/kg</price-unit>
-            <keyword final-energy="CDR_output"/>
-            <subsector name="CDR">
-               <absolute-cost-logit>
-                  <logit-exponent fillout="1" year="1975">-12</logit-exponent>
-               </absolute-cost-logit>
-               <share-weight fillout="1" year="1975">1</share-weight>
-               <stub-technology name="CDR" />
-            </subsector>
-         </supplysector>
-         <supplysector name="CDR_regional">
-			<absolute-cost-logit>
-				<logit-exponent fillout="1" year="1975">-12</logit-exponent>
-			</absolute-cost-logit>
-            <output-unit>Mt</output-unit>
-            <input-unit>EJ or Mt</input-unit>
-            <price-unit>1975$/kg</price-unit>
-            <keyword final-energy="CDR_output"/>
-            <subsector name="CDR">
-               <absolute-cost-logit>
-                  <logit-exponent fillout="1" year="1975">-3</logit-exponent>
-               </absolute-cost-logit>
-               <share-weight fillout="1" year="1975">0</share-weight>
-			   <share-weight fillout="1" year="2020">1</share-weight>
-            <stub-technology name="BECCS" />
-			</subsector>
-         </supplysector>
-	  </region>
 	  <region name="AK">
          <supplysector name="CDR">
             <relative-cost-logit>
