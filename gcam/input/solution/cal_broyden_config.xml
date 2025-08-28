@@ -68,7 +68,7 @@
         <solution-tolerance>0.001</solution-tolerance>
         <solution-floor>0.0001</solution-floor>
         <calibration-tolerance>0.01</calibration-tolerance>
-        <max-model-calcs>5000</max-model-calcs>
+        <max-model-calcs>12000</max-model-calcs>
 
         <preconditioner-solver-component>
             <solution-info-filter>solvable</solution-info-filter>
@@ -112,6 +112,7 @@
     <solution-info-param-parser>
 		<!-- SinaiP water withdrawals consistently cause 2030 to fail in GCAM-CDR, so we loosen the tolerance -->
 		<solution-tolerance good="SinaiP_water withdrawals" region="SinaiP" period="7">0.02</solution-tolerance>
+        <solution-tolerance good="USABECCS" region="USA" period="5">0.6</solution-tolerance>
         <solution-tolerance good="USABECCS" region="USA" period="6">0.6</solution-tolerance>
         <solution-tolerance good="USABECCS" region="USA" period="7">0.6</solution-tolerance>
         <solution-tolerance good="USABECCS" region="USA" period="8">0.6</solution-tolerance>
