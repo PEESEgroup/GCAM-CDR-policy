@@ -320,7 +320,7 @@ def get_elastic_CDR_demand(CDR, fpath, i, region_market):
 
 def get_elastic_demand(row, i):
     # s-curve calculation
-    if row[str(i)] < row["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1990_tC + 0.001:
+    if row[str(i)] < row["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1990_tC + 1e-7:
         return 0
     else:
         return row["max-demand"] * constants.GCAMConstants.CO2_to_C / (1 + math.exp((0-row["steepness"]) * (row[str(i)] - (row["midpoint"]* constants.GCAMConstants.USD2025_tCO2_to_1990_tC))))
@@ -373,4 +373,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("nothing_nothing")
+    main("high_high")

@@ -154,4 +154,4 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    main("nothing_nothing", "2040")
+    main("high_high", "2040")
