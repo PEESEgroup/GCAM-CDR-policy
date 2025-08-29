@@ -160,13 +160,13 @@ def build_from_scenario(scenario_name):
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_high.xml"
             ),
-            # build_xml_config.XMLConfig(
-            #     # <tech>_subsidy_link
-            #     data_files={"TechNeutralITC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
-            #                 "TechNeutralITC_subsidy_amount_verify": "./building_xml/inputs/subsidy_tech-neutral-itc_verify_s2.csv"},
-            #     xml_build_type="subsidy Policy",
-            #     output_fname="Tech_Neutral_ITC.xml"
-            # ),
+            build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"TechNeutralITC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
+                            "TechNeutralITC_subsidy_amount_verify": "./building_xml/inputs/subsidy_tech-neutral-itc_verify_s2_small.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="Tech_Neutral_ITC.xml"
+            ),
             build_xml_config.XMLConfig(
                 data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
                             "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links_20.csv"},
