@@ -135,7 +135,7 @@
       <Value name="ignore_beccs">../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml</Value>
       <Value name="GHG emissions policy">../input/gcamdata/xml/default_GHGPolicies_high.xml</Value>
       <Value name="CDR-Demand-Policy">../input/policy/default_CDRDemand_high.xml</Value>
-      <Value name="subsidy policy">../input/policy/Tech_Neutral_ITC.xml</Value>
+      <Value name="subsidy policy">../input/policy/45Q_DACS_high.xml</Value>
    </ScenarioComponents>
    <Strings>
       <Value name="scenarioName">s2_high</Value>
