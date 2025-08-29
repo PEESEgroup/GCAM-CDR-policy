@@ -448,7 +448,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["testTransport_high"]  # use camelCase
+    current_configs = ["s2_high", "s2_low", "s2_nothing"]  # use camelCase
     # "low_low" has an error in 2035
     # the scenario and baseline name should match for any baseline scenario
 

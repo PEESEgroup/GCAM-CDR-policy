@@ -33,7 +33,7 @@ def build_subsidy(config, baseline=True):
     if baseline:
         return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "subsidy policy")
     else:
-        return build_xml_config.XMLOutput("original", config.config_dir + config.output_fname, "subsidy policy")
+        return build_xml_config.XMLOutput("altered", config.config_dir + config.output_fname, "subsidy policy")
 
 
 def build_subsidies(file):
