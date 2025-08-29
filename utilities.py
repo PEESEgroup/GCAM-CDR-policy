@@ -140,14 +140,14 @@ def build_from_scenario(scenario_name):
                 output_fname="CDR_Costs_Calculated_high.xml"
             )
         ]
-    elif "testsubsidy" in scenario_name:
+    elif "testTransport" in scenario_name:
         return [build_xml_config.XMLConfig(
             # <tech>_subsidy_link
-            data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
-                        "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_DACS_verify.csv"},
-            xml_build_type="subsidy Policy",
-            output_fname="test_subsidy_DACS.xml"
-        ),
+            data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
+                        "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links_20.csv"},
+            xml_build_type="TEW Transport Cost Reduction",
+            output_fname="TEW_CR_USA.xml"
+            ),
             build_xml_config.XMLConfig(
                 data_files={"TEW_subsidy_link": "./building_xml/inputs/TEW_links.csv",
                             "TEW_subsidy_amount_verify": "./building_xml/inputs/subsidy_TEW_verify.csv"},

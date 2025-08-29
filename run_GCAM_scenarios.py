@@ -12,7 +12,7 @@ import verification
 import utilities
 import plotting_script
 from building_xml.code import build_CDR_demand, build_BECCS_integration, build_global_GHG, build_subsidy, \
-    build_tech_costs
+    build_tech_costs, build_transport_TEW
 
 
 def main(scenario, baseline, batch=False):
@@ -211,6 +211,8 @@ def build_files(xml_files_to_build, baseline):
             files.append(build_subsidy.build_subsidy(k, baseline))
         if k.xml_build_type == "tech_non-input_costs":
             files.append(build_tech_costs.build_tech_costs(k, baseline))
+        if k.xml_build_type == "TEW Transport Cost Reduction":
+            files.append(build_transport_TEW.build_tew_transport(k, baseline))
         # TODO add more build types here
 
     return files
@@ -442,7 +444,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["high_high", "low_low", "nothing_nothing"]  # use camelCase
+    current_configs = ["high_testTransport"]  # use camelCase
     # "low_low" has an error in 2035
     # the scenario and baseline name should match for any baseline scenario
 
