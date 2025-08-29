@@ -51,11 +51,6 @@ def build_subsidies(file):
         if "amount" in key:
             subsidy = file[key]
 
-    # fix subsidy name
-    sub_name = "subsidy"
-    for r, year, sector, subsector, tech in subsidy:
-        sub_name = "_" + tech + "_subsidy"
-
     # high level
     scenario = ET.Element("scenario")
     world = ET.SubElement(scenario, "world")
@@ -64,35 +59,32 @@ def build_subsidies(file):
         region = ET.SubElement(world, "region", name=str(area))
 
         # add technologies the subsidies apply to
+        invalid_regions_and_tech = ["AKTEW"]
         seen = {}
         for r, year, sector, ss, tech in subsidy:
-            if r + sector + ss + tech not in seen:
-                supply_sector = ET.SubElement(region, "supplysector", name=sector)
-                subsector = ET.SubElement(supply_sector, "subsector", name=ss)
-                technology = ET.SubElement(subsector, "technology", name=tech)
-                period = ET.SubElement(technology, "period", year=str(year))
-                ET.SubElement(period, "input-subsidy", name=sub_name)
-                seen[r + sector + ss + tech] = 0
-            else:
-                # technology should be referenced before
-                period = ET.SubElement(technology, "period", year=str(year))
-                ET.SubElement(period, "input-subsidy", name=sub_name)
-
-        # policy portfolio standard
-        region_link = markets[area]
-        policy_portfolio_standard = ET.SubElement(region, "policy-portfolio-standard", name=sub_name)
-        ET.SubElement(policy_portfolio_standard, "policyType").text = "subsidy"
-        ET.SubElement(policy_portfolio_standard, "market").text = region_link["market"]
-
-        # add in the tax data
-        for r, year, sector, subsector, tech in subsidy:
-            if str(year) not in seen:  # if the regions match
-                year_sub = subsidy[r, year, sector, subsector, tech]
-                if tech in ["BECCS", "DAC", "TEW", "OEW"]:
-                    # convert from $2025 USD/t CO2-eq to $1975/kg C
-                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
+            if r+tech not in invalid_regions_and_tech:
+                if r + sector + ss + tech not in seen:
+                    supply_sector = ET.SubElement(region, "supplysector", name=sector)
+                    subsector = ET.SubElement(supply_sector, "subsector", name=ss)
+                    technology = ET.SubElement(subsector, "technology", name=tech)
+                    period = ET.SubElement(technology, "period", year=str(year))
+                    ET.SubElement(period, "input-subsidy", name="_" + tech + "_subsidy")
+                    seen[r + sector + ss + tech] = 0
+                    # policy portfolio standard
+                    region_link = markets[area]
+                    policy_portfolio_standard = ET.SubElement(region, "policy-portfolio-standard", name="_" + tech + "_subsidy")
+                    ET.SubElement(policy_portfolio_standard, "policyType").text = "subsidy"
+                    ET.SubElement(policy_portfolio_standard, "market").text = region_link["market"]
                 else:
-                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"])
-                seen[str(year)] = 0
+                    # technology should be referenced before
+                    period = ET.SubElement(technology, "period", year=str(year))
+                    ET.SubElement(period, "input-subsidy", name="_" + tech + "_subsidy")
+
+                if str(year) not in seen:  # if the regions match
+                    year_sub = subsidy[r, year, sector, ss, tech]
+                    # convert from $2025 USD/t CO2-eq to $1975/kg C
+                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(
+                        year_sub["fixedTax"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
+                    seen[str(year)] = 0
 
     return scenario
