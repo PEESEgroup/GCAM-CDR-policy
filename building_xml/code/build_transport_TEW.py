@@ -3,6 +3,7 @@ import constants
 import utilities
 from xml.dom import minidom
 import xml.etree.cElementTree as ET
+from lxml import etree
 
 
 def build_tew_transport(config, baseline=True):
@@ -31,9 +32,9 @@ def build_tew_transport(config, baseline=True):
 
     # return dict of output files created -see constants for example
     if baseline:
-        return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "cdr_oae_usa")
+        return build_xml_config.XMLOutput("baseline", config.config_dir + config.output_fname, "cdr_tew_usa")
     else:
-        return build_xml_config.XMLOutput("altered", config.config_dir + config.output_fname, "cdr_oae_usa")
+        return build_xml_config.XMLOutput("altered", config.config_dir + config.output_fname, "cdr_tew_usa")
 
 
 def build_transport(file):
@@ -52,25 +53,30 @@ def build_transport(file):
             amount = file[key]
 
     # open stub
-    tree = ET.parse('./../../gcam/input/gcamdata/xml/TEW_USA_stub.xml')
+    tree = ET.parse('./gcam/input/gcamdata/xml/TEW_USA_stub.xml')
     root = tree.getroot()
+    for elem in root.iter():
+        if elem.text:
+            elem.text = elem.text.strip()
+        if elem.tail:
+            elem.tail = elem.tail.strip()
     world = root.find(".//world")
 
     for area in markets:
         region = ET.SubElement(world, "region", name=str(area))
 
         # add base tech information
-        supply_sector = ET.SubElement(region, "supplysector", name=markets["supplysector"])
+        supply_sector = ET.SubElement(region, "supplysector", name=markets[area]["supplysector"])
         rcl = ET.SubElement(supply_sector, "relative-cost-logit")
-        ET.SubElement(rcl, "logit-exponent", fillout="1", year="1975").text = str(markets["logit-exponent"])
-        ET.SubElement(supply_sector, "output-unit").text = markets["output-unit"]
-        ET.SubElement(supply_sector, "input-unit").text = markets["input-unit"]
-        ET.SubElement(supply_sector, "price-unit").text = markets["price-unit"]
-        ET.SubElement(supply_sector, "keyword", final_energy=markets["final-energy"])
-        subsector = ET.SubElement(supply_sector, "subsector", name=markets["subsector"])
+        ET.SubElement(rcl, "logit-exponent", fillout="1", year="1975").text = str(markets[area]["logit-exponent"])
+        ET.SubElement(supply_sector, "output-unit").text = markets[area]["output-unit"]
+        ET.SubElement(supply_sector, "input-unit").text = markets[area]["input-unit"]
+        ET.SubElement(supply_sector, "price-unit").text = markets[area]["price-unit"]
+        ET.SubElement(supply_sector, "keyword", final_energy=markets[area]["final-energy"])
+        subsector = ET.SubElement(supply_sector, "subsector", name=markets[area]["subsector"])
         ssrcl = ET.SubElement(subsector, "relative-cost-logit")
-        ET.SubElement(ssrcl, "logit-exponent", fillout="1", year="1975").text = str(markets["subsector-logit-exponent"])
-        ET.SubElement(subsector, "share-weight", fillout="1", year="1975").text = str(markets["subsector-share-weight"])
+        ET.SubElement(ssrcl, "logit-exponent", fillout="1", year="1975").text = str(markets[area]["subsector-logit-exponent"])
+        ET.SubElement(subsector, "share-weight", fillout="1", year="1975").text = str(markets[area]["subsector-share-weight"])
 
     # add in the updated transportation distances
     for area, tech in amount:
@@ -80,6 +86,6 @@ def build_transport(file):
         for i in constants.GCAMConstants.x:
             period = ET.SubElement(stub_tech, "period", year=str(i))
             minicam = ET.SubElement(period, "minicam-energy-input", name="trn_freight")
-            ET.SubElement(minicam, "coefficient", amount[(area, tech)][str(i)])
+            ET.SubElement(minicam, "coefficient").text = str(amount[(area, tech)][str(i)])
 
     return root
