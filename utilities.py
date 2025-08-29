@@ -155,6 +155,12 @@ def build_from_scenario(scenario_name):
                 output_fname="OEW_CR_USA.xml"
             ),
             build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            ),
+            build_xml_config.XMLConfig(
                 data_files={"TEW_subsidy_link": "./building_xml/inputs/TEW_links.csv",
                             "TEW_subsidy_amount_verify": "./building_xml/inputs/subsidy_TEW_verify.csv"},
                 xml_build_type="subsidy Policy",
