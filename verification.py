@@ -15,6 +15,7 @@ def main(scenario_name):
     """
     # get a list of files that need verification
     files = scenario_name.split("_")
+    files.reverse()  # this ensures that the altered files will overwrite the original files
     xml_files_to_build = []
     for i in files:
         xml_files_to_build.extend(utilities.build_from_scenario(str(i)))
@@ -46,6 +47,8 @@ def main(scenario_name):
             if "link" in file:
                 links_ground_truth = pd.read_csv(csv, skiprows=2)
                 if "sector" in links_ground_truth.columns:
+                    links[file] = links_ground_truth
+                elif "supplysector" in links_ground_truth.columns:
                     links[file] = links_ground_truth
                 else:
                     links[file] = links_ground_truth[["region", "market"]]
@@ -373,4 +376,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("low_low")
+    main("s2_high")
