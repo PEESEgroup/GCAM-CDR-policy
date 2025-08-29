@@ -61,9 +61,9 @@ def build_c_storage(file):
     for area in amount:
         region = ET.SubElement(world, "region", name=str(area))
         resource = ET.SubElement(region, "resource", name="onshore carbon-storage")
-        ET.SubElement(resource, "output-unit", amount[area]["output-unit"])
-        ET.SubElement(resource, "price-unit", amount[area]["price-unit"])
-        ET.SubElement(resource, "market", amount[area]["market"])
+        ET.SubElement(resource, "output-unit").text = amount[area]["output-unit"]
+        ET.SubElement(resource, "price-unit").text = amount[area]["price-unit"]
+        ET.SubElement(resource, "market").text = amount[area]["market"]
         subresource = ET.SubElement(resource, "subresource", name="onshore carbon-storage")
         grade_1 = ET.SubElement(subresource, "grade", name="grade 1")
         ET.SubElement(grade_1, "available").text = str(amount[area]["grade-1-available"])
@@ -77,5 +77,10 @@ def build_c_storage(file):
         grade_4 = ET.SubElement(subresource, "grade", name="grade 4")
         ET.SubElement(grade_4, "available").text = str(amount[area]["grade-4-available"])
         ET.SubElement(grade_4, "extractioncost").text = str(amount[area]["grade-4-extraction"])
+
+        technology = ET.SubElement(subresource, "technology", name = "onshore carbon-storage")
+        for i in constants.GCAMConstants.x:
+            period = ET.SubElement(technology, "period", year=str(i))
+            ET.SubElement(period, "share-weight").text = "1"
 
     return root

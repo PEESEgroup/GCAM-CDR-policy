@@ -71,7 +71,6 @@
       <Value name="wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>
       <Value name="socio_usa">../input/gcamdata/xml/socioeconomics_USA.xml</Value>
       <Value name="resource_usa">../input/gcamdata/xml/resources_USA.xml</Value>
-      <Value name="Cstorage_usa">../input/gcamdata/xml/Cstorage_USA.xml</Value>
       <Value name="prices_usa">../input/gcamdata/xml/en_prices_USA.xml</Value>
       <Value name="en_transform_usa">../input/gcamdata/xml/en_transformation_USA.xml</Value>
       <Value name="elec_water_usa">../input/gcamdata/xml/elec_segments_water_USA.xml</Value>
@@ -136,6 +135,7 @@
       <Value name="subsidy policy">../input/policy/45Q_DACS_high.xml</Value>
       <Value name="cdr_tew_usa">../input/gcamdata/xml/TEW_CR_USA.xml</Value>
       <Value name="cdr_oae_usa">../input/gcamdata/xml/OEW_CR_USA.xml</Value>
+      <Value name="Cstorage_usa">../input/gcamdata/xml/USA_C_Storage.xml</Value>
       <Value name="subsidy policy">../input/policy/test_subsidy_TEW.xml</Value>
    </ScenarioComponents>
    <Strings>
