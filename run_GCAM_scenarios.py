@@ -12,7 +12,7 @@ import verification
 import utilities
 import plotting_script
 from building_xml.code import build_CDR_demand, build_BECCS_integration, build_global_GHG, build_subsidy, \
-    build_tech_costs, build_transport_TEW
+    build_tech_costs, build_transport_TEW, build_transport_OEW
 
 
 def main(scenario, baseline, batch=False):
@@ -213,6 +213,8 @@ def build_files(xml_files_to_build, baseline):
             files.append(build_tech_costs.build_tech_costs(k, baseline))
         if k.xml_build_type == "TEW Transport Cost Reduction":
             files.append(build_transport_TEW.build_tew_transport(k, baseline))
+        if k.xml_build_type == "OEW Transport Cost Reduction":
+            files.append(build_transport_OEW.build_oew_transport(k, baseline))
         # TODO add more build types here
 
     return files

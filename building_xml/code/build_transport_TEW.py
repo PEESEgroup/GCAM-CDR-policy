@@ -3,7 +3,6 @@ import constants
 import utilities
 from xml.dom import minidom
 import xml.etree.cElementTree as ET
-from lxml import etree
 
 
 def build_tew_transport(config, baseline=True):

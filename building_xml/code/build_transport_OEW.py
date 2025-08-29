@@ -5,7 +5,7 @@ from xml.dom import minidom
 import xml.etree.cElementTree as ET
 
 
-def build_transport(config, baseline=True):
+def build_oew_transport(config, baseline=True):
     """
     build the BECCS integration policy configuration file
     :param config: configuration file
@@ -43,56 +43,26 @@ def build_transport(file):
     :return: the root of the xml node
     """
     # merge dataframes
-    markets = {}
-    subsidy = {}
+    amount = {}
     for key, value in file.items():
-        if "link" in key:
-            markets = file[key]
         if "amount" in key:
-            subsidy = file[key]
+            amount = file[key]
 
-    # fix subsidy name
-    sub_name = "subsidy"
-    for r, year, sector, subsector, tech in subsidy:
-        sub_name = "_" + tech + "_subsidy"
+    # open stub
+    tree = ET.parse('./gcam/input/gcamdata/xml/OEW_USA_lime_semilocal.xml')
+    root = tree.getroot()
+    for elem in root.iter():
+        if elem.text:
+            elem.text = elem.text.strip()
+        if elem.tail:
+            elem.tail = elem.tail.strip()
 
-    # high level
-    scenario = ET.Element("scenario")
-    world = ET.SubElement(scenario, "world")
+    # iterate through the whole tree
+    for i in constants.GCAMConstants.x:
+        for year in root.iter('period'):
+            if str(year.attrib["year"]) == str(i):
+                for coefficient in year.iter("coefficient"):
+                    for tech in amount:
+                        coefficient.text = str(float(coefficient.text)*amount[tech][str(i)])
 
-    for area in markets:
-        region = ET.SubElement(world, "region", name=str(area))
-
-        # add technologies the subsidies apply to
-        seen = {}
-        for r, year, sector, ss, tech in subsidy:
-            if r + sector + ss + tech not in seen:
-                supply_sector = ET.SubElement(region, "supplysector", name=sector)
-                subsector = ET.SubElement(supply_sector, "subsector", name=ss)
-                technology = ET.SubElement(subsector, "technology", name=tech)
-                period = ET.SubElement(technology, "period", year=str(year))
-                ET.SubElement(period, "input-subsidy", name=sub_name)
-                seen[r + sector + ss + tech] = 0
-            else:
-                # technology should be referenced before
-                period = ET.SubElement(technology, "period", year=str(year))
-                ET.SubElement(period, "input-subsidy", name=sub_name)
-
-        # policy portfolio standard
-        region_link = markets[area]
-        policy_portfolio_standard = ET.SubElement(region, "policy-portfolio-standard", name=sub_name)
-        ET.SubElement(policy_portfolio_standard, "policyType").text = "subsidy"
-        ET.SubElement(policy_portfolio_standard, "market").text = region_link["market"]
-
-        # add in the tax data
-        for r, year, sector, subsector, tech in subsidy:
-            if str(year) not in seen:  # if the regions match
-                year_sub = subsidy[r, year, sector, subsector, tech]
-                if tech in ["BECCS", "DAC", "TEW", "OEW"]:
-                    # convert from $2025 USD/t CO2-eq to $1975/kg C
-                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
-                else:
-                    ET.SubElement(policy_portfolio_standard, "fixedTax", year=str(year)).text = str(year_sub["fixedTax"])
-                seen[str(year)] = 0
-
-    return scenario
+    return root

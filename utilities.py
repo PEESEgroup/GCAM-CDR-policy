@@ -149,6 +149,12 @@ def build_from_scenario(scenario_name):
             output_fname="TEW_CR_USA.xml"
             ),
             build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"OEW_transport_amount": "./building_xml/inputs/OEW_transport_coef_20.csv"},
+                xml_build_type="OEW Transport Cost Reduction",
+                output_fname="OEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
                 data_files={"TEW_subsidy_link": "./building_xml/inputs/TEW_links.csv",
                             "TEW_subsidy_amount_verify": "./building_xml/inputs/subsidy_TEW_verify.csv"},
                 xml_build_type="subsidy Policy",

@@ -127,7 +127,6 @@
       <Value name="cdr_tew_resources">../input/gcamdata/xml/TEW_USA_resource.xml</Value>
       <Value name="cdr_tew_silicate">../input/gcamdata/xml/silicate_resource_USA.xml</Value>
       <Value name="cdr_ew_limit">../input/gcamdata/xml/limit_land_USA.xml</Value>
-      <Value name="cdr_oae_usa">../input/gcamdata/xml/OEW_USA_lime_semilocal.xml</Value>
       <Value name="cdr_lime_usa">../input/gcamdata/xml/lime_USA_localized.xml</Value>
       <Value name="cdr_oae_shipping_usa">../input/gcamdata/xml/OEW_shipping_USA.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_USA_CDR.xml</Value>
@@ -136,6 +135,7 @@
       <Value name="CDR-Demand-Policy">../input/policy/default_CDRDemand_high.xml</Value>
       <Value name="subsidy policy">../input/policy/45Q_DACS_high.xml</Value>
       <Value name="cdr_tew_usa">../input/gcamdata/xml/TEW_CR_USA.xml</Value>
+      <Value name="cdr_oae_usa">../input/gcamdata/xml/OEW_CR_USA.xml</Value>
       <Value name="subsidy policy">../input/policy/test_subsidy_TEW.xml</Value>
    </ScenarioComponents>
    <Strings>
