@@ -65,7 +65,6 @@ def build_subsidies(file):
         seen = {}
         for r, year, sector, ss, tech in subsidy:
             subname = "_" + tech + "_subsidy"
-            print(area+tech)
             if area+tech not in invalid_regions_and_tech:
                 if r + sector + ss + tech not in seen:
                     supply_sector = ET.SubElement(region, "supplysector", name=sector)
