@@ -71,6 +71,7 @@
       <Value name="wind_update">../input/gcamdata/xml/onshore_wind.xml</Value>
       <Value name="socio_usa">../input/gcamdata/xml/socioeconomics_USA.xml</Value>
       <Value name="resource_usa">../input/gcamdata/xml/resources_USA.xml</Value>
+      <Value name="Cstorage_usa">../input/gcamdata/xml/USA_C_Storage.xml</Value>
       <Value name="prices_usa">../input/gcamdata/xml/en_prices_USA.xml</Value>
       <Value name="en_transform_usa">../input/gcamdata/xml/en_transformation_USA.xml</Value>
       <Value name="elec_water_usa">../input/gcamdata/xml/elec_segments_water_USA.xml</Value>
@@ -116,26 +117,25 @@
       <Value name="cdr_ew_limit">../input/gcamdata/xml/limit_land.xml</Value>
       <Value name="cdr_oae">../input/gcamdata/xml/OEW.xml</Value>
       <Value name="cdr_oae_shipping">../input/gcamdata/xml/OEW_shipping.xml</Value>
+      <Value name="CDR_tech_non-input_costs">../input/gcamdata/xml/CDR_Costs_Calculated_high.xml</Value>
       <Value name="BECCS-integration">../input/gcamdata/xml/default_BECCSIntegration_high.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_CDR.xml</Value>
       <Value name="cdr_usa">../input/gcamdata/xml/CDR_USA.xml</Value>
       <Value name="cdr_trade_usa">../input/gcamdata/xml/CDR_traded_USA.xml</Value>
       <Value name="cdr_dac_usa">../input/gcamdata/xml/DAC_USA.xml</Value>
       <Value name="waste_heat_usa">../input/gcamdata/xml/waste_heat_endogenous_USA.xml</Value>
+      <Value name="cdr_tew_usa">../input/gcamdata/xml/TEW_CR_USA.xml</Value>
       <Value name="cdr_tew_resources">../input/gcamdata/xml/TEW_USA_resource.xml</Value>
       <Value name="cdr_tew_silicate">../input/gcamdata/xml/silicate_resource_USA.xml</Value>
       <Value name="cdr_ew_limit">../input/gcamdata/xml/limit_land_USA.xml</Value>
+      <Value name="cdr_oae_usa">../input/gcamdata/xml/OEW_CR_USA.xml</Value>
       <Value name="cdr_lime_usa">../input/gcamdata/xml/lime_USA_localized.xml</Value>
       <Value name="cdr_oae_shipping_usa">../input/gcamdata/xml/OEW_shipping_USA.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_USA_CDR.xml</Value>
       <Value name="ignore_beccs">../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml</Value>
       <Value name="GHG emissions policy">../input/gcamdata/xml/default_GHGPolicies_high.xml</Value>
       <Value name="CDR-Demand-Policy">../input/policy/default_CDRDemand_high.xml</Value>
-      <Value name="CDR_tech_non-input_costs">../input/gcamdata/xml/CDR_Costs_Calculated_high.xml</Value>
       <Value name="subsidy policy">../input/policy/Tech_Neutral_ITC.xml</Value>
-      <Value name="cdr_tew_usa">../input/gcamdata/xml/TEW_CR_USA.xml</Value>
-      <Value name="cdr_oae_usa">../input/gcamdata/xml/OEW_CR_USA.xml</Value>
-      <Value name="Cstorage_usa">../input/gcamdata/xml/USA_C_Storage.xml</Value>
    </ScenarioComponents>
    <Strings>
       <Value name="scenarioName">s2_high</Value>

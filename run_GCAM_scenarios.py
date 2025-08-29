@@ -175,9 +175,10 @@ def build_config_file(scenario_name, baseline):
     for file in altered:
         # remove original entry
         original_entry = config.find(".//Value[@name='" + file.descriptor + "']")
-        scenario_components.remove(original_entry)
-        # add altered entry with default name
-        ET.SubElement(scenario_components, "Value", name=file.descriptor).text = file.filepath
+        original_entry.text = file.filepath
+        # scenario_components.remove(original_entry)
+        # # add altered entry with default name
+        # ET.SubElement(scenario_components, "Value", name=file.descriptor).text = file.filepath
 
     # add original files
     for file in original:
