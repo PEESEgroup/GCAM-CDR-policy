@@ -1,5 +1,3 @@
-Verification fails in 2030 because GHG constraint for USA in 2030 fails the constraint by 306.9910196626365
-Verification fails in 2035 because GHG constraint for USA in 2035 fails the constraint by 457.71163270814134
 Verification succeeds in all years because ghg_constraint_verify was verified
 Verification succeeds in all years because DAC_subsidy_amount_verify was verified
 Verification succeeds in all years because RES_tech_verify was verified
