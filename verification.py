@@ -120,25 +120,27 @@ def verify_subsidy(ground_truth, links, fpath):
     :return: list of years with error
     """
     # format results
-    product = ground_truth["stub-technology"].unique()[0] + "_subsidy"
-    link = links[product+"_link"]
-    results = pd.read_csv(fpath + "/prices_of_all_markets.csv")
-    results = results[results["product"] == product]
     years_with_error = []
+    for j in ground_truth["stub-technology"].unique():
+        product = j + "_subsidy"
+        link = links[ground_truth["stub-technology"].unique()[0]+"_subsidy_link"]
+        results = pd.read_csv(fpath + "/prices_of_all_markets.csv")
+        prod_results = results[results["product"] == product]
+        prod_gt = ground_truth[ground_truth["stub-technology"] == j]
 
-    # format ground truth
-    ground_truth = ground_truth.pivot(index='market', columns='year')['fixedTax'].reset_index()
-    ground_truth.columns = ground_truth.columns.astype(str)
-    ground_truth["Units"] = "Mt"
+        # format ground truth
+        prod_gt = prod_gt.pivot(index='market', columns='year')['fixedTax'].reset_index()
+        prod_gt.columns = prod_gt.columns.astype(str)
+        prod_gt["Units"] = "Mt"
 
-    # merge results and ground truth
-    merge = pd.merge(results, ground_truth, "left", left_on="GCAM", right_on="market", suffixes=("_l", "_r"))
-    for i in constants.GCAMConstants.plotting_x:
-        # check that minimum price is satisfied with converted units
-        merge[str(i)] = merge[str(i)+"_l"] - (merge[str(i)+"_r"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
-        if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
-            years_with_error.append(str(i))
-            log(fpath, str(i), "Subsidy for " + str(product) + " is incorrect in " + str(i))
+        # merge results and ground truth
+        merge = pd.merge(prod_results, prod_gt, "left", left_on="GCAM", right_on="market", suffixes=("_l", "_r"))
+        for i in constants.GCAMConstants.plotting_x:
+            # check that minimum price is satisfied with converted units
+            merge[str(i)] = merge[str(i)+"_l"] - (merge[str(i)+"_r"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
+            if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
+                years_with_error.append(str(i))
+                log(fpath, str(i), "Subsidy for " + str(product) + " is incorrect in " + str(i))
 
     return years_with_error
 
