@@ -918,7 +918,7 @@ def price_subsidy(row):
 
 
 def remove_price_supply_outliers(year, row, suffix):
-    if row[str(year) + "_supply"] < 0.01:
+    if row[str(year) + "_supply"] < 0.01 * (1+(int(year)-2025)/5):
         return np.nan
     else:
         return row[str(year) + suffix]

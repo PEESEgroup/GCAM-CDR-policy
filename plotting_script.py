@@ -139,7 +139,8 @@ def CDR_cost(config_fname, year):
     if baseline != scenario:
         cost_diff = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
                          "/policy cost by technology.csv")
-        cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "GCAM", "Units", "baseline"], suffixes=("_old", "_new"))
+        cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "baseline"], suffixes=("_old", "_new"))
+        cost_diff["Units"] = "Million 2025$USD/yr"
         for i in c.GCAMConstants.plotting_x:
             cost_diff[str(i)] = cost_diff[str(i)+"_new"].fillna(0) - cost_diff[str(i)+"_old"].fillna(0)
         plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product", "change in policy cost by year", config_fname)
