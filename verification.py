@@ -378,4 +378,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("s2_high")
+    main("high_high")
