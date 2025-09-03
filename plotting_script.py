@@ -65,6 +65,7 @@ def CDR_cost(config_fname, year):
         xml_files_to_build.extend(utilities.build_from_scenario(str(i)))
     xml_files_to_build.reverse()
     subsidy_df = pd.DataFrame()
+    meko_subsidy = pd.DataFrame()
 
     # get subsidy links and calculate subsidy name
     for xml in xml_files_to_build:
@@ -72,18 +73,12 @@ def CDR_cost(config_fname, year):
             csv = xml.data_files[file]
             if "subsidy" in file and "countersubsidy" not in file and "link" not in file:
                 ground_truth = pd.read_csv(csv, skiprows=2)
+                meko_subsidy = ground_truth
                 ground_truth["product"] = ground_truth["stub-technology"] + " subsidy"
                 ground_truth = ground_truth[["product", "market"]].drop_duplicates()
                 ground_truth["GCAM"] = [c.GCAMConstants.USA_region for i in ground_truth.index]
                 ground_truth = ground_truth.explode("GCAM")
                 subsidy_df = pd.concat([subsidy_df, ground_truth])
-
-                # links_ground_truth = pd.read_csv(csv, skiprows=2)
-                # links_ground_truth = links_ground_truth[["region", "market"]]
-                # links_ground_truth["GCAM"] = links_ground_truth["market"]
-                # subsidy_name = file.split("_")
-                # links_ground_truth["product"] = subsidy_name[0] + " " + subsidy_name[1]
-                # subsidy_df = pd.concat([subsidy_df, links_ground_truth])
 
     if not subsidy_df.empty:
         subsidy_df = pd.merge(subsidy_df, price, "left", on=["product"])
@@ -111,8 +106,13 @@ def CDR_cost(config_fname, year):
         dataframe[str(i) + "_price"] = dataframe.apply(lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_price"), axis=1)
         dataframe[str(i) + "_supply"] = dataframe.apply(lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_supply"), axis=1)
     mari_df = dataframe[dataframe["technology_price"] != "subsidy"]
+
+    # format ground truth
+    meko_subsidy = meko_subsidy.pivot(index='stub-technology', columns='year')['fixedTax'].reset_index()
+    meko_subsidy.columns = meko_subsidy.columns.astype(str)
+    meko_subsidy["Units"] = "Mt"
     scenario_df = plotting.plot_marimekko(mari_df, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
-                            "sorted price and supply of CDR by technology", config_fname)
+                            "sorted price and supply of CDR by technology", config_fname, meko_subsidy)
 
     # and compare tech costs to default
     if scenario != baseline:

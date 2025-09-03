@@ -1312,7 +1312,7 @@ def plot_alluvial(df, biochar_year, base_year):
     fig.show()
 
 
-def plot_marimekko(df, year, x, y, color, title, config_fname):
+def plot_marimekko(df, year, x, y, color, title, config_fname, subsidy_df):
     """
     makes a marimekko plot
     :param df: df to be plotted
@@ -1340,11 +1340,14 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
     colors, num = get_colors(1)
     mapping = {df[color].unique()[i]: colors[i] for i in range(len(df[color].unique()))}
     df['colors'] = df[color].map(mapping)
+    subsidy_color = colors[len(df[color].unique()) + 1]
+    df.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" + title + "_no_subsidy.csv")
 
     counter = 0
     for i in year:
         try:
             df = df.sort_values(by=str(i) + y)
+            add_subsidy_label = True
             unique_labels = {}
             current_x = 0
             for index, col_width in df[str(i) + x].items():
@@ -1362,13 +1365,32 @@ def plot_marimekko(df, year, x, y, color, title, config_fname):
                     linewidth=0.5,
                     label=df.loc[index, color] if addLabel else "_"
                 )
-                axs[int(counter / nrow), int(counter % nrow)].set_ylim(0, 1.05 * df[str(i) + y].max())
-                axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
-                axs[int(counter / nrow), int(counter % nrow)].set_xlabel(df["Units" + x].unique()[0])
-                axs[int(counter / nrow), int(counter % nrow)].set_ylabel(df["Units" + y].unique()[0])
-                axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
-                axs[int(counter / nrow), int(counter % nrow)].legend()
+                # if there is a subsidy attached to the product, add that in
+                product = df.loc[index, "product_price"]
+                subsidy_prod = subsidy_df[subsidy_df["stub-technology"].isin([product])]
+                if not subsidy_prod.empty:
+                    axs[int(counter / nrow), int(counter % nrow)].bar(
+                        x=current_x + col_width / 2,  # Center the bar within its width
+                        height=subsidy_prod[str(i)],
+                        width=col_width,
+                        bottom=df.loc[index, str(i) + y],
+                        color=subsidy_color,
+                        linewidth=0.5,
+                        label="Subsidy" if add_subsidy_label else "_"
+                    )
+                    add_subsidy_label = False
+                    # update dataframe for future marimekko comparison by include the cost of subsidy
+                    df.loc[index, str(i) + y] = df.loc[index, str(i) + y] + subsidy_prod.iloc[0][str(i)]
                 current_x += col_width
+
+            # update subplot characteristics
+            axs[int(counter / nrow), int(counter % nrow)].set_ylim(0, 1.05 * (
+                        df[str(i) + y].max() + subsidy_df[str(i)].max()))
+            axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
+            axs[int(counter / nrow), int(counter % nrow)].set_xlabel(df["Units" + x].unique()[0])
+            axs[int(counter / nrow), int(counter % nrow)].set_ylabel(df["Units" + y].unique()[0])
+            axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
+            axs[int(counter / nrow), int(counter % nrow)].legend()
             counter += 1
         except KeyError as e:
             print(e)
@@ -1440,7 +1462,7 @@ def compare_marimekko(scenario_df, baseline_df, config_fname):
         fig.delaxes(axs[int(counter / nrow), int(counter % nrow)])
     title = "change in price and quantity of CDR in comparison to the baseline"
     plt.suptitle(title)
-    plt.gcf().set_size_inches(8, 10)
+    plt.gcf().set_size_inches(12, 10)
     plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
     plt.show()
 
@@ -1479,11 +1501,14 @@ def marimekko_diff(x, scenario_y, baseline_y, axs, counter, nrow, colors, year):
     # Iterate and add patches based on a condition in the 'condition' column
     for index, row in df.iterrows():
         if row['condition'] == "reduced supply":
-            # (x,y) coordinates of the bottom-left corner, width, height
-            rect = Rectangle((row['x'], 0), row["width"], df["diff"].max(), color=colors[0])
-            axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
+            if row["scenario_y"] == row["baseline_y"] and row["diff"] == 0:
+                pass
+            else:
+                # (x,y) coordinates of the bottom-left corner, width, height
+                rect = Rectangle((row['x'], 0), row["width"], row["diff"], color=colors[0])
+                axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
         if row['condition'] == "increased supply":
-            rect = Rectangle((row['x'], 0), row["width"], df["diff"].min(), color=colors[1])
+            rect = Rectangle((row['x'], 0), row["width"], row["diff"], color=colors[1])
             axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
         if row['condition'] == "increased cost":
             rect = Rectangle((row['x'], 0), row["width"], row["diff"], color=colors[2])
@@ -1526,9 +1551,4 @@ def marimekko_diff_line(row):
     :param row: row of a pandas dataframe
     :return: difference between the two, or np.nan if the cost of CDR is 0 (no cdr available)
     """
-    if row["scenario_y"] == 0:
-        return np.nan
-    elif row["baseline_y"] == 0:
-        return np.nan
-    else:
-        return row["scenario_y"] - row["baseline_y"]
+    return row["scenario_y"] - row["baseline_y"]
