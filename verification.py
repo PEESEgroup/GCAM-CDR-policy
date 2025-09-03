@@ -76,8 +76,42 @@ def main(scenario_name):
             log(fpath, "all years", csv + " was not verified")
         # TODO: add more file types
 
+    split_scenario = scenario_name.split("_")
+    if split_scenario[0] != split_scenario[1]:
+        verify_procurement(split_scenario[0], split_scenario[1], fpath)
+
     # update output .csv files based on years with errors
     process_GCAM_data.masking(scenario_name, error_years)
+
+
+def verify_procurement(scenario, baseline, fpath):
+    baseline_total_cost = pd.read_csv(
+        "data/data_analysis/supplementary_tables/" + baseline + "/" + baseline + "/sorted price and supply of CDR by technology.csv")
+    scenario_total_cost = pd.read_csv(
+        "data/data_analysis/supplementary_tables/" + scenario + "/" + baseline + "/sorted price and supply of CDR by technology.csv")
+
+    # calculate total cost
+    for j in constants.GCAMConstants.plotting_x:
+        scenario_total_cost[str(j) + "total_cost"] = scenario_total_cost[str(j) + "_price"] * scenario_total_cost[str(j) + "_supply"]
+        baseline_total_cost[str(j) + "total_cost"] = baseline_total_cost[str(j) + "_price"] * baseline_total_cost[
+            str(j) + "_supply"]
+
+    # group and get total supply
+    scenario_total_cost = scenario_total_cost.groupby(["Units_price", "Units_supply"]).sum(min_count=1)
+    baseline_total_cost = baseline_total_cost.groupby(["Units_price", "Units_supply"]).sum(min_count=1)
+
+    merge = pd.merge(baseline_total_cost, scenario_total_cost, "left", on=["Units_price", "Units_supply"], suffixes=("_baseline", "_scenario")).reset_index()
+
+    # calculate difference in total cost
+    df = merge.loc[0]
+    for j in constants.GCAMConstants.plotting_x:
+        supply_diff = df[str(j)+"_supply_scenario"] - df[str(j)+"_supply_baseline"]
+        # more supply in the scenario than in the baseline
+        if supply_diff > .01:  # to catch out small deviations
+            price_diff = df[str(j) + "total_cost" + "_scenario"] - df[str(j) + "total_cost" + "_baseline"]
+            with open(fpath + "/log.txt", "a+") as f:
+                print(f"Procurement of {supply_diff:.2f} Mt CO2-eq comes at a cost of {price_diff:.2f} Million USD in "+ str(j))
+                f.write(f"Procurement of {supply_diff:.2f} Mt CO2-eq comes at a cost of {price_diff:.2f} Million USD in "+ str(j))
 
 
 def verify_non_input_tech_costs(ground_truth, links, fpath):
@@ -378,4 +412,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("high_high")
+    main("s1h_high")

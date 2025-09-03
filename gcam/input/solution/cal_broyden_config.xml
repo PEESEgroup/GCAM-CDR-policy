@@ -119,7 +119,9 @@
         <solution-tolerance good="BECCS" region="USA" period="9">0.6</solution-tolerance>
         <solution-tolerance good="BECCS" region="USA" period="10">0.6</solution-tolerance>
         <solution-tolerance good="BECCS" region="USA" period="11">0.6</solution-tolerance>
-        <solution-tolerance good="BECCS" region="HI" period="11">0.2</solution-tolerance>
+        <solution-tolerance good="BECCS" region="HI" period="8">0.2</solution-tolerance>
+        <solution-tolerance good="BECCS" region="HI" period="9">0.4</solution-tolerance>
+        <solution-tolerance good="BECCS" region="HI" period="10">0.4</solution-tolerance>
         <solution-tolerance good="BECCS" region="HI" period="11">0.4</solution-tolerance>
         <solution-tolerance good="DniesterR_water withdrawals" region="DniesterR" period="10">0.06</solution-tolerance>
 
