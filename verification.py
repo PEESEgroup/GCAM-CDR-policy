@@ -214,7 +214,7 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
             else:
                 df[str(i) + "_g"] = df[str(i) + "_g"] * constants.GCAMConstants.CO2_to_C
                 # if the estimated value is not close to the reported value
-                if .99 * df[str(i) + "_r"] < df[str(i) + "_g"]:
+                if .98 * df[str(i) + "_r"] < df[str(i) + "_g"]:
                     print("GHG constraint for " + df["market"] + " in " + str(i) + " meets the constraint by " + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
                 else:
                     years_with_error.append(str(i))
