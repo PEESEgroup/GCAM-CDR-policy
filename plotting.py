@@ -1409,10 +1409,10 @@ def compare_marimekko(scenario_df, baseline_df, config_fname):
 
             if max(baseline_df[str(i) + "_upper"]) > max(scenario_df[str(i) + "_upper"]):
                 x = np.linspace(baseline_df[str(i) + "_lower"].min(),
-                                             baseline_df[str(i) + "_upper"].max(), 10000)
+                                             baseline_df[str(i) + "_upper"].max(), 3000)
             else:
                 x = np.linspace(scenario_df[str(i) + "_lower"].min(),
-                                scenario_df[str(i) + "_upper"].max(), 10000)
+                                scenario_df[str(i) + "_upper"].max(), 3000)
 
             # create the piecewise functions
             scenario_conditions = []
@@ -1467,29 +1467,29 @@ def marimekko_diff(x, scenario_y, baseline_y, axs, counter, nrow, colors, year):
     df["condition"] = df.apply(lambda row: marimekko_condition(row), axis=1)
 
     # add in the colors
-    rect = Rectangle((0, 0), 0, 0, color=colors[0], alpha=0.6, label="reduced supply")
+    rect = Rectangle((0, 0), 0, 0, color=colors[0], label="reduced supply")
     axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
-    rect = Rectangle((0, 0), 0, 0, color=colors[1], alpha=0.6, label="increased supply")
+    rect = Rectangle((0, 0), 0, 0, color=colors[1], label="increased supply")
     axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
-    rect = Rectangle((0, 0), 0, 0, color=colors[2], alpha=0.6, label="increased cost")
+    rect = Rectangle((0, 0), 0, 0, color=colors[2], label="increased cost")
     axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
-    rect = Rectangle((0, 0), 0, 0, color=colors[3], alpha=0.6, label="decreased cost")
+    rect = Rectangle((0, 0), 0, 0, color=colors[3], label="decreased cost")
     axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
 
     # Iterate and add patches based on a condition in the 'condition' column
     for index, row in df.iterrows():
         if row['condition'] == "reduced supply":
             # (x,y) coordinates of the bottom-left corner, width, height
-            rect = Rectangle((row['x'], 0), row["width"], df["diff"].max(), color=colors[0], alpha=0.03)
+            rect = Rectangle((row['x'], 0), row["width"], df["diff"].max(), color=colors[0])
             axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
         if row['condition'] == "increased supply":
-            rect = Rectangle((row['x'], 0), row["width"], df["diff"].min(), color=colors[1], alpha=0.03)
+            rect = Rectangle((row['x'], 0), row["width"], df["diff"].min(), color=colors[1])
             axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
         if row['condition'] == "increased cost":
-            rect = Rectangle((row['x'], 0), row["width"], row["diff"], color=colors[2], alpha=0.03)
+            rect = Rectangle((row['x'], 0), row["width"], row["diff"], color=colors[2])
             axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
         if row['condition'] == "decreased cost":
-            rect = Rectangle((row['x'], 0), row["width"],  row["diff"], color=colors[3], alpha=0.03)
+            rect = Rectangle((row['x'], 0), row["width"],  row["diff"], color=colors[3])
             axs[int(counter / nrow), int(counter % nrow)].add_patch(rect)
 
     # add a legend for patches

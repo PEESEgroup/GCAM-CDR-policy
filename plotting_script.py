@@ -86,9 +86,10 @@ def CDR_cost(config_fname, year):
                 # subsidy_df = pd.concat([subsidy_df, links_ground_truth])
 
     if not subsidy_df.empty:
-        subsidy_df = pd.merge(subsidy_df, price, "left", on=["GCAM", "product"])
+        subsidy_df = pd.merge(subsidy_df, price, "left", on=["product"])
 
         # update columns of df to prepare for merger
+        subsidy_df["GCAM"] = subsidy_df["GCAM_x"]
         subsidy_df[['product', 'technology']] = subsidy_df['product'].str.split(' ', expand=True)
         price = pd.concat([price, subsidy_df])
 
@@ -160,4 +161,4 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    main("s1h_high", "2040")
+    main("s1l_low", "2040")
