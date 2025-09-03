@@ -63,27 +63,32 @@ def CDR_cost(config_fname, year):
     xml_files_to_build = []
     for i in files:
         xml_files_to_build.extend(utilities.build_from_scenario(str(i)))
+    xml_files_to_build.reverse()
     subsidy_df = pd.DataFrame()
 
     # get subsidy links and calculate subsidy name
     for xml in xml_files_to_build:
         for file in xml.data_files:
             csv = xml.data_files[file]
-            if "link" in file:
-                if "subsidy" in file:
-                    links_ground_truth = pd.read_csv(csv, skiprows=2)
-                    links_ground_truth = links_ground_truth[["region", "market"]]
-                    links_ground_truth["GCAM"] = links_ground_truth["market"]
-                    subsidy_name = file.split("_")
-                    links_ground_truth["product"] = subsidy_name[0] + " " + subsidy_name[1]
-                    subsidy_df = pd.concat([subsidy_df, links_ground_truth])
+            if "subsidy" in file and "countersubsidy" not in file and "link" not in file:
+                ground_truth = pd.read_csv(csv, skiprows=2)
+                ground_truth["product"] = ground_truth["stub-technology"] + " subsidy"
+                ground_truth = ground_truth[["product", "market"]].drop_duplicates()
+                ground_truth["GCAM"] = [c.GCAMConstants.USA_region for i in ground_truth.index]
+                ground_truth = ground_truth.explode("GCAM")
+                subsidy_df = pd.concat([subsidy_df, ground_truth])
 
-    # merge price data into the subsidy dataframe
+                # links_ground_truth = pd.read_csv(csv, skiprows=2)
+                # links_ground_truth = links_ground_truth[["region", "market"]]
+                # links_ground_truth["GCAM"] = links_ground_truth["market"]
+                # subsidy_name = file.split("_")
+                # links_ground_truth["product"] = subsidy_name[0] + " " + subsidy_name[1]
+                # subsidy_df = pd.concat([subsidy_df, links_ground_truth])
+
     if not subsidy_df.empty:
         subsidy_df = pd.merge(subsidy_df, price, "left", on=["GCAM", "product"])
 
         # update columns of df to prepare for merger
-        subsidy_df["GCAM"] = subsidy_df["region"]  # update GCAM to region information
         subsidy_df[['product', 'technology']] = subsidy_df['product'].str.split(' ', expand=True)
         price = pd.concat([price, subsidy_df])
 
@@ -155,4 +160,4 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    main("s2_high", "2040")
+    main("s1h_high", "2040")

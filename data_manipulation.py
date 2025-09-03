@@ -913,6 +913,8 @@ def price_subsidy(row):
             return sub_name[1] + " " + sub_name[2]
         elif count == 1:
             return sub_name[0] + " " + sub_name[1]
+    elif " subsidy" in row["product"]:
+        return row["product"].split(" ")[0]
     else:
         return row["product"]
 
