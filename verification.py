@@ -66,7 +66,7 @@ def main(scenario_name):
             log(fpath, "all years", csv + " was verified", success=True)
         elif "ghg_tax" in csv:
             # query co2 prices
-            results = pd.read_csv(fpath+"/CO2_prices.csv")
+            results = pd.read_csv(fpath + "/CO2_prices.csv")
             error_years.extend(verify_ghg_tax(ground_truth, results, fpath))
             log(fpath, "all years", csv + " was verified", success=True)
         elif "subsidy" in csv:
@@ -85,34 +85,43 @@ def main(scenario_name):
 
 
 def verify_procurement(scenario, baseline, fpath):
-    baseline_total_cost = pd.read_csv(
-        "data/data_analysis/supplementary_tables/" + baseline + "/" + baseline + "/sorted price and supply of CDR by technology.csv")
     try:
-        scenario_total_cost = pd.read_csv(
-            "data/data_analysis/supplementary_tables/" + scenario + "/" + baseline + "/sorted price and supply of CDR by technology.csv")
+        subsidy = ["", "_no_subsidy"]
+        for k in subsidy:
+            baseline_total_cost = pd.read_csv(
+                "data/data_analysis/supplementary_tables/" + baseline + "/" + baseline + "/sorted price and supply of CDR by technology" + k + ".csv")
+            scenario_total_cost = pd.read_csv(
+                "data/data_analysis/supplementary_tables/" + scenario + "/" + baseline + "/sorted price and supply of CDR by technology" + k + ".csv")
 
-        # calculate total cost
-        for j in constants.GCAMConstants.plotting_x:
-            scenario_total_cost[str(j) + "total_cost"] = scenario_total_cost[str(j) + "_price"] * scenario_total_cost[str(j) + "_supply"]
-            baseline_total_cost[str(j) + "total_cost"] = baseline_total_cost[str(j) + "_price"] * baseline_total_cost[
-                str(j) + "_supply"]
+            # calculate total cost
+            for j in constants.GCAMConstants.plotting_x:
+                scenario_total_cost[str(j) + "total_cost"] = scenario_total_cost[str(j) + "_price"] * \
+                                                             scenario_total_cost[str(j) + "_supply"]
+                baseline_total_cost[str(j) + "total_cost"] = baseline_total_cost[str(j) + "_price"] * \
+                                                             baseline_total_cost[
+                                                                 str(j) + "_supply"]
 
-        # group and get total supply
-        scenario_total_cost = scenario_total_cost.groupby(["Units_price", "Units_supply"]).sum(min_count=1)
-        baseline_total_cost = baseline_total_cost.groupby(["Units_price", "Units_supply"]).sum(min_count=1)
+            # group and get total supply
+            scenario_total_cost = scenario_total_cost.groupby(["Units_price", "Units_supply"]).sum(min_count=1)
+            baseline_total_cost = baseline_total_cost.groupby(["Units_price", "Units_supply"]).sum(min_count=1)
 
-        merge = pd.merge(baseline_total_cost, scenario_total_cost, "left", on=["Units_price", "Units_supply"], suffixes=("_baseline", "_scenario")).reset_index()
+            merge = pd.merge(baseline_total_cost, scenario_total_cost, "left", on=["Units_price", "Units_supply"],
+                             suffixes=("_baseline", "_scenario")).reset_index()
 
-        # calculate difference in total cost
-        df = merge.loc[0]
-        for j in constants.GCAMConstants.plotting_x:
-            supply_diff = df[str(j)+"_supply_scenario"] - df[str(j)+"_supply_baseline"]
-            # more supply in the scenario than in the baseline
-            if supply_diff > .01:  # to catch out small deviations
-                price_diff = df[str(j) + "total_cost" + "_scenario"] - df[str(j) + "total_cost" + "_baseline"]
-                with open(fpath + "/log.txt", "a+") as f:
-                    print(f"Procurement of {supply_diff:.2f} Mt CO2-eq comes at a cost of {price_diff:.2f} Million USD in "+ str(j))
-                    f.write(f"Procurement of {supply_diff:.2f} Mt CO2-eq comes at a cost of {price_diff:.2f} Million USD in "+ str(j))
+            # calculate difference in total cost
+            df = merge.loc[0]
+            for j in constants.GCAMConstants.plotting_x:
+                supply_diff = df[str(j) + "_supply_scenario"] - df[str(j) + "_supply_baseline"]
+                # more supply in the scenario than in the baseline
+                if supply_diff > .01:  # to catch out small deviations
+                    price_diff = df[str(j) + "total_cost" + "_scenario"] - df[str(j) + "total_cost" + "_baseline"]
+                    with open(fpath + "/log.txt", "a+") as f:
+                        print(
+                            f"Procurement of {supply_diff:.2f} Mt CO2-eq comes at a cost of {price_diff:.2f} Million USD in " + str(
+                                j) + k)
+                        f.write(
+                            f"Procurement of {supply_diff:.2f} Mt CO2-eq comes at a cost of {price_diff:.2f} Million USD in " + str(
+                                j) + k)
     except FileNotFoundError as e:
         print("cannot verify procurement right now", e)
 
@@ -160,7 +169,7 @@ def verify_subsidy(ground_truth, links, fpath):
     years_with_error = []
     for j in ground_truth["stub-technology"].unique():
         product = j + "_subsidy"
-        link = links[ground_truth["stub-technology"].unique()[0]+"_subsidy_link"]
+        link = links[ground_truth["stub-technology"].unique()[0] + "_subsidy_link"]
         results = pd.read_csv(fpath + "/prices_of_all_markets.csv")
         prod_results = results[results["product"] == product]
         prod_gt = ground_truth[ground_truth["stub-technology"] == j]
@@ -174,7 +183,8 @@ def verify_subsidy(ground_truth, links, fpath):
         merge = pd.merge(prod_results, prod_gt, "left", left_on="GCAM", right_on="market", suffixes=("_l", "_r"))
         for i in constants.GCAMConstants.plotting_x:
             # check that minimum price is satisfied with converted units
-            merge[str(i)] = merge[str(i)+"_l"] - (merge[str(i)+"_r"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
+            merge[str(i)] = merge[str(i) + "_l"] - (
+                        merge[str(i) + "_r"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
             if not ((merge[str(i)] <= 1e-4) & (merge[str(i)] >= -1e-4)).all():
                 years_with_error.append(str(i))
                 log(fpath, str(i), "Subsidy for " + str(product) + " is incorrect in " + str(i))
@@ -218,11 +228,13 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
                 df[str(i) + "_g"] = df[str(i) + "_g"] * constants.GCAMConstants.CO2_to_C
                 # if the estimated value is not close to the reported value
                 if .98 * df[str(i) + "_r"] < df[str(i) + "_g"]:
-                    print("GHG constraint for " + df["market"] + " in " + str(i) + " meets the constraint by " + str(df[str(i) + "_g"] - df[str(i) + "_r"]))
+                    print("GHG constraint for " + df["market"] + " in " + str(i) + " meets the constraint by " + str(
+                        df[str(i) + "_g"] - df[str(i) + "_r"]))
                 else:
                     years_with_error.append(str(i))
                     log(fpath, str(i),
-                        "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by " + str(df[str(i) + "_r"] - df[str(i) + "_g"]))
+                        "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by " + str(
+                            df[str(i) + "_r"] - df[str(i) + "_g"]))
     return years_with_error
 
 
@@ -242,14 +254,17 @@ def verify_beccs(csv, fpath):
     years_with_error = []
 
     # merge results and ground truth
-    merge = pd.merge(results, ground_truth, "left", left_on="product", right_on="minicam-energy-input", suffixes = ("_left", "_right"))
+    merge = pd.merge(results, ground_truth, "left", left_on="product", right_on="minicam-energy-input",
+                     suffixes=("_left", "_right"))
     for i in constants.GCAMConstants.plotting_x:
         # check that minimum price is satisfied
-        merge[str(i)] = merge[str(i)+"_left"] - merge[str(i)+"_right"]*constants.GCAMConstants.USD2025_tCO2_to_1975_kgC
+        merge[str(i)] = merge[str(i) + "_left"] - merge[
+            str(i) + "_right"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC
         if not (merge[str(i)] >= -1e-4).all():
             years_with_error.append(str(i))
             errors = merge[merge[str(i)] <= -1e-4]
-            log(fpath, str(i),"BECCS is lower than minimum price in the following regions: " + str(errors["GCAM"].unique()))
+            log(fpath, str(i),
+                "BECCS is lower than minimum price in the following regions: " + str(errors["GCAM"].unique()))
 
     return years_with_error
 
@@ -365,7 +380,8 @@ def get_elastic_demand(row, i):
     if row[str(i)] < row["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1990_tC + 1e-7:
         return 0
     else:
-        return row["max-demand"] * constants.GCAMConstants.CO2_to_C / (1 + math.exp((0-row["steepness"]) * (row[str(i)] - (row["midpoint"]* constants.GCAMConstants.USD2025_tCO2_to_1990_tC))))
+        return row["max-demand"] * constants.GCAMConstants.CO2_to_C / (1 + math.exp((0 - row["steepness"]) * (
+                    row[str(i)] - (row["midpoint"] * constants.GCAMConstants.USD2025_tCO2_to_1990_tC))))
 
 
 def verify_ghg_tax(ground_truth, results, fpath):
@@ -415,4 +431,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("s1n_nothing")
+    main("s1h_high")
