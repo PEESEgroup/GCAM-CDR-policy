@@ -251,4 +251,4 @@ def main(config_fname):
 
 
 if __name__ == '__main__':
-    main("nothing_nothing")
+    main("s1n_nothing")

@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<ModelInterfaceBatch>
+   <class name="ModelInterface.ModelGUI2.DbViewer">
+      <command name="XMLDB Batch File">
+         <scenario name="s1n_nothing"/>
+         <queryFile>xml/query_list.xml</queryFile>
+         <outFile>data/gcam_out/s1n/nothing/ref.csv</outFile>
+         <xmldbLocation>gcam/output/database_basexdb-s1n_nothing</xmldbLocation>
+      </command>
+   </class>
+</ModelInterfaceBatch>

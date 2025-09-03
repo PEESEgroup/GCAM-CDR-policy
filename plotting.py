@@ -1384,8 +1384,8 @@ def plot_marimekko(df, year, x, y, color, title, config_fname, subsidy_df):
                 current_x += col_width
 
             # update subplot characteristics
-            axs[int(counter / nrow), int(counter % nrow)].set_ylim(0, 1.05 * (
-                        df[str(i) + y].max() + subsidy_df[str(i)].max()))
+            # axs[int(counter / nrow), int(counter % nrow)].set_ylim(0, 1.05 * (
+            #             df[str(i) + y].max() + subsidy_df[str(i)].max()))
             axs[int(counter / nrow), int(counter % nrow)].set_title(str(i))
             axs[int(counter / nrow), int(counter % nrow)].set_xlabel(df["Units" + x].unique()[0])
             axs[int(counter / nrow), int(counter % nrow)].set_ylabel(df["Units" + y].unique()[0])
