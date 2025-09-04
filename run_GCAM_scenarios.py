@@ -449,7 +449,8 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["s2_high", "s2_low", "s2_nothing"]  # use camelCase
+    current_configs = ["s2_high", "s2_nothing"]  # use camelCase
+    # s2_high has erross
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
@@ -457,7 +458,6 @@ if __name__ == '__main__':
         i = key.split("_")[0]
         j = key.split("_")[1]
         main(i, j)
-
 
     # with multiprocessing.Pool(processes=3) as pool:
     #     result = pool.starmap(main, ((i, j) for i in current_configs for j in current_baseline))

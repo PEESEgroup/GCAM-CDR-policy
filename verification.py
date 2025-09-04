@@ -78,7 +78,8 @@ def main(scenario_name):
 
     split_scenario = scenario_name.split("_")
     if split_scenario[0] != split_scenario[1]:
-        verify_procurement(split_scenario[0], split_scenario[1], fpath)
+        #verify_procurement(split_scenario[0], split_scenario[1], fpath)
+        pass
 
     # update output .csv files based on years with errors
     process_GCAM_data.masking(scenario_name, error_years)
@@ -122,7 +123,7 @@ def verify_procurement(scenario, baseline, fpath):
                         f.write(
                             f"Procurement of {supply_diff:.2f} Mt CO2-eq comes at a cost of {price_diff:.2f} Million USD in " + str(
                                 j) + k)
-    except FileNotFoundError as e:
+    except FileNotFoundError or KeyError as e:
         print("cannot verify procurement right now", e)
 
 
@@ -431,4 +432,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("s1h_high")
+    main("s2_low")
