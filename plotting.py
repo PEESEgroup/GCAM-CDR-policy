@@ -423,7 +423,8 @@ def create_subplots(dataframe, inner_loop_set, products, year, title):
     fig.suptitle(title)
     normalizer = Normalize(min(df[str(i)].min() for i in year), max(df[str(i)].max() for i in year))
     im = cm.ScalarMappable(norm=normalizer, cmap=cmap)
-    plt.xticks(range(min([int(y) for y in year]), max([int(y) for y in year]) + 1, 5))
+    if year != ["plot"]:
+        plt.xticks(range(min([int(y) for y in year]), max([int(y) for y in year]) + 1, 5))
     return axs, cmap, fig, im, ncol, normalizer, nrow
 
 

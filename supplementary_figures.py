@@ -14,7 +14,21 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    CDR_tech(config_fname, reference_year)
+    CDR_subsidies(config_fname, "2035", "2040")
+
+
+def CDR_subsidies(config_fname, year1, year2):
+    # data processing
+    CDR = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech", "unmasked")
+    CDR = CDR[CDR[['GCAM']].isin(c.GCAMConstants.USA_region).any(axis=1)]
+    CDR = CDR[CDR['technology'] != "unsatisfied CDR demand"]
+
+    CDR["plot"] = CDR.apply(lambda row: 1 if row[year1] > 0 and row[year2] > 0 else 2 if row[year1] > 0 else 3 if row[year2] > 0 else 4, axis=1)
+
+    # choropleth map
+    plotting.plot_world_by_products(CDR, "technology", ["plot"],
+                                    "plotting changes in CDR from " + year1 + " to year " + year2, config_fname)
+
 
 
 def pop_and_calories(nonBaselineScenario, RCP, SSP, biochar_year):
@@ -1343,4 +1357,4 @@ def figure6(nonBaselineScenario, RCP, SSP, biochar_year):
 
 
 if __name__ == '__main__':
-    main("test_default", "2050")
+    main("s1h_high", "2050")
