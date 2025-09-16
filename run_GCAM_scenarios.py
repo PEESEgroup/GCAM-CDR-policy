@@ -450,7 +450,6 @@ if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
     current_configs = ["excess_excess", "s1-procure-l_low", "s1-itc-l_low", "s1-procure-n_nothing", "s1-itc-n_nothing", "s1-procure-h_high", "s1-itc-h_high",]  # use camelCase
-    # s2_high has erross
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
