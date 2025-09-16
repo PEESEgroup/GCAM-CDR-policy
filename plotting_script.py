@@ -6,6 +6,8 @@ import pandas as pd
 import utilities
 import numpy as np
 
+import verification
+
 
 def main(config_fname, reference_year):
     """
@@ -18,8 +20,8 @@ def main(config_fname, reference_year):
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
     social_cost(config_fname, reference_year)
-    #CDR_cost(config_fname, reference_year)
-    #CDR_tech(config_fname, reference_year)
+    CDR_cost(config_fname, reference_year)
+    CDR_tech(config_fname, reference_year)
 
 
 def social_cost(config_fname, reference_year):
@@ -197,6 +199,10 @@ def CDR_cost(config_fname, year):
         cost_diff = pd.concat([cost_diff, total])
         cost_diff.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                          "/change in policy cost by technology.csv")
+
+    # verify procurement
+    if scenario != baseline:
+        verification.verify_procurement(scenario, baseline, "./data/gcam_out/"+config_fname)
 
 
 if __name__ == '__main__':

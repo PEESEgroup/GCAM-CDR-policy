@@ -1,7 +1,10 @@
+import os.path
+
 import pandas as pd
 import numpy as np
 import math
 import data_manipulation
+import plotting_script
 import process_GCAM_data
 import utilities
 import constants
@@ -76,13 +79,13 @@ def main(scenario_name):
             log(fpath, "all years", csv + " was not verified")
         # TODO: add more file types
 
-    split_scenario = scenario_name.split("_")
-    if split_scenario[0] != split_scenario[1]:
-        #verify_procurement(split_scenario[0], split_scenario[1], fpath)
-        pass
-
     # update output .csv files based on years with errors
     process_GCAM_data.masking(scenario_name, error_years)
+
+    # verify procurement
+    split_scenario = scenario_name.split("_")
+    if split_scenario[0] != split_scenario[1]:
+        verify_procurement(split_scenario[0], split_scenario[1], fpath)
 
 
 def verify_procurement(scenario, baseline, fpath):
