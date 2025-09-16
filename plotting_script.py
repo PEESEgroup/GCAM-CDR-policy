@@ -19,8 +19,8 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    # CDR_cost(config_fname, reference_year)
-    # CDR_tech(config_fname, reference_year)
+    CDR_cost(config_fname, reference_year)
+    CDR_tech(config_fname, reference_year)
     social_cost(config_fname, reference_year)
 
 
@@ -102,6 +102,25 @@ def CDR_cost(config_fname, year):
     price = data_manipulation.get_sensitivity_data([config_fname], "prices_of_all_markets")
     price["product"] = price.apply(lambda row: data_manipulation.price_subsidy(row), axis=1)
 
+    # get the amount of money spent on the C tax
+    CO2_emissions = data_manipulation.get_sensitivity_data([config_fname], "CO2_emissions_by_sector")
+    CO2_emissions = CO2_emissions[CO2_emissions["GCAM"].isin(c.GCAMConstants.USA_region)]
+    CO2_emissions = CO2_emissions[CO2_emissions["sector"] != "CDR_regional"]
+    # replace negative emissions with np.nan
+    for i in c.GCAMConstants.plotting_x:
+        CO2_emissions[str(i)] = CO2_emissions.apply(lambda row: np.nan if row[str(i)] < 0 else row[str(i)], axis=1)
+
+    CO2_emissions = CO2_emissions.groupby(["scenario", "baseline", "Units"]).sum(min_count=1).reset_index()
+
+    # process emissions prices
+    CO2_prices = data_manipulation.get_sensitivity_data([config_fname], "CO2_prices")
+    CO2_prices = CO2_prices[(CO2_prices["GCAM"] == "USA") & (CO2_prices["product"] == "CO2")]
+    CO2_cost = pd.merge(CO2_emissions, CO2_prices, "left", "baseline", suffixes=("_supply", "_price"))
+    for i in c.GCAMConstants.plotting_x:
+        CO2_cost[str(i)] = (CO2_cost[str(i)+"_supply"] / c.GCAMConstants.CO2_to_C) * (CO2_cost[str(i)+"_price"]/c.GCAMConstants.USD2025_tCO2_to_1990_tC)
+        CO2_cost = CO2_cost.drop([str(i)+"_supply", str(i)+"_price"], axis=1)
+    CO2_cost["Units"] = "Million 2025USD"
+
     # match subsidy market to the states
     # get the subsidy files
     files = config_fname.split("/")
@@ -133,7 +152,7 @@ def CDR_cost(config_fname, year):
         subsidy_df[['product', 'technology']] = subsidy_df['product'].str.split(' ', expand=True)
         price = pd.concat([price, subsidy_df])
 
-    # update the price to $2025USD/t C  from $1975USD/kg C - then to a CO@-eq basis
+    # update the price to $2025USD/t C  from $1975USD/kg C - then to a CO2-eq basis
     price["Units"] = "2025USD/t CO$_{2}$-eq"
     for i in c.GCAMConstants.plotting_x:
         # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=197501&year2=202501
@@ -182,6 +201,10 @@ def CDR_cost(config_fname, year):
         investments["product"] = "Investment in " + investments["subsector"]
         dataframe = pd.concat([dataframe, investments])
 
+    # add CO2 costs into the dataframe
+    CO2_cost["product"] = "CO$_{2}$ tax"
+    dataframe = pd.concat([dataframe, CO2_cost])
+
     plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year", config_fname)
     dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                      "/policy cost by technology.csv")
@@ -193,7 +216,11 @@ def CDR_cost(config_fname, year):
         cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "baseline"], suffixes=("_old", "_new"))
         cost_diff["Units"] = "Million 2025$USD/yr"
         for i in c.GCAMConstants.plotting_x:
-            cost_diff[str(i)] = cost_diff[str(i)+"_new"].fillna(0) - cost_diff[str(i)+"_old"].fillna(0)
+            # if a year has been masked from the data, don't fill na
+            if cost_diff[str(i)+"_new"].isnull().all() or cost_diff[str(i)+"_old"].isnull().all():
+                cost_diff[str(i)] = cost_diff[str(i) + "_new"] - cost_diff[str(i) + "_old"]
+            else:
+                cost_diff[str(i)] = cost_diff[str(i)+"_new"].fillna(0) - cost_diff[str(i)+"_old"].fillna(0)
         plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product", "change in policy cost by year", config_fname)
 
         # add a total row
@@ -210,5 +237,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["low_low", "s2_low", "s1l_low", "s1-procure-l_low", "high_high", "s2_high", "s1h_high", "excess_excess"]:
+    for i in ["s1-procure-l_low", "high_high", "s2_high", "s1h_high", "excess_excess"]:
         main(i, "2040")

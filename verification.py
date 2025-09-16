@@ -99,11 +99,18 @@ def verify_procurement(scenario, baseline, fpath):
 
             # calculate total cost
             for j in constants.GCAMConstants.plotting_x:
-                scenario_total_cost[str(j) + "total_cost"] = scenario_total_cost[str(j) + "_price"] * \
+                try:
+                    scenario_total_cost[str(j) + "total_cost"] = scenario_total_cost[str(j) + "_price"] * \
                                                              scenario_total_cost[str(j) + "_supply"]
-                baseline_total_cost[str(j) + "total_cost"] = baseline_total_cost[str(j) + "_price"] * \
-                                                             baseline_total_cost[
-                                                                 str(j) + "_supply"]
+                except KeyError as e:
+                    print (e)
+                    scenario_total_cost[str(j) + "total_cost"] = np.nan
+                try:
+                    baseline_total_cost[str(j) + "total_cost"] = baseline_total_cost[str(j) + "_price"] * \
+                                                             baseline_total_cost[str(j) + "_supply"]
+                except KeyError as e:
+                    print(e)
+                    baseline_total_cost[str(j) + "total_cost"] = np.nan
 
             # group and get total supply
             scenario_total_cost = scenario_total_cost.groupby(["Units_price", "Units_supply"]).sum(min_count=1)
@@ -115,7 +122,11 @@ def verify_procurement(scenario, baseline, fpath):
             # calculate difference in total cost
             df = merge.loc[0]
             for j in constants.GCAMConstants.plotting_x:
-                supply_diff = df[str(j) + "_supply_scenario"] - df[str(j) + "_supply_baseline"]
+                try:
+                    supply_diff = df[str(j) + "_supply_scenario"] - df[str(j) + "_supply_baseline"]
+                except KeyError as e:
+                    print(e)
+                    supply_diff = np.nan
                 # more supply in the scenario than in the baseline
                 if supply_diff > .01:  # to catch out small deviations
                     price_diff = df[str(j) + "total_cost" + "_scenario"] - df[str(j) + "total_cost" + "_baseline"]
