@@ -19,9 +19,9 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
+    # CDR_cost(config_fname, reference_year)
+    # CDR_tech(config_fname, reference_year)
     social_cost(config_fname, reference_year)
-    CDR_cost(config_fname, reference_year)
-    CDR_tech(config_fname, reference_year)
 
 
 def social_cost(config_fname, reference_year):
@@ -31,6 +31,10 @@ def social_cost(config_fname, reference_year):
     CO2_emissions = data_manipulation.get_sensitivity_data([config_fname], "CO2_emissions_by_sector")
     CO2_emissions = CO2_emissions[CO2_emissions["GCAM"].isin(c.GCAMConstants.USA_region)]
     CO2_emissions = CO2_emissions[CO2_emissions["sector"] != "CDR_regional"]
+    # replace negative emissions with np.nan
+    for i in c.GCAMConstants.plotting_x:
+        CO2_emissions[str(i)] = CO2_emissions.apply(lambda row: np.nan if row[str(i)] < 0 else row[str(i)], axis=1)
+
     CO2_emissions = CO2_emissions.groupby(["scenario", "baseline", "Units"]).sum(min_count=1).reset_index()
 
     # process emissions prices

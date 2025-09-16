@@ -125,7 +125,7 @@ def verify_procurement(scenario, baseline, fpath):
                                 j) + k)
                         f.write(
                             f"Procurement of {supply_diff:.2f} Mt CO2-eq comes at a cost of {price_diff:.2f} Million USD in " + str(
-                                j) + k)
+                                j) + k + "\n")
     except FileNotFoundError or KeyError as e:
         print("cannot verify procurement right now", e)
 
@@ -233,12 +233,12 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
                 # if the estimated value is not close to the reported value
                 if .98 * df[str(i) + "_r"] < df[str(i) + "_g"]:
                     print("GHG constraint for " + df["market"] + " in " + str(i) + " meets the constraint by " + str(
-                        df[str(i) + "_g"] - df[str(i) + "_r"]))
+                        df[str(i) + "_g"] - df[str(i) + "_r"]) + " Mt C")
                 else:
                     years_with_error.append(str(i))
                     log(fpath, str(i),
                         "GHG constraint for " + df["market"] + " in " + str(i) + " fails the constraint by " + str(
-                            df[str(i) + "_r"] - df[str(i) + "_g"]))
+                            df[str(i) + "_r"] - df[str(i) + "_g"]) + " Mt C")
     return years_with_error
 
 
