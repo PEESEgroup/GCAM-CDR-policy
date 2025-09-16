@@ -216,8 +216,9 @@ def CDR_cost(config_fname, year):
         cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "baseline"], suffixes=("_old", "_new"))
         cost_diff["Units"] = "Million 2025$USD/yr"
         for i in c.GCAMConstants.plotting_x:
-            # if a year has been masked from the data, don't fill na
-            if cost_diff[str(i)+"_new"].isnull().all() or cost_diff[str(i)+"_old"].isnull().all():
+            # if a year has been masked from the data, don't fill na`11`
+            no_subsidy = cost_diff[cost_diff["scenario_new"] == scenario]
+            if no_subsidy[str(i)+"_new"].isnull().all() or no_subsidy[str(i)+"_old"].isnull().all():
                 cost_diff[str(i)] = cost_diff[str(i) + "_new"] - cost_diff[str(i) + "_old"]
             else:
                 cost_diff[str(i)] = cost_diff[str(i)+"_new"].fillna(0) - cost_diff[str(i)+"_old"].fillna(0)
@@ -237,5 +238,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["s1-procure-l_low", "high_high", "s2_high", "s1h_high", "excess_excess"]:
+    for i in ["s2_high", "s1h_high", "excess_excess"]:
         main(i, "2040")
