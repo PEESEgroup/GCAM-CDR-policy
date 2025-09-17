@@ -43,7 +43,6 @@ def social_cost(config_fname, reference_year):
     CO2_cost = pd.merge(CO2_emissions, CO2_prices, "left", "baseline", suffixes=("_supply", "_price"))
     for i in c.GCAMConstants.plotting_x:
         CO2_cost[str(i)+"_total_cost"] = (CO2_cost[str(i)+"_supply"] / c.GCAMConstants.CO2_to_C) * (CO2_cost[str(i)+"_price"]/c.GCAMConstants.USD2025_tCO2_to_1990_tC)
-        CO2_cost = CO2_cost.drop([str(i)+"_supply", str(i)+"_price"], axis=1)
 
     # process total price of CDR
     CDR_cost = pd.read_csv(
@@ -238,5 +237,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["s2_high", "s1h_high", "excess_excess"]:
+    for i in ["nothing_nothing"]:
         main(i, "2040")
