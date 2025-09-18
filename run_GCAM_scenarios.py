@@ -449,7 +449,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["4gt_4gt", "nzn_nzn", "s1-itc-h_high", "s1-procure-n_nothing", "s1-itc-n_nothing", ]  # use camelCase
+    current_configs = ["nzn_nzn", "s1-itc-h_high", "s1-procure-n_nothing", "s1-itc-n_nothing", ]  # use camelCase
     #TODO: 2.4Gt + innovation; $50 ITC; find issue with TEW
     # the scenario and baseline name should match for any baseline scenario
 

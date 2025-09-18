@@ -446,4 +446,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("s1-procure-h_high")
+    main("4gt_4gt")
