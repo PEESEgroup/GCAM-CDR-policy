@@ -29,11 +29,11 @@
             <demand-source name="exogenous">
                <require-c-price>0</require-c-price>
                <demand year="2025">3.6818181818181817</demand>
-               <demand year="2030">11.492316621818182</demand>
-               <demand year="2035">35.87177170909091</demand>
-               <demand year="2040">111.96907019999999</demand>
-               <demand year="2045">349.4968906363636</demand>
-               <demand year="2050">1090.9090909090908</demand>
+               <demand year="2030">9.445258235454546</demand>
+               <demand year="2035">24.23066505272727</demand>
+               <demand year="2040">62.16083397272727</demand>
+               <demand year="2045">159.46608439090906</demand>
+               <demand year="2050">409.09090909090907</demand>
             </demand-source>
          </CDR-final-demand>
       </region>

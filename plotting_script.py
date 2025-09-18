@@ -237,5 +237,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["4gt_4gt"]:
+    for i in ["s2_low", "s2_high"]:
         main(i, "2050")
