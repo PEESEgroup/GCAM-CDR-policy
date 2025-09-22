@@ -1,0 +1,12 @@
+Verification fails in 2030 because GHG constraint for USA in 2030 fails the constraint by 363.3914741711226 Mt C
+Verification succeeds in all years because ghg_constraint_verify was verified
+Verification succeeds in all years because DAC_subsidy_amount_verify was verified
+Verification succeeds in all years because RES_tech_verify was verified
+Procurement of 0.02 Mt CO2-eq comes at a cost of -34.28 Million USD in 2025
+Procurement of 0.05 Mt CO2-eq comes at a cost of 2497.41 Million USD in 2035
+Procurement of 0.02 Mt CO2-eq comes at a cost of -27.31 Million USD in 2025_no_subsidy
+Procurement of 0.05 Mt CO2-eq comes at a cost of -357.79 Million USD in 2035_no_subsidy
+Procurement of 0.02 Mt CO2-eq comes at a cost of -34.33 Million USD in 2025
+Procurement of 0.05 Mt CO2-eq comes at a cost of 2497.62 Million USD in 2035
+Procurement of 0.02 Mt CO2-eq comes at a cost of -27.31 Million USD in 2025_no_subsidy
+Procurement of 0.05 Mt CO2-eq comes at a cost of -357.57 Million USD in 2035_no_subsidy
