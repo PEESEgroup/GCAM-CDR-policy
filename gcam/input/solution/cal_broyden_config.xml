@@ -124,6 +124,7 @@
         <solution-tolerance good="BECCS" region="HI" period="10">0.4</solution-tolerance>
         <solution-tolerance good="BECCS" region="HI" period="11">0.4</solution-tolerance>
         <solution-tolerance good="DniesterR_water withdrawals" region="DniesterR" period="10">0.06</solution-tolerance>
+        <solution-tolerance good="geothermal" region="CO" period="11">0.04</solution-tolerance>
 
         <!-- applies to all regions since region attribute is not included -->
         <max-price-change fillout="1" market-type="Trial-Value" period="1">10</max-price-change>
