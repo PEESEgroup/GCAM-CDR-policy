@@ -299,7 +299,7 @@ def build_from_scenario(scenario_name):
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_2025-verify.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
-                output_fname="default_BECCSIntegration_high.xml"
+                output_fname="default_BECCSIntegration_verify-2025.xml"
             )
         ]
     elif "s1n" in scenario_name:
