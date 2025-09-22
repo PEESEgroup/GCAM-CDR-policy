@@ -45,11 +45,14 @@ def build_transport(file):
     # merge dataframes
     markets = {}
     amount = {}
+    cost_reduction = {}
     for key, value in file.items():
         if "link" in key:
             markets = file[key]
         if "amount" in key:
             amount = file[key]
+        if "saving" in key:
+            cost_reduction = file[key]
 
     # open stub
     tree = ET.parse('./gcam/input/gcamdata/xml/TEW_USA_stub.xml')
@@ -85,6 +88,9 @@ def build_transport(file):
         for i in constants.GCAMConstants.x:
             period = ET.SubElement(stub_tech, "period", year=str(i))
             minicam = ET.SubElement(period, "minicam-energy-input", name="trn_freight")
-            ET.SubElement(minicam, "coefficient").text = str(amount[(area, tech)][str(i)])
+            if "TEW" in cost_reduction:
+                ET.SubElement(minicam, "coefficient").text = str(amount[(area, tech)][str(i)]*cost_reduction["TEW"][str(i)])
+            else:
+                ET.SubElement(minicam, "coefficient").text = str(amount[(area, tech)][str(i)])
 
     return root
