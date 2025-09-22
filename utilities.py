@@ -292,6 +292,16 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
+    elif "verify-2025" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_2025-verify.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_high.xml"
+            )
+        ]
     elif "s1n" in scenario_name:
         return [
             build_xml_config.XMLConfig(
