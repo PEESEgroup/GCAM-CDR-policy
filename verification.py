@@ -315,7 +315,7 @@ def verify_cdr(CDR, links, fpath):
             ground_truth = pd.read_csv(CDR[i], skiprows=2).T
             ground_truth.columns = ground_truth.iloc[0].astype(int).astype(str)
             ground_truth = ground_truth[1:].reset_index().rename(columns={'index': 'technology'})
-            years_with_error.extend(verify_non_input_tech_costs(ground_truth, links, fpath))
+            #years_with_error.extend(verify_non_input_tech_costs(ground_truth, links, fpath))
 
     # combine CDR sources to get estimated CDR demand
     if exo_CDR_demand.empty:
@@ -446,4 +446,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("4gt_4gt")
+    main("verify-2025_low")

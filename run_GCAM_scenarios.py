@@ -449,7 +449,7 @@ def default_config(config_name):
 if __name__ == '__main__':
     all_configs = constants.GCAMConstants.scenario_names
     baseline_scenarios = constants.GCAMConstants.baseline_names
-    current_configs = ["verify-2025_low"]  # use camelCase
+    current_configs = ["verify-2025_low", "high_high"]  # use camelCase
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
