@@ -294,7 +294,13 @@ def build_from_scenario(scenario_name):
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_verify-2025.xml"
-            )
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify_2025tax.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="default_GHGPolicies_CtaxUSA2025.xml"
+            ),
         ]
     elif "s1n" in scenario_name:
         return [
