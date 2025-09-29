@@ -31,9 +31,6 @@ class GCAMConstants:
          2085, 2090, 2095, 2100]
     plotting_x = [2025, 2030, 2035, 2040, 2045, 2050]
 
-    scenario_names = ["exoTest"]
-    baseline_names = ["default"]
-
     CO2_to_C = 12 / 44
     USD2025_tCO2_to_1975_kgC = 1 / 6.1 / 1000 / CO2_to_C
     USD2025_tCO2_to_1990_tC = 1 / 2.49 / CO2_to_C
