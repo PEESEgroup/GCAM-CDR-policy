@@ -447,7 +447,7 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["low_low", "nothing_nothing", "nzn_nzn", "excess_excess", "4gt_4gt"]  # use camelCase
+    current_configs = ["excess_excess", "4gt_4gt"]  # use camelCase
     # s1l_low, s1h_high, s1-procure-h_high, s1-procure-l_low, s1-itc-h_high, s1-itc-l_low
     # the scenario and baseline name should match for any baseline scenario
 
