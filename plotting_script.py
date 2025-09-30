@@ -141,7 +141,8 @@ def CDR_cost(config_fname, year):
                 ground_truth = ground_truth[["product", "market"]].drop_duplicates()
                 ground_truth["GCAM"] = [c.GCAMConstants.USA_region for i in ground_truth.index]
                 ground_truth = ground_truth.explode("GCAM")
-                subsidy_df = pd.concat([subsidy_df, ground_truth])
+                if not subsidy_df.equals(ground_truth):
+                    subsidy_df = pd.concat([subsidy_df, ground_truth])
 
     if not subsidy_df.empty:
         subsidy_df = pd.merge(subsidy_df, price, "left", on=["product"])
@@ -194,6 +195,10 @@ def CDR_cost(config_fname, year):
     dataframe['baseline'] = baseline
     dataframe['product'] = dataframe.apply(lambda row: row["product_price"] + " " + row["technology_price"] if row["technology_price"] != "missing" else row["product_price"], axis=1)
 
+    # avoid double counting cost
+    for i in c.GCAMConstants.plotting_x:
+        dataframe[str(i)] = dataframe.apply(lambda row: data_manipulation.substract_subsidy(row, str(i), subsidy_df), axis = 1)
+
     # add exogenous policy costs to the CDR cost dataframes
     if os.path.exists("./data/gcam_out/" + config_fname + "/exogenous_subsector_investment" + ".csv"):
         investments = data_manipulation.get_sensitivity_data([config_fname], "exogenous_subsector_investment", source="not")
@@ -237,5 +242,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["verify-2025_low"]:
+    for i in ["high_high", "s2_high"]:
         main(i, "2050")

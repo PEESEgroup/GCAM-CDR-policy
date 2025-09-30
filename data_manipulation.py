@@ -932,3 +932,16 @@ def subsidy_lookup(row, year, subsidy_df):
     if not subsidy_prod.empty:
         return row[year+"_price"] - subsidy_prod[year][0]
     return row[year+"_price"]
+
+
+def substract_subsidy(row, year, subsidy_table):
+    product = row["product"]
+    subsidy_table = subsidy_table[subsidy_table["product"] == product]
+    if subsidy_table.empty:
+        subsidy = 0
+    else:
+        subsidy = subsidy_table[year].unique()[0]/c.GCAMConstants.USD2025_tCO2_to_1975_kgC  # subsidy price is in 195$/kg C
+    total_subsidy = (subsidy*row[year+"_supply"])  # supply is already in Mt CO2-eq
+    if np.isnan(total_subsidy):
+        total_subsidy = 0
+    return row[year] - total_subsidy
