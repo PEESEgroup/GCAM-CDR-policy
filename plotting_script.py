@@ -242,5 +242,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["high_high", "s2_high"]:
+    for i in ["low_low", "verify-2025_low"]:
         main(i, "2050")
