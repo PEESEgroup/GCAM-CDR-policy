@@ -492,7 +492,7 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
-    elif "s1-sitc-l" in scenario_name:
+    elif "s1-noBECCSitc-l" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -504,9 +504,9 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 # <tech>_subsidy_link
                 data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
-                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_enhanced-45Q_verify_s1small.csv"},
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_enhanced-45Q_verify_s1noBECCS.csv"},
                 xml_build_type="subsidy Policy",
-                output_fname="45Q_enhanced_small.xml"
+                output_fname="45Q_enhanced_noBECCS_l.xml"
             ),
             build_xml_config.XMLConfig(
                 data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
