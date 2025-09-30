@@ -1341,13 +1341,14 @@ def plot_marimekko(df, year, x, y, color, title, config_fname, subsidy_df):
     colors, num = get_colors(1)
     mapping = {df[color].unique()[i]: colors[i] for i in range(len(df[color].unique()))}
     df['colors'] = df[color].map(mapping)
-    subsidy_color = colors[len(df[color].unique()) + 1]
+    subsidy_color = "#000000"
     df.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" + title + "_no_subsidy.csv")
 
     counter = 0
     for i in year:
         try:
-            df = df.sort_values(by=str(i) + y)
+            df[str(i)+"_subsidized"] = df.apply(lambda row: data_manipulation.subsidy_lookup(row, str(i), subsidy_df), axis=1)
+            df = df.sort_values(by=str(i) + "_subsidized")
             add_subsidy_label = True
             unique_labels = {}
             current_x = 0
@@ -1374,14 +1375,13 @@ def plot_marimekko(df, year, x, y, color, title, config_fname, subsidy_df):
                         x=current_x + col_width / 2,  # Center the bar within its width
                         height=subsidy_prod[str(i)],
                         width=col_width,
-                        bottom=df.loc[index, str(i) + y],
+                        bottom=df.loc[index, str(i) + y] - subsidy_prod[str(i)],  # bottom to top is height of subsidy
                         color=subsidy_color,
                         linewidth=0.5,
+                        alpha=0.5,
                         label="Subsidy" if add_subsidy_label else "_"
                     )
                     add_subsidy_label = False
-                    # update dataframe for future marimekko comparison by include the cost of subsidy
-                    df.loc[index, str(i) + y] = df.loc[index, str(i) + y] + subsidy_prod.iloc[0][str(i)]
                 current_x += col_width
 
             # update subplot characteristics
@@ -1423,10 +1423,10 @@ def compare_marimekko(scenario_df, baseline_df, config_fname):
     for i in c.GCAMConstants.plotting_x:
         try:
             # get cumulative values, and lower and upper bounds
-            scenario_df = scenario_df.sort_values(by=str(i) + "_price")
+            scenario_df = scenario_df.sort_values(by=str(i) + "_subsidized")
             scenario_df[str(i) + "_upper"] = scenario_df[str(i) + "_supply"].cumsum()
             scenario_df[str(i) + "_lower"] = scenario_df[str(i) + "_upper"] - scenario_df[str(i) + "_supply"]
-            baseline_df = baseline_df.sort_values(by=str(i) + "_price")
+            baseline_df = baseline_df.sort_values(by=str(i) + "_subsidized")
             baseline_df[str(i) + "_upper"] = baseline_df[str(i) + "_supply"].cumsum()
             baseline_df[str(i) + "_lower"] = baseline_df[str(i) + "_upper"] - baseline_df[str(i) + "_supply"]
 
