@@ -930,7 +930,7 @@ def subsidy_lookup(row, year, subsidy_df):
     product = row["product_price"]
     subsidy_prod = subsidy_df[subsidy_df["stub-technology"].isin([product])]
     if not subsidy_prod.empty:
-        return row[year+"_price"] - subsidy_prod[year][0]
+        return row[year+"_price"] - subsidy_prod[year].unique()[0]
     return row[year+"_price"]
 
 
