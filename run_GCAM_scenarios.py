@@ -447,9 +447,9 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["s1-itc-h_high", "s1-itc-l_low"]  # use camelCase
+    current_configs = ["s1-itc-l_low"]  # use camelCase
     # "s1l_low", "s1h_high", "s1-procure-h_high", "s1-procure-l_low",
-    # TODO: plotting meko curves for "s1-noBECCSitc-l_low", "s1-itc-h_high"
+    # TODO: DAC subsidy payments in 2025 seem off
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
