@@ -446,4 +446,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("verify-2025_low")
+    main("4gt_4gt")

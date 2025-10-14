@@ -145,6 +145,7 @@ def CDR_cost(config_fname, year):
                     subsidy_df = pd.concat([subsidy_df, ground_truth])
 
     if not subsidy_df.empty:
+        subsidy_df.drop_duplicates(inplace=True)
         subsidy_df = pd.merge(subsidy_df, price, "left", on=["product"])
 
         # update columns of df to prepare for merger
@@ -163,6 +164,7 @@ def CDR_cost(config_fname, year):
     dataframe = pd.merge(supply, price, "left", left_on=["technology", "GCAM"], right_on=["product", "GCAM"],
                          suffixes=("_supply", "_price"))
     dataframe = dataframe[dataframe["GCAM"].isin(c.GCAMConstants.USA_region)]
+    dataframe.drop_duplicates(inplace=True)
     dataframe = dataframe[~dataframe["subsector_supply"].isin(["unsatisfiedDemand"])]
 
     # if there is supply less than 0.01 Mt CDR for a given tech and state, set supply and price to np.nan
@@ -206,6 +208,34 @@ def CDR_cost(config_fname, year):
         dataframe = pd.concat([dataframe, investments])
 
     # add CO2 costs into the dataframe
+    plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year (no C tax)", config_fname)
+    dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                     "/policy cost by technology_no co2.csv")
+
+    # compare this bar plot with default one (if this is not a default scenario)
+    if baseline != scenario:
+        cost_diff = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
+                                "/policy cost by technology_no co2.csv")
+        cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "baseline"], suffixes=("_old", "_new"))
+        cost_diff["Units"] = "Million 2025$USD/yr"
+        for i in c.GCAMConstants.plotting_x:
+            # if a year has been masked from the data, don't fill na
+            no_subsidy = cost_diff[cost_diff["scenario_new"] == scenario]
+            if no_subsidy[str(i) + "_new"].isnull().all() or no_subsidy[str(i) + "_old"].isnull().all():
+                cost_diff[str(i)] = cost_diff[str(i) + "_new"] - cost_diff[str(i) + "_old"]
+            else:
+                cost_diff[str(i)] = cost_diff[str(i) + "_new"].fillna(0) - cost_diff[str(i) + "_old"].fillna(0)
+        plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product",
+                                          "change in policy cost by year (no C tax)", config_fname)
+
+        # add a total row
+        cols = ["2025", "2030", "2035", "2040", "2045", "2050", "product", "scenario_new", "baseline", "Units"]
+        cost_diff = cost_diff[cols]
+        total = pd.DataFrame(cost_diff.sum(numeric_only=True)).T
+        cost_diff = pd.concat([cost_diff, total])
+        cost_diff.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                         "/change in policy cost by technology_no_C_tax.csv")
+
     CO2_cost["product"] = "CO$_{2}$ tax"
     dataframe = pd.concat([dataframe, CO2_cost])
 
@@ -220,7 +250,7 @@ def CDR_cost(config_fname, year):
         cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "baseline"], suffixes=("_old", "_new"))
         cost_diff["Units"] = "Million 2025$USD/yr"
         for i in c.GCAMConstants.plotting_x:
-            # if a year has been masked from the data, don't fill na`11`
+            # if a year has been masked from the data, don't fill na
             no_subsidy = cost_diff[cost_diff["scenario_new"] == scenario]
             if no_subsidy[str(i)+"_new"].isnull().all() or no_subsidy[str(i)+"_old"].isnull().all():
                 cost_diff[str(i)] = cost_diff[str(i) + "_new"] - cost_diff[str(i) + "_old"]
@@ -242,5 +272,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["s1-noBECCSitc-l_low", "s1-itc-h_high"]:
+    for i in ["low_low", "high_high", "s1-noBECCSitc-l_low", "s1-itc-h_high", "s1-itc-l_low"]:
         main(i, "2050")
