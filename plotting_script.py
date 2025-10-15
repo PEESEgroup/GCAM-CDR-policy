@@ -19,9 +19,32 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    CDR_cost(config_fname, reference_year)
-    CDR_tech(config_fname, reference_year)
-    social_cost(config_fname, reference_year)
+    # CDR_cost(config_fname, reference_year)
+    # CDR_tech(config_fname, reference_year)
+    # social_cost(config_fname, reference_year)
+    market_share(config_fname, reference_year)
+
+
+def market_share(config_fname, reference_year):
+    # get baseline info
+    baseline = config_fname.split("/")[1]
+    scenario = config_fname.split("/")[0]
+
+    # get market data from state
+    CDR_market = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario + "/" + baseline +
+                            "/sorted price and supply of CDR by technology.csv")
+
+    # get supply
+    CDR_market = CDR_market.groupby('product_price')[str(reference_year)+"_supply"].sum()
+
+    # calculate percentage of market share
+    percentages = (CDR_market / CDR_market.sum()) * 100
+
+    # format data and output
+    df = pd.concat([CDR_market, percentages], axis=1)
+    df.columns = ["Mt", "%"]
+    df.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                 "/market share in " + str(reference_year) + ".csv")
 
 
 def social_cost(config_fname, reference_year):
@@ -272,5 +295,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["low_low", "high_high", "s1-noBECCSitc-l_low", "s1-itc-h_high", "s1-itc-l_low"]:
+    for i in ["low_low", "high_high", "excess_excess", "nothing_nothing"]:
         main(i, "2050")
