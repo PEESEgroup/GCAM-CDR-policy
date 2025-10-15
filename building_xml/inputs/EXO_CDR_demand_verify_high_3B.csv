@@ -1,0 +1,9 @@
+source,GCAM default,Units,Mt CO2-eq,,,,
+index cols,2,,,,,,
+year,region,demand,name,require-c-price,base-demand,calc-avg-price,govt-procurement
+2025,AL,22.65277049,exogenous,0,13.5,360.8927241,9.152770487
+2030,AL,45.75593121,exogenous,0,34.63261353,296.8887134,11.12331768
+2035,AL,103.695629,exogenous,0,88.84577186,217.7158532,14.84985714
+2040,AL,227.9230579,exogenous,0,227.9230579,207.2257763,0
+2045,AL,584.7089761,exogenous,0,584.7089761,217.4366222,0
+2050,AL,1500,exogenous,0,1500,238.4360335,0
