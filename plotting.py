@@ -779,6 +779,17 @@ def plot_stacked_bar_product(df, year, column, title, nonBaselineScenario):
             # plot stacked bar chart
             plot_df.plot(kind="bar", stacked=True, color=colors, ax=axs)
 
+            # add the sum of changes
+            row_sums = plot_df.sum(axis=1)
+            plt.scatter(row_sums.index, row_sums.values, color="black", marker="x", label="Net Change", zorder=3)
+
+            # add the number of the net impact
+            for i in row_sums.index:
+                plt.text(i, row_sums[i], str(int(row_sums[i])), fontsize=10, ha='center', va='bottom')
+
+            # add a horizontal line at y = 0
+            plt.axhline(y=0, color='darkgrey', linestyle='--')
+
         # format plot
         axs.set_title(title)
         axs.set_ylabel(df["Units"].unique()[0])

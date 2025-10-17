@@ -14,7 +14,8 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    CDR_subsidies(config_fname, "2035", "2040")
+    compare_policy_costs("s1-noBECCSitc-l_low", "s1-itc-l_low")
+    #CDR_subsidies(config_fname, "2035", "2040")
 
 
 def CDR_subsidies(config_fname, year1, year2):
@@ -1354,6 +1355,38 @@ def figure6(nonBaselineScenario, RCP, SSP, biochar_year):
     plotting.sensitivity(perc_diffs, RCP, nonBaselineScenario[0], biochar_year, "Units", "Version",
                          nonBaselineScenario,
                          title="sensitivty analysis percentage change compared to reference scenario")
+
+
+def compare_policy_costs(scenario1, scenario2):
+    """
+    compares the total annual policy costs between two scenarios
+    :param scenario1: old scenario
+    :param scenario2: new scenario
+    :return: graph new-old scenario
+    """
+    scenario1 = scenario1.replace("_", "/")
+    scenario2 = scenario2.replace("_", "/")
+    scenario = scenario1.split("_")[0]
+    dataframe = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario2 +
+                            "/policy cost by technology.csv")
+    cost_diff = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario1 +
+                            "/policy cost by technology.csv")
+    cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "baseline"], suffixes=("_old", "_new"))
+    cost_diff["Units"] = "Million 2025$USD/yr"
+    for i in c.GCAMConstants.plotting_x:
+        # if a year has been masked from the data, don't fill na
+        no_subsidy = cost_diff[cost_diff["scenario_new"] == scenario]
+        if no_subsidy[str(i) + "_new"].isnull().all() or no_subsidy[str(i) + "_old"].isnull().all():
+            cost_diff[str(i)] = cost_diff[str(i) + "_new"] - cost_diff[str(i) + "_old"]
+        else:
+            cost_diff[str(i)] = cost_diff[str(i) + "_new"].fillna(0) - cost_diff[str(i) + "_old"].fillna(0)
+    plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product", "change in policy cost by year " + scenario2.replace("/", "_") + " - " + scenario1.replace("/", "_"),
+                                      scenario2)
+
+    # no C tax
+    cost_diff = cost_diff[cost_diff["product_price_old"] != "CO2"]
+    plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product", "change in policy cost by year (no C tax) " + scenario2.replace("/", "_") + " - " + scenario1.replace("/", "_"),
+                                      scenario2)
 
 
 if __name__ == '__main__':
