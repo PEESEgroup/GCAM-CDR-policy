@@ -98,15 +98,20 @@ def verify_procurement(scenario, baseline, fpath):
                 "data/data_analysis/supplementary_tables/" + scenario + "/" + baseline + "/sorted price and supply of CDR by technology" + k + ".csv")
 
             # calculate total cost
+            if k == "":
+                price_col = "_subsidized"
+            else:
+                price_col = "_price"
+
             for j in constants.GCAMConstants.plotting_x:
                 try:
-                    scenario_total_cost[str(j) + "total_cost"] = scenario_total_cost[str(j) + "_price"] * \
+                    scenario_total_cost[str(j) + "total_cost"] = scenario_total_cost[str(j) + price_col] * \
                                                              scenario_total_cost[str(j) + "_supply"]
                 except KeyError as e:
                     print (e)
                     scenario_total_cost[str(j) + "total_cost"] = np.nan
                 try:
-                    baseline_total_cost[str(j) + "total_cost"] = baseline_total_cost[str(j) + "_price"] * \
+                    baseline_total_cost[str(j) + "total_cost"] = baseline_total_cost[str(j) + price_col] * \
                                                              baseline_total_cost[str(j) + "_supply"]
                 except KeyError as e:
                     print(e)
@@ -446,4 +451,4 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    main("4gt_4gt")
+    main("s1-procureScaling-h_high")
