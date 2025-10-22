@@ -1,4 +1,6 @@
 import os
+
+import constants
 import plotting
 import data_manipulation
 import constants as c
@@ -228,6 +230,9 @@ def CDR_cost(config_fname, year):
     if os.path.exists("./data/gcam_out/" + config_fname + "/exogenous_subsector_investment" + ".csv"):
         investments = data_manipulation.get_sensitivity_data([config_fname], "exogenous_subsector_investment", source="not")
         investments["product"] = "Investment in " + investments["subsector"]
+
+        # remove nan rows
+        investments = investments.dropna(subset=[str(i) for i in constants.GCAMConstants.plotting_x], how='all')
         dataframe = pd.concat([dataframe, investments])
 
     # add CO2 costs into the dataframe
@@ -295,5 +300,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["s1-noBECCSitc-l_low"]:
+    for i in ["innovation-maintain_low"]:
         main(i, "2050")
