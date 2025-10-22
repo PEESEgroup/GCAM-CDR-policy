@@ -447,7 +447,8 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["innovation-maintain_low", "innovation-triple_low", "innovation-DACHubs_low", "innovation-rhodium18b_low", "4gt_4gt"]  # use camelCase
+    current_configs = ["innovation-maintain_low", "innovation-triple_low", "innovation-DACHubs_low", "innovation-rhodium18b_low",
+                       "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing", "4gt_4gt"]  # use camelCase
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging

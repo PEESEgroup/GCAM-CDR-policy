@@ -874,6 +874,87 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
+    elif "s1-procureScaling-n" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_nothing_scaling.csv",
+                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                xml_build_type="CDR Policy",
+                output_fname="default_CDRDemand_s1h_scalingdemand.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
+                            "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links.csv",
+                            "TEW_transport_saving": "./building_xml/inputs/TEW_transport_savings_20.csv"},
+                xml_build_type="TEW Transport Cost Reduction",
+                output_fname="TEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"OEW_transport_amount": "./building_xml/inputs/OEW_transport_coef_20.csv"},
+                xml_build_type="OEW Transport Cost Reduction",
+                output_fname="OEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            )
+        ]
+    elif "s1-procure3B-n" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_nothing_3B.csv",
+                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                xml_build_type="CDR Policy",
+                output_fname="default_CDRDemand_s1h_3Bdemand.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
+                            "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links.csv",
+                            "TEW_transport_saving": "./building_xml/inputs/TEW_transport_savings_20.csv"},
+                xml_build_type="TEW Transport Cost Reduction",
+                output_fname="TEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"OEW_transport_amount": "./building_xml/inputs/OEW_transport_coef_20.csv"},
+                xml_build_type="OEW Transport Cost Reduction",
+                output_fname="OEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            )
+        ]
+    elif "s1-procureRhodium-n" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_nothing_rhodium.csv",
+                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                xml_build_type="CDR Policy",
+                output_fname="default_CDRDemand_s1h_rhodium.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
+                            "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links.csv",
+                            "TEW_transport_saving": "./building_xml/inputs/TEW_transport_savings_20.csv"},
+                xml_build_type="TEW Transport Cost Reduction",
+                output_fname="TEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"OEW_transport_amount": "./building_xml/inputs/OEW_transport_coef_20.csv"},
+                xml_build_type="OEW Transport Cost Reduction",
+                output_fname="OEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            )
+        ]
     elif "s1-itc-h" in scenario_name:
         return [
             build_xml_config.XMLConfig(
