@@ -14,21 +14,21 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    compare_policy_costs("s1-noBECCSitc-l_low", "s1-itc-l_low")
-    #CDR_subsidies(config_fname, "2035", "2040")
+    # compare_policy_costs("s1-noBECCSitc-l_low", "s1-itc-l_low")
+    CDR_subsidies(config_fname, "2030", "2035")
 
 
 def CDR_subsidies(config_fname, year1, year2):
     # data processing
-    CDR = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech", "unmasked")
+    CDR = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech", "masked")
     CDR = CDR[CDR[['GCAM']].isin(c.GCAMConstants.USA_region).any(axis=1)]
     CDR = CDR[CDR['technology'] != "unsatisfied CDR demand"]
 
-    CDR["plot"] = CDR.apply(lambda row: 1 if row[year1] > 0 and row[year2] > 0 else 2 if row[year1] > 0 else 3 if row[year2] > 0 else 4, axis=1)
+    CDR["plot"] = CDR[year2] - CDR[year1]
 
     # choropleth map
     plotting.plot_world_by_products(CDR, "technology", ["plot"],
-                                    "plotting changes in CDR from " + year1 + " to year " + year2, config_fname)
+                                    "Change in CDR (Mt) from " + year1 + " to year " + year2, config_fname)
 
 
 
@@ -1390,4 +1390,5 @@ def compare_policy_costs(scenario1, scenario2):
 
 
 if __name__ == '__main__':
-    main("s1h_high", "2050")
+    for i in ["low_low", "high_high"]:
+        main(i, "2050")
