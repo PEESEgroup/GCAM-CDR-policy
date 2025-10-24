@@ -300,5 +300,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["innovation-maintain_low"]:
+    for i in ["high_high", "low_low"]:
         main(i, "2050")

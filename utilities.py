@@ -374,13 +374,6 @@ def build_from_scenario(scenario_name):
                             "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_high.xml"
-            ),  # update BECCS costs as well
-            build_xml_config.XMLConfig(
-                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_baseline.csv",
-                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
-                xml_build_type="BECCS RES",
-                output_fname="default_BECCSIntegration_high.xml"
             ),
             build_xml_config.XMLConfig(
                 data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
