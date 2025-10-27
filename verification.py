@@ -451,6 +451,5 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    for i in ["s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-              "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high"]:
+    for i in ["4gt_4gt"]:
         main(i)
