@@ -448,7 +448,8 @@ def default_config(config_name):
 
 if __name__ == '__main__':
     current_configs = ["innovation-DACHubs_high"
-                       "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing", "4gt_4gt"]  # use camelCase
+                       "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing", "4gt_4gt",
+                       "s1-oversubBECCSitc-l_low"]  # use camelCase
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging

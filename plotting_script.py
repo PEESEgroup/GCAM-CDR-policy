@@ -21,8 +21,8 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    CDR_cost(config_fname, reference_year)
-    CDR_tech(config_fname, reference_year)
+    # CDR_cost(config_fname, reference_year)
+    # CDR_tech(config_fname, reference_year)
     social_cost(config_fname, reference_year)
     market_share(config_fname, reference_year)
 
@@ -56,16 +56,26 @@ def social_cost(config_fname, reference_year):
     CO2_emissions = data_manipulation.get_sensitivity_data([config_fname], "CO2_emissions_by_sector")
     CO2_emissions = CO2_emissions[CO2_emissions["GCAM"].isin(c.GCAMConstants.USA_region)]
     CO2_emissions = CO2_emissions[CO2_emissions["sector"] != "CDR_regional"]
+    CO2_pos_emissions = CO2_emissions.copy(deep=True)
+    CO2_neg_emissions = CO2_emissions.copy(deep=True)
     # replace negative emissions with np.nan
     for i in c.GCAMConstants.plotting_x:
-        CO2_emissions[str(i)] = CO2_emissions.apply(lambda row: np.nan if row[str(i)] < 0 else row[str(i)], axis=1)
+        CO2_pos_emissions[str(i)] = CO2_pos_emissions.apply(lambda row: np.nan if row[str(i)] < 0 else row[str(i)], axis=1)
+        CO2_neg_emissions[str(i)] = CO2_neg_emissions.apply(lambda row: np.nan if row[str(i)] >= 0 else row[str(i)],
+                                                            axis=1)
 
-    CO2_emissions = CO2_emissions.groupby(["scenario", "baseline", "Units"]).sum(min_count=1).reset_index()
+    CO2_pos_emissions = CO2_pos_emissions.groupby(["scenario", "baseline", "Units"]).sum(min_count=1).reset_index()
+
+    # get a list of negative emissions technologies
+    NET = data_manipulation.get_sensitivity_data([config_fname], "CO2_sequestration_by_sector")
+    NET = pd.concat([NET, CO2_neg_emissions])
+
+    # get price and supply information from these technologies
 
     # process emissions prices
     CO2_prices = data_manipulation.get_sensitivity_data([config_fname], "CO2_prices")
     CO2_prices = CO2_prices[(CO2_prices["GCAM"] == "USA") & (CO2_prices["product"] == "CO2")]
-    CO2_cost = pd.merge(CO2_emissions, CO2_prices, "left", "baseline", suffixes=("_supply", "_price"))
+    CO2_cost = pd.merge(CO2_pos_emissions, CO2_prices, "left", "baseline", suffixes=("_supply", "_price"))
     for i in c.GCAMConstants.plotting_x:
         CO2_cost[str(i)+"_total_cost"] = (CO2_cost[str(i)+"_supply"] / c.GCAMConstants.CO2_to_C) * (CO2_cost[str(i)+"_price"]/c.GCAMConstants.USD2025_tCO2_to_1990_tC)
 
@@ -300,5 +310,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["4gt_4gt"]:
+    for i in ["low_low"]:
         main(i, "2050")

@@ -64,6 +64,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="USA"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Africa_Eastern"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -89,6 +98,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Africa_Eastern"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Africa_Northern"/>
@@ -118,6 +136,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Africa_Northern"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Africa_Southern"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -143,6 +170,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Africa_Southern"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Africa_Western"/>
@@ -172,6 +208,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Africa_Western"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Australia_NZ"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -197,6 +242,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Australia_NZ"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Brazil"/>
@@ -226,6 +280,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Brazil"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Canada"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -251,6 +314,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Canada"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central America and Caribbean"/>
@@ -280,6 +352,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Central America and Caribbean"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Central Asia"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -305,6 +386,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Central Asia"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="China"/>
@@ -334,6 +424,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="China"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="EU-12"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -359,6 +458,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="EU-12"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="EU-15"/>
@@ -388,6 +496,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="EU-15"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Europe_Eastern"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -413,6 +530,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Europe_Eastern"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Europe_Non_EU"/>
@@ -442,6 +568,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Europe_Non_EU"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="European Free Trade Association"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -467,6 +602,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="European Free Trade Association"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="India"/>
@@ -496,6 +640,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="India"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Indonesia"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -521,6 +674,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Indonesia"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Japan"/>
@@ -550,6 +712,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Japan"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Mexico"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -575,6 +746,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Mexico"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Middle East"/>
@@ -604,6 +784,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Middle East"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Pakistan"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -629,6 +818,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Pakistan"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Russia"/>
@@ -658,6 +856,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Russia"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="South Africa"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -683,6 +890,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="South Africa"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="South America_Northern"/>
@@ -712,6 +928,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="South America_Northern"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="South America_Southern"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -737,6 +962,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="South America_Southern"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="South Asia"/>
@@ -766,6 +1000,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="South Asia"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="South Korea"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -791,6 +1034,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="South Korea"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Southeast Asia"/>
@@ -820,6 +1072,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Southeast Asia"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Taiwan"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -845,6 +1106,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Taiwan"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Argentina"/>
@@ -874,6 +1144,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Argentina"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Colombia"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -899,6 +1178,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Colombia"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="AL"/>
@@ -928,6 +1216,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="AL"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="AK"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -953,6 +1250,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="AK"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="AZ"/>
@@ -982,6 +1288,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="AZ"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="AR"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1007,6 +1322,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="AR"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="CA"/>
@@ -1036,6 +1360,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="CA"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="CO"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1061,6 +1394,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="CO"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="CT"/>
@@ -1090,6 +1432,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="CT"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="DE"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1115,6 +1466,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="DE"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="DC"/>
@@ -1144,6 +1504,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="DC"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="FL"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1169,6 +1538,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="FL"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="GA"/>
@@ -1198,6 +1576,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="GA"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="HI"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1223,6 +1610,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="HI"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="ID"/>
@@ -1252,6 +1648,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="ID"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="IL"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1277,6 +1682,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="IL"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="IN"/>
@@ -1306,6 +1720,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="IN"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="IA"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1331,6 +1754,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="IA"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="KS"/>
@@ -1360,6 +1792,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="KS"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="KY"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1385,6 +1826,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="KY"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="LA"/>
@@ -1414,6 +1864,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="LA"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="ME"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1439,6 +1898,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="ME"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MD"/>
@@ -1468,6 +1936,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="MD"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="MA"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1493,6 +1970,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="MA"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MI"/>
@@ -1522,6 +2008,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="MI"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="MN"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1547,6 +2042,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="MN"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MS"/>
@@ -1576,6 +2080,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="MS"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="MO"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1601,6 +2114,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="MO"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="MT"/>
@@ -1630,6 +2152,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="MT"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="NE"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1655,6 +2186,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="NE"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NV"/>
@@ -1684,6 +2224,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="NV"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="NH"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1709,6 +2258,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="NH"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NJ"/>
@@ -1738,6 +2296,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="NJ"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="NM"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1763,6 +2330,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="NM"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="NY"/>
@@ -1792,6 +2368,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="NY"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="NC"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1817,6 +2402,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="NC"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="ND"/>
@@ -1846,6 +2440,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="ND"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="OH"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1871,6 +2474,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="OH"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="OK"/>
@@ -1900,6 +2512,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="OK"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="OR"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1925,6 +2546,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="OR"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="PA"/>
@@ -1954,6 +2584,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="PA"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="RI"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -1979,6 +2618,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="RI"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="SC"/>
@@ -2008,6 +2656,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="SC"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="SD"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2033,6 +2690,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="SD"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="TN"/>
@@ -2062,6 +2728,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="TN"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="TX"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2087,6 +2762,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="TX"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="UT"/>
@@ -2116,6 +2800,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="UT"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="VT"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2141,6 +2834,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="VT"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="VA"/>
@@ -2170,6 +2872,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="VA"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="WA"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2195,6 +2906,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="WA"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="WV"/>
@@ -2224,6 +2944,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="WV"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="WI"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2249,6 +2978,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="WI"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="WY"/>
@@ -2278,6 +3016,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="WY"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="California grid"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2303,6 +3050,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="California grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Texas grid"/>
@@ -2332,6 +3088,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Texas grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Southwest grid"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2357,6 +3122,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Southwest grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central East grid"/>
@@ -2386,6 +3160,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Central East grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Central Northeast grid"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2411,6 +3194,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Central Northeast grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central Southwest grid"/>
@@ -2440,6 +3232,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Central Southwest grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Mid-Atlantic grid"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2465,6 +3266,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Mid-Atlantic grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Northwest grid"/>
@@ -2494,6 +3304,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Northwest grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Southeast grid"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2519,6 +3338,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Southeast grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="Central Northwest grid"/>
@@ -2548,6 +3376,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Central Northwest grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="New York grid"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2573,6 +3410,15 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="New York grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
    <aQuery>
       <region name="New England grid"/>
@@ -2602,6 +3448,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="New England grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Alaska grid"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2629,6 +3484,15 @@
       </supplyDemandQuery>
    </aQuery>
    <aQuery>
+      <region name="Alaska grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
+   </aQuery>
+   <aQuery>
       <region name="Hawaii grid"/>
       <supplyDemandQuery title="CDR by tech">
          <axis1 name="technology">technology</axis1>
@@ -2654,5 +3518,14 @@
          <xPath buildList="true" dataName="fuel cost" group="false" sumAll="false">*[@type = 'sector']/*[@type = 'subsector']/*[@type = 'technology']/*[@type='input']/price-paid[@vintage=parent::*/parent::*/@year]/text()</xPath>
          <comments>excludes energy and emissions related costs which are not printed</comments>
       </supplyDemandQuery>
+   </aQuery>
+   <aQuery>
+      <region name="Hawaii grid"/>
+      <emissionsQueryBuilder title="CO2 sequestration by tech">
+         <axis1 name="subsector">subsector</axis1>
+         <axis2 name="Year">emissions-sequestered</axis2>
+         <xPath buildList="true" dataName="emissions" group="false" sumAll="false">*[@type = 'sector' ]/*[@type='subsector']/*[@type='technology']//CO2/emissions-sequestered/node()</xPath>
+         <comments/>
+      </emissionsQueryBuilder>
    </aQuery>
 </queries>
