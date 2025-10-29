@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<ModelInterfaceBatch>
+   <class name="ModelInterface.ModelGUI2.DbViewer">
+      <command name="XMLDB Batch File">
+         <scenario name="innovation-DACHubs_highs1-procureScaling-n"/>
+         <queryFile>xml/query_list.xml</queryFile>
+         <outFile>data/gcam_out/innovation-DACHubs/highs1-procureScaling-n/ref.csv</outFile>
+         <xmldbLocation>gcam/output/database_basexdb-innovation-DACHubs_highs1-procureScaling-n</xmldbLocation>
+      </command>
+   </class>
+</ModelInterfaceBatch>

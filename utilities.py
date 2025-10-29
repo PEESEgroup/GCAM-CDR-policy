@@ -1016,5 +1016,33 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
+    elif "biochar" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"biochar_subsidy_link": "./building_xml/inputs/biochar_links.csv",
+                            "biochar_subsidy_amount_verify": "./building_xml/inputs/subsidy_biochar_low.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="biochar_subsidy50.xml"
+            ),
+            build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"biochar_subsidy_link": "./building_xml/inputs/biochar_links.csv",
+                            "biochar_subsidy_amount_verify": "./building_xml/inputs/subsidy_biochar_high.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="biochar_subsidy150.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_biochar_base_verify.csv",
+                            "ghg_tax_verify": "./building_xml/inputs/GHG_tax_biochar_low_verify.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="biochar_c_tax_low.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_biochar_base_verify.csv",
+                            "ghg_tax_verify": "./building_xml/inputs/GHG_tax_biochar_high_verify.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="biochar_c_tax_high.xml"
+            )
+        ]
     else:
         return []
