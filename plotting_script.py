@@ -139,9 +139,6 @@ def CDR_cost(config_fname, year):
     price = data_manipulation.get_sensitivity_data([config_fname], "prices_of_all_markets")
     price["product"] = price.apply(lambda row: data_manipulation.price_subsidy(row), axis=1)
 
-    C_costs = get_C_costs(baseline, config_fname, scenario)
-    C_costs = C_costs[C_costs["product"] != "CDR Market"]
-
     # match subsidy market to the states
     # get the subsidy files
     files = config_fname.split("/")
@@ -261,6 +258,9 @@ def CDR_cost(config_fname, year):
         cost_diff.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                          "/change in policy cost by technology_no_C_tax.csv")
 
+    C_costs = get_C_costs(baseline, config_fname, scenario)
+    C_costs = C_costs[C_costs["product"] != "CDR Market"]
+
     for i in c.GCAMConstants.plotting_x:
         C_costs[str(i)] = C_costs[str(i)+"_total_cost"]
 
@@ -299,5 +299,5 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["4gt_4gt"]:
+    for i in ["nothing_nothing", "s1-procureScaling-n/nothing"]:
         main(i, "2050")
