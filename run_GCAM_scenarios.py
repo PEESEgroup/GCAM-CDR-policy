@@ -447,8 +447,7 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
-                       "s1-oversubBECCSitc-l_low"]  # use camelCase
+    current_configs = ["s1-oversubBECCSitc-h_high"]  # use camelCase
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
