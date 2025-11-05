@@ -354,5 +354,9 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["s1-procureScaling-n_nothing"]:
+    for i in ["s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
+              "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+              "s1-procureScaling-h_high", "s1-procureRhodium-h_high",
+              "s1-itc-h_high", "s1-itc-l_low", "s1-noBECCSitc-l_low",
+              "nothing_nothing", "low_low", "high_high"]:
         main(i, "2050")
