@@ -19,10 +19,54 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    CDR_cost(config_fname, reference_year)
-    CDR_tech(config_fname, reference_year)
-    social_cost(config_fname, reference_year)
-    market_share(config_fname, reference_year)
+    # CDR_cost(config_fname, reference_year)
+    # CDR_tech(config_fname, reference_year)
+    # social_cost(config_fname, reference_year)
+    # market_share(config_fname, reference_year)
+    subsidy_expiration(config_fname, reference_year)
+
+
+def subsidy_expiration(config_fname, reference_year):
+    # get baseline info
+    baseline = config_fname.split("/")[1]
+    scenario = config_fname.split("/")[0]
+    # get market data at the state level
+    CDR = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario + "/" + baseline +
+                      "/sorted price and supply of CDR by technology.csv")
+
+    list_of_subsidies = []
+    # find out which years have subsidies
+    for i in c.GCAMConstants.plotting_x:
+        condition = CDR[str(i) + "_price"] > CDR[str(i) + "_subsidized"]
+        if condition.any():
+            list_of_subsidies.append(i)
+
+    year_without_subsidies = list_of_subsidies[-1] + 5
+    CDR = CDR.fillna(0)
+    columns = ["GCAM", "product_price"]
+    for i in list_of_subsidies:
+        CDR[str(i) + "_total_loss"] = CDR.apply(
+            lambda row: -1*(row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
+                str(i) + "_price"]
+            if row[str(i) + "_price"] > row[str(i) + "_subsidized"] else 0, axis=1)
+        CDR[str(i) + "_CDR-Market_loss"] = CDR.apply(
+            lambda row: -1* (row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
+                str(i) + "_subsidized"]
+            if row[str(i) + "_price"] > row[str(i) + "_subsidized"] else 0, axis=1)
+        CDR[str(i) + "_CDR-Subsidy_loss"] = CDR[str(i) + "_total_loss"] - CDR[str(i) + "_CDR-Market_loss"]
+        columns.append(str(i) + "_CDR-Market_loss")
+        columns.append(str(i) + "_CDR-Subsidy_loss")
+
+    # refit df for histogram plotting
+    CDR = CDR[columns]
+    CDR = CDR.melt(id_vars=["GCAM", "product_price"], var_name='category', value_name='Change in market size')
+    CDR["SSP"] = "na"
+    CDR["Units"] = "Million USD/yr"
+    # remove rows with no change
+    CDR = CDR[CDR["Change in market size"]!= 0]
+
+    plotting.plot_regional_hist_avg(CDR, 'Change in market size', "change in size of markets once the subsidy ends",
+                                    "category", config_fname)
 
 
 def market_share(config_fname, reference_year):
@@ -32,10 +76,10 @@ def market_share(config_fname, reference_year):
 
     # get market data from state
     CDR_market = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario + "/" + baseline +
-                            "/sorted price and supply of CDR by technology.csv")
+                             "/sorted price and supply of CDR by technology.csv")
 
     # get supply
-    CDR_market = CDR_market.groupby('product_price')[str(reference_year)+"_supply"].sum()
+    CDR_market = CDR_market.groupby('product_price')[str(reference_year) + "_supply"].sum()
 
     # calculate percentage of market share
     percentages = (CDR_market / CDR_market.sum()) * 100
@@ -44,7 +88,7 @@ def market_share(config_fname, reference_year):
     df = pd.concat([CDR_market, percentages], axis=1)
     df.columns = ["Mt", "%"]
     df.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                 "/market share in " + str(reference_year) + ".csv")
+              "/market share in " + str(reference_year) + ".csv")
 
 
 def social_cost(config_fname, reference_year):
@@ -53,7 +97,7 @@ def social_cost(config_fname, reference_year):
     # process USA emissions
     costs = get_C_costs(baseline, config_fname, scenario)
     costs.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                     "/CO2_CDR_social_costs.csv")
+                 "/CO2_CDR_social_costs.csv")
 
 
 def get_C_costs(baseline, config_fname, scenario):
@@ -70,7 +114,7 @@ def get_C_costs(baseline, config_fname, scenario):
     for i in c.GCAMConstants.plotting_x:
         # (Mt C * CO2 / C = Mt CO2) * (1990$/tC * 2025$/tC /1990$/tC = 2025$t C * CO2 /C = 2025$/t CO2) = (Mt CO2 * 2025$/t CO2) = M 2025$
         CO2_tax_revenue[str(i) + "_total_cost"] = (CO2_tax_revenue[str(i) + "_supply"] / c.GCAMConstants.CO2_to_C) * (
-                    CO2_tax_revenue[str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC)
+                CO2_tax_revenue[str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC)
     # process deadweight loss
     CO2_tax_price = pd.merge(CO2_emissions, CO2_prices, "left", "baseline", suffixes=("_supply", "_price"))
     CO2_tax_price["Units"] = "MTC"
@@ -78,8 +122,8 @@ def get_C_costs(baseline, config_fname, scenario):
     for i in c.GCAMConstants.plotting_x:
         # ((Mt C - Mt C) * CO2 / C = Mt CO2) * (1990$/tC * 2025$/tC /1990$/tC = 2025$t C * CO2 /C = 2025$/t CO2) = (Mt CO2 * 2025$/t CO2) = M 2025$
         deadweight_loss[str(i) + "_total_cost"] = (
-                    0.5 * (deadweight_loss[str(i)] - deadweight_loss[str(i) + "_supply"]) / c.GCAMConstants.CO2_to_C *
-                    (deadweight_loss[str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC))
+                0.5 * (deadweight_loss[str(i)] - deadweight_loss[str(i) + "_supply"]) / c.GCAMConstants.CO2_to_C *
+                (deadweight_loss[str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC))
 
     # process total price of CDR
     CDR_cost = pd.read_csv(
@@ -118,7 +162,8 @@ def CDR_tech(config_fname, year):
     plotting.plot_stacked_bar_product(CDR, year, "technology", "CDR by technology in " + str(year), config_fname)
 
     # choropleth map
-    plotting.plot_world_by_products(CDR, "technology", [year], "plotting estimated CDR supply by technology in " + str(year),
+    plotting.plot_world_by_products(CDR, "technology", [year],
+                                    "plotting estimated CDR supply by technology in " + str(year),
                                     config_fname)
 
 
@@ -188,8 +233,10 @@ def CDR_cost(config_fname, year):
 
     # if there is supply less than 0.01 Mt CDR for a given tech and state, set supply and price to np.nan
     for i in c.GCAMConstants.plotting_x:
-        dataframe[str(i) + "_price"] = dataframe.apply(lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_price"), axis=1)
-        dataframe[str(i) + "_supply"] = dataframe.apply(lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_supply"), axis=1)
+        dataframe[str(i) + "_price"] = dataframe.apply(
+            lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_price"), axis=1)
+        dataframe[str(i) + "_supply"] = dataframe.apply(
+            lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_supply"), axis=1)
     mari_df = dataframe[dataframe["technology_price"] != "subsidy"]
 
     # format ground truth
@@ -197,11 +244,12 @@ def CDR_cost(config_fname, year):
     meko_subsidy.columns = meko_subsidy.columns.astype(str)
     meko_subsidy["Units"] = "Mt"
     scenario_df = plotting.plot_marimekko(mari_df, c.GCAMConstants.plotting_x, "_supply", "_price", "product_price",
-                            "sorted price and supply of CDR by technology", config_fname, meko_subsidy)
+                                          "sorted price and supply of CDR by technology", config_fname, meko_subsidy)
 
     # and compare tech costs to default
     if scenario != baseline:
-        baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/"+baseline+"/"+baseline+"/sorted price and supply of CDR by technology.csv")
+        baseline_df = pd.read_csv(
+            "data/data_analysis/supplementary_tables/" + baseline + "/" + baseline + "/sorted price and supply of CDR by technology.csv")
         plotting.compare_marimekko(scenario_df, baseline_df, config_fname)
 
     # calculate the total cost and plot
@@ -214,15 +262,19 @@ def CDR_cost(config_fname, year):
     dataframe["Units"] = "Million 2025$USD/yr"
     dataframe['scenario'] = scenario
     dataframe['baseline'] = baseline
-    dataframe['product'] = dataframe.apply(lambda row: row["product_price"] + " " + row["technology_price"] if row["technology_price"] != "missing" else row["product_price"], axis=1)
+    dataframe['product'] = dataframe.apply(
+        lambda row: row["product_price"] + " " + row["technology_price"] if row["technology_price"] != "missing" else
+        row["product_price"], axis=1)
 
     # avoid double counting cost
     for i in c.GCAMConstants.plotting_x:
-        dataframe[str(i)] = dataframe.apply(lambda row: data_manipulation.substract_subsidy(row, str(i), subsidy_df), axis = 1)
+        dataframe[str(i)] = dataframe.apply(lambda row: data_manipulation.substract_subsidy(row, str(i), subsidy_df),
+                                            axis=1)
 
     # add exogenous policy costs to the CDR cost dataframes
     if os.path.exists("./data/gcam_out/" + config_fname + "/exogenous_subsector_investment" + ".csv"):
-        investments = data_manipulation.get_sensitivity_data([config_fname], "exogenous_subsector_investment", source="not")
+        investments = data_manipulation.get_sensitivity_data([config_fname], "exogenous_subsector_investment",
+                                                             source="not")
         investments["product"] = "Investment in " + investments["subsector"]
 
         # remove nan rows
@@ -230,7 +282,8 @@ def CDR_cost(config_fname, year):
         dataframe = pd.concat([dataframe, investments])
 
     # add CO2 costs into the dataframe
-    plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year (no C tax)", config_fname)
+    plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product",
+                                      "policy cost by year (no C tax)", config_fname)
     dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                      "/policy cost by technology_no co2.csv")
 
@@ -262,28 +315,30 @@ def CDR_cost(config_fname, year):
     C_costs = C_costs[C_costs["product"] != "CDR Market"]
 
     for i in c.GCAMConstants.plotting_x:
-        C_costs[str(i)] = C_costs[str(i)+"_total_cost"]
+        C_costs[str(i)] = C_costs[str(i) + "_total_cost"]
 
     dataframe = pd.concat([dataframe, C_costs])
 
-    plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year", config_fname)
+    plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year",
+                                      config_fname)
     dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                      "/policy cost by technology.csv")
 
     # compare this bar plot with default one (if this is not a default scenario)
     if baseline != scenario:
         cost_diff = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
-                         "/policy cost by technology.csv")
+                                "/policy cost by technology.csv")
         cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "baseline"], suffixes=("_old", "_new"))
         cost_diff["Units"] = "Million 2025$USD/yr"
         for i in c.GCAMConstants.plotting_x:
             # if a year has been masked from the data, don't fill na
             no_subsidy = cost_diff[cost_diff["scenario_new"] == scenario]
-            if no_subsidy[str(i)+"_new"].isnull().all() or no_subsidy[str(i)+"_old"].isnull().all():
+            if no_subsidy[str(i) + "_new"].isnull().all() or no_subsidy[str(i) + "_old"].isnull().all():
                 cost_diff[str(i)] = cost_diff[str(i) + "_new"] - cost_diff[str(i) + "_old"]
             else:
-                cost_diff[str(i)] = cost_diff[str(i)+"_new"].fillna(0) - cost_diff[str(i)+"_old"].fillna(0)
-        plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product", "change in policy cost by year", config_fname)
+                cost_diff[str(i)] = cost_diff[str(i) + "_new"].fillna(0) - cost_diff[str(i) + "_old"].fillna(0)
+        plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product",
+                                          "change in policy cost by year", config_fname)
 
         # add a total row
         cols = ["2025", "2030", "2035", "2040", "2045", "2050", "product", "scenario_new", "baseline", "Units"]
@@ -295,9 +350,9 @@ def CDR_cost(config_fname, year):
 
     # verify procurement
     if scenario != baseline:
-        verification.verify_procurement(scenario, baseline, "./data/gcam_out/"+config_fname)
+        verification.verify_procurement(scenario, baseline, "./data/gcam_out/" + config_fname)
 
 
 if __name__ == '__main__':
-    for i in ["nothing_nothing", "s1-procureScaling-n/nothing"]:
+    for i in ["s1-procureScaling-n_nothing"]:
         main(i, "2050")

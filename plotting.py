@@ -1199,7 +1199,7 @@ def gradient_image(ax, direction=0.3, cmap_range=(0, 1), **kwargs):
     return im
 
 
-def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply, RCP, nonBaselineScenario):
+def plot_regional_hist_avg(prices, year, title, column, config_fname):
     """
     Plots regional data in a stacked bar histogram
     :param prices: price data being plotted
@@ -1213,53 +1213,41 @@ def plot_regional_hist_avg(prices, year, SSPs, y_label, title, column, supply, R
     :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
-    if supply == "na":
-        df = prices.loc[:, [str(year), column]]
-        products = df[column].unique().tolist()
-        units = prices["Units"].unique()[0]
-        df = df.pivot(columns=column, values=str(year))
-        df = df.sort_values([column for column in df.columns])
+    df = prices.loc[:, [str(year), column]]
+    products = df[column].unique().tolist()
+    units = prices["Units"].unique()[0]
+    df = df.pivot(columns=column, values=str(year))
+    df = df.sort_values([column for column in df.columns])
 
-        # get colors
-        n = len(products)
-        if n == 5:
-            n = 1
-        colors, divisions = get_colors(n)
+    # get colors
+    n = len(products)
+    if n == 5:
+        n = 1
+    colors, divisions = get_colors(n/2)
 
-        if (np.isnan(prices[year].max())) or (np.isnan(prices[year].min())):
-            return
+    if (np.isnan(prices[year].max())) or (np.isnan(prices[year].min())):
+        return
 
-        # plot histogram
-        bind_width = (int(prices[year].max() + .1) - int(prices[year].min() - .1)) / 40
-        bins = [bind_width * i for i in
-                range(int(prices[year].min() / bind_width) - 1, int(prices[year].max() / bind_width) + 2)]
+    # plot histogram
+    bind_width = (int(prices[year].max() + .1) - int(prices[year].min() - .1)) / 40
+    bins = [bind_width * i for i in
+            range(int(prices[year].min() / bind_width) - 1, int(prices[year].max() / bind_width) + 2)]
 
-        data_series = [df[column] for column in df.columns]
+    data_series = [df[column] for column in df.columns]
 
-        plt.hist(data_series, bins, stacked=True, label=df.columns, histtype='bar',
-                 color=[colors[i] for i in range(len(products))])
+    plt.hist(data_series, bins, stacked=True, label=df.columns, histtype='bar',
+             color=[colors[i] for i in range(len(products))])
 
-        # finalize plot
-        plt.ylabel(y_label)
-        plt.xlabel(units)
-        plt.xticks(rotation=60, ha='right')
-        plt.xlim(np.floor(prices[year].min() - bind_width), np.ceil(prices[year].max() + bind_width))
-        plt.title(title)
-        plt.legend(bbox_to_anchor=(1, 1))
-        plt.subplots_adjust(bottom=0.4, right=.7)
-        plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + title + ".png", dpi=300)
-        plt.show()
-    else:
-        colors, divisions = get_colors(1)
-        # plot for each SSP
-        if column != "SSP":
-            for k in SSPs:
-                dataframe = prices[prices['SSP'].str.contains(k)]
-                supply = supply[supply['SSP'].str.contains(k)]
-                plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year, RCP,
-                                           nonBaselineScenario)
-        else:
-            plot_weighted_average_hist(colors, column, prices, supply, title, y_label, year, RCP, nonBaselineScenario)
+    # finalize plot
+    plt.ylabel("count")
+    plt.xlabel(units)
+    plt.xticks(rotation=60, ha='right')
+    plt.xlim(np.floor(prices[year].min() - bind_width), np.ceil(prices[year].max() + bind_width))
+    plt.title(title)
+    plt.legend(bbox_to_anchor=(1, 1))
+    plt.subplots_adjust(bottom=0.4, right=.7)
+    plt.savefig("data/data_analysis/images/" + str(config_fname).replace("_", "/") + "/" + title + ".png", dpi=300)
+    plt.show()
 
 
 def plot_weighted_average_hist(colors, column, dataframe, supply, title, y_label, year, RCP, nonBaselineScenario):
