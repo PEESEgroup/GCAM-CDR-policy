@@ -19,10 +19,10 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    CDR_cost(config_fname, reference_year)
-    CDR_tech(config_fname, reference_year)
-    social_cost(config_fname, reference_year)
-    market_share(config_fname, reference_year)
+    # CDR_cost(config_fname, reference_year)
+    # CDR_tech(config_fname, reference_year)
+    # social_cost(config_fname, reference_year)
+    # market_share(config_fname, reference_year)
     subsidy_expiration(config_fname, reference_year)
 
 
@@ -58,15 +58,47 @@ def subsidy_expiration(config_fname, reference_year):
         columns.append(str(i) + "_CDR-Subsidy_loss")
 
     # refit df for histogram plotting
-    CDR = CDR[columns]
-    CDR = CDR.melt(id_vars=["GCAM", "product_price"], var_name='category', value_name='Change in market size')
-    CDR["SSP"] = "na"
-    CDR["Units"] = "Million USD/yr"
+    CDR_df = CDR[columns]
+    CDR_df = CDR_df.melt(id_vars=["GCAM", "product_price"], var_name='category', value_name='Change in market size')
+    CDR_df["SSP"] = "na"
+    CDR_df["Units"] = "Million USD/yr"
     # remove rows with no change
-    CDR = CDR[CDR["Change in market size"]!= 0]
+    CDR_df = CDR_df[CDR_df["Change in market size"]!= 0]
 
-    plotting.plot_regional_hist_avg(CDR, 'Change in market size', "change in size of markets once the subsidy ends",
+    plotting.plot_regional_hist_avg(CDR_df, 'Change in market size', "change in size of markets once the subsidy ends",
                                     "category", config_fname)
+
+    # get only wasted and good spend
+    CDR_wasted_subsidy = CDR.copy(deep=True)
+    CDR_good_subsidy = CDR.copy(deep=True)
+
+    for i in list_of_subsidies:
+        CDR_wasted_subsidy[str(i)+"_CDR-Subsidy_loss"] = CDR_wasted_subsidy.apply(
+            lambda row: 0 if row[str(i)+"_CDR-Subsidy_loss"] > 0 else row[str(i)+"_CDR-Subsidy_loss"], axis=1)
+        CDR_wasted_subsidy[str(i)+"_CDR-Market_loss"] = CDR_wasted_subsidy.apply(
+            lambda row: 0 if row[str(i)+"_CDR-Market_loss"] > 0 else row[str(i)+"_CDR-Market_loss"], axis=1)
+        CDR_good_subsidy[str(i)+"_CDR-Subsidy_loss"] = CDR_good_subsidy.apply(
+            lambda row: 0 if row[str(i)+"_CDR-Subsidy_loss"] < 0 else row[str(i)+"_CDR-Subsidy_loss"], axis=1)
+        CDR_good_subsidy[str(i)+"_CDR-Market_loss"] = CDR_good_subsidy.apply(
+            lambda row: 0 if row[str(i)+"_CDR-Market_loss"] < 0 else row[str(i)+"_CDR-Market_loss"], axis=1)
+
+    CDR_wasted_subsidy = CDR_wasted_subsidy.groupby(["product_price"]).sum(min_count=1)
+    CDR_wasted_subsidy = CDR_wasted_subsidy.reset_index()
+    CDR_wasted_subsidy["Units"] = "Million 2025$USD/yr"
+    CDR_wasted_subsidy["spend"] = "Wasted"
+    CDR_good_subsidy = CDR_good_subsidy.groupby(["product_price"]).sum(min_count=1)
+    CDR_good_subsidy = CDR_good_subsidy.reset_index()
+    CDR_good_subsidy["Units"] = "Million 2025$USD/yr"
+    CDR_wasted_subsidy["spend"] = "Good"
+    CDR = pd.concat([CDR_wasted_subsidy, CDR_good_subsidy])
+
+    CDR.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+              "/subsidy-and-market-spend-on-subsidized-techs.csv")
+
+    # remove market spend to focus on subsidies
+    for i in list_of_subsidies:
+        CDR["str(i)"] = CDR[str(i)+"_CDR-Subsidy_loss"]
+    plotting.plot_stacked_bar_product(CDR, c.GCAMConstants.plotting_x, "product_price", "CDR subsidy spend", config_fname)
 
 
 def market_share(config_fname, reference_year):
