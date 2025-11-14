@@ -19,10 +19,10 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    # CDR_cost(config_fname, reference_year)
-    # CDR_tech(config_fname, reference_year)
-    # social_cost(config_fname, reference_year)
-    # market_share(config_fname, reference_year)
+    CDR_cost(config_fname, reference_year)
+    CDR_tech(config_fname, reference_year)
+    social_cost(config_fname, reference_year)
+    market_share(config_fname, reference_year)
     subsidy_expiration(config_fname, reference_year)
 
 
@@ -354,9 +354,12 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
-              "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-              "s1-procureScaling-h_high", "s1-procureRhodium-h_high",
-              "s1-itc-h_high", "s1-itc-l_low", "s1-noBECCSitc-l_low",
-              "nothing_nothing", "low_low", "high_high"]:
+    # for i in ["s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
+    #           "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+    #           "s1-procureScaling-h_high", "s1-procureRhodium-h_high",
+    #           "s1-itc-h_high", "s1-itc-l_low", "s1-noBECCSitc-l_low",
+    #           "nothing_nothing", "low_low", "high_high"]:
+    # "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2040_low", "CDRIA-2050_low",
+    #                        "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2040_high", "CDRIA-2050_high"
+    for i in ["45Q-2040_low"]:
         main(i, "2050")
