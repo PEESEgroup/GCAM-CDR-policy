@@ -89,16 +89,17 @@ def subsidy_expiration(config_fname, reference_year):
     CDR_good_subsidy = CDR_good_subsidy.groupby(["product_price"]).sum(min_count=1)
     CDR_good_subsidy = CDR_good_subsidy.reset_index()
     CDR_good_subsidy["Units"] = "Million 2025$USD/yr"
-    CDR_wasted_subsidy["spend"] = "Good"
-    CDR = pd.concat([CDR_wasted_subsidy, CDR_good_subsidy])
+    CDR_good_subsidy["spend"] = "Good"
+    CDR = pd.concat([CDR_wasted_subsidy, CDR_good_subsidy]).reset_index()
+    CDR["product"] = CDR["product_price"] + " " + CDR["spend"]
 
     CDR.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
               "/subsidy-and-market-spend-on-subsidized-techs.csv")
 
     # remove market spend to focus on subsidies
     for i in list_of_subsidies:
-        CDR["str(i)"] = CDR[str(i)+"_CDR-Subsidy_loss"]
-    plotting.plot_stacked_bar_product(CDR, c.GCAMConstants.plotting_x, "product_price", "CDR subsidy spend", config_fname)
+        CDR[str(i)] = CDR[str(i)+"_CDR-Subsidy_loss"]
+    plotting.plot_stacked_bar_product(CDR, list_of_subsidies, "product", "change in CDR market size from base year to year after subsidies end", config_fname)
 
 
 def market_share(config_fname, reference_year):
