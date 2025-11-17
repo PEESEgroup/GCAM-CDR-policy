@@ -19,10 +19,10 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    # CDR_cost(config_fname, reference_year)
-    # CDR_tech(config_fname, reference_year)
-    # social_cost(config_fname, reference_year)
-    # market_share(config_fname, reference_year)
+    CDR_cost(config_fname, reference_year)
+    CDR_tech(config_fname, reference_year)
+    social_cost(config_fname, reference_year)
+    market_share(config_fname, reference_year)
     subsidy_expiration(config_fname, reference_year)
 
 
@@ -394,5 +394,5 @@ if __name__ == '__main__':
     #           "nothing_nothing", "low_low", "high_high"]:
     # "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2040_low", "CDRIA-2050_low",
     #                        "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2040_high", "CDRIA-2050_high"
-    for i in ["45Q-2040_low"]:
+    for i in ["45Q-2050_low"]:
         main(i, "2050")
