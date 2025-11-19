@@ -1,294 +1,294 @@
 ,1990,2005,2020,2025,2030,2035,2040,2045,2050,scenario,baseline,GCAM,sector,subsector,technology,output,concentration,input,product,fuel,LandLeaf,GHG,Units
-0,0.0,0.0,0.0,,,0.12336,0.181599,0.273633,0.441851,4gt,4gt,Africa_Eastern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-1,0.0,0.0,0.0,,,0.0168746,0.0280627,0.0503429,0.0963818,4gt,4gt,Africa_Eastern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-2,0.0,0.0,0.0,,,0.0515634,0.0931306,0.131113,0.164147,4gt,4gt,Africa_Eastern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-3,0.0,0.0,0.0,,,0.0184881,0.0416567,0.0784914,0.11795,4gt,4gt,Africa_Eastern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-4,0.0,0.0,0.0,,,0.136004,0.170525,0.204211,0.243512,4gt,4gt,Africa_Northern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-5,0.0,0.0,0.0,,,0.0520671,0.0653046,0.0821734,0.102694,4gt,4gt,Africa_Northern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-6,0.0,0.0,0.0,,,0.0838984,0.128672,0.145335,0.146254,4gt,4gt,Africa_Northern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-7,0.0,0.0,0.0,,,0.0326851,0.0507916,0.0705221,0.0816749,4gt,4gt,Africa_Northern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-8,0.0,0.0,0.0,,,0.027365,0.0338043,0.0450328,0.0640075,4gt,4gt,Africa_Southern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-9,0.0,0.0,0.0,,,0.00923557,0.0113481,0.0164628,0.0256804,4gt,4gt,Africa_Southern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-10,0.0,0.0,0.0,,,0.0145298,0.021721,0.02749,0.0338507,4gt,4gt,Africa_Southern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-11,0.0,0.0,0.0,,,0.00687342,0.0117304,0.0197237,0.0277861,4gt,4gt,Africa_Southern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-12,0.0,0.0,0.0,,,0.169963,0.24298,0.335433,0.464441,4gt,4gt,Africa_Western,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-13,0.0,0.0,0.0,,,0.0628979,0.0889228,0.129714,0.191989,4gt,4gt,Africa_Western,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-14,0.0,0.0,0.0,,,0.101292,0.175996,0.227098,0.26497,4gt,4gt,Africa_Western,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-15,0.0,0.0,0.0,,,0.0492266,0.0964,0.163362,0.219382,4gt,4gt,Africa_Western,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-16,0.0,0.0,0.0,,,0.315586,0.376262,0.42168,0.47019,4gt,4gt,Australia_NZ,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-17,0.0,0.0,0.0,,,0.135692,0.160528,0.187612,0.220005,4gt,4gt,Australia_NZ,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-18,0.0,0.0,0.0,,,0.212638,0.308384,0.322421,0.299658,4gt,4gt,Australia_NZ,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-19,0.0,0.0,0.0,,,0.0719524,0.103995,0.133364,0.146344,4gt,4gt,Australia_NZ,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-20,0.0,0.0,0.0,,,0.364038,0.453767,0.517732,0.589672,4gt,4gt,Brazil,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-21,0.0,0.0,0.0,,,0.150388,0.192453,0.232144,0.280221,4gt,4gt,Brazil,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-22,0.0,0.0,0.0,,,0.233181,0.361649,0.389065,0.373848,4gt,4gt,Brazil,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-23,0.0,0.0,0.0,,,0.0963929,0.154735,0.210084,0.237221,4gt,4gt,Brazil,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-24,0.0,0.0,0.0,,,0.261608,0.324023,0.361217,0.412215,4gt,4gt,Canada,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-25,0.0,0.0,0.0,,,0.104129,0.1324,0.154052,0.188487,4gt,4gt,Canada,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-26,0.0,0.0,0.0,,,0.164727,0.255848,0.268823,0.260653,4gt,4gt,Canada,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-27,0.0,0.0,0.0,,,0.0612989,0.096388,0.12737,0.143832,4gt,4gt,Canada,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-28,0.0,0.0,0.0,,,0.0567266,0.070621,0.0831212,0.104658,4gt,4gt,Central America and Caribbean,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-29,0.0,0.0,0.0,,,0.0228053,0.0286745,0.0353971,0.0484284,4gt,4gt,Central America and Caribbean,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-30,0.0,0.0,0.0,,,0.0342847,0.0530963,0.0592356,0.065059,4gt,4gt,Central America and Caribbean,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-31,0.0,0.0,0.0,,,0.0142863,0.0232855,0.032893,0.0403014,4gt,4gt,Central America and Caribbean,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-32,0.0,0.0,0.0,,,0.090865,0.112377,0.128435,0.147643,4gt,4gt,Central Asia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-33,0.0,0.0,0.0,,,0.0381923,0.0466908,0.0551557,0.0666574,4gt,4gt,Central Asia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-34,0.0,0.0,0.0,,,0.0582117,0.0874789,0.0926454,0.0888958,4gt,4gt,Central Asia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-35,0.0,0.0,0.0,,,0.026072,0.0428211,0.0602034,0.0694224,4gt,4gt,Central Asia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-36,0.0,0.0,0.0,,,2.29369,2.70221,2.94303,3.27992,4gt,4gt,China,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-37,0.0,0.0,0.0,,,0.826749,0.985289,1.12269,1.34908,4gt,4gt,China,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-38,0.0,0.0,0.0,,,1.38969,1.99135,2.00504,1.86249,4gt,4gt,China,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-39,0.0,0.0,0.0,,,0.419609,0.577197,0.708296,0.76807,4gt,4gt,China,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-40,0.0,0.0,0.0,,,0.221963,0.261392,0.289294,0.322615,4gt,4gt,EU-12,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-41,0.0,0.0,0.0,,,0.079247,0.0958958,0.113001,0.133867,4gt,4gt,EU-12,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-42,0.0,0.0,0.0,,,0.13233,0.192726,0.200964,0.187952,4gt,4gt,EU-12,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-43,0.0,0.0,0.0,,,0.0543515,0.0824341,0.10945,0.121823,4gt,4gt,EU-12,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-44,0.0,0.0,0.0,,,2.11141,2.55544,2.95726,3.16169,4gt,4gt,EU-15,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-45,0.0,0.0,0.0,,,0.791857,0.985066,1.21101,1.3553,4gt,4gt,EU-15,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-46,0.0,0.0,0.0,,,1.30303,1.96326,2.15564,1.93153,4gt,4gt,EU-15,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-47,0.0,0.0,0.0,,,0.317213,0.432225,0.536806,0.566889,4gt,4gt,EU-15,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-48,0.0,0.0,0.0,,,0.031267,0.0397367,0.051146,0.0647624,4gt,4gt,Europe_Eastern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-49,0.0,0.0,0.0,,,0.0117155,0.014583,0.0202016,0.0276457,4gt,4gt,Europe_Eastern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-50,0.0,0.0,0.0,,,0.0187857,0.0290087,0.0353633,0.0380165,4gt,4gt,Europe_Eastern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-51,0.0,0.0,0.0,,,0.00934298,0.0170709,0.0284564,0.0368322,4gt,4gt,Europe_Eastern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-52,0.0,0.0,0.0,,,0.219917,0.256242,0.279983,0.314101,4gt,4gt,Europe_Non_EU,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-53,0.0,0.0,0.0,,,0.0799891,0.0925172,0.104777,0.123107,4gt,4gt,Europe_Non_EU,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-54,0.0,0.0,0.0,,,0.135005,0.189765,0.190876,0.176141,4gt,4gt,Europe_Non_EU,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-55,0.0,0.0,0.0,,,0.0513749,0.0740823,0.0944307,0.103843,4gt,4gt,Europe_Non_EU,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-56,0.0,0.0,0.0,,,0.179419,0.259107,0.344027,0.379917,4gt,4gt,European Free Trade Association,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-57,0.0,0.0,0.0,,,0.0710717,0.106961,0.148894,0.171934,4gt,4gt,European Free Trade Association,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-58,0.0,0.0,0.0,,,0.113665,0.20748,0.259656,0.241836,4gt,4gt,European Free Trade Association,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-59,0.0,0.0,0.0,,,0.00983537,0.0127084,0.0150027,0.0156401,4gt,4gt,European Free Trade Association,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-60,0.0,0.0,0.0,,,0.655188,0.83211,1.0036,1.23646,4gt,4gt,India,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-61,0.0,0.0,0.0,,,0.234877,0.296827,0.371838,0.478182,4gt,4gt,India,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-62,0.0,0.0,0.0,,,0.385958,0.595201,0.668602,0.691233,4gt,4gt,India,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-63,0.0,0.0,0.0,,,0.165803,0.272049,0.393957,0.477602,4gt,4gt,India,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-64,0.0,0.0,0.0,,,0.242976,0.281479,0.328421,0.385357,4gt,4gt,Indonesia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-65,0.0,0.0,0.0,,,0.0867548,0.0954615,0.116021,0.139966,4gt,4gt,Indonesia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-66,0.0,0.0,0.0,,,0.145467,0.19755,0.213752,0.206483,4gt,4gt,Indonesia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-67,0.0,0.0,0.0,,,0.0569346,0.0817674,0.112485,0.130726,4gt,4gt,Indonesia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-68,0.0,0.0,0.0,,,0.99027,1.19444,1.56656,1.72183,4gt,4gt,Japan,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-69,0.0,0.0,0.0,,,0.395725,0.463219,0.65335,0.769512,4gt,4gt,Japan,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-70,0.0,0.0,0.0,,,0.637146,0.930199,1.16147,1.08154,4gt,4gt,Japan,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-71,0.0,0.0,0.0,,,0.0458988,0.05523,0.0653299,0.0682689,4gt,4gt,Japan,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-72,0.0,0.0,0.0,,,0.227692,0.27503,0.307221,0.350859,4gt,4gt,Mexico,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-73,0.0,0.0,0.0,,,0.0967019,0.115782,0.13245,0.157888,4gt,4gt,Mexico,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-74,0.0,0.0,0.0,,,0.148845,0.219595,0.228376,0.219639,4gt,4gt,Mexico,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-75,0.0,0.0,0.0,,,0.0472962,0.0680655,0.0864419,0.0957073,4gt,4gt,Mexico,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-76,0.0,0.0,0.0,,,0.345929,0.389465,0.454637,0.544893,4gt,4gt,Middle East,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-77,0.0,0.0,0.0,,,0.137575,0.149316,0.186703,0.241059,4gt,4gt,Middle East,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-78,0.0,0.0,0.0,,,0.209025,0.284378,0.317008,0.329137,4gt,4gt,Middle East,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-79,0.0,0.0,0.0,,,0.0694192,0.0967077,0.128913,0.148338,4gt,4gt,Middle East,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-80,0.0,0.0,0.0,,,0.0319543,0.0428721,0.0567228,0.0742531,4gt,4gt,Pakistan,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-81,0.0,0.0,0.0,,,0.0111725,0.0151556,0.0211696,0.0286881,4gt,4gt,Pakistan,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-82,0.0,0.0,0.0,,,0.0178668,0.0294304,0.0365752,0.0401266,4gt,4gt,Pakistan,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-83,0.0,0.0,0.0,,,0.00893064,0.0166494,0.0278445,0.0366786,4gt,4gt,Pakistan,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-84,0.0,0.0,0.0,,,0.282082,0.329884,0.352408,0.378677,4gt,4gt,Russia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-85,0.0,0.0,0.0,,,0.120337,0.138711,0.152165,0.172087,4gt,4gt,Russia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-86,0.0,0.0,0.0,,,0.184907,0.264023,0.263206,0.238019,4gt,4gt,Russia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-87,0.0,0.0,0.0,,,0.0570804,0.0806334,0.100148,0.10782,4gt,4gt,Russia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-88,0.0,0.0,0.0,,,0.0563127,0.0671928,0.0767746,0.0883468,4gt,4gt,South Africa,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-89,0.0,0.0,0.0,,,0.018621,0.0231636,0.0284758,0.0348204,4gt,4gt,South Africa,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-90,0.0,0.0,0.0,,,0.0323873,0.0475903,0.0512191,0.049193,4gt,4gt,South Africa,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-91,0.0,0.0,0.0,,,0.0134935,0.0195148,0.0254373,0.0284351,4gt,4gt,South Africa,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-92,0.0,0.0,0.0,,,0.0108929,0.0148654,0.0183802,0.0226605,4gt,4gt,South America_Northern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-93,0.0,0.0,0.0,,,0.00497278,0.00718388,0.00949767,0.0124133,4gt,4gt,South America_Northern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-94,0.0,0.0,0.0,,,0.00675885,0.0119227,0.0143481,0.0157312,4gt,4gt,South America_Northern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-95,0.0,0.0,0.0,,,0.00291655,0.00530382,0.00789348,0.00953792,4gt,4gt,South America_Northern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-96,0.0,0.0,0.0,,,0.123829,0.154539,0.181163,0.2145,4gt,4gt,South America_Southern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-97,0.0,0.0,0.0,,,0.0505605,0.0636708,0.0786358,0.0988947,4gt,4gt,South America_Southern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-98,0.0,0.0,0.0,,,0.0787894,0.120975,0.133487,0.133596,4gt,4gt,South America_Southern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-99,0.0,0.0,0.0,,,0.0303243,0.0474487,0.0649341,0.0750221,4gt,4gt,South America_Southern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-100,0.0,0.0,0.0,,,0.067902,0.0892849,0.107218,0.131697,4gt,4gt,South Asia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-101,0.0,0.0,0.0,,,0.0239074,0.0321953,0.040546,0.0524065,4gt,4gt,South Asia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-102,0.0,0.0,0.0,,,0.0399663,0.0647604,0.0721449,0.0736941,4gt,4gt,South Asia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-103,0.0,0.0,0.0,,,0.0184076,0.0309836,0.0435772,0.0516351,4gt,4gt,South Asia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-104,0.0,0.0,0.0,,,0.149342,0.144867,0.158285,0.195536,4gt,4gt,South Korea,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-105,0.0,0.0,0.0,,,0.0133647,0.0142454,0.0174935,0.0242556,4gt,4gt,South Korea,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-106,0.0,0.0,0.0,,,0.0499251,0.0599601,0.061519,0.0637371,4gt,4gt,South Korea,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-107,0.0,0.0,0.0,,,0.0145078,0.0169461,0.019768,0.0217797,4gt,4gt,South Korea,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-108,0.0,0.0,0.0,,,0.402487,0.48785,0.567402,0.675666,4gt,4gt,Southeast Asia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-109,0.0,0.0,0.0,,,0.15308,0.17882,0.218466,0.278003,4gt,4gt,Southeast Asia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-110,0.0,0.0,0.0,,,0.25374,0.367726,0.395616,0.38981,4gt,4gt,Southeast Asia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-111,0.0,0.0,0.0,,,0.105277,0.163092,0.222178,0.256701,4gt,4gt,Southeast Asia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-112,0.0,0.0,0.0,,,0.139664,0.140151,0.148192,0.168452,4gt,4gt,Taiwan,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-113,0.0,0.0,0.0,,,0.0491964,0.0368732,0.0292656,0.0266177,4gt,4gt,Taiwan,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-114,0.0,0.0,0.0,,,0.0859405,0.0918839,0.0765131,0.0622947,4gt,4gt,Taiwan,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-115,0.0,0.0,0.0,,,0.0857209,0.118357,0.144819,0.170291,4gt,4gt,Argentina,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-116,0.0,0.0,0.0,,,0.0382964,0.0547713,0.0705325,0.0866576,4gt,4gt,Argentina,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-117,0.0,0.0,0.0,,,0.0571472,0.0993777,0.115486,0.115394,4gt,4gt,Argentina,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-118,0.0,0.0,0.0,,,0.0263528,0.0492652,0.0739254,0.0869841,4gt,4gt,Argentina,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-119,0.0,0.0,0.0,,,0.0742835,0.0941855,0.114596,0.13517,4gt,4gt,Colombia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-120,0.0,0.0,0.0,,,0.0308229,0.0391151,0.0499235,0.0620104,4gt,4gt,Colombia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-121,0.0,0.0,0.0,,,0.0481823,0.0747682,0.0854883,0.0847927,4gt,4gt,Colombia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-122,0.0,0.0,0.0,,,0.0127204,0.0180655,0.0232379,0.0258104,4gt,4gt,Colombia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-123,0.0,0.0,0.0,2.63027e-05,0.0691659,4.0327e-05,1.14291,1.74895,1.27263e-05,4gt,4gt,AL,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-124,0.0,0.0,0.0,0.0613909,0.112237,0.181366,0.228282,0.837463,6.57352,4gt,4gt,AL,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-125,0.0,0.0,0.0,0.00564314,0.0193201,0.297132,0.560985,1.94097,8.03086,4gt,4gt,AL,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-126,0.0,0.0,0.0,0.00161057,0.00732019,0.160282,0.356208,1.50276,3.74396,4gt,4gt,AL,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-127,0.0,0.0,0.0,7.55825e-06,0.0268066,1.50662e-05,0.288082,0.447457,5.95945e-05,4gt,4gt,AK,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-128,0.0,0.0,0.0,0.00189009,0.00477221,0.0147903,0.0246545,0.0688076,0.390462,4gt,4gt,AK,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-129,0.0,0.0,0.0,0.00037203,0.00145648,0.0209965,0.0421368,0.131662,0.611336,4gt,4gt,AK,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-130,0.0,0.0,0.0,2.3591e-05,0.0639727,4.27787e-05,1.22083,1.83935,1.51239e-05,4gt,4gt,AZ,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-131,0.0,0.0,0.0,0.0684896,0.142948,0.223417,0.279582,1.05361,9.09045,4gt,4gt,AZ,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-132,0.0,0.0,0.0,0.00165491,0.00857706,0.219271,0.510076,1.8989,3.36321,4gt,4gt,AZ,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-133,0.0,0.0,0.0,2.21506e-05,0.0588207,3.91625e-05,1.14944,1.72678,1.32557e-05,4gt,4gt,AR,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-134,0.0,0.0,0.0,0.0522785,0.0965821,0.182302,0.22971,0.79467,6.79591,4gt,4gt,AR,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-135,0.0,0.0,0.0,0.0011994,0.00543565,0.138514,0.320324,1.44875,6.23197,4gt,4gt,AR,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-136,0.0,0.0,0.0,8.1988e-05,0.215025,7.51982e-06,1.64922,3.34633,3.18717e-05,4gt,4gt,CA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-137,0.0,0.0,0.0,0.153463,0.296702,0.543832,0.681357,2.66461,17.174,4gt,4gt,CA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-138,0.0,0.0,0.0,0.0240522,0.084141,1.43979,2.51471,9.59086,37.6079,4gt,4gt,CA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-139,0.0,0.0,0.0,0.00727663,0.0377651,0.944982,2.15667,8.54464,13.3652,4gt,4gt,CA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-140,0.0,0.0,0.0,2.83971e-05,0.0771677,5.09467e-05,1.25603,1.98089,1.58436e-05,4gt,4gt,CO,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-141,0.0,0.0,0.0,0.0824426,0.172432,0.266736,0.329195,1.28702,10.1638,4gt,4gt,CO,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-142,0.0,0.0,0.0,0.00187042,0.00942392,0.244291,0.583714,3.01763,12.8994,4gt,4gt,CO,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-143,0.0,0.0,0.0,7.29984e-06,0.0196907,1.31449e-05,0.406365,1.04658,6.53661e-06,4gt,4gt,CT,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-144,0.0,0.0,0.0,0.00701372,0.01325,0.0329456,0.044312,0.155195,1.09823,4gt,4gt,CT,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-145,0.0,0.0,0.0,0.00163508,0.00582015,0.0998932,0.189118,0.739964,3.28364,4gt,4gt,CT,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-146,0.0,0.0,0.0,0.000672293,0.00345677,0.0610196,0.105747,0.130915,0.169629,4gt,4gt,CT,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-147,0.0,0.0,0.0,4.37695e-05,0.00695173,8.64824e-05,0.134626,0.610074,6.80914e-06,4gt,4gt,DE,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-148,0.0,0.0,0.0,0.00463486,0.00899964,0.01768,0.021773,0.0845942,0.629617,4gt,4gt,DE,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-149,0.0,0.0,0.0,0.000785677,0.00300428,0.0511373,0.0959527,0.372229,1.43393,4gt,4gt,DE,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-150,0.0,0.0,0.0,0.000268723,0.00150512,0.0367688,0.0817427,0.268298,0.325733,4gt,4gt,DE,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-151,0.0,0.0,0.0,4.96915e-05,0.131528,9.23155e-05,1.3645,2.57475,2.14428e-05,4gt,4gt,FL,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-152,0.0,0.0,0.0,0.141333,0.240665,0.453338,0.493446,2.13208,15.5295,4gt,4gt,FL,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-153,0.0,0.0,0.0,0.0250927,0.101726,1.77537,3.50855,14.424,44.7649,4gt,4gt,FL,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-154,0.0,0.0,0.0,0.00338426,0.0153477,0.42543,0.864671,4.65956,18.4409,4gt,4gt,FL,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-155,0.0,0.0,0.0,2.84476e-05,0.0748097,4.47456e-05,1.15733,1.81148,1.35265e-05,4gt,4gt,GA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-156,0.0,0.0,0.0,0.0663972,0.121395,0.201479,0.245521,0.922081,7.24385,4gt,4gt,GA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-157,0.0,0.0,0.0,0.00711478,0.0241104,0.38574,0.695084,2.45767,10.3388,4gt,4gt,GA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-158,0.0,0.0,0.0,0.00188165,0.00868797,0.198225,0.430648,1.8389,4.36854,4gt,4gt,GA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-159,0.0,0.0,0.0,7.64417e-06,0.0204312,1.54367e-05,0.433468,1.42653,7.94101e-06,4gt,4gt,ID,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-160,0.0,0.0,0.0,0.0175214,0.0387809,0.0697234,0.0878446,0.350254,2.55078,4gt,4gt,ID,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-161,0.0,0.0,0.0,0.00073918,0.00405109,0.124032,0.311496,1.71179,6.72184,4gt,4gt,ID,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-162,0.0,0.0,0.0,4.91245e-05,0.129149,8.28778e-05,1.35004,2.44204,2.07117e-05,4gt,4gt,IL,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-163,0.0,0.0,0.0,0.0963218,0.183486,0.327844,0.39974,1.54092,10.7859,4gt,4gt,IL,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-164,0.0,0.0,0.0,0.0150116,0.0535598,0.880781,1.56661,5.96402,22.5598,4gt,4gt,IL,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-165,0.0,0.0,0.0,0.00311122,0.0147846,0.361587,0.808028,4.12532,13.7715,4gt,4gt,IL,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-166,0.0,0.0,0.0,5.28822e-05,0.139812,1.37605e-05,1.44115,2.64658,2.63931e-05,4gt,4gt,IN,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-167,0.0,0.0,0.0,0.125118,0.231555,0.45235,0.512006,1.94072,17.1006,4gt,4gt,IN,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-168,0.0,0.0,0.0,0.00377718,0.0182998,0.48989,1.01883,4.20596,8.609,4gt,4gt,IN,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-169,0.0,0.0,0.0,3.08803e-05,0.081913,5.64331e-05,1.17516,1.94252,1.62463e-05,4gt,4gt,IA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-170,0.0,0.0,0.0,0.0718349,0.139382,0.255304,0.308974,1.20328,9.47748,4gt,4gt,IA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-171,0.0,0.0,0.0,0.00186527,0.00932098,0.26093,0.673613,3.69443,14.3214,4gt,4gt,IA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-172,0.0,0.0,0.0,2.45517e-05,0.0667825,4.33089e-05,1.18798,1.8159,1.40536e-05,4gt,4gt,KS,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-173,0.0,0.0,0.0,0.0677671,0.143708,0.221725,0.286193,1.05249,8.40819,4gt,4gt,KS,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-174,0.0,0.0,0.0,0.00137722,0.00659666,0.166963,0.403815,2.19046,12.401,4gt,4gt,KS,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-175,0.0,0.0,0.0,3.29511e-05,0.0871994,9.01073e-06,1.29129,2.10564,1.86711e-05,4gt,4gt,KY,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-176,0.0,0.0,0.0,0.0779611,0.144419,0.279627,0.330001,1.19936,10.6351,4gt,4gt,KY,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-177,0.0,0.0,0.0,0.00225357,0.0107757,0.284603,0.608009,2.45985,5.34404,4gt,4gt,KY,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-178,0.0,0.0,0.0,4.66816e-05,0.123587,7.14273e-05,1.27372,2.22671,1.96773e-05,4gt,4gt,LA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-179,0.0,0.0,0.0,0.108956,0.200546,0.324223,0.386112,1.48046,12.3003,4gt,4gt,LA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-180,0.0,0.0,0.0,0.0106557,0.0333059,0.551559,0.882834,3.11723,15.4364,4gt,4gt,LA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-181,0.0,0.0,0.0,0.00284665,0.0125161,0.280625,0.563121,2.24003,4.20955,4gt,4gt,LA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-182,0.0,0.0,0.0,4.90404e-05,0.00827167,5.36278e-06,0.166981,0.770451,8.12316e-05,4gt,4gt,ME,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-183,0.0,0.0,0.0,0.00271161,0.00556606,0.0134828,0.0182084,0.0630107,0.349226,4gt,4gt,ME,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-184,0.0,0.0,0.0,0.000524864,0.00197474,0.0333725,0.0620686,0.238428,0.844795,4gt,4gt,ME,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-185,0.0,0.0,0.0,0.000214341,0.00116347,0.028925,0.0692024,0.299803,0.549823,4gt,4gt,ME,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-186,0.0,0.0,0.0,1.25395e-05,0.0327555,2.24565e-05,0.635884,1.50029,9.25267e-06,4gt,4gt,MD,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-187,0.0,0.0,0.0,0.0230732,0.0424049,0.0855182,0.102842,0.385116,3.1122,4gt,4gt,MD,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-188,0.0,0.0,0.0,0.00421649,0.0155773,0.269555,0.503881,1.89426,7.74563,4gt,4gt,MD,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-189,0.0,0.0,0.0,0.00135617,0.00721431,0.174688,0.369856,1.00913,1.24288,4gt,4gt,MD,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-190,0.0,0.0,0.0,1.25781e-05,0.0340932,2.21068e-05,0.714139,1.14801,8.34334e-06,4gt,4gt,MA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-191,0.0,0.0,0.0,0.0120851,0.0229416,0.0554418,0.0778732,0.253761,1.84725,4gt,4gt,MA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-192,0.0,0.0,0.0,0.00240559,0.00841387,0.14085,0.273287,0.987378,4.59907,4gt,4gt,MA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-193,0.0,0.0,0.0,0.00112198,0.00572712,0.0948646,0.152561,0.188059,0.245946,4gt,4gt,MA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-194,0.0,0.0,0.0,4.2761e-05,0.112961,1.07495e-05,1.36587,2.37882,2.28738e-05,4gt,4gt,MI,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-195,0.0,0.0,0.0,0.101171,0.187085,0.36814,0.42027,1.56862,14.0806,4gt,4gt,MI,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-196,0.0,0.0,0.0,0.00316621,0.0155206,0.417227,0.8767,3.40068,6.14148,4gt,4gt,MI,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-197,0.0,0.0,0.0,2.88089e-05,0.0764232,5.25273e-05,1.15017,1.86795,1.54423e-05,4gt,4gt,MN,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-198,0.0,0.0,0.0,0.0670162,0.13004,0.237492,0.289464,1.11378,8.78815,4gt,4gt,MN,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-199,0.0,0.0,0.0,0.00170093,0.00851175,0.237783,0.620809,3.28787,12.2223,4gt,4gt,MN,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-200,0.0,0.0,0.0,1.62554e-05,0.0428362,2.45459e-05,0.790187,1.53899,9.32635e-06,4gt,4gt,MS,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-201,0.0,0.0,0.0,0.0379404,0.069511,0.1106,0.143632,0.522177,3.91877,4gt,4gt,MS,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-202,0.0,0.0,0.0,0.00326143,0.0109262,0.166726,0.317158,1.07859,4.38901,4gt,4gt,MS,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-203,0.0,0.0,0.0,0.000937576,0.00418953,0.0914152,0.211571,0.991199,4.03131,4gt,4gt,MS,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-204,0.0,0.0,0.0,3.65793e-05,0.0965804,6.64245e-05,1.29573,2.1835,1.92249e-05,4gt,4gt,MO,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-205,0.0,0.0,0.0,0.0717236,0.137215,0.270791,0.338553,1.20763,9.60217,4gt,4gt,MO,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-206,0.0,0.0,0.0,0.00208999,0.00975717,0.262278,0.603602,2.9917,12.0778,4gt,4gt,MO,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-207,0.0,0.0,0.0,1.07589e-05,0.0288574,2.03577e-05,0.601501,1.4907,9.00836e-06,4gt,4gt,MT,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-208,0.0,0.0,0.0,0.0246608,0.054775,0.0925953,0.121898,0.473608,3.60512,4gt,4gt,MT,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-209,0.0,0.0,0.0,0.000828703,0.00431469,0.121685,0.302164,1.77526,10.5933,4gt,4gt,MT,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-210,0.0,0.0,0.0,2.17788e-05,0.0580048,3.88681e-05,1.11045,1.67612,1.2757e-05,4gt,4gt,NE,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-211,0.0,0.0,0.0,0.0506626,0.0986999,0.177172,0.228354,0.819758,6.71169,4gt,4gt,NE,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-212,0.0,0.0,0.0,0.00124652,0.00581972,0.150791,0.359444,1.86783,11.096,4gt,4gt,NE,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-213,0.0,0.0,0.0,9.72977e-06,0.0260162,1.95208e-05,0.549692,1.4702,8.84364e-06,4gt,4gt,NV,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-214,0.0,0.0,0.0,0.0223019,0.0493819,0.0879151,0.111398,0.434392,3.03677,4gt,4gt,NV,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-215,0.0,0.0,0.0,0.000914302,0.00497733,0.14935,0.365537,1.67186,4.05358,4gt,4gt,NV,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-216,0.0,0.0,0.0,4.41577e-05,0.00740517,8.97086e-05,0.15022,0.739004,8.47682e-05,4gt,4gt,NH,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-217,0.0,0.0,0.0,0.00244163,0.004983,0.0120592,0.0163808,0.0604388,0.363839,4gt,4gt,NH,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-218,0.0,0.0,0.0,0.000543907,0.00207376,0.0346385,0.065793,0.270303,1.02772,4gt,4gt,NH,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-219,0.0,0.0,0.0,0.000213106,0.00116639,0.0254372,0.0525807,0.119795,0.148916,4gt,4gt,NH,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-220,0.0,0.0,0.0,2.15255e-05,0.0562753,3.7996e-05,1.11688,1.75316,1.40715e-05,4gt,4gt,NJ,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-221,0.0,0.0,0.0,0.0396078,0.0728535,0.145929,0.180633,0.73149,6.24652,4gt,4gt,NJ,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-222,0.0,0.0,0.0,0.00714453,0.0253402,0.44841,0.828912,3.3474,15.0916,4gt,4gt,NJ,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-223,0.0,0.0,0.0,0.00229129,0.012043,0.202714,0.316749,0.389781,0.504253,4gt,4gt,NJ,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-224,0.0,0.0,0.0,1.68853e-05,0.0456841,3.09955e-05,0.920451,1.69325,1.14492e-05,4gt,4gt,NM,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-225,0.0,0.0,0.0,0.0490216,0.102082,0.16161,0.200342,0.779148,6.05302,4gt,4gt,NM,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-226,0.0,0.0,0.0,0.00118775,0.00640722,0.177507,0.450761,2.19776,7.39463,4gt,4gt,NM,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-227,0.0,0.0,0.0,3.6123e-05,0.0951267,6.48783e-05,1.15966,2.02992,1.62599e-05,4gt,4gt,NY,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-228,0.0,0.0,0.0,0.0536493,0.107183,0.214448,0.270174,1.04272,6.634,4gt,4gt,NY,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-229,0.0,0.0,0.0,0.0108535,0.0375326,0.681537,1.16178,4.51424,17.3105,4gt,4gt,NY,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-230,0.0,0.0,0.0,0.0035147,0.0183433,0.507531,1.1914,6.1144,17.6209,4gt,4gt,NY,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-231,0.0,0.0,0.0,2.6626e-05,0.0694755,4.28038e-05,1.14498,1.77687,1.3033e-05,4gt,4gt,NC,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-232,0.0,0.0,0.0,0.0621456,0.112739,0.190336,0.230764,0.88003,6.82483,4gt,4gt,NC,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-233,0.0,0.0,0.0,0.00623518,0.0226754,0.355896,0.706841,2.64475,9.63699,4gt,4gt,NC,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-234,0.0,0.0,0.0,0.00227247,0.0112891,0.25994,0.597113,2.34695,4.10891,4gt,4gt,NC,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-235,0.0,0.0,0.0,2.13357e-05,0.0567889,3.81333e-05,1.10705,1.66449,1.25799e-05,4gt,4gt,ND,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-236,0.0,0.0,0.0,0.0496319,0.0966309,0.173869,0.224145,0.804021,6.55149,4gt,4gt,ND,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-237,0.0,0.0,0.0,0.00123609,0.00583067,0.15086,0.361014,1.84071,10.2559,4gt,4gt,ND,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-238,0.0,0.0,0.0,5.54761e-05,0.146338,1.87875e-05,1.46712,2.73984,2.78525e-05,4gt,4gt,OH,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-239,0.0,0.0,0.0,0.131255,0.242364,0.487067,0.543802,2.07333,18.3129,4gt,4gt,OH,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-240,0.0,0.0,0.0,0.00457346,0.0228451,0.625733,1.29179,4.93125,8.17425,4gt,4gt,OH,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-241,0.0,0.0,0.0,3.17638e-05,0.0860347,5.70412e-05,1.23838,2.03138,1.68209e-05,4gt,4gt,OK,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-242,0.0,0.0,0.0,0.087674,0.185137,0.289891,0.357158,1.40664,10.8191,4gt,4gt,OK,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-243,0.0,0.0,0.0,0.00185114,0.00953385,0.258392,0.697454,3.86425,13.9361,4gt,4gt,OK,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-244,0.0,0.0,0.0,1.00375e-05,0.0268275,1.56528e-05,0.487127,1.44175,7.75841e-06,4gt,4gt,OR,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-245,0.0,0.0,0.0,0.0227625,0.0503099,0.068637,0.0980703,0.392592,2.56656,4gt,4gt,OR,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-246,0.0,0.0,0.0,0.00149425,0.00515742,0.0781042,0.150417,0.555163,2.1663,4gt,4gt,OR,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-247,0.0,0.0,0.0,0.000888458,0.00466501,0.106275,0.285859,1.55226,6.0041,4gt,4gt,OR,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-248,0.0,0.0,0.0,4.79106e-05,0.125118,8.35197e-05,1.32016,2.40047,2.26729e-05,4gt,4gt,PA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-249,0.0,0.0,0.0,0.0890314,0.163673,0.321096,0.382104,1.46554,11.6946,4gt,4gt,PA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-250,0.0,0.0,0.0,0.0141741,0.0509666,0.8656,1.56325,5.95734,24.7359,4gt,4gt,PA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-251,0.0,0.0,0.0,0.00499853,0.0263092,0.617178,1.28091,3.45172,4.26347,4gt,4gt,PA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-252,0.0,0.0,0.0,3.4688e-05,0.00583918,6.89576e-05,0.124034,0.66485,8.98437e-05,4gt,4gt,RI,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-253,0.0,0.0,0.0,0.00191802,0.00392923,0.00926687,0.0135252,0.0543742,0.32116,4gt,4gt,RI,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-254,0.0,0.0,0.0,0.00038338,0.00145114,0.0236486,0.0477804,0.212976,0.804129,4gt,4gt,RI,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-255,0.0,0.0,0.0,0.000177581,0.000967499,0.0147424,0.0215785,0.0275365,0.0351656,4gt,4gt,RI,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-256,0.0,0.0,0.0,1.57396e-05,0.0412717,2.53154e-05,0.763284,1.53889,9.63616e-06,4gt,4gt,SC,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-257,0.0,0.0,0.0,0.0367365,0.0669722,0.113406,0.138742,0.522009,4.14839,4gt,4gt,SC,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-258,0.0,0.0,0.0,0.00412095,0.0140489,0.230428,0.42608,1.53634,6.30188,4gt,4gt,SC,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-259,0.0,0.0,0.0,0.00126124,0.00610961,0.14299,0.316031,1.20346,2.04323,4gt,4gt,SC,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-260,0.0,0.0,0.0,9.66203e-06,0.025723,1.72728e-05,0.550739,1.40742,8.33815e-06,4gt,4gt,SD,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-261,0.0,0.0,0.0,0.0224762,0.0437697,0.0787411,0.103012,0.380305,3.03722,4gt,4gt,SD,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-262,0.0,0.0,0.0,0.000559631,0.00262908,0.0683814,0.16707,0.917985,6.16033,4gt,4gt,SD,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-263,0.0,0.0,0.0,2.67538e-05,0.0708665,4.80732e-05,1.17797,1.84618,1.55113e-05,4gt,4gt,TN,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-264,0.0,0.0,0.0,0.0631428,0.116361,0.223809,0.269428,0.961178,8.4989,4gt,4gt,TN,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-265,0.0,0.0,0.0,0.00167565,0.00782568,0.202694,0.442627,1.83342,4.67941,4gt,4gt,TN,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-266,0.0,0.0,0.0,1.06337e-05,0.490119,1.44268e-05,2.19401,5.19535,5.31954e-05,4gt,4gt,TX,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-267,0.0,0.0,0.0,0.727718,1.54346,1.69581,2.00849,8.72546,62.9919,4gt,4gt,TX,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-268,0.0,0.0,0.0,0.058938,0.207854,3.18506,5.39629,20.7282,83.1385,4gt,4gt,TX,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-269,0.0,0.0,0.0,0.012013,0.0628007,1.40196,3.56706,18.2843,50.3648,4gt,4gt,TX,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-270,0.0,0.0,0.0,1.58211e-05,0.0424646,2.98773e-05,0.890261,1.59369,1.17445e-05,4gt,4gt,UT,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-271,0.0,0.0,0.0,0.0362639,0.080603,0.135716,0.180416,0.66795,5.14676,4gt,4gt,UT,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-272,0.0,0.0,0.0,0.00126879,0.00650628,0.171162,0.381741,1.36839,2.20433,4gt,4gt,UT,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-273,0.0,0.0,0.0,2.73574e-05,0.00464675,6.78799e-05,0.109646,0.492716,9.10363e-05,4gt,4gt,VT,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-274,0.0,0.0,0.0,0.00153666,0.00318113,0.00955568,0.0120901,0.0408762,0.247877,4gt,4gt,VT,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-275,0.0,0.0,0.0,0.000131446,0.000732524,0.0227197,0.0514797,0.229081,0.482738,4gt,4gt,VT,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-276,0.0,0.0,0.0,2.34501e-05,0.0612544,3.83764e-05,1.12518,1.70216,1.21358e-05,4gt,4gt,VA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-277,0.0,0.0,0.0,0.0547328,0.0993983,0.171166,0.207176,0.782495,6.14195,4gt,4gt,VA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-278,0.0,0.0,0.0,0.0060815,0.0212466,0.342696,0.635831,2.2717,9.20004,4gt,4gt,VA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-279,0.0,0.0,0.0,0.00223084,0.0114435,0.269152,0.621161,2.26517,3.42954,4gt,4gt,VA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-280,0.0,0.0,0.0,1.79376e-05,0.0480759,2.94834e-05,0.880224,1.60713,9.99898e-06,4gt,4gt,WA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-281,0.0,0.0,0.0,0.040678,0.0901573,0.129499,0.17721,0.70359,4.45076,4gt,4gt,WA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-282,0.0,0.0,0.0,0.00455721,0.014119,0.25171,0.400476,1.4187,6.3409,4gt,4gt,WA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-283,0.0,0.0,0.0,0.00173421,0.00955115,0.233182,0.608923,2.81025,6.78853,4gt,4gt,WA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-284,0.0,0.0,0.0,2.56264e-05,0.0675022,4.86899e-05,1.23903,1.92632,1.94451e-05,4gt,4gt,WV,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-285,0.0,0.0,0.0,0.0606313,0.111797,0.223714,0.267147,0.967634,10.9162,4gt,4gt,WV,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-286,0.0,0.0,0.0,0.00236738,0.0120868,0.269617,0.50031,0.812803,1.07768,4gt,4gt,WV,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-287,0.0,0.0,0.0,2.85673e-05,0.0745355,5.7784e-05,1.23878,2.01286,1.6419e-05,4gt,4gt,WI,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-288,0.0,0.0,0.0,0.0560138,0.105895,0.229264,0.274727,1.01247,7.55835,4gt,4gt,WI,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-289,0.0,0.0,0.0,0.00208853,0.0119417,0.383458,1.01863,4.10951,7.20483,4gt,4gt,WI,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-290,0.0,0.0,0.0,2.0166e-05,0.0547055,3.66458e-05,1.10576,1.76371,1.27495e-05,4gt,4gt,WY,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-291,0.0,0.0,0.0,0.0585461,0.12224,0.192022,0.240677,0.920047,7.2296,4gt,4gt,WY,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
-292,0.0,0.0,0.0,0.00147297,0.00754043,0.196379,0.471768,2.24138,8.32861,4gt,4gt,WY,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+0,0.0,0.0,0.0,,,,0.181599,0.273633,,4gt,4gt,Africa_Eastern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+1,0.0,0.0,0.0,,,,0.0280627,0.0503429,,4gt,4gt,Africa_Eastern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+2,0.0,0.0,0.0,,,,0.0931306,0.131113,,4gt,4gt,Africa_Eastern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+3,0.0,0.0,0.0,,,,0.0416567,0.0784914,,4gt,4gt,Africa_Eastern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+4,0.0,0.0,0.0,,,,0.170525,0.204211,,4gt,4gt,Africa_Northern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+5,0.0,0.0,0.0,,,,0.0653046,0.0821734,,4gt,4gt,Africa_Northern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+6,0.0,0.0,0.0,,,,0.128672,0.145335,,4gt,4gt,Africa_Northern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+7,0.0,0.0,0.0,,,,0.0507916,0.0705221,,4gt,4gt,Africa_Northern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+8,0.0,0.0,0.0,,,,0.0338043,0.0450328,,4gt,4gt,Africa_Southern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+9,0.0,0.0,0.0,,,,0.0113481,0.0164628,,4gt,4gt,Africa_Southern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+10,0.0,0.0,0.0,,,,0.021721,0.02749,,4gt,4gt,Africa_Southern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+11,0.0,0.0,0.0,,,,0.0117304,0.0197237,,4gt,4gt,Africa_Southern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+12,0.0,0.0,0.0,,,,0.24298,0.335433,,4gt,4gt,Africa_Western,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+13,0.0,0.0,0.0,,,,0.0889228,0.129714,,4gt,4gt,Africa_Western,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+14,0.0,0.0,0.0,,,,0.175996,0.227098,,4gt,4gt,Africa_Western,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+15,0.0,0.0,0.0,,,,0.0964,0.163362,,4gt,4gt,Africa_Western,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+16,0.0,0.0,0.0,,,,0.376262,0.42168,,4gt,4gt,Australia_NZ,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+17,0.0,0.0,0.0,,,,0.160528,0.187612,,4gt,4gt,Australia_NZ,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+18,0.0,0.0,0.0,,,,0.308384,0.322421,,4gt,4gt,Australia_NZ,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+19,0.0,0.0,0.0,,,,0.103995,0.133364,,4gt,4gt,Australia_NZ,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+20,0.0,0.0,0.0,,,,0.453767,0.517732,,4gt,4gt,Brazil,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+21,0.0,0.0,0.0,,,,0.192453,0.232144,,4gt,4gt,Brazil,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+22,0.0,0.0,0.0,,,,0.361649,0.389065,,4gt,4gt,Brazil,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+23,0.0,0.0,0.0,,,,0.154735,0.210084,,4gt,4gt,Brazil,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+24,0.0,0.0,0.0,,,,0.324023,0.361217,,4gt,4gt,Canada,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+25,0.0,0.0,0.0,,,,0.1324,0.154052,,4gt,4gt,Canada,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+26,0.0,0.0,0.0,,,,0.255848,0.268823,,4gt,4gt,Canada,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+27,0.0,0.0,0.0,,,,0.096388,0.12737,,4gt,4gt,Canada,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+28,0.0,0.0,0.0,,,,0.070621,0.0831212,,4gt,4gt,Central America and Caribbean,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+29,0.0,0.0,0.0,,,,0.0286745,0.0353971,,4gt,4gt,Central America and Caribbean,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+30,0.0,0.0,0.0,,,,0.0530963,0.0592356,,4gt,4gt,Central America and Caribbean,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+31,0.0,0.0,0.0,,,,0.0232855,0.032893,,4gt,4gt,Central America and Caribbean,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+32,0.0,0.0,0.0,,,,0.112377,0.128435,,4gt,4gt,Central Asia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+33,0.0,0.0,0.0,,,,0.0466908,0.0551557,,4gt,4gt,Central Asia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+34,0.0,0.0,0.0,,,,0.0874789,0.0926454,,4gt,4gt,Central Asia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+35,0.0,0.0,0.0,,,,0.0428211,0.0602034,,4gt,4gt,Central Asia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+36,0.0,0.0,0.0,,,,2.70221,2.94303,,4gt,4gt,China,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+37,0.0,0.0,0.0,,,,0.985289,1.12269,,4gt,4gt,China,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+38,0.0,0.0,0.0,,,,1.99135,2.00504,,4gt,4gt,China,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+39,0.0,0.0,0.0,,,,0.577197,0.708296,,4gt,4gt,China,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+40,0.0,0.0,0.0,,,,0.261392,0.289294,,4gt,4gt,EU-12,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+41,0.0,0.0,0.0,,,,0.0958958,0.113001,,4gt,4gt,EU-12,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+42,0.0,0.0,0.0,,,,0.192726,0.200964,,4gt,4gt,EU-12,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+43,0.0,0.0,0.0,,,,0.0824341,0.10945,,4gt,4gt,EU-12,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+44,0.0,0.0,0.0,,,,2.55544,2.95726,,4gt,4gt,EU-15,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+45,0.0,0.0,0.0,,,,0.985066,1.21101,,4gt,4gt,EU-15,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+46,0.0,0.0,0.0,,,,1.96326,2.15564,,4gt,4gt,EU-15,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+47,0.0,0.0,0.0,,,,0.432225,0.536806,,4gt,4gt,EU-15,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+48,0.0,0.0,0.0,,,,0.0397367,0.051146,,4gt,4gt,Europe_Eastern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+49,0.0,0.0,0.0,,,,0.014583,0.0202016,,4gt,4gt,Europe_Eastern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+50,0.0,0.0,0.0,,,,0.0290087,0.0353633,,4gt,4gt,Europe_Eastern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+51,0.0,0.0,0.0,,,,0.0170709,0.0284564,,4gt,4gt,Europe_Eastern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+52,0.0,0.0,0.0,,,,0.256242,0.279983,,4gt,4gt,Europe_Non_EU,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+53,0.0,0.0,0.0,,,,0.0925172,0.104777,,4gt,4gt,Europe_Non_EU,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+54,0.0,0.0,0.0,,,,0.189765,0.190876,,4gt,4gt,Europe_Non_EU,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+55,0.0,0.0,0.0,,,,0.0740823,0.0944307,,4gt,4gt,Europe_Non_EU,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+56,0.0,0.0,0.0,,,,0.259107,0.344027,,4gt,4gt,European Free Trade Association,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+57,0.0,0.0,0.0,,,,0.106961,0.148894,,4gt,4gt,European Free Trade Association,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+58,0.0,0.0,0.0,,,,0.20748,0.259656,,4gt,4gt,European Free Trade Association,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+59,0.0,0.0,0.0,,,,0.0127084,0.0150027,,4gt,4gt,European Free Trade Association,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+60,0.0,0.0,0.0,,,,0.83211,1.0036,,4gt,4gt,India,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+61,0.0,0.0,0.0,,,,0.296827,0.371838,,4gt,4gt,India,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+62,0.0,0.0,0.0,,,,0.595201,0.668602,,4gt,4gt,India,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+63,0.0,0.0,0.0,,,,0.272049,0.393957,,4gt,4gt,India,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+64,0.0,0.0,0.0,,,,0.281479,0.328421,,4gt,4gt,Indonesia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+65,0.0,0.0,0.0,,,,0.0954615,0.116021,,4gt,4gt,Indonesia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+66,0.0,0.0,0.0,,,,0.19755,0.213752,,4gt,4gt,Indonesia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+67,0.0,0.0,0.0,,,,0.0817674,0.112485,,4gt,4gt,Indonesia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+68,0.0,0.0,0.0,,,,1.19444,1.56656,,4gt,4gt,Japan,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+69,0.0,0.0,0.0,,,,0.463219,0.65335,,4gt,4gt,Japan,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+70,0.0,0.0,0.0,,,,0.930199,1.16147,,4gt,4gt,Japan,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+71,0.0,0.0,0.0,,,,0.05523,0.0653299,,4gt,4gt,Japan,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+72,0.0,0.0,0.0,,,,0.27503,0.307221,,4gt,4gt,Mexico,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+73,0.0,0.0,0.0,,,,0.115782,0.13245,,4gt,4gt,Mexico,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+74,0.0,0.0,0.0,,,,0.219595,0.228376,,4gt,4gt,Mexico,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+75,0.0,0.0,0.0,,,,0.0680655,0.0864419,,4gt,4gt,Mexico,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+76,0.0,0.0,0.0,,,,0.389465,0.454637,,4gt,4gt,Middle East,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+77,0.0,0.0,0.0,,,,0.149316,0.186703,,4gt,4gt,Middle East,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+78,0.0,0.0,0.0,,,,0.284378,0.317008,,4gt,4gt,Middle East,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+79,0.0,0.0,0.0,,,,0.0967077,0.128913,,4gt,4gt,Middle East,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+80,0.0,0.0,0.0,,,,0.0428721,0.0567228,,4gt,4gt,Pakistan,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+81,0.0,0.0,0.0,,,,0.0151556,0.0211696,,4gt,4gt,Pakistan,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+82,0.0,0.0,0.0,,,,0.0294304,0.0365752,,4gt,4gt,Pakistan,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+83,0.0,0.0,0.0,,,,0.0166494,0.0278445,,4gt,4gt,Pakistan,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+84,0.0,0.0,0.0,,,,0.329884,0.352408,,4gt,4gt,Russia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+85,0.0,0.0,0.0,,,,0.138711,0.152165,,4gt,4gt,Russia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+86,0.0,0.0,0.0,,,,0.264023,0.263206,,4gt,4gt,Russia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+87,0.0,0.0,0.0,,,,0.0806334,0.100148,,4gt,4gt,Russia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+88,0.0,0.0,0.0,,,,0.0671928,0.0767746,,4gt,4gt,South Africa,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+89,0.0,0.0,0.0,,,,0.0231636,0.0284758,,4gt,4gt,South Africa,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+90,0.0,0.0,0.0,,,,0.0475903,0.0512191,,4gt,4gt,South Africa,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+91,0.0,0.0,0.0,,,,0.0195148,0.0254373,,4gt,4gt,South Africa,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+92,0.0,0.0,0.0,,,,0.0148654,0.0183802,,4gt,4gt,South America_Northern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+93,0.0,0.0,0.0,,,,0.00718388,0.00949767,,4gt,4gt,South America_Northern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+94,0.0,0.0,0.0,,,,0.0119227,0.0143481,,4gt,4gt,South America_Northern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+95,0.0,0.0,0.0,,,,0.00530382,0.00789348,,4gt,4gt,South America_Northern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+96,0.0,0.0,0.0,,,,0.154539,0.181163,,4gt,4gt,South America_Southern,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+97,0.0,0.0,0.0,,,,0.0636708,0.0786358,,4gt,4gt,South America_Southern,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+98,0.0,0.0,0.0,,,,0.120975,0.133487,,4gt,4gt,South America_Southern,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+99,0.0,0.0,0.0,,,,0.0474487,0.0649341,,4gt,4gt,South America_Southern,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+100,0.0,0.0,0.0,,,,0.0892849,0.107218,,4gt,4gt,South Asia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+101,0.0,0.0,0.0,,,,0.0321953,0.040546,,4gt,4gt,South Asia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+102,0.0,0.0,0.0,,,,0.0647604,0.0721449,,4gt,4gt,South Asia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+103,0.0,0.0,0.0,,,,0.0309836,0.0435772,,4gt,4gt,South Asia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+104,0.0,0.0,0.0,,,,0.144867,0.158285,,4gt,4gt,South Korea,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+105,0.0,0.0,0.0,,,,0.0142454,0.0174935,,4gt,4gt,South Korea,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+106,0.0,0.0,0.0,,,,0.0599601,0.061519,,4gt,4gt,South Korea,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+107,0.0,0.0,0.0,,,,0.0169461,0.019768,,4gt,4gt,South Korea,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+108,0.0,0.0,0.0,,,,0.48785,0.567402,,4gt,4gt,Southeast Asia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+109,0.0,0.0,0.0,,,,0.17882,0.218466,,4gt,4gt,Southeast Asia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+110,0.0,0.0,0.0,,,,0.367726,0.395616,,4gt,4gt,Southeast Asia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+111,0.0,0.0,0.0,,,,0.163092,0.222178,,4gt,4gt,Southeast Asia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+112,0.0,0.0,0.0,,,,0.140151,0.148192,,4gt,4gt,Taiwan,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+113,0.0,0.0,0.0,,,,0.0368732,0.0292656,,4gt,4gt,Taiwan,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+114,0.0,0.0,0.0,,,,0.0918839,0.0765131,,4gt,4gt,Taiwan,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+115,0.0,0.0,0.0,,,,0.118357,0.144819,,4gt,4gt,Argentina,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+116,0.0,0.0,0.0,,,,0.0547713,0.0705325,,4gt,4gt,Argentina,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+117,0.0,0.0,0.0,,,,0.0993777,0.115486,,4gt,4gt,Argentina,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+118,0.0,0.0,0.0,,,,0.0492652,0.0739254,,4gt,4gt,Argentina,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+119,0.0,0.0,0.0,,,,0.0941855,0.114596,,4gt,4gt,Colombia,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+120,0.0,0.0,0.0,,,,0.0391151,0.0499235,,4gt,4gt,Colombia,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+121,0.0,0.0,0.0,,,,0.0747682,0.0854883,,4gt,4gt,Colombia,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+122,0.0,0.0,0.0,,,,0.0180655,0.0232379,,4gt,4gt,Colombia,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+123,0.0,0.0,0.0,2.63027e-05,0.0691659,,1.14291,1.74895,,4gt,4gt,AL,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+124,0.0,0.0,0.0,0.0613909,0.112237,,0.228282,0.837463,,4gt,4gt,AL,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+125,0.0,0.0,0.0,0.00564314,0.0193201,,0.560985,1.94097,,4gt,4gt,AL,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+126,0.0,0.0,0.0,0.00161057,0.00732019,,0.356208,1.50276,,4gt,4gt,AL,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+127,0.0,0.0,0.0,7.55825e-06,0.0268066,,0.288082,0.447457,,4gt,4gt,AK,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+128,0.0,0.0,0.0,0.00189009,0.00477221,,0.0246545,0.0688076,,4gt,4gt,AK,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+129,0.0,0.0,0.0,0.00037203,0.00145648,,0.0421368,0.131662,,4gt,4gt,AK,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+130,0.0,0.0,0.0,2.3591e-05,0.0639727,,1.22083,1.83935,,4gt,4gt,AZ,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+131,0.0,0.0,0.0,0.0684896,0.142948,,0.279582,1.05361,,4gt,4gt,AZ,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+132,0.0,0.0,0.0,0.00165491,0.00857706,,0.510076,1.8989,,4gt,4gt,AZ,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+133,0.0,0.0,0.0,2.21506e-05,0.0588207,,1.14944,1.72678,,4gt,4gt,AR,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+134,0.0,0.0,0.0,0.0522785,0.0965821,,0.22971,0.79467,,4gt,4gt,AR,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+135,0.0,0.0,0.0,0.0011994,0.00543565,,0.320324,1.44875,,4gt,4gt,AR,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+136,0.0,0.0,0.0,8.1988e-05,0.215025,,1.64922,3.34633,,4gt,4gt,CA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+137,0.0,0.0,0.0,0.153463,0.296702,,0.681357,2.66461,,4gt,4gt,CA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+138,0.0,0.0,0.0,0.0240522,0.084141,,2.51471,9.59086,,4gt,4gt,CA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+139,0.0,0.0,0.0,0.00727663,0.0377651,,2.15667,8.54464,,4gt,4gt,CA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+140,0.0,0.0,0.0,2.83971e-05,0.0771677,,1.25603,1.98089,,4gt,4gt,CO,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+141,0.0,0.0,0.0,0.0824426,0.172432,,0.329195,1.28702,,4gt,4gt,CO,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+142,0.0,0.0,0.0,0.00187042,0.00942392,,0.583714,3.01763,,4gt,4gt,CO,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+143,0.0,0.0,0.0,7.29984e-06,0.0196907,,0.406365,1.04658,,4gt,4gt,CT,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+144,0.0,0.0,0.0,0.00701372,0.01325,,0.044312,0.155195,,4gt,4gt,CT,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+145,0.0,0.0,0.0,0.00163508,0.00582015,,0.189118,0.739964,,4gt,4gt,CT,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+146,0.0,0.0,0.0,0.000672293,0.00345677,,0.105747,0.130915,,4gt,4gt,CT,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+147,0.0,0.0,0.0,4.37695e-05,0.00695173,,0.134626,0.610074,,4gt,4gt,DE,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+148,0.0,0.0,0.0,0.00463486,0.00899964,,0.021773,0.0845942,,4gt,4gt,DE,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+149,0.0,0.0,0.0,0.000785677,0.00300428,,0.0959527,0.372229,,4gt,4gt,DE,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+150,0.0,0.0,0.0,0.000268723,0.00150512,,0.0817427,0.268298,,4gt,4gt,DE,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+151,0.0,0.0,0.0,4.96915e-05,0.131528,,1.3645,2.57475,,4gt,4gt,FL,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+152,0.0,0.0,0.0,0.141333,0.240665,,0.493446,2.13208,,4gt,4gt,FL,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+153,0.0,0.0,0.0,0.0250927,0.101726,,3.50855,14.424,,4gt,4gt,FL,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+154,0.0,0.0,0.0,0.00338426,0.0153477,,0.864671,4.65956,,4gt,4gt,FL,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+155,0.0,0.0,0.0,2.84476e-05,0.0748097,,1.15733,1.81148,,4gt,4gt,GA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+156,0.0,0.0,0.0,0.0663972,0.121395,,0.245521,0.922081,,4gt,4gt,GA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+157,0.0,0.0,0.0,0.00711478,0.0241104,,0.695084,2.45767,,4gt,4gt,GA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+158,0.0,0.0,0.0,0.00188165,0.00868797,,0.430648,1.8389,,4gt,4gt,GA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+159,0.0,0.0,0.0,7.64417e-06,0.0204312,,0.433468,1.42653,,4gt,4gt,ID,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+160,0.0,0.0,0.0,0.0175214,0.0387809,,0.0878446,0.350254,,4gt,4gt,ID,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+161,0.0,0.0,0.0,0.00073918,0.00405109,,0.311496,1.71179,,4gt,4gt,ID,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+162,0.0,0.0,0.0,4.91245e-05,0.129149,,1.35004,2.44204,,4gt,4gt,IL,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+163,0.0,0.0,0.0,0.0963218,0.183486,,0.39974,1.54092,,4gt,4gt,IL,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+164,0.0,0.0,0.0,0.0150116,0.0535598,,1.56661,5.96402,,4gt,4gt,IL,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+165,0.0,0.0,0.0,0.00311122,0.0147846,,0.808028,4.12532,,4gt,4gt,IL,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+166,0.0,0.0,0.0,5.28822e-05,0.139812,,1.44115,2.64658,,4gt,4gt,IN,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+167,0.0,0.0,0.0,0.125118,0.231555,,0.512006,1.94072,,4gt,4gt,IN,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+168,0.0,0.0,0.0,0.00377718,0.0182998,,1.01883,4.20596,,4gt,4gt,IN,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+169,0.0,0.0,0.0,3.08803e-05,0.081913,,1.17516,1.94252,,4gt,4gt,IA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+170,0.0,0.0,0.0,0.0718349,0.139382,,0.308974,1.20328,,4gt,4gt,IA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+171,0.0,0.0,0.0,0.00186527,0.00932098,,0.673613,3.69443,,4gt,4gt,IA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+172,0.0,0.0,0.0,2.45517e-05,0.0667825,,1.18798,1.8159,,4gt,4gt,KS,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+173,0.0,0.0,0.0,0.0677671,0.143708,,0.286193,1.05249,,4gt,4gt,KS,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+174,0.0,0.0,0.0,0.00137722,0.00659666,,0.403815,2.19046,,4gt,4gt,KS,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+175,0.0,0.0,0.0,3.29511e-05,0.0871994,,1.29129,2.10564,,4gt,4gt,KY,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+176,0.0,0.0,0.0,0.0779611,0.144419,,0.330001,1.19936,,4gt,4gt,KY,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+177,0.0,0.0,0.0,0.00225357,0.0107757,,0.608009,2.45985,,4gt,4gt,KY,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+178,0.0,0.0,0.0,4.66816e-05,0.123587,,1.27372,2.22671,,4gt,4gt,LA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+179,0.0,0.0,0.0,0.108956,0.200546,,0.386112,1.48046,,4gt,4gt,LA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+180,0.0,0.0,0.0,0.0106557,0.0333059,,0.882834,3.11723,,4gt,4gt,LA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+181,0.0,0.0,0.0,0.00284665,0.0125161,,0.563121,2.24003,,4gt,4gt,LA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+182,0.0,0.0,0.0,4.90404e-05,0.00827167,,0.166981,0.770451,,4gt,4gt,ME,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+183,0.0,0.0,0.0,0.00271161,0.00556606,,0.0182084,0.0630107,,4gt,4gt,ME,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+184,0.0,0.0,0.0,0.000524864,0.00197474,,0.0620686,0.238428,,4gt,4gt,ME,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+185,0.0,0.0,0.0,0.000214341,0.00116347,,0.0692024,0.299803,,4gt,4gt,ME,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+186,0.0,0.0,0.0,1.25395e-05,0.0327555,,0.635884,1.50029,,4gt,4gt,MD,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+187,0.0,0.0,0.0,0.0230732,0.0424049,,0.102842,0.385116,,4gt,4gt,MD,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+188,0.0,0.0,0.0,0.00421649,0.0155773,,0.503881,1.89426,,4gt,4gt,MD,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+189,0.0,0.0,0.0,0.00135617,0.00721431,,0.369856,1.00913,,4gt,4gt,MD,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+190,0.0,0.0,0.0,1.25781e-05,0.0340932,,0.714139,1.14801,,4gt,4gt,MA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+191,0.0,0.0,0.0,0.0120851,0.0229416,,0.0778732,0.253761,,4gt,4gt,MA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+192,0.0,0.0,0.0,0.00240559,0.00841387,,0.273287,0.987378,,4gt,4gt,MA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+193,0.0,0.0,0.0,0.00112198,0.00572712,,0.152561,0.188059,,4gt,4gt,MA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+194,0.0,0.0,0.0,4.2761e-05,0.112961,,1.36587,2.37882,,4gt,4gt,MI,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+195,0.0,0.0,0.0,0.101171,0.187085,,0.42027,1.56862,,4gt,4gt,MI,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+196,0.0,0.0,0.0,0.00316621,0.0155206,,0.8767,3.40068,,4gt,4gt,MI,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+197,0.0,0.0,0.0,2.88089e-05,0.0764232,,1.15017,1.86795,,4gt,4gt,MN,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+198,0.0,0.0,0.0,0.0670162,0.13004,,0.289464,1.11378,,4gt,4gt,MN,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+199,0.0,0.0,0.0,0.00170093,0.00851175,,0.620809,3.28787,,4gt,4gt,MN,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+200,0.0,0.0,0.0,1.62554e-05,0.0428362,,0.790187,1.53899,,4gt,4gt,MS,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+201,0.0,0.0,0.0,0.0379404,0.069511,,0.143632,0.522177,,4gt,4gt,MS,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+202,0.0,0.0,0.0,0.00326143,0.0109262,,0.317158,1.07859,,4gt,4gt,MS,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+203,0.0,0.0,0.0,0.000937576,0.00418953,,0.211571,0.991199,,4gt,4gt,MS,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+204,0.0,0.0,0.0,3.65793e-05,0.0965804,,1.29573,2.1835,,4gt,4gt,MO,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+205,0.0,0.0,0.0,0.0717236,0.137215,,0.338553,1.20763,,4gt,4gt,MO,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+206,0.0,0.0,0.0,0.00208999,0.00975717,,0.603602,2.9917,,4gt,4gt,MO,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+207,0.0,0.0,0.0,1.07589e-05,0.0288574,,0.601501,1.4907,,4gt,4gt,MT,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+208,0.0,0.0,0.0,0.0246608,0.054775,,0.121898,0.473608,,4gt,4gt,MT,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+209,0.0,0.0,0.0,0.000828703,0.00431469,,0.302164,1.77526,,4gt,4gt,MT,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+210,0.0,0.0,0.0,2.17788e-05,0.0580048,,1.11045,1.67612,,4gt,4gt,NE,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+211,0.0,0.0,0.0,0.0506626,0.0986999,,0.228354,0.819758,,4gt,4gt,NE,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+212,0.0,0.0,0.0,0.00124652,0.00581972,,0.359444,1.86783,,4gt,4gt,NE,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+213,0.0,0.0,0.0,9.72977e-06,0.0260162,,0.549692,1.4702,,4gt,4gt,NV,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+214,0.0,0.0,0.0,0.0223019,0.0493819,,0.111398,0.434392,,4gt,4gt,NV,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+215,0.0,0.0,0.0,0.000914302,0.00497733,,0.365537,1.67186,,4gt,4gt,NV,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+216,0.0,0.0,0.0,4.41577e-05,0.00740517,,0.15022,0.739004,,4gt,4gt,NH,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+217,0.0,0.0,0.0,0.00244163,0.004983,,0.0163808,0.0604388,,4gt,4gt,NH,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+218,0.0,0.0,0.0,0.000543907,0.00207376,,0.065793,0.270303,,4gt,4gt,NH,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+219,0.0,0.0,0.0,0.000213106,0.00116639,,0.0525807,0.119795,,4gt,4gt,NH,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+220,0.0,0.0,0.0,2.15255e-05,0.0562753,,1.11688,1.75316,,4gt,4gt,NJ,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+221,0.0,0.0,0.0,0.0396078,0.0728535,,0.180633,0.73149,,4gt,4gt,NJ,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+222,0.0,0.0,0.0,0.00714453,0.0253402,,0.828912,3.3474,,4gt,4gt,NJ,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+223,0.0,0.0,0.0,0.00229129,0.012043,,0.316749,0.389781,,4gt,4gt,NJ,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+224,0.0,0.0,0.0,1.68853e-05,0.0456841,,0.920451,1.69325,,4gt,4gt,NM,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+225,0.0,0.0,0.0,0.0490216,0.102082,,0.200342,0.779148,,4gt,4gt,NM,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+226,0.0,0.0,0.0,0.00118775,0.00640722,,0.450761,2.19776,,4gt,4gt,NM,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+227,0.0,0.0,0.0,3.6123e-05,0.0951267,,1.15966,2.02992,,4gt,4gt,NY,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+228,0.0,0.0,0.0,0.0536493,0.107183,,0.270174,1.04272,,4gt,4gt,NY,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+229,0.0,0.0,0.0,0.0108535,0.0375326,,1.16178,4.51424,,4gt,4gt,NY,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+230,0.0,0.0,0.0,0.0035147,0.0183433,,1.1914,6.1144,,4gt,4gt,NY,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+231,0.0,0.0,0.0,2.6626e-05,0.0694755,,1.14498,1.77687,,4gt,4gt,NC,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+232,0.0,0.0,0.0,0.0621456,0.112739,,0.230764,0.88003,,4gt,4gt,NC,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+233,0.0,0.0,0.0,0.00623518,0.0226754,,0.706841,2.64475,,4gt,4gt,NC,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+234,0.0,0.0,0.0,0.00227247,0.0112891,,0.597113,2.34695,,4gt,4gt,NC,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+235,0.0,0.0,0.0,2.13357e-05,0.0567889,,1.10705,1.66449,,4gt,4gt,ND,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+236,0.0,0.0,0.0,0.0496319,0.0966309,,0.224145,0.804021,,4gt,4gt,ND,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+237,0.0,0.0,0.0,0.00123609,0.00583067,,0.361014,1.84071,,4gt,4gt,ND,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+238,0.0,0.0,0.0,5.54761e-05,0.146338,,1.46712,2.73984,,4gt,4gt,OH,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+239,0.0,0.0,0.0,0.131255,0.242364,,0.543802,2.07333,,4gt,4gt,OH,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+240,0.0,0.0,0.0,0.00457346,0.0228451,,1.29179,4.93125,,4gt,4gt,OH,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+241,0.0,0.0,0.0,3.17638e-05,0.0860347,,1.23838,2.03138,,4gt,4gt,OK,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+242,0.0,0.0,0.0,0.087674,0.185137,,0.357158,1.40664,,4gt,4gt,OK,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+243,0.0,0.0,0.0,0.00185114,0.00953385,,0.697454,3.86425,,4gt,4gt,OK,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+244,0.0,0.0,0.0,1.00375e-05,0.0268275,,0.487127,1.44175,,4gt,4gt,OR,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+245,0.0,0.0,0.0,0.0227625,0.0503099,,0.0980703,0.392592,,4gt,4gt,OR,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+246,0.0,0.0,0.0,0.00149425,0.00515742,,0.150417,0.555163,,4gt,4gt,OR,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+247,0.0,0.0,0.0,0.000888458,0.00466501,,0.285859,1.55226,,4gt,4gt,OR,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+248,0.0,0.0,0.0,4.79106e-05,0.125118,,1.32016,2.40047,,4gt,4gt,PA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+249,0.0,0.0,0.0,0.0890314,0.163673,,0.382104,1.46554,,4gt,4gt,PA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+250,0.0,0.0,0.0,0.0141741,0.0509666,,1.56325,5.95734,,4gt,4gt,PA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+251,0.0,0.0,0.0,0.00499853,0.0263092,,1.28091,3.45172,,4gt,4gt,PA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+252,0.0,0.0,0.0,3.4688e-05,0.00583918,,0.124034,0.66485,,4gt,4gt,RI,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+253,0.0,0.0,0.0,0.00191802,0.00392923,,0.0135252,0.0543742,,4gt,4gt,RI,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+254,0.0,0.0,0.0,0.00038338,0.00145114,,0.0477804,0.212976,,4gt,4gt,RI,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+255,0.0,0.0,0.0,0.000177581,0.000967499,,0.0215785,0.0275365,,4gt,4gt,RI,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+256,0.0,0.0,0.0,1.57396e-05,0.0412717,,0.763284,1.53889,,4gt,4gt,SC,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+257,0.0,0.0,0.0,0.0367365,0.0669722,,0.138742,0.522009,,4gt,4gt,SC,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+258,0.0,0.0,0.0,0.00412095,0.0140489,,0.42608,1.53634,,4gt,4gt,SC,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+259,0.0,0.0,0.0,0.00126124,0.00610961,,0.316031,1.20346,,4gt,4gt,SC,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+260,0.0,0.0,0.0,9.66203e-06,0.025723,,0.550739,1.40742,,4gt,4gt,SD,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+261,0.0,0.0,0.0,0.0224762,0.0437697,,0.103012,0.380305,,4gt,4gt,SD,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+262,0.0,0.0,0.0,0.000559631,0.00262908,,0.16707,0.917985,,4gt,4gt,SD,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+263,0.0,0.0,0.0,2.67538e-05,0.0708665,,1.17797,1.84618,,4gt,4gt,TN,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+264,0.0,0.0,0.0,0.0631428,0.116361,,0.269428,0.961178,,4gt,4gt,TN,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+265,0.0,0.0,0.0,0.00167565,0.00782568,,0.442627,1.83342,,4gt,4gt,TN,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+266,0.0,0.0,0.0,1.06337e-05,0.490119,,2.19401,5.19535,,4gt,4gt,TX,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+267,0.0,0.0,0.0,0.727718,1.54346,,2.00849,8.72546,,4gt,4gt,TX,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+268,0.0,0.0,0.0,0.058938,0.207854,,5.39629,20.7282,,4gt,4gt,TX,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+269,0.0,0.0,0.0,0.012013,0.0628007,,3.56706,18.2843,,4gt,4gt,TX,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+270,0.0,0.0,0.0,1.58211e-05,0.0424646,,0.890261,1.59369,,4gt,4gt,UT,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+271,0.0,0.0,0.0,0.0362639,0.080603,,0.180416,0.66795,,4gt,4gt,UT,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+272,0.0,0.0,0.0,0.00126879,0.00650628,,0.381741,1.36839,,4gt,4gt,UT,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+273,0.0,0.0,0.0,2.73574e-05,0.00464675,,0.109646,0.492716,,4gt,4gt,VT,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+274,0.0,0.0,0.0,0.00153666,0.00318113,,0.0120901,0.0408762,,4gt,4gt,VT,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+275,0.0,0.0,0.0,0.000131446,0.000732524,,0.0514797,0.229081,,4gt,4gt,VT,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+276,0.0,0.0,0.0,2.34501e-05,0.0612544,,1.12518,1.70216,,4gt,4gt,VA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+277,0.0,0.0,0.0,0.0547328,0.0993983,,0.207176,0.782495,,4gt,4gt,VA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+278,0.0,0.0,0.0,0.0060815,0.0212466,,0.635831,2.2717,,4gt,4gt,VA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+279,0.0,0.0,0.0,0.00223084,0.0114435,,0.621161,2.26517,,4gt,4gt,VA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+280,0.0,0.0,0.0,1.79376e-05,0.0480759,,0.880224,1.60713,,4gt,4gt,WA,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+281,0.0,0.0,0.0,0.040678,0.0901573,,0.17721,0.70359,,4gt,4gt,WA,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+282,0.0,0.0,0.0,0.00455721,0.014119,,0.400476,1.4187,,4gt,4gt,WA,CDR_regional,CDR,OEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+283,0.0,0.0,0.0,0.00173421,0.00955115,,0.608923,2.81025,,4gt,4gt,WA,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+284,0.0,0.0,0.0,2.56264e-05,0.0675022,,1.23903,1.92632,,4gt,4gt,WV,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+285,0.0,0.0,0.0,0.0606313,0.111797,,0.267147,0.967634,,4gt,4gt,WV,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+286,0.0,0.0,0.0,0.00236738,0.0120868,,0.50031,0.812803,,4gt,4gt,WV,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+287,0.0,0.0,0.0,2.85673e-05,0.0745355,,1.23878,2.01286,,4gt,4gt,WI,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+288,0.0,0.0,0.0,0.0560138,0.105895,,0.274727,1.01247,,4gt,4gt,WI,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+289,0.0,0.0,0.0,0.00208853,0.0119417,,1.01863,4.10951,,4gt,4gt,WI,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+290,0.0,0.0,0.0,2.0166e-05,0.0547055,,1.10576,1.76371,,4gt,4gt,WY,CDR_regional,CDR,BECCS,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+291,0.0,0.0,0.0,0.0585461,0.12224,,0.240677,0.920047,,4gt,4gt,WY,CDR_regional,CDR,DAC,CDR_regional,missing,missing,missing,missing,missing,missing,Mt
+292,0.0,0.0,0.0,0.00147297,0.00754043,,0.471768,2.24138,,4gt,4gt,WY,CDR_regional,CDR,TEW,CDR_regional,missing,missing,missing,missing,missing,missing,Mt

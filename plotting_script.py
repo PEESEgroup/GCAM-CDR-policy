@@ -37,69 +37,76 @@ def subsidy_expiration(config_fname, reference_year):
     list_of_subsidies = []
     # find out which years have subsidies
     for i in c.GCAMConstants.plotting_x:
-        condition = CDR[str(i) + "_price"] > CDR[str(i) + "_subsidized"]
-        if condition.any():
-            list_of_subsidies.append(i)
+        try:
+            condition = CDR[str(i) + "_price"] > CDR[str(i) + "_subsidized"]
+            if condition.any():
+                list_of_subsidies.append(i)
+        except KeyError as e:
+            print(e)
 
+    # get the last year without subsidies
     year_without_subsidies = list_of_subsidies[-1] + 5
-    CDR = CDR.fillna(0)
-    columns = ["GCAM", "product_price"]
-    for i in list_of_subsidies:
-        CDR[str(i) + "_total_loss"] = CDR.apply(
-            lambda row: -1*(row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
-                str(i) + "_price"]
-            if row[str(i) + "_price"] > row[str(i) + "_subsidized"] else 0, axis=1)
-        CDR[str(i) + "_CDR-Market_loss"] = CDR.apply(
-            lambda row: -1* (row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
-                str(i) + "_subsidized"]
-            if row[str(i) + "_price"] > row[str(i) + "_subsidized"] else 0, axis=1)
-        CDR[str(i) + "_CDR-Subsidy_loss"] = CDR[str(i) + "_total_loss"] - CDR[str(i) + "_CDR-Market_loss"]
-        columns.append(str(i) + "_CDR-Market_loss")
-        columns.append(str(i) + "_CDR-Subsidy_loss")
 
-    # refit df for histogram plotting
-    CDR_df = CDR[columns]
-    CDR_df = CDR_df.melt(id_vars=["GCAM", "product_price"], var_name='category', value_name='Change in market size')
-    CDR_df["SSP"] = "na"
-    CDR_df["Units"] = "Million USD/yr"
-    # remove rows with no change
-    CDR_df = CDR_df[CDR_df["Change in market size"]!= 0]
+    # calculate what happens when subsidies end
+    if year_without_subsidies < 2051:
+        CDR = CDR.fillna(0)
+        columns = ["GCAM", "product_price"]
+        for i in list_of_subsidies:
+            CDR[str(i) + "_total_loss"] = CDR.apply(
+                lambda row: -1*(row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
+                    str(i) + "_price"]
+                if row[str(i) + "_price"] > row[str(i) + "_subsidized"] else 0, axis=1)
+            CDR[str(i) + "_CDR-Market_loss"] = CDR.apply(
+                lambda row: -1* (row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
+                    str(i) + "_subsidized"]
+                if row[str(i) + "_price"] > row[str(i) + "_subsidized"] else 0, axis=1)
+            CDR[str(i) + "_CDR-Subsidy_loss"] = CDR[str(i) + "_total_loss"] - CDR[str(i) + "_CDR-Market_loss"]
+            columns.append(str(i) + "_CDR-Market_loss")
+            columns.append(str(i) + "_CDR-Subsidy_loss")
 
-    plotting.plot_regional_hist_avg(CDR_df, 'Change in market size', "change in size of markets once the subsidy ends",
-                                    "category", config_fname)
+        # refit df for histogram plotting
+        CDR_df = CDR[columns]
+        CDR_df = CDR_df.melt(id_vars=["GCAM", "product_price"], var_name='category', value_name='Change in market size')
+        CDR_df["SSP"] = "na"
+        CDR_df["Units"] = "Million USD/yr"
+        # remove rows with no change
+        CDR_df = CDR_df[CDR_df["Change in market size"]!= 0]
 
-    # get only wasted and good spend
-    CDR_wasted_subsidy = CDR.copy(deep=True)
-    CDR_good_subsidy = CDR.copy(deep=True)
+        plotting.plot_regional_hist_avg(CDR_df, 'Change in market size', "change in size of markets once the subsidy ends",
+                                        "category", config_fname)
 
-    for i in list_of_subsidies:
-        CDR_wasted_subsidy[str(i)+"_CDR-Subsidy_loss"] = CDR_wasted_subsidy.apply(
-            lambda row: 0 if row[str(i)+"_CDR-Subsidy_loss"] > 0 else row[str(i)+"_CDR-Subsidy_loss"], axis=1)
-        CDR_wasted_subsidy[str(i)+"_CDR-Market_loss"] = CDR_wasted_subsidy.apply(
-            lambda row: 0 if row[str(i)+"_CDR-Market_loss"] > 0 else row[str(i)+"_CDR-Market_loss"], axis=1)
-        CDR_good_subsidy[str(i)+"_CDR-Subsidy_loss"] = CDR_good_subsidy.apply(
-            lambda row: 0 if row[str(i)+"_CDR-Subsidy_loss"] < 0 else row[str(i)+"_CDR-Subsidy_loss"], axis=1)
-        CDR_good_subsidy[str(i)+"_CDR-Market_loss"] = CDR_good_subsidy.apply(
-            lambda row: 0 if row[str(i)+"_CDR-Market_loss"] < 0 else row[str(i)+"_CDR-Market_loss"], axis=1)
+        # get only wasted and good spend
+        CDR_wasted_subsidy = CDR.copy(deep=True)
+        CDR_good_subsidy = CDR.copy(deep=True)
 
-    CDR_wasted_subsidy = CDR_wasted_subsidy.groupby(["product_price"]).sum(min_count=1)
-    CDR_wasted_subsidy = CDR_wasted_subsidy.reset_index()
-    CDR_wasted_subsidy["Units"] = "Million 2025$USD/yr"
-    CDR_wasted_subsidy["spend"] = "Wasted"
-    CDR_good_subsidy = CDR_good_subsidy.groupby(["product_price"]).sum(min_count=1)
-    CDR_good_subsidy = CDR_good_subsidy.reset_index()
-    CDR_good_subsidy["Units"] = "Million 2025$USD/yr"
-    CDR_good_subsidy["spend"] = "Good"
-    CDR = pd.concat([CDR_wasted_subsidy, CDR_good_subsidy]).reset_index()
-    CDR["product"] = CDR["product_price"] + " " + CDR["spend"]
+        for i in list_of_subsidies:
+            CDR_wasted_subsidy[str(i)+"_CDR-Subsidy_loss"] = CDR_wasted_subsidy.apply(
+                lambda row: 0 if row[str(i)+"_CDR-Subsidy_loss"] > 0 else row[str(i)+"_CDR-Subsidy_loss"], axis=1)
+            CDR_wasted_subsidy[str(i)+"_CDR-Market_loss"] = CDR_wasted_subsidy.apply(
+                lambda row: 0 if row[str(i)+"_CDR-Market_loss"] > 0 else row[str(i)+"_CDR-Market_loss"], axis=1)
+            CDR_good_subsidy[str(i)+"_CDR-Subsidy_loss"] = CDR_good_subsidy.apply(
+                lambda row: 0 if row[str(i)+"_CDR-Subsidy_loss"] < 0 else row[str(i)+"_CDR-Subsidy_loss"], axis=1)
+            CDR_good_subsidy[str(i)+"_CDR-Market_loss"] = CDR_good_subsidy.apply(
+                lambda row: 0 if row[str(i)+"_CDR-Market_loss"] < 0 else row[str(i)+"_CDR-Market_loss"], axis=1)
 
-    CDR.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-              "/subsidy-and-market-spend-on-subsidized-techs.csv")
+        CDR_wasted_subsidy = CDR_wasted_subsidy.groupby(["product_price"]).sum(min_count=1)
+        CDR_wasted_subsidy = CDR_wasted_subsidy.reset_index()
+        CDR_wasted_subsidy["Units"] = "Million 2025$USD/yr"
+        CDR_wasted_subsidy["spend"] = "Wasted"
+        CDR_good_subsidy = CDR_good_subsidy.groupby(["product_price"]).sum(min_count=1)
+        CDR_good_subsidy = CDR_good_subsidy.reset_index()
+        CDR_good_subsidy["Units"] = "Million 2025$USD/yr"
+        CDR_good_subsidy["spend"] = "Good"
+        CDR = pd.concat([CDR_wasted_subsidy, CDR_good_subsidy]).reset_index()
+        CDR["product"] = CDR["product_price"] + " " + CDR["spend"]
 
-    # remove market spend to focus on subsidies
-    for i in list_of_subsidies:
-        CDR[str(i)] = CDR[str(i)+"_CDR-Subsidy_loss"]
-    plotting.plot_stacked_bar_product(CDR, list_of_subsidies, "product", "change in CDR market size from base year to year after subsidies end", config_fname)
+        CDR.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                  "/subsidy-and-market-spend-on-subsidized-techs.csv")
+
+        # remove market spend to focus on subsidies
+        for i in list_of_subsidies:
+            CDR[str(i)] = CDR[str(i)+"_CDR-Subsidy_loss"]
+        plotting.plot_stacked_bar_product(CDR, list_of_subsidies, "product", "change in CDR market size from base year to year after subsidies end", config_fname)
 
 
 def market_share(config_fname, reference_year):
@@ -394,5 +401,5 @@ if __name__ == '__main__':
     #           "nothing_nothing", "low_low", "high_high"]:
     # "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2040_low", "CDRIA-2050_low",
     #                        "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2040_high", "CDRIA-2050_high"
-    for i in ["45Q-2050_low"]:
+    for i in ["CDRIA-2035_low"]:
         main(i, "2050")
