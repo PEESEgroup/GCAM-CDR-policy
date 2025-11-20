@@ -401,5 +401,5 @@ if __name__ == '__main__':
     #           "nothing_nothing", "low_low", "high_high"]:
     # "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2040_low", "CDRIA-2050_low",
     #                        "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2040_high", "CDRIA-2050_high"
-    for i in ["CDRIA-2035_low"]:
+    for i in ["CDRIA-2050_low"]:
         main(i, "2050")

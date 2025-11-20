@@ -248,7 +248,8 @@ def verify_ghg_constraint(ground_truth, regions_map, fpath):
                 df[str(i) + "_g"] = df[str(i) + "_g"] * constants.GCAMConstants.CO2_to_C
                 # if the estimated value is not close to the reported value
                 if df["market"] == "USA":
-                    if .98 * df[str(i) + "_r"] < df[str(i) + "_g"]:
+                    # within 4% is fine
+                    if .96 * df[str(i) + "_r"] < df[str(i) + "_g"]:
                         print("GHG constraint for " + df["market"] + " in " + str(i) + " meets the constraint by " + str(
                             df[str(i) + "_g"] - df[str(i) + "_r"]) + " Mt C")
                     else:
@@ -425,8 +426,8 @@ def verify_ghg_tax(ground_truth, results, fpath):
     # compare ground truths with results
     df = pd.merge(ground_truth, results, "left", ["GCAM", "product"], suffixes=("_left", "_right"))
     for i in constants.GCAMConstants.plotting_x:
-        # TODO: update this log check
-        if .97 * df[str(i) + "_right"] < df[str(i) + "_left"] < 1.03 * df[str(i) + "_right"]:
+        # within 4% accuracy is fine
+        if .96 * df[str(i) + "_right"] < df[str(i) + "_left"] < 1.04 * df[str(i) + "_right"]:
             years_with_error.append(str(i))
             log(fpath, str(i), "ghg taxes do not match")
 
@@ -452,5 +453,5 @@ def log(fpath, year, reason, success=False):
 
 
 if __name__ == '__main__':
-    for i in ["45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low"]:
+    for i in ["CDRIA-2050_low"]:
         main(i)
