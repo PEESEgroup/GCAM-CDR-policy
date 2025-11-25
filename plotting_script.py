@@ -94,7 +94,7 @@ def costs_and_benefits(config_fname, reference_year):
 
     # combine the information that is relevant to meeting the net-zero 2050 mandate
     net_zero_mandate = pd.concat([scenario_subsidy, procurement_costs, scenario_innovation_costs, scenario_deadweight, scenario_CTax, scenario_market])
-    net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1)
+    net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1).reset_index()
     net_zero_total_cost["cost_type"] = "Total Cost"
     net_zero_mandate = pd.concat([net_zero_mandate, net_zero_total_cost])
 
@@ -105,18 +105,28 @@ def costs_and_benefits(config_fname, reference_year):
 
     # calculate the npv
     for k in interest_rates:
-        npv_net_zero["NPV of Net Zero Mandate" + " | " + str(k*100) + "%"] = npf.npv(rate=k, values=net_zero_total_cost.values)
-        costs = npf.npv(rate=k, values=total_costs.values)
+        # remove identifying information from the dataframes
+        net_zero_total_cost = net_zero_total_cost.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
+        total_costs = total_costs.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
+        scenario_market = scenario_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
+        baseline_market = baseline_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
+
+        npv_net_zero["NPV of Net Zero Mandate" + " | " + str(k*100) + "%"] = npf.npv(rate=k, values=net_zero_total_cost.values[0]) / 1000000
+        costs = npf.npv(rate=k, values=total_costs.values[0])
         # benefits are defined as lower costs in the CDR market. these are compared to the baseline market
-        benefits = npf.npv(rate=k, values=scenario_market.values) - npf.npv(rate=k, values=baseline_market.values) # benefits are negative, costs are positive
+        benefits = npf.npv(rate=k, values=scenario_market.values[0]) - npf.npv(rate=k, values=baseline_market.values[0]) # benefits are negative, costs are positive
 
         # save cost benefit information
-        NPV_CB["Cost/Benefits" + " | " + str(k*100) + "%"] = costs/benefits
-        NPV_CB["Cost-Benefits" + " | " + str(k * 100) + "%"] = costs - benefits
+        NPV_CB["Benefits" + " | " + str(k * 100) + "%"] = benefits
+        NPV_CB["Costs" + " | " + str(k * 100) + "%"] = costs
+        NPV_CB["Benefits/Costs" + " | " + str(k*100) + "%"] = benefits/costs
+        NPV_CB["Benefits-Costs" + " | " + str(k * 100) + "%"] = benefits - costs
 
     # write out information in .csv
-    npv = pd.DataFrame(NPV_CB)
-    npv_net_zero = pd.DataFrame(npv_net_zero)
+    NPV_CB["Units"] = "Million $USD or unitless"
+    npv = pd.DataFrame(NPV_CB, index= [0])
+    npv_net_zero = pd.DataFrame(npv_net_zero, index=[0])
+    npv_net_zero["Units"] = "Trillion $USD"
     npv.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                "/cost-benefit-analysis.csv")
     npv_net_zero.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
@@ -130,18 +140,20 @@ def get_CB_dfs(baseline_market, npv_cols):
     baseline_subsidy = baseline_market[baseline_market["technology_price"] == "subsidy"].copy(deep=True)
     baseline_subsidy = data_manipulation.interpolate(baseline_subsidy, "truncated")
     baseline_subsidy = baseline_subsidy.groupby(["technology_price", "Units"]).sum(min_count=1).reset_index()
-    baseline_subsidy["cost_type"] = "subsidy"
+    baseline_subsidy["cost_type"] = "Subsidy"
     baseline_subsidy = baseline_subsidy[npv_cols]
 
     # get C tax revenue and deadweight loss information
     baseline_deadweight = baseline_market[baseline_market["product"] == "Deadweight Loss"].copy(deep=True)
     baseline_deadweight = data_manipulation.interpolate(baseline_deadweight, "truncated")
     baseline_deadweight["cost_type"] = "Deadweight Loss"
+    baseline_deadweight["Units"] = "Million 2025$USD/yr"
     baseline_deadweight = baseline_deadweight[npv_cols]
 
     baseline_CTax = baseline_market[baseline_market["product"] == "C Tax Revenue"].copy(deep=True)
     baseline_CTax = data_manipulation.interpolate(baseline_CTax, "truncated")
     baseline_CTax["cost_type"] = "C Tax Revenue"
+    baseline_CTax["Units"] = "Million 2025$USD/yr"
     baseline_CTax = baseline_CTax[npv_cols]
 
     # get innovation information
@@ -150,6 +162,7 @@ def get_CB_dfs(baseline_market, npv_cols):
         baseline_innovation_funding = data_manipulation.interpolate(baseline_innovation_funding, "truncated")
         baseline_innovation_funding["cost_type"] = "Investment in R&D"
         baseline_innovation_funding = baseline_innovation_funding[npv_cols]
+        baseline_innovation_funding["Units"] = "Million 2025$USD/yr"
     else:
         # empty df
         baseline_innovation_funding = pd.DataFrame(columns=npv_cols)
