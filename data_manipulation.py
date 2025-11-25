@@ -159,7 +159,6 @@ def relabel_SSP(row):
         return "error"
 
 
-
 def label_sequestration_sectors(row):
     """
     returns the aggregated sector to better show plots
@@ -658,9 +657,12 @@ def process_luc(land_use, scale_factor, base_year, biochar_year):
 
             # on a per-basin basis, rearrange luc so that unmanaged land is matched with unmanaged land
             df_both_managed = land_per_basin[
-                (land_per_basin[base_year] != "Other Land Use Types") & (land_per_basin[biochar_year] != "Other Land Use Types")].reset_index(drop=True)
-            df_2020_managed = land_per_basin[(land_per_basin[biochar_year] == "Other Land Use Types")].reset_index(drop=True)
-            df_2050_managed = land_per_basin[(land_per_basin[base_year] == "Other Land Use Types")].reset_index(drop=True)
+                (land_per_basin[base_year] != "Other Land Use Types") & (
+                            land_per_basin[biochar_year] != "Other Land Use Types")].reset_index(drop=True)
+            df_2020_managed = land_per_basin[(land_per_basin[biochar_year] == "Other Land Use Types")].reset_index(
+                drop=True)
+            df_2050_managed = land_per_basin[(land_per_basin[base_year] == "Other Land Use Types")].reset_index(
+                drop=True)
 
             # shuffle both lists
             df_2020_managed = df_2020_managed.sample(frac=1, random_state=1).reset_index(drop=True)
@@ -686,7 +688,7 @@ def process_luc(land_use, scale_factor, base_year, biochar_year):
 
             df_doubly_unmanaged = paired[
                 (paired[base_year] == "Other Land Use Types") & (
-                            paired[biochar_year] == "Other Land Use Types")].reset_index(drop=True)
+                        paired[biochar_year] == "Other Land Use Types")].reset_index(drop=True)
 
             if len(df_doubly_unmanaged) > 0:
                 print(r, basin)
@@ -749,11 +751,11 @@ def seq_C(row, product_column, modification_column):
     :return: the amount of net C that is sequestered
     """
     if row[product_column] in ["pork biochar", "goat biochar"]:
-        return row[modification_column] * .5853 # from the ncomms spreadsheet
+        return row[modification_column] * .5853  # from the ncomms spreadsheet
     elif row[product_column] in ["beef biochar", "dairy biochar"]:
-        return row[modification_column] * .5391 # from the ncomms spreadsheet
+        return row[modification_column] * .5391  # from the ncomms spreadsheet
     elif row[product_column] in ["poultry biochar"]:
-        return row[modification_column] * .5316 # from the ncomms spreadsheet
+        return row[modification_column] * .5316  # from the ncomms spreadsheet
     else:
         return 0
 
@@ -767,11 +769,11 @@ def avd_C(row, product_column, modification_column):
     :return: the amount of net C that is sequestered
     """
     if row[product_column] in ["pork biochar", "goat biochar"]:
-        return row[modification_column] * (1-.5853) # from the ncomms spreadsheet
+        return row[modification_column] * (1 - .5853)  # from the ncomms spreadsheet
     elif row[product_column] in ["beef biochar", "dairy biochar"]:
-        return row[modification_column] * (1-.5391) # from the ncomms spreadsheet
+        return row[modification_column] * (1 - .5391)  # from the ncomms spreadsheet
     elif row[product_column] in ["poultry biochar"]:
-        return row[modification_column] * (1-.5316) # from the ncomms spreadsheet
+        return row[modification_column] * (1 - .5316)  # from the ncomms spreadsheet
     else:
         return 0
 
@@ -786,12 +788,12 @@ def ghg_ER(row, product_column, modification_column):
     """
     # these values are already negative
     if row[product_column] in ["CH4"]:
-        return row[modification_column] * 23  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
+        return row[
+            modification_column] * 23  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
     elif row[product_column] in ["N2O"]:
-        return row[modification_column] * 296 # from the ncomms spreadsheet
+        return row[modification_column] * 296  # from the ncomms spreadsheet
     else:
         return 0
-
 
 
 def avd_soil_emissions(row, product_column, modification_column):
@@ -818,7 +820,7 @@ def avd_soil_emissions(row, product_column, modification_column):
         temp = row[
                    modification_column] / .98  # counterfactual for full GHG emissions (parameter from ncomms spreadsheet)
         temp = temp * (
-                    1 - .98) * -296  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
+                1 - .98) * -296  # emissions reduction, GWP from Ncomms spreadsheet, as all other ghg emissions reduction/CDR are negative, add a - sign to the returned value
         return temp
 
 
@@ -893,7 +895,8 @@ def get_CI(dataframe, products, alpha=0.95):
                 sem = stats.sem(np_data)
                 n = len(np_data)
                 df = n - 1
-                lower, upper = stats.t.interval(alpha, df=df, loc=sMu, scale=sem)  # confidence interval with equal areas around the mean
+                lower, upper = stats.t.interval(alpha, df=df, loc=sMu,
+                                                scale=sem)  # confidence interval with equal areas around the mean
 
                 # add lower, mean, upper to output dataframe
                 output_vals[str(j)] = [lower, median, upper]
@@ -920,7 +923,7 @@ def price_subsidy(row):
 
 
 def remove_price_supply_outliers(year, row, suffix):
-    if row[str(year) + "_supply"] < 0.01 * (1+(int(year)-2025)/5):
+    if row[str(year) + "_supply"] < 0.01 * (1 + (int(year) - 2025) / 5):
         return np.nan
     else:
         return row[str(year) + suffix]
@@ -930,8 +933,8 @@ def subsidy_lookup(row, year, subsidy_df):
     product = row["product_price"]
     subsidy_prod = subsidy_df[subsidy_df["stub-technology"].isin([product])]
     if not subsidy_prod.empty:
-        return row[year+"_price"] - subsidy_prod[year].unique()[0]
-    return row[year+"_price"]
+        return row[year + "_price"] - subsidy_prod[year].unique()[0]
+    return row[year + "_price"]
 
 
 def substract_subsidy(row, year, subsidy_table):
@@ -940,8 +943,40 @@ def substract_subsidy(row, year, subsidy_table):
     if subsidy_table.empty:
         subsidy = 0
     else:
-        subsidy = subsidy_table[year].unique()[0]/c.GCAMConstants.USD2025_tCO2_to_1975_kgC  # subsidy price is in 195$/kg C
-    total_subsidy = (subsidy*row[year+"_supply"])  # supply is already in Mt CO2-eq
+        subsidy = subsidy_table[year].unique()[
+                      0] / c.GCAMConstants.USD2025_tCO2_to_1975_kgC  # subsidy price is in 195$/kg C
+    total_subsidy = (subsidy * row[year + "_supply"])  # supply is already in Mt CO2-eq
     if np.isnan(total_subsidy):
         total_subsidy = 0
     return row[year] - total_subsidy
+
+
+def interpolate(df, method):
+    if method == "linear":
+        pass
+    elif method == "truncated":
+        pass
+
+    # check dataframe for data errors
+    for i in c.GCAMConstants.plotting_x:
+        # linearly interpolate errors
+        df[str(i)] = df.apply(
+            lambda row: (row[str(i - 5)] + row[str(i + 5)]) / 2 if np.isnan(row[str(i)]) else row[str(i)], axis=1)
+
+    old_gcam = 2025
+    new_gcam = 2030
+    # iterate through all the years
+    for i in range(0, 25):
+        # if i is not divisible by 5 (those years already have data
+        if i % 5 != 0:
+            # if it is truncated, then 0 values will be interpolated
+            if method == "linear":
+                df[str(2025 + i)] = ((i%5) / 5 * df[str(old_gcam)]) + ((5 - (i%5)) / 5 * df[str(new_gcam)])
+            elif method == "truncated":
+                # if the values preceding or exceeding the current year are 0, set the value to the current year to 0
+                df[str(2025 + i)] = df.apply(lambda row: 0 if df[str(old_gcam)] == 0 or df[str(new_gcam)] == 0
+                                        else ((i%5) / 5 * df[str(old_gcam)]) + ((5 - (i%5)) / 5 * df[str(new_gcam)]), axis=1)
+        else:
+            # update the years
+            old_gcam = new_gcam
+            new_gcam = new_gcam + 5
