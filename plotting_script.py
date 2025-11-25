@@ -60,14 +60,23 @@ def costs_and_benefits(config_fname, reference_year):
     procurement_costs = pd.Series()
     for j in xml_scenario_files:
         if "exo_CDR_demand_verify" in j.data_files:
+            # avoid double counting subsidies - doesn't overwrite baseline data
+            scenario_subsidy_calc = scenario_subsidy[[str(k) for k in constants.GCAMConstants.plotting_x]]
+            baseline_subsidy_calc = baseline_subsidy[[str(k) for k in constants.GCAMConstants.plotting_x]]
+            double_subsidy = scenario_subsidy_calc - baseline_subsidy_calc
+
+            # get CDR demand
             CDR_demand = utilities.open_csv(j.data_files)
             CDR_demand = CDR_demand["exo_CDR_demand_verify"]
-            CDR_demand = pd.DataFrame(CDR_demand).T
+            CDR_demand = pd.DataFrame(CDR_demand)
+
+            # add in the double subsidy
+            double_subsidy.columns = CDR_demand.columns
+            CDR_demand = pd.concat([CDR_demand, double_subsidy])
+            CDR_demand = CDR_demand.T
             if "calc-avg-price" in CDR_demand.columns:
                 # calculate the procurement costs
-                CDR_demand["procurement_cost"] = CDR_demand['calc-avg-price'] * CDR_demand['govt-procurement']
-                # avoid double counting subsidies
-
+                CDR_demand["procurement_cost"] = CDR_demand['calc-avg-price'] * CDR_demand['govt-procurement'] - CDR_demand['subsidy']
                 CDR_demand = CDR_demand.reset_index()
                 CDR_demand["year"] = CDR_demand["level_0"]
                 CDR_demand = CDR_demand.set_index("year")
@@ -88,7 +97,10 @@ def costs_and_benefits(config_fname, reference_year):
                 innovation_costs = innovation_expense["R&D"]
                 innovation_costs = pd.concat([innovation_costs, pd.Series(["innovation costs"], index=["cost_type"])])
 
-
+    # combine costs and markets
+    costs = pd.concat([scenario_subsidy, procurement_costs, innovation_costs])
+    costs["Units"] = "Million $USD/yr"
+    total_costs = costs.groupby(["Units"]).sum(min_count=1)
 
     # get the NPV of the baseline scenario under 3 interest rates
 
@@ -99,6 +111,8 @@ def costs_and_benefits(config_fname, reference_year):
     # calculate benefits - costs
 
     # write out information in .csv
+
+    # write out cost breakdown
 
 
 
