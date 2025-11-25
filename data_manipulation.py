@@ -952,6 +952,10 @@ def substract_subsidy(row, year, subsidy_table):
 
 
 def interpolate(df, method):
+    # if there is no data in the dataframe, no need to interpolate
+    if len(df) == 0:
+        return df
+
     if method == "linear":
         pass
     elif method == "truncated":

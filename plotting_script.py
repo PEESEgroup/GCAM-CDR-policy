@@ -46,8 +46,8 @@ def costs_and_benefits(config_fname, reference_year):
     baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
                                   "/policy cost by technology.csv")
 
-    baseline_subsidy, baseline_deadweight, baseline_CTax, baseline_market = get_CB_dfs(baseline_df, npv_cols)
-    scenario_subsidy, scenario_deadweight, scenario_CTax, scenario_market = get_CB_dfs(scenario_df, npv_cols)
+    baseline_subsidy, baseline_deadweight, baseline_CTax, baseline_market, baseline_innovation_costs = get_CB_dfs(baseline_df, npv_cols)
+    scenario_subsidy, scenario_deadweight, scenario_CTax, scenario_market, scenario_innovation_costs = get_CB_dfs(scenario_df, npv_cols)
 
     # calculate the procurement costs and remove that much money from the CDR market
     # get procurement dollar amounts, if they exist
@@ -88,29 +88,14 @@ def costs_and_benefits(config_fname, reference_year):
                 # replace scenario market df
                 scenario_market = remove_procure[npv_cols]
 
-    # copy over the R&D funding costs
-    innovation_costs = pd.Series()
-    for j in xml_scenario_files:
-        if "exogenous_investment" in j.data_files:
-            innovation_expense = utilities.open_csv(j.data_files)
-            innovation_expense = innovation_expense["exogenous_investment"]
-            innovation_expense = pd.DataFrame(innovation_expense).T
-            if "R&D" in innovation_expense.columns:
-                innovation_expense = innovation_expense.reset_index()
-                innovation_expense["year"] = innovation_expense["index"].astype(str)
-                innovation_expense = innovation_expense.set_index("year")
-                innovation_costs = innovation_expense["R&D"]
-                innovation_costs = pd.DataFrame(pd.concat([innovation_costs, pd.Series(["innovation costs"], index=["cost_type"])])).T
-                innovation_costs["Units"] = "Million 2025$USD/yr"
-                innovation_costs = data_manipulation.interpolate(innovation_costs, "truncated")
-
     # combine costs
-    costs = pd.concat([scenario_subsidy, procurement_costs, innovation_costs])
+    costs = pd.concat([scenario_subsidy, procurement_costs])
     total_costs = costs.groupby(["Units"]).sum(min_count=1)
 
     # combine the information that is relevant to meeting the net-zero 2050 mandate
-    net_zero_mandate = pd.concat([scenario_subsidy, procurement_costs, innovation_costs, scenario_deadweight, scenario_CTax, scenario_market])
+    net_zero_mandate = pd.concat([scenario_subsidy, procurement_costs, scenario_innovation_costs, scenario_deadweight, scenario_CTax, scenario_market])
     net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1)
+    net_zero_total_cost["cost_type"] = "Total Cost"
     net_zero_mandate = pd.concat([net_zero_mandate, net_zero_total_cost])
 
     # get the NPV of the baseline scenario under 3 interest rates
@@ -120,7 +105,7 @@ def costs_and_benefits(config_fname, reference_year):
 
     # calculate the npv
     for k in interest_rates:
-        npv_net_zero[k] = npf.npv(rate=k, values=net_zero_total_cost.values)
+        npv_net_zero["NPV of Net Zero Mandate" + " | " + str(k*100) + "%"] = npf.npv(rate=k, values=net_zero_total_cost.values)
         costs = npf.npv(rate=k, values=total_costs.values)
         # benefits are defined as lower costs in the CDR market. these are compared to the baseline market
         benefits = npf.npv(rate=k, values=scenario_market.values) - npf.npv(rate=k, values=baseline_market.values) # benefits are negative, costs are positive
@@ -129,10 +114,15 @@ def costs_and_benefits(config_fname, reference_year):
         NPV_CB["Cost/Benefits" + " | " + str(k*100) + "%"] = costs/benefits
         NPV_CB["Cost-Benefits" + " | " + str(k * 100) + "%"] = costs - benefits
 
-
     # write out information in .csv
-
-    # write out cost breakdown
+    npv = pd.DataFrame(NPV_CB)
+    npv_net_zero = pd.DataFrame(npv_net_zero)
+    npv.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+               "/cost-benefit-analysis.csv")
+    npv_net_zero.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+               "/npv of achieving net zero.csv")
+    net_zero_mandate.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                        "/interpolated costs of achieving net zero.csv")
 
 
 def get_CB_dfs(baseline_market, npv_cols):
@@ -154,16 +144,26 @@ def get_CB_dfs(baseline_market, npv_cols):
     baseline_CTax["cost_type"] = "C Tax Revenue"
     baseline_CTax = baseline_CTax[npv_cols]
 
+    # get innovation information
+    baseline_innovation_funding = baseline_market[baseline_market["product"] == "Investment in R&D"].copy(deep=True)
+    if len(baseline_innovation_funding) != 0:
+        baseline_innovation_funding = data_manipulation.interpolate(baseline_innovation_funding, "truncated")
+        baseline_innovation_funding["cost_type"] = "Investment in R&D"
+        baseline_innovation_funding = baseline_innovation_funding[npv_cols]
+    else:
+        # empty df
+        baseline_innovation_funding = pd.DataFrame(columns=npv_cols)
+
     # get market information
     baseline_market = baseline_market[
-        (baseline_market["technology_price"] != "subsidy") & (baseline_market["product_price"] != "CO2")].copy(deep=True)
+        (baseline_market["technology_price"] != "subsidy") & (baseline_market["product_price"] != "CO2") & (baseline_market["product"] != "Investment in R&D")].copy(deep=True)
     baseline_market = data_manipulation.interpolate(baseline_market, "linear")
     baseline_market["cost_type"] = "CDR Market"
     baseline_market = baseline_market.groupby(["cost_type", "Units"]).sum(min_count=1).reset_index()
     baseline_market = baseline_market[npv_cols]
 
     # return files
-    return baseline_subsidy, baseline_deadweight, baseline_CTax, baseline_market
+    return baseline_subsidy, baseline_deadweight, baseline_CTax, baseline_market, baseline_innovation_funding
 
 
 def subsidy_expiration(config_fname, reference_year):
@@ -316,9 +316,9 @@ def get_C_costs(baseline, config_fname, scenario):
             print(e)
             CDR_cost[str(i) + "_total_cost"] = np.nan
     CDR_cost = CDR_cost.groupby(["Units_supply", "Units_price"]).sum(min_count=1).reset_index()
-    CDR_cost["Units"] = "Million 2025USD/yr"
-    deadweight_loss["Units"] = "Million 2025USD/yr"
-    CO2_tax_revenue["Units"] = "Million 2025USD/yr"
+    CDR_cost["Units"] = "Million 2025$USD/yr"
+    deadweight_loss["Units"] = "Million 2025$USD/yr"
+    CO2_tax_revenue["Units"] = "Million 2025$USD/yr"
     CDR_cost["product"] = "CDR Market"
     deadweight_loss["product"] = "Deadweight Loss"
     CO2_tax_revenue["product"] = "C Tax Revenue"
