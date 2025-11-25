@@ -45,10 +45,18 @@ def costs_and_benefits(config_fname, reference_year):
 
     # calculate the procurement costs and remove that much money from the CDR market
     # get procurement dollar amounts, if they exist
-    for i in xml_scenario_files:
-        if "exo_CDR_demand_verify" in i.data_files:
-            CDR_demand = pd.read_csv(i.data_files["exo_CDR_demand_verify"])
-
+    procurement_costs = pd.Series()
+    for j in xml_scenario_files:
+        if "exo_CDR_demand_verify" in j.data_files:
+            CDR_demand = utilities.open_csv(j.data_files)
+            CDR_demand = CDR_demand["exo_CDR_demand_verify"]
+            CDR_demand = pd.DataFrame(CDR_demand).T
+            if "calc-avg-price" in CDR_demand.columns:
+                CDR_demand["procurement_cost"] = CDR_demand['calc-avg-price'] * CDR_demand['govt-procurement']
+                CDR_demand = CDR_demand.reset_index()
+                CDR_demand["year"] = CDR_demand["level_0"]
+                CDR_demand = CDR_demand.set_index("year")
+                procurement_costs = CDR_demand["procurement_cost"]
 
     # copy over the R&D funding costs
 
@@ -442,5 +450,5 @@ if __name__ == '__main__':
     #           "nothing_nothing", "low_low", "high_high"]:
     # "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
     #                        "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high"
-    for i in ["low_low", "45Q-2050_low"]:
+    for i in ["s1-procure3B-l_low", "low_low", "45Q-2050_low"]:
         main(i, "2050")
