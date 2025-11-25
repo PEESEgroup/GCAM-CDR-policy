@@ -52,7 +52,8 @@ def costs_and_benefits(config_fname, reference_year):
     scenario_subsidy = scenario_market[scenario_market["technology_price"] == "subsidy"].copy(deep=True)
     scenario_subsidy = scenario_subsidy.groupby(["technology_price"]).sum(min_count=1)
     scenario_subsidy["cost_type"] = "subsidy"
-    scenario_subsidy = scenario_subsidy[["2025", "2030", "2035", "2040", "2045", "2050", "cost_type"]]
+    cost_columns = ["2025", "2030", "2035", "2040", "2045", "2050", "cost_type"]
+    scenario_subsidy = scenario_subsidy[cost_columns]
     scenario_market = scenario_market[scenario_market["technology_price"] != "subsidy"]
 
     # calculate the procurement costs and remove that much money from the CDR market
@@ -81,7 +82,7 @@ def costs_and_benefits(config_fname, reference_year):
                 CDR_demand["year"] = CDR_demand["level_0"]
                 CDR_demand = CDR_demand.set_index("year")
                 procurement_costs = CDR_demand["procurement_cost"]
-                procurement_costs = pd.concat([procurement_costs, pd.Series(["procurement costs"], index=["cost_type"])], ignore_index=True)
+                procurement_costs = pd.DataFrame(pd.concat([procurement_costs, pd.Series(["procurement costs"], index=["cost_type"])])).T
 
     # copy over the R&D funding costs
     innovation_costs = pd.Series()
@@ -95,12 +96,15 @@ def costs_and_benefits(config_fname, reference_year):
                 innovation_expense["year"] = innovation_expense["index"]
                 innovation_expense = innovation_expense.set_index("year")
                 innovation_costs = innovation_expense["R&D"]
-                innovation_costs = pd.concat([innovation_costs, pd.Series(["innovation costs"], index=["cost_type"])])
+                innovation_costs = pd.DataFrame(pd.concat([innovation_costs, pd.Series(["innovation costs"], index=["cost_type"])])).T
 
     # combine costs and markets
+    procurement_costs.columns = cost_columns
+    innovation_costs.columns = cost_columns
     costs = pd.concat([scenario_subsidy, procurement_costs, innovation_costs])
     costs["Units"] = "Million $USD/yr"
     total_costs = costs.groupby(["Units"]).sum(min_count=1)
+    print(total_costs)
 
     # get the NPV of the baseline scenario under 3 interest rates
 
@@ -113,7 +117,6 @@ def costs_and_benefits(config_fname, reference_year):
     # write out information in .csv
 
     # write out cost breakdown
-
 
 
 def subsidy_expiration(config_fname, reference_year):
