@@ -20,11 +20,11 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    # CDR_cost(config_fname, reference_year)
-    # CDR_tech(config_fname, reference_year)
-    # social_cost(config_fname, reference_year)
-    # market_share(config_fname, reference_year)
-    # subsidy_expiration(config_fname, reference_year)
+    CDR_cost(config_fname, reference_year)
+    CDR_tech(config_fname, reference_year)
+    social_cost(config_fname, reference_year)
+    market_share(config_fname, reference_year)
+    subsidy_expiration(config_fname, reference_year)
     costs_and_benefits(config_fname, reference_year)
 
 
@@ -549,14 +549,12 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["nzn_nzn", "low_low", "high_high", "excess_excess", "4gt_4gt",
+    for i in ["s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
+              "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+              "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+              "nothing_nothing","nzn_nzn", "low_low", "high_high", "excess_excess", "4gt_4gt",
               "45Q-2040_low", "45Q-2050_low","CDRIA-2035_low", "CDRIA-2050_low",
               "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
               "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
               "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
-        print(i)
         main(i, "2050")
-        # "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
-        #               "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-        #               "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-        #               "nothing_nothing",
