@@ -7,6 +7,7 @@ import pandas as pd
 import utilities
 import numpy as np
 import verification
+import numpy_financial as npf
 
 
 def main(config_fname, reference_year):
@@ -113,13 +114,21 @@ def costs_and_benefits(config_fname, reference_year):
     net_zero_mandate = pd.concat([net_zero_mandate, net_zero_total_cost])
 
     # get the NPV of the baseline scenario under 3 interest rates
+    interest_rates = [0.03, 0.12, 0.20]
+    npv_net_zero = {}
+    NPV_CB = {}
 
-    # get the NPV of the scenario under 3 interest rates
-    # interpolate yearly cost data
+    # calculate the npv
+    for k in interest_rates:
+        npv_net_zero[k] = npf.npv(rate=k, values=net_zero_total_cost.values)
+        costs = npf.npv(rate=k, values=total_costs.values)
+        # benefits are defined as lower costs in the CDR market. these are compared to the baseline market
+        benefits = npf.npv(rate=k, values=scenario_market.values) - npf.npv(rate=k, values=baseline_market.values) # benefits are negative, costs are positive
 
-    # calculate the benefits/costs ratio
+        # save cost benefit information
+        NPV_CB["Cost/Benefits" + " | " + str(k*100) + "%"] = costs/benefits
+        NPV_CB["Cost-Benefits" + " | " + str(k * 100) + "%"] = costs - benefits
 
-    # calculate benefits - costs
 
     # write out information in .csv
 
