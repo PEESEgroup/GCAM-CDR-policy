@@ -19,24 +19,42 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    CDR_cost(config_fname, reference_year)
-    CDR_tech(config_fname, reference_year)
-    social_cost(config_fname, reference_year)
-    market_share(config_fname, reference_year)
-    subsidy_expiration(config_fname, reference_year)
+    # CDR_cost(config_fname, reference_year)
+    # CDR_tech(config_fname, reference_year)
+    # social_cost(config_fname, reference_year)
+    # market_share(config_fname, reference_year)
+    # subsidy_expiration(config_fname, reference_year)
     costs_and_benefits(config_fname, reference_year)
 
 
 def costs_and_benefits(config_fname, reference_year):
+    # process scenario data
+    baseline = config_fname.split("/")[1]
+    scenario = config_fname.split("/")[0]
+
+    # grab scenario config files
+    xml_scenario_files = utilities.build_from_scenario(scenario)
+
     # get the costs of the scenario
+    scenario_market = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario + "/" + baseline +
+                            "/policy cost by technology_no co2.csv")
 
     # calculate the subsidy costs and remove the subsidy costs from the CDR market
+    scenario_subsidy = scenario_market[scenario_market["technology_price"] == "subsidy"].copy(deep=True)
+    scenario_market = scenario_market[scenario_market["technology_price"] != "subsidy"]
 
     # calculate the procurement costs and remove that much money from the CDR market
+    # get procurement dollar amounts, if they exist
+    for i in xml_scenario_files:
+        if "exo_CDR_demand_verify" in i.data_files:
+            CDR_demand = pd.read_csv(i.data_files["exo_CDR_demand_verify"])
+
 
     # copy over the R&D funding costs
 
     # get the costs of the baseline scenario
+    baseline_market = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
+                            "/policy cost by technology_no co2.csv")
 
     # get the NPV of the baseline scenario under 3 interest rates
 
@@ -424,5 +442,5 @@ if __name__ == '__main__':
     #           "nothing_nothing", "low_low", "high_high"]:
     # "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
     #                        "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high"
-    for i in ["low_low"]:
+    for i in ["low_low", "45Q-2050_low"]:
         main(i, "2050")
