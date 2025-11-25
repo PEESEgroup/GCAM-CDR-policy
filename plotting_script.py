@@ -86,6 +86,7 @@ def costs_and_benefits(config_fname, reference_year):
                     # subtract off the amount spent on procurement from the market
                     remove_procure[str(2025+j)] = remove_procure[str(2025+j)+ "_market"] - remove_procure[str(2025+j)+ "_procure"]
                 # replace scenario market df
+                remove_procure["cost_type"] = "CDR Market"
                 scenario_market = remove_procure[npv_cols]
 
     # combine costs
@@ -94,6 +95,7 @@ def costs_and_benefits(config_fname, reference_year):
 
     # combine the information that is relevant to meeting the net-zero 2050 mandate
     net_zero_mandate = pd.concat([scenario_subsidy, procurement_costs, scenario_innovation_costs, scenario_deadweight, scenario_CTax, scenario_market])
+    net_zero_mandate = net_zero_mandate.fillna(0)
     net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1).reset_index()
     net_zero_total_cost["cost_type"] = "Total Cost"
     net_zero_mandate = pd.concat([net_zero_mandate, net_zero_total_cost])
@@ -547,14 +549,14 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    # for i in ["s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
-    #           "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-    #           "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-    #           "nothing_nothing", "nzn_nzn", "low_low", "high_high", "excess_excess", "4gt_4gt",
-    #           "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
-    #           "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-    #           "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", innovation-triple_low",
-    #           "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", innovation-triple_high",
-
-    for i in ["innovation-maintain_low", "s1-procure3B-h_high", "low_low", "45Q-2050_low"]:
+    for i in ["nzn_nzn", "low_low", "high_high", "excess_excess", "4gt_4gt",
+              "45Q-2040_low", "45Q-2050_low","CDRIA-2035_low", "CDRIA-2050_low",
+              "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
+              "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
+              "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
+        print(i)
         main(i, "2050")
+        # "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
+        #               "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+        #               "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+        #               "nothing_nothing",

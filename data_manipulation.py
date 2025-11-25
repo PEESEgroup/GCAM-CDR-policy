@@ -964,8 +964,12 @@ def interpolate(df, method):
     # check dataframe for data errors
     for i in c.GCAMConstants.plotting_x:
         # linearly interpolate errors
-        df[str(i)] = df.apply(
+        if i + 5 <= 2050:
+            df[str(i)] = df.apply(
             lambda row: (row[str(i - 5)] + row[str(i + 5)]) / 2 if np.isnan(row[str(i)]) else row[str(i)], axis=1)
+        else:
+            df[str(i)] = df.apply(
+                lambda row: row[str(i - 5)] if np.isnan(row[str(i)]) else row[str(i)], axis=1)
 
     # initialize values before 2025 starts
     old_gcam = 2020
@@ -980,7 +984,7 @@ def interpolate(df, method):
                 df[str(2025 + i)] = value_to_add
             elif method == "truncated":
                 # if the values preceding or exceeding the current year are 0, set the value to the current year to 0
-                df[str(2025 + i)] = df.apply(lambda row: 0 if row[str(old_gcam)] == 0 or row[str(new_gcam)] == 0 else value_to_add, axis=1)
+                df[str(2025 + i)] = df.apply(lambda row: 0 if row[str(old_gcam)] == 0 or row[str(new_gcam)] == 0 else ((5 - (i%5)) / 5 * row[str(old_gcam)]) + ((i%5) / 5 * row[str(new_gcam)]), axis=1)
         else:
             # update the years
             old_gcam = new_gcam
