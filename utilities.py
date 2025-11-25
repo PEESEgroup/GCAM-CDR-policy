@@ -431,6 +431,51 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
+    elif "CDRIA-rhodium18b" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"exogenous_investment": "./building_xml/inputs/exogenous_subsector_investment_rhodium18b.csv"},
+                xml_build_type="exogenous investment",
+                output_fname=""
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_rhodium18b.csv",
+                            "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_high.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_rhodium18b.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
+                            "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links.csv",
+                            "TEW_transport_saving": "./building_xml/inputs/TEW_transport_savings_20.csv"},
+                xml_build_type="TEW Transport Cost Reduction",
+                output_fname="TEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"OEW_transport_amount": "./building_xml/inputs/OEW_transport_coef_20.csv"},
+                xml_build_type="OEW Transport Cost Reduction",
+                output_fname="OEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            ),
+            build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA_verify_s1.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="CDRIA_2035.xml"
+            )
+        ]
     elif "verify-2025" in scenario_name:
         return [
             build_xml_config.XMLConfig(
