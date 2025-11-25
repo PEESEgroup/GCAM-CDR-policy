@@ -963,8 +963,9 @@ def interpolate(df, method):
         df[str(i)] = df.apply(
             lambda row: (row[str(i - 5)] + row[str(i + 5)]) / 2 if np.isnan(row[str(i)]) else row[str(i)], axis=1)
 
-    old_gcam = 2025
-    new_gcam = 2030
+    # initialize values before 2025 starts
+    old_gcam = 2020
+    new_gcam = 2025
     # iterate through all the years
     for i in range(0, 25):
         # if i is not divisible by 5 (those years already have data
@@ -974,9 +975,10 @@ def interpolate(df, method):
                 df[str(2025 + i)] = ((i%5) / 5 * df[str(old_gcam)]) + ((5 - (i%5)) / 5 * df[str(new_gcam)])
             elif method == "truncated":
                 # if the values preceding or exceeding the current year are 0, set the value to the current year to 0
-                df[str(2025 + i)] = df.apply(lambda row: 0 if df[str(old_gcam)] == 0 or df[str(new_gcam)] == 0
-                                        else ((i%5) / 5 * df[str(old_gcam)]) + ((5 - (i%5)) / 5 * df[str(new_gcam)]), axis=1)
+                df[str(2025 + i)] = df.apply(lambda row: 0 if row[str(old_gcam)] == 0 or row[str(new_gcam)] == 0
+                                        else ((i%5) / 5 * row[str(old_gcam)]) + ((5 - (i%5)) / 5 * row[str(new_gcam)]), axis=1)
         else:
             # update the years
             old_gcam = new_gcam
             new_gcam = new_gcam + 5
+    return df
