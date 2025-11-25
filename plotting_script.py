@@ -20,11 +20,11 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    CDR_cost(config_fname, reference_year)
-    CDR_tech(config_fname, reference_year)
-    social_cost(config_fname, reference_year)
-    market_share(config_fname, reference_year)
-    subsidy_expiration(config_fname, reference_year)
+    # CDR_cost(config_fname, reference_year)
+    # CDR_tech(config_fname, reference_year)
+    # social_cost(config_fname, reference_year)
+    # market_share(config_fname, reference_year)
+    # subsidy_expiration(config_fname, reference_year)
     costs_and_benefits(config_fname, reference_year)
 
 
@@ -159,9 +159,10 @@ def get_CB_dfs(baseline_market, npv_cols):
     baseline_CTax = baseline_CTax[npv_cols]
 
     # get innovation information
-    baseline_innovation_funding = baseline_market[baseline_market["product"] == "Investment in R&D"].copy(deep=True)
+    baseline_innovation_funding = baseline_market[(baseline_market["product"] == "Investment in R&D") |
+                                                  (baseline_market["product"] == "Investment in DAC Hubs")].copy(deep=True)
     if len(baseline_innovation_funding) != 0:
-        baseline_innovation_funding = data_manipulation.interpolate(baseline_innovation_funding, "truncated")
+        baseline_innovation_funding = data_manipulation.interpolate(baseline_innovation_funding, "extended")
         baseline_innovation_funding["cost_type"] = "Investment in R&D"
         baseline_innovation_funding = baseline_innovation_funding[npv_cols]
         baseline_innovation_funding["Units"] = "Million 2025$USD/yr"
@@ -171,7 +172,7 @@ def get_CB_dfs(baseline_market, npv_cols):
 
     # get market information
     baseline_market = baseline_market[
-        (baseline_market["technology_price"] != "subsidy") & (baseline_market["product_price"] != "CO2") & (baseline_market["product"] != "Investment in R&D")].copy(deep=True)
+        (baseline_market["technology_price"] != "subsidy") & (baseline_market["product_price"] != "CO2") & (baseline_market["product"] != "Investment in R&D") & (baseline_market["product"] != "Investment in DAC Hubs")].copy(deep=True)
     baseline_market = data_manipulation.interpolate(baseline_market, "linear")
     baseline_market["cost_type"] = "CDR Market"
     baseline_market = baseline_market.groupby(["cost_type", "Units"]).sum(min_count=1).reset_index()
@@ -557,4 +558,5 @@ if __name__ == '__main__':
               "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
               "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
               "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
+    # for i in ["innovation-rhodium18b_high", "innovation-DACHubs_low"]:
         main(i, "2050")

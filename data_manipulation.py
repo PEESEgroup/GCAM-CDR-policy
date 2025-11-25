@@ -985,6 +985,9 @@ def interpolate(df, method):
             elif method == "truncated":
                 # if the values preceding or exceeding the current year are 0, set the value to the current year to 0
                 df[str(2025 + i)] = df.apply(lambda row: 0 if row[str(old_gcam)] == 0 or row[str(new_gcam)] == 0 else ((5 - (i%5)) / 5 * row[str(old_gcam)]) + ((i%5) / 5 * row[str(new_gcam)]), axis=1)
+            elif method == "extended":
+                df[str(2025 + i)] = df.apply(lambda row: 0 if row[str(old_gcam)] == 0 else
+                row[str(old_gcam)] if row[str(new_gcam)] == 0 else ((5 - (i%5)) / 5 * row[str(old_gcam)]) + ((i%5) / 5 * row[str(new_gcam)]), axis=1)
         else:
             # update the years
             old_gcam = new_gcam
