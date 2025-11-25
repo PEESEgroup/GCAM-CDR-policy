@@ -39,8 +39,20 @@ def costs_and_benefits(config_fname, reference_year):
     scenario_market = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario + "/" + baseline +
                             "/policy cost by technology_no co2.csv")
 
+    # get the costs of the baseline scenario
+    baseline_market = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
+                            "/policy cost by technology_no co2.csv")
+    baseline_subsidy = baseline_market[scenario_market["technology_price"] == "subsidy"].copy(deep=True)
+    baseline_subsidy = baseline_subsidy.groupby(["technology_price"]).sum(min_count=1)
+    baseline_subsidy["cost_type"] = "subsidy"
+    baseline_subsidy = baseline_subsidy[["2025", "2030", "2035", "2040", "2045", "2050", "cost_type"]]
+    baseline_market = baseline_market[baseline_market["technology_price"] != "subsidy"]
+
     # calculate the subsidy costs and remove the subsidy costs from the CDR market
     scenario_subsidy = scenario_market[scenario_market["technology_price"] == "subsidy"].copy(deep=True)
+    scenario_subsidy = scenario_subsidy.groupby(["technology_price"]).sum(min_count=1)
+    scenario_subsidy["cost_type"] = "subsidy"
+    scenario_subsidy = scenario_subsidy[["2025", "2030", "2035", "2040", "2045", "2050", "cost_type"]]
     scenario_market = scenario_market[scenario_market["technology_price"] != "subsidy"]
 
     # calculate the procurement costs and remove that much money from the CDR market
@@ -52,17 +64,31 @@ def costs_and_benefits(config_fname, reference_year):
             CDR_demand = CDR_demand["exo_CDR_demand_verify"]
             CDR_demand = pd.DataFrame(CDR_demand).T
             if "calc-avg-price" in CDR_demand.columns:
+                # calculate the procurement costs
                 CDR_demand["procurement_cost"] = CDR_demand['calc-avg-price'] * CDR_demand['govt-procurement']
+                # avoid double counting subsidies
+
                 CDR_demand = CDR_demand.reset_index()
                 CDR_demand["year"] = CDR_demand["level_0"]
                 CDR_demand = CDR_demand.set_index("year")
                 procurement_costs = CDR_demand["procurement_cost"]
+                procurement_costs = pd.concat([procurement_costs, pd.Series(["procurement costs"], index=["cost_type"])], ignore_index=True)
 
     # copy over the R&D funding costs
+    innovation_costs = pd.Series()
+    for j in xml_scenario_files:
+        if "exogenous_investment" in j.data_files:
+            innovation_expense = utilities.open_csv(j.data_files)
+            innovation_expense = innovation_expense["exogenous_investment"]
+            innovation_expense = pd.DataFrame(innovation_expense).T
+            if "R&D" in innovation_expense.columns:
+                innovation_expense = innovation_expense.reset_index()
+                innovation_expense["year"] = innovation_expense["index"]
+                innovation_expense = innovation_expense.set_index("year")
+                innovation_costs = innovation_expense["R&D"]
+                innovation_costs = pd.concat([innovation_costs, pd.Series(["innovation costs"], index=["cost_type"])])
 
-    # get the costs of the baseline scenario
-    baseline_market = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
-                            "/policy cost by technology_no co2.csv")
+
 
     # get the NPV of the baseline scenario under 3 interest rates
 
@@ -73,7 +99,8 @@ def costs_and_benefits(config_fname, reference_year):
     # calculate benefits - costs
 
     # write out information in .csv
-    pass
+
+
 
 def subsidy_expiration(config_fname, reference_year):
     # get baseline info
@@ -450,5 +477,5 @@ if __name__ == '__main__':
     #           "nothing_nothing", "low_low", "high_high"]:
     # "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
     #                        "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high"
-    for i in ["s1-procure3B-l_low", "low_low", "45Q-2050_low"]:
+    for i in ["innovation-maintain_low", "s1-procure3B-l_low", "low_low", "45Q-2050_low"]:
         main(i, "2050")
