@@ -971,12 +971,12 @@ def interpolate(df, method):
         # if i is not divisible by 5 (those years already have data
         if i % 5 != 0:
             # if it is truncated, then 0 values will be interpolated
+            value_to_add = ((5 - (i%5)) / 5 * df[str(old_gcam)]) + ((i%5) / 5 * df[str(new_gcam)])
             if method == "linear":
-                df[str(2025 + i)] = ((i%5) / 5 * df[str(old_gcam)]) + ((5 - (i%5)) / 5 * df[str(new_gcam)])
+                df[str(2025 + i)] = value_to_add
             elif method == "truncated":
                 # if the values preceding or exceeding the current year are 0, set the value to the current year to 0
-                df[str(2025 + i)] = df.apply(lambda row: 0 if row[str(old_gcam)] == 0 or row[str(new_gcam)] == 0
-                                        else ((i%5) / 5 * row[str(old_gcam)]) + ((5 - (i%5)) / 5 * row[str(new_gcam)]), axis=1)
+                df[str(2025 + i)] = df.apply(lambda row: 0 if row[str(old_gcam)] == 0 or row[str(new_gcam)] == 0 else value_to_add, axis=1)
         else:
             # update the years
             old_gcam = new_gcam
