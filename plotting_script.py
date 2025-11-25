@@ -31,30 +31,21 @@ def costs_and_benefits(config_fname, reference_year):
     # process scenario data
     baseline = config_fname.split("/")[1]
     scenario = config_fname.split("/")[0]
+    npv_cols = [2025 + i for i in range(0, 26)]
+    npv_cols = npv_cols.append("cost_type")
 
     # grab scenario config files
     xml_scenario_files = utilities.build_from_scenario(scenario)
 
     # get the costs of the scenario
-    scenario_market = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario + "/" + baseline +
-                            "/policy cost by technology_no co2.csv")
+    scenario_df = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario + "/" + baseline +
+                            "/policy cost by technology.csv")
+    # get the costs of the baseline
+    baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
+                                  "/policy cost by technology.csv")
 
-    # get the costs of the baseline scenario
-    baseline_market = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
-                            "/policy cost by technology_no co2.csv")
-    baseline_subsidy = baseline_market[scenario_market["technology_price"] == "subsidy"].copy(deep=True)
-    baseline_subsidy = baseline_subsidy.groupby(["technology_price"]).sum(min_count=1)
-    baseline_subsidy["cost_type"] = "subsidy"
-    baseline_subsidy = baseline_subsidy[["2025", "2030", "2035", "2040", "2045", "2050", "cost_type"]]
-    baseline_market = baseline_market[baseline_market["technology_price"] != "subsidy"]
-
-    # calculate the subsidy costs and remove the subsidy costs from the CDR market
-    scenario_subsidy = scenario_market[scenario_market["technology_price"] == "subsidy"].copy(deep=True)
-    scenario_subsidy = scenario_subsidy.groupby(["technology_price"]).sum(min_count=1)
-    scenario_subsidy["cost_type"] = "subsidy"
-    cost_columns = ["2025", "2030", "2035", "2040", "2045", "2050", "cost_type"]
-    scenario_subsidy = scenario_subsidy[cost_columns]
-    scenario_market = scenario_market[scenario_market["technology_price"] != "subsidy"]
+    baseline_subsidy, baseline_deadweight, baseline_CTax, baseline_market = get_CB_dfs(baseline_df, npv_cols)
+    scenario_subsidy, scenario_deadweight, scenario_CTax, scenario_market = get_CB_dfs(scenario_df, npv_cols)
 
     # calculate the procurement costs and remove that much money from the CDR market
     # get procurement dollar amounts, if they exist
@@ -118,6 +109,32 @@ def costs_and_benefits(config_fname, reference_year):
     # write out information in .csv
 
     # write out cost breakdown
+
+
+def get_CB_dfs(baseline_market, npv_cols):
+    baseline_subsidy = baseline_market[baseline_market["technology_price"] == "subsidy"].copy(deep=True)
+    # interpolate the subsidy
+    baseline_subsidy = data_manipulation.interpolate(baseline_subsidy, "truncated")
+    # finalize data processing for the subsidy
+    baseline_subsidy = baseline_subsidy.groupby(["technology_price"]).sum(min_count=1)
+    baseline_subsidy["cost_type"] = "subsidy"
+    baseline_subsidy = baseline_subsidy[npv_cols]
+    # get C tax revenue and deadweight loss information
+    baseline_deadweight = baseline_market[baseline_market["product"] == "Deadweight Loss"].copy(deep=True)
+    baseline_deadweight = data_manipulation.interpolate(baseline_deadweight, "truncated")
+    baseline_deadweight["cost_type"] = "Deadweight Loss"
+    baseline_deadweight = baseline_deadweight[npv_cols]
+    baseline_CTax = baseline_market[baseline_market["product"] == "C Tax Revenue"].copy(deep=True)
+    baseline_CTax = data_manipulation.interpolate(baseline_CTax, "truncated")
+    baseline_CTax["cost_type"] = "C Tax Revenue"
+    baseline_CTax = baseline_CTax[npv_cols]
+    # get market information
+    baseline_market = baseline_market[
+        (baseline_market["technology_price"] != "subsidy") & (baseline_market["product_price"] != "CO2")]
+    baseline_market = data_manipulation.interpolate(baseline_market, "linear")
+    baseline_market["cost_type"] = "CDR Market"
+    baseline_market = baseline_market[npv_cols]
+    return baseline_subsidy, baseline_deadweight, baseline_CTax, baseline_market
 
 
 def subsidy_expiration(config_fname, reference_year):
