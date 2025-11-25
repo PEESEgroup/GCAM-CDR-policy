@@ -24,7 +24,30 @@ def main(config_fname, reference_year):
     social_cost(config_fname, reference_year)
     market_share(config_fname, reference_year)
     subsidy_expiration(config_fname, reference_year)
+    costs_and_benefits(config_fname, reference_year)
 
+
+def costs_and_benefits(config_fname, reference_year):
+    # get the costs of the scenario
+
+    # calculate the subsidy costs and remove the subsidy costs from the CDR market
+
+    # calculate the procurement costs and remove that much money from the CDR market
+
+    # copy over the R&D funding costs
+
+    # get the costs of the baseline scenario
+
+    # get the NPV of the baseline scenario under 3 interest rates
+
+    # get the NPV of the scenario under 3 interest rates
+
+    # calculate the benefits/costs ratio
+
+    # calculate benefits - costs
+
+    # write out information in .csv
+    pass
 
 def subsidy_expiration(config_fname, reference_year):
     # get baseline info
