@@ -447,7 +447,7 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["nzn_nzn", "4gt_4gt", "CDRIA-rhodium18b_low", "CDRIA-rhodium18b_high"]  # use camelCase
+    current_configs = ["CDRIA-rhodium18b_low", "CDRIA-rhodium18b_high"]  # use camelCase
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
