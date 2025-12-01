@@ -12,8 +12,8 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    # compare_policy_costs("s1-noBECCSitc-l_low", "s1-itc-l_low")
-    CDR_subsidies(config_fname, "2035", "2040")
+    compare_policy_costs("45Q-2040_low", "45Q-2050_low")
+    # CDR_subsidies(config_fname, "2035", "2040")
 
 
 def CDR_subsidies(config_fname, year1, year2):
