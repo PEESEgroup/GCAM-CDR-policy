@@ -20,11 +20,11 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    CDR_cost(config_fname, reference_year)
-    CDR_tech(config_fname, reference_year)
-    social_cost(config_fname, reference_year)
-    market_share(config_fname, reference_year)
-    subsidy_expiration(config_fname, reference_year)
+    # CDR_cost(config_fname, reference_year)
+    # CDR_tech(config_fname, reference_year)
+    # social_cost(config_fname, reference_year)
+    # market_share(config_fname, reference_year)
+    # subsidy_expiration(config_fname, reference_year)
     costs_and_benefits(config_fname, reference_year)
 
 
@@ -105,32 +105,16 @@ def costs_and_benefits(config_fname, reference_year):
 
     # combine costs
     fiscal_costs = pd.concat([scenario_subsidy, procurement_costs, scenario_innovation_costs])
-    total_costs = fiscal_costs.groupby(["Units"]).sum(min_count=1)
+    fiscal_costs = fiscal_costs.groupby(["Units"]).sum(min_count=1)
 
-    # complete cost benefit analysis for fiscal costs
-    for k in interest_rates:
-        # remove identifying information from the dataframes
-        total_costs = total_costs.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
-        scenario_market = scenario_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
-        baseline_market = baseline_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
+    fiscal_cost_benefit_analysis(NPV_CB, baseline_market, config_fname, fiscal_costs, interest_rates, scenario_market)
 
-        fiscal_costs = npf.npv(rate=k, values=total_costs.values[0])
-        # benefits are defined as lower costs in the CDR market. these are compared to the baseline market
-        benefits = npf.npv(rate=k, values=scenario_market.values[0]) - npf.npv(rate=k, values=baseline_market.values[
-            0])  # benefits are negative, costs are positive
+    social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procurement_costs, scenario_deadweight,
+                              scenario_df, scenario_innovation_costs, scenario_market, scenario_subsidy)
 
-        # save cost benefit information
-        NPV_CB["Benefits" + " | " + str(k * 100) + "%"] = benefits
-        NPV_CB["Costs" + " | " + str(k * 100) + "%"] = fiscal_costs
-        NPV_CB["Benefits/Costs" + " | " + str(k * 100) + "%"] = benefits / fiscal_costs
-        NPV_CB["Benefits-Costs" + " | " + str(k * 100) + "%"] = benefits - fiscal_costs
 
-        # write out information in .csv
-    NPV_CB["Units"] = "Million $USD or unitless"
-    NPV_CB = pd.DataFrame(NPV_CB, index=[0])
-    NPV_CB.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-               "/cost-benefit-analysis.csv")
-
+def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procurement_costs, scenario_deadweight,
+                              scenario_df, scenario_innovation_costs, scenario_market, scenario_subsidy):
     # combine the information that is relevant to meeting the net-zero 2050 mandate
     # if there is a missing C tax period, that scenario is excluded from the analysis
     if not scenario_df.isnull().all().any():
@@ -143,7 +127,8 @@ def costs_and_benefits(config_fname, reference_year):
         # calculate the npv
         for k in interest_rates:
             # calculate the npv of each sector
-            net_zero_mandate["npv_" + str(k)] = net_zero_mandate.apply(lambda row: npf.npv(rate=k, values=row[[str(2025 + i) for i in range(0, 26)]].values) / 1000000, axis=1)
+            net_zero_mandate["npv_" + str(k)] = net_zero_mandate.apply(
+                lambda row: npf.npv(rate=k, values=row[[str(2025 + i) for i in range(0, 26)]].values) / 1000000, axis=1)
 
             # get information about the total PV of the CDR market
             CDR_market_size = net_zero_mandate[net_zero_mandate["cost_type"] == "CDR Market"].copy(deep=True)
@@ -168,26 +153,57 @@ def costs_and_benefits(config_fname, reference_year):
             total_net_zero_cost = net_zero_total_cost["npv_" + str(k)].values[0]
 
             # add labels to data
-            npv_net_zero["NPV of Net Zero Mandate" + " | " + str(k*100) + "%" + " | Trillion $USD"] = total_net_zero_cost
-            npv_net_zero["Cost Decrease necessary in PV CDR market" + " | " + str(k*100) + "%" + " | % of CDR market"] = 100*(total_net_zero_cost-nzn_cost[k])/CDR_market_size
+            npv_net_zero[
+                "NPV of Net Zero Mandate" + " | " + str(k * 100) + "%" + " | Trillion $USD"] = total_net_zero_cost
+            npv_net_zero["Cost Decrease necessary in PV CDR market" + " | " + str(
+                k * 100) + "%" + " | % of CDR market"] = 100 * (total_net_zero_cost - nzn_cost[k]) / CDR_market_size
 
         # calculate cost decreases in 2050
-        npv_net_zero["Cost Decrease necessary in 2050"] = 100*(total_market_2050-nzn_cost["2050"])/CDR_market_2050
+        npv_net_zero["Cost Decrease necessary in 2050"] = 100 * (total_market_2050 - nzn_cost["2050"]) / CDR_market_2050
 
         npv_net_zero = pd.DataFrame(npv_net_zero, index=[0])
         npv_net_zero.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                   "/npv of achieving net zero.csv")
+                            "/npv of achieving net zero.csv")
         net_zero_mandate.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                            "/interpolated costs of achieving net zero.csv")
+                                "/interpolated costs of achieving net zero.csv")
     else:
         CB_error = pd.DataFrame()
         CB_error["error"] = "error in computing the costs and benefits in this scenario"
         CB_error.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                   "/cost-benefit-analysis.csv")
+                        "/cost-benefit-analysis.csv")
         CB_error.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                   "/npv of achieving net zero.csv")
+                        "/npv of achieving net zero.csv")
         CB_error.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                            "/interpolated costs of achieving net zero.csv")
+                        "/interpolated costs of achieving net zero.csv")
+
+
+def fiscal_cost_benefit_analysis(NPV_CB, baseline_market, config_fname, fiscal_costs, interest_rates, scenario_market):
+    # complete cost benefit analysis for fiscal costs
+    for k in interest_rates:
+        # remove identifying information from the dataframes
+        fiscal_costs_cb = fiscal_costs.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore').copy(deep=True)
+        scenario_market_cb = scenario_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore').copy(
+            deep=True)
+        baseline_market_cb = baseline_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore').copy(
+            deep=True)
+
+        fiscal_costs_cb = npf.npv(rate=k, values=fiscal_costs_cb.values[0])
+        # benefits are defined as lower costs in the CDR market. these are compared to the baseline market
+        benefits = npf.npv(rate=k, values=scenario_market_cb.values[0]) - npf.npv(rate=k,
+                                                                                  values=baseline_market_cb.values[
+                                                                                      0])  # benefits are negative, costs are positive
+
+        # save cost benefit information
+        NPV_CB["Benefits" + " | " + str(k * 100) + "%"] = benefits
+        NPV_CB["Costs" + " | " + str(k * 100) + "%"] = fiscal_costs_cb
+        NPV_CB["Benefits/Costs" + " | " + str(k * 100) + "%"] = benefits / fiscal_costs_cb
+        NPV_CB["Benefits-Costs" + " | " + str(k * 100) + "%"] = benefits - fiscal_costs_cb
+
+        # write out information in .csv
+    NPV_CB["Units"] = "Million $USD or unitless"
+    NPV_CB = pd.DataFrame(NPV_CB, index=[0])
+    NPV_CB.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                  "/cost-benefit-analysis.csv")
 
 
 def get_CB_dfs(baseline_market, npv_cols):
@@ -611,5 +627,5 @@ if __name__ == '__main__':
     #           "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
     #           "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
     #           "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
-    for i in ["excess_excess"]:
+    for i in ["nzn_nzn"]:
         main(i, "2050")
