@@ -136,11 +136,11 @@ def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procur
 
             # get information about the CDR market in 2050
             CDR_market_2050 = net_zero_mandate[net_zero_mandate["cost_type"] == "CDR Market"].copy(deep=True)
-            CDR_market_2050 = CDR_market_2050["2050"].values[0]
+            CDR_market_2050 = CDR_market_2050["2050"].values[0]/1000000 # convert millions to trillions
 
             # get the total npv
             net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1)
-            total_market_2050 = net_zero_total_cost["2050"].values[0]
+            total_market_2050 = net_zero_total_cost["2050"].values[0]/1000000 # convert millions to trillions
 
             # find the percentage cost decrease necessary to get net zero compared to nzn
             nzn_cost = dict()
@@ -160,7 +160,9 @@ def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procur
 
         # calculate cost decreases in 2050
         npv_net_zero["Cost Decrease necessary in 2050"] = 100 * (total_market_2050 - nzn_cost["2050"]) / CDR_market_2050
+        npv_net_zero["Abatement size in 2050"] = total_market_2050
 
+        # prepare data for output
         npv_net_zero = pd.DataFrame(npv_net_zero, index=[0])
         npv_net_zero.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                             "/npv of achieving net zero.csv")
@@ -619,14 +621,14 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    # for i in ["nzn_nzn", "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
-    #           "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-    #           "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-    #           "nothing_nothing", "low_low", "high_high", "excess_excess", "4gt_4gt",
-    #           "45Q-2040_low", "45Q-2050_low","CDRIA-2035_low", "CDRIA-2050_low",
-    #           "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-    #           "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
-    #           "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
-    #
-    for i in ["nzn_nzn"]:
+    for i in ["nzn_nzn", "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
+              "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+              "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+              "nothing_nothing", "low_low", "high_high", "excess_excess", "4gt_4gt",
+              "45Q-2040_low", "45Q-2050_low","CDRIA-2035_low", "CDRIA-2050_low",
+              "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
+              "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
+              "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
+
+    #for i in ["nzn_nzn"]:
         main(i, "2050")
