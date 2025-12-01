@@ -144,10 +144,10 @@ def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procur
 
             # find the percentage cost decrease necessary to get net zero compared to nzn
             nzn_cost = dict()
-            nzn_cost[0.02] = 11.671464192551309
-            nzn_cost[0.12] = 4.017011323074081
-            nzn_cost[0.20] = 1.9502325469245916
-            nzn_cost["2050"] = 1.9502325469245916
+            nzn_cost[0.02] = 5.417576989947383
+            nzn_cost[0.12] = 1.2146232405976478
+            nzn_cost[0.20] = 0.5051764571050655
+            nzn_cost["2050"] = 0.842909016916415
 
             # total cost of net zero
             total_net_zero_cost = net_zero_total_cost["npv_" + str(k)].values[0]
@@ -627,5 +627,6 @@ if __name__ == '__main__':
     #           "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
     #           "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
     #           "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
+    #
     for i in ["nzn_nzn"]:
         main(i, "2050")
