@@ -20,11 +20,11 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    # CDR_cost(config_fname, reference_year)
-    # CDR_tech(config_fname, reference_year)
-    # social_cost(config_fname, reference_year)
-    # market_share(config_fname, reference_year)
-    # subsidy_expiration(config_fname, reference_year)
+    CDR_cost(config_fname, reference_year)
+    CDR_tech(config_fname, reference_year)
+    social_cost(config_fname, reference_year)
+    market_share(config_fname, reference_year)
+    subsidy_expiration(config_fname, reference_year)
     costs_and_benefits(config_fname, reference_year)
 
 
@@ -47,111 +47,123 @@ def costs_and_benefits(config_fname, reference_year):
                                   "/policy cost by technology.csv")
 
     baseline_subsidy, baseline_deadweight, baseline_CTax, baseline_market, baseline_innovation_costs = get_CB_dfs(baseline_df, npv_cols)
-    scenario_subsidy, scenario_deadweight, scenario_CTax, scenario_market, scenario_innovation_costs = get_CB_dfs(scenario_df, npv_cols)
+    # if there is no year missing in the scenario, then compute the costs, benefits, and npv
+    scenario_df = scenario_df[["product_price", "technology_price", "2020", "2025", "2030", "2035", "2040", "2045", "2050", "Units", "scenario", "baseline", "product"]]
+    if not scenario_df.isnull().all().any():
+        scenario_subsidy, scenario_deadweight, scenario_CTax, scenario_market, scenario_innovation_costs = get_CB_dfs(scenario_df, npv_cols)
 
-    # calculate the procurement costs and remove that much money from the CDR market
-    # get procurement dollar amounts, if they exist
-    procurement_costs = pd.Series()
-    for j in xml_scenario_files:
-        if "exo_CDR_demand_verify" in j.data_files:
-            # avoid double counting subsidies - doesn't overwrite baseline data
-            scenario_subsidy_calc = scenario_subsidy[[str(k) for k in constants.GCAMConstants.plotting_x]]
-            baseline_subsidy_calc = baseline_subsidy[[str(k) for k in constants.GCAMConstants.plotting_x]]
-            double_subsidy = scenario_subsidy_calc - baseline_subsidy_calc
+        # calculate the procurement costs and remove that much money from the CDR market
+        # get procurement dollar amounts, if they exist
+        procurement_costs = pd.Series()
+        for j in xml_scenario_files:
+            if "exo_CDR_demand_verify" in j.data_files:
+                # avoid double counting subsidies - doesn't overwrite baseline data
+                scenario_subsidy_calc = scenario_subsidy[[str(k) for k in constants.GCAMConstants.plotting_x]]
+                baseline_subsidy_calc = baseline_subsidy[[str(k) for k in constants.GCAMConstants.plotting_x]]
+                double_subsidy = scenario_subsidy_calc - baseline_subsidy_calc
 
-            # get CDR demand
-            CDR_demand = utilities.open_csv(j.data_files)
-            CDR_demand = CDR_demand["exo_CDR_demand_verify"]
-            CDR_demand = pd.DataFrame(CDR_demand)
+                # get CDR demand
+                CDR_demand = utilities.open_csv(j.data_files)
+                CDR_demand = CDR_demand["exo_CDR_demand_verify"]
+                CDR_demand = pd.DataFrame(CDR_demand)
 
-            # add in the double subsidy
-            double_subsidy.columns = CDR_demand.columns
-            double_subsidy.index = ["subsidy"]
-            CDR_demand = pd.concat([CDR_demand, double_subsidy])
-            CDR_demand = CDR_demand.T
-            if "calc-avg-price" in CDR_demand.columns:
-                # calculate the procurement costs
-                CDR_demand["procurement_cost"] = CDR_demand['calc-avg-price'] * CDR_demand['govt-procurement'] - CDR_demand['subsidy']
-                CDR_demand = CDR_demand.reset_index()
-                CDR_demand["year"] = CDR_demand["level_0"].astype(str)
-                CDR_demand = CDR_demand.set_index("year")
-                procurement_costs = CDR_demand["procurement_cost"]
-                procurement_costs = pd.DataFrame(pd.concat([procurement_costs, pd.Series(["procurement costs"], index=["cost_type"])])).T
-                procurement_costs = data_manipulation.interpolate(procurement_costs, "truncated")
-                procurement_costs["Units"] = "Million 2025$USD/yr"
+                # add in the double subsidy
+                double_subsidy.columns = CDR_demand.columns
+                double_subsidy.index = ["subsidy"]
+                CDR_demand = pd.concat([CDR_demand, double_subsidy])
+                CDR_demand = CDR_demand.T
+                if "calc-avg-price" in CDR_demand.columns:
+                    # calculate the procurement costs
+                    CDR_demand["procurement_cost"] = CDR_demand['calc-avg-price'] * CDR_demand['govt-procurement'] - CDR_demand['subsidy']
+                    CDR_demand = CDR_demand.reset_index()
+                    CDR_demand["year"] = CDR_demand["level_0"].astype(str)
+                    CDR_demand = CDR_demand.set_index("year")
+                    procurement_costs = CDR_demand["procurement_cost"]
+                    procurement_costs = pd.DataFrame(pd.concat([procurement_costs, pd.Series(["procurement costs"], index=["cost_type"])])).T
+                    procurement_costs = data_manipulation.interpolate(procurement_costs, "truncated")
+                    procurement_costs["Units"] = "Million 2025$USD/yr"
 
-                # remove procurement costs from the market
-                remove_procure = pd.merge(scenario_market, procurement_costs, "inner", "Units", suffixes=("_market", "_procure"))
-                for j in range(0, 26):
-                    # subtract off the amount spent on procurement from the market
-                    remove_procure[str(2025+j)] = remove_procure[str(2025+j)+ "_market"] - remove_procure[str(2025+j)+ "_procure"]
-                # replace scenario market df
-                remove_procure["cost_type"] = "CDR Market"
-                scenario_market = remove_procure[npv_cols]
+                    # remove procurement costs from the market
+                    remove_procure = pd.merge(scenario_market, procurement_costs, "inner", "Units", suffixes=("_market", "_procure"))
+                    for j in range(0, 26):
+                        # subtract off the amount spent on procurement from the market
+                        remove_procure[str(2025+j)] = remove_procure[str(2025+j)+ "_market"] - remove_procure[str(2025+j)+ "_procure"]
+                    # replace scenario market df
+                    remove_procure["cost_type"] = "CDR Market"
+                    scenario_market = remove_procure[npv_cols]
 
-    # combine costs
-    costs = pd.concat([scenario_subsidy, procurement_costs])
-    total_costs = costs.groupby(["Units"]).sum(min_count=1)
+        # combine costs
+        costs = pd.concat([scenario_subsidy, procurement_costs])
+        total_costs = costs.groupby(["Units"]).sum(min_count=1)
 
-    # combine the information that is relevant to meeting the net-zero 2050 mandate
-    net_zero_mandate = pd.concat([scenario_subsidy, procurement_costs, scenario_innovation_costs, scenario_deadweight, scenario_CTax, scenario_market])
-    net_zero_mandate = net_zero_mandate.drop(columns=["0", 0], errors='ignore')
-    net_zero_mandate = net_zero_mandate.dropna()
+        # combine the information that is relevant to meeting the net-zero 2050 mandate
+        net_zero_mandate = pd.concat([scenario_subsidy, procurement_costs, scenario_innovation_costs, scenario_deadweight, scenario_CTax, scenario_market])
+        net_zero_mandate = net_zero_mandate.drop(columns=["0", 0], errors='ignore')
+        net_zero_mandate = net_zero_mandate.dropna()
 
-    # get the NPV of the baseline scenario under 3 interest rates
-    interest_rates = [0.03, 0.12, 0.20]
-    npv_net_zero = {}
-    NPV_CB = {}
+        # get the NPV of the baseline scenario under 3 interest rates
+        interest_rates = [0.03, 0.12, 0.20]
+        npv_net_zero = {}
+        NPV_CB = {}
 
-    # calculate the npv
-    for k in interest_rates:
-        # remove identifying information from the dataframes
-        total_costs = total_costs.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
-        scenario_market = scenario_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
-        baseline_market = baseline_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
+        # calculate the npv
+        for k in interest_rates:
+            # remove identifying information from the dataframes
+            total_costs = total_costs.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
+            scenario_market = scenario_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
+            baseline_market = baseline_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
 
-        # calculate the npv of each sector
-        net_zero_mandate["npv_" + str(k)] = net_zero_mandate.apply(lambda row: npf.npv(rate=k, values=row[[str(2025 + i) for i in range(0, 26)]].values) / 1000000, axis=1)
-        CDR_market_size = net_zero_mandate[net_zero_mandate["cost_type"] == "CDR Market"].copy(deep=True)
-        CDR_market_size = CDR_market_size["npv_" + str(k)].values[0]
+            # calculate the npv of each sector
+            net_zero_mandate["npv_" + str(k)] = net_zero_mandate.apply(lambda row: npf.npv(rate=k, values=row[[str(2025 + i) for i in range(0, 26)]].values) / 1000000, axis=1)
+            CDR_market_size = net_zero_mandate[net_zero_mandate["cost_type"] == "CDR Market"].copy(deep=True)
+            CDR_market_size = CDR_market_size["npv_" + str(k)].values[0]
 
-        # get the total npv
-        net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1)
+            # get the total npv
+            net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1)
 
-        # find the percentage cost decrease necessary to get net zero compared to nzn
-        nzn_cost = dict()
-        nzn_cost[0.03] = 11.671464192551309
-        nzn_cost[0.12] = 4.017011323074081
-        nzn_cost[0.20] = 1.9502325469245916
+            # find the percentage cost decrease necessary to get net zero compared to nzn
+            nzn_cost = dict()
+            nzn_cost[0.03] = 11.671464192551309
+            nzn_cost[0.12] = 4.017011323074081
+            nzn_cost[0.20] = 1.9502325469245916
 
-        # total cost of net zero
-        total_net_zero_cost = net_zero_total_cost["npv_" + str(k)].values[0]
+            # total cost of net zero
+            total_net_zero_cost = net_zero_total_cost["npv_" + str(k)].values[0]
 
-        # add labels to data
+            # add labels to data
+            npv_net_zero["Units"] = "Trillion $USD"
+            npv_net_zero["NPV of Net Zero Mandate" + " | " + str(k*100) + "%" + " | Trillion $USD"] = total_net_zero_cost
+            npv_net_zero["Cost Decrease necessary in CDR market" + " | " + str(k*100) + "%" + " | % of CDR market"] = 100*(total_net_zero_cost-nzn_cost[k])/CDR_market_size
+            costs = npf.npv(rate=k, values=total_costs.values[0])
+            # benefits are defined as lower costs in the CDR market. these are compared to the baseline market
+            benefits = npf.npv(rate=k, values=scenario_market.values[0]) - npf.npv(rate=k, values=baseline_market.values[0]) # benefits are negative, costs are positive
+
+            # save cost benefit information
+            NPV_CB["Benefits" + " | " + str(k * 100) + "%"] = benefits
+            NPV_CB["Costs" + " | " + str(k * 100) + "%"] = costs
+            NPV_CB["Benefits/Costs" + " | " + str(k*100) + "%"] = benefits/costs
+            NPV_CB["Benefits-Costs" + " | " + str(k * 100) + "%"] = benefits - costs
+
+        # write out information in .csv
+        NPV_CB["Units"] = "Million $USD or unitless"
+        npv = pd.DataFrame(NPV_CB, index= [0])
+        npv_net_zero = pd.DataFrame(npv_net_zero, index=[0])
         npv_net_zero["Units"] = "Trillion $USD"
-        npv_net_zero["NPV of Net Zero Mandate" + " | " + str(k*100) + "%" + " | Trillion $USD"] = total_net_zero_cost
-        npv_net_zero["Cost Decrease necessary in CDR market" + " | " + str(k*100) + "%" + " | % of CDR market"] = 100*(total_net_zero_cost-nzn_cost[k])/CDR_market_size
-        costs = npf.npv(rate=k, values=total_costs.values[0])
-        # benefits are defined as lower costs in the CDR market. these are compared to the baseline market
-        benefits = npf.npv(rate=k, values=scenario_market.values[0]) - npf.npv(rate=k, values=baseline_market.values[0]) # benefits are negative, costs are positive
-
-        # save cost benefit information
-        NPV_CB["Benefits" + " | " + str(k * 100) + "%"] = benefits
-        NPV_CB["Costs" + " | " + str(k * 100) + "%"] = costs
-        NPV_CB["Benefits/Costs" + " | " + str(k*100) + "%"] = benefits/costs
-        NPV_CB["Benefits-Costs" + " | " + str(k * 100) + "%"] = benefits - costs
-
-    # write out information in .csv
-    NPV_CB["Units"] = "Million $USD or unitless"
-    npv = pd.DataFrame(NPV_CB, index= [0])
-    npv_net_zero = pd.DataFrame(npv_net_zero, index=[0])
-    npv_net_zero["Units"] = "Trillion $USD"
-    npv.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-               "/cost-benefit-analysis.csv")
-    npv_net_zero.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-               "/npv of achieving net zero.csv")
-    net_zero_mandate.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                        "/interpolated costs of achieving net zero.csv")
+        npv.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                   "/cost-benefit-analysis.csv")
+        npv_net_zero.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                   "/npv of achieving net zero.csv")
+        net_zero_mandate.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                            "/interpolated costs of achieving net zero.csv")
+    else:
+        CB_error = pd.DataFrame()
+        CB_error["error"] = "error in computing the costs and benefits in this scenario"
+        CB_error.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                   "/cost-benefit-analysis.csv")
+        CB_error.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                   "/npv of achieving net zero.csv")
+        CB_error.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
+                            "/interpolated costs of achieving net zero.csv")
 
 
 def get_CB_dfs(baseline_market, npv_cols):
@@ -567,13 +579,13 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["nzn_nzn", "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
-              "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-              "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-              "nothing_nothing", "low_low", "high_high", "excess_excess", "4gt_4gt",
-              "45Q-2040_low", "45Q-2050_low","CDRIA-2035_low", "CDRIA-2050_low",
-              "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-              "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
-              "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
-    # for i in ["innovation-rhodium18b_high", "innovation-DACHubs_low"]:
+    # for i in ["nzn_nzn", "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
+    #           "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+    #           "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+    #           "nothing_nothing", "low_low", "high_high", "excess_excess", "4gt_4gt",
+    #           "45Q-2040_low", "45Q-2050_low","CDRIA-2035_low", "CDRIA-2050_low",
+    #           "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
+    #           "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
+    #           "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
+    for i in ["excess_excess"]:
         main(i, "2050")
