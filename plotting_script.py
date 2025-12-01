@@ -20,11 +20,11 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     os.makedirs("data/data_analysis/supplementary_tables/" + config_fname + "/", exist_ok=True)
-    CDR_cost(config_fname, reference_year)
-    CDR_tech(config_fname, reference_year)
-    social_cost(config_fname, reference_year)
-    market_share(config_fname, reference_year)
-    subsidy_expiration(config_fname, reference_year)
+    # CDR_cost(config_fname, reference_year)
+    # CDR_tech(config_fname, reference_year)
+    # social_cost(config_fname, reference_year)
+    # market_share(config_fname, reference_year)
+    # subsidy_expiration(config_fname, reference_year)
     costs_and_benefits(config_fname, reference_year)
 
 
@@ -95,10 +95,8 @@ def costs_and_benefits(config_fname, reference_year):
 
     # combine the information that is relevant to meeting the net-zero 2050 mandate
     net_zero_mandate = pd.concat([scenario_subsidy, procurement_costs, scenario_innovation_costs, scenario_deadweight, scenario_CTax, scenario_market])
-    net_zero_mandate = net_zero_mandate.fillna(0)
-    net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1).reset_index()
-    net_zero_total_cost["cost_type"] = "Total Cost"
-    net_zero_mandate = pd.concat([net_zero_mandate, net_zero_total_cost])
+    net_zero_mandate = net_zero_mandate.drop(columns=["0", 0], errors='ignore')
+    net_zero_mandate = net_zero_mandate.dropna()
 
     # get the NPV of the baseline scenario under 3 interest rates
     interest_rates = [0.03, 0.12, 0.20]
@@ -108,12 +106,31 @@ def costs_and_benefits(config_fname, reference_year):
     # calculate the npv
     for k in interest_rates:
         # remove identifying information from the dataframes
-        net_zero_total_cost = net_zero_total_cost.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
         total_costs = total_costs.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
         scenario_market = scenario_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
         baseline_market = baseline_market.drop(columns=['Units', 'cost_type', "0", 0], errors='ignore')
 
-        npv_net_zero["NPV of Net Zero Mandate" + " | " + str(k*100) + "%"] = npf.npv(rate=k, values=net_zero_total_cost.values[0]) / 1000000
+        # calculate the npv of each sector
+        net_zero_mandate["npv_" + str(k)] = net_zero_mandate.apply(lambda row: npf.npv(rate=k, values=row[[str(2025 + i) for i in range(0, 26)]].values) / 1000000, axis=1)
+        CDR_market_size = net_zero_mandate[net_zero_mandate["cost_type"] == "CDR Market"].copy(deep=True)
+        CDR_market_size = CDR_market_size["npv_" + str(k)].values[0]
+
+        # get the total npv
+        net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1)
+
+        # find the percentage cost decrease necessary to get net zero compared to nzn
+        nzn_cost = dict()
+        nzn_cost[0.03] = 11.671464192551309
+        nzn_cost[0.12] = 4.017011323074081
+        nzn_cost[0.20] = 1.9502325469245916
+
+        # total cost of net zero
+        total_net_zero_cost = net_zero_total_cost["npv_" + str(k)].values[0]
+
+        # add labels to data
+        npv_net_zero["Units"] = "Trillion $USD"
+        npv_net_zero["NPV of Net Zero Mandate" + " | " + str(k*100) + "%" + " | Trillion $USD"] = total_net_zero_cost
+        npv_net_zero["Cost Decrease necessary in CDR market" + " | " + str(k*100) + "%" + " | % of CDR market"] = 100*(total_net_zero_cost-nzn_cost[k])/CDR_market_size
         costs = npf.npv(rate=k, values=total_costs.values[0])
         # benefits are defined as lower costs in the CDR market. these are compared to the baseline market
         benefits = npf.npv(rate=k, values=scenario_market.values[0]) - npf.npv(rate=k, values=baseline_market.values[0]) # benefits are negative, costs are positive
@@ -550,10 +567,10 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
+    for i in ["nzn_nzn", "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
               "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
               "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-              "nothing_nothing","nzn_nzn", "low_low", "high_high", "excess_excess", "4gt_4gt",
+              "nothing_nothing", "low_low", "high_high", "excess_excess", "4gt_4gt",
               "45Q-2040_low", "45Q-2050_low","CDRIA-2035_low", "CDRIA-2050_low",
               "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
               "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
