@@ -172,8 +172,6 @@ def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procur
         CB_error = pd.DataFrame()
         CB_error["error"] = "error in computing the costs and benefits in this scenario"
         CB_error.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                        "/cost-benefit-analysis.csv")
-        CB_error.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                         "/npv of achieving net zero.csv")
         CB_error.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                         "/interpolated costs of achieving net zero.csv")
