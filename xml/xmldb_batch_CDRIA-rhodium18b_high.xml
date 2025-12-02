@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<ModelInterfaceBatch>
+   <class name="ModelInterface.ModelGUI2.DbViewer">
+      <command name="XMLDB Batch File">
+         <scenario name="CDRIA-rhodium18b_high"/>
+         <queryFile>xml/query_list.xml</queryFile>
+         <outFile>data/gcam_out/CDRIA-rhodium18b/high/ref.csv</outFile>
+         <xmldbLocation>gcam/output/database_basexdb-CDRIA-rhodium18b_high</xmldbLocation>
+      </command>
+   </class>
+</ModelInterfaceBatch>
