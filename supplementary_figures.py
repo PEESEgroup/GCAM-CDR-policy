@@ -12,7 +12,7 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    compare_policy_costs("CDRIA-rhodium18b_high", "innovation-rhodium18b_high")
+    compare_policy_costs("CDRIA-rhodium18b_low", "CDRIA-2035_low")
     # CDR_subsidies(config_fname, "2035", "2040")
 
 
