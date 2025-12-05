@@ -12,7 +12,7 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    compare_policy_costs("45Q-2040_low", "45Q-2050_low")
+    compare_policy_costs("CDRIA-rhodium18b_high", "innovation-rhodium18b_high")
     # CDR_subsidies(config_fname, "2035", "2040")
 
 
@@ -1375,7 +1375,7 @@ def compare_policy_costs(scenario1, scenario2):
         # if a year has been masked from the data, don't fill na
         no_subsidy = cost_diff[cost_diff["scenario_new"] == scenario]
         if no_subsidy[str(i) + "_new"].isnull().all() or no_subsidy[str(i) + "_old"].isnull().all():
-            cost_diff[str(i)] = cost_diff[str(i) + "_new"] - cost_diff[str(i) + "_old"]
+            cost_diff[str(i)] = cost_diff[str(i) + "_new"].fillna(0) - cost_diff[str(i) + "_old"].fillna(0)
         else:
             cost_diff[str(i)] = cost_diff[str(i) + "_new"].fillna(0) - cost_diff[str(i) + "_old"].fillna(0)
     plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product", "change in policy cost by year " + scenario2.replace("/", "_") + " - " + scenario1.replace("/", "_"),
