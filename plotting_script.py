@@ -41,14 +41,17 @@ def costs_and_benefits(config_fname, reference_year):
 
     # get the costs of the scenario
     scenario_df = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario + "/" + baseline +
-                            "/policy cost by technology.csv")
+                              "/policy cost by technology.csv")
     # get the costs of the baseline
     baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
-                                  "/policy cost by technology.csv")
+                              "/policy cost by technology.csv")
 
-    baseline_subsidy, baseline_deadweight, baseline_CTax, baseline_market, baseline_innovation_costs = get_CB_dfs(baseline_df, npv_cols)
+    baseline_subsidy, baseline_deadweight, baseline_CTax, baseline_market, baseline_innovation_costs = get_CB_dfs(
+        baseline_df, npv_cols)
     # if there is no year missing in the scenario, then compute the costs, benefits, and npv
-    scenario_df = scenario_df[["product_price", "technology_price", "2020", "2025", "2030", "2035", "2040", "2045", "2050", "Units", "scenario", "baseline", "product"]]
+    scenario_df = scenario_df[
+        ["product_price", "technology_price", "2020", "2025", "2030", "2035", "2040", "2045", "2050", "Units",
+         "scenario", "baseline", "product"]]
     scenario_subsidy, scenario_deadweight, scenario_CTax, scenario_market, scenario_innovation_costs = get_CB_dfs(
         scenario_df, npv_cols)
 
@@ -136,11 +139,11 @@ def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procur
 
             # get information about the CDR market in 2050
             CDR_market_2050 = net_zero_mandate[net_zero_mandate["cost_type"] == "CDR Market"].copy(deep=True)
-            CDR_market_2050 = CDR_market_2050["2050"].values[0]/1000000 # convert millions to trillions
+            CDR_market_2050 = CDR_market_2050["2050"].values[0] / 1000000  # convert millions to trillions
 
             # get the total npv
             net_zero_total_cost = net_zero_mandate.groupby(["Units"]).sum(min_count=1)
-            total_market_2050 = net_zero_total_cost["2050"].values[0]/1000000 # convert millions to trillions
+            total_market_2050 = net_zero_total_cost["2050"].values[0] / 1000000  # convert millions to trillions
 
             # find the percentage cost decrease necessary to get net zero compared to nzn
             nzn_cost = dict()
@@ -197,7 +200,7 @@ def fiscal_cost_benefit_analysis(NPV_CB, baseline_market, config_fname, fiscal_c
         NPV_CB["Benefits" + " | " + str(k * 100) + "%"] = benefits
         NPV_CB["Costs" + " | " + str(k * 100) + "%"] = fiscal_costs_cb
         NPV_CB["Benefits/Costs" + " | " + str(k * 100) + "%"] = benefits / fiscal_costs_cb
-        NPV_CB["Benefits-Costs" + " | " + str(k * 100) + "%"] = benefits - fiscal_costs_cb
+        NPV_CB["Benefits+Costs" + " | " + str(k * 100) + "%"] = benefits + fiscal_costs_cb # benefits are negative and costs are positive
 
         # write out information in .csv
     NPV_CB["Units"] = "Million $USD or unitless"
@@ -229,7 +232,8 @@ def get_CB_dfs(baseline_market, npv_cols):
 
     # get innovation information
     baseline_innovation_funding = baseline_market[(baseline_market["product"] == "Investment in R&D") |
-                                                  (baseline_market["product"] == "Investment in DAC Hubs")].copy(deep=True)
+                                                  (baseline_market["product"] == "Investment in DAC Hubs")].copy(
+        deep=True)
     if len(baseline_innovation_funding) != 0:
         baseline_innovation_funding = data_manipulation.interpolate(baseline_innovation_funding, "extended")
         baseline_innovation_funding["cost_type"] = "Investment in R&D"
@@ -241,7 +245,9 @@ def get_CB_dfs(baseline_market, npv_cols):
 
     # get market information
     baseline_market = baseline_market[
-        (baseline_market["technology_price"] != "subsidy") & (baseline_market["product_price"] != "CO2") & (baseline_market["product"] != "Investment in R&D") & (baseline_market["product"] != "Investment in DAC Hubs")].copy(deep=True)
+        (baseline_market["technology_price"] != "subsidy") & (baseline_market["product_price"] != "CO2") & (
+                    baseline_market["product"] != "Investment in R&D") & (
+                    baseline_market["product"] != "Investment in DAC Hubs")].copy(deep=True)
     baseline_market = data_manipulation.interpolate(baseline_market, "linear")
     baseline_market["cost_type"] = "CDR Market"
     baseline_market = baseline_market.groupby(["cost_type", "Units"]).sum(min_count=1).reset_index()
@@ -278,11 +284,11 @@ def subsidy_expiration(config_fname, reference_year):
         columns = ["GCAM", "product_price"]
         for i in list_of_subsidies:
             CDR[str(i) + "_total_loss"] = CDR.apply(
-                lambda row: -1*(row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
+                lambda row: -1 * (row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
                     str(i) + "_price"]
                 if row[str(i) + "_price"] > row[str(i) + "_subsidized"] else 0, axis=1)
             CDR[str(i) + "_CDR-Market_loss"] = CDR.apply(
-                lambda row: -1* (row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
+                lambda row: -1 * (row[str(i) + "_supply"] - row[str(year_without_subsidies) + "_supply"]) * row[
                     str(i) + "_subsidized"]
                 if row[str(i) + "_price"] > row[str(i) + "_subsidized"] else 0, axis=1)
             CDR[str(i) + "_CDR-Subsidy_loss"] = CDR[str(i) + "_total_loss"] - CDR[str(i) + "_CDR-Market_loss"]
@@ -295,9 +301,10 @@ def subsidy_expiration(config_fname, reference_year):
         CDR_df["SSP"] = "na"
         CDR_df["Units"] = "Million USD/yr"
         # remove rows with no change
-        CDR_df = CDR_df[CDR_df["Change in market size"]!= 0]
+        CDR_df = CDR_df[CDR_df["Change in market size"] != 0]
 
-        plotting.plot_regional_hist_avg(CDR_df, 'Change in market size', "change in size of markets once the subsidy ends",
+        plotting.plot_regional_hist_avg(CDR_df, 'Change in market size',
+                                        "change in size of markets once the subsidy ends",
                                         "category", config_fname)
 
         # get only wasted and good spend
@@ -305,14 +312,14 @@ def subsidy_expiration(config_fname, reference_year):
         CDR_good_subsidy = CDR.copy(deep=True)
 
         for i in list_of_subsidies:
-            CDR_wasted_subsidy[str(i)+"_CDR-Subsidy_loss"] = CDR_wasted_subsidy.apply(
-                lambda row: 0 if row[str(i)+"_CDR-Subsidy_loss"] > 0 else row[str(i)+"_CDR-Subsidy_loss"], axis=1)
-            CDR_wasted_subsidy[str(i)+"_CDR-Market_loss"] = CDR_wasted_subsidy.apply(
-                lambda row: 0 if row[str(i)+"_CDR-Market_loss"] > 0 else row[str(i)+"_CDR-Market_loss"], axis=1)
-            CDR_good_subsidy[str(i)+"_CDR-Subsidy_loss"] = CDR_good_subsidy.apply(
-                lambda row: 0 if row[str(i)+"_CDR-Subsidy_loss"] < 0 else row[str(i)+"_CDR-Subsidy_loss"], axis=1)
-            CDR_good_subsidy[str(i)+"_CDR-Market_loss"] = CDR_good_subsidy.apply(
-                lambda row: 0 if row[str(i)+"_CDR-Market_loss"] < 0 else row[str(i)+"_CDR-Market_loss"], axis=1)
+            CDR_wasted_subsidy[str(i) + "_CDR-Subsidy_loss"] = CDR_wasted_subsidy.apply(
+                lambda row: 0 if row[str(i) + "_CDR-Subsidy_loss"] > 0 else row[str(i) + "_CDR-Subsidy_loss"], axis=1)
+            CDR_wasted_subsidy[str(i) + "_CDR-Market_loss"] = CDR_wasted_subsidy.apply(
+                lambda row: 0 if row[str(i) + "_CDR-Market_loss"] > 0 else row[str(i) + "_CDR-Market_loss"], axis=1)
+            CDR_good_subsidy[str(i) + "_CDR-Subsidy_loss"] = CDR_good_subsidy.apply(
+                lambda row: 0 if row[str(i) + "_CDR-Subsidy_loss"] < 0 else row[str(i) + "_CDR-Subsidy_loss"], axis=1)
+            CDR_good_subsidy[str(i) + "_CDR-Market_loss"] = CDR_good_subsidy.apply(
+                lambda row: 0 if row[str(i) + "_CDR-Market_loss"] < 0 else row[str(i) + "_CDR-Market_loss"], axis=1)
 
         CDR_wasted_subsidy = CDR_wasted_subsidy.groupby(["product_price"]).sum(min_count=1)
         CDR_wasted_subsidy = CDR_wasted_subsidy.reset_index()
@@ -326,12 +333,14 @@ def subsidy_expiration(config_fname, reference_year):
         CDR["product"] = CDR["product_price"] + " " + CDR["spend"]
 
         CDR.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
-                  "/subsidy-and-market-spend-on-subsidized-techs.csv")
+                   "/subsidy-and-market-spend-on-subsidized-techs.csv")
 
         # remove market spend to focus on subsidies
         for i in list_of_subsidies:
-            CDR[str(i)] = CDR[str(i)+"_CDR-Subsidy_loss"]
-        plotting.plot_stacked_bar_product(CDR, list_of_subsidies, "product", "change in CDR market size from base year to year after subsidies end", config_fname)
+            CDR[str(i)] = CDR[str(i) + "_CDR-Subsidy_loss"]
+        plotting.plot_stacked_bar_product(CDR, list_of_subsidies, "product",
+                                          "change in CDR market size from base year to year after subsidies end",
+                                          config_fname)
 
 
 def market_share(config_fname, reference_year):
@@ -444,9 +453,9 @@ def CDR_cost(config_fname, year):
     scenario = config_fname.split("/")[0]
 
     # build and write out scenario policy cost
-    supply = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech")
+    supply = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech", source="unmasked")
     supply["Units"] = "Mt CO$_{2}$-eq"
-    price = data_manipulation.get_sensitivity_data([config_fname], "prices_of_all_markets")
+    price = data_manipulation.get_sensitivity_data([config_fname], "prices_of_all_markets", source="unmasked")
     price["product"] = price.apply(lambda row: data_manipulation.price_subsidy(row), axis=1)
 
     # match subsidy market to the states
@@ -548,7 +557,7 @@ def CDR_cost(config_fname, year):
 
     # add CO2 costs into the dataframe
     plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product",
-                                      "policy cost by year (no C tax)", config_fname)
+                                      "policy cost by year (no mitigation cost)", config_fname)
     dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                      "/policy cost by technology_no co2.csv")
 
@@ -566,7 +575,7 @@ def CDR_cost(config_fname, year):
             else:
                 cost_diff[str(i)] = cost_diff[str(i) + "_new"].fillna(0) - cost_diff[str(i) + "_old"].fillna(0)
         plotting.plot_stacked_bar_product(cost_diff, c.GCAMConstants.plotting_x, "product",
-                                          "change in policy cost by year (no C tax)", config_fname)
+                                          "change in policy cost by year (no mitigation cost)", config_fname)
 
         # add a total row
         cols = ["2025", "2030", "2035", "2040", "2045", "2050", "product", "scenario_new", "baseline", "Units"]
@@ -583,16 +592,18 @@ def CDR_cost(config_fname, year):
         C_costs[str(i)] = C_costs[str(i) + "_total_cost"]
 
     dataframe = pd.concat([dataframe, C_costs])
-
-    plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year",
-                                      config_fname)
     dataframe.to_csv("data/data_analysis/supplementary_tables/" + str(config_fname).replace("_", "/") + "/" +
                      "/policy cost by technology.csv")
+    # keep the C cost information in dataframe, but don't plot it
+    dataframe = dataframe[dataframe["product"] != "C Tax Revenue"]
+    plotting.plot_stacked_bar_product(dataframe, c.GCAMConstants.plotting_x, "product", "policy cost by year",
+                                      config_fname)
 
     # compare this bar plot with default one (if this is not a default scenario)
     if baseline != scenario:
         cost_diff = pd.read_csv("data/data_analysis/supplementary_tables/" + baseline + "/" + baseline +
                                 "/policy cost by technology.csv")
+        cost_diff = cost_diff[cost_diff["product"] != "C Tax Revenue"]
         cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "baseline"], suffixes=("_old", "_new"))
         cost_diff["Units"] = "Million 2025$USD/yr"
         for i in c.GCAMConstants.plotting_x:
@@ -619,14 +630,16 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["nzn_nzn", "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
+    for i in ["nzn_nzn", "nothing_nothing", "low_low", "high_high", "excess_excess", "4gt_4gt",
+              "s1-procureScaling-n_nothing", "s1-procure3B-n_nothing", "s1-procureRhodium-n_nothing",
               "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
               "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-              "nothing_nothing", "low_low", "high_high", "excess_excess", "4gt_4gt",
-              "45Q-2040_low", "45Q-2050_low","CDRIA-2035_low", "CDRIA-2050_low",
+              "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
               "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-              "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low", "innovation-rhodium18b_low", "innovation-triple_low",
-              "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high", "innovation-rhodium18b_high", "innovation-triple_high"]:
-
-    #for i in ["nzn_nzn"]:
+              "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
+              "innovation-rhodium18b_low", "innovation-triple_low",
+              "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
+              "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
+              "CDRIA-rhodium18b_high"]:
+        # for i in ["CDRIA-2035_low", "CDRIA-2050_low","CDRIA-2035_high", "CDRIA-2050_high"]:
         main(i, "2050")
