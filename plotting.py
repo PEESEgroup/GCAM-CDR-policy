@@ -108,6 +108,8 @@ def get_subplot_dimensions(list_products):
         return 4, 4
     elif len(list_products) in [17, 18, 19, 20]:
         return 4, 5
+    elif len(list_products) == 51:
+        return 6, 9
     else:
         raise ValueError("too many products. Can only plot 20 products at a time")
 
@@ -593,12 +595,12 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title, RC
         fig.legend(handles, labels, bbox_to_anchor=(0.15, 0.54), facecolor='white', framealpha=1)
         plt.tight_layout()
     else:
-        fig.legend(handles, labels, bbox_to_anchor=(0.5, 1), facecolor='white', framealpha=1)
-        plt.tight_layout()
+        fig.legend(handles, labels, bbox_to_anchor=(0.9, 0.2), facecolor='white', framealpha=1)
+        # plt.tight_layout()
 
     # remove unnecessary axes
     for i in range(nrow * ncol - counter):
-        fig.delaxes(axs[int((counter + i) % nrow), int((counter + i) / nrow)])
+        fig.delaxes(axs[int((counter + i) % ncol), int((counter + i) / ncol)])
 
     plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + title + ".png", dpi=300)
     plt.show()
@@ -623,7 +625,7 @@ def plot_line_on_axs(x, y, lab, color, axs, nrow, ncol, counter):
         else:
             axs[int(counter % nrow)].plot(x, y, label=lab, color=color)
     else:
-        axs[int(counter % nrow), int(counter / nrow)].plot(x, y, label=lab, color=color)
+        axs[int(counter % ncol), int(counter / ncol)].plot(x, y, label=lab, color=color)
 
 
 def finalize_line_subplot(axs, ylabel, title, ncol, nrow, counter):
@@ -651,9 +653,9 @@ def finalize_line_subplot(axs, ylabel, title, ncol, nrow, counter):
             handles, labels = axs[0].get_legend_handles_labels()
             labels, handles = zip(*sorted(zip(labels, handles), key=lambda t: t[0]))
     else:
-        axs[int(counter % nrow), int(counter / nrow)].set_ylabel(ylabel)
-        axs[int(counter % nrow), int(counter / nrow)].set_title(title)
-        axs[int(counter % nrow), int(counter / nrow)].set_xlabel("Year")
+        axs[int(counter % ncol), int(counter / ncol)].set_ylabel(ylabel)
+        axs[int(counter % ncol), int(counter / ncol)].set_title(title)
+        # axs[int(counter % ncol), int(counter / ncol)].set_xlabel("Year")
         handles, labels = axs[0, 0].get_legend_handles_labels()
         labels, handles = zip(*sorted(zip(labels, handles), key=lambda t: t[0]))
 
@@ -911,59 +913,52 @@ def plot_line_product_CI(dataframe, column, title):
         return
     # get plot information
     # get subplot size
-    nrow, ncol = get_subplot_dimensions(["plot", "sidebar"])
+    ncol, nrow = get_subplot_dimensions(c.GCAMConstants.USA_region)
 
     # make plots and color scheme
-    fig, axs = plt.subplots(ncol, nrow, sharey='all', gridspec_kw={'wspace': 0.02, 'hspace': 0.2}, width_ratios=[12, 1])
+    fig, axs = plt.subplots(ncol, nrow, sharey='all', sharex='all')
 
     # find the number of model versions
     # get color scheme based on number of model versions
-    versions = dataframe["scenario"].unique()
+    versions = dataframe["fuel"].unique()
     colors, num_colors = get_colors(len(versions))
     try:
-        color_counter = 0
-        for i in products:
-            if "SSP" in SSP_baseline:
-                y = dataframe[(dataframe[column] == i) & (dataframe['SSP'] == SSP_baseline)]
-                skip_years = c.GCAMConstants.skip_years
-            else:
-                y = dataframe[(dataframe[column] == i) & (dataframe['Version'] == SSP_baseline)]
-                skip_years = c.GCAMConstants.skip_years + 1
+        # get colors and baseline
+        color_map = {item: index for index, item in enumerate(dataframe[column].unique())}
+        baseline = dataframe["baseline"].unique()[0]
+        counter = 0
 
-            if not y.empty:
-                # plot all versions in y
-                color = colors[color_counter]
+        # each region gets its own subplot
+        for j in c.GCAMConstants.USA_region:
+            y_region = dataframe[dataframe["GCAM"] == j]
 
-                # get line of data to plot and plot it
-                y_to_plot = y.values.tolist()[0][skip_years:skip_years + len(
-                    c.GCAMConstants.biochar_x)]  # only take the x values
-                plot_line_on_axs(c.GCAMConstants.biochar_x, y_to_plot, str(i), color, axs, nrow, ncol, 0)
+            # each product gets its own line and color
+            for i in dataframe[column].unique():
+                y = y_region[y_region[column] == i]
+                # baseline is a special line to be plotted
+                baseline_plot = y[y["scenario"] == baseline]
 
-                # get min and max data across SSPs
-                CI_df = dataframe[(dataframe[column] == i)]
-                min_seq = [CI_df[str(i)].min() for i in c.GCAMConstants.biochar_x]
-                max_seq = [CI_df[str(i)].max() for i in c.GCAMConstants.biochar_x]
+                if not y.empty:
+                    # plot all versions in y
+                    color = colors[color_map[i]]
 
-                # plot the min and max data
-                axs[0].fill_between(c.GCAMConstants.biochar_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
+                    # get line of data to plot and plot it
+                    y_to_plot = baseline_plot.values.tolist()[0][3:3 + len(c.GCAMConstants.plotting_x)]  # only take the x values
+                    plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, str(i), color, axs, nrow, ncol, counter)
 
-                # add rectangles on right plot
-                bar_year = str(max(c.GCAMConstants.biochar_x))
-                rect = patches.Rectangle((color_counter * 0.2, CI_df[bar_year].min()),
-                                         0.15, CI_df[bar_year].max() - CI_df[bar_year].min(), facecolor=color)
+                    # plot min and max data across SSPs
+                    min_seq = [y[str(i)].min() for i in c.GCAMConstants.plotting_x]
+                    max_seq = [y[str(i)].max() for i in c.GCAMConstants.plotting_x]
 
-                # Add the patch to the Axes
-                axs[1].add_patch(rect)
+                    # plot the min and max data
+                    axs[int(counter % ncol), int(counter / ncol)].fill_between(c.GCAMConstants.plotting_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
 
-                color_counter = color_counter + 1
+            # finalize each subplot
+            units = dataframe['Units'].unique()[0]
+            l, h = finalize_line_subplot(axs, units, j, ncol, nrow, counter)
+            counter = counter + 1
 
-        # get units
-        units = dataframe['Units'].unique()[0]
-        l, h = finalize_line_subplot(axs, units, title, ncol, nrow, 0)
-
-        axs[1].axis('off')
-
-        finalize_line_plot(fig, h, l, axs, nrow, ncol, 2, title, RCP, nonBaselineScenario)
+        finalize_line_plot(fig, h, l, axs, nrow, ncol, counter, title, baseline, "nonBaselineScenario")
 
     except ValueError as e:
         print(e)

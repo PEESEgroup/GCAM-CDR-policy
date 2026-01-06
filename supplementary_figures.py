@@ -3,6 +3,7 @@ import plotting
 import data_manipulation
 import constants as c
 import pandas as pd
+import numpy as np
 
 
 def main(config_fname, reference_year):
@@ -33,13 +34,14 @@ def electricity(config_fname, reference_year):
     elec_supply = pd.concat([tech, subsector])
 
     elec_price = data_manipulation.get_sensitivity_data(scenarios, "elec_prices_by_sector", source="unmasked")
-    # convert to modern moneys
+    # convert to modern moneys and eliminate outliers
     for i in c.GCAMConstants.plotting_x:
-        elec_price[str(i)] = elec_price[str(i)] * c.GCAMConstants.USD1975_to_USD2025
+        elec_price[str(i)] = elec_price.apply(lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 if row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 < 1000 else np.nan, axis=1)
 
     # focus on US regions
     elec_price = elec_price[elec_price["GCAM"].isin(c.GCAMConstants.USA_region)]
     elec_supply = elec_supply[elec_supply["GCAM"].isin(c.GCAMConstants.USA_region)]
+    elec_supply = elec_supply[elec_supply["output"] == "electricity"]
 
     # sort by baseline
     elec_price_low = elec_price[elec_price["baseline"] == "low"].copy(deep=True)
@@ -47,7 +49,10 @@ def electricity(config_fname, reference_year):
     elec_supply_low = elec_supply[elec_supply["baseline"] == "low"].copy(deep=True)
     elec_supply_high = elec_supply[elec_supply["baseline"] == "high"].copy(deep=True)
 
-    plotting.plot_line_product_CI(elec_price_low,"product", "electricity prices in low baseline")
+    plotting.plot_line_product_CI(elec_price_low, "fuel", "electricity prices in low baseline")
+    plotting.plot_line_product_CI(elec_price_high, "fuel", "electricity prices in high baseline")
+    plotting.plot_line_product_CI(elec_supply_low, "technology", "electricity supply in low baseline")
+    plotting.plot_line_product_CI(elec_supply_high, "technology", "electricity supply in high baseline")
 
 
 def CDR_subsidies(config_fname, year1, year2):
