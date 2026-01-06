@@ -1,0 +1,502 @@
+1990,2005,2020,2025,2030,2035,2040,2045,2050,scenario,baseline,GCAM,sector,subsector,technology,output,concentration,input,product,fuel,LandLeaf,GHG,Units
+0.0,0.0,0.0,0.0,0.0,-0.7647106,-1.824068,-2.939615,-4.31406,nzn,nzn,Africa_Eastern,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0287641,0.0661667,0.150139,0.294614,0.476456,0.675486,0.89236,nzn,nzn,Africa_Eastern,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0012925,0.00210251,0.00815307,0.01601693,0.02576416,0.044406876,0.07287975,0.09790813000000001,0.1232635,nzn,nzn,Africa_Eastern,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+6.61901E-4,0.00468252,0.0126142,0.020667320000000003,0.02867986,0.03924855149999999,0.048224483000000005,0.054324939999999995,0.058567619999999994,nzn,nzn,Africa_Eastern,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00613634,0.01129472,0.0167924,0.023593049999999997,0.03088863,0.03964431,0.050621559999999996,nzn,nzn,Africa_Eastern,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00117369,0.00361098,0.0350802,0.0543625,0.0709085,0.0862783,0.101845,0.108165,0.113283,nzn,nzn,Africa_Eastern,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0220885,0.0372506,0.124544,0.152375,0.180205,0.208035,0.235866,0.263696,0.291526,nzn,nzn,Africa_Eastern,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00217662,0.0183359,0.0471875,0.100308,0.200957,0.338493,0.522022,nzn,nzn,Africa_Eastern,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0092828,0.0284467,0.1102937,0.14194410000000002,0.1464702,0.1523694,0.1411547,0.1243227,0.12160610000000001,nzn,nzn,Africa_Eastern,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,5.21026E-5,0.0302895459,0.09097048110000001,0.15780001309999997,0.2621565031,0.4799106531000001,0.8269978161,1.345049216,nzn,nzn,Africa_Eastern,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,1.03005E-5,0.06546690200000001,0.17209091199999998,0.30037411199999997,0.487586612,0.827255012,1.3012489299999999,1.9236777099999998,nzn,nzn,Africa_Eastern,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,1.62432E-6,0.0,7.698229999999999E-6,2.636734E-5,7.109879999999999E-5,1.63197E-4,nzn,nzn,Africa_Eastern,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,2.190776E-5,0.0,1.8641283600000004E-5,3.7225121E-5,7.545481E-5,1.4499498E-4,nzn,nzn,Africa_Eastern,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,8.33928E-6,0.0,8.352391E-6,1.849125E-5,4.4087080000000005E-5,1.0298002E-4,nzn,nzn,Africa_Eastern,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.16478935,-0.3132564,-0.5568334,-0.8417089999999999,nzn,nzn,Africa_Northern,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0711615,0.220007,0.32189,0.429724,0.639413,0.826605,1.00654,nzn,nzn,Africa_Northern,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00196384,0.00355779,0.00648895,0.0095568281,0.013784860999999999,0.01955143,0.025183450000000003,nzn,nzn,Africa_Northern,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00796429,0.0458413,0.0870624,0.10077235999999999,0.11711832999999999,0.12799233410000002,0.127918389,0.12423992,0.11597178,nzn,nzn,Africa_Northern,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.13579629999999998,0.482397,1.116576,1.27431,1.508681,1.6661801,1.6824067,1.775722,1.862197,nzn,nzn,Africa_Northern,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00886282,0.0178351,0.0306166,0.0414625,0.0522699,0.0676047,0.0755293,nzn,nzn,Africa_Northern,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0408229,0.0516283,0.0615764,0.0667426,0.0719089,0.0770751,0.0822413,0.0874075,0.0925738,nzn,nzn,Africa_Northern,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00108671,0.00600775,0.0176371,0.0315956,0.0480679,0.0814445,0.124071,nzn,nzn,Africa_Northern,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.117712,0.127327,0.23877679999999998,0.2459791,0.316133,0.34432609999999997,0.3606431,0.41959,0.453557,nzn,nzn,Africa_Northern,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,7.19924E-6,0.022175626839999997,0.0652810481,0.147865367,0.216630893,0.264374582,0.35829781060000004,0.4688724824,nzn,nzn,Africa_Northern,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0028798,0.047063413,0.08043028599999999,0.14317053600000001,0.21305677600000003,0.30445483599999995,0.48092515299999994,0.6997191229999999,nzn,nzn,Africa_Northern,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,3.764E-7,1.065887E-6,2.54834E-6,4.97619E-6,nzn,nzn,Africa_Northern,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.3329030010000001E-5,2.2262207599999997E-5,3.248874E-5,4.4913289999999995E-5,nzn,nzn,Africa_Northern,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.280715E-4,2.1986786E-4,3.56802E-4,5.67204E-4,nzn,nzn,Africa_Northern,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.035142037,-0.07017132000000001,-0.1630988,-0.335235,nzn,nzn,Africa_Southern,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0406569,0.0854868,0.154413,0.256076,0.424245,0.608012,0.82139,nzn,nzn,Africa_Southern,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,8.40939E-4,0.0011895391,0.001953818,0.0028314973,0.003879415,0.006673948,0.01142882,nzn,nzn,Africa_Southern,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0213304,0.0204676,0.0387956,0.05082609,0.07413568,0.09305593799999999,0.10398919200000001,0.12625652,0.15782340999999997,nzn,nzn,Africa_Southern,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0041616150000000005,0.035385,0.044142200000000006,0.0640567,0.07808354,0.08806293,0.12095940000000001,0.1756957,nzn,nzn,Africa_Southern,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,3.71038E-4,0.00118813,0.00355706,0.00623379,0.0102149,0.0209709,0.0360983,nzn,nzn,Africa_Southern,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0548817,0.120117,0.175234,0.188839,0.202445,0.216051,0.229657,0.243262,0.256868,nzn,nzn,Africa_Southern,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,3.56484E-5,3.19545E-4,0.0013836,0.00278298,0.00493048,0.0123097,0.0271945,nzn,nzn,Africa_Southern,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00254618,0.00617975,0.0536839,0.0965783,0.19939780000000001,0.2710556,0.3254094,0.48272889999999996,0.6665894,nzn,nzn,Africa_Southern,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,1.12E-5,6.34414341E-4,0.0016895948049999998,0.004372617495000001,0.006995551795000001,0.011080310794999998,0.027458711795,0.06604973198,nzn,nzn,Africa_Southern,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,2.20001E-6,5.7425023E-4,0.0019549133799999997,0.006627810579999999,0.01277532788,0.02404793988,0.06833111724,0.16288228314999997,nzn,nzn,Africa_Southern,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.6774219999999998E-7,4.3017499999999997E-7,1.2140359999999999E-6,2.833784E-6,nzn,nzn,Africa_Southern,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.95734885E-5,3.2004873E-5,5.428217E-5,9.13155E-5,nzn,nzn,Africa_Southern,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.2217629E-5,2.0604880000000002E-5,4.0933389999999996E-5,8.25899E-5,nzn,nzn,Africa_Southern,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.33183408999999997,-0.7157177,-1.292955,-2.162822,nzn,nzn,Africa_Western,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0279396,0.0722513,0.134969,0.248134,0.486492,0.833446,1.31609,nzn,nzn,Africa_Western,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+1.69199E-4,6.156E-4,0.00194472,0.003757813,0.0091263,0.016610457,0.027733536,0.04313769,0.0636475,nzn,nzn,Africa_Western,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+4.69068E-4,0.00274717,0.00166559,0.0026293230000000003,0.005195679,0.0083509399,0.010552843999999999,0.013587323,0.017348879999999997,nzn,nzn,Africa_Western,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.02665792,0.0733212,0.1697359,0.2080742,0.342924,0.4873859,0.6024419,0.796133,1.065317,nzn,nzn,Africa_Western,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00175341,0.00593325,0.0194464,0.0367379,0.0611744,0.0960329,0.132948,nzn,nzn,Africa_Western,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0804331,0.108752,0.160889,0.203657,0.246425,0.289193,0.331962,0.37473,0.417498,nzn,nzn,Africa_Western,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.7088E-4,0.00169916,0.0089347,0.0215879,0.0441077,0.0900135,0.167319,nzn,nzn,Africa_Western,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0167247,0.0221465,0.0346202,0.03935723,0.0715484,0.09671529999999999,0.12080650000000001,0.17597279999999998,0.22656110000000002,nzn,nzn,Africa_Western,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,1.95E-5,0.00712648917,0.01857899988,0.05287718978000001,0.08920863378,0.14003442378,0.25012376377999995,0.4604379057,nzn,nzn,Africa_Western,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,9.0E-6,0.0040503005,0.0144330244,0.055027435400000005,0.1194822954,0.23556362539999998,0.4534681853,0.7756375888999999,nzn,nzn,Africa_Western,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.995392E-6,6.08438E-6,1.4298889999999999E-5,2.787479E-5,nzn,nzn,Africa_Western,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.42239379E-6,4.7747951E-6,8.739965E-6,1.5066254999999999E-5,nzn,nzn,Africa_Western,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.0469038E-4,2.104192E-4,4.099491E-4,7.619133E-4,nzn,nzn,Africa_Western,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.09132484,-0.22060539999999998,-0.466193,-0.733357,nzn,nzn,Australia_NZ,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0109198,0.047901,0.0699542,0.0924644,0.130238,0.160933,0.194425,nzn,nzn,Australia_NZ,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00187915,0.00266559,0.0036318080000000003,0.004694159999999999,0.0056883713,0.009049980999999999,0.01463633,0.01950051,nzn,nzn,Australia_NZ,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.438993,0.672492,0.700637,0.7822097,0.8366809,0.842190798,0.8114096,0.7459862500000001,0.6381006000000001,nzn,nzn,Australia_NZ,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0721281,0.10866680000000001,0.21954230000000002,0.2399881,0.2644183,0.26982218,0.2525176,0.2678692,0.2809964,nzn,nzn,Australia_NZ,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00746625,0.0111489,0.0418674,0.0548328,0.0685484,0.0785778,0.0947439,0.102994,0.125157,nzn,nzn,Australia_NZ,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.134392,0.139082,0.142893,0.149486,0.156079,0.162672,0.169265,0.175858,0.182451,nzn,nzn,Australia_NZ,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,9.23684E-4,0.00260532,0.00423365,0.00921781,0.0245533,0.0456167,nzn,nzn,Australia_NZ,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0128229,0.0102417,0.018430259999999997,0.01587752,0.01535887,0.01412839,0.01431676,0.01747475,0.016794530000000002,nzn,nzn,Australia_NZ,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,2.8439291E-4,0.050082724460000005,0.12137863700000001,0.2142669629,0.27341074890000006,0.3364192189000001,0.4296509433000001,0.5185506073000001,nzn,nzn,Australia_NZ,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00539626,0.077543106,0.10836629000000002,0.146598498,0.17894937899999996,0.241234649,0.343548166,0.4867603730000001,nzn,nzn,Australia_NZ,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,6.528440000000001E-7,2.338863E-6,6.83927E-6,1.535687E-5,nzn,nzn,Australia_NZ,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.7973841110000004E-4,4.7580268E-4,7.045021100000001E-4,0.0010125478,nzn,nzn,Australia_NZ,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,6.230068E-5,1.0644882000000001E-4,1.8956880000000001E-4,3.46335E-4,nzn,nzn,Australia_NZ,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.22465717999999998,-0.44494219999999995,-0.7479770000000001,-1.079389,nzn,nzn,Brazil,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.038378,0.196905,0.309907,0.389425,0.485358,0.567343,0.653774,nzn,nzn,Brazil,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00470206,0.007493357,0.011099099999999999,0.0145135518,0.019709344,0.02561152,0.03093618,nzn,nzn,Brazil,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0097564,0.0219918,0.119903,0.1679902,0.2184371,0.251719346,0.26354299,0.26450975000000004,0.2502658,nzn,nzn,Brazil,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+4.31858E-5,0.050039600000000004,0.444352,0.6468240000000001,0.893141,1.0452707,1.0785075000000002,1.1676700000000002,1.233327,nzn,nzn,Brazil,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00914143,0.0258811,0.0512237,0.0741008,0.101649,0.143425,0.177657,nzn,nzn,Brazil,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.744149,1.21485,1.33772,1.38037,1.42302,1.46567,1.50832,1.55097,1.59362,nzn,nzn,Brazil,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00805056,0.0354828,0.05808319,0.06737309999999999,0.08007929999999999,0.0897783,0.1020096,0.1265272,0.1556766,nzn,nzn,Brazil,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00848962,0.0296789,0.1268679,0.1419854,0.172622,0.1552134,0.1384454,0.13787680000000002,0.1286973,nzn,nzn,Brazil,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.012121355759999999,0.06453157456000001,0.17436538716000002,0.27214947616,0.36072660616,0.48393231916,0.5999938226,nzn,nzn,Brazil,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,3.34846E-4,0.1824325751,0.31304167609999994,0.4864065860999999,0.6327282261,0.7997573361,0.9857755719999999,1.1615140130000001,nzn,nzn,Brazil,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.902041E-6,5.56822E-6,1.227313E-5,2.300933E-5,nzn,nzn,Brazil,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,9.74197566E-5,1.74005063E-4,2.5844567E-4,3.6804465000000005E-4,nzn,nzn,Brazil,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,3.0431065E-4,5.470261000000001E-4,8.94932E-4,0.001450125,nzn,nzn,Brazil,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.3002775,-0.7661106999999999,-1.220929,-1.651775,nzn,nzn,Canada,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,7.80591E-4,0.0110068,0.0312198,0.0462873,0.049592,0.0467443,0.0480546,nzn,nzn,Canada,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0142055,0.0305674,0.0516193,0.05697123,0.05943399,0.058885019999999996,0.06414557,0.06234218,0.0586636,nzn,nzn,Canada,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.29599,0.362107,0.310108,0.3576801,0.3913403,0.401756189,0.40390601000000004,0.38195906999999996,0.32987571,nzn,nzn,Canada,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.03483692,0.1445786,0.3083889,0.3510771,0.397061,0.41568502999999996,0.4189223,0.41996639999999996,0.40508039999999995,nzn,nzn,Canada,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0067593,0.0119865,0.0173063,0.0213409,0.0318608,0.0432918,0.0482441,nzn,nzn,Canada,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+1.06835,1.30301,1.40009,1.42433,1.44857,1.4728,1.49704,1.52128,1.54552,nzn,nzn,Canada,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.262679,0.331342,0.46433599999999997,0.55346,0.635712,0.682634,0.795299,0.9337759999999999,1.057705,nzn,nzn,Canada,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0592843,0.0563432,0.03503042,0.0418128,0.0492329,0.0494008,0.05234900000000001,0.052555000000000004,0.04818817,nzn,nzn,Canada,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,6.11996E-5,0.0290980565,0.0693314173,0.1383775586,0.19894629,0.324482379,0.4988472389999999,0.6940911624999999,nzn,nzn,Canada,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00564116,0.169398605,0.24913448,0.34288621,0.42080200000000006,0.5962359800000001,0.7479687990000001,0.9294041650000001,nzn,nzn,Canada,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.189674E-6,7.5075099999999995E-6,1.6573830000000003E-5,3.324926E-5,nzn,nzn,Canada,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.153373256E-4,2.02778799E-4,3.0095101000000005E-4,4.4793026E-4,nzn,nzn,Canada,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,8.26871E-5,1.51326E-4,2.47519E-4,4.2640500000000003E-4,nzn,nzn,Canada,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.475928,-1.0087656,-1.595265,-2.37451,nzn,nzn,Central America and Caribbean,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0248905,0.050828,0.0837123,0.137442,0.214931,0.277091,0.322048,nzn,nzn,Central America and Caribbean,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.00722302,0.00742259,0.0332001,0.045080890000000005,0.054862339999999996,0.06382665500000001,0.07555006,0.0817561,0.08785950000000001,nzn,nzn,Central America and Caribbean,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+1.54792E-4,0.00896675,0.040698,0.04992366,0.05633212,0.059835116199999996,0.061287822,0.060783382000000004,0.05824791000000001,nzn,nzn,Central America and Caribbean,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0129172,0.0429885,0.1157714,0.138355,0.1575035,0.16708645,0.16925523,0.17416479999999998,0.17860579999999998,nzn,nzn,Central America and Caribbean,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00289785,0.0094887,0.0282489,0.0376352,0.0455432,0.0513152,0.060601,0.0634689,0.06841,nzn,nzn,Central America and Caribbean,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.049193,0.0743529,0.0907238,0.0963713,0.102019,0.107666,0.113314,0.118961,0.124609,nzn,nzn,Central America and Caribbean,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.0,0.00987601,0.0365577,0.0871447,nzn,nzn,Central America and Caribbean,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.124956,0.232929,0.2552616,0.2520825,0.2563347,0.25200079999999997,0.2242787,0.19772610000000002,0.172765,nzn,nzn,Central America and Caribbean,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,1.34487E-4,0.0447036984,0.1046196202,0.15933264319999998,0.19816310319999997,0.2601059332,0.3674889332000001,0.509207951,nzn,nzn,Central America and Caribbean,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00139077,0.090946412,0.17031844200000001,0.24773585200000003,0.309931632,0.402027112,0.5245710969999999,0.65213771,nzn,nzn,Central America and Caribbean,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,4.085750000000001E-6,1.12518E-5,2.338992E-5,4.81613E-5,nzn,nzn,Central America and Caribbean,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.903486029E-5,3.2111068300000006E-5,4.741167900000001E-5,7.411250999999999E-5,nzn,nzn,Central America and Caribbean,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,3.6561322E-5,6.26873E-5,9.9107E-5,1.719324E-4,nzn,nzn,Central America and Caribbean,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.08968623,-0.2603038,-0.43140449999999997,-0.622853,nzn,nzn,Central Asia,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.00534392,0.0424407,0.0874189,0.122143,0.159945,0.191341,0.227618,nzn,nzn,Central Asia,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00278291,0.003670325,0.005205419,0.006108403,0.010889679,0.01448076,0.017930420000000002,nzn,nzn,Central Asia,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.25661,0.20445,0.426585,0.46896479999999996,0.5064533,0.510116397,0.49182797999999994,0.43283821999999994,0.37723729,nzn,nzn,Central Asia,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.3188916,0.254898,0.5676438,0.6457809999999999,0.759888,0.8059223999999999,0.8171039,0.8429749999999999,0.858135,nzn,nzn,Central Asia,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00983462,0.0171082,0.0262502,0.0319925,0.043253,0.0542472,0.0575076,nzn,nzn,Central Asia,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.187164,0.207216,0.22609,0.247721,0.269353,0.290984,0.312616,0.334247,0.355879,nzn,nzn,Central Asia,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00976449,0.10730645,0.16705442,0.24747647,0.30092727999999996,0.41166656,0.5351316199999999,0.66279863,nzn,nzn,Central Asia,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.109773,0.043063,0.01137282,0.00931396,0.01093411,0.00979201,0.012065260000000001,0.01195238,0.0115885,nzn,nzn,Central Asia,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.010723341550000001,0.03610400345,0.09860401395,0.14384799195,0.21552640695,0.28386501194999997,0.34342338349999996,nzn,nzn,Central Asia,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0173400445328,0.034197398380800006,0.0640837687548,0.08773972745780001,0.14946655978280002,0.22988971331300004,0.309137461063,nzn,nzn,Central Asia,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.610742E-7,6.57298E-7,1.590196E-6,3.192692E-6,nzn,nzn,Central Asia,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,4.017845027E-5,6.7962602E-5,9.6406453E-5,1.3336904E-4,nzn,nzn,Central Asia,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,4.3995541E-5,8.116695999999999E-5,1.393203E-4,2.316483E-4,nzn,nzn,Central Asia,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-2.633667,-7.327327,-12.448229999999999,-16.93533,nzn,nzn,China,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,2.04753,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,China,missing,coal,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0407714,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,China,missing,gas,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.153444,1.14523,1.84514,2.37006,3.23124,3.99002,4.68999,nzn,nzn,China,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+1.44586E-6,0.0187199,0.223561,0.2571076,0.2827016,0.29385941,0.4220642,0.5042776,0.5515081,nzn,nzn,China,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+1.69113,7.22625,17.0845,19.110676,20.4453,20.319217169999995,19.7311637,18.338904000000003,16.171199,nzn,nzn,China,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00997552,0.084304,0.571744,0.623326,0.6889890000000001,0.6919113,0.7155541,0.780057,0.822862,nzn,nzn,China,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+2.05198E-4,4.13997E-4,0.0621969,0.116714,0.174125,0.203414,0.301946,0.401743,0.44233,nzn,nzn,China,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.456446,1.42964,4.01308,4.01308,4.01308,4.01308,4.01308,4.01308,4.01308,nzn,nzn,China,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.191116,1.007005,1.523322,2.097828,2.43986,3.360614,4.875119,6.409604,nzn,nzn,China,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.183375,0.182674,0.02571376,0.02879247,0.0322631,0.02870224,0.03587499,0.040468500000000004,0.03864961,nzn,nzn,China,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+7.19995E-6,3.10298E-4,0.48338279329999995,1.5326493053,2.9443856152999994,3.7147210652999996,4.827996565299999,6.03782312,7.017098875999999,nzn,nzn,China,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+7.19995E-6,0.00730145,1.1206734,1.82922677,2.72757957,3.3455662700000004,4.743754269999998,6.12889642,7.531780559999999,nzn,nzn,China,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,9.86192E-6,3.479053E-5,8.07795E-5,1.576998E-4,nzn,nzn,China,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.003017059424,0.0048781426,0.0070021138,0.010060389,nzn,nzn,China,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,7.480471E-5,1.32309E-4,2.286998E-4,4.021083E-4,nzn,nzn,China,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.30748517000000003,-0.6837365,-1.158245,-1.585658,nzn,nzn,EU-12,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+3.76747E-4,0.00339068,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,EU-12,missing,biomass,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.43464,0.323203,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,EU-12,missing,coal,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.180378,0.172213,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,EU-12,missing,gas,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0949402,0.0231068,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,EU-12,missing,refined liquids,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00290777,0.0281017,0.0543636,0.0707325,0.0935215,0.111645,0.133149,nzn,nzn,EU-12,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+1.65603E-4,0.00983885,0.0503835,0.05284504,0.0531501,0.053224533,0.060160712,0.06198569000000001,0.06207655000000001,nzn,nzn,EU-12,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.858619,0.892779,1.02366,1.1425066,1.2303893000000001,1.262652919,1.2424799700000002,1.1625534999999998,1.0370474,nzn,nzn,EU-12,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.140305,0.127549,0.130776,0.1543944,0.18427759999999999,0.2046655,0.21515530000000002,0.24208369999999999,0.2608375,nzn,nzn,EU-12,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0084855,0.0173485,0.0271072,0.0351404,0.0463929,0.0606493,0.0687984,nzn,nzn,EU-12,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0929088,0.14841,0.135083,0.140333,0.145582,0.150832,0.156081,0.161331,0.16658,nzn,nzn,EU-12,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.268824,0.348187,0.406567,0.46513899999999997,0.516464,0.5460389999999999,0.5998129999999999,0.695108,0.77998,nzn,nzn,EU-12,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0841875,0.0370118,0.02669527,0.030289999999999997,0.038139099999999995,0.04187746,0.04437278,0.0486955,0.046942300000000006,nzn,nzn,EU-12,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,3.60002E-6,0.055785482399999996,0.11075037740000002,0.1851026214,0.24332167840000002,0.3155719584,0.4019072084,0.485525888,nzn,nzn,EU-12,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00100801,0.1301294997,0.1825898247,0.2529122776999999,0.3213939276999999,0.4347839176999999,0.5364694704,0.6543579180000001,nzn,nzn,EU-12,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.5226399999999999E-6,4.46876E-6,1.02409E-5,1.942237E-5,nzn,nzn,EU-12,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.45782263E-4,3.96332383E-4,5.7190895E-4,8.029017E-4,nzn,nzn,EU-12,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.7576379E-5,4.926655E-5,8.87457E-5,1.550016E-4,nzn,nzn,EU-12,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-1.7793394999999999,-4.116096,-7.5571,-9.83043,nzn,nzn,EU-15,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0172954,0.0847225,0.140372,0.194406,0.283938,0.366768,0.473033,nzn,nzn,EU-15,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0284664,0.166771,0.324069,0.33138290000000004,0.32510910000000004,0.319074243,0.34979253,0.3634185,0.354163,nzn,nzn,EU-15,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+2.83936,2.59761,2.35196,2.5624937,2.682137,2.6994324250000004,2.6192657,2.4681520000000003,2.1447211999999998,nzn,nzn,EU-15,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.46399999999999997,1.937954,1.613261,1.7790810000000001,1.8869609999999999,1.92328163,1.8780657,1.9304942999999999,1.8677103000000002,nzn,nzn,EU-15,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0116132,0.0194279,0.0678578,0.116807,0.163605,0.201875,0.257945,0.336677,0.376994,nzn,nzn,EU-15,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.940387,0.966583,1.0788,1.0788,1.0788,1.0788,1.0788,1.0788,1.0788,nzn,nzn,EU-15,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+2.5926,3.24331,3.026748,3.274638,3.41106,3.4206700000000003,3.56705,4.08738,4.41083,nzn,nzn,EU-15,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.625782,0.363025,0.1262614,0.1278387,0.1380339,0.1410599,0.14127099999999998,0.1637268,0.13289220000000002,nzn,nzn,EU-15,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+5.39981E-5,0.00528024,0.6585070949999999,1.111169342,1.552366432,1.8867552019999998,2.3836133019999997,3.027431202,3.5561416969999997,nzn,nzn,EU-15,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0028007,0.252577,1.36887563,1.7804285400000002,2.22943095,2.6501170499999995,3.37423075,3.87506106,4.62215576,nzn,nzn,EU-15,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.51549E-5,7.95515E-5,2.011962E-4,3.678148E-4,nzn,nzn,EU-15,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.0014907451070000001,0.0024876530500000005,0.0037323888,0.0051032442999999995,nzn,nzn,EU-15,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,7.8179413E-4,0.00133177251,0.0022208041,0.00344311,nzn,nzn,EU-15,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.07988602,-0.23030609999999999,-0.3651475,-0.505083,nzn,nzn,Europe_Eastern,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Europe_Eastern,missing,biomass,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0064047,0.00640439,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Europe_Eastern,missing,coal,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.201978,0.264254,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Europe_Eastern,missing,gas,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0670189,0.00849732,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Europe_Eastern,missing,refined liquids,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00122648,0.0145934,0.0340903,0.044744,0.0513071,0.0559184,0.0613078,nzn,nzn,Europe_Eastern,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00193631,0.002941257,0.004506686,0.0060131131,0.010353415,0.01317866,0.01537305,nzn,nzn,Europe_Eastern,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.428483,0.180041,0.245299,0.26179569,0.275743,0.2766043087,0.273084223,0.25135914,0.21865052,nzn,nzn,Europe_Eastern,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.2491891,0.230757,0.1746115,0.1864692,0.2039296,0.21200891,0.21222799999999997,0.2163309,0.21872550000000002,nzn,nzn,Europe_Eastern,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00422786,0.00680571,0.00932694,0.0112965,0.0170008,0.0220022,0.023804,nzn,nzn,Europe_Eastern,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0388476,0.0459936,0.0215649,0.0223507,0.0231364,0.0239221,0.0247079,0.0254936,0.0262793,nzn,nzn,Europe_Eastern,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.274249,0.319512,0.3610212,0.391648,0.432224,0.45610300000000004,0.5357500000000001,0.608975,0.6764490000000001,nzn,nzn,Europe_Eastern,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.255453,0.00540343,0.00560218,0.0067144,0.00901957,0.010516368000000002,0.012681360000000001,0.013646910000000002,0.014182279999999998,nzn,nzn,Europe_Eastern,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00647361115,0.01631037126,0.039123861759999996,0.05922253506,0.10192095806,0.14898777806,0.20284380901,nzn,nzn,Europe_Eastern,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,1.40396E-4,0.0134290493,0.023305708199999997,0.04114326919999999,0.058695959199999995,0.10509750320000001,0.1511488601,0.19214390990000005,nzn,nzn,Europe_Eastern,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.646464E-7,6.69798E-7,1.748546E-6,3.7339510000000003E-6,nzn,nzn,Europe_Eastern,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.5256032499999996E-5,4.315475809999999E-5,7.141939E-5,1.0870504E-4,nzn,nzn,Europe_Eastern,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.3139316999999998E-5,2.3828570000000002E-5,4.531618E-5,8.27986E-5,nzn,nzn,Europe_Eastern,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.11496393999999999,-0.23508099999999998,-0.4088442,-0.580352,nzn,nzn,Europe_Non_EU,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Europe_Non_EU,missing,biomass,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00355805,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Europe_Non_EU,missing,coal,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.00816267,0.0210553,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Europe_Non_EU,missing,gas,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.00389297,0.00355805,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Europe_Non_EU,missing,refined liquids,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0061749,0.0499279,0.0981798,0.124999,0.167575,0.203905,0.250959,nzn,nzn,Europe_Non_EU,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,4.31994E-5,9.5327E-4,0.002236835,0.004099658,0.0059584179,0.009571685,0.01414185,0.01771548,nzn,nzn,Europe_Non_EU,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.231688,0.307824,0.502967,0.5702377,0.641853,0.680188096,0.66232247,0.6236688100000001,0.5701391,nzn,nzn,Europe_Non_EU,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0455507,0.258628,0.3598522,0.40731140000000005,0.46285970000000004,0.49308084,0.49542302000000005,0.5163173,0.5245082999999999,nzn,nzn,Europe_Non_EU,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+2.87999E-4,3.38395E-4,0.016817,0.0233418,0.0314957,0.0378957,0.0456875,0.0479252,0.0551353,nzn,nzn,Europe_Non_EU,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.147445,0.262537,0.365473,0.376134,0.386795,0.397456,0.408117,0.418778,0.429438,nzn,nzn,Europe_Non_EU,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0323067,0.0696048,0.114019,0.149487,0.194643,0.270548,0.346854,nzn,nzn,Europe_Non_EU,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0257903,0.0251024,0.004906737,0.0053656699999999995,0.00620621,0.0059541379999999994,0.00628816,0.00759573,0.00762559,nzn,nzn,Europe_Non_EU,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00511123778,0.029142842080000002,0.09035248788000001,0.14910122688000002,0.19952294488000002,0.26198566488,0.31733718720000004,nzn,nzn,Europe_Non_EU,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,2.48396E-4,0.0592559307,0.0829025484,0.12028890440000001,0.15671581440000001,0.20452437440000001,0.2426137306,0.3069970897,nzn,nzn,Europe_Non_EU,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,5.6303E-7,1.644577E-6,3.82324E-6,7.2393499999999996E-6,nzn,nzn,Europe_Non_EU,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.5302765099999997E-4,2.39708191E-4,3.3229148000000005E-4,4.5364703000000004E-4,nzn,nzn,Europe_Non_EU,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,8.720266599999999E-5,1.4228245E-4,2.2072527000000002E-4,3.386619E-4,nzn,nzn,Europe_Non_EU,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.13379543,-0.27969940000000004,-0.4047195,-0.609642,nzn,nzn,European Free Trade Association,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,1.05628E-4,7.22255E-4,0.00122149,0.00155565,0.00178133,0.00218826,0.00320682,nzn,nzn,European Free Trade Association,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.00165601,0.00277205,0.0103543,0.01659521,0.019996260000000002,0.0218053553,0.024380872,0.02519244,0.02715332,nzn,nzn,European Free Trade Association,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+3.38402E-4,4.75209E-4,0.00317554,0.0050930509999999995,0.006350588000000001,0.007157693520000001,0.0076629732,0.0076768061,0.007413728999999999,nzn,nzn,European Free Trade Association,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+7.12805E-4,0.00230044,0.00515056,0.00846844,0.011049159999999999,0.012602289999999999,0.013078587999999999,0.013942310000000001,0.015747419999999998,nzn,nzn,European Free Trade Association,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00108001,0.00596891,0.0345881,0.0446216,0.0481632,0.0491873,0.0536153,0.0469658,0.0429084,nzn,nzn,European Free Trade Association,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.558752,0.626339,0.681628,0.681628,0.681628,0.681628,0.681628,0.681628,0.681628,nzn,nzn,European Free Trade Association,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0850902,0.0840291,0.1198707,0.1491447,0.164653,0.1704722,0.1786451,0.1858343,0.2008524,nzn,nzn,European Free Trade Association,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00107641,3.09606E-4,4.08052E-4,5.11532E-4,4.94434E-4,4.3170890000000003E-4,3.261817E-4,2.624762E-4,2.4870510000000003E-4,nzn,nzn,European Free Trade Association,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+3.60003E-6,7.56014E-5,0.022417738100000004,0.0522248365,0.0760493297,0.0910929408,0.10767159080000001,0.1185043438,0.1230355328,nzn,nzn,European Free Trade Association,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00182523,0.0614061294,0.13439978439999997,0.19893305739999997,0.24762742540000002,0.31394086540000005,0.3715503494000001,0.42068231400000006,nzn,nzn,European Free Trade Association,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,8.3568E-8,0.0,1.385793E-5,4.97633E-5,1.168954E-4,2.272135E-4,nzn,nzn,European Free Trade Association,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,4.247866E-7,0.0,2.56120832E-5,6.1377371E-5,1.13250051E-4,1.7219587E-4,nzn,nzn,European Free Trade Association,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,5.03397E-7,0.0,3.3345095999999996E-5,7.951146E-5,1.594201E-4,2.9031179999999997E-4,nzn,nzn,European Free Trade Association,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-5.923923,-10.753807,-17.358719999999998,-24.69126,nzn,nzn,India,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.178868,0.806126,1.33369,2.02862,3.57452,5.13064,6.43996,nzn,nzn,India,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.017604,0.164268,0.2793391,0.3871488,0.4987306,0.6484921,0.7915241,0.908952,nzn,nzn,India,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.689896,1.72255,5.48403,7.224922,8.81825,10.04836645,10.367570999999998,10.606387,10.678045,nzn,nzn,India,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0358497,0.2716814,0.378059,0.575032,0.811086,1.0236406,1.1564175,1.3880109999999999,1.6399219999999999,nzn,nzn,India,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0348305,0.0748881,0.120272,0.158002,0.212557,0.280934,0.324469,nzn,nzn,India,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.257962,0.389236,0.541944,0.592507,0.643069,0.693632,0.744194,0.794756,0.845319,nzn,nzn,India,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0221081,0.0623664,0.26662399999999997,0.41550699999999996,0.564191,0.693083,0.8519637,1.1639128,1.5782892000000002,nzn,nzn,India,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0479244,0.0913176,0.1831781,0.29968300000000003,0.430381,0.5130801,0.578035,0.724136,0.8179810000000001,nzn,nzn,India,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,1.08E-5,0.22655575100000003,0.7558259369999998,1.4228641569999998,1.9947207369999997,2.501457837,3.530226237,4.996794272999999,nzn,nzn,India,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+1.15203E-4,0.0223596,0.388750409,0.8305008989999999,1.450187039,2.128735439,2.942095139,4.170410040999999,5.557554729999999,nzn,nzn,India,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.120517E-5,2.890224E-5,6.3401E-5,1.193264E-4,nzn,nzn,India,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,7.61056258E-4,0.0012916896699999999,0.0020095141,0.0030355866,nzn,nzn,India,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,5.735111E-5,1.0872229999999999E-4,2.0312900000000003E-4,3.6790410000000004E-4,nzn,nzn,India,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.28081362,-0.4888229,-0.936337,-1.499738,nzn,nzn,Indonesia,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0186116,0.120864,0.197278,0.280823,0.469083,0.648683,0.79091,nzn,nzn,Indonesia,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,7.91986E-5,0.00386533,0.006635759999999999,0.011891239999999999,0.018676304,0.025986680999999998,0.038912390000000005,0.05280353,nzn,nzn,Indonesia,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0351637,0.186451,0.667924,0.8074307,0.9866958,1.1299684040000002,1.15637593,1.2017356,1.2158131,nzn,nzn,Indonesia,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0026423195,0.0687084,0.2937765,0.372982,0.505282,0.6086423999999999,0.6375905999999999,0.7287737,0.817932,nzn,nzn,Indonesia,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00404987,0.023774,0.057316,0.0748533,0.0979107,0.117916,0.135347,0.142079,0.167243,nzn,nzn,Indonesia,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0205488,0.03861,0.0512443,0.0530209,0.0547976,0.0565743,0.058351,0.0601276,0.0619043,nzn,nzn,Indonesia,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00501343,0.0130326,0.0297871,0.0505809,0.0714412,0.126915,0.205579,nzn,nzn,Indonesia,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0551935,0.141474,0.0831092,0.09736330000000001,0.142806,0.17122420000000002,0.1873375,0.2282168,0.2394216,nzn,nzn,Indonesia,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.010219524950000001,0.042471558849999994,0.10956669485000001,0.17161125485,0.21211259485,0.33987730574999997,0.548397901,nzn,nzn,Indonesia,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0038766948000000002,0.0104951741,0.0252440071,0.0465101821,0.0747991111,0.1701544498,0.32254757829999997,nzn,nzn,Indonesia,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,8.99715E-7,2.212104E-6,5.429350000000001E-6,1.065173E-5,nzn,nzn,Indonesia,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.638961147E-4,2.6052514399999997E-4,3.9087799E-4,5.500837000000001E-4,nzn,nzn,Indonesia,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,6.338994000000001E-5,1.052379E-4,1.789558E-4,2.875475E-4,nzn,nzn,Indonesia,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.1895448,-0.48826200000000003,-0.872056,-1.225344,nzn,nzn,Japan,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.00590497,0.0388553,0.0691754,0.0904095,0.118157,0.153289,0.180695,nzn,nzn,Japan,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0313952,0.0522352,0.125342,0.12040084999999999,0.11403822,0.1042503168,0.099453276,0.08683022,0.07214527,nzn,nzn,Japan,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.441664,1.05433,1.4998,1.5536667,1.5717647000000001,1.5269916879999998,1.4540002,1.3318950999999999,1.1442011,nzn,nzn,Japan,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.606408,0.89175,1.6137359999999998,1.633353,1.629979,1.55903693,1.47528378,1.4276959999999999,1.3572619000000001,nzn,nzn,Japan,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00626751,0.0116134,0.0179215,0.0229756,0.0287346,0.0331951,0.0425323,0.0481753,0.0533,nzn,nzn,Japan,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.386734,0.351482,0.31453,0.315436,0.316342,0.317247,0.318153,0.319059,0.319964,nzn,nzn,Japan,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.728169,1.0971,0.0313814,0.0589641,0.1115317,0.16510180000000002,0.2858771,0.4757637,0.6581203,nzn,nzn,Japan,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.900636,0.487908,0.2899768,0.2441973,0.23186579999999998,0.21409053,0.1957202,0.1713653,0.13708610000000002,nzn,nzn,Japan,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+2.41197E-4,0.00511192,0.2431528811,0.34383811210000004,0.4608483021,0.5372110451,0.6878147551,0.8368491551,1.017177194,nzn,nzn,Japan,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00630351,0.04117655580000001,0.05800450760000001,0.08384208059999998,0.10892792259999999,0.1779046826,0.2828253865,0.39427609179999995,nzn,nzn,Japan,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.2392E-6,7.68159E-6,2.2496420000000002E-5,4.69712E-5,nzn,nzn,Japan,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,7.00669708E-4,0.00115074921,0.001999268,0.0029587282,nzn,nzn,Japan,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,5.34639046E-4,8.816629599999999E-4,0.0016404438000000002,0.002729401,nzn,nzn,Japan,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.9632714,-1.643799,-2.520465,-3.402964,nzn,nzn,Mexico,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0268347,0.119788,0.181632,0.226607,0.308322,0.39331,0.492115,nzn,nzn,Mexico,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.010965,0.0175903,0.03335966,0.05032829,0.065362383,0.08539927,0.10351580999999999,0.1166362,nzn,nzn,Mexico,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0279849,0.117865,0.137193,0.16040657,0.1879479,0.208218435,0.20744967300000003,0.19962321000000002,0.18699194,nzn,nzn,Mexico,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0520532,0.3372945,0.635811,0.739375,0.88236,1.0012623299999999,1.02999253,1.1168611,1.1963807,nzn,nzn,Mexico,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0184454,0.026275,0.0285202,0.0369204,0.0479266,0.0577385,0.0677146,0.0661136,0.0800683,nzn,nzn,Mexico,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0845208,0.0997524,0.111165,0.111396,0.111626,0.111857,0.112088,0.112319,0.11255,nzn,nzn,Mexico,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0105726,0.0388959,0.04211884,0.04605267,0.0521398,0.0576897,0.0640655,0.0807268,0.1028173,nzn,nzn,Mexico,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.223411,0.24595,0.1080863,0.1328858,0.1709153,0.17926400000000003,0.1795618,0.1883819,0.1750779,nzn,nzn,Mexico,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+3.59981E-6,3.23983E-5,0.0060693549,0.034864009189999996,0.09914043669,0.16620460569,0.21453201069,0.28827963169000004,0.3701339299,nzn,nzn,Mexico,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+3.59981E-6,6.83963E-5,0.0452972516,0.0751402616,0.12781909360000002,0.18741846360000003,0.25725711360000003,0.35910021289999994,0.49791976999999993,nzn,nzn,Mexico,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,4.5645399999999995E-6,1.1186150000000001E-5,2.1727470000000003E-5,3.759653E-5,nzn,nzn,Mexico,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,4.35430636E-5,6.984814399999999E-5,9.421621999999998E-5,1.275056E-4,nzn,nzn,Mexico,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.59064438E-4,2.6642109E-4,4.109626E-4,6.465019E-4,nzn,nzn,Mexico,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.4131321,-0.832099,-1.431873,-2.205606,nzn,nzn,Middle East,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.356297,0.701326,0.942061,1.19923,1.64488,1.93874,2.15087,nzn,nzn,Middle East,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00266585,0.006697026,0.01388141,0.023234484,0.03576924,0.051739560000000004,0.06891952,nzn,nzn,Middle East,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.037911,0.132627,0.11943,0.13126191,0.14601582999999999,0.15509021080000002,0.15459954899999998,0.15142725,0.14547214,nzn,nzn,Middle East,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.410424,1.37907,2.681571,2.893618,3.293104,3.552146,3.6193020000000002,3.8296699999999997,4.087795,nzn,nzn,Middle East,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0110777,0.0247997,0.0418689,0.0547948,0.0743114,0.104465,0.129435,nzn,nzn,Middle East,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.04293,0.0992016,0.0920567,0.120735,0.149414,0.178093,0.206771,0.23545,0.264129,nzn,nzn,Middle East,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.02557535,0.04945207,0.09358557,0.14235942000000001,0.20832369,0.31900738,0.45914173,nzn,nzn,Middle East,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.388706,0.71284,1.105035,1.290551,1.6807940000000001,1.936475,2.043377,2.153557,2.1452,nzn,nzn,Middle East,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.03556280144,0.10798471309999999,0.26017346170000005,0.4012508207,0.5313919307,0.7521105606999999,1.0439320319999998,nzn,nzn,Middle East,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+3.59926E-6,3.05898E-4,0.027318151,0.07936387,0.18392019999999998,0.304701,0.48469403,0.796421358,1.169234227,nzn,nzn,Middle East,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,8.21518E-7,2.189891E-6,5.08835E-6,1.02512E-5,nzn,nzn,Middle East,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.452516628E-5,2.1380655E-5,3.0919992E-5,4.4333580000000004E-5,nzn,nzn,Middle East,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.2633366000000002E-4,3.516568E-4,5.701566E-4,9.404799999999999E-4,nzn,nzn,Middle East,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.4115533,-1.3185930000000001,-2.030098,-2.39938,nzn,nzn,Pakistan,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0313297,0.0598843,0.104059,0.186627,0.322383,0.436227,0.536321,nzn,nzn,Pakistan,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00667136,0.01224921,0.02003482,0.030381392,0.058104430000000006,0.07659189,0.07992858,nzn,nzn,Pakistan,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+1.3679E-4,4.64408E-4,0.00532924,0.009100132,0.01334709,0.0175154654,0.023336157,0.027400199,0.028989286,nzn,nzn,Pakistan,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.04560498,0.1486321,0.1664407,0.2019384,0.2451835,0.27634069,0.3227069,0.3509766,0.34483630000000004,nzn,nzn,Pakistan,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0160485,0.033231,0.0512132,0.0662355,0.103705,0.13872,0.145437,nzn,nzn,Pakistan,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.06093,0.111103,0.131602,0.138525,0.145448,0.152371,0.159295,0.166218,0.173141,nzn,nzn,Pakistan,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00105472,0.00894255,0.0271464,0.0370936,0.0483735,0.059176099999999995,0.0913001,0.12406521000000001,0.14568827,nzn,nzn,Pakistan,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0278907,0.0679259,0.1389447,0.143846,0.16290290000000002,0.1776096,0.2061665,0.1890025,0.1449686,nzn,nzn,Pakistan,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0293152834,0.0797650546,0.1394555486,0.19559573859999999,0.3642413986000001,0.5699696686000001,0.707480175,nzn,nzn,Pakistan,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.03228527523,0.07998729943,0.14703270942999996,0.21584025442999996,0.37973454443,0.5394584527,0.625406749,nzn,nzn,Pakistan,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.109402E-6,4.4122199999999996E-6,9.67528E-6,1.606241E-5,nzn,nzn,Pakistan,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.03844863E-6,4.0911008E-6,7.193497999999999E-6,1.1269949E-5,nzn,nzn,Pakistan,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.279697E-5,4.210948E-5,7.093899999999999E-5,1.057695E-4,nzn,nzn,Pakistan,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.22246911,-0.78145,-1.25761,-1.772496,nzn,nzn,Russia,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.76929,0.577194,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Russia,missing,coal,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+3.00043,1.5397,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Russia,missing,gas,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.754806,0.0629979,0.0,0.0,0.0,0.0,0.0,0.0,0.0,nzn,nzn,Russia,missing,refined liquids,missing,district heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,6.88547E-4,0.0128053,0.0562867,0.119476,0.159005,0.159315,0.155946,nzn,nzn,Russia,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00711043,0.009590889,0.01428689,0.017619001999999998,0.03358006,0.04360766,0.052021399999999995,nzn,nzn,Russia,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.546129,0.551288,0.692528,0.7314491,0.7622053000000001,0.7526360619999999,0.7229073000000001,0.60040717,0.48535439999999996,nzn,nzn,Russia,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+1.69041,1.4949,1.992992,2.136564,2.36701,2.4205278,2.369884,2.382206,2.357526,nzn,nzn,Russia,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+1.00804E-4,0.00147597,0.0303433,0.0470572,0.0691289,0.0840432,0.121141,0.150929,0.157605,nzn,nzn,Russia,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.597301,0.621637,0.646028,0.687281,0.728534,0.769788,0.811041,0.852294,0.893547,nzn,nzn,Russia,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.425914,0.537993,0.9411370000000001,1.046991,1.188781,1.25972,1.543888,1.8045620000000002,2.052486,nzn,nzn,Russia,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.463118,0.0644097,0.0381146,0.0278254,0.034491400000000005,0.03193896,0.04611899999999999,0.0435806,0.040101929999999994,nzn,nzn,Russia,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00943437976,0.02415197674,0.07235323514,0.12457500313999999,0.28723581014,0.47582960914,0.70229415638,nzn,nzn,Russia,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,2.51994E-5,0.071113568,0.125143278,0.218345798,0.29378187800000005,0.546058968,0.8300150759999999,1.074650829,nzn,nzn,Russia,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,5.97708E-7,2.740633E-6,6.02283E-6,1.1471220000000001E-5,nzn,nzn,Russia,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,8.99490751E-5,1.44357879E-4,1.783286E-4,2.2223095E-4,nzn,nzn,Russia,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.9621055E-4,3.361289E-4,5.217918E-4,8.236890000000001E-4,nzn,nzn,Russia,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.09335409,-0.2716359,-0.5036805,-0.75712,nzn,nzn,South Africa,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.00903851,0.0458633,0.0681086,0.0932394,0.154077,0.217135,0.273991,nzn,nzn,South Africa,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,9.32388E-4,0.00152267,0.002433318,0.00420255,0.0055887767,0.011259101,0.0174999,0.0231319,nzn,nzn,South Africa,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.561322,0.824681,0.884204,0.9438598,1.0043133,1.0044166319999999,0.9787809000000001,0.91034473,0.8127245999999999,nzn,nzn,South Africa,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,9.822726E-4,0.0018163913,0.0031838197000000003,0.0038865109999999996,0.005537640200000001,0.008304800000000001,0.011465165999999999,nzn,nzn,South Africa,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0036127,0.00773385,0.0122056,0.014528,0.0189625,0.0225602,0.0242342,nzn,nzn,South Africa,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.003636,0.0047952,0.0033725,0.0038614,0.0043503,0.0048392,0.0053281,0.005817,0.0063059,nzn,nzn,South Africa,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0304158,0.0406543,0.041244163,0.04279126,0.0479785,0.05188090000000001,0.0661475,0.09248669999999999,0.12548890000000001,nzn,nzn,South Africa,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,3.9382050000000003E-4,4.00039E-4,5.668240000000001E-4,5.650591000000001E-4,8.45394E-4,0.001084647,0.001179864,nzn,nzn,South Africa,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.02445006029,0.0748777536,0.15897300669999997,0.20828149569999999,0.2738980327,0.35716764269999995,0.4564464857,nzn,nzn,South Africa,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,4.31995E-5,0.0176690461,0.0337909608,0.0651809578,0.0932492508,0.16161687080000003,0.2548326386,0.3521016987,nzn,nzn,South Africa,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.7528989999999998E-7,6.880480000000001E-7,1.823272E-6,3.907486E-6,nzn,nzn,South Africa,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,8.38406775E-5,1.32317452E-4,1.9258884E-4,2.746075E-4,nzn,nzn,South Africa,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.5776392000000003E-7,5.9868372E-7,1.4174526E-6,3.1590097E-6,nzn,nzn,South Africa,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,-0.0323083,-0.0630415,nzn,nzn,South America_Northern,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0160965,0.0322774,0.0469134,0.0622779,0.0823763,0.0944006,0.110078,nzn,nzn,South America_Northern,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+6.07703E-5,9.18619E-5,1.66819E-5,1.19386E-5,6.35937E-6,4.2434E-6,3.61084E-6,9.374650000000001E-4,0.0016213619999999999,nzn,nzn,South America_Northern,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.2602810000000001E-4,2.283357E-4,nzn,nzn,South America_Northern,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0558832,0.0543899,0.0444051,0.0397617,0.0476005,0.0488684,0.0419845,0.0593767,0.0758292,nzn,nzn,South America_Northern,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.00684568,0.0128432,nzn,nzn,South America_Northern,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.134775,0.282745,0.138196,0.139953,0.197728,0.253047,0.303091,0.308828,0.3145,nzn,nzn,South America_Northern,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.00236049,0.00551579,nzn,nzn,South America_Northern,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0469143,0.0859248,0.0311597,0.0263493,0.0243291,0.0231429,0.0179657,0.038832809999999995,0.0359207,nzn,nzn,South America_Northern,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,5.31994E-5,2.99212E-5,2.9701E-5,4.11464E-5,5.16539E-5,6.07118E-5,0.00969616,0.01905182,nzn,nzn,South America_Northern,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,1.96298E-4,2.35475E-4,2.33743E-4,3.23816E-4,4.06509E-4,4.77793E-4,0.030456200000000003,0.059349559999999996,nzn,nzn,South America_Northern,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.435524E-7,5.61757E-7,nzn,nzn,South America_Northern,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.575668E-8,1.628563E-7,nzn,nzn,South America_Northern,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,5.42589E-6,9.92541E-6,2.393699E-5,4.44362E-5,nzn,nzn,South America_Northern,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.5358684,-0.9389679,-1.540174,-2.157054,nzn,nzn,South America_Southern,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0159347,0.0783417,0.122225,0.161032,0.217028,0.266533,0.314932,nzn,nzn,South America_Southern,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+7.37983E-4,0.0020193,0.0183133,0.02956608,0.041682550000000006,0.049984762999999995,0.06017575,0.06918624,0.07507108,nzn,nzn,South America_Southern,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0234895,0.0288533,0.145171,0.1824499,0.227659,0.25517533400000003,0.26243793,0.26881556,0.2649591,nzn,nzn,South America_Southern,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.004762685,0.0806353,0.2061099,0.261178,0.339282,0.38257881,0.3933113,0.4311328,0.4669495,nzn,nzn,South America_Southern,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00242569,0.00692513,0.0150891,0.0226166,0.0319782,0.0507764,0.0698327,nzn,nzn,South America_Southern,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.215035,0.400529,0.506588,0.555399,0.604211,0.653023,0.701835,0.750646,0.799458,nzn,nzn,South America_Southern,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,6.18276E-4,0.0022015,0.00394414,0.00745847,0.0177381,0.0334741,nzn,nzn,South America_Southern,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0240474,0.0373697,0.0632723,0.0787068,0.1092684,0.11255000000000001,0.109056,0.12639060000000002,0.1265121,nzn,nzn,South America_Southern,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.018481307429999996,0.048867805689999995,0.10145087619,0.13944322318999997,0.16854148318999995,0.21544770318999998,0.2648036742,nzn,nzn,South America_Southern,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,2.87957E-5,0.03338630150000001,0.055561702500000004,0.09284843150000001,0.1267735875,0.1703036975,0.2527044866,0.3652478740000001,nzn,nzn,South America_Southern,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,3.71375E-6,9.38502E-6,2.007318E-5,3.725932E-5,nzn,nzn,South America_Southern,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,7.018091469999998E-5,1.22311313E-4,1.8863425E-4,2.8549702E-4,nzn,nzn,South America_Southern,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,7.804278000000001E-5,1.3853569999999998E-4,2.344452E-4,3.994068E-4,nzn,nzn,South America_Southern,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.20440362999999998,-0.5020839,-0.7932520000000001,-1.147575,nzn,nzn,South Asia,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0135356,0.0573159,0.0863945,0.123409,0.189212,0.266313,0.354331,nzn,nzn,South Asia,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+5.53668E-5,1.43999E-5,0.00234973,0.00517674,0.00845502,0.012528046599999999,0.021249444,0.02815639,0.03558126,nzn,nzn,South Asia,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.00142162,0.0595041,0.08721047,0.1137263,0.135694027,0.149434078,0.15309487000000002,0.15367497000000002,nzn,nzn,South Asia,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.02345262,0.0875404,0.29662689999999997,0.393907,0.50892,0.6136569000000001,0.6928884,0.78866,0.893109,nzn,nzn,South Asia,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00765794,0.0196098,0.0335351,0.0464187,0.0648473,0.0818716,0.0956321,nzn,nzn,South Asia,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0264292,0.0437314,0.102613,0.11081,0.119006,0.127202,0.135398,0.143594,0.15179,nzn,nzn,South Asia,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00442203,0.0130828,0.0261981,0.0417835,0.0712568,0.109783,0.162,nzn,nzn,South Asia,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00849438,0.0423369,0.0745064,0.0818492,0.08727080000000001,0.0863008,0.0895232,0.0871573,0.0869354,nzn,nzn,South Asia,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,4.85897E-4,0.01458350182,0.058657991109999995,0.12576129110999998,0.19139690411,0.28233538411,0.38888288710999996,0.5242328147,nzn,nzn,South Asia,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,4.77997E-5,0.029182310600000004,0.0880570776,0.1771828316,0.2765858716,0.44009041159999995,0.6254038767999999,0.8304915660000001,nzn,nzn,South Asia,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,6.36884E-7,2.115853E-6,4.37991E-6,7.780999999999999E-6,nzn,nzn,South Asia,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.9015239899999998E-5,3.3002302999999996E-5,4.7643253E-5,6.585275999999999E-5,nzn,nzn,South Asia,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,6.264241E-5,1.1606330000000001E-4,1.9174100000000002E-4,3.064596E-4,nzn,nzn,South Asia,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.007682058,-0.019406760000000002,-0.0299548,-0.03755417,nzn,nzn,South Korea,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.00589646,0.049201,0.0970216,0.119608,0.142273,0.158121,0.170322,nzn,nzn,South Korea,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,1.62004E-4,0.00944906,0.010430161,0.01130942,0.01108013385,0.0131562292,0.0128786104,0.011576841000000001,nzn,nzn,South Korea,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0423734,0.482672,0.858875,0.9165247,0.9630093,0.96119110738,0.92435417,0.835677728,0.714588209,nzn,nzn,South Korea,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.03457549,0.2130647,0.44720874000000005,0.47200725,0.49396042,0.48869941829999997,0.476791494,0.460458334,0.43981631,nzn,nzn,South Korea,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0228996,0.0132228,0.0108408,0.013956,0.0170712,0.0201864,0.0233017,0.0264169,0.0295321,nzn,nzn,South Korea,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.190399,0.528419,0.702712,0.796327,0.8926769999999999,0.938291,1.029558,1.123492,1.2071049999999999,nzn,nzn,South Korea,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0678874,0.0757497,0.02919277,0.02806934,0.0287532,0.027434375999999996,0.02765616,0.02529834,0.02184411,nzn,nzn,South Korea,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+3.60012E-6,5.40015E-5,0.02886752346,0.06786524056,0.14788881336,0.21238930936,0.29211132935999984,0.35388761935999985,0.4118027511999999,nzn,nzn,South Korea,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,4.68013E-4,0.011858947,0.023793461499999998,0.04551232649999999,0.0671266995,0.11030304449999999,0.159465395,0.20869650650000002,nzn,nzn,South Korea,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,7.291008999999999E-8,1.66758E-7,3.40103E-7,5.674845000000001E-7,nzn,nzn,South Korea,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,5.4994446039999995E-5,6.901835166999999E-5,9.23428316E-5,1.1283751789999999E-4,nzn,nzn,South Korea,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.224594759E-5,2.84759068E-5,4.0944133499999995E-5,5.6287776E-5,nzn,nzn,South Korea,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-1.3044247,-2.490501,-3.833862,-5.33256,nzn,nzn,Southeast Asia,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0260434,0.211811,0.348842,0.452218,0.628436,0.826888,1.05364,nzn,nzn,Southeast Asia,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.00221114,0.00917245,0.0447628,0.06055908,0.07832220000000001,0.095973266,0.13003204,0.15505478,0.17749920000000002,nzn,nzn,Southeast Asia,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.104593,0.279399,1.02953,1.2590246,1.505264,1.69243782,1.76719918,1.7762962,1.7337535,nzn,nzn,Southeast Asia,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0916145,0.806327,1.4706380000000001,1.685187,1.957986,2.1565242500000004,2.2043543,2.3139198000000003,2.394359,nzn,nzn,Southeast Asia,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0196808,0.035653,0.0675119,0.0929306,0.123012,0.149089,0.182202,0.195883,0.223804,nzn,nzn,Southeast Asia,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.141419,0.200242,0.42751,0.443456,0.459402,0.475347,0.491293,0.507239,0.523185,nzn,nzn,Southeast Asia,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0132541,0.0317008,0.0622439,0.0975953,0.153497,0.24759,0.37344,nzn,nzn,Southeast Asia,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.191671,0.116593,0.0551125,0.064499,0.08871470000000001,0.0950827,0.1045038,0.1222384,0.1313773,nzn,nzn,Southeast Asia,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,2.6579E-4,0.0477840096,0.15126078,0.33618715999999993,0.5106699040000002,0.6791076040000001,0.8890220040000002,1.1305131286,nzn,nzn,Southeast Asia,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,8.46967E-5,0.0464213216,0.12273350759999999,0.2631534776,0.4304300876,0.6910589475999998,1.0868700126,1.521839486,nzn,nzn,Southeast Asia,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,4.02008E-6,1.068461E-5,2.2932979999999997E-5,4.3659400000000004E-5,nzn,nzn,Southeast Asia,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.26730176E-4,3.7731051E-4,5.829317199999999E-4,8.842962E-4,nzn,nzn,Southeast Asia,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.13688194E-4,3.536686E-4,5.802741999999999E-4,9.514037999999999E-4,nzn,nzn,Southeast Asia,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.12855028,-0.2332777,-0.2699139,-0.23607699999999998,nzn,nzn,Taiwan,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.00198442,0.0215915,0.0450538,0.0560338,0.0707489,0.0768323,0.0791026,nzn,nzn,Taiwan,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0118312,0.0164045,0.01726206,0.01732709,0.016456945,0.022020341000000002,0.022305727999999997,0.019845822000000003,nzn,nzn,Taiwan,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.07806,0.333203,0.46469,0.5259426,0.5722972,0.589761914,0.592324544,0.5722687000000001,0.5244611299999999,nzn,nzn,Taiwan,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00372606,0.1302439,0.37338190000000004,0.4208207,0.4596954,0.47391904799999995,0.48667107000000004,0.50220312,0.50845472,nzn,nzn,Taiwan,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+1.08002E-5,0.0,0.00241872,0.00385781,0.00539046,0.00637907,0.00940022,0.0121427,0.0134102,nzn,nzn,Taiwan,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0229716,0.0143496,0.0168527,0.0176134,0.0183741,0.0191348,0.0198955,0.0206562,0.0214169,nzn,nzn,Taiwan,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.118319,0.143918,0.12528657999999998,0.12371296,0.1210764,0.1150241,0.1116065,0.1118182,0.11588480000000001,nzn,nzn,Taiwan,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0780744,0.0395548,0.04215505,0.03751852,0.0382119,0.03594778,0.04097004,0.04129659,0.0373484,nzn,nzn,Taiwan,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,3.60048E-6,0.01459737169,0.037191208489999995,0.07826416769,0.11266871569,0.16088150668999998,0.22473516669,0.304487784,nzn,nzn,Taiwan,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,3.27643E-4,0.019346954,0.0324273514,0.049414660400000004,0.06465906939999999,0.09482043639999999,0.13435267759999997,0.17775128839999996,nzn,nzn,Taiwan,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,6.55902E-7,1.249199E-6,1.685746E-6,1.751231E-6,nzn,nzn,Taiwan,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.0619429579999999E-4,1.24561069E-4,1.29910746E-4,1.19775455E-4,nzn,nzn,Taiwan,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,6.65055794E-5,8.035455099999999E-5,9.025072499999999E-5,9.284925000000001E-5,nzn,nzn,Taiwan,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.1249853,-0.2594928,-0.37155059999999995,-0.493174,nzn,nzn,Argentina,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.00959818,0.046746,0.0688344,0.0819805,0.099871,0.115105,0.132885,nzn,nzn,Argentina,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+3.852E-4,0.0046332,0.0088104,0.010114626,0.01042734,0.010833040500000002,0.013381971,0.013950502,0.01498141,nzn,nzn,Argentina,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.002376,0.007848,0.0156592,0.019233111999999997,0.022479509999999998,0.024411962500000002,0.024767768000000003,0.023064435,0.020460588000000002,nzn,nzn,Argentina,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0715392,0.1991737,0.303675,0.36966,0.441994,0.48639160000000004,0.4978187,0.5091575,0.5204166,nzn,nzn,Argentina,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.003019,0.00872877,0.01658,0.0238203,0.0343411,0.0456755,0.0552206,nzn,nzn,Argentina,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0643536,0.122414,0.141161,0.145383,0.149604,0.153825,0.158046,0.162267,0.166488,nzn,nzn,Argentina,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0262116,0.0247428,0.02750013,0.030860159999999998,0.034464999999999996,0.0367544,0.0409663,0.0461269,0.05295593,nzn,nzn,Argentina,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0177984,0.0206856,0.08371909999999999,0.09327550000000001,0.1013133,0.0963654,0.0939324,0.0884747,0.07980599999999999,nzn,nzn,Argentina,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00324071776,0.018059572450000002,0.047201258450000005,0.07491405195,0.10631024495,0.13645193075000003,0.16499546130000003,nzn,nzn,Argentina,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,2.7E-4,0.0129624875,0.0373362145,0.07688174649999999,0.11748024149999998,0.18101166150000003,0.2511276563,0.321614623,nzn,nzn,Argentina,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,5.9801E-7,1.9513320000000003E-6,4.104098E-6,7.51373E-6,nzn,nzn,Argentina,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,5.0283996399999995E-6,9.6025077E-6,1.4515854E-5,2.0252921E-5,nzn,nzn,Argentina,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,7.295066E-5,1.4430189999999998E-4,2.455372E-4,4.0440040000000005E-4,nzn,nzn,Argentina,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,-0.12746847,-0.24900090000000002,-0.3934679,-0.561075,nzn,nzn,Colombia,missing,biomass,missing,CO2,missing,missing,missing,missing,missing,missing,MTC
+0.0,0.0,0.0035526,0.0278474,0.0474453,0.0617209,0.0829193,0.1033,0.124302,nzn,nzn,Colombia,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+9.86395E-4,0.0018108,0.0059557,0.0073749919999999995,0.008816191,0.0107708752,0.013655106,0.01587331,0.0179865,nzn,nzn,Colombia,missing,biomass,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0133487,0.00888838,0.0340954,0.04520058,0.05804833,0.0710467491,0.07785559,0.08267016,0.08447019,nzn,nzn,Colombia,missing,coal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.01619631,0.0266363,0.0819695,0.1124654,0.1519467,0.192919426,0.21767505999999998,0.24896309,0.27649599999999996,nzn,nzn,Colombia,missing,gas,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,7.49198E-4,0.00272541,0.00615485,0.0106233,0.0165183,0.0248035,0.0331627,nzn,nzn,Colombia,missing,geothermal,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0989892,0.143291,0.184503,0.194161,0.203819,0.213477,0.223135,0.232793,0.242451,nzn,nzn,Colombia,missing,hydro,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,0.0,0.00181144,0.00728801,0.0171833,nzn,nzn,Colombia,missing,nuclear,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.00136439,4.10399E-4,0.01282467,0.0205236,0.031045299999999998,0.0373873,0.0415491,0.04915439,0.05253853,nzn,nzn,Colombia,missing,refined liquids,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,6.30136287E-4,0.004707163017,0.014215487817,0.027283418216999998,0.040872386217,0.062335236217000004,0.09169322481999997,nzn,nzn,Colombia,missing,solar,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,1.764E-4,0.00216479407,0.00800871527,0.01941518527,0.03621229027,0.06222127327000001,0.10767572927000002,0.1671062822,nzn,nzn,Colombia,missing,wind,missing,electricity,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,1.040957E-6,2.846256E-6,6.03951E-6,1.128051E-5,nzn,nzn,Colombia,missing,biomass,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,2.69149656E-5,4.6820886999999995E-5,7.369084E-5,1.1304953000000002E-4,nzn,nzn,Colombia,missing,coal,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.0,0.0,0.0,5.4667465E-5,9.929641000000001E-5,1.7104324E-4,2.905699E-4,nzn,nzn,Colombia,missing,gas,missing,waste_heat,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.75831E-4,0.00152082,0.00858736,0.0105766,0.0130934,0.00795532,0.00357871,nzn,nzn,AL,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.8204E-6,6.88117E-6,1.76644E-5,5.15478E-5,1.10248E-4,2.06245E-4,3.10724E-4,nzn,nzn,AK,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00527762,0.0291482,0.0450828,0.0619527,0.0739112,0.0448222,0.0171932,nzn,nzn,AZ,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.24034E-4,0.00104259,0.00564707,0.00689728,0.00845736,0.00522128,0.00238432,nzn,nzn,AR,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00173563,0.010058,0.0509505,0.08985,0.121037,0.0599343,0.0278761,nzn,nzn,CA,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,7.75471E-4,0.00356366,0.00817954,0.013113,0.0174446,0.0107022,0.00456636,nzn,nzn,CO,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,4.95483E-5,2.9898E-4,0.00150048,0.0023701,0.00321406,0.00268487,0.00186223,nzn,nzn,CT,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.51525E-5,1.23524E-4,7.86991E-4,0.00112857,0.00150399,8.59753E-4,4.23524E-4,nzn,nzn,DE,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.55702E-5,2.02437E-4,0.00114706,0.00154099,0.00196506,0.00110666,5.47865E-4,nzn,nzn,DC,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00111291,0.0118128,0.0655641,0.076657,0.0904434,0.0380436,0.0173097,nzn,nzn,FL,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,5.55293E-4,0.00466645,0.0228909,0.0271554,0.032546,0.0201041,0.00926526,nzn,nzn,GA,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00153306,0.0053515,0.0125128,0.0144059,0.0152081,0.0154724,0.0155314,nzn,nzn,HI,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,7.95311E-5,4.07952E-4,9.11006E-4,0.00145958,0.00201714,0.00151904,8.04431E-4,nzn,nzn,ID,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.5282E-4,0.00155607,0.00688886,0.0105524,0.0141455,0.00950465,0.00517015,nzn,nzn,IL,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.34743E-4,9.07684E-4,0.00556373,0.00805497,0.0101923,0.00547596,0.00284073,nzn,nzn,IN,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,5.93035E-5,3.92051E-4,0.00215295,0.00310899,0.00378904,0.00241877,0.00155516,nzn,nzn,IA,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.54168E-4,0.00179964,0.00524691,0.00527077,0.00587671,0.00375519,0.00207729,nzn,nzn,KS,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,8.32801E-5,6.06702E-4,0.00408093,0.00596371,0.00757189,0.003884,0.00193152,nzn,nzn,KY,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.85158E-4,0.00166348,0.009429,0.0115352,0.0142117,0.00858661,0.00382952,nzn,nzn,LA,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.31199E-5,1.34261E-4,7.00128E-4,0.00106184,0.00139849,0.00114079,7.74298E-4,nzn,nzn,ME,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,9.64011E-5,7.39755E-4,0.00487244,0.00695562,0.00925118,0.00529256,0.00261199,nzn,nzn,MD,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.18215E-4,7.54532E-4,0.00372192,0.00574099,0.00764509,0.00631049,0.00433975,nzn,nzn,MA,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,5.64368E-5,3.86614E-4,0.00291721,0.00469494,0.00641998,0.00357528,0.0018826,nzn,nzn,MI,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,4.88328E-5,3.35135E-4,0.00205431,0.00317763,0.00403173,0.00267194,0.00173046,nzn,nzn,MN,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.21187E-4,0.00100409,0.00545483,0.00662363,0.00811165,0.0049589,0.00225111,nzn,nzn,MS,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.04301E-4,0.00147357,0.00669727,0.00997761,0.013015,0.00804844,0.00406622,nzn,nzn,MO,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.41072E-5,1.07307E-4,2.65571E-4,4.38668E-4,6.23493E-4,4.99228E-4,2.81068E-4,nzn,nzn,MT,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,9.03251E-5,6.89579E-4,0.00302015,0.00401779,0.00466944,0.00283042,0.00178754,nzn,nzn,NE,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00161213,0.0100156,0.0128286,0.0173518,0.0211377,0.0148923,0.00735767,nzn,nzn,NV,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.79328E-5,1.02404E-4,6.06499E-4,9.48141E-4,0.00127443,0.00103933,7.01014E-4,nzn,nzn,NH,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.1882E-4,8.59125E-4,0.00560239,0.00818323,0.0110828,0.00663826,0.00342614,nzn,nzn,NJ,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,9.91371E-4,0.00536811,0.0089029,0.0128782,0.015962,0.00939125,0.00363118,nzn,nzn,NM,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,3.19443E-4,0.0019612,0.00768471,0.0118824,0.0161481,0.0130143,0.00820268,nzn,nzn,NY,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,4.48448E-4,0.00360799,0.0181905,0.0219584,0.0266936,0.0165484,0.00764471,nzn,nzn,NC,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.55752E-5,1.29883E-4,4.96525E-4,7.28002E-4,8.97089E-4,6.01992E-4,3.93127E-4,nzn,nzn,ND,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.26679E-4,8.31141E-4,0.00555012,0.00849919,0.0112217,0.00621431,0.00327828,nzn,nzn,OH,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.41922E-4,0.00193455,0.00643021,0.00662479,0.00755461,0.00473713,0.00254456,nzn,nzn,OK,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,7.3015E-5,3.13001E-4,7.36841E-4,0.00117831,0.00163255,0.00130842,7.48904E-4,nzn,nzn,OR,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.13215E-4,0.00140879,0.00827728,0.0117907,0.0156607,0.00947392,0.00494894,nzn,nzn,PA,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.5687E-5,1.00241E-4,5.38473E-4,8.42444E-4,0.00113096,9.27294E-4,6.32358E-4,nzn,nzn,RI,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.194E-4,0.00187387,0.00987454,0.0118594,0.0143602,0.00873373,0.00394697,nzn,nzn,SC,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,3.65923E-5,2.26408E-4,0.00114783,0.00153866,0.00179446,0.00110828,7.01843E-4,nzn,nzn,SD,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,3.35728E-4,0.00256633,0.0122951,0.0149955,0.018401,0.011735,0.00560574,nzn,nzn,TN,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,0.00170285,0.0136659,0.0374412,0.0467835,0.0609712,0.0439104,0.0204542,nzn,nzn,TX,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.49098E-4,8.74241E-4,0.00186753,0.00302287,0.00421055,0.00312097,0.00161286,nzn,nzn,UT,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,6.8023E-6,3.47733E-5,2.14163E-4,3.38725E-4,4.60331E-4,3.82898E-4,2.62195E-4,nzn,nzn,VT,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,2.31426E-4,0.00168576,0.00915715,0.0116703,0.0148042,0.00949919,0.00452789,nzn,nzn,VA,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,8.1468E-5,3.6088E-4,8.84508E-4,0.00144297,0.00202597,0.00165844,9.67181E-4,nzn,nzn,WA,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,1.81175E-5,1.42569E-4,7.98055E-4,0.00121638,0.00159133,8.53864E-4,4.35005E-4,nzn,nzn,WV,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,5.40647E-5,3.74996E-4,0.00189911,0.00310446,0.00434863,0.00289412,0.00151675,nzn,nzn,WI,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ
+0.0,0.0,5.73821E-5,2.24145E-4,6.26865E-4,0.00105413,0.00145736,9.16941E-4,4.02974E-4,nzn,nzn,WY,missing,rooftop_pv,missing,elect_td_bld,missing,missing,missing,missing,missing,missing,EJ

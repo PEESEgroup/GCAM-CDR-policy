@@ -12,7 +12,7 @@ def main():
         regions = []
         regions.extend(c.GCAMConstants.GCAM_region)
         regions.extend(c.GCAMConstants.USA_region)
-        regions.extend(c.GCAMConstants.grid_region)
+        # regions.extend(c.GCAMConstants.grid_region)  # don't query the grids for anything
 
         # iterate through all regions
         for i in regions:

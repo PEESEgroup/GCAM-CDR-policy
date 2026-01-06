@@ -1,0 +1,143 @@
+,1990,2005,2020,2025,2030,2035,2040,2045,2050,scenario,baseline,GCAM,sector,subsector,technology,output,concentration,input,product,fuel,LandLeaf,GHG,Units
+0,2.50413,6.07188,11.1546,14.7098,20.5132,25.482,24.4313,24.9791,26.2733,low,low,Africa_Eastern,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+1,0.0,0.0,0.0,0.0,0.0,2.47227,10.1674,20.2065,33.5005,low,low,Africa_Eastern,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+2,33.1879,72.1022,100.443,107.353,113.784,108.412,81.3522,63.6261,50.5363,low,low,Africa_Northern,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+3,0.0,0.0,0.0,0.0,0.0,9.72953,31.565,48.8833,62.2516,low,low,Africa_Northern,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+4,2.39525,4.9915,6.34426,7.89604,10.2449,11.6101,10.5512,10.3746,10.6111,low,low,Africa_Southern,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+5,0.0,0.0,0.0,0.0,0.0,1.29966,4.55955,8.56746,13.6561,low,low,Africa_Southern,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+6,8.35825,12.8808,18.1507,22.6826,32.284,40.5439,39.0249,39.5385,41.0072,low,low,Africa_Western,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+7,0.0,0.0,0.0,0.0,0.0,3.80962,15.9294,32.0237,53.0287,low,low,Africa_Western,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+8,9.45778,11.5822,11.9563,13.0499,14.0891,14.2083,10.03,7.21509,5.30423,low,low,Australia_NZ,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+9,0.0,0.0,0.0,0.0,0.0,0.718804,3.98527,6.93794,9.252,low,low,Australia_NZ,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+10,34.0103,51.0203,63.1337,68.4366,73.8306,71.8458,52.9465,38.0514,27.3295,low,low,Brazil,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+11,0.0,0.0,0.0,0.0,0.0,5.58428,22.2206,37.1547,48.3829,low,low,Brazil,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+12,12.8504,15.5723,12.6013,13.4927,14.4978,14.4984,10.6407,8.13434,6.07046,low,low,Canada,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+13,0.0,0.0,0.0,0.0,0.0,0.867683,3.92016,6.5399,8.95995,low,low,Canada,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+14,12.4933,17.7249,20.2637,23.3812,26.5592,26.2386,20.1208,16.5224,13.3182,low,low,Central America and Caribbean,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+15,0.0,0.0,0.0,0.0,0.0,2.95956,9.07127,13.8454,18.3509,low,low,Central America and Caribbean,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+16,25.6017,15.6084,20.7378,23.9719,27.198,26.8049,19.3122,14.523,11.0858,low,low,Central Asia,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+17,0.0,0.0,0.0,0.0,0.0,2.56564,9.05992,14.0355,17.6795,low,low,Central Asia,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+18,255.449,1290.29,1720.78,1622.6,1536.87,1386.18,862.778,570.954,391.933,low,low,China,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+19,0.0,0.0,0.0,0.0,0.0,64.9169,329.598,485.877,570.036,low,low,China,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+20,54.1222,45.3239,45.711,46.8534,47.5686,43.004,30.4129,22.9609,17.803,low,low,EU-12,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+21,0.0,0.0,0.0,0.0,0.0,4.46981,12.9193,18.5879,22.5692,low,low,EU-12,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+22,238.425,254.589,209.904,215.461,220.5,203.097,145.514,112.499,89.5065,low,low,EU-15,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+23,0.0,0.0,0.0,0.0,0.0,19.932,60.1235,87.9813,108.325,low,low,EU-15,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+24,36.1586,18.9386,16.9302,17.8608,18.8001,17.5835,13.0207,9.81108,7.4063,low,low,Europe_Eastern,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+25,0.0,0.0,0.0,0.0,0.0,1.73261,5.11997,8.0203,10.2652,low,low,Europe_Eastern,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+26,35.7183,57.398,68.3799,70.7319,72.9303,67.0464,47.956,36.8663,29.2229,low,low,Europe_Non_EU,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+27,0.0,0.0,0.0,0.0,0.0,6.95003,20.4166,29.5564,36.0811,low,low,Europe_Non_EU,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+28,7.83395,6.8547,6.98509,7.38662,7.7593,7.34728,5.42766,4.219,3.35893,low,low,European Free Trade Association,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+29,0.0,0.0,0.0,0.0,0.0,0.679607,2.1792,3.34581,4.27038,low,low,European Free Trade Association,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+30,54.7149,161.912,284.51,353.896,408.289,436.806,333.641,258.609,207.762,low,low,India,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+31,0.0,0.0,0.0,0.0,0.0,16.0416,100.235,181.851,244.973,low,low,India,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+32,14.1746,34.8361,51.0373,63.8351,74.8363,79.6407,59.2587,46.1748,38.6224,low,low,Indonesia,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+33,0.0,0.0,0.0,0.0,0.0,3.59547,19.5089,32.5859,40.9269,low,low,Indonesia,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+34,106.2,87.6214,61.6238,61.1173,60.2934,55.4889,36.3967,25.1766,18.2002,low,low,Japan,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+35,0.0,0.0,0.0,0.0,0.0,3.30996,13.4187,20.6188,25.0803,low,low,Japan,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+36,26.7952,42.1587,39.3313,43.1441,47.1952,45.4861,33.415,26.3617,21.1358,low,low,Mexico,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+37,0.0,0.0,0.0,0.0,0.0,4.95624,15.4951,23.2068,29.4713,low,low,Mexico,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+38,56.4439,110.052,170.763,186.309,201.73,187.979,144.429,115.545,93.1834,low,low,Middle East,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+39,0.0,0.0,0.0,0.0,0.0,25.69,64.5902,97.1005,124.112,low,low,Middle East,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+40,8.6615,19.652,44.2231,51.7813,63.5586,70.9756,56.8502,47.6307,42.7501,low,low,Pakistan,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+41,0.0,0.0,0.0,0.0,0.0,3.45129,18.6353,32.9573,43.4975,low,low,Pakistan,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+42,100.39,59.8466,52.3004,54.0555,56.4724,52.8253,37.2054,28.0931,21.127,low,low,Russia,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+43,0.0,0.0,0.0,0.0,0.0,4.71923,16.0926,24.017,30.2907,low,low,Russia,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+44,8.3898,12.3161,12.2445,13.5784,15.5309,15.4813,11.9611,9.85896,8.29571,low,low,South Africa,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+45,0.0,0.0,0.0,0.0,0.0,1.53334,4.90705,7.59035,9.77046,low,low,South Africa,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+46,5.98413,6.71757,3.74816,3.65468,4.38164,4.49742,3.47659,2.8225,2.27867,low,low,South America_Northern,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+47,0.0,0.0,0.0,0.0,0.0,0.533583,1.74479,2.81117,3.74795,low,low,South America_Northern,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+48,9.09,17.6413,23.34,26.2733,29.4519,28.7199,20.979,16.2834,12.9319,low,low,South America_Southern,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+49,0.0,0.0,0.0,0.0,0.0,3.15103,10.1887,15.5311,19.696,low,low,South America_Southern,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+50,1.105,8.228,11.4265,15.936,21.3259,26.1476,22.7261,20.5202,19.5389,low,low,South Asia,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+51,0.0,0.0,0.0,0.0,0.0,1.08766,7.27457,14.6934,22.5151,low,low,South Asia,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+52,35.1958,53.8257,48.534,47.3346,46.1443,44.6121,36.7394,31.7,27.5642,low,low,South Korea,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+53,0.0,0.0,0.0,0.0,0.0,0.0481685,0.539953,1.4473,2.56176,low,low,South Korea,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+54,58.2561,123.942,148.941,166.091,181.456,184.544,133.277,97.3109,72.9516,low,low,Southeast Asia,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+55,0.0,0.0,0.0,0.0,0.0,8.72896,44.4963,77.5802,102.276,low,low,Southeast Asia,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+56,19.4571,20.9187,15.9581,15.9427,15.9708,15.469,12.2594,11.1905,10.7232,low,low,Taiwan,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+57,0.0,0.0,0.0,0.0,0.0,0.407308,1.4393,1.53662,1.43831,low,low,Taiwan,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+58,3.86662,8.13487,10.2048,11.7533,13.1746,12.9536,9.49509,7.29157,5.68427,low,low,Argentina,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+59,0.0,0.0,0.0,0.0,0.0,1.37403,4.56996,7.09909,9.09609,low,low,Argentina,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+60,7.83889,12.4869,13.1837,14.9449,16.656,16.29,12.0366,9.46233,7.61811,low,low,Colombia,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+61,0.0,0.0,0.0,0.0,0.0,1.81875,5.86634,9.01312,11.5234,low,low,Colombia,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+62,2.05966,2.91089,2.10102,2.3243,0.279216,0.220899,0.198982,0.0703625,0.0507653,low,low,AL,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+63,0.0,0.0,0.0,0.0,1.6065,1.79713,1.96992,2.1702,2.32167,low,low,AL,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+64,2.97553,4.20527,3.31753,3.89355,0.44014,0.353696,0.32063,0.114101,0.0831183,low,low,AZ,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+65,0.0,0.0,0.0,0.0,2.73342,3.10408,3.43425,3.80604,4.10456,low,low,AZ,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+66,0.655882,0.926948,0.646614,0.693907,0.0814862,0.0644253,0.0577168,0.0203415,0.0146188,low,low,AR,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+67,0.0,0.0,0.0,0.0,0.472717,0.528389,0.576007,0.632035,0.673494,low,low,AR,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+68,9.70232,13.7121,10.6196,12.1321,1.46657,1.1997,1.10004,0.426408,0.330765,low,low,CA,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+69,0.0,0.0,0.0,0.0,8.5684,9.63163,10.5949,11.739,12.5944,low,low,CA,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+70,1.80714,2.55401,1.97348,2.28185,0.256641,0.205971,0.186469,0.0662744,0.048228,low,low,CO,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+71,0.0,0.0,0.0,0.0,1.59383,1.80763,1.99726,2.21071,2.3816,low,low,CO,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+72,0.642109,0.907484,0.616656,0.66719,0.113009,0.0953716,0.09135,0.0354832,0.0283385,low,low,CT,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+73,0.0,0.0,0.0,0.0,0.438891,0.504645,0.565149,0.653538,0.709089,low,low,CT,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+74,5.87598,8.30443,6.40911,7.30735,0.868705,0.689214,0.61762,0.215413,0.154652,low,low,FL,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+75,0.0,0.0,0.0,0.0,5.00469,5.58916,6.09073,6.70949,7.13582,low,low,FL,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+76,2.57504,3.63926,2.76468,3.073,0.362669,0.28528,0.254303,0.0891061,0.0636464,low,low,GA,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+77,0.0,0.0,0.0,0.0,2.08665,2.3209,2.5176,2.74831,2.91077,low,low,GA,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+78,0.475574,0.672122,0.532901,0.62513,0.0771223,0.0620379,0.0561743,0.0204963,0.0150913,low,low,ID,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+79,0.0,0.0,0.0,0.0,0.434064,0.491334,0.540832,0.59778,0.640643,low,low,ID,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+80,3.27597,4.62988,3.34426,3.691,0.422209,0.336291,0.303162,0.108713,0.0787225,low,low,IL,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+81,0.0,0.0,0.0,0.0,2.51028,2.81268,3.08195,3.39932,3.64056,low,low,IL,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+82,1.80166,2.54626,1.85861,2.04161,0.230004,0.182514,0.163747,0.0582508,0.0418837,low,low,IN,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+83,0.0,0.0,0.0,0.0,1.39384,1.55388,1.69579,1.86245,1.98684,low,low,IN,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+84,1.3096,1.85083,1.29163,1.39973,0.168406,0.133951,0.120174,0.0428786,0.0312266,low,low,IA,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+85,0.0,0.0,0.0,0.0,0.920253,1.0311,1.12856,1.24511,1.32623,low,low,IA,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+86,1.05083,1.48512,1.05763,1.16024,0.128881,0.101592,0.0910627,0.0320885,0.0232873,low,low,KS,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+87,0.0,0.0,0.0,0.0,0.78137,0.87733,0.960959,1.05542,1.12665,low,low,KS,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+88,0.836557,1.18229,0.839618,0.916147,0.104006,0.082539,0.0743133,0.0264646,0.0190676,low,low,KY,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+89,0.0,0.0,0.0,0.0,0.630282,0.702715,0.769598,0.846151,0.904512,low,low,KY,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+90,0.973481,1.37581,0.938786,1.01091,0.12002,0.0954623,0.0859893,0.0304744,0.0220247,low,low,LA,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+91,0.0,0.0,0.0,0.0,0.690544,0.776634,0.851294,0.939927,1.00727,low,low,LA,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+92,1.33236,1.883,1.37958,1.49761,0.180006,0.143537,0.129313,0.0462974,0.0334104,low,low,MD,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+93,0.0,0.0,0.0,0.0,1.01049,1.13046,1.23276,1.35777,1.44673,low,low,MD,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+94,0.738128,1.04319,0.775022,0.877358,0.150624,0.12733,0.122138,0.0475251,0.0380094,low,low,MA,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+95,0.0,0.0,0.0,0.0,0.584974,0.673749,0.755624,0.875328,0.951075,low,low,MA,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+96,1.90924,2.6983,2.01406,2.25589,0.255521,0.202853,0.182096,0.0648189,0.0466344,low,low,MI,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+97,0.0,0.0,0.0,0.0,1.54848,1.72704,1.88581,2.07245,2.2122,low,low,MI,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+98,1.41092,1.99403,1.47464,1.63293,0.197978,0.157961,0.142133,0.0508824,0.0371685,low,low,MN,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+99,0.0,0.0,0.0,0.0,1.08185,1.21592,1.33478,1.47753,1.57859,low,low,MN,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+100,0.785228,1.10975,0.770647,0.830446,0.098784,0.0778803,0.0699325,0.0246481,0.0177215,low,low,MS,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+101,0.0,0.0,0.0,0.0,0.568363,0.633595,0.692331,0.760226,0.810468,low,low,MS,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+102,2.0702,2.92578,2.10931,2.3387,0.266832,0.212739,0.191832,0.0688088,0.0497956,low,low,MO,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+103,0.0,0.0,0.0,0.0,1.58647,1.77931,1.95017,2.15156,2.30282,low,low,MO,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+104,0.574194,0.8115,0.57153,0.621505,0.0750016,0.0598744,0.0539027,0.0192878,0.0140913,low,low,NE,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+105,0.0,0.0,0.0,0.0,0.409846,0.460888,0.506205,0.56008,0.598475,low,low,NE,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+106,1.37181,1.93877,1.48616,1.71098,0.21107,0.171017,0.15591,0.0572697,0.0424376,low,low,NV,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+107,0.0,0.0,0.0,0.0,1.18795,1.35443,1.50107,1.67028,1.80153,low,low,NV,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+108,1.75524,2.48065,1.78247,1.9641,0.239604,0.193749,0.176787,0.0642036,0.0469629,low,low,NJ,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+109,0.0,0.0,0.0,0.0,1.34505,1.52591,1.68533,1.88292,2.03358,low,low,NJ,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+110,0.50875,0.71901,0.504526,0.555512,0.0614504,0.0490838,0.0442371,0.0156455,0.011335,low,low,NM,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+111,0.0,0.0,0.0,0.0,0.381628,0.430765,0.473821,0.521884,0.559744,low,low,NM,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+112,2.67727,3.78375,2.74147,3.02729,0.395604,0.320561,0.292557,0.107391,0.0794662,low,low,NY,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+113,0.0,0.0,0.0,0.0,2.07558,2.35329,2.5983,2.90194,3.1269,low,low,NY,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+114,2.11487,2.98891,2.22651,2.49654,0.294845,0.231392,0.205797,0.0719427,0.0512768,low,low,NC,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+115,0.0,0.0,0.0,0.0,1.69642,1.88249,2.03739,2.21894,2.34507,low,low,NC,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+116,2.46038,3.47721,2.50873,2.74815,0.309742,0.246253,0.221373,0.0789076,0.0568405,low,low,OH,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+117,0.0,0.0,0.0,0.0,1.87706,2.09653,2.29256,2.5229,2.69635,low,low,OH,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+118,1.13088,1.59825,1.07884,1.18719,0.132926,0.10481,0.0939207,0.0330593,0.0239976,low,low,OK,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+119,0.0,0.0,0.0,0.0,0.80589,0.905121,0.991118,1.08735,1.16102,low,low,OK,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+120,0.819375,1.15801,0.912808,1.04113,0.126762,0.101269,0.0913302,0.0332682,0.0244426,low,low,OR,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+121,0.0,0.0,0.0,0.0,0.707887,0.795866,0.872534,0.963399,1.03025,low,low,OR,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+122,3.97492,5.6177,4.0864,4.51362,0.545909,0.439319,0.399083,0.14429,0.105075,low,low,PA,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+123,0.0,0.0,0.0,0.0,3.08845,3.48645,3.83343,4.26122,4.5817,low,low,PA,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+124,1.88536,2.66456,1.96478,2.13561,0.250272,0.196523,0.174864,0.0611627,0.0436199,low,low,SC,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+125,0.0,0.0,0.0,0.0,1.43996,1.59881,1.73115,1.88645,1.99489,low,low,SC,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+126,0.353161,0.499117,0.347949,0.376493,0.0451955,0.0357908,0.0320066,0.0113688,0.00825145,low,low,SD,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+127,0.0,0.0,0.0,0.0,0.246971,0.275503,0.300577,0.330129,0.350448,low,low,SD,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+128,1.77013,2.5017,1.88948,2.14964,0.258947,0.205381,0.185497,0.0657742,0.0475773,low,low,TN,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+129,0.0,0.0,0.0,0.0,1.5022,1.68445,1.85124,2.04368,2.19191,low,low,TN,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+130,9.06544,12.8121,9.49474,10.8582,1.18301,0.938501,0.845898,0.299847,0.217117,low,low,TX,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+131,0.0,0.0,0.0,0.0,7.52518,8.48658,9.33705,10.2789,11.0505,low,low,TX,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+132,0.858043,1.21266,0.969832,1.14447,0.141917,0.114736,0.104388,0.0382638,0.0283045,low,low,UT,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+133,0.0,0.0,0.0,0.0,0.798746,0.9087,1.00502,1.11597,1.20156,low,low,UT,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+134,2.18156,3.08317,2.26543,2.53069,0.29916,0.23555,0.210185,0.0737124,0.0527004,low,low,VA,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+135,0.0,0.0,0.0,0.0,1.72124,1.91631,2.08083,2.27352,2.41018,low,low,VA,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+136,1.7311,2.44654,2.04929,2.48156,0.307317,0.245901,0.222026,0.0809828,0.0595853,low,low,WA,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+137,0.0,0.0,0.0,0.0,1.71618,1.93251,2.12116,2.34514,2.51152,low,low,WA,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+138,0.49071,0.693512,0.496159,0.544654,0.0603338,0.0471732,0.0416791,0.0145751,0.0103132,low,low,WV,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+139,0.0,0.0,0.0,0.0,0.365627,0.40162,0.431634,0.466008,0.489228,low,low,WV,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
+140,1.3477,1.90468,1.41252,1.57265,0.179465,0.141864,0.126993,0.0452166,0.0325231,low,low,WI,cement,cement,cement,missing,missing,missing,missing,missing,missing,missing,Mt
+141,0.0,0.0,0.0,0.0,1.06703,1.18652,1.29102,1.41387,1.50405,low,low,WI,cement,cement,cement CCS,missing,missing,missing,missing,missing,missing,missing,Mt
