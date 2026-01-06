@@ -898,17 +898,12 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
         plt.show()
 
 
-def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiator, title, RCP, nonBaselineScenario):
+def plot_line_product_CI(dataframe, column, title):
     """
     Plots a line grouped by product
     :param dataframe: the data being plotted
-    :param products: the list of products in the data being plotted
     :param column: the column by which the products can be differentiated
-    :param SSP_baseline: the SSPs being plotted
-    :param differentiator: a secondary column to differentiate the products
     :param title: the title of the plot
-    :param RCP: the RCP pathway on which the scenarios are evaluated
-    :param nonBaselineScenario: the set of scenarios in the sensitivity analysis being evaluated
     :return: N/A
     """
     if dataframe.empty:  # if the datafame is empty, nothing can be plotted
@@ -923,7 +918,7 @@ def plot_line_product_CI(dataframe, products, column, SSP_baseline, differentiat
 
     # find the number of model versions
     # get color scheme based on number of model versions
-    versions = dataframe[differentiator].unique()
+    versions = dataframe["scenario"].unique()
     colors, num_colors = get_colors(len(versions))
     try:
         color_counter = 0

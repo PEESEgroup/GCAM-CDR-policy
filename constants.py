@@ -34,3 +34,4 @@ class GCAMConstants:
     CO2_to_C = 12 / 44
     USD2025_tCO2_to_1975_kgC = 1 / 6.1 / 1000 / CO2_to_C
     USD2025_tCO2_to_1990_tC = 1 / 2.49 / CO2_to_C
+    USD1975_to_USD2025 = 6.1
