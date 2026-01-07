@@ -14,8 +14,40 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # compare_policy_costs("CDRIA-rhodium18b_low", "CDRIA-2035_low")
+    cement(config_fname, "2050")
     electricity(config_fname, "2050")
     # CDR_subsidies(config_fname, "2035", "2040")
+
+
+def cement(config_fname, reference_year):
+    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
+                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
+                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
+                 "innovation-rhodium18b_low", "innovation-triple_low",
+                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
+                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
+                 "CDRIA-rhodium18b_high"]
+    supply = data_manipulation.get_sensitivity_data(scenarios, "cement_production_by_tech_conv_and_ccs", source="unmasked")
+    price = data_manipulation.get_sensitivity_data(scenarios, "cement_prices", source="unmasked")
+    for i in c.GCAMConstants.plotting_x:
+        price[str(i)] = price.apply(lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 if row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 < 1000 else np.nan, axis=1)
+
+    price = price[price["GCAM"].isin(c.GCAMConstants.USA_region)]
+    price["Units"] = "2025$/kg"
+    supply = supply[supply["GCAM"].isin(c.GCAMConstants.USA_region)]
+
+    # sort by baseline
+    cement_price_low = price[price["baseline"] == "low"].copy(deep=True)
+    cement_price_high = price[price["baseline"] == "high"].copy(deep=True)
+    cement_supply_low = supply[supply["baseline"] == "low"].copy(deep=True)
+    cement_supply_high = supply[supply["baseline"] == "high"].copy(deep=True)
+
+    plotting.plot_line_product_CI(cement_price_low, "sector", "cement prices in low baseline")
+    plotting.plot_line_product_CI(cement_price_high, "sector", "cement prices in high baseline")
+    plotting.plot_line_product_CI(cement_supply_low, "technology", "cement supply in low baseline")
+    plotting.plot_line_product_CI(cement_supply_high, "technology", "cement supply in high baseline")
 
 
 def electricity(config_fname, reference_year):
@@ -39,6 +71,7 @@ def electricity(config_fname, reference_year):
         elec_price[str(i)] = elec_price.apply(lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 if row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 < 1000 else np.nan, axis=1)
 
     # focus on US regions
+    elec_price["Units"] = "2025$/GJ"
     elec_price = elec_price[elec_price["GCAM"].isin(c.GCAMConstants.USA_region)]
     elec_supply = elec_supply[elec_supply["GCAM"].isin(c.GCAMConstants.USA_region)]
     elec_supply = elec_supply[elec_supply["output"] == "electricity"]
