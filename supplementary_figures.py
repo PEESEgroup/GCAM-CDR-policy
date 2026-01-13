@@ -14,7 +14,7 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # compare_policy_costs("CDRIA-rhodium18b_low", "CDRIA-2035_low")
-    # cement(config_fname, "2050")
+    cement(config_fname, "2050")
     electricity(config_fname, "2050")
     # CDR_subsidies(config_fname, "2035", "2040")
 
@@ -63,10 +63,7 @@ def electricity(config_fname, reference_year):
                  "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
                  "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
                  "CDRIA-rhodium18b_high"]
-    tech = data_manipulation.get_sensitivity_data(scenarios, "elec_gen_by_gen_tech", source="masked")
-    subsector = data_manipulation.get_sensitivity_data(scenarios, "prices_of_all_markets", source="masked")
-    elec_supply = pd.concat([tech, subsector])
-
+    elec_supply = data_manipulation.get_sensitivity_data(scenarios, "elec_gen_by_subsector", source="masked")
     elec_price = data_manipulation.get_sensitivity_data(scenarios, "elec_prices_by_sector", source="masked")
     # convert to modern moneys and eliminate outliers
     for i in c.GCAMConstants.plotting_x:
@@ -76,20 +73,21 @@ def electricity(config_fname, reference_year):
     elec_price["Units"] = "2025$/MWh"
     elec_price = elec_price[elec_price["GCAM"].isin(c.GCAMConstants.USA_region)]
     elec_supply = elec_supply[elec_supply["GCAM"].isin(c.GCAMConstants.USA_region)]
-    elec_supply = elec_supply[elec_supply["output"] == "electricity"]
     elec_price = elec_price.drop('Unnamed: 0', axis=1)
     elec_supply = elec_supply.drop('Unnamed: 0', axis=1)
+
+    # rename and group elec techs
+    elec_supply["subsector"] = elec_supply.apply(lambda row: data_manipulation.elec_supply_sectors(row), axis=1)
+    elec_supply = data_manipulation.group(elec_supply, ["subsector", "scenario", "baseline", "Units"])
+    elec_supply["GCAM"] = elec_supply["baseline"]
 
     # sort by baseline
     elec_price_low = elec_price[elec_price["baseline"] == "low"].copy(deep=True)
     elec_price_high = elec_price[elec_price["baseline"] == "high"].copy(deep=True)
-    elec_supply_low = elec_supply[elec_supply["baseline"] == "low"].copy(deep=True)
-    elec_supply_high = elec_supply[elec_supply["baseline"] == "high"].copy(deep=True)
 
     plotting.plot_line_product_CI(elec_price_low, "fuel", "electricity prices in low baseline")
     plotting.plot_line_product_CI(elec_price_high, "fuel", "electricity prices in high baseline")
-    plotting.plot_line_product_CI(elec_supply_low, "technology", "electricity supply in low baseline")
-    plotting.plot_line_product_CI(elec_supply_high, "technology", "electricity supply in high baseline")
+    plotting.plot_line_product_CI(elec_supply, "subsector", "national electricity supply", region=elec_supply["baseline"].unique())
 
 
 def CDR_subsidies(config_fname, year1, year2):

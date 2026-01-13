@@ -993,3 +993,30 @@ def interpolate(df, method):
             old_gcam = new_gcam
             new_gcam = new_gcam + 5
     return df
+
+
+def elec_supply_sectors(row):
+    if "CCS" in row["subsector"]:
+        ccs = "_CCS"
+    else:
+        ccs = ""
+    if "PV" in row["subsector"] or "pv" in row["subsector"]:
+        return "PV" + ccs
+    if "biogas" in row["subsector"]:
+        return "biogas" + ccs
+    if "biomass" in row["subsector"]:
+        return "biomass" + ccs
+    if "coal" in row["subsector"]:
+        return "coal" + ccs
+    if "gas" in row["subsector"]:
+        return "gas" + ccs
+    if "hydro" in row["subsector"]:
+        return "hydro" + ccs
+    if "nuc" in row["subsector"]:
+        return "nuclear" + ccs
+    if "refined liquids" in row["subsector"]:
+        return "refined liquids" + ccs
+    if "wind" in row["subsector"]:
+        return "wind" + ccs
+    if "geo" in row["subsector"]:
+        return "geothermal" + ccs
