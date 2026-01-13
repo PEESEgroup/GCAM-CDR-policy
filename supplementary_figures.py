@@ -14,7 +14,7 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # compare_policy_costs("CDRIA-rhodium18b_low", "CDRIA-2035_low")
-    cement(config_fname, "2050")
+    # cement(config_fname, "2050")
     electricity(config_fname, "2050")
     # CDR_subsidies(config_fname, "2035", "2040")
 
@@ -29,14 +29,16 @@ def cement(config_fname, reference_year):
                  "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
                  "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
                  "CDRIA-rhodium18b_high"]
-    supply = data_manipulation.get_sensitivity_data(scenarios, "cement_production_by_tech_conv_and_ccs", source="unmasked")
-    price = data_manipulation.get_sensitivity_data(scenarios, "cement_prices", source="unmasked")
+    supply = data_manipulation.get_sensitivity_data(scenarios, "cement_production_by_tech_conv_and_ccs", source="masked")
+    price = data_manipulation.get_sensitivity_data(scenarios, "cement_prices", source="masked")
     for i in c.GCAMConstants.plotting_x:
         price[str(i)] = price.apply(lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 if row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 < 1000 else np.nan, axis=1)
 
     price = price[price["GCAM"].isin(c.GCAMConstants.USA_region)]
     price["Units"] = "2025$/kg"
     supply = supply[supply["GCAM"].isin(c.GCAMConstants.USA_region)]
+    price = price.drop('Unnamed: 0', axis=1)
+    supply = supply.drop('Unnamed: 0', axis=1)
 
     # sort by baseline
     cement_price_low = price[price["baseline"] == "low"].copy(deep=True)
@@ -61,20 +63,22 @@ def electricity(config_fname, reference_year):
                  "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
                  "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
                  "CDRIA-rhodium18b_high"]
-    tech = data_manipulation.get_sensitivity_data(scenarios, "elec_gen_by_gen_tech", source="unmasked")
-    subsector = data_manipulation.get_sensitivity_data(scenarios, "prices_of_all_markets", source="unmasked")
+    tech = data_manipulation.get_sensitivity_data(scenarios, "elec_gen_by_gen_tech", source="masked")
+    subsector = data_manipulation.get_sensitivity_data(scenarios, "prices_of_all_markets", source="masked")
     elec_supply = pd.concat([tech, subsector])
 
-    elec_price = data_manipulation.get_sensitivity_data(scenarios, "elec_prices_by_sector", source="unmasked")
+    elec_price = data_manipulation.get_sensitivity_data(scenarios, "elec_prices_by_sector", source="masked")
     # convert to modern moneys and eliminate outliers
     for i in c.GCAMConstants.plotting_x:
-        elec_price[str(i)] = elec_price.apply(lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 if row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 < 1000 else np.nan, axis=1)
+        elec_price[str(i)] = elec_price.apply(lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 / 0.277778 if row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 / 0.277778 < 1000 else np.nan, axis=1)
 
     # focus on US regions
-    elec_price["Units"] = "2025$/GJ"
+    elec_price["Units"] = "2025$/MWh"
     elec_price = elec_price[elec_price["GCAM"].isin(c.GCAMConstants.USA_region)]
     elec_supply = elec_supply[elec_supply["GCAM"].isin(c.GCAMConstants.USA_region)]
     elec_supply = elec_supply[elec_supply["output"] == "electricity"]
+    elec_price = elec_price.drop('Unnamed: 0', axis=1)
+    elec_supply = elec_supply.drop('Unnamed: 0', axis=1)
 
     # sort by baseline
     elec_price_low = elec_price[elec_price["baseline"] == "low"].copy(deep=True)
@@ -140,5 +144,5 @@ def compare_policy_costs(scenario1, scenario2):
 
 
 if __name__ == '__main__':
-    for i in ["low_low", "high_high"]:
+    for i in ["low_low"]:
         main(i, "2050")

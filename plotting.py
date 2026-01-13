@@ -942,7 +942,6 @@ def plot_line_product_CI(dataframe, column, title):
                     # plot all versions in y
                     color = colors[color_map[i]]
 
-                    # get line of data to plot and plot it
                     y_to_plot = baseline_plot.values.tolist()[0][3:3 + len(c.GCAMConstants.plotting_x)]  # only take the x values
                     plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, str(i), color, axs, nrow, ncol, counter)
 
