@@ -45,8 +45,9 @@
         <supplyDemandQuery title="elec gen by subsector">
             <axis1 name="subsector">subsector</axis1>
             <axis2 name="Year">physical-output[@vintage]</axis2>
-            <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='electricity' or @name='elect_td_bld')]/
-       *[@type='subsector' and not (@name='elect_td_bld')]//*[@type='output']/
+            <xPath buildList="true" dataName="output" group="false" sumAll="false">*[@type='sector' (:collapse:) and (@name='electricity' or
+       @name='base load generation' or @name='intermediate generation' or @name='subpeak generation' or @name='peak generation' or @name='elect_td_bld')]/
+       *[@type='subsector' and not (@name='elect_td_bld')]//*[@type='output' (:collapse:)]/
        physical-output/node()</xPath>
             <comments/>
         </supplyDemandQuery>
