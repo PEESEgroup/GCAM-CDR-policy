@@ -908,7 +908,7 @@ def plot_regional_vertical_avg(prices, year, SSPs, y_label, title, column, suppl
         plt.show()
 
 
-def plot_line_product_CI(dataframe, column, title, region=c.GCAMConstants.USA_region):
+def plot_line_product_CI(dataframe, column, title, region=c.GCAMConstants.USA_region, skip_years=3):
     """
     Plots a line grouped by product
     :param dataframe: the data being plotted
@@ -929,7 +929,7 @@ def plot_line_product_CI(dataframe, column, title, region=c.GCAMConstants.USA_re
     # find the number of model versions
     # get color scheme based on number of model versions
     versions = dataframe[column].unique()
-    colors, num_colors = get_colors(len(versions))
+    colors, num_colors = get_colors(1)
     # get colors and baseline
     color_map = {item: index for index, item in enumerate(dataframe[column].unique())}
     counter = 0
@@ -951,7 +951,7 @@ def plot_line_product_CI(dataframe, column, title, region=c.GCAMConstants.USA_re
                 # plot all versions in y
                 color = colors[color_map[i]]
 
-                y_to_plot = baseline_plot.values.tolist()[0][3:3 + len(c.GCAMConstants.plotting_x)]  # only take the x values
+                y_to_plot = baseline_plot.values.tolist()[0][skip_years:skip_years + len(c.GCAMConstants.plotting_x)]  # only take the x values
                 plot_line_on_axs(c.GCAMConstants.plotting_x, y_to_plot, str(i), color, axs, nrow, ncol, counter)
 
                 # plot min and max data across SSPs

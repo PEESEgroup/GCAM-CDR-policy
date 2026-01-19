@@ -14,9 +14,112 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # compare_policy_costs("CDRIA-rhodium18b_low", "CDRIA-2035_low")
-    cement(config_fname, "2050")
-    electricity(config_fname, "2050")
+    # cement(config_fname, "2050")
+    #electricity(config_fname, "2050")
+    state_CDR(config_fname, "2050")
     # CDR_subsidies(config_fname, "2035", "2040")
+
+
+def state_CDR(config_fname, reference_year):
+    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
+                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
+                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
+                 "innovation-rhodium18b_low", "innovation-triple_low",
+                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
+                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
+                 "CDRIA-rhodium18b_high"]
+    supply = data_manipulation.get_sensitivity_data(scenarios, "CDR_by_tech", source="masked")
+    price = data_manipulation.get_sensitivity_data(scenarios, "prices_of_all_markets", source="masked")
+
+    price = price[price["GCAM"].isin(c.GCAMConstants.USA_region)]
+    price = price[price["product"].isin(["DAC", "TEW", "OEW", "BECCS"])]
+    price["Units"] = "2025$/t CDR"
+    supply = supply[supply["GCAM"].isin(c.GCAMConstants.USA_region)]
+    price = price.drop('Unnamed: 0', axis=1)
+    supply = supply.drop('Unnamed: 0', axis=1)
+    supply["product"] = supply["technology"]
+
+    for i in c.GCAMConstants.plotting_x:
+        # https://data.bls.gov/cgi-bin/cpicalc.pl?cost1=1.00&year1=197501&year2=202501
+        price[str(i)] = price[str(i)] / c.GCAMConstants.USD2025_tCO2_to_1975_kgC
+        supply[str(i)] = supply[str(i)] / c.GCAMConstants.CO2_to_C
+
+    # sort by baseline
+    CDR_price_low = price[price["baseline"] == "low"].copy(deep=True)
+    CDR_price_high = price[price["baseline"] == "high"].copy(deep=True)
+    CDR_supply_low = supply[supply["baseline"] == "low"].copy(deep=True)
+    CDR_supply_high = supply[supply["baseline"] == "high"].copy(deep=True)
+
+    # market sizes
+    CDR_market_low = pd.merge(CDR_price_low, CDR_supply_low, "right", on=["GCAM", "baseline", "scenario", "product"], suffixes=("_price", "_supply"))
+    CDR_market_high = pd.merge(CDR_price_high, CDR_supply_high, "right", on=["GCAM", "baseline", "scenario", "product"],
+                              suffixes=("_price", "_supply"))
+    # calculate size of markets and remove outliers
+    for i in c.GCAMConstants.plotting_x:
+        CDR_market_low[str(i)] = CDR_market_low[str(i) + "_price"] * CDR_market_low[str(i) + "_supply"]
+        CDR_market_low[str(i) + "_price"] = CDR_market_low.apply(
+            lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_price"), axis=1)
+        CDR_market_low[str(i) + "_supply"] = CDR_market_low.apply(
+            lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_supply"), axis=1)
+        CDR_market_high[str(i)] = CDR_market_high[str(i) + "_price"] * CDR_market_high[str(i) + "_supply"]
+        CDR_market_high[str(i) + "_price"] = CDR_market_high.apply(
+            lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_price"), axis=1)
+        CDR_market_high[str(i) + "_supply"] = CDR_market_high.apply(
+            lambda row: data_manipulation.remove_price_supply_outliers(str(i), row, "_supply"), axis=1)
+
+        # still some rare price outliers
+        CDR_market_low[str(i) + "_price"] = CDR_market_low.apply(
+            lambda row: row[str(i) + "_price"] if row[str(i) + "_price"] < 1000 else np.nan, axis=1)
+        CDR_market_high[str(i) + "_price"] = CDR_market_high.apply(
+            lambda row: row[str(i) + "_price"] if row[str(i) + "_price"] < 1000 else np.nan, axis=1)
+
+    # add units
+    CDR_market_low["Units"] = "Million USD/yr"
+    CDR_market_high["Units"] = "Million USD/yr"
+
+    # split back into price and supply markets
+    CDR_price_low = CDR_market_low.copy(deep=True)
+    CDR_supply_low = CDR_market_low.copy(deep=True)
+    CDR_price_high = CDR_market_high.copy(deep=True)
+    CDR_supply_high = CDR_market_high.copy(deep=True)
+
+    for i in c.GCAMConstants.plotting_x:
+        CDR_price_low[str(i)] = CDR_price_low[str(i) + "_price"]
+        CDR_supply_low[str(i)] = CDR_supply_low[str(i) + "_supply"]
+        CDR_price_high[str(i)] = CDR_price_high[str(i) + "_price"]
+        CDR_supply_high[str(i)] = CDR_supply_high[str(i) + "_supply"]
+
+    # update units
+    CDR_price_low["Units"] = "$/t CDR"
+    CDR_supply_low["Units"] = "log$_{10}$(Mt CDR)"
+    CDR_price_high["Units"] = "$/t CDR"
+    CDR_supply_high["Units"] = "log$_{10}$(Mt CDR)"
+    CDR_market_low["Units"] = "Million USD/yr"
+    CDR_market_high["Units"] = "Million USD/yr"
+
+    # only include necessary information
+    plotting_cols = ["2025", "2030", "2035", "2040", "2045", "2050", "GCAM", "product", "baseline", "scenario", "Units"]
+    CDR_price_low = CDR_price_low[plotting_cols]
+    CDR_price_high = CDR_price_high[plotting_cols]
+    CDR_supply_low = CDR_supply_low[plotting_cols]
+    CDR_supply_high = CDR_supply_high[plotting_cols]
+    CDR_market_low = CDR_market_low[plotting_cols]
+    CDR_market_high = CDR_market_high[plotting_cols]
+
+    # take log of supply and market size
+    for i in c.GCAMConstants.plotting_x:
+        CDR_supply_low[str(i)] = np.log10(CDR_supply_low[str(i)])
+        CDR_supply_high[str(i)] = np.log10(CDR_supply_high[str(i)])
+
+    # plotting graphs
+    # plotting.plot_line_product_CI(CDR_price_low, "product", "CDR prices in low baseline", skip_years=0)
+    # plotting.plot_line_product_CI(CDR_price_high, "product", "CDR prices in high baseline", skip_years=0)
+    # plotting.plot_line_product_CI(CDR_supply_low, "product", "CDR supply in low baseline", skip_years=0)
+    # plotting.plot_line_product_CI(CDR_supply_high, "product", "CDR supply in high baseline", skip_years=0)
+    plotting.plot_line_product_CI(CDR_market_low, "product", "CDR markets in low baseline", skip_years=0)
+    plotting.plot_line_product_CI(CDR_market_high, "product", "CDR markets in high baseline", skip_years=0)
 
 
 def cement(config_fname, reference_year):
