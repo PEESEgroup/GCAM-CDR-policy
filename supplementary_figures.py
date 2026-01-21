@@ -13,11 +13,11 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    # compare_policy_costs("CDRIA-rhodium18b_low", "CDRIA-2035_low")
+    compare_policy_costs("innovation-rhodium18B_low", "CDRIA-rhodium18B_low")
     # cement(config_fname, "2050")
-    #electricity(config_fname, "2050")
+    # electricity(config_fname, "2050")
     # state_CDR(config_fname, "2050")
-    C_prices(config_fname, reference_year)
+    # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
 
 
@@ -244,6 +244,7 @@ def compare_policy_costs(scenario1, scenario2):
     cost_diff = pd.read_csv("data/data_analysis/supplementary_tables/" + scenario1 +
                             "/policy cost by technology.csv")
     cost_diff = pd.merge(cost_diff, dataframe, "outer", on=["product", "baseline"], suffixes=("_old", "_new"))
+    cost_diff = cost_diff[cost_diff["product"] != "C Tax Revenue"]
     cost_diff["Units"] = "Million 2025$USD/yr"
     for i in c.GCAMConstants.plotting_x:
         # if a year has been masked from the data, don't fill na
