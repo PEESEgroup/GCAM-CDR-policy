@@ -16,8 +16,31 @@ def main(config_fname, reference_year):
     # compare_policy_costs("CDRIA-rhodium18b_low", "CDRIA-2035_low")
     # cement(config_fname, "2050")
     #electricity(config_fname, "2050")
-    state_CDR(config_fname, "2050")
+    # state_CDR(config_fname, "2050")
+    C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
+
+
+def C_prices(config_fname, reference_year):
+    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
+                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
+                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
+                 "innovation-rhodium18b_low", "innovation-triple_low",
+                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
+                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
+                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+
+    CO2_prices = data_manipulation.get_sensitivity_data(scenarios, "CO2_prices", "masked")
+    CO2_prices = CO2_prices[(CO2_prices["GCAM"] == "USA") & (CO2_prices["product"] == "CO2")]
+    CO2_prices = CO2_prices.drop('Unnamed: 0', axis=1)
+    CO2_prices["Units"] = "C Tax (USD/t CO$_{2}$-eq)"
+
+    for i in c.GCAMConstants.plotting_x:
+        CO2_prices[str(i)] = CO2_prices[str(i)] / c.GCAMConstants.USD2025_tCO2_to_1990_tC
+
+    plotting.plot_line_product_CI(CO2_prices, "baseline", "C tax prices by baseline scenario", region=["USA"])
 
 
 def state_CDR(config_fname, reference_year):
@@ -114,10 +137,10 @@ def state_CDR(config_fname, reference_year):
         CDR_supply_high[str(i)] = np.log10(CDR_supply_high[str(i)])
 
     # plotting graphs
-    # plotting.plot_line_product_CI(CDR_price_low, "product", "CDR prices in low baseline", skip_years=0)
-    # plotting.plot_line_product_CI(CDR_price_high, "product", "CDR prices in high baseline", skip_years=0)
-    # plotting.plot_line_product_CI(CDR_supply_low, "product", "CDR supply in low baseline", skip_years=0)
-    # plotting.plot_line_product_CI(CDR_supply_high, "product", "CDR supply in high baseline", skip_years=0)
+    plotting.plot_line_product_CI(CDR_price_low, "product", "CDR prices in low baseline", skip_years=0)
+    plotting.plot_line_product_CI(CDR_price_high, "product", "CDR prices in high baseline", skip_years=0)
+    plotting.plot_line_product_CI(CDR_supply_low, "product", "CDR supply in low baseline", skip_years=0)
+    plotting.plot_line_product_CI(CDR_supply_high, "product", "CDR supply in high baseline", skip_years=0)
     plotting.plot_line_product_CI(CDR_market_low, "product", "CDR markets in low baseline", skip_years=0)
     plotting.plot_line_product_CI(CDR_market_high, "product", "CDR markets in high baseline", skip_years=0)
 

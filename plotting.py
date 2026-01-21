@@ -945,6 +945,9 @@ def plot_line_product_CI(dataframe, column, title, region=c.GCAMConstants.USA_re
         for i in dataframe[column].unique():
             y = y_region[y_region[column] == i]
             # baseline is a special line to be plotted
+            # if this plot is sorted by baseline, then there is no real need to filter on the baseline
+            if column == "baseline":
+                baseline = i
             baseline_plot = y[y["scenario"] == baseline]
 
             if not y.empty:
@@ -959,7 +962,9 @@ def plot_line_product_CI(dataframe, column, title, region=c.GCAMConstants.USA_re
                 max_seq = [y[str(i)].max() for i in c.GCAMConstants.plotting_x]
 
                 # plot the min and max data
-                if nrow == 1 or ncol == 1:
+                if nrow == 1 and ncol == 1:
+                    axs.fill_between(c.GCAMConstants.plotting_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
+                elif nrow == 1 or ncol == 1:
                     axs[int(counter % ncol)].fill_between(c.GCAMConstants.plotting_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
                 else:
                     axs[int(counter % nrow), int(counter / nrow)].fill_between(c.GCAMConstants.plotting_x, y1=min_seq, y2=max_seq, alpha=0.15, color=color)
