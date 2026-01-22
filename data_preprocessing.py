@@ -11,8 +11,8 @@ for config_fname in ["nzn_nzn", "nothing_nothing", "low_low", "high_high", "exce
                      "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
                      "innovation-rhodium18b_low", "innovation-triple_low",
                      "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
-                     "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
-                     "CDRIA-rhodium18b_high"]:
+                     "innovation-rhodium18b_high", "innovation-triple_high",
+                     "CDRIA-rhodium18b_low", "CDRIA-rhodium18b_high"]:
     read_GCAM_DB.main(config_fname)
     process_GCAM_data.main(config_fname)
     verification.main(config_fname)
