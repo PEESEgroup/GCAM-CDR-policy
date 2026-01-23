@@ -13,13 +13,38 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    compare_policy_costs("innovation-rhodium18B_low", "CDRIA-rhodium18B_low")
+    # compare_policy_costs("innovation-rhodium18B_low", "CDRIA-rhodium18B_low")
+    land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
     # state_CDR(config_fname, "2050")
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
 
+
+def land_allocation(config_fname, reference_year):
+    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
+                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
+                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
+                 "innovation-rhodium18b_low", "innovation-triple_low",
+                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
+                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
+                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+
+    allocation = data_manipulation.get_sensitivity_data(scenarios, "aggregated_land_allocation", "masked")
+    allocation = allocation[allocation["GCAM"] == "USA"]
+    allocation = allocation.drop('Unnamed: 0', axis=1)
+    allocation["Units"] = "Land (thousand km$^2$)"
+
+    biomass_allocation = allocation[allocation["LandLeaf"] == "biomass"].copy(deep=True)
+    managed_forests = allocation[allocation["LandLeaf"] == "forest (managed)"].copy(deep=True)
+    unmanaged_forests = allocation[allocation["LandLeaf"] == "forest (unmanaged)"].copy(deep=True)
+
+    plotting.plot_line_product_CI(biomass_allocation, "baseline", "Land allocated to bioenergy crops by baseline scenario", region=["USA"])
+    plotting.plot_line_product_CI(managed_forests, "baseline", "Land allocated to managed forests by baseline scenario", region=["USA"])
+    plotting.plot_line_product_CI(unmanaged_forests, "baseline", "Land allocated to unmanaged forests by baseline scenario", region=["USA"])
 
 def C_prices(config_fname, reference_year):
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
