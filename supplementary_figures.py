@@ -46,6 +46,7 @@ def land_allocation(config_fname, reference_year):
     plotting.plot_line_product_CI(managed_forests, "baseline", "Land allocated to managed forests by baseline scenario", region=["USA"])
     plotting.plot_line_product_CI(unmanaged_forests, "baseline", "Land allocated to unmanaged forests by baseline scenario", region=["USA"])
 
+
 def C_prices(config_fname, reference_year):
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
