@@ -13,11 +13,12 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    # compare_policy_costs("innovation-rhodium18B_low", "CDRIA-rhodium18B_low")
-    land_allocation(config_fname, "2050")
+    # compare_policy_costs("innovation-DACHubs_high", "innovation-rhodium6b_high")
+    # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
     # state_CDR(config_fname, "2050")
+    C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
 
@@ -46,6 +47,52 @@ def land_allocation(config_fname, reference_year):
     plotting.plot_line_product_CI(managed_forests, "baseline", "Land allocated to managed forests by baseline scenario", region=["USA"])
     plotting.plot_line_product_CI(unmanaged_forests, "baseline", "Land allocated to unmanaged forests by baseline scenario", region=["USA"])
 
+
+def C_tax(config_fname, reference_year):
+    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
+                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
+                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
+                 "innovation-rhodium18b_low", "innovation-triple_low",
+                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
+                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
+                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+    CO2_emissions = data_manipulation.get_sensitivity_data(scenarios, "CO2_emissions_by_sector")
+    CO2_emissions = CO2_emissions[CO2_emissions["GCAM"].isin(c.GCAMConstants.USA_region)]
+    CO2_emissions = CO2_emissions[CO2_emissions["sector"] != "CDR_regional"]  # excluded from the C tax
+    CO2_emissions = CO2_emissions.groupby(["scenario", "baseline", "Units"]).sum(min_count=1).reset_index()
+    # get a baseline CO2 emissions
+    baseline_emissions = pd.read_csv("data/data_analysis/baseline_co2_emissions.csv")
+    # process emissions revenue
+    CO2_prices = data_manipulation.get_sensitivity_data(scenarios, "CO2_prices")
+    CO2_prices = CO2_prices[(CO2_prices["GCAM"] == "USA") & (CO2_prices["product"] == "CO2")]
+    CO2_tax_revenue = pd.merge(CO2_emissions, CO2_prices, "left", ["baseline", "scenario"], suffixes=("_supply", "_price"))
+    for i in c.GCAMConstants.plotting_x:
+        # (Mt C * CO2 / C = Mt CO2) * (1990$/tC * 2025$/tC /1990$/tC = 2025$t C * CO2 /C = 2025$/t CO2) = (Mt CO2 * 2025$/t CO2) = M 2025$
+        CO2_tax_revenue[str(i)] = (CO2_tax_revenue[str(i) + "_supply"] / c.GCAMConstants.CO2_to_C) * (
+                CO2_tax_revenue[str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC) / 1000 # to billion
+    # process deadweight loss
+    CO2_tax_price = pd.merge(CO2_emissions, CO2_prices, "left", ["baseline", "scenario"], suffixes=("_supply", "_price"))
+    CO2_tax_price["Units"] = "MTC"
+    deadweight_loss = pd.merge(CO2_tax_price, baseline_emissions, "left", "Units", suffixes=("_actual", "_baseline"))
+    for i in c.GCAMConstants.plotting_x:
+        # ((Mt C - Mt C) * CO2 / C = Mt CO2) * (1990$/tC * 2025$/tC /1990$/tC = 2025$t C * CO2 /C = 2025$/t CO2) = (Mt CO2 * 2025$/t CO2) = M 2025$
+        deadweight_loss[str(i)] = (
+                0.5 * (deadweight_loss[str(i)] - deadweight_loss[str(i) + "_supply"]) / c.GCAMConstants.CO2_to_C *
+                (deadweight_loss[str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC)) / 1000 # to billion
+
+    deadweight_loss = deadweight_loss[["scenario", "baseline", "2025", "2030", "2035", "2040", "2045", "2050"]]
+    CO2_tax_revenue = CO2_tax_revenue[["scenario", "baseline", "2025", "2030", "2035", "2040", "2045", "2050"]]
+    deadweight_loss["Units"] = "Billion 2025$USD/yr"
+    CO2_tax_revenue["Units"] = "Billion 2025$USD/yr"
+    deadweight_loss["product"] = "Deadweight Loss"
+    CO2_tax_revenue["product"] = "C Tax Revenue"
+    deadweight_loss["GCAM"] = "USA"
+    CO2_tax_revenue["GCAM"] = "USA"
+
+    plotting.plot_line_product_CI(deadweight_loss, "baseline", "Deadweight loss by baseline scenario", region=["USA"], skip_years=2)
+    plotting.plot_line_product_CI(CO2_tax_revenue, "baseline", "C tax revenue by baseline scenario", region=["USA"], skip_years=2)
 
 def C_prices(config_fname, reference_year):
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
