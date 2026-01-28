@@ -14,14 +14,14 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # compare_policy_costs("innovation-DACHubs_high", "innovation-rhodium6b_high")
-    CAGR(config_fname, "2050")
+    # CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
     # state_CDR(config_fname, "2050")
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
-    # CDR_subsidies(config_fname, "2035", "2040")
+    CDR_subsidies(config_fname, "2035", "2040")
 
 def CAGR(config_fname, reference_year):
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
@@ -339,7 +339,14 @@ def CDR_subsidies(config_fname, year1, year2):
 
     CDR["plot"] = CDR[year2] - CDR[year1]
 
+    if config_fname.split("/")[1] == "nothing":
+        # no BECCS in the nothing baseline
+        CDR = CDR[CDR["technology"] != "BECCS"]
+
     # choropleth map
+    plotting.plot_regional_hist_avg(CDR, 'plot',
+                                    "change in size of CDR markets from 2035 to 2040",
+                                    "technology", config_fname)
     plotting.plot_world_by_products(CDR, "technology", ["plot"],
                                     "Change in CDR (Mt) from " + year1 + " to year " + year2, config_fname)
 
@@ -384,5 +391,5 @@ def compare_policy_costs(scenario1, scenario2):
 
 
 if __name__ == '__main__':
-    for i in ["low_low"]:
+    for i in ["s1-procureScaling-n_nothing", "s1-procure3B-n_nothing"]:
         main(i, "2050")

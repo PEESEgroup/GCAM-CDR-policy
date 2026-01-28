@@ -1232,7 +1232,10 @@ def plot_regional_hist_avg(prices, year, title, column, config_fname):
         return
 
     # plot histogram
-    bind_width = (int(prices[year].max() + .1) - int(prices[year].min() - .1)) / 40
+    if config_fname.split("/")[1] == "nothing":
+        bind_width = (prices[year].max() + .1 - prices[year].min() - .1) / 10
+    else:
+        bind_width = (int(prices[year].max() + .1) - int(prices[year].min() - .1)) / 40
     bins = [bind_width * i for i in
             range(int(prices[year].min() / bind_width) - 1, int(prices[year].max() / bind_width) + 2)]
 
