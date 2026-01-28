@@ -14,13 +14,55 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # compare_policy_costs("innovation-DACHubs_high", "innovation-rhodium6b_high")
+    CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
     # state_CDR(config_fname, "2050")
-    C_tax(config_fname, reference_year)
+    # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
+
+def CAGR(config_fname, reference_year):
+    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+                 "45Q-2040_low", "45Q-2050_low",
+                 "45Q-2040_high", "45Q-2050_high",
+                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
+                 "innovation-rhodium18b_low", "innovation-triple_low",
+                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
+                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
+                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+
+    CDR = data_manipulation.get_sensitivity_data(scenarios, "CDR_by_tech")
+    CDR = CDR[CDR[['GCAM']].isin(c.GCAMConstants.USA_region).any(axis=1)]
+    CDR = CDR[CDR['technology'] != "unsatisfied CDR demand"]
+    CDR = data_manipulation.group(CDR, ["baseline", "scenario", "technology"])
+    CDR["GCAM"] = "USA"
+    CDR["Units"] = "CAGR (%)"
+
+    # CAGR calculations
+    for i in c.GCAMConstants.plotting_x:
+        # rename columns
+        CDR[str(i) + "_original"] = CDR[str(i)]
+
+    for i in c.GCAMConstants.plotting_x:
+        # calculate CAGR
+        if i > 2025:
+            # (new/old)^(1/t [5 years]) -1     -> *100 to go to %
+            CDR[str(i)] = 100*((CDR[str(i)+ "_original"]/CDR[str(i-5)+ "_original"]) ** (1/5) - 1)
+        else:
+            CDR[str(i)] = np.nan
+
+    CDR_DAC = CDR[CDR["technology"] == "DAC"].copy(deep=True)
+    CDR_BECCS = CDR[CDR["technology"] == "BECCS"].copy(deep=True)
+    CDR_OEW = CDR[CDR["technology"] == "OEW"].copy(deep=True)
+    CDR_TEW = CDR[CDR["technology"] == "TEW"].copy(deep=True)
+
+    plotting.plot_line_product_CI(CDR_DAC, "baseline", "CAGR for DAC by baseline scenario", region=["USA"])
+    plotting.plot_line_product_CI(CDR_BECCS, "baseline", "CAGR for BECCS by baseline scenario", region=["USA"])
+    plotting.plot_line_product_CI(CDR_OEW, "baseline", "CAGR for OEW by baseline scenario", region=["USA"])
+    plotting.plot_line_product_CI(CDR_TEW, "baseline", "CAGR for TEW by baseline scenario", region=["USA"])
 
 
 def land_allocation(config_fname, reference_year):
