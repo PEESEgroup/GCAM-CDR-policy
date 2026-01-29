@@ -13,7 +13,7 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    # compare_policy_costs("innovation-DACHubs_high", "innovation-rhodium6b_high")
+    compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
     # CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
@@ -21,7 +21,7 @@ def main(config_fname, reference_year):
     # state_CDR(config_fname, "2050")
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
-    CDR_subsidies(config_fname, "2035", "2040")
+    # CDR_subsidies(config_fname, "2035", "2040")
 
 def CAGR(config_fname, reference_year):
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
