@@ -4,6 +4,8 @@ import data_manipulation
 import constants as c
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 
 
 def main(config_fname, reference_year):
@@ -26,12 +28,14 @@ def main(config_fname, reference_year):
 
 
 def tech_neutrality():
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+    scenarios = ["low_low", "high_high",
                  "innovation-maintain_low", "innovation-rhodium6b_low",
                  "innovation-rhodium18b_low", "innovation-triple_low",
                  "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high"]
+                 "innovation-rhodium18b_high", "innovation-triple_high",
+                 "s1-procureRhodium-l_low","s1-procureRhodium-h_high",
+                 "s1-procureScaling-l_low", "s1-procure3B-l_low",
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high"]
 
     # get CDR data
     all_data = pd.DataFrame()
@@ -63,10 +67,64 @@ def tech_neutrality():
 
     # calculate spend and supply and which technology it is applied to
     for i in c.GCAMConstants.plotting_x:
-        supply_sums = CDR.groupby(['scenario'])[str(i)+"_supply"].transform(lambda x: x.abs().sum())
+        supply_sums = CDR.groupby(['scenario', "baseline"])[str(i)+"_supply"].transform(lambda x: x.abs().sum())
         CDR[str(i)] = CDR[str(i)+"_supply"]/supply_sums  # what is the impact of policy on supply of CDR by technology compared to baseline?
 
+    # mask data
+    # no 2025 data
+    CDR["2025"] = np.nan
+    # procure scaling/3B have no 2040+ data
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2050'] = np.nan
 
+    for baseline in ["low", "high"]:
+        CDR_baseline = CDR[CDR["baseline"] == baseline]
+        years = ['2030', '2035', '2040', '2045', '2050']
+        scenarios = CDR_baseline['scenario'].unique()
+        products = CDR_baseline['product'].unique()
+
+        # set up the grid: Rows = Scenarios, Columns = Years
+        fig, axes = plt.subplots(5, len(scenarios), figsize=(25, 5 * len(scenarios)), sharey=True, sharex=True, layout="constrained")
+        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+        for row_idx, scenario_name in enumerate(scenarios):
+            scenario_df = CDR_baseline[CDR_baseline['scenario'] == scenario_name]
+
+            for col_idx, year in enumerate(years):
+                ax = axes[col_idx, row_idx] if len(scenarios) > 1 else axes[col_idx]
+
+                if not scenario_df[year].isna().all():
+                    # if there is data, extract it for plotting
+                    product_totals = scenario_df.groupby('product')[str(year)].sum().reindex(products).fillna(0)
+                    bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
+
+                    # label only certain subplots
+                    if row_idx == 0:
+                        ax.set_ylabel(f"{year}", fontweight='bold', fontsize=14)
+
+                    if col_idx == 0:
+                        ax.set_title(f"{scenario_name}", fontsize=14, fontweight='bold')
+
+                    ax.grid(axis='x', linestyle='--', alpha=0.6)
+                else:
+                    # delete plot
+                    fig.delaxes(ax)
+
+        # add a single legend
+        legend_elements = [Line2D([0], [0], color=colors[i], lw=4, label=p) for i, p in enumerate(products)]
+        fig.legend(handles=legend_elements, title="CDR Technologies", loc='upper center',
+                   bbox_to_anchor=(0.87, 0.2), ncol=4, fontsize=12)
+        plt.savefig(f"data/data_analysis/images/CDR-Technologies-{baseline}.png", dpi=300)
+        plt.show()
 
 def CAGR(config_fname, reference_year):
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
