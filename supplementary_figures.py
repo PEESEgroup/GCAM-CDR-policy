@@ -15,16 +15,171 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
+    marginal_supply()
     tech_neutrality()
-    # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
-    # CAGR(config_fname, "2050")
-    # land_allocation(config_fname, "2050")
-    # cement(config_fname, "2050")
-    # electricity(config_fname, "2050")
-    # state_CDR(config_fname, "2050")
-    # C_tax(config_fname, reference_year)
-    # C_prices(config_fname, reference_year)
-    # CDR_subsidies(config_fname, "2035", "2040")
+    compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
+    CAGR(config_fname, "2050")
+    land_allocation(config_fname, "2050")
+    cement(config_fname, "2050")
+    electricity(config_fname, "2050")
+    state_CDR(config_fname, "2050")
+    C_tax(config_fname, reference_year)
+    C_prices(config_fname, reference_year)
+    CDR_subsidies(config_fname, "2035", "2040")
+
+
+def marginal_supply():
+    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+     "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+
+    # get CDR data
+    all_data = pd.DataFrame()
+    for nonBaselineScenario in scenarios:
+        nonBaselineScenario = str(nonBaselineScenario).replace("_", "/")
+        fpath = "./data/data_analysis/supplementary_tables/" + nonBaselineScenario + "/policy cost by technology.csv"
+        pyrolysis_df = pd.read_csv(fpath)
+        if all_data.empty:
+            all_data = pyrolysis_df
+        else:
+            all_data = pd.concat([all_data, pyrolysis_df])
+    CDR = all_data[["2025_supply", "2030_supply", "2035_supply", "2040_supply", "2045_supply", "2050_supply",
+                    "scenario", "baseline", "product", "Units"]]
+    CDR = CDR[CDR["product"].isin(["BECCS", "DAC", "OEW", "TEW"])]
+    CDR = CDR.fillna(0)
+
+    # scenario pairs
+    scenario_pairs = [('nzn', 'low'),
+                      ('low', 's1-procureScaling-l'),
+                      ('low', 's1-procure3B-l'),
+                      ('low', 's1-procureRhodium-l'),
+                      ('low', 'high'),
+                      ('high', 's1-procureScaling-h'),
+                      ('high', "s1-procure3B-h"),
+                      ('high', "s1-procureRhodium-h"),
+                      ('high', 'excess'),
+                      ('excess', '4gt')]
+    year_cols = ['2030_supply', '2035_supply', '2040_supply', '2045_supply', '2050_supply']
+    id_cols = 'product'
+
+    # a list to store results
+    delta_results = []
+
+    # get the source data (smallest scenario for each year)
+    source = CDR[CDR['scenario'] == "nzn"].copy(deep=True).set_index(id_cols)[year_cols]
+    source = source.div(source.sum())
+    source['comparison'] = "nzn"
+    delta_results.append(source.reset_index())
+
+    for s1, s2 in scenario_pairs:
+        # filter and set index to align rows for subtraction
+        df1 = CDR[CDR['scenario'] == s1].set_index(id_cols)[year_cols]
+        df2 = CDR[CDR['scenario'] == s2].set_index(id_cols)[year_cols]
+
+        # subtract (Scenario 2 - Scenario 1) because S2 is always larger, then normalize to sum to 1
+        diff = df2.sub(df1, fill_value=0)
+        diff = diff.div(diff.sum())
+
+        # label the new data with the paired name
+        diff['comparison'] = f"<{s2}, {s1}>"
+
+        # reset index to bring id_cols back as columns
+        delta_results.append(diff.reset_index())
+
+    # get the target data (largest scenario for each year)
+    source = CDR[CDR['scenario'] == "4gt"].copy(deep=True).set_index(id_cols)[year_cols]
+    source = source.div(source.sum())
+    source['comparison'] = "4gt"
+    delta_results.append(source.reset_index())
+
+    # combine into a final DataFrame
+    df_deltas = pd.concat(delta_results, ignore_index=True)
+    df_deltas["2030"] = df_deltas["2030_supply"]
+    df_deltas["2035"] = df_deltas["2035_supply"]
+    df_deltas["2040"] = df_deltas["2040_supply"]
+    df_deltas["2045"] = df_deltas["2045_supply"]
+    df_deltas["2050"] = df_deltas["2050_supply"]
+    # add a mask
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-l, low>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-h, high>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-l, low>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-h, high>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-l, low>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-h, high>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-l, low>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-h, high>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-l, low>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-h, high>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-l, low>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-h, high>', '2050'] = np.nan
+    df_deltas = df_deltas[["comparison", "product", "2030", "2035", "2040", "2045", "2050"]]
+
+    # set up plot
+    years = ['2030', '2035', '2040', '2045', '2050']
+    all_comparisons = list(df_deltas['comparison'].unique())
+    products = list(df_deltas['product'].unique())
+    colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+
+    # set up the grid (3 rows, 2 columns)
+    fig, axes = plt.subplots(2, 3, figsize=(20, 12), sharex=False, sharey=True, layout="constrained")
+    axes_flat = axes.flatten()
+
+    for i, year in enumerate(years):
+        ax = axes_flat[i]
+
+        # Filter valid comparisons for the specific year
+        valid_comps = [c for c in all_comparisons if not df_deltas[df_deltas['comparison'] == c][year].isna().all()]
+        x_pos = np.arange(len(valid_comps))
+
+        starts_pos = np.zeros(len(valid_comps))
+        starts_neg = np.zeros(len(valid_comps))
+
+        for p_idx, product in enumerate(products):
+            # Extract values
+            values = []
+            for comp in valid_comps:
+                val = df_deltas[(df_deltas['comparison'] == comp) & (df_deltas['product'] == product)][year].sum()
+                values.append(0 if np.isnan(val) else val)
+
+            values = np.array(values)
+            current_bottom = np.where(values >= 0, starts_pos, starts_neg)
+
+            # Plot bars
+            bars = ax.bar(x_pos, values, bottom=current_bottom, color=colors[p_idx],
+                          edgecolor='white', width=0.7, label=product if i == 0 else "")
+
+            # Add Value Labels
+            for j, bar in enumerate(bars):
+                val = values[j]
+                if abs(val) > 0.1:  # label segments larger than 10% for readability
+                    # Position text in the middle of the segment
+                    text_y = current_bottom[j] + (val / 2)
+                    ax.text(bar.get_x() + bar.get_width() / 2, text_y, f'{val:.2f}',
+                            ha='center', va='center', color='white', fontweight='bold', fontsize=9)
+
+            starts_pos += np.maximum(0, values)
+            starts_neg += np.minimum(0, values)
+
+        # Formatting Subplot
+        ax.set_title(f"{year}", fontsize=14, fontweight='bold')
+        ax.axhline(0, color='black', linewidth=1)
+        ax.set_xticks(x_pos)
+        ax.set_xticklabels(valid_comps, rotation=30, ha='right', fontsize=11)
+        ax.set_ylabel("Normalized Delta")
+        ax.grid(axis='y', linestyle=':', alpha=0.6)
+
+    # add legend to 6th axis
+    legend_ax = axes_flat[5]
+    legend_ax.axis('off')  # Hide the plot lines/grid
+
+    # Create custom legend handles
+    from matplotlib.patches import Patch
+    legend_elements = [Patch(facecolor=colors[i], label=products[i]) for i in range(len(products))]
+
+    legend_ax.legend(handles=legend_elements, title="CDR Technologies",
+                     loc='center', fontsize=14, title_fontsize=16, frameon=False)
+
+    plt.savefig("data/data_analysis/images/Marginal_Supply_Grid.png", dpi=300, bbox_inches='tight')
+    plt.show()
 
 
 def tech_neutrality():
@@ -106,6 +261,9 @@ def tech_neutrality():
                     # if there is data, extract it for plotting
                     product_totals = scenario_df.groupby('product')[str(year)].sum().reindex(products).fillna(0)
                     bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
+
+                    v_line_pos = 0 if "innovation" in scenario_name else 0.25
+                    ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2, label='Tech-Neutral Target')
 
                     # label only certain subplots
                     if row_idx == 0:
