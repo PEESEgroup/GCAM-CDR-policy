@@ -94,7 +94,7 @@ def tech_neutrality():
         products = CDR_baseline['product'].unique()
 
         # set up the grid: Rows = Scenarios, Columns = Years
-        fig, axes = plt.subplots(5, len(scenarios), figsize=(25, 5 * len(scenarios)), sharey=True, sharex=True, layout="constrained")
+        fig, axes = plt.subplots(5, len(scenarios), figsize=(5 * len(scenarios), 25), sharey=True, sharex=True, layout="constrained")
         colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
         for row_idx, scenario_name in enumerate(scenarios):
             scenario_df = CDR_baseline[CDR_baseline['scenario'] == scenario_name]
@@ -494,5 +494,5 @@ def compare_policy_costs(scenario1, scenario2):
 
 
 if __name__ == '__main__':
-    for i in ["s1-procureScaling-n_nothing", "s1-procure3B-n_nothing"]:
+    for i in ["s1-procureScaling-n_nothing"]:
         main(i, "2050")
