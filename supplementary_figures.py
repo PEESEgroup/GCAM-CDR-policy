@@ -13,7 +13,8 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
+    tech_neutrality()
+    # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
     # CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
@@ -22,6 +23,50 @@ def main(config_fname, reference_year):
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
+
+
+def tech_neutrality():
+    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+                 "innovation-maintain_low", "innovation-rhodium6b_low",
+                 "innovation-rhodium18b_low", "innovation-triple_low",
+                 "innovation-maintain_high", "innovation-rhodium6b_high",
+                 "innovation-rhodium18b_high", "innovation-triple_high"]
+
+    # get CDR data
+    all_data = pd.DataFrame()
+    for nonBaselineScenario in scenarios:
+        nonBaselineScenario = str(nonBaselineScenario).replace("_", "/")
+        fpath = "./data/data_analysis/supplementary_tables/" + nonBaselineScenario + "/policy cost by technology.csv"
+        pyrolysis_df = pd.read_csv(fpath)
+        if all_data.empty:
+            all_data = pyrolysis_df
+        else:
+            all_data = pd.concat([all_data, pyrolysis_df])
+    CDR = all_data[["2025_supply", "2030_supply", "2035_supply", "2040_supply", "2045_supply", "2050_supply",
+                    "2025", "2030", "2035", "2040", "2045", "2050",
+                    "scenario", "baseline", "product", "Units"]]
+    CDR = CDR[CDR["product"].isin(["BECCS", "DAC", "OEW", "TEW"])]
+    CDR = CDR.fillna(0)  # fill na with 0
+
+    # subtract the effects of the baseline scenarios to find the impacts of policy
+    baselines = CDR[(CDR["scenario"] == "low") | (CDR["scenario"] == "high")].copy(deep=True)
+    CDR = CDR[~CDR["scenario"].isin(["low", "high"])]
+    CDR = pd.merge(CDR, baselines, "left", ["baseline", "product", "Units"], suffixes=("_original", "_baseline"))
+    CDR["scenario"] = CDR["scenario_original"]
+
+    # calculate the changes in supply
+    for i in c.GCAMConstants.plotting_x:
+        CDR[str(i)+"_supply"] = CDR[str(i)+"_supply_original"] - CDR[str(i)+"_supply_baseline"]
+    CDR = CDR[["2025_supply", "2030_supply", "2035_supply", "2040_supply", "2045_supply", "2050_supply",
+               "scenario", "baseline", "product", "Units"]]
+
+    # calculate spend and supply and which technology it is applied to
+    for i in c.GCAMConstants.plotting_x:
+        supply_sums = CDR.groupby(['scenario'])[str(i)+"_supply"].transform(lambda x: x.abs().sum())
+        CDR[str(i)] = CDR[str(i)+"_supply"]/supply_sums  # what is the impact of policy on supply of CDR by technology compared to baseline?
+
+
 
 def CAGR(config_fname, reference_year):
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
