@@ -15,17 +15,17 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    marginal_supply()
+    # marginal_supply()
     tech_neutrality()
-    compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
-    CAGR(config_fname, "2050")
-    land_allocation(config_fname, "2050")
-    cement(config_fname, "2050")
-    electricity(config_fname, "2050")
-    state_CDR(config_fname, "2050")
-    C_tax(config_fname, reference_year)
-    C_prices(config_fname, reference_year)
-    CDR_subsidies(config_fname, "2035", "2040")
+    # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
+    # CAGR(config_fname, "2050")
+    # land_allocation(config_fname, "2050")
+    # cement(config_fname, "2050")
+    # electricity(config_fname, "2050")
+    # state_CDR(config_fname, "2050")
+    # C_tax(config_fname, reference_year)
+    # C_prices(config_fname, reference_year)
+    # CDR_subsidies(config_fname, "2035", "2040")
 
 
 def marginal_supply():
@@ -188,9 +188,11 @@ def tech_neutrality():
                  "innovation-rhodium18b_low", "innovation-triple_low",
                  "innovation-maintain_high", "innovation-rhodium6b_high",
                  "innovation-rhodium18b_high", "innovation-triple_high",
+                 "CDRIA-2050_low", "CDRIA-2050_high",
                  "s1-procureRhodium-l_low","s1-procureRhodium-h_high",
                  "s1-procureScaling-l_low", "s1-procure3B-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high"]
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high",
+                 "CDRIA-2035_low", "CDRIA-2035_high"]
 
     # get CDR data
     all_data = pd.DataFrame()
@@ -233,14 +235,18 @@ def tech_neutrality():
     CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2040'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2040'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2040'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2045'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2045'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2045'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2045'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2050'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2050'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2050'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2050'] = np.nan
+
 
     for baseline in ["low", "high"]:
         CDR_baseline = CDR[CDR["baseline"] == baseline]
@@ -262,7 +268,7 @@ def tech_neutrality():
                     product_totals = scenario_df.groupby('product')[str(year)].sum().reindex(products).fillna(0)
                     bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
 
-                    v_line_pos = 0 if "innovation" in scenario_name else 0.25
+                    v_line_pos = 0 if "innovation" in scenario_name or "CDRIA" in scenario_name else 0.25
                     ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2, label='Tech-Neutral Target')
 
                     # label only certain subplots
@@ -270,7 +276,7 @@ def tech_neutrality():
                         ax.set_ylabel(f"{year}", fontweight='bold', fontsize=14)
 
                     if col_idx == 0:
-                        ax.set_title(f"{scenario_name}", fontsize=14, fontweight='bold')
+                        ax.set_title(f"{scenario_name}", fontsize=11, fontweight='bold')
 
                     ax.grid(axis='x', linestyle='--', alpha=0.6)
                 else:
@@ -280,7 +286,7 @@ def tech_neutrality():
         # add a single legend
         legend_elements = [Line2D([0], [0], color=colors[i], lw=4, label=p) for i, p in enumerate(products)]
         fig.legend(handles=legend_elements, title="CDR Technologies", loc='upper center',
-                   bbox_to_anchor=(0.87, 0.2), ncol=4, fontsize=12)
+                   bbox_to_anchor=(0.85, 0.35), ncol=2, title_fontsize=15, fontsize=12)
         plt.savefig(f"data/data_analysis/images/CDR-Technologies-{baseline}.png", dpi=300)
         plt.show()
 
