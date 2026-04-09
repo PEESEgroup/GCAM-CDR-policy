@@ -66,7 +66,7 @@ def npv_breakdown():
     plot_df = CDR.pivot_table(
         index=['baseline', 'scenario', 'CDR (Mt)'],
         columns='cost_type',
-        values='percentage'
+        values='npv_0.12'
     ).reset_index()
 
     # 2. Setup the GridSpec with height ratios
@@ -101,7 +101,7 @@ def npv_breakdown():
 
         subset[cost_categories].plot(kind='barh', stacked=True, ax=ax, legend=False, width=0.8)
         ax.set_ylabel('')
-        ax.set_xlim(-5, 105)  # Hard-code x-axis limit
+        ax.set_xlim(-.1, 1.4)  # Hard-code x-axis limit
         # Remove the top and right lines
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
@@ -111,7 +111,7 @@ def npv_breakdown():
             plt.setp(ax.get_xticklabels(), visible=False)
             ax.set_xlabel('')
         else:
-            ax.set_xlabel('NPV Breakdown (%)')
+            ax.set_xlabel('NPV (Trillion USD)')
 
     handles, labels = main_ax.get_legend_handles_labels()
     fig.legend(handles, labels, title='Cost Type', ncol=3, loc='center left', bbox_to_anchor=(0.55, 0.1))
