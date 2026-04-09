@@ -6,6 +6,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+import matplotlib.gridspec as gridspec
 
 
 def main(config_fname, reference_year):
@@ -16,7 +17,7 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # marginal_supply()
-    tech_neutrality()
+    # tech_neutrality()
     # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
     # CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
@@ -26,6 +27,97 @@ def main(config_fname, reference_year):
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
+    npv_breakdown()
+
+
+def npv_breakdown():
+    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
+                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
+                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
+                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
+                 "innovation-rhodium18b_low", "innovation-triple_low",
+                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
+                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
+                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+
+    # get CDR data
+    all_data = pd.DataFrame()
+    for nonBaselineScenario in scenarios:
+        nonBaselineScenario = str(nonBaselineScenario).replace("_", "/")
+        fpath = "./data/data_analysis/supplementary_tables/" + nonBaselineScenario + "/interpolated costs of achieving net zero.csv"
+        pyrolysis_df = pd.read_csv(fpath)
+        baseline = nonBaselineScenario.split("/")[1]
+        pyrolysis_df["scenario"] = nonBaselineScenario.split("/")[0]
+        pyrolysis_df["baseline"] = baseline
+        # avoids having to merge tables but kinda ugly
+        pyrolysis_df["CDR (Mt)"] = 100 if baseline == "nzn" else 500 if baseline == "low" else 1500 if baseline == "high" else 2400 if baseline == "excess" else 4100
+        if all_data.empty:
+            all_data = pyrolysis_df
+        else:
+            all_data = pd.concat([all_data, pyrolysis_df])
+    CDR = all_data[["cost_type", "npv_0.12", "scenario", "baseline", "CDR (Mt)"]]
+
+    # group by 'scenario' and 'baseline' to calculate the total/percentage NPV for each group
+    CDR["df_totals"] = CDR.groupby(['scenario', 'baseline'])['npv_0.12'].transform('sum')
+    CDR['percentage'] = (CDR['npv_0.12'] / CDR["df_totals"]) * 100
+
+    # Pivot the data
+    plot_df = CDR.pivot_table(
+        index=['baseline', 'scenario', 'CDR (Mt)'],
+        columns='cost_type',
+        values='percentage'
+    ).reset_index()
+
+    # 2. Setup the GridSpec with height ratios
+    baselines = plot_df['baseline'].unique()
+    height_counts = [len(plot_df[plot_df['baseline'] == bl]) for bl in baselines]
+
+    n_cols = 2
+    n_rows = (len(baselines) + 1) // n_cols
+
+    row_height_ratios = []
+    for i in range(0, len(height_counts), n_cols):
+        chunk = height_counts[i: i + n_cols]
+        row_height_ratios.append(max(chunk))
+
+    fig = plt.figure(figsize=(14, sum(row_height_ratios) * 0.4))
+    gs = gridspec.GridSpec(n_rows, n_cols, height_ratios=row_height_ratios)
+
+    cost_categories = CDR['cost_type'].unique()
+    main_ax = None  # Placeholder to hold the first axis for sharing
+
+    # 3. Plotting with sharex
+    for i, bl in enumerate(baselines):
+        # Initialize the first axis, then share all subsequent axes with it
+        if i == 0:
+            ax = fig.add_subplot(gs[i // n_cols, i % n_cols])
+            main_ax = ax
+        else:
+            ax = fig.add_subplot(gs[i // n_cols, i % n_cols], sharex=main_ax)
+
+        subset = plot_df[plot_df['baseline'] == bl].sort_values(by='CDR (Mt)')
+        subset = subset.set_index('scenario')
+
+        subset[cost_categories].plot(kind='barh', stacked=True, ax=ax, legend=False, width=0.8)
+        ax.set_ylabel('')
+        ax.set_xlim(-5, 105)  # Hard-code x-axis limit
+        # Remove the top and right lines
+        ax.spines['top'].set_visible(False)
+        ax.spines['right'].set_visible(False)
+
+        # show x-axis labels on the bottom-most subplots
+        if (i // n_cols) < (n_rows - 1):
+            plt.setp(ax.get_xticklabels(), visible=False)
+            ax.set_xlabel('')
+        else:
+            ax.set_xlabel('NPV Breakdown (%)')
+
+    handles, labels = main_ax.get_legend_handles_labels()
+    fig.legend(handles, labels, title='Cost Type', ncol=3, loc='center left', bbox_to_anchor=(0.55, 0.1))
+    plt.tight_layout()
+    plt.savefig('./data/data_analysis/images/stacked_cost_contribution.png')
+    plt.show()
 
 
 def marginal_supply():
