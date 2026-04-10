@@ -17,7 +17,7 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # marginal_supply()
-    # tech_neutrality()
+    tech_neutrality()
     # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
     # CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
@@ -27,7 +27,7 @@ def main(config_fname, reference_year):
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
-    npv_breakdown()
+    # npv_breakdown()
 
 
 def npv_breakdown():
@@ -339,48 +339,74 @@ def tech_neutrality():
     CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2050'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2050'] = np.nan
 
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2050_supply'] = np.nan
+
 
     for baseline in ["low", "high"]:
-        CDR_baseline = CDR[CDR["baseline"] == baseline]
-        years = ['2030', '2035', '2040', '2045', '2050']
-        scenarios = CDR_baseline['scenario'].unique()
-        products = CDR_baseline['product'].unique()
+        for suffix in ["", "_supply"]:
+            CDR_baseline = CDR[CDR["baseline"] == baseline]
+            years = ['2030' + suffix, '2035' + suffix, '2040' + suffix, '2045' + suffix, '2050' + suffix]
+            scenarios = CDR_baseline['scenario'].unique()
+            products = CDR_baseline['product'].unique()
 
-        # set up the grid: Rows = Scenarios, Columns = Years
-        fig, axes = plt.subplots(5, len(scenarios), figsize=(5 * len(scenarios), 25), sharey=True, sharex=True, layout="constrained")
-        colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
-        for row_idx, scenario_name in enumerate(scenarios):
-            scenario_df = CDR_baseline[CDR_baseline['scenario'] == scenario_name]
+            # set up the grid: Rows = Scenarios, Columns = Years
+            fig, axes = plt.subplots(5, len(scenarios), figsize=(15, 5), sharey=True, sharex=True, layout="constrained")
 
-            for col_idx, year in enumerate(years):
-                ax = axes[col_idx, row_idx] if len(scenarios) > 1 else axes[col_idx]
+            colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+            for row_idx, scenario_name in enumerate(scenarios):
+                scenario_df = CDR_baseline[CDR_baseline['scenario'] == scenario_name]
 
-                if not scenario_df[year].isna().all():
-                    # if there is data, extract it for plotting
-                    product_totals = scenario_df.groupby('product')[str(year)].sum().reindex(products).fillna(0)
-                    bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
+                for col_idx, year in enumerate(years):
+                    ax = axes[col_idx, row_idx] if len(scenarios) > 1 else axes[col_idx]
 
-                    v_line_pos = 0 if "innovation" in scenario_name or "CDRIA" in scenario_name else 0.25
-                    ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2, label='Tech-Neutral Target')
+                    if not scenario_df[year].isna().all():
+                        # if there is data, extract it for plotting
+                        product_totals = scenario_df.groupby('product')[str(year)].sum().reindex(products).fillna(0)
+                        bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
 
-                    # label only certain subplots
-                    if row_idx == 0:
-                        ax.set_ylabel(f"{year}", fontweight='bold', fontsize=14)
+                        v_line_pos = 0 if "innovation" in scenario_name or "CDRIA" in scenario_name else 0.25
+                        if suffix == "_supply":
+                            if v_line_pos == 0: # don't put line on procurement graphs for Mt supply
+                                ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2, label='Tech-Neutral Target')
+                        else:
+                            ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
+                                       label='Tech-Neutral Target')
 
-                    if col_idx == 0:
-                        ax.set_title(f"{scenario_name}", fontsize=11, fontweight='bold')
+                        # label only certain subplots
+                        if row_idx == 0:
+                            if suffix == "_supply":
+                                year = year.split("_")[0]
+                            ax.set_ylabel(f"{year}", fontweight='bold', fontsize=12)
 
-                    ax.grid(axis='x', linestyle='--', alpha=0.6)
-                else:
-                    # delete plot
-                    fig.delaxes(ax)
+                        if col_idx == 0:
+                            ax.set_title(f"{scenario_name}", fontsize=9, fontweight='bold')
 
-        # add a single legend
-        legend_elements = [Line2D([0], [0], color=colors[i], lw=4, label=p) for i, p in enumerate(products)]
-        fig.legend(handles=legend_elements, title="CDR Technologies", loc='upper center',
-                   bbox_to_anchor=(0.85, 0.35), ncol=2, title_fontsize=15, fontsize=12)
-        plt.savefig(f"data/data_analysis/images/CDR-Technologies-{baseline}.png", dpi=300)
-        plt.show()
+                        ax.grid(axis='x', linestyle='--', alpha=0.6)
+                    else:
+                        # delete plot
+                        fig.delaxes(ax)
+
+            # add a single legend
+            legend_elements = [Line2D([0], [0], color=colors[i], lw=4, label=p) for i, p in enumerate(products)]
+            fig.legend(handles=legend_elements, title="CDR Technologies", loc='upper center',
+                       bbox_to_anchor=(0.85, 0.35), ncol=2, title_fontsize=15, fontsize=12)
+            plt.savefig(f"data/data_analysis/images/CDR-Technologies-{baseline}-{suffix}.png", dpi=300)
+            plt.show()
+
 
 def CAGR(config_fname, reference_year):
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
