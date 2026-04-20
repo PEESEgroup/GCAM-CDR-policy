@@ -31,6 +31,11 @@ def open_csv(fname, **kwargs):
 
 
 def build_from_scenario(scenario_name):
+    """
+    a lookup function to find the list of files that need to be built given a scenario name
+    :param scenario_name: the scenario name (or baseline pathway) from which assumption files are converted into xml files
+    :return: list of build_xml_config objects.
+    """
     ### WHEN RUNNING MULTIPLE SCENARIOS, ENSURE THAT ALL FILES HAVE DIFFERENT OUTPUT_FNAMES ###
     if "nothing" in scenario_name:
         return [

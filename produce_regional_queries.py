@@ -4,6 +4,10 @@ from xml.dom import minidom
 
 
 def main():
+    """
+    control program for converting a global query to all GCAM regions and USA regions
+    :return: produces an xml file (xml/query_list.xml) that is the basis for querying the GCAM-USA-CDR output
+    """
     new_file = ""
     with (open("xml/to_regionalize.xml", "r") as f):
         entry = f.read()
@@ -40,8 +44,8 @@ def main():
             xmlstr = minidom.parseString(ET.tostring(tree, encoding="UTF-8", xml_declaration=True)).toprettyxml(
                 indent="   ")
 
-            with open("xml/query_list.xml", "w+") as f:
-                f.write(xmlstr)
+            with open("xml/query_list.xml", "w+") as out_file:
+                out_file.write(xmlstr)
 
 
 if __name__ == '__main__':

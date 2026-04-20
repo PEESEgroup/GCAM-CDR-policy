@@ -16,6 +16,7 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
+    # many methods are commented out, but to run them it is feasible to uncomment and run
     # marginal_supply()
     tech_neutrality()
     # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
@@ -31,6 +32,10 @@ def main(config_fname, reference_year):
 
 
 def npv_breakdown():
+    """
+    calculates which categories contribute to npv
+    :return: plot of relevant data
+    """
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
                  "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
@@ -51,7 +56,8 @@ def npv_breakdown():
         pyrolysis_df["scenario"] = nonBaselineScenario.split("/")[0]
         pyrolysis_df["baseline"] = baseline
         # avoids having to merge tables but kinda ugly
-        pyrolysis_df["CDR (Mt)"] = 100 if baseline == "nzn" else 500 if baseline == "low" else 1500 if baseline == "high" else 2400 if baseline == "excess" else 4100
+        pyrolysis_df[
+            "CDR (Mt)"] = 100 if baseline == "nzn" else 500 if baseline == "low" else 1500 if baseline == "high" else 2400 if baseline == "excess" else 4100
         if all_data.empty:
             all_data = pyrolysis_df
         else:
@@ -121,8 +127,13 @@ def npv_breakdown():
 
 
 def marginal_supply():
+    """
+    calculate the marginal supply in a combination of policy scenarios
+    :return: plot showing results
+    """
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-     "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high", "nzn_nzn",
+                 "excess_excess", "4gt_4gt"]
 
     # get CDR data
     all_data = pd.DataFrame()
@@ -275,13 +286,17 @@ def marginal_supply():
 
 
 def tech_neutrality():
+    """
+    method to calculate the extent to which policies are technically neutral by measuring changes in market supply
+    :return: plot of relevant data
+    """
     scenarios = ["low_low", "high_high",
                  "innovation-maintain_low", "innovation-rhodium6b_low",
                  "innovation-rhodium18b_low", "innovation-triple_low",
                  "innovation-maintain_high", "innovation-rhodium6b_high",
                  "innovation-rhodium18b_high", "innovation-triple_high",
                  "CDRIA-2050_low", "CDRIA-2050_high",
-                 "s1-procureRhodium-l_low","s1-procureRhodium-h_high",
+                 "s1-procureRhodium-l_low", "s1-procureRhodium-h_high",
                  "s1-procureScaling-l_low", "s1-procure3B-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high",
                  "CDRIA-2035_low", "CDRIA-2035_high"]
@@ -310,14 +325,15 @@ def tech_neutrality():
 
     # calculate the changes in supply
     for i in c.GCAMConstants.plotting_x:
-        CDR[str(i)+"_supply"] = CDR[str(i)+"_supply_original"] - CDR[str(i)+"_supply_baseline"]
+        CDR[str(i) + "_supply"] = CDR[str(i) + "_supply_original"] - CDR[str(i) + "_supply_baseline"]
     CDR = CDR[["2025_supply", "2030_supply", "2035_supply", "2040_supply", "2045_supply", "2050_supply",
                "scenario", "baseline", "product", "Units"]]
 
     # calculate spend and supply and which technology it is applied to
     for i in c.GCAMConstants.plotting_x:
-        supply_sums = CDR.groupby(['scenario', "baseline"])[str(i)+"_supply"].transform(lambda x: x.abs().sum())
-        CDR[str(i)] = CDR[str(i)+"_supply"]/supply_sums  # what is the impact of policy on supply of CDR by technology compared to baseline?
+        supply_sums = CDR.groupby(['scenario', "baseline"])[str(i) + "_supply"].transform(lambda x: x.abs().sum())
+        CDR[str(i)] = CDR[
+                          str(i) + "_supply"] / supply_sums  # what is the impact of policy on supply of CDR by technology compared to baseline?
 
     # mask data
     # no 2025 data
@@ -355,7 +371,7 @@ def tech_neutrality():
     CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2050_supply'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2050_supply'] = np.nan
 
-
+    # iterate through baselines and supply type
     for baseline in ["low", "high"]:
         for suffix in ["", "_supply"]:
             CDR_baseline = CDR[CDR["baseline"] == baseline]
@@ -380,8 +396,9 @@ def tech_neutrality():
 
                         v_line_pos = 0 if "innovation" in scenario_name or "CDRIA" in scenario_name else 0.25
                         if suffix == "_supply":
-                            if v_line_pos == 0: # don't put line on procurement graphs for Mt supply
-                                ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2, label='Tech-Neutral Target')
+                            if v_line_pos == 0:  # don't put line on procurement graphs for Mt supply
+                                ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
+                                           label='Tech-Neutral Target')
                         else:
                             ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
                                        label='Tech-Neutral Target')
@@ -409,6 +426,12 @@ def tech_neutrality():
 
 
 def CAGR(config_fname, reference_year):
+    """
+    calculates the compound annual growth rate for each technology for the baseline scenarios
+    :param config_fname: not needed
+    :param reference_year: not needed
+    :return: N/A
+    """
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
                  "45Q-2040_low", "45Q-2050_low",
@@ -435,7 +458,7 @@ def CAGR(config_fname, reference_year):
         # calculate CAGR
         if i > 2025:
             # (new/old)^(1/t [5 years]) -1     -> *100 to go to %
-            CDR[str(i)] = 100*((CDR[str(i)+ "_original"]/CDR[str(i-5)+ "_original"]) ** (1/5) - 1)
+            CDR[str(i)] = 100 * ((CDR[str(i) + "_original"] / CDR[str(i - 5) + "_original"]) ** (1 / 5) - 1)
         else:
             CDR[str(i)] = np.nan
 
@@ -451,6 +474,12 @@ def CAGR(config_fname, reference_year):
 
 
 def land_allocation(config_fname, reference_year):
+    """
+    calculates the land allocation by type
+    :param config_fname: not needed
+    :param reference_year: not needed
+    :return: plot of relevant data
+    """
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
                  "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
@@ -470,12 +499,21 @@ def land_allocation(config_fname, reference_year):
     managed_forests = allocation[allocation["LandLeaf"] == "forest (managed)"].copy(deep=True)
     unmanaged_forests = allocation[allocation["LandLeaf"] == "forest (unmanaged)"].copy(deep=True)
 
-    plotting.plot_line_product_CI(biomass_allocation, "baseline", "Land allocated to bioenergy crops by baseline scenario", region=["USA"])
-    plotting.plot_line_product_CI(managed_forests, "baseline", "Land allocated to managed forests by baseline scenario", region=["USA"])
-    plotting.plot_line_product_CI(unmanaged_forests, "baseline", "Land allocated to unmanaged forests by baseline scenario", region=["USA"])
+    plotting.plot_line_product_CI(biomass_allocation, "baseline",
+                                  "Land allocated to bioenergy crops by baseline scenario", region=["USA"])
+    plotting.plot_line_product_CI(managed_forests, "baseline", "Land allocated to managed forests by baseline scenario",
+                                  region=["USA"])
+    plotting.plot_line_product_CI(unmanaged_forests, "baseline",
+                                  "Land allocated to unmanaged forests by baseline scenario", region=["USA"])
 
 
 def C_tax(config_fname, reference_year):
+    """
+    calculate size of C tax revenue
+    :param config_fname: not needed
+    :param reference_year: not needed
+    :return: plot of relevant information
+    """
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
                  "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
@@ -494,20 +532,24 @@ def C_tax(config_fname, reference_year):
     # process emissions revenue
     CO2_prices = data_manipulation.get_sensitivity_data(scenarios, "CO2_prices")
     CO2_prices = CO2_prices[(CO2_prices["GCAM"] == "USA") & (CO2_prices["product"] == "CO2")]
-    CO2_tax_revenue = pd.merge(CO2_emissions, CO2_prices, "left", ["baseline", "scenario"], suffixes=("_supply", "_price"))
+    CO2_tax_revenue = pd.merge(CO2_emissions, CO2_prices, "left", ["baseline", "scenario"],
+                               suffixes=("_supply", "_price"))
     for i in c.GCAMConstants.plotting_x:
         # (Mt C * CO2 / C = Mt CO2) * (1990$/tC * 2025$/tC /1990$/tC = 2025$t C * CO2 /C = 2025$/t CO2) = (Mt CO2 * 2025$/t CO2) = M 2025$
         CO2_tax_revenue[str(i)] = (CO2_tax_revenue[str(i) + "_supply"] / c.GCAMConstants.CO2_to_C) * (
-                CO2_tax_revenue[str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC) / 1000 # to billion
+                CO2_tax_revenue[str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC) / 1000  # to billion
     # process deadweight loss
-    CO2_tax_price = pd.merge(CO2_emissions, CO2_prices, "left", ["baseline", "scenario"], suffixes=("_supply", "_price"))
+    CO2_tax_price = pd.merge(CO2_emissions, CO2_prices, "left", ["baseline", "scenario"],
+                             suffixes=("_supply", "_price"))
     CO2_tax_price["Units"] = "MTC"
     deadweight_loss = pd.merge(CO2_tax_price, baseline_emissions, "left", "Units", suffixes=("_actual", "_baseline"))
     for i in c.GCAMConstants.plotting_x:
         # ((Mt C - Mt C) * CO2 / C = Mt CO2) * (1990$/tC * 2025$/tC /1990$/tC = 2025$t C * CO2 /C = 2025$/t CO2) = (Mt CO2 * 2025$/t CO2) = M 2025$
         deadweight_loss[str(i)] = (
-                0.5 * (deadweight_loss[str(i)] - deadweight_loss[str(i) + "_supply"]) / c.GCAMConstants.CO2_to_C *
-                (deadweight_loss[str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC)) / 1000 # to billion
+                                          0.5 * (deadweight_loss[str(i)] - deadweight_loss[
+                                      str(i) + "_supply"]) / c.GCAMConstants.CO2_to_C *
+                                          (deadweight_loss[
+                                               str(i) + "_price"] / c.GCAMConstants.USD2025_tCO2_to_1990_tC)) / 1000  # to billion
 
     deadweight_loss = deadweight_loss[["scenario", "baseline", "2025", "2030", "2035", "2040", "2045", "2050"]]
     CO2_tax_revenue = CO2_tax_revenue[["scenario", "baseline", "2025", "2030", "2035", "2040", "2045", "2050"]]
@@ -518,10 +560,19 @@ def C_tax(config_fname, reference_year):
     deadweight_loss["GCAM"] = "USA"
     CO2_tax_revenue["GCAM"] = "USA"
 
-    plotting.plot_line_product_CI(deadweight_loss, "baseline", "Deadweight loss by baseline scenario", region=["USA"], skip_years=2)
-    plotting.plot_line_product_CI(CO2_tax_revenue, "baseline", "C tax revenue by baseline scenario", region=["USA"], skip_years=2)
+    plotting.plot_line_product_CI(deadweight_loss, "baseline", "Deadweight loss by baseline scenario", region=["USA"],
+                                  skip_years=2)
+    plotting.plot_line_product_CI(CO2_tax_revenue, "baseline", "C tax revenue by baseline scenario", region=["USA"],
+                                  skip_years=2)
+
 
 def C_prices(config_fname, reference_year):
+    """
+    calculate how the C prices change by scenario
+    :param config_fname: not needed
+    :param reference_year: not needed
+    :return: plot of relevant information
+    """
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
                  "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
@@ -544,6 +595,12 @@ def C_prices(config_fname, reference_year):
 
 
 def state_CDR(config_fname, reference_year):
+    """
+    calculate the status of CDR markets at the state level
+    :param config_fname: not needed
+    :param reference_year: not needed
+    :return: plot of relevant information
+    """
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
                  "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
@@ -576,9 +633,10 @@ def state_CDR(config_fname, reference_year):
     CDR_supply_high = supply[supply["baseline"] == "high"].copy(deep=True)
 
     # market sizes
-    CDR_market_low = pd.merge(CDR_price_low, CDR_supply_low, "right", on=["GCAM", "baseline", "scenario", "product"], suffixes=("_price", "_supply"))
-    CDR_market_high = pd.merge(CDR_price_high, CDR_supply_high, "right", on=["GCAM", "baseline", "scenario", "product"],
+    CDR_market_low = pd.merge(CDR_price_low, CDR_supply_low, "right", on=["GCAM", "baseline", "scenario", "product"],
                               suffixes=("_price", "_supply"))
+    CDR_market_high = pd.merge(CDR_price_high, CDR_supply_high, "right", on=["GCAM", "baseline", "scenario", "product"],
+                               suffixes=("_price", "_supply"))
     # calculate size of markets and remove outliers
     for i in c.GCAMConstants.plotting_x:
         CDR_market_low[str(i)] = CDR_market_low[str(i) + "_price"] * CDR_market_low[str(i) + "_supply"]
@@ -646,6 +704,12 @@ def state_CDR(config_fname, reference_year):
 
 
 def cement(config_fname, reference_year):
+    """
+    calcualte statistics for cement production
+    :param config_fname: not needed
+    :param reference_year: not needed
+    :return: plot of relevant information
+    """
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
                  "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
@@ -655,10 +719,13 @@ def cement(config_fname, reference_year):
                  "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
                  "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
                  "CDRIA-rhodium18b_high"]
-    supply = data_manipulation.get_sensitivity_data(scenarios, "cement_production_by_tech_conv_and_ccs", source="masked")
+    supply = data_manipulation.get_sensitivity_data(scenarios, "cement_production_by_tech_conv_and_ccs",
+                                                    source="masked")
     price = data_manipulation.get_sensitivity_data(scenarios, "cement_prices", source="masked")
     for i in c.GCAMConstants.plotting_x:
-        price[str(i)] = price.apply(lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 if row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 < 1000 else np.nan, axis=1)
+        price[str(i)] = price.apply(lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 if row[
+                                                                                                        str(i)] * c.GCAMConstants.USD1975_to_USD2025 < 1000 else np.nan,
+                                    axis=1)
 
     price = price[price["GCAM"].isin(c.GCAMConstants.USA_region)]
     price["Units"] = "2025$/kg"
@@ -679,6 +746,12 @@ def cement(config_fname, reference_year):
 
 
 def electricity(config_fname, reference_year):
+    """
+    return information on state-level electricity markets
+    :param config_fname: not needed
+    :param reference_year: not needed
+    :return: plot of relevant information
+    """
     # get scenario data
     scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
                  "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
@@ -693,7 +766,10 @@ def electricity(config_fname, reference_year):
     elec_price = data_manipulation.get_sensitivity_data(scenarios, "elec_prices_by_sector", source="masked")
     # convert to modern moneys and eliminate outliers
     for i in c.GCAMConstants.plotting_x:
-        elec_price[str(i)] = elec_price.apply(lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 / 0.277778 if row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 / 0.277778 < 1000 else np.nan, axis=1)
+        elec_price[str(i)] = elec_price.apply(
+            lambda row: row[str(i)] * c.GCAMConstants.USD1975_to_USD2025 / 0.277778 if row[
+                                                                                           str(i)] * c.GCAMConstants.USD1975_to_USD2025 / 0.277778 < 1000 else np.nan,
+            axis=1)
 
     # focus on US regions
     elec_price["Units"] = "2025$/MWh"
@@ -713,10 +789,18 @@ def electricity(config_fname, reference_year):
 
     plotting.plot_line_product_CI(elec_price_low, "fuel", "electricity prices in low baseline")
     plotting.plot_line_product_CI(elec_price_high, "fuel", "electricity prices in high baseline")
-    plotting.plot_line_product_CI(elec_supply, "subsector", "national electricity supply", region=elec_supply["baseline"].unique())
+    plotting.plot_line_product_CI(elec_supply, "subsector", "national electricity supply",
+                                  region=elec_supply["baseline"].unique())
 
 
 def CDR_subsidies(config_fname, year1, year2):
+    """
+    calculate the changes in CDR subsidies year over year
+    :param config_fname: scenario information
+    :param year1: first year
+    :param year2: second year
+    :return: plot of differences in subsidy
+    """
     # data processing
     CDR = data_manipulation.get_sensitivity_data([config_fname], "CDR_by_tech", "masked")
     CDR = CDR[CDR[['GCAM']].isin(c.GCAMConstants.USA_region).any(axis=1)]

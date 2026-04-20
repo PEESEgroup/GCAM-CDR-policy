@@ -5,7 +5,6 @@ import constants as c
 from itertools import islice
 import os
 import glob
-
 import utilities
 
 

@@ -1,9 +1,13 @@
 import pandas as pd
-
 import constants
 
 
 def main(scenario):
+    """
+    method to calculate amount of procurement based on CDR price
+    :param scenario: name of scenario
+    :return: output .csv file in the supplementary tables
+    """
     baseline_df = pd.read_csv("data/data_analysis/supplementary_tables/"+scenario+"/"+scenario+"/sorted price and supply of CDR by technology.csv")
 
     # calculate total cost

@@ -3,7 +3,6 @@ from xml.dom import minidom
 import multiprocessing
 import subprocess
 import os
-import constants
 import shutil
 import process_GCAM_data
 import produce_regional_queries
@@ -18,8 +17,8 @@ from building_xml.code import build_CDR_demand, build_BECCS_integration, build_g
 def main(scenario, baseline, batch=False):
     """
     control program for setting up, running, validating, and analyzing the GCAM scenario
-    :param scenario: scenario name
-    :param baseline: baseline name
+    :param scenario: the policy scenario name
+    :param baseline: baseline pathway name
     :param batch: if this is a batch GCAM config file
     :return: N/A
     """
@@ -218,7 +217,7 @@ def build_files(xml_files_to_build, baseline):
             files.append(build_transport_OEW.build_oew_transport(k, baseline))
         if k.xml_build_type == "C Storage Cost Reduction":
             files.append(build_cstorage.build_cstorage(k, baseline))
-        # TODO add more build types here
+        # if needed, add more build types here
 
     return files
 
@@ -456,5 +455,6 @@ if __name__ == '__main__':
         j = key.split("_")[1]
         main(i, j)
 
+    # code for multiprocessing, which often runs into errors.
     # with multiprocessing.Pool(processes=3) as pool:
     #     result = pool.starmap(main, ((i, j) for i in current_configs for j in current_baseline))

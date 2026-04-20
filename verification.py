@@ -1,10 +1,7 @@
-import os.path
-
 import pandas as pd
 import numpy as np
 import math
 import data_manipulation
-import plotting_script
 import process_GCAM_data
 import utilities
 import constants
@@ -77,7 +74,6 @@ def main(scenario_name):
             log(fpath, "all years", csv + " was verified", success=True)
         else:
             log(fpath, "all years", csv + " was not verified")
-        # TODO: add more file types
 
     # update output .csv files based on years with errors
     process_GCAM_data.masking(scenario_name, error_years)
@@ -89,6 +85,13 @@ def main(scenario_name):
 
 
 def verify_procurement(scenario, baseline, fpath):
+    """
+    Method to verify the cost and CDR demand of procurement technologies
+    :param scenario: the name of the policy scenario being run
+    :param baseline: the baseline pathway name
+    :param fpath: file path to the output log file
+    :return: N/A
+    """
     try:
         subsidy = ["", "_no_subsidy"]
         for k in subsidy:
@@ -108,7 +111,7 @@ def verify_procurement(scenario, baseline, fpath):
                     scenario_total_cost[str(j) + "total_cost"] = scenario_total_cost[str(j) + price_col] * \
                                                              scenario_total_cost[str(j) + "_supply"]
                 except KeyError as e:
-                    print (e)
+                    print(e)
                     scenario_total_cost[str(j) + "total_cost"] = np.nan
                 try:
                     baseline_total_cost[str(j) + "total_cost"] = baseline_total_cost[str(j) + price_col] * \
@@ -398,6 +401,12 @@ def get_elastic_CDR_demand(CDR, fpath, i, region_market):
 
 
 def get_elastic_demand(row, i):
+    """
+    return the elastic demand as calculated by the C price
+    :param row: row of a data frame
+    :param i: a year
+    :return: the calculated CDR demand value
+    """
     # s-curve calculation
     if row[str(i)] < row["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1990_tC + 1e-7:
         return 0
@@ -440,6 +449,7 @@ def log(fpath, year, reason, success=False):
     :param fpath: fpath to output data
     :param year: year in which an error occured
     :param reason: reason for the error occuring as calculated in the verification
+    :param success: boolean - if the verification succeeds or not
     :return: N/A
     """
     # open log file and add reason for masking a year

@@ -29,6 +29,12 @@ def main(config_fname, reference_year):
 
 
 def costs_and_benefits(config_fname, reference_year):
+    """
+    calculate the costs and benefits for a given policy scenario or baseline pathway
+    :param config_fname: name of the policy scenario and baseline pathway
+    :param reference_year: not needed
+    :return: N/A
+    """
     # process scenario data
     baseline = config_fname.split("/")[1]
     scenario = config_fname.split("/")[0]
@@ -118,6 +124,19 @@ def costs_and_benefits(config_fname, reference_year):
 
 def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procurement_costs, scenario_deadweight,
                               scenario_df, scenario_innovation_costs, scenario_market, scenario_subsidy):
+    """
+    Calculate the social cost-effectiveness of a given policy scenario
+    :param config_fname: the policy scenario name
+    :param interest_rates: discount rate
+    :param npv_net_zero: npv cost of achieving net-zero in the optimal scenario
+    :param procurement_costs: the costs of procurement
+    :param scenario_deadweight: the amount of deadweight loss
+    :param scenario_df: dataframe containing scenario data
+    :param scenario_innovation_costs: the amount of fiscal spend on innovation
+    :param scenario_market: dataframe containing market information
+    :param scenario_subsidy: dataframe containing subsidy information
+    :return: .csv files containing calculations of cost
+    """
     # combine the information that is relevant to meeting the net-zero 2050 mandate
     # if there is a missing C tax period, that scenario is excluded from the analysis
     if not scenario_df.isnull().all().any():
@@ -181,6 +200,16 @@ def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procur
 
 
 def fiscal_cost_benefit_analysis(NPV_CB, baseline_market, config_fname, fiscal_costs, interest_rates, scenario_market):
+    """
+    calculate the fiscal cost/benefits
+    :param NPV_CB: dataframe containing costs and benefits of NPV
+    :param baseline_market: data of the CDR market
+    :param config_fname: scenario name
+    :param fiscal_costs: dataframe of the fiscal costs
+    :param interest_rates: discount rate
+    :param scenario_market: dataframe of the scenario CDR market
+    :return: .csv files of output of calculations
+    """
     # complete cost benefit analysis for fiscal costs
     for k in interest_rates:
         # remove identifying information from the dataframes
@@ -210,6 +239,12 @@ def fiscal_cost_benefit_analysis(NPV_CB, baseline_market, config_fname, fiscal_c
 
 
 def get_CB_dfs(baseline_market, npv_cols):
+    """
+    Calculate the costs and benefits for a given dataframe
+    :param baseline_market: baseline information on the CDR market
+    :param npv_cols: list of columns on which to calculate NPV
+    :return: output calculations for costs and benefits as NPV
+    """
     # get subsidy information
     baseline_subsidy = baseline_market[baseline_market["technology_price"] == "subsidy"].copy(deep=True)
     baseline_subsidy = data_manipulation.interpolate(baseline_subsidy, "truncated")
@@ -258,6 +293,12 @@ def get_CB_dfs(baseline_market, npv_cols):
 
 
 def subsidy_expiration(config_fname, reference_year):
+    """
+    calculate the effects of the expiration of subsidies
+    :param config_fname: scenario name
+    :param reference_year: year of interest
+    :return: .csv files with results from calculations
+    """
     # get baseline info
     baseline = config_fname.split("/")[1]
     scenario = config_fname.split("/")[0]
@@ -344,6 +385,12 @@ def subsidy_expiration(config_fname, reference_year):
 
 
 def market_share(config_fname, reference_year):
+    """
+    calculate the market share for different CDR technologies
+    :param config_fname: scenario name
+    :param reference_year: year of interest
+    :return: .csv files and plots of relevant output
+    """
     # get baseline info
     baseline = config_fname.split("/")[1]
     scenario = config_fname.split("/")[0]
@@ -366,6 +413,12 @@ def market_share(config_fname, reference_year):
 
 
 def social_cost(config_fname, reference_year):
+    """
+    calculate the social costs (fiscal, tax, and deadweight) of the policies
+    :param config_fname: scenario of interest
+    :param reference_year: year of interest
+    :return: .csv file with outputs of calculations
+    """
     baseline = config_fname.split("/")[1]
     scenario = config_fname.split("/")[0]
     # process USA emissions
@@ -375,6 +428,13 @@ def social_cost(config_fname, reference_year):
 
 
 def get_C_costs(baseline, config_fname, scenario):
+    """
+    calculate the costs of the C tax
+    :param baseline: baseline pathway
+    :param config_fname: scenario information
+    :param scenario: policy scenario
+    :return: dataframe with relevant calculations
+    """
     CO2_emissions = data_manipulation.get_sensitivity_data([config_fname], "CO2_emissions_by_sector")
     CO2_emissions = CO2_emissions[CO2_emissions["GCAM"].isin(c.GCAMConstants.USA_region)]
     CO2_emissions = CO2_emissions[CO2_emissions["sector"] != "CDR_regional"]  # excluded from the C tax
