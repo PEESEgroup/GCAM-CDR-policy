@@ -1,4 +1,4 @@
-# Manure Pyrolysis IAM
+# GCAM-USA-CDR - US CDR Policy Analysis
 
 This study uses the Global Change Analysis Model (GCAM) integrated assessment model (IAM) to analyze the cost and CDR potential of various CDR technologies under many policy scenarios in the US from 2020 to 2050. The main folders include
     data
