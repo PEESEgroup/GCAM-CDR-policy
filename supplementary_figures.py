@@ -18,7 +18,7 @@ def main(config_fname, reference_year):
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # many methods are commented out, but to run them it is feasible to uncomment and run
     # marginal_supply()
-    tech_neutrality()
+    # tech_neutrality()
     # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
     # CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
@@ -28,7 +28,7 @@ def main(config_fname, reference_year):
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
-    # npv_breakdown()
+    npv_breakdown()
 
 
 def npv_breakdown():
@@ -58,6 +58,13 @@ def npv_breakdown():
         # avoids having to merge tables but kinda ugly
         pyrolysis_df[
             "CDR (Mt)"] = 100 if baseline == "nzn" else 500 if baseline == "low" else 1500 if baseline == "high" else 2400 if baseline == "excess" else 4100
+        if pyrolysis_df["scenario"].unique()[0] in ["low", "high", "nzn", "excess", "4gt"]:
+            pyrolysis_df["scenario"] = pyrolysis_df["CDR (Mt)"].astype(str) + " Mt Baseline"
+
+        # fix some typesetting
+        pyrolysis_df["cost_type"] = pyrolysis_df["cost_type"].str.title().str.replace('Cdr', 'CDR')
+        pyrolysis_df["scenario"] = pyrolysis_df["scenario"].str.replace('s1-', '')
+
         if all_data.empty:
             all_data = pyrolysis_df
         else:
@@ -65,17 +72,16 @@ def npv_breakdown():
     CDR = all_data[["cost_type", "npv_0.12", "scenario", "baseline", "CDR (Mt)"]]
 
     # group by 'scenario' and 'baseline' to calculate the total/percentage NPV for each group
-    CDR["df_totals"] = CDR.groupby(['scenario', 'baseline'])['npv_0.12'].transform('sum')
-    CDR['percentage'] = (CDR['npv_0.12'] / CDR["df_totals"]) * 100
+    CDR["total_NPV"] = CDR.groupby(['scenario', 'baseline'])['npv_0.12'].transform('sum')
 
     # Pivot the data
     plot_df = CDR.pivot_table(
-        index=['baseline', 'scenario', 'CDR (Mt)'],
+        index=['baseline', 'scenario', 'CDR (Mt)', "total_NPV"],
         columns='cost_type',
         values='npv_0.12'
     ).reset_index()
 
-    # 2. Setup the GridSpec with height ratios
+    # Set up the GridSpec with height ratios
     baselines = plot_df['baseline'].unique()
     height_counts = [len(plot_df[plot_df['baseline'] == bl]) for bl in baselines]
 
@@ -87,13 +93,16 @@ def npv_breakdown():
         chunk = height_counts[i: i + n_cols]
         row_height_ratios.append(max(chunk))
 
+    # set the figure size
     fig = plt.figure(figsize=(14, sum(row_height_ratios) * 0.4))
     gs = gridspec.GridSpec(n_rows, n_cols, height_ratios=row_height_ratios)
 
-    cost_categories = CDR['cost_type'].unique()
+    # set some values for the plotting
+    cost_categories = ['Deadweight Loss', 'CDR Market', 'Subsidy', 'Procurement Costs', 'Investment In R&D']  # CDR['cost_type'].unique()
     main_ax = None  # Placeholder to hold the first axis for sharing
+    colors = ["#0047BB", "#00B5E2", "#c22a90", "#00AE8D", "#8AB7E9"]
 
-    # 3. Plotting with sharex
+    # Plotting with sharex
     for i, bl in enumerate(baselines):
         # Initialize the first axis, then share all subsequent axes with it
         if i == 0:
@@ -102,10 +111,17 @@ def npv_breakdown():
         else:
             ax = fig.add_subplot(gs[i // n_cols, i % n_cols], sharex=main_ax)
 
-        subset = plot_df[plot_df['baseline'] == bl].sort_values(by='CDR (Mt)')
+        # get the subset of policy scenarios in a given baseline
+        subset = plot_df[plot_df['baseline'] == bl]
+
+        # make sure the baseline is actually the first one to be plotted
+        baseline = subset[subset['scenario'].str.contains("Baseline")].copy(deep=True)
+        rest = subset[~subset['scenario'].str.contains("Baseline")].copy(deep=True)
+        rest = rest.sort_values(by='total_NPV', ascending=False)
+        subset = pd.concat([rest, baseline])
         subset = subset.set_index('scenario')
 
-        subset[cost_categories].plot(kind='barh', stacked=True, ax=ax, legend=False, width=0.8)
+        subset[cost_categories].plot(kind='barh', stacked=True, ax=ax, legend=False, width=0.8, color=colors)
         ax.set_ylabel('')
         ax.set_xlim(-.1, 1.4)  # Hard-code x-axis limit
         # Remove the top and right lines
