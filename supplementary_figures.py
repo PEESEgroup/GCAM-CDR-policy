@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import matplotlib.gridspec as gridspec
+from scipy import stats
 
 
 def main(config_fname, reference_year):
@@ -17,8 +18,8 @@ def main(config_fname, reference_year):
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # many methods are commented out, but to run them just uncomment and run
-    marginal_supply()
-    # tech_neutrality()
+    # marginal_supply()
+    tech_neutrality()
     # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
     # CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
@@ -98,7 +99,8 @@ def npv_breakdown():
     gs = gridspec.GridSpec(n_rows, n_cols, height_ratios=row_height_ratios)
 
     # set some values for the plotting
-    cost_categories = ['Deadweight Loss', 'CDR Market', 'Subsidy', 'Procurement Costs', 'Investment In R&D']  # CDR['cost_type'].unique()
+    cost_categories = ['Deadweight Loss', 'CDR Market', 'Subsidy', 'Procurement Costs',
+                       'Investment In R&D']  # CDR['cost_type'].unique()
     main_ax = None  # Placeholder to hold the first axis for sharing
     colors = ["#0047BB", "#00B5E2", "#c22a90", "#00AE8D", "#8AB7E9"]
 
@@ -283,8 +285,9 @@ def marginal_supply():
         ax.axhline(0, color='black', linewidth=1)
         ax.set_xticks(x_pos)
         # Rename all the comparisons to make for pretty labeling
-        valid_comps = [i.replace("s1-", "").replace("nzn", "100 Mt").replace("low", "500 Mt").replace("high", "1500 Mt").
-                       replace("excess", "2400 Mt").replace("4gt", "4100 Mt") for i in valid_comps]
+        valid_comps = [
+            i.replace("s1-", "").replace("nzn", "100 Mt").replace("low", "500 Mt").replace("high", "1500 Mt").
+            replace("excess", "2400 Mt").replace("4gt", "4100 Mt") for i in valid_comps]
         ax.set_xticklabels(valid_comps, rotation=30, ha='right', fontsize=11)
         ax.set_ylabel("Normalized Delta")
         ax.grid(axis='y', linestyle=':', alpha=0.6)
@@ -351,8 +354,8 @@ def tech_neutrality():
     # calculate spend and supply and which technology it is applied to
     for i in c.GCAMConstants.plotting_x:
         supply_sums = CDR.groupby(['scenario', "baseline"])[str(i) + "_supply"].transform(lambda x: x.abs().sum())
-        CDR[str(i)] = CDR[
-                          str(i) + "_supply"] / supply_sums  # what is the impact of policy on supply of CDR by technology compared to baseline?
+        CDR[str(i)] = CDR[str(i) + "_supply"] / supply_sums
+        # what is the impact of policy on supply of CDR by technology compared to baseline?
 
     # mask data
     # no 2025 data
@@ -390,58 +393,116 @@ def tech_neutrality():
     CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2050_supply'] = np.nan
     CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2050_supply'] = np.nan
 
+    # group by policy type
+    # set new column as policy type
+    CI_data = pd.DataFrame()
+    CDR["%Label"] = CDR.apply(lambda row: "Procurement" if "procure" in row['scenario'] else "Innovation" if
+                    "innovation" in row['scenario'] else "CDRIA", axis=1)
+    CDR["MtLabel"] = CDR.apply(lambda row: row['scenario'] if "procure" in row['scenario'] else "Innovation" if
+    "innovation" in row['scenario'] else "CDRIA", axis=1) # do not want to aggregate procurement scenarios by Mt basis because CI would be nonsense
+    for bl in CDR["baseline"].unique():
+        baseline = CDR[CDR["baseline"] == bl]
+        for product in baseline["product"].unique():
+            technology = baseline[baseline["product"] == product].copy(
+                deep=True)  # filter data by baseline and product before doing CI work
+            for year in c.GCAMConstants.plotting_x:
+                percent = technology.groupby('%Label')[str(year)].apply(get_min_max).unstack().reset_index(names="Policy Type")
+                percent["baseline"] = bl
+                percent["product"] = product
+                percent["year"] = str(year)
+                MT = technology.groupby('MtLabel')[str(year) + "_supply"].apply(get_min_max).unstack().reset_index(names="Policy Type")
+                MT["baseline"] = bl
+                MT["product"] = product
+                MT["year"] = str(year)+"_supply"
+                CI_data = pd.concat([CI_data, percent, MT])
+
     # iterate through baselines and supply type
     for baseline in ["low", "high"]:
-        for suffix in ["", "_supply"]:
-            CDR_baseline = CDR[CDR["baseline"] == baseline]
-            years = ['2030' + suffix, '2035' + suffix, '2040' + suffix, '2045' + suffix, '2050' + suffix]
-            scenarios = CDR_baseline['scenario'].unique()
+        for suffix in ["_supply", ""]:
+            CDR_baseline = CI_data[CI_data["baseline"] == baseline]
+            years = ['2030' + suffix, '2040' + suffix, '2050' + suffix]
+            scenarios = CDR_baseline['Policy Type'].unique()
             products = CDR_baseline['product'].unique()
 
             # set up the grid: Rows = Scenarios, Columns = Years
-            fig, axes = plt.subplots(5, len(scenarios), figsize=(15, 5), sharey=True, sharex=True, layout="constrained")
+            if suffix == "":
+                fig, axes = plt.subplots(3, 3, figsize=(14, 4), sharey=True, sharex=True, layout="constrained")
+            else:
+                fig, axes = plt.subplots(3, len(scenarios), figsize=(14, 4), sharey=True, sharex=True, layout="constrained")
 
-            colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+            colors = ["#BFBE43", "#74A751", "#698FC6", "#DD9452"]
             for row_idx, scenario_name in enumerate(scenarios):
-                scenario_df = CDR_baseline[CDR_baseline['scenario'] == scenario_name]
+                if not (suffix == "" and "s1-" in scenario_name):
+                    if not (suffix=="_supply" and scenario_name == "Procurement"):
+                        scenario_df = CDR_baseline[CDR_baseline['Policy Type'] == scenario_name]
 
-                for col_idx, year in enumerate(years):
-                    ax = axes[col_idx, row_idx] if len(scenarios) > 1 else axes[col_idx]
+                        # reformat the table to have years as columns
+                        scenario_df_mean = scenario_df.pivot(index=['product', "baseline", "Policy Type"], columns='year', values='mean').reset_index()
+                        scenario_df_low = scenario_df.pivot(index=['product', "baseline", "Policy Type"], columns='year',
+                                                             values='minimum').reset_index()
+                        scenario_df_high = scenario_df.pivot(index=['product', "baseline", "Policy Type"], columns='year',
+                                                             values='maximum').reset_index()
 
-                    if not scenario_df[year].isna().all():
-                        # if there is data, extract it for plotting
-                        product_totals = scenario_df.groupby('product')[str(year)].sum().reindex(products).fillna(0)
-                        bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
+                        for col_idx, year in enumerate(years):
+                            ax = axes[col_idx, row_idx] if len(scenarios) > 1 else axes[col_idx]
 
-                        v_line_pos = 0 if "innovation" in scenario_name or "CDRIA" in scenario_name else 0.25
-                        if suffix == "_supply":
-                            if v_line_pos == 0:  # don't put line on procurement graphs for Mt supply
-                                ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
-                                           label='Tech-Neutral Target')
-                        else:
-                            ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
-                                       label='Tech-Neutral Target')
+                            if not scenario_df_mean[year].isna().all():
+                                # if there is data, extract it for plotting
+                                product_totals = scenario_df_mean.groupby('product')[str(year)].sum().reindex(products)
+                                minimum = scenario_df_low.groupby('product')[str(year)].sum(min_count=1).reindex(products).dropna()
+                                maximum = scenario_df_high.groupby('product')[str(year)].sum(min_count=1).reindex(products).dropna()
+                                bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
+                                scatter_low = ax.scatter(minimum, minimum.index.tolist(), color='black', zorder=3, marker="x")
+                                scatter_high = ax.scatter(maximum, maximum.index.tolist(), color='black', zorder=3, marker="x")
+                                for i in minimum.index.tolist():  # draw a line that connects
+                                    ax.plot([minimum[i], maximum[i]], [i, i], zorder=4, color="grey")
 
-                        # label only certain subplots
-                        if row_idx == 0:
-                            if suffix == "_supply":
-                                year = year.split("_")[0]
-                            ax.set_ylabel(f"{year}", fontweight='bold', fontsize=12)
+                                v_line_pos = 0 if "Innovation" in scenario_name or "CDRIA" in scenario_name else 0.25
+                                if suffix == "_supply":
+                                    if v_line_pos == 0:  # don't put line on procurement graphs for Mt supply
+                                        ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
+                                                   label='Tech-Neutral Target')
+                                else:
+                                    ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
+                                               label='Tech-Neutral Target')
 
-                        if col_idx == 0:
-                            ax.set_title(f"{scenario_name}", fontsize=9, fontweight='bold')
+                                # label only certain subplots
+                                if row_idx == 0:
+                                    if suffix == "_supply":
+                                        year = year.split("_")[0]
+                                    ax.set_ylabel(f"{year}", fontweight='bold', fontsize=12)
 
-                        ax.grid(axis='x', linestyle='--', alpha=0.6)
-                    else:
-                        # delete plot
-                        fig.delaxes(ax)
+                                if col_idx == 0:
+                                    ax.set_title(f"{scenario_name.replace('s1-','').replace('-l', '-500 Mt').replace('-h', '-1500 Mt')}", fontsize=10, fontweight='bold')
+
+                                if col_idx == 2:
+                                    if suffix == "_supply":
+                                        ax.set_xlabel("Mt")
+                                    else:
+                                        ax.set_xlabel("relative change")
+
+                                ax.grid(axis='x', linestyle='--', alpha=0.6)
+                            else:
+                                # delete plot
+                                fig.delaxes(ax)
 
             # add a single legend
             legend_elements = [Line2D([0], [0], color=colors[i], lw=4, label=p) for i, p in enumerate(products)]
-            fig.legend(handles=legend_elements, title="CDR Technologies", loc='upper center',
-                       bbox_to_anchor=(0.85, 0.35), ncol=2, title_fontsize=15, fontsize=12)
+            fig.legend(handles=legend_elements, title="CDR Technologies", loc='outside upper center',
+                       ncol=2, title_fontsize=15, fontsize=12)
             plt.savefig(f"data/data_analysis/images/CDR-Technologies-{baseline}-{suffix}.png", dpi=300)
             plt.show()
+
+
+def get_min_max(x):
+    # Calculate sample statistics
+    x = x.dropna()
+    if len(x) == 0:
+        return pd.Series({'mean': np.nan, 'minimum': np.nan, 'maximum': np.nan})
+    elif len(x) == 1:
+        return pd.Series({'mean': np.mean(x), 'minimum': np.nan, 'maximum': np.nan})
+    else:
+        return pd.Series({'mean': np.mean(x), 'minimum': np.min(x), 'maximum': np.max(x)})
 
 
 def CAGR(config_fname, reference_year):
