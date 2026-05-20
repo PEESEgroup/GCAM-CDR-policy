@@ -16,8 +16,8 @@ def main(config_fname, reference_year):
     """
     config_fname = config_fname.replace("_", "/")
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
-    # many methods are commented out, but to run them it is feasible to uncomment and run
-    # marginal_supply()
+    # many methods are commented out, but to run them just uncomment and run
+    marginal_supply()
     # tech_neutrality()
     # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
     # CAGR(config_fname, "2050")
@@ -28,7 +28,7 @@ def main(config_fname, reference_year):
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
-    npv_breakdown()
+    # npv_breakdown()
 
 
 def npv_breakdown():
@@ -236,10 +236,10 @@ def marginal_supply():
     years = ['2030', '2035', '2040', '2045', '2050']
     all_comparisons = list(df_deltas['comparison'].unique())
     products = list(df_deltas['product'].unique())
-    colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+    colors = ["#BFBE43", "#74A751", "#698FC6", "#DD9452"]
 
     # set up the grid (3 rows, 2 columns)
-    fig, axes = plt.subplots(2, 3, figsize=(20, 12), sharex=False, sharey=True, layout="constrained")
+    fig, axes = plt.subplots(2, 3, figsize=(20, 12), sharex=False, sharey=True, layout="tight")
     axes_flat = axes.flatten()
 
     for i, year in enumerate(years):
@@ -247,8 +247,8 @@ def marginal_supply():
 
         # Filter valid comparisons for the specific year
         valid_comps = [c for c in all_comparisons if not df_deltas[df_deltas['comparison'] == c][year].isna().all()]
-        x_pos = np.arange(len(valid_comps))
 
+        x_pos = np.arange(len(valid_comps))
         starts_pos = np.zeros(len(valid_comps))
         starts_neg = np.zeros(len(valid_comps))
 
@@ -264,7 +264,7 @@ def marginal_supply():
 
             # Plot bars
             bars = ax.bar(x_pos, values, bottom=current_bottom, color=colors[p_idx],
-                          edgecolor='white', width=0.7, label=product if i == 0 else "")
+                          edgecolor='white', width=0.8, label=product if i == 0 else "")
 
             # Add Value Labels
             for j, bar in enumerate(bars):
@@ -282,6 +282,9 @@ def marginal_supply():
         ax.set_title(f"{year}", fontsize=14, fontweight='bold')
         ax.axhline(0, color='black', linewidth=1)
         ax.set_xticks(x_pos)
+        # Rename all the comparisons to make for pretty labeling
+        valid_comps = [i.replace("s1-", "").replace("nzn", "100 Mt").replace("low", "500 Mt").replace("high", "1500 Mt").
+                       replace("excess", "2400 Mt").replace("4gt", "4100 Mt") for i in valid_comps]
         ax.set_xticklabels(valid_comps, rotation=30, ha='right', fontsize=11)
         ax.set_ylabel("Normalized Delta")
         ax.grid(axis='y', linestyle=':', alpha=0.6)
