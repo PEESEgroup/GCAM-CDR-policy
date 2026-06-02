@@ -9,7 +9,7 @@
       <region name="AL">
          <ghgpolicy name="CO2">
             <market>USA</market>
-            <constraint year="2025">1363.6363636363635</constraint>
+            <constraint year="2025">1167.8181818181818</constraint>
             <constraint year="2030">924.5454545454545</constraint>
             <constraint year="2035">797.9999999999999</constraint>
             <constraint year="2040">723.0</constraint>
@@ -295,12 +295,12 @@
       <region name="Canada">
          <ghgpolicy name="CO2">
             <market>Global</market>
-            <constraint year="2025">11475.81818181818</constraint>
-            <constraint year="2030">11151.0</constraint>
-            <constraint year="2035">10256.863636363636</constraint>
-            <constraint year="2040">9362.727272727272</constraint>
-            <constraint year="2045">8693.318181818182</constraint>
-            <constraint year="2050">8023.90909090909</constraint>
+            <constraint year="2025">13636.363636363636</constraint>
+            <constraint year="2030">13636.363636363636</constraint>
+            <constraint year="2035">13636.363636363636</constraint>
+            <constraint year="2040">13636.363636363636</constraint>
+            <constraint year="2045">13636.363636363636</constraint>
+            <constraint year="2050">13636.363636363636</constraint>
          </ghgpolicy>
       </region>
       <region name="Central America and Caribbean">

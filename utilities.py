@@ -37,7 +37,7 @@ def build_from_scenario(scenario_name):
     :return: list of build_xml_config objects.
     """
     ### WHEN RUNNING MULTIPLE SCENARIOS, ENSURE THAT ALL FILES HAVE DIFFERENT OUTPUT_FNAMES ###
-    if "100 Mt" in scenario_name:
+    if "100Mt-noCostDecrease" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -90,7 +90,7 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
-    elif "500 Mt" in scenario_name:
+    elif "500Mt-noCostDecrease" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -143,7 +143,7 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
-    elif "1500 Mt" in scenario_name:
+    elif "1500Mt-noCostDecrease" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -196,7 +196,7 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
-    elif "2400 Mt" in scenario_name:
+    elif "2400Mt-noCostDecrease" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -249,7 +249,7 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
-    elif "4100 Mt" in scenario_name:
+    elif "4100Mt-noCostDecrease" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -288,6 +288,294 @@ def build_from_scenario(scenario_name):
                 data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
                 xml_build_type="C Storage Cost Reduction",
                 output_fname="USA_C_Storage.xml"
+            )
+        ]
+    if "100Mt-CostDecrease" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify_lowhigh.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="default_GHGPolicies_nothing.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_nothing.csv",
+                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                xml_build_type="CDR Policy",
+                output_fname="default_CDRDemand_nothing.xml"
+            ),
+            build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_DACS_45Q_verify.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="45Q_DACS_nothing.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
+                            "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links.csv",
+                            "TEW_transport_saving": "./building_xml/inputs/TEW_transport_savings_20.csv"},
+                xml_build_type="TEW Transport Cost Reduction",
+                output_fname="TEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"OEW_transport_amount": "./building_xml/inputs/OEW_transport_coef_20.csv"},
+                xml_build_type="OEW Transport Cost Reduction",
+                output_fname="OEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            ),
+            # TODO: find out a better way to store cost decrease information - baseline numbers, then list of cost decrease .csv files probably
+            # TODO: find out a similar way to store such information in BECCS
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_100.csv",
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_100_CD.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_100.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_100_CD.xml"
+            )
+        ]
+    elif "500Mt-CostDecrease" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify_lowhigh.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="default_GHGPolicies_low.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
+                            "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links.csv",
+                            "TEW_transport_saving": "./building_xml/inputs/TEW_transport_savings_20.csv"},
+                xml_build_type="TEW Transport Cost Reduction",
+                output_fname="TEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"OEW_transport_amount": "./building_xml/inputs/OEW_transport_coef_20.csv"},
+                xml_build_type="OEW Transport Cost Reduction",
+                output_fname="OEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low.csv",
+                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                xml_build_type="CDR Policy",
+                output_fname="default_CDRDemand_low.xml"
+            ),
+            build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_DACS_45Q_verify.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="45Q_DACS_low.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            ),
+            # TODO: find out a better way to store cost decrease information - baseline numbers, then list of cost decrease .csv files probably
+            # TODO: find out a similar way to store such information in BECCS
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_500.csv",
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_500_CD.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_500.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_500_CD.xml"
+            )
+        ]
+    elif "1500Mt-CostDecrease" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify_lowhigh.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="default_GHGPolicies_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_high.csv",
+                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                xml_build_type="CDR Policy",
+                output_fname="default_CDRDemand_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_DACS_45Q_verify.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="45Q_DACS_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
+                            "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links.csv",
+                            "TEW_transport_saving": "./building_xml/inputs/TEW_transport_savings_20.csv"},
+                xml_build_type="TEW Transport Cost Reduction",
+                output_fname="TEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"OEW_transport_amount": "./building_xml/inputs/OEW_transport_coef_20.csv"},
+                xml_build_type="OEW Transport Cost Reduction",
+                output_fname="OEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            ),
+            # TODO: find out a better way to store cost decrease information - baseline numbers, then list of cost decrease .csv files probably
+            # TODO: find out a similar way to store such information in BECCS
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_1500.csv",
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_1500_CD.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_1500.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_1500_CD.xml"
+            )
+        ]
+    elif "2400Mt-CostDecrease" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify_lowhigh.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="default_GHGPolicies_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_veryhigh.csv",
+                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                xml_build_type="CDR Policy",
+                output_fname="default_CDRDemand_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_DACS_45Q_verify.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="45Q_DACS_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"TEW_transport_link": "./building_xml/inputs/TEW_sector_info.csv",
+                            "TEW_transport_amount": "./building_xml/inputs/TEW_sector_links.csv",
+                            "TEW_transport_saving": "./building_xml/inputs/TEW_transport_savings_20.csv"},
+                xml_build_type="TEW Transport Cost Reduction",
+                output_fname="TEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"OEW_transport_amount": "./building_xml/inputs/OEW_transport_coef_20.csv"},
+                xml_build_type="OEW Transport Cost Reduction",
+                output_fname="OEW_CR_USA.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            ),
+            # TODO: find out a better way to store cost decrease information - baseline numbers, then list of cost decrease .csv files probably
+            # TODO: find out a similar way to store such information in BECCS
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_2400.csv",
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_2400_CD.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_2400.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_2400_CD.xml"
+            )
+        ]
+    elif "4100Mt-CostDecrease" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "ghg_constraint_verify": "./building_xml/inputs/GHG_constraint_verify_lowhigh.csv"},
+                xml_build_type="GHG constraint",
+                output_fname="default_GHGPolicies_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_4Gt.csv",
+                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                xml_build_type="CDR Policy",
+                output_fname="default_CDRDemand_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_DACS_45Q_verify.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="45Q_DACS_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                            "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_high.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={"USA_Cstorage_amount": "./building_xml/inputs/C_storage_sector_info_20.csv"},
+                xml_build_type="C Storage Cost Reduction",
+                output_fname="USA_C_Storage.xml"
+            ),
+            # TODO: find out a better way to store cost decrease information - baseline numbers, then list of cost decrease .csv files probably
+            # TODO: find out a similar way to store such information in BECCS
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_4100.csv",
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_4100_CD.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_4100.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_4100_CD.xml"
             )
         ]
     elif "innovation-rhodium6b" in scenario_name:

@@ -36,6 +36,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="AK">
          <supplysector name="CDR_regional">
@@ -67,6 +101,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -108,6 +176,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="AR">
          <supplysector name="CDR_regional">
@@ -139,6 +241,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -180,6 +316,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="CO">
          <supplysector name="CDR_regional">
@@ -211,6 +381,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -252,6 +456,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="DE">
          <supplysector name="CDR_regional">
@@ -283,6 +521,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -324,6 +596,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="GA">
          <supplysector name="CDR_regional">
@@ -355,6 +661,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -396,6 +736,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="IL">
          <supplysector name="CDR_regional">
@@ -427,6 +801,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -468,6 +876,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="IA">
          <supplysector name="CDR_regional">
@@ -499,6 +941,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -540,6 +1016,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="KY">
          <supplysector name="CDR_regional">
@@ -571,6 +1081,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -612,6 +1156,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="ME">
          <supplysector name="CDR_regional">
@@ -643,6 +1221,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -684,6 +1296,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="MA">
          <supplysector name="CDR_regional">
@@ -715,6 +1361,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -756,6 +1436,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="MN">
          <supplysector name="CDR_regional">
@@ -787,6 +1501,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -828,6 +1576,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="MO">
          <supplysector name="CDR_regional">
@@ -859,6 +1641,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -900,6 +1716,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="NE">
          <supplysector name="CDR_regional">
@@ -931,6 +1781,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -972,6 +1856,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="NH">
          <supplysector name="CDR_regional">
@@ -1003,6 +1921,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1044,6 +1996,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="NM">
          <supplysector name="CDR_regional">
@@ -1075,6 +2061,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1116,6 +2136,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="NC">
          <supplysector name="CDR_regional">
@@ -1147,6 +2201,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1188,6 +2276,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="OH">
          <supplysector name="CDR_regional">
@@ -1219,6 +2341,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1260,6 +2416,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="OR">
          <supplysector name="CDR_regional">
@@ -1291,6 +2481,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1332,6 +2556,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="RI">
          <supplysector name="CDR_regional">
@@ -1363,6 +2621,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1404,6 +2696,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="SD">
          <supplysector name="CDR_regional">
@@ -1435,6 +2761,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1476,6 +2836,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="TX">
          <supplysector name="CDR_regional">
@@ -1507,6 +2901,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1548,6 +2976,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="VT">
          <supplysector name="CDR_regional">
@@ -1579,6 +3041,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1620,6 +3116,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="WA">
          <supplysector name="CDR_regional">
@@ -1651,6 +3181,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
@@ -1692,6 +3256,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="WI">
          <supplysector name="CDR_regional">
@@ -1728,6 +3326,40 @@
             <fixedTax year="2045">0.0</fixedTax>
             <fixedTax year="2050">0.0</fixedTax>
          </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
       </region>
       <region name="WY">
          <supplysector name="CDR_regional">
@@ -1759,6 +3391,40 @@
             <market>USA</market>
             <fixedTax year="2025">0.10819672131147542</fixedTax>
             <fixedTax year="2030">0.10819672131147542</fixedTax>
+            <fixedTax year="2035">0.0</fixedTax>
+            <fixedTax year="2040">0.0</fixedTax>
+            <fixedTax year="2045">0.0</fixedTax>
+            <fixedTax year="2050">0.0</fixedTax>
+         </policy-portfolio-standard>
+         <supplysector name="CDR_regional">
+            <subsector name="CDR">
+               <technology name="BECCS">
+                  <period year="2025">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2030">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2035">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2040">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2045">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+                  <period year="2050">
+                     <input-subsidy name="_BECCS_subsidy"/>
+                  </period>
+               </technology>
+            </subsector>
+         </supplysector>
+         <policy-portfolio-standard name="_BECCS_subsidy">
+            <policyType>subsidy</policyType>
+            <market>USA</market>
+            <fixedTax year="2025">0.0510928961748634</fixedTax>
+            <fixedTax year="2030">0.0510928961748634</fixedTax>
             <fixedTax year="2035">0.0</fixedTax>
             <fixedTax year="2040">0.0</fixedTax>
             <fixedTax year="2045">0.0</fixedTax>
