@@ -37,7 +37,7 @@ def build_from_scenario(scenario_name):
     :return: list of build_xml_config objects.
     """
     ### WHEN RUNNING MULTIPLE SCENARIOS, ENSURE THAT ALL FILES HAVE DIFFERENT OUTPUT_FNAMES ###
-    if "nzn" in scenario_name:
+    if "100 Mt" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -90,7 +90,7 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
-    elif "low" in scenario_name:
+    elif "500 Mt" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -143,7 +143,7 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
-    elif "high" in scenario_name:
+    elif "1500 Mt" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -196,7 +196,7 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
-    elif "excess" in scenario_name:
+    elif "2400 Mt" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -249,7 +249,7 @@ def build_from_scenario(scenario_name):
                 output_fname="USA_C_Storage.xml"
             )
         ]
-    elif "4gt" in scenario_name:
+    elif "4100 Mt" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -436,16 +436,6 @@ def build_from_scenario(scenario_name):
                 output_fname="45Q_2050.xml"
             )
         ]
-    elif "CDRIA-2040" in scenario_name:
-        return [
-            build_xml_config.XMLConfig(
-                # <tech>_subsidy_link
-                data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
-                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA-2040_verify_s1.csv"},
-                xml_build_type="subsidy Policy",
-                output_fname="CDRIA_2040.xml"
-            )
-        ]
     elif "CDRIA-2050" in scenario_name:
         return [
             build_xml_config.XMLConfig(
@@ -466,7 +456,7 @@ def build_from_scenario(scenario_name):
                 output_fname="CDRIA_2035.xml"
             )
         ]
-    elif "s1-procureScaling-h" in scenario_name:
+    elif "procure-scaling-h" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -476,7 +466,7 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand_s1h_scalingdemand.xml"
             )
         ]
-    elif "s1-procure3B-h" in scenario_name:
+    elif "procure-3B-h" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -486,7 +476,7 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand_s1h_3Bdemand.xml"
             )
         ]
-    elif "s1-procureRhodium-h" in scenario_name:
+    elif "procure-Rhodium-h" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -496,7 +486,7 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand_s1h_rhodium.xml"
             )
         ]
-    elif "s1-procureScaling-l" in scenario_name:
+    elif "procure-Scaling-l" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -506,7 +496,7 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand_s1h_scalingdemand.xml"
             )
         ]
-    elif "s1-procure3B-l" in scenario_name:
+    elif "procure-3B-l" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -516,7 +506,7 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand_s1h_3Bdemand.xml"
             )
         ]
-    elif "s1-procureRhodium-l" in scenario_name:
+    elif "procure-Rhodium-l" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -526,7 +516,7 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand_s1h_rhodium.xml"
             )
         ]
-    elif "s1-procureScaling-n" in scenario_name:
+    elif "procure-Scaling-n" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -536,7 +526,7 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand_s1h_scalingdemand.xml"
             )
         ]
-    elif "s1-procure3B-n" in scenario_name:
+    elif "procure-3B-n" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
@@ -546,7 +536,7 @@ def build_from_scenario(scenario_name):
                 output_fname="default_CDRDemand_s1h_3Bdemand.xml"
             )
         ]
-    elif "s1-procureRhodium-n" in scenario_name:
+    elif "procure-Rhodium-n" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
