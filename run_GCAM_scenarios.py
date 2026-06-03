@@ -446,9 +446,10 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["100Mt-noCostDecrease_100Mt-noCostDecrease",
-                       "500Mt-noCostDecrease_500Mt-noCostDecrease",
+    current_configs = [
                        "1500Mt-noCostDecrease_1500Mt-noCostDecrease",
+                        "100Mt-noCostDecrease_100Mt-noCostDecrease",
+                        "500Mt-noCostDecrease_500Mt-noCostDecrease",
                        "2400Mt-noCostDecrease_2400Mt-noCostDecrease",
                        "4100Mt-noCostDecrease_4100Mt-noCostDecrease"]
     # the scenario and baseline name should match for any baseline scenario
