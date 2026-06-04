@@ -596,14 +596,6 @@
             <price-unit>1990$/tC</price-unit>
             <output-unit>MtC</output-unit>
          </linked-ghg-policy>
-         <CDR-final-demand name="CDR">
-            <elastic-demand-source name="elastic">
-               <max-demand>4110.818181818181</max-demand>
-               <steepness>0.003676</steepness>
-               <midpoint>1412.1820615796519</midpoint>
-               <min-price>0.0</min-price>
-            </elastic-demand-source>
-         </CDR-final-demand>
       </region>
       <region name="Central America and Caribbean">
          <linked-ghg-policy name="CO2_CDR">

@@ -83,7 +83,12 @@ def emissions_constraint(scenario, file):
         # find region from scenario that matches the region name
         region = scenario.find(".//region[@name='" + r + "']")
         ghg_policy = region.find(".//ghgpolicy[@name='" + ghg + "']")
-        ET.SubElement(ghg_policy, "constraint", year=str(year)).text = str(file[(year, r, ghg)]["constraint"]*constants.GCAMConstants.CO2_to_C)
+        if str(file[(year, r, ghg)]["constraint"]) == "NA": # no constraint but tax
+            data = file[(year, r, ghg)]["tax"]*constants.GCAMConstants.USD2025_tCO2_to_1990_tC
+            ET.SubElement(ghg_policy, "tax", year=str(year)).text = str(data)
+        else:
+            data = file[(year, r, ghg)]["constraint"]*constants.GCAMConstants.CO2_to_C
+            ET.SubElement(ghg_policy, "constraint", year= str(year)).text = str(data)
         # avoid issues solving markets with slightly non-zero carbon prices
         # if year == "2025":
         #     ET.SubElement(ghg_policy, "min-price", fillout="1", year="2025").text = "2"
