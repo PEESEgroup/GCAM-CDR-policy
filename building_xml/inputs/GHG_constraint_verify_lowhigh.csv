@@ -1,6 +1,6 @@
 source,lower bound of US projected CO2 emissions (https://www.epa.gov/system/files/documents/2025-01/2024-btr-summary.pdf) - p.14,,,
-index cols,4,,,
-year,market,ghgpolicy,constraint,tax
+index cols,3,,,
+year,market,ghgpolicy,constraint,fixedTax
 2025,USA,CO2,NA,10
 2030,USA,CO2,NA,108
 2035,USA,CO2,2926,NA

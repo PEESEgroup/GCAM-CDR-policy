@@ -4,8 +4,8 @@
       <region name="USA">
          <ghgpolicy name="CO2">
             <market>USA</market>
-            <constraint year="2025">1352.7272727272725</constraint>
-            <constraint year="2030">1288.6363636363635</constraint>
+            <fixedTax year="2025">14.72556894243641</fixedTax>
+            <fixedTax year="2030">159.03614457831324</fixedTax>
             <constraint year="2035">797.9999999999999</constraint>
             <constraint year="2040">723.0</constraint>
             <constraint year="2045">361.5</constraint>
