@@ -11,22 +11,43 @@ def open_csv(fname, **kwargs):
     """
     info = {}
     for i in fname:
-        with open(fname[i], mode='r', newline='') as file:
-            csv_reader = csv.reader(file)
-            next(csv_reader)
-            index_num = int(next(csv_reader)[1])
-        df = pd.read_csv(fname[i], skiprows=2)  # skip the top row because it is the source information
+        if isinstance(fname[i], list):
+            out_list = []
+            for j in fname[i]:
+                with open(j, mode='r', newline='') as file:
+                    csv_reader = csv.reader(file)
+                    next(csv_reader)
+                    index_num = int(next(csv_reader)[1])
+                df = pd.read_csv(j, skiprows=2)  # skip the top row because it is the source information
 
-        # reset the index for eventual dict conversion - default is first column
-        if "index" in kwargs:
-            df = df.set_index(kwargs["index"])
+                # reset the index for eventual dict conversion - default is first column
+                if "index" in kwargs:
+                    df = df.set_index(kwargs["index"])
+                else:
+                    index = [df.columns[k] for k in range(index_num)]
+                    df = df.set_index(index)
+                values = df.to_dict(orient="index")
+                out_list.append(values)
+
+            # add data to the dictionary
+            info[str(i)] = out_list
         else:
-            index = [df.columns[i] for i in range(index_num)]
-            df = df.set_index(index)
-        values = df.to_dict(orient="index")
+            with open(fname[i], mode='r', newline='') as file:
+                csv_reader = csv.reader(file)
+                next(csv_reader)
+                index_num = int(next(csv_reader)[1])
+            df = pd.read_csv(fname[i], skiprows=2)  # skip the top row because it is the source information
 
-        # add data to the dictionary
-        info[str(i)] = values
+            # reset the index for eventual dict conversion - default is first column
+            if "index" in kwargs:
+                df = df.set_index(kwargs["index"])
+            else:
+                index = [df.columns[k] for k in range(index_num)]
+                df = df.set_index(index)
+            values = df.to_dict(orient="index")
+
+            # add data to the dictionary
+            info[str(i)] = values
     return info
 
 

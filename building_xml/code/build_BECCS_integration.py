@@ -122,7 +122,9 @@ def build_tech(scenario, file, cost_decrease):
 
         reduced_cost = 1
         for i in cost_decrease:
-            reduced_cost = reduced_cost * (1-cost_decrease[i][year])
+            if year in [2025, 2030, 2035, 2040, 2045, 2050]:
+                reduced_cost = reduced_cost * (1-i[year]['reduction'])
+                print(f"{year} reduced_cost: {reduced_cost}")
 
         period = ET.SubElement(technology, "period", year=str(year))
         ET.SubElement(period, "share-weight").text = str(link["shareweight"])

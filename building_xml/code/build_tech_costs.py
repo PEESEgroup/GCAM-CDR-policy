@@ -51,7 +51,7 @@ def build_non_input_tech_costs(file):
             links = file[key]
         if "verify" in key:
             costs = file[key]
-        if "Cost Reduction" in key:
+        if "Cost Decrease" in key:
             cost_decrease = file[key]
 
     # high level
@@ -66,7 +66,9 @@ def build_non_input_tech_costs(file):
             # get cost reduction
             reduced_cost = 1
             for i in cost_decrease:
-                reduced_cost = reduced_cost * (1 - cost_decrease[i][year])
+                if year in [2025, 2030, 2035, 2040, 2045, 2050]:
+                    reduced_cost = reduced_cost * (1-i[year]['reduction'])
+                    print(f"{year} reduced_cost: {reduced_cost}")
 
             # add cost decrease to xml
             period = ET.SubElement(technology, "period", year=str(year))
