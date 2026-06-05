@@ -374,7 +374,8 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="biosep_industry").text = "../input/gcamdata/xml/bio_sep_USA_industry.xml"
     ET.SubElement(scenario, "Value", name="biosep_gas").text = "../input/gcamdata/xml/bio_sep_USA_gas.xml"
     ET.SubElement(scenario, "Value", name="biosep_gas").text = "../input/gcamdata/xml/bio_sep_USA_elec_segments.xml"
-    ET.SubElement(scenario, "Value", name="bio_water_usage").text = "../input/gcamdata/xml/electricity_water_coefs_bio.xml"
+    ET.SubElement(scenario, "Value",
+                  name="bio_water_usage").text = "../input/gcamdata/xml/electricity_water_coefs_bio.xml"
 
     # <!-- add primary CDR -->
     ET.SubElement(scenario, "Value", name="cdr_rampup").text = "../input/gcamdata/xml/CDR.xml"
@@ -402,7 +403,8 @@ def default_config(config_name):
     ET.SubElement(scenario, "Value", name="cdr_lime_usa").text = "../input/gcamdata/xml/lime_USA_localized.xml"
     ET.SubElement(scenario, "Value", name="cdr_oae_shipping_usa").text = "../input/gcamdata/xml/OEW_shipping_USA.xml"
     ET.SubElement(scenario, "Value", name="cdr_resources").text = "../input/gcamdata/xml/resources_USA_CDR.xml"
-    ET.SubElement(scenario, "Value", name="ignore_beccs").text = "../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml"
+    ET.SubElement(scenario, "Value",
+                  name="ignore_beccs").text = "../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml"
 
     # policy is automatically handled elsewhere in the configuration process
 
@@ -446,7 +448,8 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["4100Mt-noCostDecrease_4100Mt-noCostDecrease"]
+    current_configs = ["1500Mt-CostDecrease_1500Mt-CostDecrease",
+                       "4100Mt-noCostDecrease_4100Mt-noCostDecrease"]
     # the scenario and baseline name should match for any baseline scenario
 
     # for debugging
