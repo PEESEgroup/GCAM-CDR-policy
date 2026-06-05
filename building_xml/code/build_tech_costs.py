@@ -66,8 +66,7 @@ def build_non_input_tech_costs(file):
             # get cost reduction
             reduced_cost = 1
             for i in cost_decrease:
-                reduced_cost = reduced_cost * (
-                            100 - cost_decrease[i][year]) / 100  # cost_decreases are stored as percentages
+                reduced_cost = reduced_cost * (1 - cost_decrease[i][year])
 
             # add cost decrease to xml
             period = ET.SubElement(technology, "period", year=str(year))

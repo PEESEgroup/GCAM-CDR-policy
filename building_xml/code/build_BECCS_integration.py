@@ -122,7 +122,7 @@ def build_tech(scenario, file, cost_decrease):
 
         reduced_cost = 1
         for i in cost_decrease:
-            reduced_cost = reduced_cost * (100-cost_decrease[i][year])/100 # cost_decreases are stored as percentages
+            reduced_cost = reduced_cost * (1-cost_decrease[i][year])
 
         period = ET.SubElement(technology, "period", year=str(year))
         ET.SubElement(period, "share-weight").text = str(link["shareweight"])
@@ -131,7 +131,8 @@ def build_tech(scenario, file, cost_decrease):
 
         # find all policy portfolio standards
         for policy_portfolio_standard in scenario.findall(".//policy-portfolio-standard"):
-            ET.SubElement(policy_portfolio_standard, "min-price", fillout=str(0), year=str(year)).text = str(reduced_cost*link["min-price"]*constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
+            ET.SubElement(policy_portfolio_standard, "min-price", fillout=str(0), year=str(year)).text = str(
+                reduced_cost*link["min-price"]*constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
             ET.SubElement(policy_portfolio_standard, "max-price", fillout=str(0), year=str(year)).text = str(
                 reduced_cost*link["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC*2) # arbitrary factor of 2 for max price
 
