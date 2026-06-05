@@ -810,7 +810,6 @@ def build_from_scenario(scenario_name):
                 output_fname="default_BECCSIntegration_rhodium18b_h.xml"
             )
         ]
-    # TODO: add cost decrease blocks for subsidies and procurement
     elif "45Q-2040-l" in scenario_name:
         return [
             build_xml_config.XMLConfig(
@@ -1131,6 +1130,24 @@ def build_from_scenario(scenario_name):
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_scalingdemand.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_scaling-h.csv"],
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_scaling_h.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procurescaling-h.csv"],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_scaling_h.xml"
             )
         ]
     elif "procure-3B-h" in scenario_name:
@@ -1141,6 +1158,24 @@ def build_from_scenario(scenario_name):
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_3Bdemand.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procure3b-h.csv"],
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_3B_h.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procure3b-h.csv"],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_3B_h.xml"
             )
         ]
     elif "procure-Rhodium-h" in scenario_name:
@@ -1151,66 +1186,108 @@ def build_from_scenario(scenario_name):
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_rhodium.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procurerhodium-h.csv"],
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_rhodium_h.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procurerhodium-h.csv"],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_rhodium_h.xml"
             )
         ]
-    elif "procure-Scaling-l" in scenario_name:
+    elif "procure-scaling-l" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_scaling.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_ligh_scaling.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_scalingdemand.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_scaling-l.csv"],
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_scaling_l.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procurescaling-l.csv"],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_scaling_l.xml"
             )
         ]
     elif "procure-3B-l" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_3B.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_ligh_3B.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_3Bdemand.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procure3b-l.csv"],
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_3B_l.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procure3b-l.csv"],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_3B_l.xml"
             )
         ]
     elif "procure-Rhodium-l" in scenario_name:
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_rhodium.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_ligh_rhodium.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_rhodium.xml"
-            )
-        ]
-    elif "procure-Scaling-n" in scenario_name:
-        return [
+            ),
             build_xml_config.XMLConfig(
-                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_nothing_scaling.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
-                xml_build_type="CDR Policy",
-                output_fname="default_CDRDemand_s1h_scalingdemand.xml"
-            )
-        ]
-    elif "procure-3B-n" in scenario_name:
-        return [
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procurerhodium-l.csv"],
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_rhodium_l.xml"
+            ),  # update BECCS costs as well
             build_xml_config.XMLConfig(
-                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_nothing_3B.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
-                xml_build_type="CDR Policy",
-                output_fname="default_CDRDemand_s1h_3Bdemand.xml"
-            )
-        ]
-    elif "procure-Rhodium-n" in scenario_name:
-        return [
-            build_xml_config.XMLConfig(
-                data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_nothing_rhodium.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
-                xml_build_type="CDR Policy",
-                output_fname="default_CDRDemand_s1h_rhodium.xml"
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
+                                      "./building_xml/inputs/cost_decrease_procurerhodium-l.csv"],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_rhodium_l.xml"
             )
         ]
     else:
