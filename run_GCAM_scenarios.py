@@ -448,8 +448,7 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["innovation-DACHubs-l_500Mt-CostDecrease",
-                       "1500Mt-noCostDecrease_1500Mt-noCostDecrease",
+    current_configs = ["1500Mt-noCostDecrease_1500Mt-noCostDecrease",
                        "4100Mt-noCostDecrease_4100Mt-noCostDecrease"]
 
     #                       "100Mt-CostDecrease_100Mt-CostDecrease",

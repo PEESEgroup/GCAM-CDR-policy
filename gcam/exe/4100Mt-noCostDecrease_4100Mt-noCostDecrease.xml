@@ -118,10 +118,8 @@
       <Value name="cdr_oae">../input/gcamdata/xml/OEW.xml</Value>
       <Value name="cdr_oae_shipping">../input/gcamdata/xml/OEW_shipping.xml</Value>
       <Value name="Cstorage_usa">../input/gcamdata/xml/USA_C_Storage.xml</Value>
-      <Value name="cdr_oae_usa">../input/gcamdata/xml/OEW_CR_USA.xml</Value>
-      <Value name="cdr_tew_usa">../input/gcamdata/xml/TEW_CR_USA.xml</Value>
-      <Value name="CDR_tech_non-input_costs">../input/gcamdata/xml/CDR_Costs_Calculated_nothing.xml</Value>
-      <Value name="BECCS-integration">../input/gcamdata/xml/default_BECCSIntegration_nothing.xml</Value>
+      <Value name="CDR_tech_non-input_costs">../input/gcamdata/xml/CDR_Costs_Calculated_high.xml</Value>
+      <Value name="BECCS-integration">../input/gcamdata/xml/default_BECCSIntegration_high.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_CDR.xml</Value>
       <Value name="cdr_usa">../input/gcamdata/xml/CDR_USA.xml</Value>
       <Value name="cdr_trade_usa">../input/gcamdata/xml/CDR_traded_USA.xml</Value>
@@ -136,9 +134,9 @@
       <Value name="cdr_oae_shipping_usa">../input/gcamdata/xml/OEW_shipping_USA.xml</Value>
       <Value name="cdr_resources">../input/gcamdata/xml/resources_USA_CDR.xml</Value>
       <Value name="ignore_beccs">../input/policy/CDR/ignore_BECCS_in_CO2_constraint.xml</Value>
-      <Value name="GHG emissions policy">../input/gcamdata/xml/default_GHGPolicies_nothing.xml</Value>
-      <Value name="CDR-Demand-Policy">../input/policy/default_CDRDemand_nothing.xml</Value>
-      <Value name="subsidy policy">../input/policy/45Q_DACS_nothing.xml</Value>
+      <Value name="GHG emissions policy">../input/gcamdata/xml/default_GHGPolicies_high.xml</Value>
+      <Value name="CDR-Demand-Policy">../input/policy/default_CDRDemand_4gt.xml</Value>
+      <Value name="subsidy policy">../input/policy/45Q_DACS_high.xml</Value>
    </ScenarioComponents>
    <Strings>
       <Value name="scenarioName">4100Mt-noCostDecrease_4100Mt-noCostDecrease</Value>
