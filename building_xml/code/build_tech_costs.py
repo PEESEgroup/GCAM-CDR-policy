@@ -45,11 +45,14 @@ def build_non_input_tech_costs(file):
     # merge dataframes
     links = {}
     costs = {}
+    cost_decrease = []
     for key, value in file.items():
         if "link" in key:
             links = file[key]
         if "verify" in key:
             costs = file[key]
+        if "Cost Reduction" in key:
+            cost_decrease = file[key]
 
     # high level
     scenario = ET.Element("scenario")
@@ -60,8 +63,15 @@ def build_non_input_tech_costs(file):
         location = ET.SubElement(gtb, "location-info", {"sector-name": sector, "subsector-name": subsector})
         technology = ET.SubElement(location, "technology", name=tech)
         for year in costs:
+            # get cost reduction
+            reduced_cost = 1
+            for i in cost_decrease:
+                reduced_cost = reduced_cost * (
+                            100 - cost_decrease[i][year]) / 100  # cost_decreases are stored as percentages
+
+            # add cost decrease to xml
             period = ET.SubElement(technology, "period", year=str(year))
             minicam = ET.SubElement(period, "minicam-non-energy-input", name="non-energy")
-            ET.SubElement(minicam, "input-cost").text = str(costs[year][tech] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
+            ET.SubElement(minicam, "input-cost").text = str(costs[year][tech] * reduced_cost * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
 
     return scenario
