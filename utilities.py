@@ -1290,5 +1290,9 @@ def build_from_scenario(scenario_name):
                 output_fname="default_BECCSIntegration_rhodium_l.xml"
             )
         ]
+    # TODO: update cost decrease params for what we have
+    # TODO: debug code
+    # TODO: rerun output of 100, 500, 2400 baselines
+    # TODO: rerun 1500/4100 baselines
     else:
         return []
