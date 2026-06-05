@@ -31,10 +31,14 @@ def build_BECCS_integration(config, baseline=True):
         tech = data["RES_tech_verify"]
     if "countersubsidy" in data:
         countersubsidy = data["countersubsidy"]
+    if "Cost Decrease" in data:
+        cost_decrease = data['Cost Decrease']
+    else:
+        cost_decrease = []
 
     # build remainder of the file
     scenario = build_RES(RES)
-    scenario = build_tech(scenario, tech)
+    scenario = build_tech(scenario, tech, cost_decrease)
     scenario = build_countersubsidy(scenario, countersubsidy)
 
     # write file out
@@ -101,7 +105,7 @@ def build_RES(file):
     return scenario
 
 
-def build_tech(scenario, file):
+def build_tech(scenario, file, cost_decrease):
     """
     build the global technology database portion on the BECCS integration file
     :param scenario: root node of the ET
@@ -115,6 +119,11 @@ def build_tech(scenario, file):
 
     for year in file:
         link = file[year]
+
+        reduced_cost = 1
+        for i in cost_decrease:
+            reduced_cost = reduced_cost * (100-cost_decrease[i][year])/100 # cost_decreases are stored as percentages
+
         period = ET.SubElement(technology, "period", year=str(year))
         ET.SubElement(period, "share-weight").text = str(link["shareweight"])
         minicam = ET.SubElement(period, "minicam-energy-input", name=link["minicam-energy-input"])
@@ -122,9 +131,9 @@ def build_tech(scenario, file):
 
         # find all policy portfolio standards
         for policy_portfolio_standard in scenario.findall(".//policy-portfolio-standard"):
-            ET.SubElement(policy_portfolio_standard, "min-price", fillout=str(0), year=str(year)).text = str(link["min-price"]*constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
+            ET.SubElement(policy_portfolio_standard, "min-price", fillout=str(0), year=str(year)).text = str(reduced_cost*link["min-price"]*constants.GCAMConstants.USD2025_tCO2_to_1975_kgC)
             ET.SubElement(policy_portfolio_standard, "max-price", fillout=str(0), year=str(year)).text = str(
-                link["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC*2)
+                reduced_cost*link["min-price"] * constants.GCAMConstants.USD2025_tCO2_to_1975_kgC*2) # arbitrary factor of 2 for max price
 
     return scenario
 

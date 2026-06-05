@@ -328,14 +328,16 @@ def build_from_scenario(scenario_name):
             # TODO: find out a similar way to store such information in BECCS
             build_xml_config.XMLConfig(
                 data_files={
-                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_4100.csv",
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": [""],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_4100_CD.xml"
             ),  # update BECCS costs as well
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_4100.csv",
+                            "Cost Decrease": [""],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_4100_CD.xml"
@@ -390,14 +392,16 @@ def build_from_scenario(scenario_name):
             # TODO: find out a similar way to store such information in BECCS
             build_xml_config.XMLConfig(
                 data_files={
-                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_2400.csv",
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": [""],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_2400_CD.xml"
             ),  # update BECCS costs as well
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_2400.csv",
+                            "Cost Decrease": [""],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_2400_CD.xml"
@@ -445,14 +449,16 @@ def build_from_scenario(scenario_name):
             # TODO: find out a similar way to store such information in BECCS
             build_xml_config.XMLConfig(
                 data_files={
-                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_1500.csv",
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": [""],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_1500_CD.xml"
             ),  # update BECCS costs as well
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_1500.csv",
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "Cost Decrease": [""],
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_1500_CD.xml"
@@ -500,14 +506,16 @@ def build_from_scenario(scenario_name):
             # TODO: find out a similar way to store such information in BECCS
             build_xml_config.XMLConfig(
                 data_files={
-                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_500.csv",
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": [""],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_500_CD.xml"
             ),  # update BECCS costs as well
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_500.csv",
+                            "Cost Decrease": [""],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_500_CD.xml"
@@ -555,20 +563,23 @@ def build_from_scenario(scenario_name):
             # TODO: find out a similar way to store such information in BECCS
             build_xml_config.XMLConfig(
                 data_files={
-                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_100.csv",
-                    "Cost_Reduction"
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": [""],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_100_CD.xml"
             ),  # update BECCS costs as well
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_100.csv",
+                            "Cost Decrease": [""],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_100_CD.xml"
             )
         ]
+    # TODO: update baseline input costs for innovation scenarios
+    # TODO: add low and high variants for innovation scenarios
     elif "innovation-rhodium6b" in scenario_name:
         return [
             build_xml_config.XMLConfig(
@@ -578,12 +589,14 @@ def build_from_scenario(scenario_name):
             ),
             build_xml_config.XMLConfig(
                 data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_rhodium6b.csv",
+                            "Cost Decrease": [""],
                             "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_high.xml"
             ),  # update BECCS costs as well
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "Cost Decrease": [""],
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_rhodium6b.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
@@ -599,12 +612,14 @@ def build_from_scenario(scenario_name):
             ),
             build_xml_config.XMLConfig(
                 data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_maintain.csv",
+                            "Cost Decrease": [""],
                             "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_high.xml"
             ),  # update BECCS costs as well
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "Cost Decrease": [""],
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_maintain.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
@@ -620,6 +635,7 @@ def build_from_scenario(scenario_name):
             ),
             build_xml_config.XMLConfig(
                 data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_triple.csv",
+                            "Cost Decrease": [""],
                             "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_high.xml"
@@ -627,6 +643,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_triple.csv",
+                            "Cost Decrease": [""],
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_high.xml"
@@ -641,6 +658,7 @@ def build_from_scenario(scenario_name):
             ),
             build_xml_config.XMLConfig(
                 data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_dachubs.csv",
+                            "Cost Decrease": [""],
                             "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_high.xml"
@@ -655,6 +673,7 @@ def build_from_scenario(scenario_name):
             ),
             build_xml_config.XMLConfig(
                 data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_rhodium18b.csv",
+                            "Cost Decrease": [""],
                             "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_high.xml"
@@ -662,6 +681,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_rhodium18b.csv",
+                            "Cost Decrease": [""],
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_high.xml"
@@ -676,6 +696,7 @@ def build_from_scenario(scenario_name):
             ),
             build_xml_config.XMLConfig(
                 data_files={"CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify_rhodium18b.csv",
+                            "Cost Decrease": [""],
                             "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_high.xml"
@@ -683,6 +704,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh_rhodium18b.csv",
+                            "Cost Decrease": [""],
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
                 output_fname="default_BECCSIntegration_high.xml"
@@ -695,6 +717,7 @@ def build_from_scenario(scenario_name):
                 output_fname="CDRIA_2035.xml"
             )
         ]
+    # TODO: add cost decrease blocks for subsidies and procurement
     elif "45Q-2040" in scenario_name:
         return [
             build_xml_config.XMLConfig(

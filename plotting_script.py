@@ -24,7 +24,7 @@ def main(config_fname, reference_year):
     CDR_tech(config_fname, reference_year)
     social_cost(config_fname, reference_year)
     market_share(config_fname, reference_year)
-    subsidy_expiration(config_fname, reference_year)
+    # subsidy_expiration(config_fname, reference_year)
     costs_and_benefits(config_fname, reference_year)
 
 
