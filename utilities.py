@@ -891,22 +891,6 @@ def build_from_scenario(scenario_name):
                             "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_45Q-2040_verify_s1.csv"},
                 xml_build_type="subsidy Policy",
                 output_fname="45Q_2040.xml"
-            ),
-            build_xml_config.XMLConfig(
-                data_files={
-                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
-                    "Cost Decrease": [],
-                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
-                xml_build_type="tech_non-input_costs",
-                output_fname="CDR_Costs_Calculated_45Q_2040_l.xml"
-            ),  # update BECCS costs as well
-            build_xml_config.XMLConfig(
-                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "Cost Decrease": [],
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
-                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
-                xml_build_type="BECCS RES",
-                output_fname="default_BECCSIntegration_45Q_2040_l.xml"
             )
         ]
     elif "45Q-2050-l" in scenario_name:
@@ -969,22 +953,6 @@ def build_from_scenario(scenario_name):
                             "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_45Q-2050_verify_s1.csv"},
                 xml_build_type="subsidy Policy",
                 output_fname="45Q_2050.xml"
-            ),
-            build_xml_config.XMLConfig(
-                data_files={
-                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
-                    "Cost Decrease": [],
-                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
-                xml_build_type="tech_non-input_costs",
-                output_fname="CDR_Costs_Calculated_45Q_2050_noCR.xml"
-            ),  # update BECCS costs as well
-            build_xml_config.XMLConfig(
-                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "Cost Decrease": [],
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
-                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
-                xml_build_type="BECCS RES",
-                output_fname="default_BECCSIntegration_45Q_2050_noCR.xml"
             )
         ]
     elif "CDRIA-2035-l" in scenario_name:
@@ -1047,22 +1015,6 @@ def build_from_scenario(scenario_name):
                             "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA-2035_verify_s1.csv"},
                 xml_build_type="subsidy Policy",
                 output_fname="CDRIA_2035.xml"
-            ),
-            build_xml_config.XMLConfig(
-                data_files={
-                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
-                    "Cost Decrease": [],
-                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
-                xml_build_type="tech_non-input_costs",
-                output_fname="CDR_Costs_Calculated_CDRIA_2035.xml"
-            ),  # update BECCS costs as well
-            build_xml_config.XMLConfig(
-                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "Cost Decrease": [],
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
-                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
-                xml_build_type="BECCS RES",
-                output_fname="default_BECCSIntegration_CDRIA_2035.xml"
             )
         ]
     elif "CDRIA-2050-l" in scenario_name:
@@ -1125,22 +1077,6 @@ def build_from_scenario(scenario_name):
                             "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA-2050_verify_s1.csv"},
                 xml_build_type="subsidy Policy",
                 output_fname="CDRIA_2050.xml"
-            ),
-            build_xml_config.XMLConfig(
-                data_files={
-                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
-                    "Cost Decrease": [],
-                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
-                xml_build_type="tech_non-input_costs",
-                output_fname="CDR_Costs_Calculated_CDRIA_2050.xml"
-            ),  # update BECCS costs as well
-            build_xml_config.XMLConfig(
-                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
-                            "Cost Decrease": [],
-                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
-                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
-                xml_build_type="BECCS RES",
-                output_fname="default_BECCSIntegration_CDRIA_2050.xml"
             )
         ]
     elif "procure-scaling-h" in scenario_name:
