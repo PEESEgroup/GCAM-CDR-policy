@@ -448,7 +448,7 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = [# "100Mt-CostDecrease_100Mt-CostDecrease", # TODO: rewrite BECCS price verification code
+    current_configs = ["100Mt-CostDecrease_100Mt-CostDecrease",
                        "500Mt-CostDecrease_500Mt-CostDecrease",
                        "1500Mt-CostDecrease_1500Mt-CostDecrease",
                        "2400Mt-CostDecrease_2400Mt-CostDecrease",

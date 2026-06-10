@@ -1,0 +1,38 @@
+Verification succeeds in all years because ghg_constraint_verify was verified
+Verification succeeds in all years because DAC_subsidy_amount_verify was verified
+Verification fails in 2025 because BECCS is lower than minimum price in the following regions: ['AK' 'AL' 'AR' 'AZ' 'Africa_Northern' 'Africa_Southern' 'Africa_Western'
+ 'Argentina' 'Australia_NZ' 'CA' 'CO' 'CT' 'Canada'
+ 'Central America and Caribbean' 'Central Asia' 'China' 'Colombia' 'DE'
+ 'EU-12' 'EU-15' 'Europe_Eastern' 'Europe_Non_EU'
+ 'European Free Trade Association' 'FL' 'GA' 'HI' 'IA' 'ID' 'IL' 'IN'
+ 'India' 'Indonesia' 'Japan' 'KS' 'KY' 'LA' 'MA' 'MD' 'ME' 'MI' 'MN' 'MO'
+ 'MS' 'MT' 'Mexico' 'Middle East' 'NC' 'ND' 'NE' 'NH' 'NJ' 'NM' 'NV' 'NY'
+ 'OH' 'OK' 'OR' 'PA' 'Pakistan' 'RI' 'Russia' 'SC' 'SD' 'South Africa'
+ 'South America_Northern' 'South America_Southern' 'South Asia'
+ 'South Korea' 'Southeast Asia' 'TN' 'TX' 'USA' 'UT' 'VA' 'VT' 'WA' 'WI'
+ 'WV' 'WY']
+Verification fails in 2030 because BECCS is lower than minimum price in the following regions: ['AK' 'AL' 'AR' 'AZ' 'Africa_Northern' 'Africa_Southern' 'CA' 'CO' 'CT'
+ 'DE' 'EU-15' 'FL' 'GA' 'HI' 'IA' 'ID' 'IL' 'IN' 'Indonesia' 'KS' 'KY'
+ 'LA' 'MA' 'MD' 'ME' 'MI' 'MN' 'MO' 'MS' 'MT' 'NC' 'ND' 'NE' 'NH' 'NJ'
+ 'NM' 'NV' 'NY' 'OH' 'OK' 'OR' 'PA' 'RI' 'Russia' 'SC' 'SD' 'TN' 'TX'
+ 'USA' 'UT' 'VA' 'VT' 'WA' 'WI' 'WV' 'WY']
+Verification fails in 2035 because BECCS is lower than minimum price in the following regions: ['AK' 'AL' 'AR' 'AZ' 'Africa_Northern' 'CA' 'CO' 'CT' 'DE' 'EU-15' 'FL'
+ 'GA' 'HI' 'IA' 'ID' 'IL' 'IN' 'Indonesia' 'KS' 'KY' 'LA' 'MA' 'MD' 'ME'
+ 'MI' 'MN' 'MO' 'MS' 'MT' 'NC' 'ND' 'NE' 'NH' 'NJ' 'NM' 'NV' 'NY' 'OH'
+ 'OK' 'OR' 'PA' 'RI' 'Russia' 'SC' 'SD' 'TN' 'TX' 'USA' 'UT' 'VA' 'VT'
+ 'WA' 'WI' 'WV' 'WY']
+Verification fails in 2040 because BECCS is lower than minimum price in the following regions: ['AK' 'AL' 'AR' 'AZ' 'Africa_Northern' 'Africa_Southern' 'CA' 'CO' 'CT'
+ 'DE' 'EU-15' 'FL' 'GA' 'HI' 'IA' 'ID' 'IL' 'IN' 'Indonesia' 'KS' 'KY'
+ 'LA' 'MA' 'MD' 'ME' 'MI' 'MN' 'MO' 'MS' 'MT' 'NC' 'ND' 'NE' 'NH' 'NJ'
+ 'NM' 'NV' 'NY' 'OH' 'OK' 'OR' 'PA' 'RI' 'Russia' 'SC' 'SD' 'TN' 'USA'
+ 'UT' 'VA' 'VT' 'WA' 'WI' 'WV' 'WY']
+Verification fails in 2045 because BECCS is lower than minimum price in the following regions: ['AK' 'AL' 'AR' 'AZ' 'Africa_Northern' 'Africa_Southern' 'CA' 'CO' 'CT'
+ 'DE' 'FL' 'GA' 'HI' 'IA' 'ID' 'IL' 'IN' 'Indonesia' 'KS' 'KY' 'LA' 'MA'
+ 'MD' 'ME' 'MI' 'MN' 'MO' 'MS' 'MT' 'NC' 'ND' 'NE' 'NH' 'NJ' 'NM' 'NV'
+ 'NY' 'OH' 'OK' 'OR' 'PA' 'RI' 'SC' 'SD' 'TN' 'USA' 'UT' 'VA' 'VT' 'WA'
+ 'WI' 'WV' 'WY']
+Verification fails in 2050 because BECCS is lower than minimum price in the following regions: ['AL' 'AR' 'AZ' 'Africa_Northern' 'CO' 'CT' 'DE' 'EU-15' 'GA' 'HI' 'IA'
+ 'ID' 'Indonesia' 'KS' 'KY' 'MA' 'MD' 'ME' 'MN' 'MO' 'MS' 'MT' 'NC' 'ND'
+ 'NE' 'NH' 'NJ' 'NM' 'NV' 'NY' 'OK' 'OR' 'RI' 'Russia' 'SC' 'SD' 'TN'
+ 'USA' 'UT' 'VA' 'VT' 'WA' 'WI' 'WV' 'WY']
+Verification succeeds in all years because RES_tech_verify was verified
