@@ -1092,7 +1092,7 @@ def build_from_scenario(scenario_name):
                 data_files={
                     "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
                     "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_scaling-h.csv"],
+                                      "./building_xml/inputs/cost_decrease_procurescaling.csv"],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_scaling_h.xml"
@@ -1100,7 +1100,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                             "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procurescaling-h.csv"],
+                                      "./building_xml/inputs/cost_decrease_procurescaling.csv"],
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
@@ -1120,7 +1120,7 @@ def build_from_scenario(scenario_name):
                 data_files={
                     "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
                     "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procure3b-h.csv"],
+                                      "./building_xml/inputs/cost_decrease_procure3b.csv"],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_3B_h.xml"
@@ -1128,7 +1128,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                             "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procure3b-h.csv"],
+                                      "./building_xml/inputs/cost_decrease_procure3b.csv"],
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
@@ -1148,7 +1148,7 @@ def build_from_scenario(scenario_name):
                 data_files={
                     "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
                     "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procurerhodium-h.csv"],
+                                      "./building_xml/inputs/cost_decrease_procurerhodium.csv"],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_rhodium_h.xml"
@@ -1156,7 +1156,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                             "Cost Decrease": ["./building_xml/inputs/cost_decrease_1500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procurerhodium-h.csv"],
+                                      "./building_xml/inputs/cost_decrease_procurerhodium.csv"],
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
@@ -1176,7 +1176,7 @@ def build_from_scenario(scenario_name):
                 data_files={
                     "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
                     "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_scaling-l.csv"],
+                                      "./building_xml/inputs/cost_decrease_scaling.csv"],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_scaling_l.xml"
@@ -1184,7 +1184,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                             "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procurescaling-l.csv"],
+                                      "./building_xml/inputs/cost_decrease_procurescaling.csv"],
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
@@ -1204,7 +1204,7 @@ def build_from_scenario(scenario_name):
                 data_files={
                     "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
                     "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procure3b-l.csv"],
+                                      "./building_xml/inputs/cost_decrease_procure3b.csv"],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_3B_l.xml"
@@ -1212,7 +1212,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                             "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procure3b-l.csv"],
+                                      "./building_xml/inputs/cost_decrease_procure3b.csv"],
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",
@@ -1232,7 +1232,7 @@ def build_from_scenario(scenario_name):
                 data_files={
                     "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
                     "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procurerhodium-l.csv"],
+                                      "./building_xml/inputs/cost_decrease_procurerhodium.csv"],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_rhodium_l.xml"
@@ -1240,7 +1240,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
                             "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_procurerhodium-l.csv"],
+                                      "./building_xml/inputs/cost_decrease_procurerhodium.csv"],
                             "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
                             "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
                 xml_build_type="BECCS RES",

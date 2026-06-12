@@ -448,16 +448,16 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["Rhodium-6B-l_500Mt-CostDecrease",
-                       "Rhodium-6B-h_1500Mt-CostDecrease",
-                       "Rhodium-18B-l_500Mt-CostDecrease",
-                       "Rhodium-18B-h_1500Mt-CostDecrease",
-                       "Rhodium-maintain-l_500Mt-CostDecrease",
-                       "Rhodium-maintain-h_1500Mt-CostDecrease",
-                       "Rhodium-triple-l_500Mt-CostDecrease",
-                       "Rhodium-triple-h_1500Mt-CostDecrease",
-                       "Rhodium-DACS Hubs-l_500Mt-CostDecrease",
-                       "Rhodium-DAC Hubs-h_1500Mt-CostDecrease"]
+    current_configs = ["innovation-rhodium6b-l_500Mt-CostDecrease",
+                       "innovation-rhodium6b-h_1500Mt-CostDecrease",
+                       "innovation-maintain-l_500Mt-CostDecrease",
+                       "innovation-maintain-h_1500Mt-CostDecrease",
+                       "innovation-triple-l_500Mt-CostDecrease",
+                       "innovation-triple-h_1500Mt-CostDecrease",
+                       "innovation-DACHubs-l_500Mt-CostDecrease",
+                       "innovation-DACHubs-h_1500Mt-CostDecrease",
+                       "innovation-rhodium18b-l_500Mt-CostDecrease",
+                       "innovation-rhodium18b-h_1500Mt-CostDecrease"]
 
     # the scenario and baseline name should match for any baseline scenario
 
