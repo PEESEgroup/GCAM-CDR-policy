@@ -448,12 +448,10 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["innovation-rhodium6b-l_500Mt-CostDecrease",
-                       "innovation-rhodium6b-h_1500Mt-CostDecrease",
-                       "innovation-maintain-l_500Mt-CostDecrease",
-                       "innovation-maintain-h_1500Mt-CostDecrease",
-                       "innovation-triple-l_500Mt-CostDecrease",
-                       "innovation-triple-h_1500Mt-CostDecrease",
+    current_configs = [
+                       "innovation-maintain-h_1500Mt-CostDecrease", # done
+                       "innovation-triple-l_500Mt-CostDecrease", # done
+                       "innovation-triple-h_1500Mt-CostDecrease", # running
                        "innovation-DACHubs-l_500Mt-CostDecrease",
                        "innovation-DACHubs-h_1500Mt-CostDecrease",
                        "innovation-rhodium18b-l_500Mt-CostDecrease",
