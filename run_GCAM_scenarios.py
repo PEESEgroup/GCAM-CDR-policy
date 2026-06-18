@@ -449,10 +449,17 @@ def default_config(config_name):
 
 if __name__ == '__main__':
     current_configs = [
-                       "innovation-DACHubs-l_500Mt-CostDecrease", # running
-                       "innovation-DACHubs-h_1500Mt-CostDecrease",
                        "innovation-rhodium18b-l_500Mt-CostDecrease",
-                       "innovation-rhodium18b-h_1500Mt-CostDecrease"]
+                       "innovation-rhodium18b-h_1500Mt-CostDecrease",
+                        "45Q-2040-noCR_500Mt-CostDecrease",
+                        "45Q-2040-noCR_1500Mt-CostDecrease",
+                        "45Q-2050-noCR_500Mt-CostDecrease",
+                        "45Q-2050-noCR_1500Mt-CostDecrease",
+                        "CDRIA-2035-noCR_500Mt-CostDecrease",
+                        "CDRIA-2035-noCR_1500Mt-CostDecrease",
+                        "CDRIA-2050-noCR_500Mt-CostDecrease",
+                        "CDRIA-2035-noCR_1500Mt-CostDecrease"
+    ]
 
     # the scenario and baseline name should match for any baseline scenario
 
