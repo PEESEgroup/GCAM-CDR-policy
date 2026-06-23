@@ -448,9 +448,12 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["CDRIA-2050-noCR_500Mt-noCostDecrease",
-                        "CDRIA-2050-noCR_1500Mt-noCostDecrease"
-    ]
+    current_configs = ["45Q-2040-h_1500Mt-CostDecrease",
+                       "45Q-2050-l_500Mt-CostDecrease",
+                       "45Q-2050-h_1500Mt-CostDecrease",
+                       "CDRIA-2035-l_500Mt-CostDecrease",
+                       "CDRIA-2035-h_1500Mt-CostDecrease"
+                       ]
 
     # the scenario and baseline name should match for any baseline scenario
 
