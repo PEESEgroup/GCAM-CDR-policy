@@ -448,9 +448,7 @@ def default_config(config_name):
 
 
 if __name__ == '__main__':
-    current_configs = ["45Q-2040-h_1500Mt-CostDecrease",
-                       "45Q-2050-l_500Mt-CostDecrease",
-                       "45Q-2050-h_1500Mt-CostDecrease",
+    current_configs = [
                        "CDRIA-2035-l_500Mt-CostDecrease",
                        "CDRIA-2035-h_1500Mt-CostDecrease"
                        ]

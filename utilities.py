@@ -960,7 +960,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 # <tech>_subsidy_link
                 data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
-                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA-2035_verify_s1.csv"},
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA_verify_s1.csv"},
                 xml_build_type="subsidy Policy",
                 output_fname="CDRIA_2035.xml"
             ),
@@ -986,7 +986,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 # <tech>_subsidy_link
                 data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
-                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA-2035_verify_s1.csv"},
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA_verify_s1.csv"},
                 xml_build_type="subsidy Policy",
                 output_fname="CDRIA_2035.xml"
             ),
@@ -1012,7 +1012,7 @@ def build_from_scenario(scenario_name):
             build_xml_config.XMLConfig(
                 # <tech>_subsidy_link
                 data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
-                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA-2035_verify_s1.csv"},
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA_verify_s1.csv"},
                 xml_build_type="subsidy Policy",
                 output_fname="CDRIA_2035.xml"
             )
