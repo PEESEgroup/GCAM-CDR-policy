@@ -1083,8 +1083,7 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_high_scaling.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_high_scaling.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_scalingdemand.xml"
             ),
@@ -1111,8 +1110,7 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_high_3B.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_high_3B.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_3Bdemand.xml"
             ),
@@ -1139,8 +1137,7 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_high_rhodium.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_high_rhodium.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_rhodium.xml"
             ),
@@ -1167,8 +1164,7 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_scaling.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_scaling.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_scalingdemand.xml"
             ),
@@ -1176,7 +1172,7 @@ def build_from_scenario(scenario_name):
                 data_files={
                     "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
                     "Cost Decrease": ["./building_xml/inputs/cost_decrease_500Mt.csv",
-                                      "./building_xml/inputs/cost_decrease_scaling.csv"],
+                                      "./building_xml/inputs/cost_decrease_procurescaling.csv"],
                     "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
                 xml_build_type="tech_non-input_costs",
                 output_fname="CDR_Costs_Calculated_scaling_l.xml"
@@ -1195,8 +1191,7 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_3B.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_3B.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_3Bdemand.xml"
             ),
@@ -1223,8 +1218,7 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_rhodium.csv",
-                            "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_rhodium.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_rhodium.xml"
             ),
