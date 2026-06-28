@@ -1167,7 +1167,7 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_ligh_scaling.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_scaling.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_scalingdemand.xml"
@@ -1195,7 +1195,7 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_ligh_3B.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_3B.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_3Bdemand.xml"
@@ -1223,7 +1223,7 @@ def build_from_scenario(scenario_name):
         return [
             build_xml_config.XMLConfig(
                 data_files={"ghg_CDR_market_link": "./building_xml/inputs/linked_ghg_CDR_base_verify.csv",
-                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_ligh_rhodium.csv",
+                            "exo_CDR_demand_verify": "./building_xml/inputs/EXO_CDR_demand_verify_low_rhodium.csv",
                             "elastic_CDR_demand_verify": "./building_xml/inputs/Elastic_CDR_demand_verify_19.csv"},
                 xml_build_type="CDR Policy",
                 output_fname="default_CDRDemand_s1h_rhodium.xml"
