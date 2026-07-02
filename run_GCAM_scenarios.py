@@ -449,9 +449,6 @@ def default_config(config_name):
 
 if __name__ == '__main__':
     current_configs = [
-                        "procure-scaling-l_500Mt-CostDecrease",
-                        "procure-scaling-h_1500Mt-CostDecrease",
-                        "procure-3B-l_500Mt-CostDecrease",
                         "procure-3B-h_1500Mt-CostDecrease",
                         "procure-Rhodium-l_500Mt-CostDecrease",
                         "procure-Rhodium-h_1500Mt-CostDecrease"
