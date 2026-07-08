@@ -1,0 +1,841 @@
+<?xml version="1.0" ?>
+<scenario>
+   <world>
+      <region name="USA">
+         <supplysector name="CDR_traded">
+            <subsector delete="1" name="CDR_USA"/>
+         </supplysector>
+      </region>
+      <region name="USA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="AL">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+         <CDR-final-demand name="CDR">
+            <demand-source name="exogenous">
+               <require-c-price>0</require-c-price>
+               <demand year="2025">3.6818181818181817</demand>
+               <demand year="2030">36.65297184545454</demand>
+               <demand year="2035">80.12206058181818</demand>
+               <demand year="2040">150.14885503636364</demand>
+               <demand year="2045">299.18925654545455</demand>
+               <demand year="2050">583.2388145454545</demand>
+            </demand-source>
+         </CDR-final-demand>
+      </region>
+      <region name="AK">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="AZ">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="AR">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="CA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="CO">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="CT">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="DE">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="FL">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="GA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="HI">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="ID">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="IL">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="IN">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="IA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="KS">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="KY">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="LA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="ME">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="MD">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="MA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="MI">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="MN">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="MS">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="MO">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="MT">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="NE">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="NV">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="NH">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="NJ">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="NM">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="NY">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="NC">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="ND">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="OH">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="OK">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="OR">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="PA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="RI">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="SC">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="SD">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="TN">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="TX">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="UT">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="VT">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="VA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="WA">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="WV">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="WI">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="WY">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>USA</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Africa_Eastern">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Africa_Northern">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Africa_Southern">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Africa_Western">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Australia_NZ">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Brazil">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Canada">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Central America and Caribbean">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Central Asia">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="China">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Europe_Eastern">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="EU-12">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="EU-15">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Europe_Non_EU">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="European Free Trade Association">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="India">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Indonesia">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Japan">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Mexico">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Middle East">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Pakistan">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Russia">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="South Africa">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="South America_Northern">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="South America_Southern">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="South Asia">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="South Korea">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Southeast Asia">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Taiwan">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Argentina">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+      <region name="Colombia">
+         <linked-ghg-policy name="CO2_CDR">
+            <price-adjust fillout="1" year="1975">0</price-adjust>
+            <demand-adjust fillout="1" year="1975">1</demand-adjust>
+            <market>Global</market>
+            <linked-policy>CO2</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+      </region>
+   </world>
+</scenario>
