@@ -1241,5 +1241,38 @@ def build_from_scenario(scenario_name):
                 output_fname="default_BECCSIntegration_rhodium_l.xml"
             )
         ]
+    elif "45Q-2040-maintain-l" in scenario_name:
+        return [
+            build_xml_config.XMLConfig(
+                data_files={"exogenous_investment": "./building_xml/inputs/exogenous_subsector_investment_maintain.csv"},
+                xml_build_type="exogenous investment",
+                output_fname=""
+            ),
+            build_xml_config.XMLConfig(
+                # <tech>_subsidy_link
+                data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
+                            "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_45Q-2040_verify_s1.csv"},
+                xml_build_type="subsidy Policy",
+                output_fname="45Q_2040_maintain_l.xml"
+            ),
+            build_xml_config.XMLConfig(
+                data_files={
+                    "CDR_non-input_tech_costs_verify": "./building_xml/inputs/tech-non-input-cost_verify.csv",
+                    "Cost Decrease": ["./building_xml/inputs/cost_decrease_45Q-2040-l.csv",
+                                      "./building_xml/inputs/cost_decrease_maintain.csv"],
+                    "CDR_non-input_tech_link": "./building_xml/inputs/tech-non-input-cost_links.csv"},
+                xml_build_type="tech_non-input_costs",
+                output_fname="CDR_Costs_Calculated_45Q_2040_maintain_l.xml"
+            ),  # update BECCS costs as well
+            build_xml_config.XMLConfig(
+                data_files={"RES_markets": "./building_xml/inputs/BECCS_RES_base_verify.csv",
+                            "Cost Decrease": ["./building_xml/inputs/cost_decrease_45Q-2040-l.csv",
+                                              "./building_xml/inputs/cost_decrease_maintain.csv"],
+                            "RES_tech_verify": "./building_xml/inputs/BECCS_tech_base_nlh.csv",
+                            "countersubsidy": "./building_xml/inputs/BECCS_countersubsidy_base.csv"},
+                xml_build_type="BECCS RES",
+                output_fname="default_BECCSIntegration_45Q_2040_maintain_l.xml"
+            )
+        ]
     else:
         return []

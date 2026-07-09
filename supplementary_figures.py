@@ -21,8 +21,8 @@ def main(config_fname, reference_year):
     # marginal_supply()
     # tech_neutrality()
     # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
-    CAGR(config_fname, "2050")
-    # land_allocation(config_fname, "2050")
+    # CAGR(config_fname, "2050")
+    land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
     # state_CDR(config_fname, "2050")
@@ -397,23 +397,26 @@ def tech_neutrality():
     # set new column as policy type
     CI_data = pd.DataFrame()
     CDR["%Label"] = CDR.apply(lambda row: "Procurement" if "procure" in row['scenario'] else "Innovation" if
-                    "innovation" in row['scenario'] else "CDRIA", axis=1)
+    "innovation" in row['scenario'] else "CDRIA", axis=1)
     CDR["MtLabel"] = CDR.apply(lambda row: row['scenario'] if "procure" in row['scenario'] else "Innovation" if
-    "innovation" in row['scenario'] else "CDRIA", axis=1) # do not want to aggregate procurement scenarios by Mt basis because CI would be nonsense
+    "innovation" in row['scenario'] else "CDRIA",
+                               axis=1)  # do not want to aggregate procurement scenarios by Mt basis because CI would be nonsense
     for bl in CDR["baseline"].unique():
         baseline = CDR[CDR["baseline"] == bl]
         for product in baseline["product"].unique():
             technology = baseline[baseline["product"] == product].copy(
                 deep=True)  # filter data by baseline and product before doing CI work
             for year in c.GCAMConstants.plotting_x:
-                percent = technology.groupby('%Label')[str(year)].apply(get_min_max).unstack().reset_index(names="Policy Type")
+                percent = technology.groupby('%Label')[str(year)].apply(get_min_max).unstack().reset_index(
+                    names="Policy Type")
                 percent["baseline"] = bl
                 percent["product"] = product
                 percent["year"] = str(year)
-                MT = technology.groupby('MtLabel')[str(year) + "_supply"].apply(get_min_max).unstack().reset_index(names="Policy Type")
+                MT = technology.groupby('MtLabel')[str(year) + "_supply"].apply(get_min_max).unstack().reset_index(
+                    names="Policy Type")
                 MT["baseline"] = bl
                 MT["product"] = product
-                MT["year"] = str(year)+"_supply"
+                MT["year"] = str(year) + "_supply"
                 CI_data = pd.concat([CI_data, percent, MT])
 
     # iterate through baselines and supply type
@@ -428,19 +431,23 @@ def tech_neutrality():
             if suffix == "":
                 fig, axes = plt.subplots(3, 3, figsize=(14, 4), sharey=True, sharex=True, layout="constrained")
             else:
-                fig, axes = plt.subplots(3, len(scenarios), figsize=(14, 4), sharey=True, sharex=True, layout="constrained")
+                fig, axes = plt.subplots(3, len(scenarios), figsize=(14, 4), sharey=True, sharex=True,
+                                         layout="constrained")
 
             colors = ["#BFBE43", "#74A751", "#698FC6", "#DD9452"]
             for row_idx, scenario_name in enumerate(scenarios):
                 if not (suffix == "" and "s1-" in scenario_name):
-                    if not (suffix=="_supply" and scenario_name == "Procurement"):
+                    if not (suffix == "_supply" and scenario_name == "Procurement"):
                         scenario_df = CDR_baseline[CDR_baseline['Policy Type'] == scenario_name]
 
                         # reformat the table to have years as columns
-                        scenario_df_mean = scenario_df.pivot(index=['product', "baseline", "Policy Type"], columns='year', values='mean').reset_index()
-                        scenario_df_low = scenario_df.pivot(index=['product', "baseline", "Policy Type"], columns='year',
-                                                             values='minimum').reset_index()
-                        scenario_df_high = scenario_df.pivot(index=['product', "baseline", "Policy Type"], columns='year',
+                        scenario_df_mean = scenario_df.pivot(index=['product', "baseline", "Policy Type"],
+                                                             columns='year', values='mean').reset_index()
+                        scenario_df_low = scenario_df.pivot(index=['product', "baseline", "Policy Type"],
+                                                            columns='year',
+                                                            values='minimum').reset_index()
+                        scenario_df_high = scenario_df.pivot(index=['product', "baseline", "Policy Type"],
+                                                             columns='year',
                                                              values='maximum').reset_index()
 
                         for col_idx, year in enumerate(years):
@@ -449,11 +456,15 @@ def tech_neutrality():
                             if not scenario_df_mean[year].isna().all():
                                 # if there is data, extract it for plotting
                                 product_totals = scenario_df_mean.groupby('product')[str(year)].sum().reindex(products)
-                                minimum = scenario_df_low.groupby('product')[str(year)].sum(min_count=1).reindex(products).dropna()
-                                maximum = scenario_df_high.groupby('product')[str(year)].sum(min_count=1).reindex(products).dropna()
+                                minimum = scenario_df_low.groupby('product')[str(year)].sum(min_count=1).reindex(
+                                    products).dropna()
+                                maximum = scenario_df_high.groupby('product')[str(year)].sum(min_count=1).reindex(
+                                    products).dropna()
                                 bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
-                                scatter_low = ax.scatter(minimum, minimum.index.tolist(), color='black', zorder=3, marker="x")
-                                scatter_high = ax.scatter(maximum, maximum.index.tolist(), color='black', zorder=3, marker="x")
+                                scatter_low = ax.scatter(minimum, minimum.index.tolist(), color='black', zorder=3,
+                                                         marker="x")
+                                scatter_high = ax.scatter(maximum, maximum.index.tolist(), color='black', zorder=3,
+                                                          marker="x")
                                 for i in minimum.index.tolist():  # draw a line that connects
                                     ax.plot([minimum[i], maximum[i]], [i, i], zorder=4, color="grey")
 
@@ -473,7 +484,9 @@ def tech_neutrality():
                                     ax.set_ylabel(f"{year}", fontweight='bold', fontsize=12)
 
                                 if col_idx == 0:
-                                    ax.set_title(f"{scenario_name.replace('s1-','').replace('-l', '-500 Mt').replace('-h', '-1500 Mt')}", fontsize=10, fontweight='bold')
+                                    ax.set_title(
+                                        f"{scenario_name.replace('s1-', '').replace('-l', '-500 Mt').replace('-h', '-1500 Mt')}",
+                                        fontsize=10, fontweight='bold')
 
                                 if col_idx == 2:
                                     if suffix == "_supply":
@@ -964,5 +977,12 @@ if __name__ == '__main__':
               "procure-3B-l_500Mt-CostDecrease",
               "procure-Rhodium-l_500Mt-CostDecrease",
               "procure-scaling-l_500Mt-CostDecrease",
+              "100Mt-CostDecrease_100Mt-CostDecrease",
+              "500Mt-CostDecrease_500Mt-CostDecrease",
+              "1500Mt-CostDecrease_1500Mt-CostDecrease",
+              "2400Mt-CostDecrease_2400Mt-CostDecrease",
+              "4100Mt-CostDecrease_4100Mt-CostDecrease",
+              "45Q-2040-maintain-l_500Mt-CostDecrease",
+
               ]:  # TODO: include optimal scenario(s)
         main(i, "2050")

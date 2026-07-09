@@ -166,6 +166,7 @@ def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procur
 
             # find the percentage cost decrease necessary to get net zero compared to nzn
             nzn_cost = dict()
+            # TODO: update these numbers and re-run
             nzn_cost[0.02] = 5.417576989947383
             nzn_cost[0.12] = 1.2146232405976478
             nzn_cost[0.20] = 0.5051764571050655
