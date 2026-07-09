@@ -19,9 +19,9 @@ def main(config_fname, reference_year):
     os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # many methods are commented out, but to run them just uncomment and run
     # marginal_supply()
-    tech_neutrality()
+    # tech_neutrality()
     # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
-    # CAGR(config_fname, "2050")
+    CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
@@ -940,5 +940,29 @@ def compare_policy_costs(scenario1, scenario2):
 
 
 if __name__ == '__main__':
-    for i in ["s1-procureScaling-n_nothing"]:
+    for i in ["45Q-2040-h_1500Mt-CostDecrease",
+              "45Q-2050-h_1500Mt-CostDecrease",
+              "CDRIA-2035-h_1500Mt-CostDecrease",
+              "CDRIA-2050-h_1500Mt-CostDecrease",
+              "innovation-DACHubs-h_1500Mt-CostDecrease",
+              "innovation-maintain-h_1500Mt-CostDecrease",
+              "innovation-rhodium6b-h_1500Mt-CostDecrease",
+              "innovation-rhodium18b-h_1500Mt-CostDecrease",
+              "innovation-triple-h_1500Mt-CostDecrease",
+              "procure-3B-h_1500Mt-CostDecrease",
+              "procure-Rhodium-h_1500Mt-CostDecrease",
+              "procure-scaling-h_1500Mt-CostDecrease",
+              "45Q-2040-l_500Mt-CostDecrease",
+              "45Q-2050-l_500Mt-CostDecrease",
+              "CDRIA-2035-l_500Mt-CostDecrease",
+              "CDRIA-2050-l_500Mt-CostDecrease",
+              "innovation-DACHubs-l_500Mt-CostDecrease",
+              "innovation-maintain-l_500Mt-CostDecrease",
+              "innovation-rhodium6b-l_500Mt-CostDecrease",
+              "innovation-rhodium18b-l_500Mt-CostDecrease",
+              "innovation-triple-l_500Mt-CostDecrease",
+              "procure-3B-l_500Mt-CostDecrease",
+              "procure-Rhodium-l_500Mt-CostDecrease",
+              "procure-scaling-l_500Mt-CostDecrease",
+              ]:  # TODO: include optimal scenario(s)
         main(i, "2050")
