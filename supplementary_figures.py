@@ -983,6 +983,6 @@ if __name__ == '__main__':
               "2400Mt-CostDecrease_2400Mt-CostDecrease",
               "4100Mt-CostDecrease_4100Mt-CostDecrease",
               "45Q-2040-maintain-l_500Mt-CostDecrease",
-
+              "procure-scaling-maintain-h_1500Mt-CostDecrease"
               ]:  # TODO: include optimal scenario(s)
         main(i, "2050")
