@@ -449,7 +449,6 @@ def default_config(config_name):
 
 if __name__ == '__main__':
     current_configs = [
-                        "CDRIA-2050-l_500Mt-CostDecrease",
                         "CDRIA-2050-h_1500Mt-CostDecrease"
                        ]
 

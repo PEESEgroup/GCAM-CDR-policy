@@ -1050,7 +1050,7 @@ def build_from_scenario(scenario_name):
                 data_files={"DAC_subsidy_link": "./building_xml/inputs/DAC_links.csv",
                             "DAC_subsidy_amount_verify": "./building_xml/inputs/subsidy_CDRIA-2050_verify_s1.csv"},
                 xml_build_type="subsidy Policy",
-                output_fname="45Q_2050.xml"
+                output_fname="CDRIA_2050.xml"
             ),
             build_xml_config.XMLConfig(
                 data_files={
