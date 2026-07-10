@@ -54,10 +54,10 @@ def main(reference_year):
     # compare_policy_costs("45Q-2040-l_500Mt-CostDecrease", "45Q-2040-maintain-l_500Mt-CostDecrease")
     # compare_policy_costs( "innovation-maintain-h_1500Mt-CostDecrease", "procure-scaling-maintain-h_1500Mt-CostDecrease")
     # CAGR(config_fname, "2050")
-    # land_allocation(config_fname, "2050")
+    land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
-    state_CDR(config_fname, "2050")
+    # state_CDR(config_fname, "2050")
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
@@ -613,20 +613,15 @@ def land_allocation(config_fname, reference_year):
     :param reference_year: not needed
     :return: plot of relevant data
     """
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
-                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
-                 "innovation-rhodium18b_low", "innovation-triple_low",
-                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
-                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+    scenarios = config_fname
 
     allocation = data_manipulation.get_sensitivity_data(scenarios, "aggregated_land_allocation", "masked")
     allocation = allocation[allocation["GCAM"] == "USA"]
     allocation = allocation.drop('Unnamed: 0', axis=1)
     allocation["Units"] = "Land (thousand km$^2$)"
+
+    allocation['baseline'] = allocation['baseline'].str.replace('-CostDecrease', '', regex=False)
+    allocation['scenario'] = allocation['scenario'].str.replace('-CostDecrease', '', regex=False)
 
     biomass_allocation = allocation[allocation["LandLeaf"] == "biomass"].copy(deep=True)
     managed_forests = allocation[allocation["LandLeaf"] == "forest (managed)"].copy(deep=True)
