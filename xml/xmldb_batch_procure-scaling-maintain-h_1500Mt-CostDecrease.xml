@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<ModelInterfaceBatch>
+   <class name="ModelInterface.ModelGUI2.DbViewer">
+      <command name="XMLDB Batch File">
+         <scenario name="procure-scaling-maintain-h_1500Mt-CostDecrease"/>
+         <queryFile>xml/query_list.xml</queryFile>
+         <outFile>data/gcam_out/procure-scaling-maintain-h/1500Mt-CostDecrease/ref.csv</outFile>
+         <xmldbLocation>gcam/output/database_basexdb-procure-scaling-maintain-h_1500Mt-CostDecrease</xmldbLocation>
+      </command>
+   </class>
+</ModelInterfaceBatch>

@@ -1,0 +1,3911 @@
+<?xml version="1.0" ?>
+<scenario>
+   <world>
+      <global-technology-database>
+         <location-info sector-name="DAC" subsector-name="DAC">
+            <technology name="DAC_solvent (oxy CCS)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.12562841530054647</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.12562841530054647</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.12562841530054647</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.12562841530054647</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.12562841530054647</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.12562841530054647</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.1152849616317998</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.09342680768219931</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07634539420617323</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06260280579033431</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05283171495271974</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04463884440232118</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="DAC" subsector-name="DAC">
+            <technology name="DAC_sorbent (oxy CCS)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.26808743169398913</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.26808743169398913</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.26808743169398913</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.26808743169398913</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.26808743169398913</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.26808743169398913</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.24601479850613736</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.1993701254664356</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16291887946392128</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.13359259037020974</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.11274136299930165</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.09525801245662797</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="TEW" subsector-name="TEW">
+            <technology name="TEW">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.14892209081871371</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.10905639525479535</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08052961703192087</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05967051046352585</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04550444548990672</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.034742832644868805</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (AK lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (AL lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (AR lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (AZ lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (CA lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (CO lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (CT lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (DE lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (FL lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (GA lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (IA lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (ID lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (IL lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (IN lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (KS lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (KY lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (LA lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (MA lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (MD lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (ME lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (MI lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (MN lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (MO lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (MS lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (MT lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (NC lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (ND lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (NE lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (NH lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (NJ lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (NM lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (NV lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (NY lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (OH lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (OK lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (OR lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (PA lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (RI lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (SC lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (SD lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (TN lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (TX lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (UT lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (VA lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (VT lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (WA lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (WI lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (WV lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="OEW" subsector-name="lime">
+            <technology name="ocean liming (WY lime)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08415300546448089</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.07722437621268886</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.06613034186601636</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.057103089840961185</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04947867641494667</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04412314824418895</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.039394195485302055</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="TEW" subsector-name="TEW">
+            <technology name="TEW (Central Southwest basalt)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.14892209081871371</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.10905639525479535</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08052961703192087</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05967051046352585</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04550444548990672</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.034742832644868805</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="TEW" subsector-name="TEW">
+            <technology name="TEW (Mid-Atlantic basalt)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.14892209081871371</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.10905639525479535</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08052961703192087</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05967051046352585</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04550444548990672</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.034742832644868805</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="TEW" subsector-name="TEW">
+            <technology name="TEW (Central Northeast basalt)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.14892209081871371</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.10905639525479535</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08052961703192087</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05967051046352585</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04550444548990672</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.034742832644868805</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="TEW" subsector-name="TEW">
+            <technology name="TEW (Texas basalt)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.14892209081871371</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.10905639525479535</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08052961703192087</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05967051046352585</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04550444548990672</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.034742832644868805</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="TEW" subsector-name="TEW">
+            <technology name="TEW (New England basalt)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.14892209081871371</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.10905639525479535</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08052961703192087</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05967051046352585</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04550444548990672</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.034742832644868805</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="TEW" subsector-name="TEW">
+            <technology name="TEW (Southwest basalt)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.14892209081871371</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.10905639525479535</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08052961703192087</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05967051046352585</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04550444548990672</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.034742832644868805</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="TEW" subsector-name="TEW">
+            <technology name="TEW (Northwest basalt)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.14892209081871371</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.10905639525479535</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08052961703192087</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05967051046352585</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04550444548990672</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.034742832644868805</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+         <location-info sector-name="TEW" subsector-name="TEW">
+            <technology name="TEW (California basalt)">
+               <period year="1975">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="1990">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2005">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2010">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2015">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2020">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.16228349307650275</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2025">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.14892209081871371</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2030">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.10905639525479535</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2035">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.08052961703192087</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2040">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.05967051046352585</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2045">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.04550444548990672</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+               <period year="2050">
+                  <minicam-non-energy-input name="non-energy">
+                     <input-cost>0.034742832644868805</input-cost>
+                  </minicam-non-energy-input>
+               </period>
+            </technology>
+         </location-info>
+      </global-technology-database>
+   </world>
+</scenario>
