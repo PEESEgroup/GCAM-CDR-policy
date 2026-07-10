@@ -166,11 +166,10 @@ def social_cost_effectiveness(config_fname, interest_rates, npv_net_zero, procur
 
             # find the percentage cost decrease necessary to get net zero compared to nzn
             nzn_cost = dict()
-            # TODO: update these numbers and re-run
-            nzn_cost[0.02] = 5.417576989947383
-            nzn_cost[0.12] = 1.2146232405976478
-            nzn_cost[0.20] = 0.5051764571050655
-            nzn_cost["2050"] = 0.842909016916415
+            nzn_cost[0.02] = 4.97308396568558
+            nzn_cost[0.12] = 1.079999768
+            nzn_cost[0.20] = 0.440362454
+            nzn_cost["2050"] = 0.789552850896448
 
             # total cost of net zero
             total_net_zero_cost = net_zero_total_cost["npv_" + str(k)].values[0]
@@ -230,7 +229,8 @@ def fiscal_cost_benefit_analysis(NPV_CB, baseline_market, config_fname, fiscal_c
         NPV_CB["Benefits" + " | " + str(k * 100) + "%"] = benefits
         NPV_CB["Costs" + " | " + str(k * 100) + "%"] = fiscal_costs_cb
         NPV_CB["Benefits/Costs" + " | " + str(k * 100) + "%"] = benefits / fiscal_costs_cb
-        NPV_CB["Benefits+Costs" + " | " + str(k * 100) + "%"] = benefits + fiscal_costs_cb # benefits are negative and costs are positive
+        NPV_CB["Benefits+Costs" + " | " + str(
+            k * 100) + "%"] = benefits + fiscal_costs_cb  # benefits are negative and costs are positive
 
         # write out information in .csv
     NPV_CB["Units"] = "Million $USD or unitless"
@@ -282,8 +282,8 @@ def get_CB_dfs(baseline_market, npv_cols):
     # get market information
     baseline_market = baseline_market[
         (baseline_market["technology_price"] != "subsidy") & (baseline_market["product_price"] != "CO2") & (
-                    baseline_market["product"] != "Investment in R&D") & (
-                    baseline_market["product"] != "Investment in DAC Hubs")].copy(deep=True)
+                baseline_market["product"] != "Investment in R&D") & (
+                baseline_market["product"] != "Investment in DAC Hubs")].copy(deep=True)
     baseline_market = data_manipulation.interpolate(baseline_market, "linear")
     baseline_market["cost_type"] = "CDR Market"
     baseline_market = baseline_market.groupby(["cost_type", "Units"]).sum(min_count=1).reset_index()
@@ -691,9 +691,37 @@ def CDR_cost(config_fname, year):
 
 
 if __name__ == '__main__':
-    for i in ["100Mt-noCostDecrease_100Mt-noCostDecrease",
-              "500Mt-noCostDecrease_500Mt-noCostDecrease",
-              "2400Mt-noCostDecrease_2400Mt-noCostDecrease",
+    for i in ["45Q-2040-h_1500Mt-CostDecrease",
+              "45Q-2050-h_1500Mt-CostDecrease",
+              "CDRIA-2035-h_1500Mt-CostDecrease",
+              "CDRIA-2050-h_1500Mt-CostDecrease",
+              "innovation-DACHubs-h_1500Mt-CostDecrease",
+              "innovation-maintain-h_1500Mt-CostDecrease",
+              "innovation-rhodium6b-h_1500Mt-CostDecrease",
+              "innovation-rhodium18b-h_1500Mt-CostDecrease",
+              "innovation-triple-h_1500Mt-CostDecrease",
+              "procure-3B-h_1500Mt-CostDecrease",
+              "procure-Rhodium-h_1500Mt-CostDecrease",
+              "procure-scaling-h_1500Mt-CostDecrease",
+              "45Q-2040-l_500Mt-CostDecrease",
+              "45Q-2050-l_500Mt-CostDecrease",
+              "CDRIA-2035-l_500Mt-CostDecrease",
+              "CDRIA-2050-l_500Mt-CostDecrease",
+              "innovation-DACHubs-l_500Mt-CostDecrease",
+              "innovation-maintain-l_500Mt-CostDecrease",
+              "innovation-rhodium6b-l_500Mt-CostDecrease",
+              "innovation-rhodium18b-l_500Mt-CostDecrease",
+              "innovation-triple-l_500Mt-CostDecrease",
+              "procure-3B-l_500Mt-CostDecrease",
+              "procure-Rhodium-l_500Mt-CostDecrease",
+              "procure-scaling-l_500Mt-CostDecrease",
+              "100Mt-CostDecrease_100Mt-CostDecrease",
+              "500Mt-CostDecrease_500Mt-CostDecrease",
+              "1500Mt-CostDecrease_1500Mt-CostDecrease",
+              "2400Mt-CostDecrease_2400Mt-CostDecrease",
+              "4100Mt-CostDecrease_4100Mt-CostDecrease",
+              "45Q-2040-maintain-l_500Mt-CostDecrease",
+              "procure-scaling-maintain-h_1500Mt-CostDecrease"
               ]:
         # for i in ["CDRIA-2035_low", "CDRIA-2050_low","CDRIA-2035_high", "CDRIA-2050_high"]:
         main(i, "2050")
