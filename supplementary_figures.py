@@ -10,19 +10,51 @@ import matplotlib.gridspec as gridspec
 from scipy import stats
 
 
-def main(config_fname, reference_year):
+def main(reference_year):
     """
     Main method for scripts used to plot figures and information for the article
     :return: N/A
     """
-    config_fname = config_fname.replace("_", "/")
-    os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
+    config_fname = ["45Q-2040-h_1500Mt-CostDecrease",
+              "45Q-2050-h_1500Mt-CostDecrease",
+              "CDRIA-2035-h_1500Mt-CostDecrease",
+              "CDRIA-2050-h_1500Mt-CostDecrease",
+              "innovation-DACHubs-h_1500Mt-CostDecrease",
+              "innovation-maintain-h_1500Mt-CostDecrease",
+              "innovation-rhodium6b-h_1500Mt-CostDecrease",
+              "innovation-rhodium18b-h_1500Mt-CostDecrease",
+              "innovation-triple-h_1500Mt-CostDecrease",
+              "procure-3B-h_1500Mt-CostDecrease",
+              "procure-Rhodium-h_1500Mt-CostDecrease",
+              "procure-scaling-h_1500Mt-CostDecrease",
+              "45Q-2040-l_500Mt-CostDecrease",
+              "45Q-2050-l_500Mt-CostDecrease",
+              "CDRIA-2035-l_500Mt-CostDecrease",
+              "CDRIA-2050-l_500Mt-CostDecrease",
+              "innovation-DACHubs-l_500Mt-CostDecrease",
+              "innovation-maintain-l_500Mt-CostDecrease",
+              "innovation-rhodium6b-l_500Mt-CostDecrease",
+              "innovation-rhodium18b-l_500Mt-CostDecrease",
+              "innovation-triple-l_500Mt-CostDecrease",
+              "procure-3B-l_500Mt-CostDecrease",
+              "procure-Rhodium-l_500Mt-CostDecrease",
+              "procure-scaling-l_500Mt-CostDecrease",
+              "100Mt-CostDecrease_100Mt-CostDecrease",
+              "500Mt-CostDecrease_500Mt-CostDecrease",
+              "1500Mt-CostDecrease_1500Mt-CostDecrease",
+              "2400Mt-CostDecrease_2400Mt-CostDecrease",
+              "4100Mt-CostDecrease_4100Mt-CostDecrease",
+              "45Q-2040-maintain-l_500Mt-CostDecrease",
+              "procure-scaling-maintain-h_1500Mt-CostDecrease"
+              ]
+    # os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # many methods are commented out, but to run them just uncomment and run
     # marginal_supply()
     # tech_neutrality()
-    # compare_policy_costs("CDRIA-2035_high", "45Q-2040_high")
+    # compare_policy_costs("45Q-2040-l_500Mt-CostDecrease", "45Q-2040-maintain-l_500Mt-CostDecrease")
+    # compare_policy_costs( "innovation-maintain-h_1500Mt-CostDecrease", "procure-scaling-maintain-h_1500Mt-CostDecrease")
     # CAGR(config_fname, "2050")
-    land_allocation(config_fname, "2050")
+    # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
     # state_CDR(config_fname, "2050")
@@ -953,36 +985,4 @@ def compare_policy_costs(scenario1, scenario2):
 
 
 if __name__ == '__main__':
-    for i in ["45Q-2040-h_1500Mt-CostDecrease",
-              "45Q-2050-h_1500Mt-CostDecrease",
-              "CDRIA-2035-h_1500Mt-CostDecrease",
-              "CDRIA-2050-h_1500Mt-CostDecrease",
-              "innovation-DACHubs-h_1500Mt-CostDecrease",
-              "innovation-maintain-h_1500Mt-CostDecrease",
-              "innovation-rhodium6b-h_1500Mt-CostDecrease",
-              "innovation-rhodium18b-h_1500Mt-CostDecrease",
-              "innovation-triple-h_1500Mt-CostDecrease",
-              "procure-3B-h_1500Mt-CostDecrease",
-              "procure-Rhodium-h_1500Mt-CostDecrease",
-              "procure-scaling-h_1500Mt-CostDecrease",
-              "45Q-2040-l_500Mt-CostDecrease",
-              "45Q-2050-l_500Mt-CostDecrease",
-              "CDRIA-2035-l_500Mt-CostDecrease",
-              "CDRIA-2050-l_500Mt-CostDecrease",
-              "innovation-DACHubs-l_500Mt-CostDecrease",
-              "innovation-maintain-l_500Mt-CostDecrease",
-              "innovation-rhodium6b-l_500Mt-CostDecrease",
-              "innovation-rhodium18b-l_500Mt-CostDecrease",
-              "innovation-triple-l_500Mt-CostDecrease",
-              "procure-3B-l_500Mt-CostDecrease",
-              "procure-Rhodium-l_500Mt-CostDecrease",
-              "procure-scaling-l_500Mt-CostDecrease",
-              "100Mt-CostDecrease_100Mt-CostDecrease",
-              "500Mt-CostDecrease_500Mt-CostDecrease",
-              "1500Mt-CostDecrease_1500Mt-CostDecrease",
-              "2400Mt-CostDecrease_2400Mt-CostDecrease",
-              "4100Mt-CostDecrease_4100Mt-CostDecrease",
-              "45Q-2040-maintain-l_500Mt-CostDecrease",
-              "procure-scaling-maintain-h_1500Mt-CostDecrease"
-              ]:
-        main(i, "2050")
+    main("2050")
