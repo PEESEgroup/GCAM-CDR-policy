@@ -53,7 +53,7 @@ def main(reference_year):
     # tech_neutrality()
     # compare_policy_costs("45Q-2040-l_500Mt-CostDecrease", "45Q-2040-maintain-l_500Mt-CostDecrease")
     # compare_policy_costs( "innovation-maintain-h_1500Mt-CostDecrease", "procure-scaling-maintain-h_1500Mt-CostDecrease")
-    # CAGR(config_fname, "2050")
+    CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
@@ -181,9 +181,19 @@ def marginal_supply():
     calculate the marginal supply in a combination of policy scenarios
     :return: plot showing results
     """
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high", "nzn_nzn",
-                 "excess_excess", "4gt_4gt"]
+    scenarios = ["procure-3B-h_1500Mt-CostDecrease",
+                 "procure-Rhodium-h_1500Mt-CostDecrease",
+                 "procure-scaling-h_1500Mt-CostDecrease",
+                 "procure-3B-l_500Mt-CostDecrease",
+                 "procure-Rhodium-l_500Mt-CostDecrease",
+                 "procure-scaling-l_500Mt-CostDecrease",
+                 "100Mt-CostDecrease_100Mt-CostDecrease",
+                 "500Mt-CostDecrease_500Mt-CostDecrease",
+                 "1500Mt-CostDecrease_1500Mt-CostDecrease",
+                 "2400Mt-CostDecrease_2400Mt-CostDecrease",
+                 "4100Mt-CostDecrease_4100Mt-CostDecrease",
+                 "procure-scaling-maintain-h_1500Mt-CostDecrease"
+                 ]
 
     # get CDR data
     all_data = pd.DataFrame()
@@ -201,16 +211,17 @@ def marginal_supply():
     CDR = CDR.fillna(0)
 
     # scenario pairs
-    scenario_pairs = [('nzn', 'low'),
-                      ('low', 's1-procureScaling-l'),
-                      ('low', 's1-procure3B-l'),
-                      ('low', 's1-procureRhodium-l'),
-                      ('low', 'high'),
-                      ('high', 's1-procureScaling-h'),
-                      ('high', "s1-procure3B-h"),
-                      ('high', "s1-procureRhodium-h"),
-                      ('high', 'excess'),
-                      ('excess', '4gt')]
+    scenario_pairs = [('100Mt-CostDecrease', '500Mt-CostDecrease'),
+                      ('500Mt-CostDecrease', 'procure-scaling-l'),
+                      ('500Mt-CostDecrease', 'procure-3B-l'),
+                      ('500Mt-CostDecrease', 'procure-Rhodium-l'),
+                      ('500Mt-CostDecrease', '1500Mt-CostDecrease'),
+                      ('1500Mt-CostDecrease', 's1-procureScaling-h'),
+                      ('1500Mt-CostDecrease', "s1-procure3B-h"),
+                      ('1500Mt-CostDecrease', "s1-procureRhodium-h"),
+                      ('1500Mt-CostDecrease', "procure-scaling-maintain-h"),
+                      ('1500Mt-CostDecrease', '2400Mt-CostDecrease'),
+                      ('2400Mt-CostDecrease', '4100Mt-CostDecrease')]
     year_cols = ['2030_supply', '2035_supply', '2040_supply', '2045_supply', '2050_supply']
     id_cols = 'product'
 
@@ -557,15 +568,7 @@ def CAGR(config_fname, reference_year):
     :param reference_year: not needed
     :return: N/A
     """
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-                 "45Q-2040_low", "45Q-2050_low",
-                 "45Q-2040_high", "45Q-2050_high",
-                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
-                 "innovation-rhodium18b_low", "innovation-triple_low",
-                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
-                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+    scenarios = config_fname
 
     CDR = data_manipulation.get_sensitivity_data(scenarios, "CDR_by_tech")
     CDR = CDR[CDR[['GCAM']].isin(c.GCAMConstants.USA_region).any(axis=1)]
@@ -578,6 +581,11 @@ def CAGR(config_fname, reference_year):
     for i in c.GCAMConstants.plotting_x:
         # rename columns
         CDR[str(i) + "_original"] = CDR[str(i)]
+        # apply a mask for very small amounts of CDR to avoid disrupting the CAGR analysis with very large numbers
+        CDR[str(i) + "_original"] = CDR[str(i) + "_original"].mask(CDR[str(i) + "_original"] < 0.05)
+        # rename baseline scenarios
+        CDR['baseline'] = CDR['baseline'].str.replace('-CostDecrease', '', regex=False)
+        CDR['scenario'] = CDR['scenario'].str.replace('-CostDecrease', '', regex=False)
 
     for i in c.GCAMConstants.plotting_x:
         # calculate CAGR
@@ -592,10 +600,10 @@ def CAGR(config_fname, reference_year):
     CDR_OEW = CDR[CDR["technology"] == "OEW"].copy(deep=True)
     CDR_TEW = CDR[CDR["technology"] == "TEW"].copy(deep=True)
 
-    plotting.plot_line_product_CI(CDR_DAC, "baseline", "CAGR for DAC by baseline scenario", region=["USA"])
-    plotting.plot_line_product_CI(CDR_BECCS, "baseline", "CAGR for BECCS by baseline scenario", region=["USA"])
-    plotting.plot_line_product_CI(CDR_OEW, "baseline", "CAGR for OEW by baseline scenario", region=["USA"])
-    plotting.plot_line_product_CI(CDR_TEW, "baseline", "CAGR for TEW by baseline scenario", region=["USA"])
+    plotting.plot_line_product_CI(CDR_DAC, "baseline", "CAGR for DAC by baseline portfolio", region=["USA"])
+    plotting.plot_line_product_CI(CDR_BECCS, "baseline", "CAGR for BECCS by baseline portfolio", region=["USA"])
+    plotting.plot_line_product_CI(CDR_OEW, "baseline", "CAGR for OEW by baseline portfolio", region=["USA"])
+    plotting.plot_line_product_CI(CDR_TEW, "baseline", "CAGR for TEW by baseline portfolio", region=["USA"])
 
 
 def land_allocation(config_fname, reference_year):

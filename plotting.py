@@ -4,6 +4,7 @@ import constants as c
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from pylab import *
 import data_manipulation
+import os
 
 
 def world_data(data):
@@ -332,6 +333,7 @@ def finalize_line_plot(fig, handles, labels, axs, nrow, ncol, counter, title, RC
     for i in range(nrow * ncol - counter):
         fig.delaxes(axs[int((counter + i) % nrow), int((counter + i) / nrow)])
 
+    os.makedirs("./data/data_analysis/images/" + str(RCP) + "/", exist_ok=True)
     plt.savefig("data/data_analysis/images/" + str(RCP) + "/" + title + ".png", dpi=300)
     plt.show()
 
