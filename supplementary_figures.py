@@ -53,11 +53,11 @@ def main(reference_year):
     # tech_neutrality()
     # compare_policy_costs("45Q-2040-l_500Mt-CostDecrease", "45Q-2040-maintain-l_500Mt-CostDecrease")
     # compare_policy_costs( "innovation-maintain-h_1500Mt-CostDecrease", "procure-scaling-maintain-h_1500Mt-CostDecrease")
-    CAGR(config_fname, "2050")
+    # CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
     # electricity(config_fname, "2050")
-    # state_CDR(config_fname, "2050")
+    state_CDR(config_fname, "2050")
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
@@ -90,8 +90,8 @@ def npv_breakdown():
         pyrolysis_df["baseline"] = baseline
         # avoids having to merge tables but kinda ugly
         pyrolysis_df[
-            "CDR (Mt)"] = 100 if baseline == "nzn" else 500 if baseline == "low" else 1500 if baseline == "high" else 2400 if baseline == "excess" else 4100
-        if pyrolysis_df["scenario"].unique()[0] in ["low", "high", "nzn", "excess", "4gt"]:
+            "CDR (Mt)"] = 100 if baseline == "nzn" else 500 if baseline == "500Mt-CostDecrease" else 1500 if baseline == "1500Mt-CostDecrease" else 2400 if baseline == "excess" else 4100
+        if pyrolysis_df["scenario"].unique()[0] in ["500Mt-CostDecrease", "1500Mt-CostDecrease", "nzn", "excess", "4gt"]:
             pyrolysis_df["scenario"] = pyrolysis_df["CDR (Mt)"].astype(str) + " Mt Baseline"
 
         # fix some typesetting
@@ -329,7 +329,7 @@ def marginal_supply():
         ax.set_xticks(x_pos)
         # Rename all the comparisons to make for pretty labeling
         valid_comps = [
-            i.replace("s1-", "").replace("nzn", "100 Mt").replace("low", "500 Mt").replace("high", "1500 Mt").
+            i.replace("s1-", "").replace("nzn", "100 Mt").replace("500Mt-CostDecrease", "500 Mt").replace("1500Mt-CostDecrease", "1500 Mt").
             replace("excess", "2400 Mt").replace("4gt", "4100 Mt") for i in valid_comps]
         ax.set_xticklabels(valid_comps, rotation=30, ha='right', fontsize=11)
         ax.set_ylabel("Normalized Delta")
@@ -383,8 +383,8 @@ def tech_neutrality():
     CDR = CDR.fillna(0)  # fill na with 0
 
     # subtract the effects of the baseline scenarios to find the impacts of policy
-    baselines = CDR[(CDR["scenario"] == "low") | (CDR["scenario"] == "high")].copy(deep=True)
-    CDR = CDR[~CDR["scenario"].isin(["low", "high"])]
+    baselines = CDR[(CDR["scenario"] == "500Mt-CostDecrease") | (CDR["scenario"] == "1500Mt-CostDecrease")].copy(deep=True)
+    CDR = CDR[~CDR["scenario"].isin(["500Mt-CostDecrease", "1500Mt-CostDecrease"])]
     CDR = pd.merge(CDR, baselines, "left", ["baseline", "product", "Units"], suffixes=("_original", "_baseline"))
     CDR["scenario"] = CDR["scenario_original"]
 
@@ -463,7 +463,7 @@ def tech_neutrality():
                 CI_data = pd.concat([CI_data, percent, MT])
 
     # iterate through baselines and supply type
-    for baseline in ["low", "high"]:
+    for baseline in ["500Mt-CostDecrease", "1500Mt-CostDecrease"]:
         for suffix in ["_supply", ""]:
             CDR_baseline = CI_data[CI_data["baseline"] == baseline]
             years = ['2030' + suffix, '2040' + suffix, '2050' + suffix]
@@ -734,15 +734,7 @@ def state_CDR(config_fname, reference_year):
     :param reference_year: not needed
     :return: plot of relevant information
     """
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
-                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
-                 "innovation-rhodium18b_low", "innovation-triple_low",
-                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
-                 "CDRIA-rhodium18b_high"]
+    scenarios = config_fname
     supply = data_manipulation.get_sensitivity_data(scenarios, "CDR_by_tech", source="masked")
     price = data_manipulation.get_sensitivity_data(scenarios, "prices_of_all_markets", source="masked")
 
@@ -760,10 +752,10 @@ def state_CDR(config_fname, reference_year):
         supply[str(i)] = supply[str(i)] / c.GCAMConstants.CO2_to_C
 
     # sort by baseline
-    CDR_price_low = price[price["baseline"] == "low"].copy(deep=True)
-    CDR_price_high = price[price["baseline"] == "high"].copy(deep=True)
-    CDR_supply_low = supply[supply["baseline"] == "low"].copy(deep=True)
-    CDR_supply_high = supply[supply["baseline"] == "high"].copy(deep=True)
+    CDR_price_low = price[price["baseline"] == "500Mt-CostDecrease"].copy(deep=True)
+    CDR_price_high = price[price["baseline"] == "1500Mt-CostDecrease"].copy(deep=True)
+    CDR_supply_low = supply[supply["baseline"] == "500Mt-CostDecrease"].copy(deep=True)
+    CDR_supply_high = supply[supply["baseline"] == "1500Mt-CostDecrease"].copy(deep=True)
 
     # market sizes
     CDR_market_low = pd.merge(CDR_price_low, CDR_supply_low, "right", on=["GCAM", "baseline", "scenario", "product"],
@@ -867,10 +859,10 @@ def cement(config_fname, reference_year):
     supply = supply.drop('Unnamed: 0', axis=1)
 
     # sort by baseline
-    cement_price_low = price[price["baseline"] == "low"].copy(deep=True)
-    cement_price_high = price[price["baseline"] == "high"].copy(deep=True)
-    cement_supply_low = supply[supply["baseline"] == "low"].copy(deep=True)
-    cement_supply_high = supply[supply["baseline"] == "high"].copy(deep=True)
+    cement_price_low = price[price["baseline"] == "500Mt-CostDecrease"].copy(deep=True)
+    cement_price_high = price[price["baseline"] == "1500Mt-CostDecrease"].copy(deep=True)
+    cement_supply_low = supply[supply["baseline"] == "500Mt-CostDecrease"].copy(deep=True)
+    cement_supply_high = supply[supply["baseline"] == "1500Mt-CostDecrease"].copy(deep=True)
 
     plotting.plot_line_product_CI(cement_price_low, "sector", "cement prices in low baseline")
     plotting.plot_line_product_CI(cement_price_high, "sector", "cement prices in high baseline")
@@ -917,8 +909,8 @@ def electricity(config_fname, reference_year):
     elec_supply["GCAM"] = elec_supply["baseline"]
 
     # sort by baseline
-    elec_price_low = elec_price[elec_price["baseline"] == "low"].copy(deep=True)
-    elec_price_high = elec_price[elec_price["baseline"] == "high"].copy(deep=True)
+    elec_price_low = elec_price[elec_price["baseline"] == "500Mt-CostDecrease"].copy(deep=True)
+    elec_price_high = elec_price[elec_price["baseline"] == "1500Mt-CostDecrease"].copy(deep=True)
 
     plotting.plot_line_product_CI(elec_price_low, "fuel", "electricity prices in low baseline")
     plotting.plot_line_product_CI(elec_price_high, "fuel", "electricity prices in high baseline")
