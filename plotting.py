@@ -511,7 +511,10 @@ def plot_line_product_CI(dataframe, column, title, region=c.GCAMConstants.USA_re
 
     # find the number of model versions
     # get color scheme based on number of model versions
-    colors, num_colors = get_colors(1)
+    if title == "national electricity supply":
+        colors, num_colors = get_colors(15)
+    else:
+        colors, num_colors = get_colors(1)
     # get colors and baseline
     color_map = {item: index for index, item in enumerate(dataframe[column].unique())}
     counter = 0

@@ -54,9 +54,9 @@ def main(reference_year):
     # compare_policy_costs("45Q-2040-l_500Mt-CostDecrease", "45Q-2040-maintain-l_500Mt-CostDecrease")
     # compare_policy_costs( "innovation-maintain-h_1500Mt-CostDecrease", "procure-scaling-maintain-h_1500Mt-CostDecrease")
     # CAGR(config_fname, "2050")
-    land_allocation(config_fname, "2050")
+    # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
-    # electricity(config_fname, "2050")
+    electricity(config_fname, "2050")
     # state_CDR(config_fname, "2050")
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
@@ -873,15 +873,7 @@ def electricity(config_fname, reference_year):
     :return: plot of relevant information
     """
     # get scenario data
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
-                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
-                 "innovation-rhodium18b_low", "innovation-triple_low",
-                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
-                 "CDRIA-rhodium18b_high"]
+    scenarios = config_fname
     elec_supply = data_manipulation.get_sensitivity_data(scenarios, "elec_gen_by_subsector", source="masked")
     elec_price = data_manipulation.get_sensitivity_data(scenarios, "elec_prices_by_sector", source="masked")
     # convert to modern moneys and eliminate outliers
@@ -902,13 +894,14 @@ def electricity(config_fname, reference_year):
     elec_supply["subsector"] = elec_supply.apply(lambda row: data_manipulation.elec_supply_sectors(row), axis=1)
     elec_supply = data_manipulation.group(elec_supply, ["subsector", "scenario", "baseline", "Units"])
     elec_supply["GCAM"] = elec_supply["baseline"]
+    elec_supply = elec_supply[elec_supply["baseline"].isin(["500Mt-CostDecrease", "1500Mt-CostDecrease"])].copy(deep=True)
 
     # sort by baseline
     elec_price_low = elec_price[elec_price["baseline"] == "500Mt-CostDecrease"].copy(deep=True)
     elec_price_high = elec_price[elec_price["baseline"] == "1500Mt-CostDecrease"].copy(deep=True)
 
-    plotting.plot_line_product_CI(elec_price_low, "fuel", "electricity prices in low baseline")
-    plotting.plot_line_product_CI(elec_price_high, "fuel", "electricity prices in high baseline")
+    # plotting.plot_line_product_CI(elec_price_low, "fuel", "electricity prices in low baseline")
+    # plotting.plot_line_product_CI(elec_price_high, "fuel", "electricity prices in high baseline")
     plotting.plot_line_product_CI(elec_supply, "subsector", "national electricity supply",
                                   region=elec_supply["baseline"].unique())
 
