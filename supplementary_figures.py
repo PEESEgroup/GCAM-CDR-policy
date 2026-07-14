@@ -1,4 +1,3 @@
-import os
 import plotting
 import data_manipulation
 import constants as c
@@ -7,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import matplotlib.gridspec as gridspec
-from scipy import stats
+import re
 
 
 def main(reference_year):
@@ -49,35 +48,27 @@ def main(reference_year):
                     ]
     # os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # many methods are commented out, but to run them just uncomment and run
-    # marginal_supply()
+    marginal_supply(config_fname)
     # tech_neutrality()
     # compare_policy_costs("45Q-2040-l_500Mt-CostDecrease", "45Q-2040-maintain-l_500Mt-CostDecrease")
     # compare_policy_costs( "innovation-maintain-h_1500Mt-CostDecrease", "procure-scaling-maintain-h_1500Mt-CostDecrease")
     # CAGR(config_fname, "2050")
     # land_allocation(config_fname, "2050")
     # cement(config_fname, "2050")
-    electricity(config_fname, "2050")
+    # electricity(config_fname, "2050")
     # state_CDR(config_fname, "2050")
     # C_tax(config_fname, reference_year)
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
-    # npv_breakdown()
+    # npv_breakdown(config_fname)
 
 
-def npv_breakdown():
+def npv_breakdown(config_fname):
     """
     calculates which categories contribute to npv
     :return: plot of relevant data
     """
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
-                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
-                 "innovation-rhodium18b_low", "innovation-triple_low",
-                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
-                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+    scenarios = config_fname
 
     # get CDR data
     all_data = pd.DataFrame()
@@ -90,8 +81,12 @@ def npv_breakdown():
         pyrolysis_df["baseline"] = baseline
         # avoids having to merge tables but kinda ugly
         pyrolysis_df[
-            "CDR (Mt)"] = 100 if baseline == "nzn" else 500 if baseline == "500Mt-CostDecrease" else 1500 if baseline == "1500Mt-CostDecrease" else 2400 if baseline == "excess" else 4100
-        if pyrolysis_df["scenario"].unique()[0] in ["500Mt-CostDecrease", "1500Mt-CostDecrease", "nzn", "excess", "4gt"]:
+            "CDR (Mt)"] = 100 if baseline == "100Mt-CostDecrease" \
+            else 500 if baseline == "500Mt-CostDecrease" \
+            else 1500 if baseline == "1500Mt-CostDecrease" \
+            else 2400 if baseline == "2400Mt-CostDecrease" \
+            else 4100
+        if pyrolysis_df["scenario"].unique()[0] in ["500Mt-CostDecrease", "1500Mt-CostDecrease", "100Mt-CostDecrease", "2400Mt-CostDecrease", "4100Mt-CostDecrease"]:
             pyrolysis_df["scenario"] = pyrolysis_df["CDR (Mt)"].astype(str) + " Mt Baseline"
 
         # fix some typesetting
@@ -116,6 +111,7 @@ def npv_breakdown():
 
     # Set up the GridSpec with height ratios
     baselines = plot_df['baseline'].unique()
+    baselines = sorted(baselines, key=lambda s: int(re.match(r"\d+", s).group()), reverse=True)
     height_counts = [len(plot_df[plot_df['baseline'] == bl]) for bl in baselines]
 
     n_cols = 2
@@ -216,9 +212,9 @@ def marginal_supply():
                       ('500Mt-CostDecrease', 'procure-3B-l'),
                       ('500Mt-CostDecrease', 'procure-Rhodium-l'),
                       ('500Mt-CostDecrease', '1500Mt-CostDecrease'),
-                      ('1500Mt-CostDecrease', 's1-procureScaling-h'),
-                      ('1500Mt-CostDecrease', "s1-procure3B-h"),
-                      ('1500Mt-CostDecrease', "s1-procureRhodium-h"),
+                      ('1500Mt-CostDecrease', 'procureScaling-h'),
+                      ('1500Mt-CostDecrease', "procure3B-h"),
+                      ('1500Mt-CostDecrease', "procureRhodium-h"),
                       ('1500Mt-CostDecrease', "procure-scaling-maintain-h"),
                       ('1500Mt-CostDecrease', '2400Mt-CostDecrease'),
                       ('2400Mt-CostDecrease', '4100Mt-CostDecrease')]
@@ -263,18 +259,21 @@ def marginal_supply():
     df_deltas["2045"] = df_deltas["2045_supply"]
     df_deltas["2050"] = df_deltas["2050_supply"]
     # add a mask
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-l, low>', '2040'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-h, high>', '2040'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-l, low>', '2040'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-h, high>', '2040'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-l, low>', '2045'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-h, high>', '2045'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-l, low>', '2045'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-h, high>', '2045'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-l, low>', '2050'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procureScaling-h, high>', '2050'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-l, low>', '2050'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<s1-procure3B-h, high>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-l, low>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-h, high>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-maintain-h, high>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure3B-l, low>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure3B-h, high>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-l, low>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-h, high>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-maintain-h, high>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure3B-l, low>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure3B-h, high>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-l, low>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-h, high>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-maintain-h, high>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure3B-l, low>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure3B-h, high>', '2050'] = np.nan
     df_deltas = df_deltas[["comparison", "product", "2030", "2035", "2040", "2045", "2050"]]
 
     # set up plot
@@ -642,15 +641,7 @@ def C_tax(config_fname, reference_year):
     :param reference_year: not needed
     :return: plot of relevant information
     """
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
-                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
-                 "innovation-rhodium18b_low", "innovation-triple_low",
-                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
-                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+    scenarios = config_fname
     CO2_emissions = data_manipulation.get_sensitivity_data(scenarios, "CO2_emissions_by_sector")
     CO2_emissions = CO2_emissions[CO2_emissions["GCAM"].isin(c.GCAMConstants.USA_region)]
     CO2_emissions = CO2_emissions[CO2_emissions["sector"] != "CDR_regional"]  # excluded from the C tax
@@ -660,6 +651,12 @@ def C_tax(config_fname, reference_year):
     # process emissions revenue
     CO2_prices = data_manipulation.get_sensitivity_data(scenarios, "CO2_prices")
     CO2_prices = CO2_prices[(CO2_prices["GCAM"] == "USA") & (CO2_prices["product"] == "CO2")]
+
+    CO2_prices['baseline'] = CO2_prices['baseline'].str.replace('-CostDecrease', '', regex=False)
+    CO2_prices['scenario'] = CO2_prices['scenario'].str.replace('-CostDecrease', '', regex=False)
+    CO2_emissions['baseline'] = CO2_emissions['baseline'].str.replace('-CostDecrease', '', regex=False)
+    CO2_emissions['scenario'] = CO2_emissions['scenario'].str.replace('-CostDecrease', '', regex=False)
+
     CO2_tax_revenue = pd.merge(CO2_emissions, CO2_prices, "left", ["baseline", "scenario"],
                                suffixes=("_supply", "_price"))
     for i in c.GCAMConstants.plotting_x:
@@ -701,20 +698,14 @@ def C_prices(config_fname, reference_year):
     :param reference_year: not needed
     :return: plot of relevant information
     """
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
-                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
-                 "innovation-rhodium18b_low", "innovation-triple_low",
-                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
-                 "CDRIA-rhodium18b_high", "nzn_nzn", "excess_excess", "4gt_4gt"]
+    scenarios = config_fname
 
     CO2_prices = data_manipulation.get_sensitivity_data(scenarios, "CO2_prices", "masked")
     CO2_prices = CO2_prices[(CO2_prices["GCAM"] == "USA") & (CO2_prices["product"] == "CO2")]
     CO2_prices = CO2_prices.drop('Unnamed: 0', axis=1)
     CO2_prices["Units"] = "C Tax (USD/t CO$_{2}$-eq)"
+    CO2_prices['baseline'] = CO2_prices['baseline'].str.replace('-CostDecrease', '', regex=False)
+    CO2_prices['scenario'] = CO2_prices['scenario'].str.replace('-CostDecrease', '', regex=False)
 
     for i in c.GCAMConstants.plotting_x:
         CO2_prices[str(i)] = CO2_prices[str(i)] / c.GCAMConstants.USD2025_tCO2_to_1990_tC
