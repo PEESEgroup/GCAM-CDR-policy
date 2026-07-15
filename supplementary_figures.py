@@ -48,8 +48,8 @@ def main(reference_year):
                     ]
     # os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # many methods are commented out, but to run them just uncomment and run
-    marginal_supply(config_fname)
-    # tech_neutrality()
+    # marginal_supply()
+    tech_neutrality()
     # compare_policy_costs("45Q-2040-l_500Mt-CostDecrease", "45Q-2040-maintain-l_500Mt-CostDecrease")
     # compare_policy_costs( "innovation-maintain-h_1500Mt-CostDecrease", "procure-scaling-maintain-h_1500Mt-CostDecrease")
     # CAGR(config_fname, "2050")
@@ -212,8 +212,8 @@ def marginal_supply():
                       ('500Mt-CostDecrease', 'procure-3B-l'),
                       ('500Mt-CostDecrease', 'procure-Rhodium-l'),
                       ('500Mt-CostDecrease', '1500Mt-CostDecrease'),
-                      ('1500Mt-CostDecrease', 'procureScaling-h'),
-                      ('1500Mt-CostDecrease', "procure3B-h"),
+                      ('1500Mt-CostDecrease', 'procure-scaling-h'),
+                      ('1500Mt-CostDecrease', "procure-3B-h"),
                       ('1500Mt-CostDecrease', "procureRhodium-h"),
                       ('1500Mt-CostDecrease', "procure-scaling-maintain-h"),
                       ('1500Mt-CostDecrease', '2400Mt-CostDecrease'),
@@ -225,9 +225,9 @@ def marginal_supply():
     delta_results = []
 
     # get the source data (smallest scenario for each year)
-    source = CDR[CDR['scenario'] == "nzn"].copy(deep=True).set_index(id_cols)[year_cols]
+    source = CDR[CDR['scenario'] == "100Mt-CostDecrease"].copy(deep=True).set_index(id_cols)[year_cols]
     source = source.div(source.sum())
-    source['comparison'] = "nzn"
+    source['comparison'] = "100Mt-CostDecrease"
     delta_results.append(source.reset_index())
 
     for s1, s2 in scenario_pairs:
@@ -246,9 +246,9 @@ def marginal_supply():
         delta_results.append(diff.reset_index())
 
     # get the target data (largest scenario for each year)
-    source = CDR[CDR['scenario'] == "4gt"].copy(deep=True).set_index(id_cols)[year_cols]
+    source = CDR[CDR['scenario'] == "4100Mt-CostDecrease"].copy(deep=True).set_index(id_cols)[year_cols]
     source = source.div(source.sum())
-    source['comparison'] = "4gt"
+    source['comparison'] = "4100Mt-CostDecrease"
     delta_results.append(source.reset_index())
 
     # combine into a final DataFrame
@@ -259,21 +259,21 @@ def marginal_supply():
     df_deltas["2045"] = df_deltas["2045_supply"]
     df_deltas["2050"] = df_deltas["2050_supply"]
     # add a mask
-    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-l, low>', '2040'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-h, high>', '2040'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-maintain-h, high>', '2040'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procure3B-l, low>', '2040'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procure3B-h, high>', '2040'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-l, low>', '2045'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-h, high>', '2045'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-maintain-h, high>', '2045'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procure3B-l, low>', '2045'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procure3B-h, high>', '2045'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-l, low>', '2050'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procureScaling-h, high>', '2050'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-maintain-h, high>', '2050'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procure3B-l, low>', '2050'] = np.nan
-    df_deltas.loc[df_deltas['comparison'] == '<procure3B-h, high>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-l, 500Mt-CostDecrease>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-h, 1500Mt-CostDecrease>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-maintain-h, 1500Mt-CostDecrease>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-3B-l, 500Mt-CostDecrease>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-3B-h, 1500Mt-CostDecrease>', '2040'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-l, 500Mt-CostDecrease>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-h, 1500Mt-CostDecrease>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-maintain-h, 1500Mt-CostDecrease>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-3B-l, 500Mt-CostDecrease>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-3B-h, 1500Mt-CostDecrease>', '2045'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-l, 500Mt-CostDecrease>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-h, 1500Mt-CostDecrease>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-scaling-maintain-h, 1500Mt-CostDecrease>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-3B-l, 500Mt-CostDecrease>', '2050'] = np.nan
+    df_deltas.loc[df_deltas['comparison'] == '<procure-3B-h, 1500Mt-CostDecrease>', '2050'] = np.nan
     df_deltas = df_deltas[["comparison", "product", "2030", "2035", "2040", "2045", "2050"]]
 
     # set up plot
@@ -317,7 +317,7 @@ def marginal_supply():
                     # Position text in the middle of the segment
                     text_y = current_bottom[j] + (val / 2)
                     ax.text(bar.get_x() + bar.get_width() / 2, text_y, f'{val:.2f}',
-                            ha='center', va='center', color='white', fontweight='bold', fontsize=9)
+                            ha='center', va='center', color='white', fontweight='bold', fontsize=8)
 
             starts_pos += np.maximum(0, values)
             starts_neg += np.minimum(0, values)
@@ -328,8 +328,8 @@ def marginal_supply():
         ax.set_xticks(x_pos)
         # Rename all the comparisons to make for pretty labeling
         valid_comps = [
-            i.replace("s1-", "").replace("nzn", "100 Mt").replace("500Mt-CostDecrease", "500 Mt").replace("1500Mt-CostDecrease", "1500 Mt").
-            replace("excess", "2400 Mt").replace("4gt", "4100 Mt") for i in valid_comps]
+            i.replace("s1-", "").replace("100Mt-CostDecrease", "100 Mt").replace("500Mt-CostDecrease", "500 Mt").replace("1500Mt-CostDecrease", "1500 Mt").
+            replace("2400Mt-CostDecrease", "2400 Mt").replace("4100Mt-CostDecrease", "4100 Mt") for i in valid_comps]
         ax.set_xticklabels(valid_comps, rotation=30, ha='right', fontsize=11)
         ax.set_ylabel("Normalized Delta")
         ax.grid(axis='y', linestyle=':', alpha=0.6)
@@ -354,16 +354,16 @@ def tech_neutrality():
     method to calculate the extent to which policies are technically neutral by measuring changes in market supply
     :return: plot of relevant data
     """
-    scenarios = ["low_low", "high_high",
-                 "innovation-maintain_low", "innovation-rhodium6b_low",
-                 "innovation-rhodium18b_low", "innovation-triple_low",
-                 "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high",
-                 "CDRIA-2050_low", "CDRIA-2050_high",
-                 "s1-procureRhodium-l_low", "s1-procureRhodium-h_high",
-                 "s1-procureScaling-l_low", "s1-procure3B-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high",
-                 "CDRIA-2035_low", "CDRIA-2035_high"]
+    scenarios = ["500Mt-CostDecrease_500Mt-CostDecrease", "1500Mt-CostDecrease_1500Mt-CostDecrease",
+                 "innovation-maintain-l_500Mt-CostDecrease", "innovation-rhodium6b-l_500Mt-CostDecrease",
+                 "innovation-rhodium18b-l_500Mt-CostDecrease", "innovation-triple-l_500Mt-CostDecrease",
+                 "innovation-maintain-h_1500Mt-CostDecrease", "innovation-rhodium6b-h_1500Mt-CostDecrease",
+                 "innovation-rhodium18b-h_1500Mt-CostDecrease", "innovation-triple-h_1500Mt-CostDecrease",
+                 "CDRIA-2050-l_500Mt-CostDecrease", "CDRIA-2050-h_1500Mt-CostDecrease",
+                 "procure-Rhodium-l_500Mt-CostDecrease", "procure-Rhodium-h_1500Mt-CostDecrease",
+                 "procure-scaling-l_500Mt-CostDecrease", "procure-3B-l_500Mt-CostDecrease",
+                 "procure-scaling-h_1500Mt-CostDecrease", "procure-3B-h_1500Mt-CostDecrease",
+                 "CDRIA-2035-l_500Mt-CostDecrease", "CDRIA-2035-h_1500Mt-CostDecrease"]
 
     # get CDR data
     all_data = pd.DataFrame()
@@ -403,44 +403,50 @@ def tech_neutrality():
     # no 2025 data
     CDR["2025"] = np.nan
     # procure scaling/3B have no 2040+ data
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2040'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2040'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2040'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2040'] = np.nan
-    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2040'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2045'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2045'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2045'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2045'] = np.nan
-    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2045'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2050'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2050'] = np.nan
-    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2050'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2050'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-l', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-h', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-l', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-h', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-l', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-h', '2040'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-l', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-h', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-l', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-h', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-l', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-h', '2045'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-l', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-h', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-l', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-h', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-l', '2050'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-h', '2050'] = np.nan
 
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2040_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2040_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2040_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2040_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2040_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2045_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2045_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2045_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2045_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2045_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-l', '2050_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procureScaling-h', '2050_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 'CDRIA-2035', '2050_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-l', '2050_supply'] = np.nan
-    CDR.loc[CDR['scenario'] == 's1-procure3B-h', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-l', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-h', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-l', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-h', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-l', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-h', '2040_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-l', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-h', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-l', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-h', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-l', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-h', '2045_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-l', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-scaling-h', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-l', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'CDRIA-2035-h', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-l', '2050_supply'] = np.nan
+    CDR.loc[CDR['scenario'] == 'procure-3B-h', '2050_supply'] = np.nan
 
     # group by policy type
     # set new column as policy type
     CI_data = pd.DataFrame()
     CDR["%Label"] = CDR.apply(lambda row: "Procurement" if "procure" in row['scenario'] else "Innovation" if
     "innovation" in row['scenario'] else "CDRIA", axis=1)
-    CDR["MtLabel"] = CDR.apply(lambda row: row['scenario'] if "procure" in row['scenario'] else "Innovation" if
+    CDR["MtLabel"] = CDR.apply(lambda row: "Procurement" if "procure" in row['scenario'] else "Innovation" if
     "innovation" in row['scenario'] else "CDRIA",
                                axis=1)  # do not want to aggregate procurement scenarios by Mt basis because CI would be nonsense
     for bl in CDR["baseline"].unique():
@@ -478,68 +484,62 @@ def tech_neutrality():
 
             colors = ["#BFBE43", "#74A751", "#698FC6", "#DD9452"]
             for row_idx, scenario_name in enumerate(scenarios):
-                if not (suffix == "" and "s1-" in scenario_name):
-                    if not (suffix == "_supply" and scenario_name == "Procurement"):
-                        scenario_df = CDR_baseline[CDR_baseline['Policy Type'] == scenario_name]
+                scenario_df = CDR_baseline[CDR_baseline['Policy Type'] == scenario_name]
 
-                        # reformat the table to have years as columns
-                        scenario_df_mean = scenario_df.pivot(index=['product', "baseline", "Policy Type"],
-                                                             columns='year', values='mean').reset_index()
-                        scenario_df_low = scenario_df.pivot(index=['product', "baseline", "Policy Type"],
-                                                            columns='year',
-                                                            values='minimum').reset_index()
-                        scenario_df_high = scenario_df.pivot(index=['product', "baseline", "Policy Type"],
-                                                             columns='year',
-                                                             values='maximum').reset_index()
+                # reformat the table to have years as columns
+                scenario_df_mean = scenario_df.pivot(index=['product', "baseline", "Policy Type"],
+                                                     columns='year', values='mean').reset_index()
+                scenario_df_low = scenario_df.pivot(index=['product', "baseline", "Policy Type"],
+                                                    columns='year',
+                                                    values='minimum').reset_index()
+                scenario_df_high = scenario_df.pivot(index=['product', "baseline", "Policy Type"],
+                                                     columns='year',
+                                                     values='maximum').reset_index()
 
-                        for col_idx, year in enumerate(years):
-                            ax = axes[col_idx, row_idx] if len(scenarios) > 1 else axes[col_idx]
+                for col_idx, year in enumerate(years):
+                    ax = axes[col_idx, row_idx] if len(scenarios) > 1 else axes[col_idx]
 
-                            if not scenario_df_mean[year].isna().all():
-                                # if there is data, extract it for plotting
-                                product_totals = scenario_df_mean.groupby('product')[str(year)].sum().reindex(products)
-                                minimum = scenario_df_low.groupby('product')[str(year)].sum(min_count=1).reindex(
-                                    products).dropna()
-                                maximum = scenario_df_high.groupby('product')[str(year)].sum(min_count=1).reindex(
-                                    products).dropna()
-                                bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
-                                scatter_low = ax.scatter(minimum, minimum.index.tolist(), color='black', zorder=3,
-                                                         marker="x")
-                                scatter_high = ax.scatter(maximum, maximum.index.tolist(), color='black', zorder=3,
-                                                          marker="x")
-                                for i in minimum.index.tolist():  # draw a line that connects
-                                    ax.plot([minimum[i], maximum[i]], [i, i], zorder=4, color="grey")
+                    # if there is data, extract it for plotting
+                    product_totals = scenario_df_mean.groupby('product')[str(year)].sum().reindex(products)
+                    minimum = scenario_df_low.groupby('product')[str(year)].sum(min_count=1).reindex(
+                        products).dropna()
+                    maximum = scenario_df_high.groupby('product')[str(year)].sum(min_count=1).reindex(
+                        products).dropna()
+                    bars = ax.barh(products, product_totals, color=colors, edgecolor='black', alpha=0.8)
+                    scatter_low = ax.scatter(minimum, minimum.index.tolist(), color='black', zorder=3,
+                                             marker="x")
+                    scatter_high = ax.scatter(maximum, maximum.index.tolist(), color='black', zorder=3,
+                                              marker="x")
+                    for i in minimum.index.tolist():  # draw a line that connects
+                        ax.plot([minimum[i], maximum[i]], [i, i], zorder=4, color="grey")
 
-                                v_line_pos = 0 if "Innovation" in scenario_name or "CDRIA" in scenario_name else 0.25
-                                if suffix == "_supply":
-                                    if v_line_pos == 0:  # don't put line on procurement graphs for Mt supply
-                                        ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
-                                                   label='Tech-Neutral Target')
-                                else:
-                                    ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
-                                               label='Tech-Neutral Target')
+                    v_line_pos = 0 if "Innovation" in scenario_name or "CDRIA" in scenario_name else 0.25
+                    if suffix == "_supply":
+                        if v_line_pos == 0:  # don't put line on procurement graphs for Mt supply
+                            ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
+                                       label='Tech-Neutral Target')
+                    else:
+                        ax.axvline(x=v_line_pos, color='black', linestyle='-', linewidth=2,
+                                   label='Tech-Neutral Target')
 
-                                # label only certain subplots
-                                if row_idx == 0:
-                                    if suffix == "_supply":
-                                        year = year.split("_")[0]
-                                    ax.set_ylabel(f"{year}", fontweight='bold', fontsize=12)
+                    # label only certain subplots
+                    if row_idx == 0:
+                        if suffix == "_supply":
+                            year = year.split("_")[0]
+                        ax.set_ylabel(f"{year}", fontweight='bold', fontsize=12)
 
-                                if col_idx == 0:
-                                    ax.set_title(
-                                        f"{scenario_name.replace('s1-', '').replace('-l', '-500 Mt').replace('-h', '-1500 Mt')}",
-                                        fontsize=10, fontweight='bold')
+                    if col_idx == 0:
+                        ax.set_title(
+                            f"{scenario_name.replace('s1-', '').replace('-l', '-500 Mt').replace('-h', '-1500 Mt')}",
+                            fontsize=10, fontweight='bold')
 
-                                if col_idx == 2:
-                                    if suffix == "_supply":
-                                        ax.set_xlabel("Mt")
-                                    else:
-                                        ax.set_xlabel("relative change")
+                    if col_idx == 2:
+                        if suffix == "_supply":
+                            ax.set_xlabel("Mt")
+                        else:
+                            ax.set_xlabel("relative change")
 
-                                ax.grid(axis='x', linestyle='--', alpha=0.6)
-                            else:
-                                # delete plot
-                                fig.delaxes(ax)
+                    ax.grid(axis='x', linestyle='--', alpha=0.6)
 
             # add a single legend
             legend_elements = [Line2D([0], [0], color=colors[i], lw=4, label=p) for i, p in enumerate(products)]
@@ -821,15 +821,7 @@ def cement(config_fname, reference_year):
     :param reference_year: not needed
     :return: plot of relevant information
     """
-    scenarios = ["low_low", "high_high", "s1-procureScaling-l_low", "s1-procure3B-l_low", "s1-procureRhodium-l_low",
-                 "s1-procureScaling-h_high", "s1-procure3B-h_high", "s1-procureRhodium-h_high",
-                 "45Q-2040_low", "45Q-2050_low", "CDRIA-2035_low", "CDRIA-2050_low",
-                 "45Q-2040_high", "45Q-2050_high", "CDRIA-2035_high", "CDRIA-2050_high",
-                 "innovation-DACHubs_low", "innovation-maintain_low", "innovation-rhodium6b_low",
-                 "innovation-rhodium18b_low", "innovation-triple_low",
-                 "innovation-DACHubs_high", "innovation-maintain_high", "innovation-rhodium6b_high",
-                 "innovation-rhodium18b_high", "innovation-triple_high", "CDRIA-rhodium18b_low",
-                 "CDRIA-rhodium18b_high"]
+    scenarios = config_fname
     supply = data_manipulation.get_sensitivity_data(scenarios, "cement_production_by_tech_conv_and_ccs",
                                                     source="masked")
     price = data_manipulation.get_sensitivity_data(scenarios, "cement_prices", source="masked")
