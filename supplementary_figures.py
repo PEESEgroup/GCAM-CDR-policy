@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import matplotlib.gridspec as gridspec
 import re
+import seaborn as sns
 
 
 def main(reference_year):
@@ -49,7 +50,8 @@ def main(reference_year):
     # os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # many methods are commented out, but to run them just uncomment and run
     # marginal_supply()
-    tech_neutrality()
+    #tech_neutrality()
+    CDR_market_reduction(config_fname)
     # compare_policy_costs("45Q-2040-l_500Mt-CostDecrease", "45Q-2040-maintain-l_500Mt-CostDecrease")
     # compare_policy_costs( "innovation-maintain-h_1500Mt-CostDecrease", "procure-scaling-maintain-h_1500Mt-CostDecrease")
     # CAGR(config_fname, "2050")
@@ -61,6 +63,162 @@ def main(reference_year):
     # C_prices(config_fname, reference_year)
     # CDR_subsidies(config_fname, "2035", "2040")
     # npv_breakdown(config_fname)
+
+
+def CDR_market_reduction(config_fname):
+    scenarios = config_fname
+
+    # get CDR data
+    all_data = pd.DataFrame()
+    for nonBaselineScenario in scenarios:
+        nonBaselineScenario = str(nonBaselineScenario).replace("_", "/")
+        fpath = "./data/data_analysis/supplementary_tables/" + nonBaselineScenario + "/npv of achieving net zero.csv"
+        df = pd.read_csv(fpath)
+
+        if "100" in fpath or "2400" in fpath or "4100" in fpath or "CDRIA-2050" in fpath or "noCostDecrease" in fpath:
+            pass
+        else:
+            df["baseline"] = nonBaselineScenario.split("/")[1]
+            df["scenario"] = nonBaselineScenario.split("/")[0]
+            if all_data.empty:
+                all_data = df
+            else:
+                all_data = pd.concat([all_data, df])
+
+    # Select relevant columns
+    value_vars = [
+        "Cost Decrease necessary in PV CDR market | 2.0% | % of CDR market",
+        "Cost Decrease necessary in PV CDR market | 12.0% | % of CDR market",
+        "Cost Decrease necessary in PV CDR market | 20.0% | % of CDR market",
+        "Cost Decrease necessary in 2050"
+    ]
+
+    all_data = all_data[value_vars + ["baseline"]]
+
+    # Melt DataFrame keeping 'baseline' as the identifier
+    df_long = pd.melt(
+        all_data,
+        id_vars=["baseline"],
+        value_vars=value_vars,
+        var_name="Metric",
+        value_name="Cost_Decrease"
+    )
+
+    # Clean up metric names for readability on the y-axis
+    df_long["Metric"] = df_long["Metric"].str.replace("Cost Decrease necessary in PV CDR market | ", "", regex=False)
+
+    metric_label_mapping = {
+        "2.0% | % of CDR market": "2% Discount Rate",
+        "12.0% | % of CDR market": "12% Discount Rate",
+        "20.0% | % of CDR market": "20% Discount Rate",
+        "Cost Decrease necessary in 2050": "2050 Snapshot"
+    }
+    df_long["Metric"] = df_long["Metric"].replace(metric_label_mapping)
+
+    # Unique baselines and metrics for consistent row positioning
+    baselines = df_long["baseline"].dropna().unique()
+    n_baselines = len(baselines)
+    metric_order = df_long["Metric"].unique()
+
+    if n_baselines == 0:
+        print("No valid baselines found after filtering.")
+        return
+
+    # Setup Grid: Each baseline row has 3 side-by-side subplots for horizontal breaks
+    fig = plt.figure(figsize=(13, 4 * n_baselines))
+    gs = fig.add_gridspec(n_baselines, 3, width_ratios=[11, 1, 1], hspace=0.4, wspace=0.1)
+
+    for i, baseline in enumerate(baselines):
+        subset = df_long[df_long['baseline'] == baseline]
+
+        ax_left = fig.add_subplot(gs[i, 0])  # Range: 0 to 100
+        ax_mid = fig.add_subplot(gs[i, 1], sharey=ax_left)  # Range: 160 to 170
+        ax_right = fig.add_subplot(gs[i, 2], sharey=ax_left)  # Range: 510 to 520
+
+        # Filter data accurately for each region
+        sub_left = subset[(subset["Cost_Decrease"] >= -10) & (subset["Cost_Decrease"] <= 600)] # need all data for an accurate box plot
+        sub_mid = subset[(subset["Cost_Decrease"] >= 160) & (subset["Cost_Decrease"] <= 170)]
+        sub_right = subset[(subset["Cost_Decrease"] >= 510) & (subset["Cost_Decrease"] <= 520)]
+
+        panels = [
+            (ax_left, sub_left, -10, 100, True),  # Left: Box plot + Scatter
+            (ax_mid, sub_mid, 160, 170, False),  # Mid: Scatter only
+            (ax_right, sub_right, 510, 520, False)  # Right: Scatter only
+        ]
+
+        colors = ["#0047BB", "#00B5E2", "#c22a90", "#00AE8D"]
+
+        for ax, sub_data, xmin, xmax, include_box in panels:
+            ax.set_xlim(xmin, xmax)
+            if not sub_data.empty:
+                if include_box:
+                    # Box plot only on the left plot
+                    sns.boxplot(
+                        data=sub_data,
+                        x="Cost_Decrease",
+                        y="Metric",
+                        ax=ax,
+                        order=metric_order,
+                        orient="h",
+                        palette=colors,
+                        showmeans=True,
+                        meanprops={"marker": "x", "markeredgecolor": "black"},
+                        fliersize=0
+                    )
+
+                # Scatter overlay for all plots
+                sns.stripplot(
+                    data=sub_data,
+                    x="Cost_Decrease",
+                    y="Metric",
+                    ax=ax,
+                    order=metric_order,
+                    orient="h",
+                    color="black",
+                    alpha=0.6,
+                    size=4,
+                    jitter=0.2
+                )
+
+        # Hide internal spines between broken sections
+        ax_left.spines['right'].set_visible(False)
+        ax_mid.spines['left'].set_visible(False)
+        ax_mid.spines['right'].set_visible(False)
+        ax_right.spines['left'].set_visible(False)
+
+        # Enable x-ticks and labels across all three subplots as requested
+        ax_left.tick_params(labelleft=True, labelbottom=True, bottom=True, left=True)
+        ax_mid.tick_params(labelleft=False, labelbottom=True, bottom=True, left=False)
+        ax_right.tick_params(labelleft=False, labelbottom=True, bottom=True, left=False)
+
+        # Add clean break slash marks (diagonal lines) on top/bottom borders
+        d = 0.025
+        kwargs = dict(color='k', clip_on=False, linewidth=1)
+
+        # Cut marks on ax_left (right edge)
+        ax_left.plot((1, 1), (-d, +d), transform=ax_left.transAxes, **kwargs)
+        ax_left.plot((1, 1), (1 - d, 1 + d), transform=ax_left.transAxes, **kwargs)
+
+        # Cut marks on ax_mid (both left and right edges)
+        ax_mid.plot((0, 0), (-d, +d), transform=ax_mid.transAxes, **kwargs)
+        ax_mid.plot((0, 0), (1 - d, 1 + d), transform=ax_mid.transAxes, **kwargs)
+        ax_mid.plot((1, 1), (-d, +d), transform=ax_mid.transAxes, **kwargs)
+        ax_mid.plot((1, 1), (1 - d, 1 + d), transform=ax_mid.transAxes, **kwargs)
+
+        # Cut marks on ax_right (left edge)
+        ax_right.plot((0, 0), (-d, +d), transform=ax_right.transAxes, **kwargs)
+        ax_right.plot((0, 0), (1 - d, 1 + d), transform=ax_right.transAxes, **kwargs)
+
+        ax_left.set_ylabel("", fontsize=10)
+        ax_mid.set_ylabel("")
+        ax_right.set_ylabel("")
+
+        ax_left.set_xlabel("Reduction in PV of CDR Market (%) to be as Cost-Effective as the 100 Mt Baseline", fontsize=10)
+        ax_mid.set_xlabel("")
+        ax_right.set_xlabel("")
+
+    plt.savefig('./data/data_analysis/images/CDR_market_cost_reduction.png')
+    plt.show()
 
 
 def npv_breakdown(config_fname):
