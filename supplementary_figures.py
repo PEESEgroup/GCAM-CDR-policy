@@ -50,8 +50,8 @@ def main(reference_year):
     # os.makedirs("./data/data_analysis/images/" + config_fname + "/", exist_ok=True)
     # many methods are commented out, but to run them just uncomment and run
     # marginal_supply()
-    #tech_neutrality()
-    CDR_market_reduction(config_fname)
+    tech_neutrality()
+    # CDR_market_reduction(config_fname)
     # compare_policy_costs("45Q-2040-l_500Mt-CostDecrease", "45Q-2040-maintain-l_500Mt-CostDecrease")
     # compare_policy_costs( "innovation-maintain-h_1500Mt-CostDecrease", "procure-scaling-maintain-h_1500Mt-CostDecrease")
     # CAGR(config_fname, "2050")
@@ -438,7 +438,7 @@ def marginal_supply():
     years = ['2030', '2035', '2040', '2045', '2050']
     all_comparisons = list(df_deltas['comparison'].unique())
     products = list(df_deltas['product'].unique())
-    colors = ["#BFBE43", "#74A751", "#698FC6", "#DD9452"]
+    colors = ["#0047BB", "#00B5E2", "#c22a90", "#00AE8D"]
 
     # set up the grid (3 rows, 2 columns)
     fig, axes = plt.subplots(2, 3, figsize=(20, 12), sharex=False, sharey=True, layout="tight")
@@ -640,7 +640,7 @@ def tech_neutrality():
                 fig, axes = plt.subplots(3, len(scenarios), figsize=(14, 4), sharey=True, sharex=True,
                                          layout="constrained")
 
-            colors = ["#BFBE43", "#74A751", "#698FC6", "#DD9452"]
+            colors = ["#0047BB", "#00B5E2", "#c22a90", "#00AE8D"]
             for row_idx, scenario_name in enumerate(scenarios):
                 scenario_df = CDR_baseline[CDR_baseline['Policy Type'] == scenario_name]
 
